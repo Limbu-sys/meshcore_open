@@ -544,7 +544,7 @@
   "chat_pathHistoryFull": "Die Pfadhistorie ist voll. Entferne Einträge, um neue hinzuzufügen.",
   "chat_hopSingular": "Sprung",
   "chat_hopPlural": "Sprünge",
-  "chat_hopsCount": "{count} {count, plural, =1{Hop} other{Hops}}",
+  "chat_hopsCount": "{count} {count, plural, =1{Sprung} other{Sprünge}}",
   "@chat_hopsCount": {
     "placeholders": {
       "count": {
@@ -823,7 +823,7 @@
   },
   "common_reload": "Neu laden",
   "common_clear": "Löschen",
-  "path_currentPath": "Aktiger Pfad: {path}",
+  "path_currentPath": "Aktiver Pfad: {path}",
   "@path_currentPath": {
     "placeholders": {
       "path": {
@@ -992,7 +992,7 @@
   "repeater_privacyMode": "Privatsphäreeinstellung",
   "repeater_privacyModeSubtitle": "Verstecken Sie Name/Ort in Ankündigungen",
   "repeater_advertisementSettings": "Ankündigungseinstellungen",
-  "repeater_localAdvertInterval": "Intervall der Ankündigungen",
+  "repeater_localAdvertInterval": "Intervall der lokalen Ankündigungen",
   "repeater_localAdvertIntervalMinutes": "{minutes} Minuten",
   "@repeater_localAdvertIntervalMinutes": {
     "placeholders": {
@@ -1113,7 +1113,7 @@
   "repeater_cliHelpSetAgcResetInterval": "Legt das Intervall für das Zurücksetzen des Auto Gain Controllers fest. Auf 0 setzen, um die Funktion zu deaktivieren.",
   "repeater_cliHelpSetMultiAcks": "Aktiviert oder deaktiviert die Funktion 'Doppel-ACKs'.",
   "repeater_cliHelpSetAdvertInterval": "Legt das Timer-Intervall in Minuten fest, um ein lokales (ohne-Weiterleitung) Ankündigungspaket zu senden. Auf 0 setzen, um die Funktion zu deaktivieren.",
-  "repeater_cliHelpSetFloodAdvertInterval": "Legt das Timer-Intervall in Stunden für den Versand eines Flut-Ankündigungspaket fest. Auf 0 setzen, um es zu deaktivieren.",
+  "repeater_cliHelpSetFloodAdvertInterval": "Legt das Timer-Intervall in Stunden für den Versand eines Flut-Ankündigungspacket fest. Auf 0 setzen, um es zu deaktivieren.",
   "repeater_cliHelpSetGuestPassword": "Legt/aktualisiert das Gastpasswort fest. (für Repeater können Gast-Logins die \"Get Stats\"-Anfrage senden)",
   "repeater_cliHelpSetName": "Legt den Anzeigenamen fest.",
   "repeater_cliHelpSetLat": "Legt die Breitengrad der Ankündigung fest. (dezimale Grad)",

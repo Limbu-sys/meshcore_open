@@ -914,8 +914,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get gifPicker_noGifsFound => 'Keine GIFs gefunden';
 
   @override
-  String get gifPicker_failedLoad =>
-      'GIF-Datei konnten nicht geladen werden.';
+  String get gifPicker_failedLoad => 'GIF-Datei konnten nicht geladen werden.';
 
   @override
   String get gifPicker_failedSearch => 'Suche nach GIFs fehlgeschlagen';
@@ -1036,8 +1035,8 @@ class AppLocalizationsDe extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'Sprung',
-      one: 'Sprünge',
+      other: 'Sprünge',
+      one: 'Sprung',
     );
     return '$count $_temp0';
   }
@@ -1077,8 +1076,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'Verwende den Routingschalter in der App-Leiste';
 
   @override
-  String get chat_floodModeEnabled =>
-      'Flutmodus aktiviert.';
+  String get chat_floodModeEnabled => 'Flutmodus aktiviert.';
 
   @override
   String get chat_fullPath => 'Vollständiger Pfad';
@@ -1569,8 +1567,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get repeater_settings => 'Einstellungen';
 
   @override
-  String get repeater_settingsSubtitle =>
-      'Repeater-parameter konfigurieren';
+  String get repeater_settingsSubtitle => 'Repeater-parameter konfigurieren';
 
   @override
   String get repeater_statusTitle => 'Repeaterstatus';
@@ -1770,7 +1767,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get repeater_advertisementSettings => 'Ankündigungseinstellungen';
 
   @override
-  String get repeater_localAdvertInterval => 'Intervall der lokalen Ankündigungen';
+  String get repeater_localAdvertInterval =>
+      'Intervall der lokalen Ankündigungen';
 
   @override
   String repeater_localAdvertIntervalMinutes(int minutes) {
@@ -1778,7 +1776,8 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get repeater_floodAdvertInterval => 'Intervall der gefluteten Ankündigungen';
+  String get repeater_floodAdvertInterval =>
+      'Intervall der gefluteten Ankündigungen';
 
   @override
   String repeater_floodAdvertIntervalHours(int hours) {
@@ -2101,8 +2100,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'Entfernt das erste übereinstimmende Element (über Pubkey-Präfix (hex)) aus der Liste der Nachbarn.';
 
   @override
-  String get repeater_cliHelpRegion =>
-      'Listet alle definierten Regionen auf.';
+  String get repeater_cliHelpRegion => 'Listet alle definierten Regionen auf.';
 
   @override
   String get repeater_cliHelpRegionLoad =>
