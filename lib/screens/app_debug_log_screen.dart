@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+import '../l10n/l10n.dart';
 import '../services/app_debug_log_service.dart';
 
 class AppDebugLogScreen extends StatelessWidget {
@@ -16,11 +17,11 @@ class AppDebugLogScreen extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
-            title: const Text('App Debug Log'),
+            title: Text(context.l10n.debugLog_appTitle),
             centerTitle: true,
             actions: [
               IconButton(
-                tooltip: 'Copy log',
+                tooltip: context.l10n.debugLog_copyLog,
                 icon: const Icon(Icons.copy),
                 onPressed: hasEntries
                     ? () async {
@@ -31,13 +32,13 @@ class AppDebugLogScreen extends StatelessWidget {
                         await Clipboard.setData(ClipboardData(text: text));
                         if (!context.mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Debug log copied')),
+                          SnackBar(content: Text(context.l10n.debugLog_copied)),
                         );
                       }
                     : null,
               ),
               IconButton(
-                tooltip: 'Clear log',
+                tooltip: context.l10n.debugLog_clearLog,
                 icon: const Icon(Icons.delete_outline),
                 onPressed: hasEntries
                     ? () {
@@ -76,12 +77,12 @@ class AppDebugLogScreen extends StatelessWidget {
                         Icon(Icons.bug_report_outlined, size: 64, color: Colors.grey[400]),
                         const SizedBox(height: 16),
                         Text(
-                          'No debug logs yet',
+                          context.l10n.debugLog_noEntries,
                           style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          'Enable app debug logging in settings',
+                          context.l10n.debugLog_enableInSettings,
                           style: TextStyle(fontSize: 12, color: Colors.grey[500]),
                         ),
                       ],

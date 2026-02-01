@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../l10n/l10n.dart';
 import '../models/contact.dart';
 import '../connector/meshcore_connector.dart';
 import '../connector/meshcore_protocol.dart';
@@ -33,14 +34,14 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
   RepeaterCommandService? _commandService;
 
   // Common commands for quick access
-  final List<Map<String, String>> _quickCommands = [
-    {'label': 'Get Name', 'command': 'get name'},
-    {'label': 'Get Radio', 'command': 'get radio'},
-    {'label': 'Get TX', 'command': 'get tx'},
-    {'label': 'Neighbors', 'command': 'neighbors'},
-    {'label': 'Version', 'command': 'ver'},
-    {'label': 'Advertise', 'command': 'advert'},
-    {'label': 'Clock', 'command': 'clock'},
+  late final List<Map<String, String>> _quickCommands = [
+    {'labelKey': 'getName', 'command': 'get name'},
+    {'labelKey': 'getRadio', 'command': 'get radio'},
+    {'labelKey': 'getTx', 'command': 'get tx'},
+    {'labelKey': 'neighbors', 'command': 'neighbors'},
+    {'labelKey': 'version', 'command': 'ver'},
+    {'labelKey': 'advertise', 'command': 'advert'},
+    {'labelKey': 'clock', 'command': 'clock'},
   ];
 
   @override
@@ -119,7 +120,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
     // Show debug info if requested
     if (showDebug && mounted) {
       final frame = buildSendCliCommandFrame(widget.repeater.publicKey, command);
-      DebugFrameViewer.showFrameDebug(context, frame, 'CLI Command Frame');
+      DebugFrameViewer.showFrameDebug(context, frame, context.l10n.repeater_cliCommandFrameTitle);
     }
 
     // Send CLI command to repeater with retry
@@ -148,7 +149,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
         setState(() {
           _commandHistory.add({
             'type': 'response',
-            'text': 'Error: $e',
+            'text': context.l10n.repeater_cliCommandError(e.toString()),
             'timestamp': DateTime.now().toString(),
           });
         });
@@ -215,6 +216,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final connector = context.watch<MeshCoreConnector>();
     final repeater = _resolveRepeater(connector);
     final isFloodMode = repeater.pathOverride == -1;
@@ -225,7 +227,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text('Repeater CLI'),
+            Text(l10n.repeater_cliTitle),
             Text(
               repeater.name,
               style: const TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
@@ -236,7 +238,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
         actions: [
           PopupMenuButton<String>(
             icon: Icon(isFloodMode ? Icons.waves : Icons.route),
-            tooltip: 'Routing mode',
+            tooltip: l10n.repeater_routingMode,
             onSelected: (mode) async {
               if (mode == 'flood') {
                 await connector.setPathOverride(repeater, pathLen: -1);
@@ -252,7 +254,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
                     Icon(Icons.auto_mode, size: 20, color: !isFloodMode ? Theme.of(context).primaryColor : null),
                     const SizedBox(width: 8),
                     Text(
-                      'Auto (use saved path)',
+                      l10n.repeater_autoUseSavedPath,
                       style: TextStyle(
                         fontWeight: !isFloodMode ? FontWeight.bold : FontWeight.normal,
                       ),
@@ -267,7 +269,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
                     Icon(Icons.waves, size: 20, color: isFloodMode ? Theme.of(context).primaryColor : null),
                     const SizedBox(width: 8),
                     Text(
-                      'Force Flood Mode',
+                      l10n.repeater_forceFloodMode,
                       style: TextStyle(
                         fontWeight: isFloodMode ? FontWeight.bold : FontWeight.normal,
                       ),
@@ -279,31 +281,31 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
           ),
           IconButton(
             icon: const Icon(Icons.timeline),
-            tooltip: 'Path management',
+            tooltip: l10n.repeater_pathManagement,
             onPressed: () => PathManagementDialog.show(context, contact: repeater),
           ),
           IconButton(
             icon: const Icon(Icons.bug_report),
-            tooltip: 'Debug Next Command',
+            tooltip: l10n.repeater_debugNextCommand,
             onPressed: () {
               // Set a flag or just send next command with debug
               if (_commandController.text.trim().isNotEmpty) {
                 _sendCommand(showDebug: true);
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Enter a command first')),
+                  SnackBar(content: Text(l10n.repeater_enterCommandFirst)),
                 );
               }
             },
           ),
           IconButton(
             icon: const Icon(Icons.help_outline),
-            tooltip: 'Command Help',
+            tooltip: l10n.repeater_commandHelp,
             onPressed: () => _showCommandHelp(context),
           ),
           IconButton(
             icon: const Icon(Icons.clear_all),
-            tooltip: 'Clear History',
+            tooltip: l10n.repeater_clearHistory,
             onPressed: _commandHistory.isEmpty ? null : _clearHistory,
           ),
         ],
@@ -331,10 +333,11 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: _quickCommands.map((cmd) {
+            final label = _quickCommandLabel(cmd['labelKey']!);
             return Padding(
               padding: const EdgeInsets.only(right: 8),
               child: ActionChip(
-                label: Text(cmd['label']!),
+                label: Text(label),
                 onPressed: () => _useQuickCommand(cmd['command']!),
                 avatar: const Icon(Icons.play_arrow, size: 16),
               ),
@@ -345,7 +348,30 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
     );
   }
 
+  String _quickCommandLabel(String key) {
+    final l10n = context.l10n;
+    switch (key) {
+      case 'getName':
+        return l10n.repeater_cliQuickGetName;
+      case 'getRadio':
+        return l10n.repeater_cliQuickGetRadio;
+      case 'getTx':
+        return l10n.repeater_cliQuickGetTx;
+      case 'neighbors':
+        return l10n.repeater_cliQuickNeighbors;
+      case 'version':
+        return l10n.repeater_cliQuickVersion;
+      case 'advertise':
+        return l10n.repeater_cliQuickAdvertise;
+      case 'clock':
+        return l10n.repeater_cliQuickClock;
+      default:
+        return key;
+    }
+  }
+
   Widget _buildEmptyState() {
+    final l10n = context.l10n;
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -353,12 +379,12 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
           Icon(Icons.terminal, size: 64, color: Colors.grey[400]),
           const SizedBox(height: 16),
           Text(
-            'No commands sent yet',
+            l10n.repeater_noCommandsSent,
             style: TextStyle(fontSize: 16, color: Colors.grey[600]),
           ),
           const SizedBox(height: 8),
           Text(
-            'Type a command below or use quick commands',
+            l10n.repeater_typeCommandOrUseQuick,
             style: TextStyle(fontSize: 14, color: Colors.grey[500]),
           ),
         ],
@@ -422,6 +448,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
   }
 
   Widget _buildCommandInput() {
+    final l10n = context.l10n;
     return Container(
       padding: const EdgeInsets.all(12),
       color: Theme.of(context).colorScheme.surface,
@@ -430,12 +457,12 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
           children: [
             IconButton(
               icon: const Icon(Icons.arrow_upward, size: 20),
-              tooltip: 'Previous command',
+              tooltip: l10n.repeater_previousCommand,
               onPressed: () => _navigateHistory(true),
             ),
             IconButton(
               icon: const Icon(Icons.arrow_downward, size: 20),
-              tooltip: 'Next command',
+              tooltip: l10n.repeater_nextCommand,
               onPressed: () => _navigateHistory(false),
             ),
             const SizedBox(width: 8),
@@ -443,10 +470,10 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
               child: TextField(
                 controller: _commandController,
                 focusNode: _commandFocusNode,
-                decoration: const InputDecoration(
-                  hintText: 'Enter command...',
-                  border: OutlineInputBorder(),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                decoration: InputDecoration(
+                  hintText: l10n.repeater_enterCommandHint,
+                  border: const OutlineInputBorder(),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   prefixText: '> ',
                 ),
                 style: const TextStyle(fontFamily: 'monospace'),
@@ -479,312 +506,284 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
   }
 
   void _showCommandHelp(BuildContext context) {
+    final l10n = context.l10n;
     final generalCommands = [
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'advert',
-        description: 'Sends an advertisement packet',
+        description: l10n.repeater_cliHelpAdvert,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'reboot',
-        description:
-            "Reboots the device. (note, you'll prob get 'Timeout' which is normal)",
+        description: l10n.repeater_cliHelpReboot,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'clock',
-        description: "Displays current time per device's clock.",
+        description: l10n.repeater_cliHelpClock,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'password {new-password}',
-        description: 'Sets a new admin password for the device.',
+        description: l10n.repeater_cliHelpPassword,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'ver',
-        description: 'Shows the device version and firmware build date.',
+        description: l10n.repeater_cliHelpVersion,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'clear stats',
-        description: 'Resets various stats counters to zero.',
+        description: l10n.repeater_cliHelpClearStats,
       ),
     ];
 
     final settingsCommands = [
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set af {air-time-factor}',
-        description: 'Sets the air-time-factor.',
+        description: l10n.repeater_cliHelpSetAf,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set tx {tx-power-dbm}',
-        description: 'Sets LoRa transmit power in dBm. (reboot to apply)',
+        description: l10n.repeater_cliHelpSetTx,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set repeat {on|off}',
-        description: 'Enables or disables the repeater role for this node.',
+        description: l10n.repeater_cliHelpSetRepeat,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set allow.read.only {on|off}',
-        description:
-            "(Room server) If 'on', then login in blank password will be allowed, but cannot Post to room. (just read only)",
+        description: l10n.repeater_cliHelpSetAllowReadOnly,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set flood.max {max-hops}',
-        description:
-            'Sets the maximum number of hops of inbound flood packet (if >= max, packet is not forwarded)',
+        description: l10n.repeater_cliHelpSetFloodMax,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set int.thresh {db}',
-        description:
-            'Sets the Interference Threshold (in DB). Default is 14. Set to 0 to disable channel interference detection.',
+        description: l10n.repeater_cliHelpSetIntThresh,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set agc.reset.interval {seconds}',
-        description:
-            'Sets the interval to reset the Auto Gain Controller. Set to 0 to disable.',
+        description: l10n.repeater_cliHelpSetAgcResetInterval,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set multi.acks {0|1}',
-        description: "Enables or disables the 'double ACKs' feature.",
+        description: l10n.repeater_cliHelpSetMultiAcks,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set advert.interval {minutes}',
-        description:
-            'Sets the timer interval in minutes to send a local (zero-hop) advertisement packet. Set to 0 to disable.',
+        description: l10n.repeater_cliHelpSetAdvertInterval,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set flood.advert.interval {hours}',
-        description:
-            'Sets the timer interval in hours to send a flood advertisement packet. Set to 0 to disable.',
+        description: l10n.repeater_cliHelpSetFloodAdvertInterval,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set guest.password {guess-password}',
-        description:
-            'Sets/updates the guest password. (for repeaters, guest logins can send the "Get Stats" request)',
+        description: l10n.repeater_cliHelpSetGuestPassword,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set name {name}',
-        description: 'Sets the advertisement name.',
+        description: l10n.repeater_cliHelpSetName,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set lat {latitude}',
-        description: 'Sets the advertisement map latitude. (decimal degrees)',
+        description: l10n.repeater_cliHelpSetLat,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set lon {longitude}',
-        description: 'Sets the advertisement map longitude. (decimal degrees)',
+        description: l10n.repeater_cliHelpSetLon,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set radio {freq},{bw},{sf},{cr}',
-        description:
-            'Sets completely new radio params, and saves to preferences. Requires a "reboot" command to apply.',
+        description: l10n.repeater_cliHelpSetRadio,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set rxdelay {base}',
-        description:
-            'Sets (experimental) base (must be > 1 for effect) for applying slight delay to received packets, based on signal strength/score. Set to 0 to disable.',
+        description: l10n.repeater_cliHelpSetRxDelay,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set txdelay {factor}',
-        description:
-            'Sets a factor multiplied with time-on-air for a flood-mode packet and with a randomized slot system, to delay its forwarding. (to decrease likelihood of collisions)',
+        description: l10n.repeater_cliHelpSetTxDelay,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set direct.txdelay {factor}',
-        description:
-            'Same as txdelay, but for applying a random delay to the forwarding of direct-mode packets.',
+        description: l10n.repeater_cliHelpSetDirectTxDelay,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set bridge.enabled {on|off}',
-        description: 'Enable/Disable bridge.',
+        description: l10n.repeater_cliHelpSetBridgeEnabled,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set bridge.delay {0-10000}',
-        description: 'Set delay before retransmitting packets.',
+        description: l10n.repeater_cliHelpSetBridgeDelay,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set bridge.source {rx|tx}',
-        description:
-            'Choose wether the bridge will retransmit received packets or transmitted packets.',
+        description: l10n.repeater_cliHelpSetBridgeSource,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set bridge.baud {speed}',
-        description: 'Set serial link baudrate for rs232 bridges.',
+        description: l10n.repeater_cliHelpSetBridgeBaud,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set bridge.secret {shared-secret}',
-        description: 'Set bridge secret for espnow bridges.',
+        description: l10n.repeater_cliHelpSetBridgeSecret,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'set adc.multiplier {factor}',
-        description:
-            'Sets custom factor to adjust reported battery voltage (only supported on select boards).',
+        description: l10n.repeater_cliHelpSetAdcMultiplier,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'tempradio {freq},{bw},{sf},{cr},{minutes}',
-        description:
-            'Sets temporary radio params for the given number of {minutes}, reverting to original radio params afterward. (does NOT save to preferences).',
+        description: l10n.repeater_cliHelpTempRadio,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'setperm {pubkey-hex} {permissions}',
-        description:
-            'Modifies the ACL. Removes matching entry (by pubkey prefix) if "permissions" is zero. Adds new entry if pubkey-hex is full length and is not currently in ACL. Updates entry by matching pubkey prefix. Permission bits vary per firmware role, but low 2 bits are: 0 (Guest), 1 (Read only), 2 (Read write), 3 (Admin)',
+        description: l10n.repeater_cliHelpSetPerm,
       ),
     ];
 
     final bridgeCommands = [
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'get bridge.type',
-        description: 'Gets bridge type none, rs232, espnow',
+        description: l10n.repeater_cliHelpGetBridgeType,
       ),
     ];
 
     final loggingCommands = [
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'log start',
-        description: 'Starts packet logging to file system.',
+        description: l10n.repeater_cliHelpLogStart,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'log stop',
-        description: 'Stops packet logging to file system.',
+        description: l10n.repeater_cliHelpLogStop,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'log erase',
-        description: 'Erases the packet logs from file system.',
+        description: l10n.repeater_cliHelpLogErase,
       ),
     ];
 
     final neighborCommands = [
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'neighbors',
-        description:
-            'Shows a list of other repeater nodes heard via zero-hop adverts. Each line is {id-prefix-hex}:{timestamp}:{snr-times-4}',
+        description: l10n.repeater_cliHelpNeighbors,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'neighbor.remove {pubkey-prefix}',
-        description:
-            'Removes first matching entry (by pubkey prefix (hex)), from neighbors list.',
+        description: l10n.repeater_cliHelpNeighborRemove,
       ),
     ];
 
     final regionCommands = [
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'region',
-        description:
-            '(serial only) Lists all defined regions and current flood permissions.',
+        description: l10n.repeater_cliHelpRegion,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'region load',
-        description:
-            'NOTE: this is a special multi-command invocation. Each subsequent command is a region name (indented with spaces to indicate parent hierarchy, with one space at minimum). Terminated by sending a blank line/command.',
+        description: l10n.repeater_cliHelpRegionLoad,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'region get {* | name-prefix}',
-        description:
-            'Searches for region with given name prefix (or "*" for the global scope). Replies with "-> {region-name} ({parent-name}) {\'F\'}"',
+        description: l10n.repeater_cliHelpRegionGet,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'region put {name} {* | parent-name-prefix}',
-        description: 'Adds or updates a region definition with given name.',
+        description: l10n.repeater_cliHelpRegionPut,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'region remove {name}',
-        description:
-            'Removes a region definition with given name. (must match exactly, and have no child regions)',
+        description: l10n.repeater_cliHelpRegionRemove,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'region allowf {* | name-prefix}',
-        description:
-            "Sets the 'F'lood permission for the given region. ('*' for the global/legacy scope)",
+        description: l10n.repeater_cliHelpRegionAllowf,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'region denyf {* | name-prefix}',
-        description:
-            "Removes the 'F'lood permission for the given region. (NOTE: at this stage NOT advised to use this on the global/legacy scope!!)",
+        description: l10n.repeater_cliHelpRegionDenyf,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'region home',
-        description:
-            "Replies with the current 'home' region. (Note applied anywhere yet, reserved for future)",
+        description: l10n.repeater_cliHelpRegionHome,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'region home {* | name-prefix}',
-        description: "Sets the 'home' region.",
+        description: l10n.repeater_cliHelpRegionHomeSet,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'region save',
-        description: 'Persists the region list/map to storage.',
+        description: l10n.repeater_cliHelpRegionSave,
       ),
     ];
 
     final gpsCommands = [
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'gps',
-        description:
-            'Gives status of gps. When gps is off, it replies only off, if on it replies with on, {status}, {fix}, {sat count}',
+        description: l10n.repeater_cliHelpGps,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'gps {on|off}',
-        description: 'Toggles gps power state.',
+        description: l10n.repeater_cliHelpGpsOnOff,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'gps sync',
-        description: 'Syncs node time with gps clock.',
+        description: l10n.repeater_cliHelpGpsSync,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'gps setloc',
-        description: "Sets node's position to gps coordinates and save preferences.",
+        description: l10n.repeater_cliHelpGpsSetLoc,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'gps advert',
-        description:
-            "Gives location advert configuration of the node:\n- none: don't include location in adverts\n- share: share gps location (from SensorManager)\n- prefs: advert the location stored in preferences",
+        description: l10n.repeater_cliHelpGpsAdvert,
       ),
-      const _CommandHelpEntry(
+      _CommandHelpEntry(
         command: 'gps advert {none|share|prefs}',
-        description: 'Sets location advert configuration.',
+        description: l10n.repeater_cliHelpGpsAdvertSet,
       ),
     ];
 
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Commands List'),
+        title: Text(l10n.repeater_commandsListTitle),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'NOTE: for the various "set ..." commands, there is also a "get ..." command.',
-                style: TextStyle(fontSize: 13),
+              Text(
+                l10n.repeater_commandsListNote,
+                style: const TextStyle(fontSize: 13),
               ),
               const SizedBox(height: 16),
-              _buildHelpSection(context, 'General', generalCommands),
+              _buildHelpSection(context, l10n.repeater_general, generalCommands),
               const SizedBox(height: 16),
-              _buildHelpSection(context, 'Settings', settingsCommands),
+              _buildHelpSection(context, l10n.repeater_settingsCategory, settingsCommands),
               const SizedBox(height: 16),
-              _buildHelpSection(context, 'Bridge', bridgeCommands),
+              _buildHelpSection(context, l10n.repeater_bridge, bridgeCommands),
               const SizedBox(height: 16),
-              _buildHelpSection(context, 'Logging', loggingCommands),
+              _buildHelpSection(context, l10n.repeater_logging, loggingCommands),
               const SizedBox(height: 16),
               _buildHelpSection(
                 context,
-                'Neighbors (Repeater only)',
+                l10n.repeater_neighborsRepeaterOnly,
                 neighborCommands,
               ),
               const SizedBox(height: 16),
               _buildHelpSection(
                 context,
-                'Region Management (Repeater only)',
+                l10n.repeater_regionManagementRepeaterOnly,
                 regionCommands,
-                note:
-                    'Region commands have been introduced to manage region definitions and permissions.',
+                note: l10n.repeater_regionNote,
               ),
               const SizedBox(height: 16),
               _buildHelpSection(
                 context,
-                'GPS Management',
+                l10n.repeater_gpsManagement,
                 gpsCommands,
-                note:
-                    'gps command has been introduced to manage location related topics.',
+                note: l10n.repeater_gpsNote,
               ),
             ],
           ),
@@ -792,7 +791,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: Text(l10n.common_close),
           ),
         ],
       ),

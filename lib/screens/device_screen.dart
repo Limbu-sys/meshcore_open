@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
+import '../l10n/l10n.dart';
 import '../utils/dialog_utils.dart';
 import '../utils/disconnect_navigation_mixin.dart';
 import '../utils/route_transitions.dart';
@@ -47,12 +48,12 @@ class _DeviceScreenState extends State<DeviceScreen>
               actions: [
                 IconButton(
                   icon: const Icon(Icons.bluetooth_disabled),
-                  tooltip: 'Disconnect',
+                  tooltip: context.l10n.common_disconnect,
                   onPressed: () => _disconnect(context, connector),
                 ),
                 IconButton(
                   icon: const Icon(Icons.tune),
-                  tooltip: 'Settings',
+                  tooltip: context.l10n.common_settings,
                   onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -68,7 +69,7 @@ class _DeviceScreenState extends State<DeviceScreen>
                 children: [
                   _buildConnectionCard(connector, context),
                   const SizedBox(height: 16),
-                  _buildSectionLabel(theme, 'Quick switch'),
+                  _buildSectionLabel(theme, context.l10n.device_quickSwitch),
                   const SizedBox(height: 12),
                   _buildQuickSwitchBar(context),
                 ],
@@ -87,7 +88,7 @@ class _DeviceScreenState extends State<DeviceScreen>
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'MeshCore',
+          context.l10n.device_meshcore,
           style: theme.textTheme.labelSmall?.copyWith(
             fontWeight: FontWeight.w600,
             letterSpacing: 0.8,
@@ -180,7 +181,7 @@ class _DeviceScreenState extends State<DeviceScreen>
                     size: 18,
                     color: colorScheme.onSecondaryContainer,
                   ),
-                  label: const Text('Connected'),
+                  label: Text(context.l10n.common_connected),
                   backgroundColor: colorScheme.secondaryContainer,
                   labelStyle: theme.textTheme.labelMedium?.copyWith(
                     color: colorScheme.onSecondaryContainer,

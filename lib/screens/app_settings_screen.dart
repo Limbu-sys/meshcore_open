@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
+import '../l10n/l10n.dart';
 import '../services/app_settings_service.dart';
 import '../services/notification_service.dart';
 import 'map_cache_screen.dart';
@@ -13,7 +14,7 @@ class AppSettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('App Settings'),
+        title: Text(context.l10n.appSettings_title),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -47,19 +48,27 @@ class AppSettingsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: Text(
-              'Appearance',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              context.l10n.appSettings_appearance,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           ListTile(
             leading: const Icon(Icons.brightness_6_outlined),
-            title: const Text('Theme'),
-            subtitle: Text(_themeModeLabel(settingsService.settings.themeMode)),
+            title: Text(context.l10n.appSettings_theme),
+            subtitle: Text(_themeModeLabel(context, settingsService.settings.themeMode)),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => _showThemeModeDialog(context, settingsService),
+          ),
+          const Divider(height: 1),
+          ListTile(
+            leading: const Icon(Icons.language_outlined),
+            title: Text(context.l10n.appSettings_language),
+            subtitle: Text(_languageLabel(context, settingsService.settings.languageOverride)),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => _showLanguageDialog(context, settingsService),
           ),
         ],
       ),
@@ -71,17 +80,17 @@ class AppSettingsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: Text(
-              'Notifications',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              context.l10n.appSettings_notifications,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           SwitchListTile(
             secondary: const Icon(Icons.notifications_outlined),
-            title: const Text('Enable Notifications'),
-            subtitle: const Text('Receive notifications for messages and adverts'),
+            title: Text(context.l10n.appSettings_enableNotifications),
+            subtitle: Text(context.l10n.appSettings_enableNotificationsSubtitle),
             value: settingsService.settings.notificationsEnabled,
             onChanged: (value) async {
               if (value) {
@@ -90,9 +99,9 @@ class AppSettingsScreen extends StatelessWidget {
                 if (!granted) {
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Notification permission denied'),
-                        duration: Duration(seconds: 2),
+                      SnackBar(
+                        content: Text(context.l10n.appSettings_notificationPermissionDenied),
+                        duration: const Duration(seconds: 2),
                       ),
                     );
                   }
@@ -105,8 +114,8 @@ class AppSettingsScreen extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(value
-                        ? 'Notifications enabled'
-                        : 'Notifications disabled'),
+                        ? context.l10n.appSettings_notificationsEnabled
+                        : context.l10n.appSettings_notificationsDisabled),
                     duration: const Duration(seconds: 2),
                   ),
                 );
@@ -120,13 +129,13 @@ class AppSettingsScreen extends StatelessWidget {
               color: settingsService.settings.notificationsEnabled ? null : Colors.grey,
             ),
             title: Text(
-              'Message Notifications',
+              context.l10n.appSettings_messageNotifications,
               style: TextStyle(
                 color: settingsService.settings.notificationsEnabled ? null : Colors.grey,
               ),
             ),
             subtitle: Text(
-              'Show notification when receiving new messages',
+              context.l10n.appSettings_messageNotificationsSubtitle,
               style: TextStyle(
                 color: settingsService.settings.notificationsEnabled ? null : Colors.grey,
               ),
@@ -145,13 +154,13 @@ class AppSettingsScreen extends StatelessWidget {
               color: settingsService.settings.notificationsEnabled ? null : Colors.grey,
             ),
             title: Text(
-              'Channel Message Notifications',
+              context.l10n.appSettings_channelMessageNotifications,
               style: TextStyle(
                 color: settingsService.settings.notificationsEnabled ? null : Colors.grey,
               ),
             ),
             subtitle: Text(
-              'Show notification when receiving channel messages',
+              context.l10n.appSettings_channelMessageNotificationsSubtitle,
               style: TextStyle(
                 color: settingsService.settings.notificationsEnabled ? null : Colors.grey,
               ),
@@ -170,13 +179,13 @@ class AppSettingsScreen extends StatelessWidget {
               color: settingsService.settings.notificationsEnabled ? null : Colors.grey,
             ),
             title: Text(
-              'Advertisement Notifications',
+              context.l10n.appSettings_advertisementNotifications,
               style: TextStyle(
                 color: settingsService.settings.notificationsEnabled ? null : Colors.grey,
               ),
             ),
             subtitle: Text(
-              'Show notification when new nodes are discovered',
+              context.l10n.appSettings_advertisementNotificationsSubtitle,
               style: TextStyle(
                 color: settingsService.settings.notificationsEnabled ? null : Colors.grey,
               ),
@@ -198,25 +207,25 @@ class AppSettingsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: Text(
-              'Messaging',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              context.l10n.appSettings_messaging,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           SwitchListTile(
             secondary: const Icon(Icons.refresh_outlined),
-            title: const Text('Clear Path on Max Retry'),
-            subtitle: const Text('Reset contact path after 5 failed send attempts'),
+            title: Text(context.l10n.appSettings_clearPathOnMaxRetry),
+            subtitle: Text(context.l10n.appSettings_clearPathOnMaxRetrySubtitle),
             value: settingsService.settings.clearPathOnMaxRetry,
             onChanged: (value) {
               settingsService.setClearPathOnMaxRetry(value);
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(value
-                      ? 'Paths will be cleared after 5 failed retries'
-                      : 'Paths will not be auto-cleared'),
+                      ? context.l10n.appSettings_pathsWillBeCleared
+                      : context.l10n.appSettings_pathsWillNotBeCleared),
                   duration: const Duration(seconds: 2),
                 ),
               );
@@ -225,16 +234,16 @@ class AppSettingsScreen extends StatelessWidget {
           const Divider(height: 1),
           SwitchListTile(
             secondary: const Icon(Icons.alt_route),
-            title: const Text('Auto Route Rotation'),
-            subtitle: const Text('Cycle between best paths and flood mode'),
+            title: Text(context.l10n.appSettings_autoRouteRotation),
+            subtitle: Text(context.l10n.appSettings_autoRouteRotationSubtitle),
             value: settingsService.settings.autoRouteRotationEnabled,
             onChanged: (value) {
               settingsService.setAutoRouteRotationEnabled(value);
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(value
-                      ? 'Auto route rotation enabled'
-                      : 'Auto route rotation disabled'),
+                      ? context.l10n.appSettings_autoRouteRotationEnabled
+                      : context.l10n.appSettings_autoRouteRotationDisabled),
                   duration: const Duration(seconds: 2),
                 ),
               );
@@ -250,17 +259,17 @@ class AppSettingsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: Text(
-              'Map Display',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              context.l10n.appSettings_mapDisplay,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           SwitchListTile(
             secondary: const Icon(Icons.router_outlined),
-            title: const Text('Show Repeaters'),
-            subtitle: const Text('Display repeater nodes on the map'),
+            title: Text(context.l10n.appSettings_showRepeaters),
+            subtitle: Text(context.l10n.appSettings_showRepeatersSubtitle),
             value: settingsService.settings.mapShowRepeaters,
             onChanged: (value) {
               settingsService.setMapShowRepeaters(value);
@@ -269,8 +278,8 @@ class AppSettingsScreen extends StatelessWidget {
           const Divider(height: 1),
           SwitchListTile(
             secondary: const Icon(Icons.chat_outlined),
-            title: const Text('Show Chat Nodes'),
-            subtitle: const Text('Display chat nodes on the map'),
+            title: Text(context.l10n.appSettings_showChatNodes),
+            subtitle: Text(context.l10n.appSettings_showChatNodesSubtitle),
             value: settingsService.settings.mapShowChatNodes,
             onChanged: (value) {
               settingsService.setMapShowChatNodes(value);
@@ -279,8 +288,8 @@ class AppSettingsScreen extends StatelessWidget {
           const Divider(height: 1),
           SwitchListTile(
             secondary: const Icon(Icons.people_outline),
-            title: const Text('Show Other Nodes'),
-            subtitle: const Text('Display other node types on the map'),
+            title: Text(context.l10n.appSettings_showOtherNodes),
+            subtitle: Text(context.l10n.appSettings_showOtherNodesSubtitle),
             value: settingsService.settings.mapShowOtherNodes,
             onChanged: (value) {
               settingsService.setMapShowOtherNodes(value);
@@ -289,11 +298,11 @@ class AppSettingsScreen extends StatelessWidget {
           const Divider(height: 1),
           ListTile(
             leading: const Icon(Icons.timer_outlined),
-            title: const Text('Time Filter'),
+            title: Text(context.l10n.appSettings_timeFilter),
             subtitle: Text(
               settingsService.settings.mapTimeFilterHours == 0
-                  ? 'Show all nodes'
-                  : 'Show nodes from last ${settingsService.settings.mapTimeFilterHours.toInt()} hours',
+                  ? context.l10n.appSettings_timeFilterShowAll
+                  : context.l10n.appSettings_timeFilterShowLast(settingsService.settings.mapTimeFilterHours.toInt()),
             ),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => _showTimeFilterDialog(context, settingsService),
@@ -301,12 +310,14 @@ class AppSettingsScreen extends StatelessWidget {
           const Divider(height: 1),
           ListTile(
             leading: const Icon(Icons.download_outlined),
-            title: const Text('Offline Map Cache'),
+            title: Text(context.l10n.appSettings_offlineMapCache),
             subtitle: Text(
               settingsService.settings.mapCacheBounds == null
-                  ? 'No area selected'
-                  : 'Area selected (zoom ${settingsService.settings.mapCacheMinZoom}'
-                      '-${settingsService.settings.mapCacheMaxZoom})',
+                  ? context.l10n.appSettings_noAreaSelected
+                  : context.l10n.appSettings_areaSelectedZoom(
+                      settingsService.settings.mapCacheMinZoom,
+                      settingsService.settings.mapCacheMaxZoom,
+                    ),
             ),
             trailing: const Icon(Icons.chevron_right),
             onTap: () {
@@ -335,20 +346,20 @@ class AppSettingsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: Text(
-              'Battery',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              context.l10n.appSettings_battery,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           ListTile(
             leading: const Icon(Icons.battery_full),
-            title: const Text('Battery Chemistry'),
+            title: Text(context.l10n.appSettings_batteryChemistry),
             subtitle: Text(
               isConnected
-                  ? 'Set per device (${connector.deviceDisplayName})'
-                  : 'Connect to a device to choose',
+                  ? context.l10n.appSettings_batteryChemistryPerDevice(connector.deviceDisplayName)
+                  : context.l10n.appSettings_batteryChemistryConnectFirst,
             ),
             trailing: DropdownButton<String>(
               value: selection,
@@ -359,18 +370,18 @@ class AppSettingsScreen extends StatelessWidget {
                       }
                     }
                   : null,
-              items: const [
+              items: [
                 DropdownMenuItem(
                   value: 'nmc',
-                  child: Text('18650 NMC (3.0-4.2V)'),
+                  child: Text(context.l10n.appSettings_batteryNmc),
                 ),
                 DropdownMenuItem(
                   value: 'lifepo4',
-                  child: Text('LiFePO4 (2.6-3.65V)'),
+                  child: Text(context.l10n.appSettings_batteryLifepo4),
                 ),
                 DropdownMenuItem(
                   value: 'lipo',
-                  child: Text('LiPo (3.0-4.2V)'),
+                  child: Text(context.l10n.appSettings_batteryLipo),
                 ),
               ],
             ),
@@ -384,7 +395,7 @@ class AppSettingsScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Theme'),
+        title: Text(context.l10n.appSettings_theme),
         content: RadioGroup<String>(
           groupValue: settingsService.settings.themeMode,
           onChanged: (value) {
@@ -397,15 +408,15 @@ class AppSettingsScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               RadioListTile<String>(
-                title: const Text('System default'),
+                title: Text(context.l10n.appSettings_themeSystem),
                 value: 'system',
               ),
               RadioListTile<String>(
-                title: const Text('Light'),
+                title: Text(context.l10n.appSettings_themeLight),
                 value: 'light',
               ),
               RadioListTile<String>(
-                title: const Text('Dark'),
+                title: Text(context.l10n.appSettings_themeDark),
                 value: 'dark',
               ),
             ],
@@ -414,29 +425,159 @@ class AppSettingsScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: Text(context.l10n.common_close),
           ),
         ],
       ),
     );
   }
 
-  String _themeModeLabel(String value) {
+  String _themeModeLabel(BuildContext context, String value) {
     switch (value) {
       case 'light':
-        return 'Light';
+        return context.l10n.appSettings_themeLight;
       case 'dark':
-        return 'Dark';
+        return context.l10n.appSettings_themeDark;
       default:
-        return 'System default';
+        return context.l10n.appSettings_themeSystem;
     }
+  }
+
+  String _languageLabel(BuildContext context, String? languageCode) {
+    switch (languageCode) {
+      case 'en':
+        return context.l10n.appSettings_languageEn;
+      case 'fr':
+        return context.l10n.appSettings_languageFr;
+      case 'es':
+        return context.l10n.appSettings_languageEs;
+      case 'de':
+        return context.l10n.appSettings_languageDe;
+      case 'pl':
+        return context.l10n.appSettings_languagePl;
+      case 'sl':
+        return context.l10n.appSettings_languageSl;
+      case 'pt':
+        return context.l10n.appSettings_languagePt;
+      case 'it':
+        return context.l10n.appSettings_languageIt;
+      case 'zh':
+        return context.l10n.appSettings_languageZh;
+      case 'sv':
+        return context.l10n.appSettings_languageSv;
+      case 'nl':
+        return context.l10n.appSettings_languageNl;
+      case 'sk':
+        return context.l10n.appSettings_languageSk;
+      case 'bg':
+        return context.l10n.appSettings_languageBg;
+      case 'ru':
+        return context.l10n.appSettings_languageRu;
+      case 'uk':
+        return context.l10n.appSettings_languageUk;
+      default:
+        return context.l10n.appSettings_languageSystem;
+    }
+  }
+
+  void _showLanguageDialog(BuildContext context, AppSettingsService settingsService) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(context.l10n.appSettings_language),
+        content: SingleChildScrollView(
+          child: RadioGroup<String?>(
+            groupValue: settingsService.settings.languageOverride,
+            onChanged: (value) {
+              settingsService.setLanguageOverride(value);
+              Navigator.pop(context);
+            },
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageSystem),
+                  value: null,
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageEn),
+                  value: 'en',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageFr),
+                  value: 'fr',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageEs),
+                  value: 'es',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageDe),
+                  value: 'de',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languagePl),
+                  value: 'pl',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageSl),
+                  value: 'sl',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languagePt),
+                  value: 'pt',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageIt),
+                  value: 'it',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageZh),
+                  value: 'zh',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageSv),
+                  value: 'sv',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageNl),
+                  value: 'nl',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageSk),
+                  value: 'sk',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageBg),
+                  value: 'bg',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageRu),
+                  value: 'ru',
+                ),
+                RadioListTile<String?>(
+                  title: Text(context.l10n.appSettings_languageUk),
+                  value: 'uk',
+                ),
+              ],
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(context.l10n.common_close),
+          ),
+        ],
+      ),
+    );
   }
 
   void _showTimeFilterDialog(BuildContext context, AppSettingsService settingsService) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Map Time Filter'),
+        title: Text(context.l10n.appSettings_mapTimeFilter),
         content: RadioGroup<double>(
           groupValue: settingsService.settings.mapTimeFilterHours,
           onChanged: (value) {
@@ -448,34 +589,34 @@ class AppSettingsScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text('Show nodes discovered within:'),
+              Text(context.l10n.appSettings_showNodesDiscoveredWithin),
               const SizedBox(height: 16),
               ListTile(
-                title: const Text('All time'),
+                title: Text(context.l10n.appSettings_allTime),
                 leading: Radio<double>(
                   value: 0,
                 ),
               ),
               ListTile(
-                title: const Text('Last hour'),
+                title: Text(context.l10n.appSettings_lastHour),
                 leading: Radio<double>(
                   value: 1,
                 ),
               ),
               ListTile(
-                title: const Text('Last 6 hours'),
+                title: Text(context.l10n.appSettings_last6Hours),
                 leading: Radio<double>(
                   value: 6,
                 ),
               ),
               ListTile(
-                title: const Text('Last 24 hours'),
+                title: Text(context.l10n.appSettings_last24Hours),
                 leading: Radio<double>(
                   value: 24,
                 ),
               ),
               ListTile(
-                title: const Text('Last week'),
+                title: Text(context.l10n.appSettings_lastWeek),
                 leading: Radio<double>(
                   value: 168,
                 ),
@@ -486,7 +627,7 @@ class AppSettingsScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: Text(context.l10n.common_close),
           ),
         ],
       ),
@@ -498,17 +639,17 @@ class AppSettingsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: Text(
-              'Debug',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              context.l10n.appSettings_debugCard,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
           SwitchListTile(
             secondary: const Icon(Icons.bug_report_outlined),
-            title: const Text('App Debug Logging'),
-            subtitle: const Text('Log app debug messages for troubleshooting'),
+            title: Text(context.l10n.appSettings_appDebugLogging),
+            subtitle: Text(context.l10n.appSettings_appDebugLoggingSubtitle),
             value: settingsService.settings.appDebugLogEnabled,
             onChanged: (value) async {
               await settingsService.setAppDebugLogEnabled(value);
@@ -516,8 +657,8 @@ class AppSettingsScreen extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(value
-                      ? 'App debug logging enabled'
-                      : 'App debug logging disabled'),
+                      ? context.l10n.appSettings_appDebugLoggingEnabled
+                      : context.l10n.appSettings_appDebugLoggingDisabled),
                   duration: const Duration(seconds: 2),
                 ),
               );

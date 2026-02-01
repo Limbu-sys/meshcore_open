@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import '../l10n/l10n.dart';
 
 class GifPicker extends StatefulWidget {
   final Function(String gifId) onGifSelected;
@@ -57,14 +58,16 @@ class _GifPickerState extends State<GifPicker> {
           _isLoading = false;
         });
       } else {
+        if (!mounted) return;
         setState(() {
-          _error = 'Failed to load GIFs';
+          _error = context.l10n.gifPicker_failedLoad;
           _isLoading = false;
         });
       }
     } catch (e) {
+      if (!mounted) return;
       setState(() {
-        _error = 'No internet connection';
+        _error = context.l10n.gifPicker_noInternet;
         _isLoading = false;
       });
     }
@@ -95,14 +98,16 @@ class _GifPickerState extends State<GifPicker> {
           _isLoading = false;
         });
       } else {
+        if (!mounted) return;
         setState(() {
-          _error = 'Failed to search GIFs';
+          _error = context.l10n.gifPicker_failedSearch;
           _isLoading = false;
         });
       }
     } catch (e) {
+      if (!mounted) return;
       setState(() {
-        _error = 'No internet connection';
+        _error = context.l10n.gifPicker_noInternet;
         _isLoading = false;
       });
     }
@@ -120,9 +125,9 @@ class _GifPickerState extends State<GifPicker> {
             children: [
               const Icon(Icons.gif_box, size: 28),
               const SizedBox(width: 8),
-              const Text(
-                'Choose a GIF',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              Text(
+                context.l10n.gifPicker_title,
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const Spacer(),
               IconButton(
@@ -137,7 +142,7 @@ class _GifPickerState extends State<GifPicker> {
           TextField(
             controller: _searchController,
             decoration: InputDecoration(
-              hintText: 'Search GIFs...',
+              hintText: context.l10n.gifPicker_searchHint,
               prefixIcon: const Icon(Icons.search),
               suffixIcon: _searchController.text.isNotEmpty
                   ? IconButton(
@@ -172,7 +177,7 @@ class _GifPickerState extends State<GifPicker> {
           // Powered by Giphy attribution
           const SizedBox(height: 8),
           Text(
-            'Powered by GIPHY',
+            context.l10n.gifPicker_poweredBy,
             style: TextStyle(
               fontSize: 11,
               color: Colors.grey[600],
@@ -205,7 +210,7 @@ class _GifPickerState extends State<GifPicker> {
             ElevatedButton.icon(
               onPressed: _loadTrendingGifs,
               icon: const Icon(Icons.refresh),
-              label: const Text('Retry'),
+              label: Text(context.l10n.common_retry),
             ),
           ],
         ),
@@ -220,7 +225,7 @@ class _GifPickerState extends State<GifPicker> {
             Icon(Icons.search_off, size: 64, color: Colors.grey[400]),
             const SizedBox(height: 16),
             Text(
-              'No GIFs found',
+              context.l10n.gifPicker_noGifsFound,
               style: TextStyle(fontSize: 16, color: Colors.grey[600]),
             ),
           ],

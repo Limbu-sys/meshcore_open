@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 0.2.0+2
+version: 5.0.0+5
 
 environment:
   sdk: ^3.9.2
@@ -30,6 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -50,6 +53,10 @@ dependencies:
   wakelock_plus: ^1.2.8
   characters: ^1.4.0
   package_info_plus: ^8.0.0
+  mobile_scanner: ^6.0.0  # QR/barcode scanning
+  qr_flutter: ^4.1.0      # QR code generation
+  url_launcher: ^6.3.0    # Launch URLs in system browser
+  flutter_linkify: ^6.0.0 # Auto-detect and linkify URLs in text
 
 dev_dependencies:
   flutter_test:
@@ -68,11 +75,15 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/images/
 
 flutter_launcher_icons:
   android: true

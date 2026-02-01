@@ -1,6 +1,109 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+// Buffer Reader - sequential binary data reader with pointer tracking
+class BufferReader {
+  int _pointer = 0;
+  final Uint8List _buffer;
+
+  BufferReader(Uint8List data) : _buffer = Uint8List.fromList(data);
+
+  int get remaining => _buffer.length - _pointer;
+
+  int readByte() => readBytes(1)[0];
+
+  Uint8List readBytes(int count) {
+    final data = _buffer.sublist(_pointer, _pointer + count);
+    _pointer += count;
+    return data;
+  }
+
+  void skipBytes(int count) {
+    _pointer += count;
+  }
+
+  Uint8List readRemainingBytes() => readBytes(remaining);
+
+  String readString() =>
+      utf8.decode(readRemainingBytes(), allowMalformed: true);
+
+  String readCString(int maxLength) {
+    final value = <int>[];
+    final bytes = readBytes(maxLength);
+    for (final byte in bytes) {
+      if (byte == 0) break;
+      value.add(byte);
+    }
+    try {
+      return utf8.decode(Uint8List.fromList(value), allowMalformed: true);
+    } catch (e) {
+      return String.fromCharCodes(value); // Latin-1 fallback
+    }
+  }
+
+  int readUInt8() => readBytes(1).buffer.asByteData().getUint8(0);
+  int readInt8() => readBytes(1).buffer.asByteData().getInt8(0);
+  int readUInt16LE() =>
+      readBytes(2).buffer.asByteData().getUint16(0, Endian.little);
+  int readUInt16BE() =>
+      readBytes(2).buffer.asByteData().getUint16(0, Endian.big);
+  int readUInt32LE() =>
+      readBytes(4).buffer.asByteData().getUint32(0, Endian.little);
+  int readUInt32BE() =>
+      readBytes(4).buffer.asByteData().getUint32(0, Endian.big);
+  int readInt16LE() =>
+      readBytes(2).buffer.asByteData().getInt16(0, Endian.little);
+  int readInt16BE() => readBytes(2).buffer.asByteData().getInt16(0, Endian.big);
+  int readInt32LE() =>
+      readBytes(4).buffer.asByteData().getInt32(0, Endian.little);
+
+  int readInt24BE() {
+    var value = (readByte() << 16) | (readByte() << 8) | readByte();
+    if ((value & 0x800000) != 0) value -= 0x1000000;
+    return value;
+  }
+}
+
+// Buffer Writer - accumulating binary data builder
+class BufferWriter {
+  final BytesBuilder _builder = BytesBuilder();
+
+  Uint8List toBytes() => _builder.toBytes();
+
+  void writeByte(int byte) => _builder.addByte(byte);
+  void writeBytes(Uint8List bytes) => _builder.add(bytes);
+
+  void writeUInt16LE(int num) {
+    final bytes = Uint8List(2)
+      ..buffer.asByteData().setUint16(0, num, Endian.little);
+    writeBytes(bytes);
+  }
+
+  void writeUInt32LE(int num) {
+    final bytes = Uint8List(4)
+      ..buffer.asByteData().setUint32(0, num, Endian.little);
+    writeBytes(bytes);
+  }
+
+  void writeInt32LE(int num) {
+    final bytes = Uint8List(4)
+      ..buffer.asByteData().setInt32(0, num, Endian.little);
+    writeBytes(bytes);
+  }
+
+  void writeString(String string) =>
+      writeBytes(Uint8List.fromList(utf8.encode(string)));
+
+  void writeCString(String string, int maxLength) {
+    final bytes = Uint8List(maxLength);
+    final encoded = utf8.encode(string);
+    for (var i = 0; i < maxLength - 1 && i < encoded.length; i++) {
+      bytes[i] = encoded[i];
+    }
+    writeBytes(bytes);
+  }
+}
+
 // Command codes (to device)
 const int cmdAppStart = 1;
 const int cmdSendTxtMsg = 2;
@@ -28,7 +131,12 @@ const int cmdSendStatusReq = 27;
 const int cmdGetContactByKey = 30;
 const int cmdGetChannel = 31;
 const int cmdSetChannel = 32;
+const int cmdSendTracePath = 36;
 const int cmdGetRadioSettings = 57;
+const int cmdGetTelemetryReq = 39;
+const int cmdGetCustomVar = 40;
+const int cmdSetCustomVar = 41;
+const int cmdSendBinaryReq = 50;
 
 // Text message types
 const int txtTypePlain = 0;
@@ -62,6 +170,7 @@ const int respCodeContactMsgRecvV3 = 16;
 const int respCodeChannelMsgRecvV3 = 17;
 const int respCodeChannelInfo = 18;
 const int respCodeRadioSettings = 25;
+const int respCodeCustomVars = 21;
 
 // Push codes (async from device)
 const int pushCodeAdvert = 0x80;
@@ -72,7 +181,10 @@ const int pushCodeLoginSuccess = 0x85;
 const int pushCodeLoginFail = 0x86;
 const int pushCodeStatusResponse = 0x87;
 const int pushCodeLogRxData = 0x88;
+const int pushCodeTraceData = 0x89;
 const int pushCodeNewAdvert = 0x8A;
+const int pushCodeTelemetryResponse = 0x8B;
+const int pushCodeBinaryResponse = 0x8C;
 
 // Contact/advertisement types
 const int advTypeChat = 1;
@@ -89,8 +201,8 @@ const int maxFrameSize = 172;
 const int appProtocolVersion = 3;
 // Matches firmware MAX_TEXT_LEN (10 * CIPHER_BLOCK_SIZE).
 const int maxTextPayloadBytes = 160;
-const int _sendTextMsgOverheadBytes = 1 + 1 + 1 + 4 + 6 + 1;
-const int _sendChannelTextMsgOverheadBytes = 1 + 1 + 1 + 4 + 1;
+const int _sendTextMsgOverheadBytes = 1 + 1 + 1 + 4 + 6 + 1 + 2; // +2 safety margin
+const int _sendChannelTextMsgOverheadBytes = 1 + 1 + 1 + 4 + 1 + 2; // +2 safety margin
 
 int maxContactMessageBytes() {
   final byFrame = maxFrameSize - _sendTextMsgOverheadBytes;
@@ -140,10 +252,7 @@ class ParsedContactText {
   final Uint8List senderPrefix;
   final String text;
 
-  const ParsedContactText({
-    required this.senderPrefix,
-    required this.text,
-  });
+  const ParsedContactText({required this.senderPrefix, required this.text});
 }
 
 ParsedContactText? parseContactMessageText(Uint8List frame) {
@@ -172,10 +281,17 @@ ParsedContactText? parseContactMessageText(Uint8List frame) {
     return null;
   }
 
-  var text = readCString(frame, baseTextOffset, frame.length - baseTextOffset).trim();
+  var text = readCString(
+    frame,
+    baseTextOffset,
+    frame.length - baseTextOffset,
+  ).trim();
   if (text.isEmpty && frame.length > baseTextOffset + 4) {
-    text =
-        readCString(frame, baseTextOffset + 4, frame.length - (baseTextOffset + 4)).trim();
+    text = readCString(
+      frame,
+      baseTextOffset + 4,
+      frame.length - (baseTextOffset + 4),
+    ).trim();
   }
   if (text.isEmpty) return null;
 
@@ -201,19 +317,6 @@ int readInt32LE(Uint8List data, int offset) {
   int val = readUint32LE(data, offset);
   if (val >= 0x80000000) val -= 0x100000000;
   return val;
-}
-
-// Helper to write uint32 little-endian
-void writeUint32LE(Uint8List data, int offset, int value) {
-  data[offset] = value & 0xFF;
-  data[offset + 1] = (value >> 8) & 0xFF;
-  data[offset + 2] = (value >> 16) & 0xFF;
-  data[offset + 3] = (value >> 24) & 0xFF;
-}
-
-// Helper to write int32 little-endian
-void writeInt32LE(Uint8List data, int offset, int value) {
-  writeUint32LE(data, offset, value & 0xFFFFFFFF);
 }
 
 // Helper to read null-terminated UTF-8 string
@@ -246,34 +349,32 @@ Uint8List hexToPubKey(String hex) {
 
 // Build CMD_GET_CONTACTS frame
 Uint8List buildGetContactsFrame({int? since}) {
+  final writer = BufferWriter();
+  writer.writeByte(cmdGetContacts);
   if (since != null) {
-    final frame = Uint8List(5);
-    frame[0] = cmdGetContacts;
-    writeUint32LE(frame, 1, since);
-    return frame;
+    writer.writeUInt32LE(since);
   }
-  return Uint8List.fromList([cmdGetContacts]);
+  return writer.toBytes();
 }
 
 // Build CMD_SEND_LOGIN frame
 // Format: [cmd][pub_key x32][password...]\0
 Uint8List buildSendLoginFrame(Uint8List recipientPubKey, String password) {
-  final passwordBytes = utf8.encode(password);
-  final frame = Uint8List(1 + pubKeySize + passwordBytes.length + 1);
-  frame[0] = cmdSendLogin;
-  frame.setRange(1, 1 + pubKeySize, recipientPubKey);
-  frame.setRange(1 + pubKeySize, 1 + pubKeySize + passwordBytes.length, passwordBytes);
-  frame[frame.length - 1] = 0;
-  return frame;
+  final writer = BufferWriter();
+  writer.writeByte(cmdSendLogin);
+  writer.writeBytes(recipientPubKey);
+  writer.writeString(password);
+  writer.writeByte(0);
+  return writer.toBytes();
 }
 
 // Build CMD_SEND_STATUS_REQ frame
 // Format: [cmd][pub_key x32]
 Uint8List buildSendStatusRequestFrame(Uint8List recipientPubKey) {
-  final frame = Uint8List(1 + pubKeySize);
-  frame[0] = cmdSendStatusReq;
-  frame.setRange(1, 1 + pubKeySize, recipientPubKey);
-  return frame;
+  final writer = BufferWriter();
+  writer.writeByte(cmdSendStatusReq);
+  writer.writeBytes(recipientPubKey);
+  return writer.toBytes();
 }
 
 // Build CMD_SEND_TXT_MSG frame (companion_radio format)
@@ -284,48 +385,39 @@ Uint8List buildSendTextMsgFrame(
   int attempt = 0,
   int? timestampSeconds,
 }) {
-  final textBytes = utf8.encode(text);
-  final timestamp = timestampSeconds ?? (DateTime.now().millisecondsSinceEpoch ~/ 1000);
-  const prefixSize = 6;
-  final safeAttempt = attempt.clamp(0, 3);
-  final frame = Uint8List(1 + 1 + 1 + 4 + prefixSize + textBytes.length + 1);
-  int offset = 0;
-
-  frame[offset++] = cmdSendTxtMsg;
-  frame[offset++] = txtTypePlain;
-  frame[offset++] = safeAttempt;
-  writeUint32LE(frame, offset, timestamp);
-  offset += 4;
-
-  frame.setRange(offset, offset + prefixSize, recipientPubKey.sublist(0, prefixSize));
-  offset += prefixSize;
-
-  frame.setRange(offset, offset + textBytes.length, textBytes);
-  frame[frame.length - 1] = 0; // null terminator
-  return frame;
+  final timestamp =
+      timestampSeconds ?? (DateTime.now().millisecondsSinceEpoch ~/ 1000);
+  final writer = BufferWriter();
+  writer.writeByte(cmdSendTxtMsg);
+  writer.writeByte(txtTypePlain);
+  writer.writeByte(attempt.clamp(0, 3));
+  writer.writeUInt32LE(timestamp);
+  writer.writeBytes(recipientPubKey.sublist(0, 6));
+  writer.writeString(text);
+  writer.writeByte(0);
+  return writer.toBytes();
 }
 
 // Build CMD_SEND_CHANNEL_TXT_MSG frame
 // Format: [cmd][txt_type][channel_idx][timestamp x4][text...]
 Uint8List buildSendChannelTextMsgFrame(int channelIndex, String text) {
-  final textBytes = utf8.encode(text);
   final timestamp = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-  final frame = Uint8List(1 + 1 + 1 + 4 + textBytes.length + 1);
-  frame[0] = cmdSendChannelTxtMsg;
-  frame[1] = 0; // TXT_TYPE_PLAIN
-  frame[2] = channelIndex;
-  writeUint32LE(frame, 3, timestamp);
-  frame.setRange(7, 7 + textBytes.length, textBytes);
-  frame[frame.length - 1] = 0; // null terminator
-  return frame;
+  final writer = BufferWriter();
+  writer.writeByte(cmdSendChannelTxtMsg);
+  writer.writeByte(txtTypePlain);
+  writer.writeByte(channelIndex);
+  writer.writeUInt32LE(timestamp);
+  writer.writeString(text);
+  writer.writeByte(0);
+  return writer.toBytes();
 }
 
 // Build CMD_REMOVE_CONTACT frame
 Uint8List buildRemoveContactFrame(Uint8List pubKey) {
-  final frame = Uint8List(1 + pubKeySize);
-  frame[0] = cmdRemoveContact;
-  frame.setRange(1, 1 + pubKeySize, pubKey);
-  return frame;
+  final writer = BufferWriter();
+  writer.writeByte(cmdRemoveContact);
+  writer.writeBytes(pubKey);
+  return writer.toBytes();
 }
 
 // Build CMD_APP_START frame
@@ -334,14 +426,13 @@ Uint8List buildAppStartFrame({
   String appName = 'MeshCoreOpen',
   int appVersion = 1,
 }) {
-  final nameBytes = utf8.encode(appName);
-  final frame = Uint8List(8 + nameBytes.length + 1);
-  frame[0] = cmdAppStart;
-  frame[1] = appVersion;
-  // bytes 2-7 are reserved (zeros)
-  frame.setRange(8, 8 + nameBytes.length, nameBytes);
-  frame[frame.length - 1] = 0; // null terminator
-  return frame;
+  final writer = BufferWriter();
+  writer.writeByte(cmdAppStart);
+  writer.writeByte(appVersion);
+  writer.writeBytes(Uint8List(6)); // reserved bytes
+  writer.writeString(appName);
+  writer.writeByte(0);
+  return writer.toBytes();
 }
 
 // Build CMD_DEVICE_QUERY frame
@@ -361,10 +452,10 @@ Uint8List buildGetBattAndStorageFrame() {
 
 // Build CMD_SET_DEVICE_TIME frame
 Uint8List buildSetDeviceTimeFrame(int timestamp) {
-  final frame = Uint8List(5);
-  frame[0] = cmdSetDeviceTime;
-  writeUint32LE(frame, 1, timestamp);
-  return frame;
+  final writer = BufferWriter();
+  writer.writeByte(cmdSetDeviceTime);
+  writer.writeUInt32LE(timestamp);
+  return writer.toBytes();
 }
 
 // Build CMD_SEND_SELF_ADVERT frame
@@ -377,21 +468,31 @@ Uint8List buildSendSelfAdvertFrame({bool flood = false}) {
 // Format: [cmd][name...]
 Uint8List buildSetAdvertNameFrame(String name) {
   final nameBytes = utf8.encode(name);
-  final nameLen = nameBytes.length < maxNameSize ? nameBytes.length : maxNameSize - 1;
-  final frame = Uint8List(1 + nameLen);
-  frame[0] = cmdSetAdvertName;
-  frame.setRange(1, 1 + nameLen, nameBytes.sublist(0, nameLen));
-  return frame;
+  final nameLen = nameBytes.length < maxNameSize
+      ? nameBytes.length
+      : maxNameSize - 1;
+  final writer = BufferWriter();
+  writer.writeByte(cmdSetAdvertName);
+  writer.writeBytes(Uint8List.fromList(nameBytes.sublist(0, nameLen)));
+  return writer.toBytes();
 }
 
 // Build CMD_SET_ADVERT_LATLON frame
 // Format: [cmd][lat x4][lon x4]
 Uint8List buildSetAdvertLatLonFrame(double lat, double lon) {
-  final frame = Uint8List(9);
-  frame[0] = cmdSetAdvertLatLon;
-  writeInt32LE(frame, 1, (lat * 1000000).round());
-  writeInt32LE(frame, 5, (lon * 1000000).round());
-  return frame;
+  final writer = BufferWriter();
+  writer.writeByte(cmdSetAdvertLatLon);
+  writer.writeInt32LE((lat * 1000000).round());
+  writer.writeInt32LE((lon * 1000000).round());
+  return writer.toBytes();
+}
+
+Uint8List buildSetCustomVarFrame(String value) {
+  final writer = BufferWriter();
+  writer.writeByte(cmdSetCustomVar);
+  writer.writeString(value);
+  writer.writeByte(0);
+  return writer.toBytes();
 }
 
 // Build CMD_REBOOT frame
@@ -413,21 +514,17 @@ Uint8List buildGetChannelFrame(int channelIndex) {
 // Build CMD_SET_CHANNEL frame
 // Format: [cmd][idx][name x32][psk x16]
 Uint8List buildSetChannelFrame(int channelIndex, String name, Uint8List psk) {
-  final frame = Uint8List(2 + 32 + 16);
-  frame[0] = cmdSetChannel;
-  frame[1] = channelIndex;
-  // Write name (max 32 bytes UTF-8, null-padded)
-  final nameBytes = utf8.encode(name);
-  final nameLen = nameBytes.length < 32 ? nameBytes.length : 31; // Reserve 1 byte for null
-  for (int i = 0; i < nameLen; i++) {
-    frame[2 + i] = nameBytes[i];
-  }
-  // frame[2 + nameLen] is already 0 (null terminator)
-  // Write PSK (16 bytes)
+  final writer = BufferWriter();
+  writer.writeByte(cmdSetChannel);
+  writer.writeByte(channelIndex);
+  writer.writeCString(name, 32);
+  // Write PSK (16 bytes, zero-padded)
+  final pskPadded = Uint8List(16);
   for (int i = 0; i < 16 && i < psk.length; i++) {
-    frame[34 + i] = psk[i];
+    pskPadded[i] = psk[i];
   }
-  return frame;
+  writer.writeBytes(pskPadded);
+  return writer.toBytes();
 }
 
 // Build CMD_SET_RADIO_PARAMS frame
@@ -437,13 +534,13 @@ Uint8List buildSetChannelFrame(int channelIndex, String name, Uint8List psk) {
 // sf: spreading factor (5-12)
 // cr: coding rate (5-8)
 Uint8List buildSetRadioParamsFrame(int freqHz, int bwHz, int sf, int cr) {
-  final frame = Uint8List(11);
-  frame[0] = cmdSetRadioParams;
-  writeUint32LE(frame, 1, freqHz);
-  writeUint32LE(frame, 5, bwHz);
-  frame[9] = sf;
-  frame[10] = cr;
-  return frame;
+  final writer = BufferWriter();
+  writer.writeByte(cmdSetRadioParams);
+  writer.writeUInt32LE(freqHz);
+  writer.writeUInt32LE(bwHz);
+  writer.writeByte(sf);
+  writer.writeByte(cr);
+  return writer.toBytes();
 }
 
 // Build CMD_SET_RADIO_TX_POWER frame
@@ -455,10 +552,10 @@ Uint8List buildSetRadioTxPowerFrame(int powerDbm) {
 // Build CMD_RESET_PATH frame
 // Format: [cmd][pub_key x32]
 Uint8List buildResetPathFrame(Uint8List pubKey) {
-  final frame = Uint8List(1 + pubKeySize);
-  frame[0] = cmdResetPath;
-  frame.setRange(1, 1 + pubKeySize, pubKey);
-  return frame;
+  final writer = BufferWriter();
+  writer.writeByte(cmdResetPath);
+  writer.writeBytes(pubKey);
+  return writer.toBytes();
 }
 
 // Build CMD_ADD_UPDATE_CONTACT frame to set custom path
@@ -471,55 +568,52 @@ Uint8List buildUpdateContactPathFrame(
   int flags = 0,
   String name = '',
 }) {
-  // Frame size: 1 + 32 + 1 + 1 + 1 + 64 + 32 + 4 = 136 bytes minimum
-  final frame = Uint8List(1 + pubKeySize + 1 + 1 + 1 + maxPathSize + maxNameSize + 4);
-  int offset = 0;
+  final writer = BufferWriter();
+  writer.writeByte(cmdAddUpdateContact);
+  writer.writeBytes(pubKey);
+  writer.writeByte(type);
+  writer.writeByte(flags);
+  writer.writeByte(pathLen);
 
-  frame[offset++] = cmdAddUpdateContact;
-
-  // Public key (32 bytes)
-  frame.setRange(offset, offset + pubKeySize, pubKey);
-  offset += pubKeySize;
-
-  // Type and flags
-  frame[offset++] = type;
-  frame[offset++] = flags;
-
-  // Path length and path data
-  frame[offset++] = pathLen;
+  // Path data (64 bytes, zero-padded)
+  final pathPadded = Uint8List(maxPathSize);
   if (customPath.isNotEmpty && pathLen > 0) {
-    final copyLen = customPath.length < maxPathSize ? customPath.length : maxPathSize;
-    frame.setRange(offset, offset + copyLen, customPath.sublist(0, copyLen));
+    final copyLen = customPath.length < maxPathSize
+        ? customPath.length
+        : maxPathSize;
+    for (int i = 0; i < copyLen; i++) {
+      pathPadded[i] = customPath[i];
+    }
   }
-  offset += maxPathSize;
+  writer.writeBytes(pathPadded);
 
   // Name (32 bytes, null-padded)
-  if (name.isNotEmpty) {
-    final nameBytes = utf8.encode(name);
-    final nameLen = nameBytes.length < maxNameSize ? nameBytes.length : maxNameSize - 1;
-    frame.setRange(offset, offset + nameLen, nameBytes.sublist(0, nameLen));
-  }
-  offset += maxNameSize;
+  writer.writeCString(name, maxNameSize);
 
-  // Timestamp (current time)
+  // Timestamp
   final timestamp = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-  writeUint32LE(frame, offset, timestamp);
+  writer.writeUInt32LE(timestamp);
 
-  return frame;
+  return writer.toBytes();
 }
 
 // Build CMD_GET_CONTACT_BY_KEY frame
 // Format: [cmd][pub_key x32]
 Uint8List buildGetContactByKeyFrame(Uint8List pubKey) {
-  final frame = Uint8List(1 + pubKeySize);
-  frame[0] = cmdGetContactByKey;
-  frame.setRange(1, 1 + pubKeySize, pubKey);
-  return frame;
+  final writer = BufferWriter();
+  writer.writeByte(cmdGetContactByKey);
+  writer.writeBytes(pubKey);
+  return writer.toBytes();
 }
 
 // Build CMD_GET_RADIO_SETTINGS frame
 Uint8List buildGetRadioSettingsFrame() {
   return Uint8List.fromList([cmdGetRadioSettings]);
+}
+
+//Build CMD_GET_CUSTOM_VARS frame
+Uint8List buildGetCustomVarsFrame() {
+  return Uint8List.fromList([cmdGetCustomVar]);
 }
 
 // Calculate LoRa airtime for a packet
@@ -545,9 +639,11 @@ int calculateLoRaAirtime({
   final crc = 1; // CRC enabled
   final de = lowDataRateOptimize ? 1 : 0;
 
-  final numerator = 8 * payloadBytes - 4 * spreadingFactor + 28 + 16 * crc - headerBytes;
+  final numerator =
+      8 * payloadBytes - 4 * spreadingFactor + 28 + 16 * crc - headerBytes;
   final denominator = 4 * (spreadingFactor - 2 * de);
-  var payloadSymbols = 8 + ((numerator / denominator).ceil()) * (codingRate + 4);
+  var payloadSymbols =
+      8 + ((numerator / denominator).ceil()) * (codingRate + 4);
 
   if (payloadSymbols < 0) {
     payloadSymbols = 8;
@@ -594,23 +690,42 @@ Uint8List buildSendCliCommandFrame(
   int attempt = 0,
   int? timestampSeconds,
 }) {
-  final textBytes = utf8.encode(command);
-  final timestamp = timestampSeconds ?? (DateTime.now().millisecondsSinceEpoch ~/ 1000);
-  const prefixSize = 6;
-  final safeAttempt = attempt.clamp(0, 3);
-  final frame = Uint8List(1 + 1 + 1 + 4 + prefixSize + textBytes.length + 1);
-  int offset = 0;
+  final timestamp =
+      timestampSeconds ?? (DateTime.now().millisecondsSinceEpoch ~/ 1000);
+  final writer = BufferWriter();
+  writer.writeByte(cmdSendTxtMsg);
+  writer.writeByte(txtTypeCliData);
+  writer.writeByte(attempt.clamp(0, 3));
+  writer.writeUInt32LE(timestamp);
+  writer.writeBytes(repeaterPubKey.sublist(0, 6));
+  writer.writeString(command);
+  writer.writeByte(0);
+  return writer.toBytes();
+}
 
-  frame[offset++] = cmdSendTxtMsg;
-  frame[offset++] = txtTypeCliData;
-  frame[offset++] = safeAttempt;
-  writeUint32LE(frame, offset, timestamp);
-  offset += 4;
+// Build a telemetry request frame
+// Format: [cmd][pub_key x32][payload]
+Uint8List buildSendBinaryReq(Uint8List repeaterPubKey, {Uint8List? payload}) {
+  final writer = BufferWriter();
+  writer.writeByte(cmdSendBinaryReq);
+  writer.writeBytes(repeaterPubKey);
+  if (payload != null && payload.isNotEmpty) {
+    writer.writeBytes(payload);
+  }
+  return writer.toBytes();
+}
 
-  frame.setRange(offset, offset + prefixSize, repeaterPubKey.sublist(0, prefixSize));
-  offset += prefixSize;
-
-  frame.setRange(offset, offset + textBytes.length, textBytes);
-  frame[frame.length - 1] = 0; // null terminator
-  return frame;
+//Build a trace request frame
+//[cmd][tag x4][auth x4][flag][payload]
+Uint8List buildTraceReq(int tag, int auth, int flag, {Uint8List? payload})
+{
+  final writer = BufferWriter();
+  writer.writeByte(cmdSendTracePath);
+  writer.writeUInt32LE(tag);
+  writer.writeUInt32LE(auth);
+  writer.writeByte(flag);
+  if (payload != null && payload.isNotEmpty) {
+    writer.writeBytes(payload);
+  }
+  return writer.toBytes();
 }

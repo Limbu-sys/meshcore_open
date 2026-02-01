@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+import '../l10n/l10n.dart';
 
 /// A reusable tile widget for displaying a MeshCore device in a list
 class DeviceTile extends StatelessWidget {
@@ -23,13 +24,13 @@ class DeviceTile extends StatelessWidget {
     return ListTile(
       leading: _buildSignalIcon(rssi),
       title: Text(
-        name.isNotEmpty ? name : 'Unknown Device',
+        name.isNotEmpty ? name : context.l10n.common_unknownDevice,
         style: const TextStyle(fontWeight: FontWeight.w500),
       ),
       subtitle: Text(device.remoteId.toString()),
       trailing: ElevatedButton(
         onPressed: onTap,
-        child: const Text('Connect'),
+        child: Text(context.l10n.common_connect),
       ),
       onTap: onTap,
     );

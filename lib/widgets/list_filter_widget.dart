@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../l10n/l10n.dart';
 
 enum ContactSortOption {
   lastSeen,
@@ -45,7 +46,7 @@ class SortFilterMenu extends StatelessWidget {
     super.key,
     required this.sections,
     required this.onSelected,
-    this.tooltip = 'Filter and sort',
+    required this.tooltip,
     this.icon = const Icon(Icons.filter_list_outlined),
   });
 
@@ -131,59 +132,61 @@ class ContactsFilterMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return SortFilterMenu(
+      tooltip: l10n.listFilter_tooltip,
       sections: [
         SortFilterMenuSection(
-          title: 'Sort by',
+          title: l10n.listFilter_sortBy,
           options: [
             SortFilterMenuOption(
               value: _actionSortRecentMessages,
-              label: 'Latest messages',
+              label: l10n.listFilter_latestMessages,
               checked: sortOption == ContactSortOption.recentMessages,
             ),
             SortFilterMenuOption(
               value: _actionSortLastSeen,
-              label: 'Heard recently',
+              label: l10n.listFilter_heardRecently,
               checked: sortOption == ContactSortOption.lastSeen,
             ),
             SortFilterMenuOption(
               value: _actionSortName,
-              label: 'A-Z',
+              label: l10n.listFilter_az,
               checked: sortOption == ContactSortOption.name,
             ),
           ],
         ),
         SortFilterMenuSection(
-          title: 'Filters',
+          title: l10n.listFilter_filters,
           options: [
             SortFilterMenuOption(
               value: _actionFilterAll,
-              label: 'All',
+              label: l10n.listFilter_all,
               checked: typeFilter == ContactTypeFilter.all,
             ),
             SortFilterMenuOption(
               value: _actionFilterUsers,
-              label: 'Users',
+              label: l10n.listFilter_users,
               checked: typeFilter == ContactTypeFilter.users,
             ),
             SortFilterMenuOption(
               value: _actionFilterRepeaters,
-              label: 'Repeaters',
+              label: l10n.listFilter_repeaters,
               checked: typeFilter == ContactTypeFilter.repeaters,
             ),
             SortFilterMenuOption(
               value: _actionFilterRooms,
-              label: 'Room servers',
+              label: l10n.listFilter_roomServers,
               checked: typeFilter == ContactTypeFilter.rooms,
             ),
             SortFilterMenuOption(
               value: _actionToggleUnreadOnly,
-              label: 'Unread only',
+              label: l10n.listFilter_unreadOnly,
               checked: showUnreadOnly,
             ),
-            const SortFilterMenuOption(
+            SortFilterMenuOption(
               value: _actionNewGroup,
-              label: 'New group',
+              label: l10n.listFilter_newGroup,
             ),
           ],
         ),

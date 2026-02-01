@@ -113,6 +113,10 @@ class AppSettingsService extends ChangeNotifier {
     await updateSettings(_settings.copyWith(themeMode: value));
   }
 
+  Future<void> setLanguageOverride(String? value) async {
+    await updateSettings(_settings.copyWith(languageOverride: value));
+  }
+
   Future<void> setAppDebugLogEnabled(bool value) async {
     await updateSettings(_settings.copyWith(appDebugLogEnabled: value));
     // Update the global logger

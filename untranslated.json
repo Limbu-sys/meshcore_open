@@ -1,0 +1,69 @@
+{
+  "bg": [
+    "appSettings_languageRu",
+    "appSettings_languageUk"
+  ],
+
+  "de": [
+    "appSettings_languageRu",
+    "appSettings_languageUk"
+  ],
+
+  "es": [
+    "appSettings_languageRu",
+    "appSettings_languageUk"
+  ],
+
+  "fr": [
+    "appSettings_languageRu",
+    "appSettings_languageUk"
+  ],
+
+  "it": [
+    "appSettings_languageRu",
+    "appSettings_languageUk"
+  ],
+
+  "nl": [
+    "appSettings_languageRu",
+    "appSettings_languageUk"
+  ],
+
+  "pl": [
+    "appSettings_languageRu",
+    "appSettings_languageUk"
+  ],
+
+  "pt": [
+    "appSettings_languageRu",
+    "appSettings_languageUk"
+  ],
+
+  "ru": [
+    "appSettings_languageUk"
+  ],
+
+  "sk": [
+    "appSettings_languageRu",
+    "appSettings_languageUk"
+  ],
+
+  "sl": [
+    "appSettings_languageRu",
+    "appSettings_languageUk"
+  ],
+
+  "sv": [
+    "appSettings_languageRu",
+    "appSettings_languageUk"
+  ],
+
+  "uk": [
+    "appSettings_languageRu"
+  ],
+
+  "zh": [
+    "appSettings_languageRu",
+    "appSettings_languageUk"
+  ]
+}

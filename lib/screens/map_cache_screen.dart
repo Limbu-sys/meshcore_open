@@ -3,6 +3,8 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
 
+import '../l10n/app_localizations.dart';
+import '../l10n/l10n.dart';
 import '../services/app_settings_service.dart';
 import '../services/map_tile_cache_service.dart';
 
@@ -110,14 +112,14 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
     final bounds = _selectedBounds;
     if (bounds == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Select an area to cache first')),
+        SnackBar(content: Text(context.l10n.mapCache_selectAreaFirst)),
       );
       return;
     }
 
     if (_estimatedTiles == 0) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('No tiles to download for this area')),
+        SnackBar(content: Text(context.l10n.mapCache_noTilesToDownload)),
       );
       return;
     }
@@ -125,18 +127,18 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Download tiles'),
+        title: Text(context.l10n.mapCache_downloadTilesTitle),
         content: Text(
-          'Download $_estimatedTiles tiles for offline use?',
+          context.l10n.mapCache_downloadTilesPrompt(_estimatedTiles),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext, false),
-            child: const Text('Cancel'),
+            child: Text(context.l10n.common_cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(dialogContext, true),
-            child: const Text('Download'),
+            child: Text(context.l10n.mapCache_downloadAction),
           ),
         ],
       ),
@@ -174,8 +176,11 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
     });
 
     final message = result.failed > 0
-        ? 'Cached ${result.downloaded} tiles (${result.failed} failed)'
-        : 'Cached ${result.downloaded} tiles';
+        ? context.l10n.mapCache_cachedTilesWithFailed(
+            result.downloaded,
+            result.failed,
+          )
+        : context.l10n.mapCache_cachedTiles(result.downloaded);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(message)),
     );
@@ -185,16 +190,16 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Clear offline cache'),
-        content: const Text('Remove all cached map tiles?'),
+        title: Text(context.l10n.mapCache_clearOfflineCacheTitle),
+        content: Text(context.l10n.mapCache_clearOfflineCachePrompt),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext, false),
-            child: const Text('Cancel'),
+            child: Text(context.l10n.common_cancel),
           ),
           TextButton(
             onPressed: () => Navigator.pop(dialogContext, true),
-            child: const Text('Clear'),
+            child: Text(context.l10n.common_clear),
           ),
         ],
       ),
@@ -205,7 +210,7 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
     await cacheService.clearCache();
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Offline cache cleared')),
+      SnackBar(content: Text(context.l10n.mapCache_offlineCacheCleared)),
     );
   }
 
@@ -213,13 +218,14 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
   Widget build(BuildContext context) {
     final tileCache = context.read<MapTileCacheService>();
     final selectedBounds = _selectedBounds;
+    final l10n = context.l10n;
     final progressValue = _estimatedTiles == 0
         ? 0.0
         : (_completedTiles / _estimatedTiles).clamp(0.0, 1.0).toDouble();
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Offline Map Cache'),
+        title: Text(l10n.mapCache_title),
         centerTitle: true,
       ),
       body: Column(
@@ -264,8 +270,8 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
                       padding: const EdgeInsets.all(8),
                       child: Text(
                         selectedBounds == null
-                            ? 'No area selected'
-                            : _formatBounds(selectedBounds),
+                            ? l10n.mapCache_noAreaSelected
+                            : _formatBounds(selectedBounds, l10n),
                         style: const TextStyle(fontSize: 12),
                       ),
                     ),
@@ -282,9 +288,9 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
-                    'Cache Area',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  Text(
+                    l10n.mapCache_cacheArea,
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   const SizedBox(height: 8),
                   Row(
@@ -292,7 +298,7 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
                       Expanded(
                         child: ElevatedButton.icon(
                           icon: const Icon(Icons.crop_free),
-                          label: const Text('Use Current View'),
+                          label: Text(l10n.mapCache_useCurrentView),
                           onPressed: _isDownloading ? null : _setBoundsFromView,
                         ),
                       ),
@@ -300,14 +306,14 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
                       TextButton(
                         onPressed:
                             _isDownloading || selectedBounds == null ? null : _clearBounds,
-                        child: const Text('Clear'),
+                        child: Text(l10n.common_clear),
                       ),
                     ],
                   ),
                   const SizedBox(height: 12),
-                  const Text(
-                    'Zoom Range',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  Text(
+                    l10n.mapCache_zoomRange,
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   RangeSlider(
                     values:
@@ -330,12 +336,15 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
                             _saveZoomRange();
                           },
                   ),
-                  Text('Estimated tiles: $_estimatedTiles'),
+                  Text(l10n.mapCache_estimatedTiles(_estimatedTiles)),
                   if (_isDownloading) ...[
                     const SizedBox(height: 8),
                     LinearProgressIndicator(value: progressValue),
                     const SizedBox(height: 4),
-                    Text('Downloaded $_completedTiles / $_estimatedTiles'),
+                    Text(l10n.mapCache_downloadedTiles(
+                      _completedTiles,
+                      _estimatedTiles,
+                    )),
                   ],
                   const SizedBox(height: 12),
                   Row(
@@ -343,7 +352,7 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
                       Expanded(
                         child: ElevatedButton.icon(
                           icon: const Icon(Icons.download),
-                          label: const Text('Download Tiles'),
+                          label: Text(l10n.mapCache_downloadTilesButton),
                           onPressed: _isDownloading || selectedBounds == null
                               ? null
                               : _startDownload,
@@ -352,7 +361,7 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
                       const SizedBox(width: 12),
                       OutlinedButton(
                         onPressed: _isDownloading ? null : _clearCache,
-                        child: const Text('Clear Cache'),
+                        child: Text(l10n.mapCache_clearCacheButton),
                       ),
                     ],
                   ),
@@ -360,7 +369,7 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
                     Padding(
                       padding: const EdgeInsets.only(top: 8),
                       child: Text(
-                        'Failed downloads: $_failedTiles',
+                        l10n.mapCache_failedDownloads(_failedTiles),
                         style: TextStyle(color: Colors.orange[700]),
                       ),
                     ),
@@ -382,10 +391,12 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
     ];
   }
 
-  String _formatBounds(LatLngBounds bounds) {
-    return 'N ${bounds.north.toStringAsFixed(4)}, '
-        'S ${bounds.south.toStringAsFixed(4)}, '
-        'E ${bounds.east.toStringAsFixed(4)}, '
-        'W ${bounds.west.toStringAsFixed(4)}';
+  String _formatBounds(LatLngBounds bounds, AppLocalizations l10n) {
+    return l10n.mapCache_boundsLabel(
+      bounds.north.toStringAsFixed(4),
+      bounds.south.toStringAsFixed(4),
+      bounds.east.toStringAsFixed(4),
+      bounds.west.toStringAsFixed(4),
+    );
   }
 }

@@ -1,14 +1,19 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:provider/provider.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../connector/meshcore_connector.dart';
 import '../connector/meshcore_protocol.dart';
+import '../helpers/reaction_helper.dart';
+import '../helpers/chat_scroll_controller.dart';
+import '../helpers/link_handler.dart';
 import '../helpers/utf8_length_limiter.dart';
 import '../models/channel_message.dart';
 import '../models/contact.dart';
@@ -19,9 +24,11 @@ import 'map_screen.dart';
 import '../utils/emoji_utils.dart';
 import '../widgets/emoji_picker.dart';
 import '../widgets/gif_message.dart';
+import '../widgets/jump_to_bottom_button.dart';
 import '../widgets/gif_picker.dart';
 import '../widgets/path_selection_dialog.dart';
 import '../utils/app_logger.dart';
+import '../l10n/l10n.dart';
 
 class ChatScreen extends StatefulWidget {
   final Contact contact;
@@ -34,25 +41,44 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final _textController = TextEditingController();
-  final _scrollController = ScrollController();
+  final _scrollController = ChatScrollController();
+  final _textFieldFocusNode = FocusNode();
+  bool _isLoadingOlder = false;
 
   @override
   void initState() {
     super.initState();
+    _textFieldFocusNode.addListener(_onTextFieldFocusChange);
+    _scrollController.onScrollNearTop = _loadOlderMessages;
     SchedulerBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       context.read<MeshCoreConnector>().setActiveContact(widget.contact.publicKeyHex);
-
-      // Scroll to bottom when opening chat use SchedulerBinding for next frame
-      if (_scrollController.hasClients) {
-        _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
-      }
     });
+  }
+
+  void _onTextFieldFocusChange() {
+    if (_textFieldFocusNode.hasFocus && mounted) {
+      _scrollController.handleKeyboardOpen();
+    }
+  }
+
+  Future<void> _loadOlderMessages() async {
+    if (_isLoadingOlder) return;
+    setState(() => _isLoadingOlder = true);
+
+    final connector = context.read<MeshCoreConnector>();
+    await connector.loadOlderMessages(widget.contact.publicKeyHex);
+
+    if (mounted) {
+      setState(() => _isLoadingOlder = false);
+    }
   }
 
   @override
   void dispose() {
     context.read<MeshCoreConnector>().setActiveContact(null);
+    _textFieldFocusNode.removeListener(_onTextFieldFocusChange);
+    _textFieldFocusNode.dispose();
     _textController.dispose();
     _scrollController.dispose();
     super.dispose();
@@ -66,7 +92,7 @@ class _ChatScreenState extends State<ChatScreen> {
           builder: (context, pathService, connector, _) {
             final contact = _resolveContact(connector);
             final unreadCount = connector.getUnreadCountForContactKey(widget.contact.publicKeyHex);
-            final unreadLabel = 'Unread: $unreadCount';
+            final unreadLabel = context.l10n.chat_unread(unreadCount);
             final pathLabel = _currentPathLabel(contact);
 
             // Show path details if we have path data (from device or override)
@@ -105,7 +131,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
               return PopupMenuButton<String>(
                 icon: Icon(isFloodMode ? Icons.waves : Icons.route),
-                tooltip: 'Routing mode',
+                tooltip: context.l10n.chat_routingMode,
                 onSelected: (mode) async {
                   if (mode == 'flood') {
                     await connector.setPathOverride(contact, pathLen: -1);
@@ -121,7 +147,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         Icon(Icons.auto_mode, size: 20, color: !isFloodMode ? Theme.of(context).primaryColor : null),
                         const SizedBox(width: 8),
                         Text(
-                          'Auto (use saved path)',
+                          context.l10n.chat_autoUseSavedPath,
                           style: TextStyle(
                             fontWeight: !isFloodMode ? FontWeight.bold : FontWeight.normal,
                           ),
@@ -136,7 +162,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         Icon(Icons.waves, size: 20, color: isFloodMode ? Theme.of(context).primaryColor : null),
                         const SizedBox(width: 8),
                         Text(
-                          'Force Flood Mode',
+                          context.l10n.chat_forceFloodMode,
                           style: TextStyle(
                             fontWeight: isFloodMode ? FontWeight.bold : FontWeight.normal,
                           ),
@@ -150,7 +176,7 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           IconButton(
             icon: const Icon(Icons.timeline),
-            tooltip: 'Path management',
+            tooltip: context.l10n.chat_pathManagement,
             onPressed: () => _showPathHistory(context),
           ),
           IconButton(
@@ -162,13 +188,19 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Consumer<MeshCoreConnector>(
         builder: (context, connector, child) {
           final messages = connector.getMessages(widget.contact);
-
           return Column(
             children: [
               Expanded(
-                child: messages.isEmpty
-                    ? _buildEmptyState()
-                    : _buildMessageList(messages),
+                child: Stack(
+                  children: [
+                    messages.isEmpty
+                        ? _buildEmptyState()
+                        : _buildMessageList(messages, connector),
+                    JumpToBottomButton(
+                      scrollController: _scrollController,
+                    ),
+                  ],
+                ),
               ),
               _buildInputBar(connector),
             ],
@@ -186,12 +218,12 @@ class _ChatScreenState extends State<ChatScreen> {
           Icon(Icons.chat_bubble_outline, size: 64, color: Colors.grey[400]),
           const SizedBox(height: 16),
           Text(
-            'No messages yet',
+            context.l10n.chat_noMessages,
             style: TextStyle(fontSize: 16, color: Colors.grey[600]),
           ),
           const SizedBox(height: 8),
           Text(
-            'Send a message to ${widget.contact.name}',
+            context.l10n.chat_sendMessageTo(widget.contact.name),
             style: TextStyle(fontSize: 14, color: Colors.grey[500]),
           ),
         ],
@@ -199,18 +231,53 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Widget _buildMessageList(List<Message> messages) {
+  Widget _buildMessageList(List<Message> messages, MeshCoreConnector connector) {
+    // Reverse messages so newest appear at bottom with reverse: true
+    final reversedMessages = messages.reversed.toList();
+    final itemCount = reversedMessages.length + (_isLoadingOlder ? 1 : 0);
+
+    // Auto-scroll to bottom if user is already at bottom
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollController.scrollToBottomIfAtBottom();
+    });
+
     return ListView.builder(
+      reverse: true, // List grows from bottom up
       controller: _scrollController,
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-      itemCount: messages.length,
+      itemCount: itemCount,
       itemBuilder: (context, index) {
-        final message = messages[index];
+        // Loading indicator now appears at end (bottom) of reversed list
+        if (_isLoadingOlder && index == itemCount - 1) {
+          return const Padding(
+            padding: EdgeInsets.symmetric(vertical: 16),
+            child: Center(
+              child: SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              ),
+            ),
+          );
+        }
+        final messageIndex = index;
+        Contact contact = widget.contact;
+        final message = reversedMessages[messageIndex];
+        String fourByteHex = '';
+        if (widget.contact.type == advTypeRoom) {
+          contact = _resolveContactFrom4Bytes(
+            connector,
+            message.fourByteRoomContactKey.isEmpty ? Uint8List.fromList([0, 0, 0, 0]) : message.fourByteRoomContactKey,
+          );
+          fourByteHex = message.fourByteRoomContactKey.map((b) => b.toRadixString(16).padLeft(2, '0')).join().toUpperCase();
+        }
+
         return _MessageBubble(
           message: message,
-          senderName: widget.contact.name,
-          onTap: () => _openMessagePath(message),
-          onLongPress: () => _showMessageActions(message),
+          senderName: widget.contact.type == advTypeRoom ? "${contact.name} [$fourByteHex]" : contact.name,
+          isRoomServer: widget.contact.type == advTypeRoom,
+          onTap: () => _openMessagePath(message, contact),
+          onLongPress: () => _showMessageActions(message, contact),
         );
       },
     );
@@ -233,7 +300,7 @@ class _ChatScreenState extends State<ChatScreen> {
             IconButton(
               icon: const Icon(Icons.gif_box),
               onPressed: () => _showGifPicker(context),
-              tooltip: 'Send GIF',
+              tooltip: context.l10n.chat_sendGif,
             ),
             Expanded(
               child: ValueListenableBuilder<TextEditingValue>(
@@ -244,13 +311,15 @@ class _ChatScreenState extends State<ChatScreen> {
                     return Row(
                       children: [
                         Expanded(
-                          child: GifMessage(
-                            url: 'https://media.giphy.com/media/$gifId/giphy.gif',
-                            backgroundColor: colorScheme.surfaceContainerHighest,
-                            fallbackTextColor:
-                                colorScheme.onSurface.withValues(alpha: 0.6),
-                            width: 160,
-                            height: 110,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: GifMessage(
+                              url: 'https://media.giphy.com/media/$gifId/giphy.gif',
+                              backgroundColor: colorScheme.surfaceContainerHighest,
+                              fallbackTextColor:
+                                  colorScheme.onSurface.withValues(alpha: 0.6),
+                              maxSize: 160,
+                            ),
                           ),
                         ),
                         const SizedBox(width: 8),
@@ -264,13 +333,15 @@ class _ChatScreenState extends State<ChatScreen> {
 
                   return TextField(
                     controller: _textController,
+                    focusNode: _textFieldFocusNode,
                     inputFormatters: [
                       Utf8LengthLimitingTextInputFormatter(maxBytes),
                     ],
-                    decoration: const InputDecoration(
-                      hintText: 'Type a message...',
-                      border: OutlineInputBorder(),
-                      contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    textCapitalization: TextCapitalization.sentences,
+                    decoration: InputDecoration(
+                      hintText: context.l10n.chat_typeMessage,
+                      border: const OutlineInputBorder(),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     ),
                     textInputAction: TextInputAction.send,
                     onSubmitted: (_) => _sendMessage(connector),
@@ -314,7 +385,7 @@ class _ChatScreenState extends State<ChatScreen> {
     final maxBytes = maxContactMessageBytes();
     if (utf8.encode(text).length > maxBytes) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Message too long (max $maxBytes bytes).')),
+        SnackBar(content: Text(context.l10n.chat_messageTooLong(maxBytes))),
       );
       return;
     }
@@ -324,16 +395,6 @@ class _ChatScreenState extends State<ChatScreen> {
       text,
     );
     _textController.clear();
-
-    Future.delayed(const Duration(milliseconds: 100), () {
-      if (_scrollController.hasClients) {
-        _scrollController.animateTo(
-          _scrollController.position.maxScrollExtent,
-          duration: const Duration(milliseconds: 200),
-          curve: Curves.easeOut,
-        );
-      }
-    });
   }
 
 
@@ -346,11 +407,11 @@ class _ChatScreenState extends State<ChatScreen> {
         builder: (context, pathService, _) {
           final paths = pathService.getRecentPaths(widget.contact.publicKeyHex);
           return AlertDialog(
-            title: const Row(
+            title: Row(
               children: [
-                Icon(Icons.timeline),
-                SizedBox(width: 8),
-                Text('Path Management'),
+                const Icon(Icons.timeline),
+                const SizedBox(width: 8),
+                Text(context.l10n.chat_pathManagement),
               ],
             ),
             content: SingleChildScrollView(
@@ -359,9 +420,9 @@ class _ChatScreenState extends State<ChatScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   if (paths.isNotEmpty) ...[
-                    const Text(
-                      'Recent ACK Paths (tap to use):',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                    Text(
+                      context.l10n.chat_recentAckPaths,
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                     ),
                     if (paths.length >= 100) ...[
                       const SizedBox(height: 8),
@@ -372,9 +433,9 @@ class _ChatScreenState extends State<ChatScreen> {
                           color: Colors.amber[100],
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Text(
-                          'Path history is full. Remove entries to add new ones.',
-                          style: TextStyle(fontSize: 12),
+                        child: Text(
+                          context.l10n.chat_pathHistoryFull,
+                          style: const TextStyle(fontSize: 12),
                         ),
                       ),
                     ],
@@ -393,11 +454,11 @@ class _ChatScreenState extends State<ChatScreen> {
                             ),
                           ),
                           title: Text(
-                            '${path.hopCount} ${path.hopCount == 1 ? 'hop' : 'hops'}',
+                            '${path.hopCount} ${path.hopCount == 1 ? context.l10n.chat_hopSingular : context.l10n.chat_hopPlural}',
                             style: const TextStyle(fontSize: 14),
                           ),
                           subtitle: Text(
-                            '${(path.tripTimeMs / 1000).toStringAsFixed(2)}s • ${_formatRelativeTime(path.timestamp)} • ${path.successCount} successes',
+                            '${(path.tripTimeMs / 1000).toStringAsFixed(2)}s • ${_formatRelativeTime(path.timestamp)} • ${path.successCount} ${context.l10n.chat_successes}',
                             style: const TextStyle(fontSize: 11),
                           ),
                           trailing: Row(
@@ -405,7 +466,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             children: [
                               IconButton(
                                 icon: const Icon(Icons.close, size: 16),
-                                tooltip: 'Remove path',
+                                tooltip: context.l10n.chat_removePath,
                                 onPressed: () async {
                                   await pathService.removePathRecord(
                                     widget.contact.publicKeyHex,
@@ -422,9 +483,9 @@ class _ChatScreenState extends State<ChatScreen> {
                           onTap: () async {
                             if (path.pathBytes.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Path details not available yet. Try sending a message to refresh.'),
-                                  duration: Duration(seconds: 2),
+                                SnackBar(
+                                  content: Text(context.l10n.chat_pathDetailsNotAvailable),
+                                  duration: const Duration(seconds: 2),
                                 ),
                               );
                               return;
@@ -454,13 +515,13 @@ class _ChatScreenState extends State<ChatScreen> {
                     }),
                     const Divider(),
                   ] else ...[
-                    const Text('No path history yet.\nSend a message to discover paths.'),
+                    Text(context.l10n.chat_noPathHistoryYet),
                     const Divider(),
                   ],
                   const SizedBox(height: 8),
-                  const Text(
-                    'Path Actions:',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                  Text(
+                    context.l10n.chat_pathActions,
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                   ),
                   const SizedBox(height: 8),
                   ListTile(
@@ -470,8 +531,8 @@ class _ChatScreenState extends State<ChatScreen> {
                       backgroundColor: Colors.purple,
                       child: Icon(Icons.edit_road, size: 16),
                     ),
-                    title: const Text('Set Custom Path', style: TextStyle(fontSize: 14)),
-                    subtitle: const Text('Manually specify routing path', style: TextStyle(fontSize: 11)),
+                    title: Text(context.l10n.chat_setCustomPath, style: const TextStyle(fontSize: 14)),
+                    subtitle: Text(context.l10n.chat_setCustomPathSubtitle, style: const TextStyle(fontSize: 11)),
                     onTap: () {
                       Navigator.pop(context);
                       _showCustomPathDialog(context);
@@ -484,15 +545,15 @@ class _ChatScreenState extends State<ChatScreen> {
                       backgroundColor: Colors.orange,
                       child: Icon(Icons.clear_all, size: 16),
                     ),
-                    title: const Text('Clear Path', style: TextStyle(fontSize: 14)),
-                    subtitle: const Text('Force rediscovery on next send', style: TextStyle(fontSize: 11)),
+                    title: Text(context.l10n.chat_clearPath, style: const TextStyle(fontSize: 14)),
+                    subtitle: Text(context.l10n.chat_clearPathSubtitle, style: const TextStyle(fontSize: 11)),
                     onTap: () async {
                       await connector.clearContactPath(widget.contact);
                       if (!context.mounted) return;
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Path cleared. Next message will rediscover route.'),
-                          duration: Duration(seconds: 2),
+                        SnackBar(
+                          content: Text(context.l10n.chat_pathCleared),
+                          duration: const Duration(seconds: 2),
                         ),
                       );
                       Navigator.pop(context);
@@ -505,15 +566,15 @@ class _ChatScreenState extends State<ChatScreen> {
                       backgroundColor: Colors.blue,
                       child: Icon(Icons.waves, size: 16),
                     ),
-                    title: const Text('Force Flood Mode', style: TextStyle(fontSize: 14)),
-                    subtitle: const Text('Use routing toggle in app bar', style: TextStyle(fontSize: 11)),
+                    title: Text(context.l10n.chat_forceFloodMode, style: const TextStyle(fontSize: 14)),
+                    subtitle: Text(context.l10n.chat_floodModeSubtitle, style: const TextStyle(fontSize: 11)),
                     onTap: () async {
                       await connector.setPathOverride(widget.contact, pathLen: -1);
                       if (!context.mounted) return;
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Flood mode enabled. Toggle back via routing icon in app bar.'),
-                          duration: Duration(seconds: 2),
+                        SnackBar(
+                          content: Text(context.l10n.chat_floodModeEnabled),
+                          duration: const Duration(seconds: 2),
                         ),
                       );
                       Navigator.pop(context);
@@ -525,7 +586,7 @@ class _ChatScreenState extends State<ChatScreen> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Close'),
+                child: Text(context.l10n.common_close),
               ),
             ],
           );
@@ -536,18 +597,18 @@ class _ChatScreenState extends State<ChatScreen> {
 
   String _formatRelativeTime(DateTime time) {
     final diff = DateTime.now().difference(time);
-    if (diff.inSeconds < 60) return 'Just now';
-    if (diff.inMinutes < 60) return '${diff.inMinutes}m ago';
-    if (diff.inHours < 24) return '${diff.inHours}h ago';
-    return '${diff.inDays}d ago';
+    if (diff.inSeconds < 60) return context.l10n.time_justNow;
+    if (diff.inMinutes < 60) return context.l10n.time_minutesAgo(diff.inMinutes);
+    if (diff.inHours < 24) return context.l10n.time_hoursAgo(diff.inHours);
+    return context.l10n.time_daysAgo(diff.inDays);
   }
 
   void _showFullPathDialog(BuildContext context, List<int> pathBytes) {
     if (pathBytes.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Path details not available yet. Try sending a message to refresh.'),
-          duration: Duration(seconds: 2),
+        SnackBar(
+          content: Text(context.l10n.chat_pathDetailsNotAvailable),
+          duration: const Duration(seconds: 2),
         ),
       );
       return;
@@ -560,12 +621,12 @@ class _ChatScreenState extends State<ChatScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Full Path'),
+        title: Text(context.l10n.chat_fullPath),
         content: SelectableText(formattedPath),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: Text(context.l10n.common_close),
           ),
         ],
       ),
@@ -579,18 +640,25 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
+  Contact _resolveContactFrom4Bytes(MeshCoreConnector connector, Uint8List key4Bytes) {
+    return connector.contacts.firstWhere(
+      (c) => listEquals(c.publicKey.sublist(0, 4), key4Bytes.sublist(0, 4)),
+      orElse: () => widget.contact,
+    );
+  }
+
   String _currentPathLabel(Contact contact) {
     // Check if user has set a path override
     if (contact.pathOverride != null) {
-      if (contact.pathOverride! < 0) return 'Flood (forced)';
-      if (contact.pathOverride == 0) return 'Direct (forced)';
-      return '${contact.pathOverride} hops (forced)';
+      if (contact.pathOverride! < 0) return context.l10n.chat_floodForced;
+      if (contact.pathOverride == 0) return context.l10n.chat_directForced;
+      return context.l10n.chat_hopsForced(contact.pathOverride!);
     }
 
     // Use device's path
-    if (contact.pathLength < 0) return 'Flood (auto)';
-    if (contact.pathLength == 0) return 'Direct';
-    return '${contact.pathLength} hops';
+    if (contact.pathLength < 0) return context.l10n.chat_floodAuto;
+    if (contact.pathLength == 0) return context.l10n.chat_direct;
+    return context.l10n.chat_hopsCount(contact.pathLength);
   }
 
   Future<void> _notifyPathSet(
@@ -605,12 +673,12 @@ class _ChatScreenState extends State<ChatScreen> {
     if (!mounted) return;
 
     final status = !connector.isConnected
-        ? 'Saved locally. Connect to sync.'
-        : (verified ? 'Device confirmed.' : 'Device not confirmed yet.');
+        ? context.l10n.chat_pathSavedLocally
+        : (verified ? context.l10n.chat_pathDeviceConfirmed : context.l10n.chat_pathDeviceNotConfirmed);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          'Path set: $hopCount ${hopCount == 1 ? 'hop' : 'hops'} - $status',
+          context.l10n.chat_pathSetHops(hopCount, status),
         ),
         duration: const Duration(seconds: 3),
       ),
@@ -635,19 +703,19 @@ class _ChatScreenState extends State<ChatScreen> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildInfoRow('Type', contact.typeLabel),
-                  _buildInfoRow('Path', contact.pathLabel),
+                  _buildInfoRow(context.l10n.chat_type, contact.typeLabel),
+                  _buildInfoRow(context.l10n.chat_path, contact.pathLabel),
                   if (contact.hasLocation)
                     _buildInfoRow(
-                      'Location',
+                      context.l10n.chat_location,
                       '${contact.latitude?.toStringAsFixed(4)}, ${contact.longitude?.toStringAsFixed(4)}',
                     ),
-                  _buildInfoRow('Public Key', '${contact.publicKeyHex.substring(0, 16)}...'),
+                  _buildInfoRow(context.l10n.chat_publicKey, '${contact.publicKeyHex.substring(0, 16)}...'),
                   const Divider(),
                   SwitchListTile(
                     contentPadding: EdgeInsets.zero,
-                    title: const Text('SMAZ compression'),
-                    subtitle: const Text('Compress outgoing messages'),
+                    title: Text(context.l10n.channels_smazCompression),
+                    subtitle: Text(context.l10n.chat_compressOutgoingMessages),
                     value: smazEnabled,
                     onChanged: (value) {
                       connector.setContactSmazEnabled(contact.publicKeyHex, value);
@@ -659,7 +727,7 @@ class _ChatScreenState extends State<ChatScreen> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Close'),
+                child: Text(context.l10n.common_close),
               ),
             ],
           );
@@ -684,6 +752,15 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
+  void _openChat(BuildContext context, Contact contact) {
+    // Check if this is a repeater
+    context.read<MeshCoreConnector>().markContactRead(contact.publicKeyHex);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ChatScreen(contact: contact)),
+    );
+  }
+
   Future<void> _showCustomPathDialog(BuildContext context) async {
     final connector = Provider.of<MeshCoreConnector>(context, listen: false);
 
@@ -704,7 +781,7 @@ class _ChatScreenState extends State<ChatScreen> {
       context,
       availableContacts: availableContacts,
       initialPath: pathForInput.isEmpty ? null : pathForInput,
-      title: 'Set Custom Path',
+      title: context.l10n.chat_setCustomPath,
       currentPathLabel: currentPathLabel,
       onRefresh: connector.isConnected ? connector.getContacts : null,
     );
@@ -734,10 +811,20 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
 
-  void _openMessagePath(Message message) {
+  void _openMessagePath(Message message, Contact contact) {
     final connector = context.read<MeshCoreConnector>();
-    final senderName =
-        message.isOutgoing ? (connector.selfName ?? 'Me') : widget.contact.name;
+    final fourByteHex = message.fourByteRoomContactKey
+        .map((b) => b.toRadixString(16).padLeft(2, '0'))
+        .join()
+        .toUpperCase();
+    final String senderName;
+    if (message.isOutgoing) {
+      senderName = connector.selfName ?? context.l10n.chat_me;
+    } else if (widget.contact.type == advTypeRoom) {
+      senderName = "${contact.name} [$fourByteHex]";
+    } else {
+      senderName = widget.contact.name;
+    }
     final pathMessage = ChannelMessage(
       senderKey: null,
       senderName: senderName,
@@ -757,24 +844,26 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  void _showMessageActions(Message message) {
+  void _showMessageActions(Message message, Contact contact) {
     showModalBottomSheet(
       context: context,
       builder: (sheetContext) => SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ListTile(
-              leading: const Icon(Icons.add_reaction_outlined),
-              title: const Text('Add Reaction'),
-              onTap: () {
-                Navigator.pop(sheetContext);
-                _showEmojiPicker(message);
-              },
-            ),
+            // Can't react to your own messages
+            if (!message.isOutgoing)
+              ListTile(
+                leading: const Icon(Icons.add_reaction_outlined),
+                title: Text(context.l10n.chat_addReaction),
+                onTap: () {
+                  Navigator.pop(sheetContext);
+                  _showEmojiPicker(message, contact);
+                },
+              ),
             ListTile(
               leading: const Icon(Icons.copy),
-              title: const Text('Copy'),
+              title: Text(context.l10n.common_copy),
               onTap: () {
                 Navigator.pop(sheetContext);
                 _copyMessageText(message.text);
@@ -782,7 +871,7 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
             ListTile(
               leading: const Icon(Icons.delete_outline),
-              title: const Text('Delete'),
+              title: Text(context.l10n.common_delete),
               onTap: () async {
                 Navigator.pop(sheetContext);
                 await _deleteMessage(message);
@@ -792,15 +881,24 @@ class _ChatScreenState extends State<ChatScreen> {
                 message.status == MessageStatus.failed)
               ListTile(
                 leading: const Icon(Icons.refresh),
-                title: const Text('Retry'),
+                title: Text(context.l10n.common_retry),
                 onTap: () {
                   Navigator.pop(sheetContext);
                   _retryMessage(message);
                 },
               ),
+            if (widget.contact.type == advTypeRoom)
+              ListTile(
+                leading: const Icon(Icons.chat),
+                title: Text(context.l10n.contacts_openChat),
+                onTap: () {
+                  Navigator.pop(sheetContext);
+                  _openChat(context, contact);
+                },
+              ),
             ListTile(
               leading: const Icon(Icons.close),
-              title: const Text('Cancel'),
+              title: Text(context.l10n.common_cancel),
               onTap: () => Navigator.pop(sheetContext),
             ),
           ],
@@ -812,7 +910,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void _copyMessageText(String text) {
     Clipboard.setData(ClipboardData(text: text));
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Message copied')),
+      SnackBar(content: Text(context.l10n.chat_messageCopied)),
     );
   }
 
@@ -820,7 +918,7 @@ class _ChatScreenState extends State<ChatScreen> {
     await context.read<MeshCoreConnector>().deleteMessage(message);
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Message deleted')),
+      SnackBar(content: Text(context.l10n.chat_messageDeleted)),
     );
   }
 
@@ -832,29 +930,33 @@ class _ChatScreenState extends State<ChatScreen> {
       message.text,
     );
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Retrying message')),
+      SnackBar(content: Text(context.l10n.chat_retryingMessage)),
     );
   }
 
-  void _showEmojiPicker(Message message) {
+  void _showEmojiPicker(Message message, Contact senderContact) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       builder: (context) => EmojiPicker(
         onEmojiSelected: (emoji) {
-          _sendReaction(message, emoji);
+          _sendReaction(message, senderContact, emoji);
         },
       ),
     );
   }
 
-  void _sendReaction(Message message, String emoji) {
+  void _sendReaction(Message message, Contact senderContact, String emoji) {
     final connector = context.read<MeshCoreConnector>();
-    // Send reaction with messageId if available, otherwise use lightweight format
-    // Parser will extract reactionKey (timestamp_senderPrefix) for deduplication
-    final messageId = message.messageId ??
-        '${message.timestamp.millisecondsSinceEpoch}_${message.senderKeyHex.substring(0, 8)}';
-    final reactionText = 'r:$messageId:$emoji';
+    final emojiIndex = ReactionHelper.emojiToIndex(emoji);
+    if (emojiIndex == null) return; // Unknown emoji, skip
+    final timestampSecs = message.timestamp.millisecondsSinceEpoch ~/ 1000;
+    
+    // For room servers, include sender name (like channels) since multiple users
+    // For 1:1 chats, sender is implicit (null)
+    final senderName = widget.contact.type == advTypeRoom ? senderContact.name : null;
+    final hash = ReactionHelper.computeReactionHash(timestampSecs, senderName, message.text);
+    final reactionText = 'r:$hash:$emojiIndex';
     connector.sendMessage(widget.contact, reactionText);
   }
 }
@@ -862,12 +964,14 @@ class _ChatScreenState extends State<ChatScreen> {
 class _MessageBubble extends StatelessWidget {
   final Message message;
   final String senderName;
+  final bool isRoomServer;
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
 
   const _MessageBubble({
     required this.message,
     required this.senderName,
+    required this.isRoomServer,
     this.onTap,
     this.onLongPress,
   });
@@ -886,7 +990,10 @@ class _MessageBubble extends StatelessWidget {
         ? colorScheme.onErrorContainer
         : (isOutgoing ? colorScheme.onPrimary : colorScheme.onSurface);
     final metaColor = textColor.withValues(alpha: 0.7);
-
+    String messageText = message.text;
+    if (isRoomServer && !isOutgoing) {
+      messageText = message.text.substring(4.clamp(0, message.text.length));
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Column(
@@ -905,7 +1012,9 @@ class _MessageBubble extends StatelessWidget {
                 ],
                 Flexible(
                   child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding: gifId != null
+                    ? const EdgeInsets.all(4)
+                    : const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 constraints: BoxConstraints(
                   maxWidth: MediaQuery.of(context).size.width * 0.65,
                 ),
@@ -917,75 +1026,103 @@ class _MessageBubble extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (!isOutgoing) ...[
-                      Text(
-                        senderName,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: colorScheme.primary,
+                      Padding(
+                        padding: gifId != null
+                            ? const EdgeInsets.only(left: 8, top: 4, bottom: 4)
+                            : EdgeInsets.zero,
+                        child: Text(
+                          senderName,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: colorScheme.primary,
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 4),
+                      if (gifId == null) const SizedBox(height: 4),
                     ],
                     if (poi != null)
                       _buildPoiMessage(context, poi, textColor, metaColor)
                     else if (gifId != null)
-                      GifMessage(
-                        url: 'https://media.giphy.com/media/$gifId/giphy.gif',
-                        backgroundColor: bubbleColor,
-                        fallbackTextColor: textColor.withValues(alpha: 0.7),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: GifMessage(
+                          url: 'https://media.giphy.com/media/$gifId/giphy.gif',
+                          backgroundColor: Colors.transparent,
+                          fallbackTextColor: textColor.withValues(alpha: 0.7),
+                        ),
                       )
                     else
-                      Text(
-                        message.text,
+                      Linkify(
+                        text: messageText,
                         style: TextStyle(
                           color: textColor,
                         ),
+                        linkStyle: const TextStyle(
+                          color: Colors.green,
+                          decoration: TextDecoration.underline,
+                        ),
+                        options: const LinkifyOptions(
+                          humanize: false,
+                          defaultToHttps: false,
+                        ),
+                        linkifiers: const [UrlLinkifier()],
+                        onOpen: (link) => LinkHandler.handleLinkTap(context, link.url),
                       ),
                     if (isOutgoing && message.retryCount > 0) ...[
                       const SizedBox(height: 4),
-                      Text(
-                        'Retry ${message.retryCount}/4',
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: metaColor,
-                          fontWeight: FontWeight.w500,
+                      Padding(
+                        padding: gifId != null
+                            ? const EdgeInsets.symmetric(horizontal: 8)
+                            : EdgeInsets.zero,
+                        child: Text(
+                          context.l10n.chat_retryCount(message.retryCount, 4),
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: metaColor,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     ],
                     const SizedBox(height: 4),
-                    Wrap(
-                      spacing: 4,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        Text(
-                          _formatTime(message.timestamp),
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: metaColor,
-                          ),
-                        ),
-                        if (isOutgoing) ...[
-                          const SizedBox(width: 4),
-                          _buildStatusIcon(metaColor),
-                        ],
-                        if (message.tripTimeMs != null &&
-                            message.status == MessageStatus.delivered) ...[
-                          const SizedBox(width: 4),
-                          Icon(
-                            Icons.speed,
-                            size: 10,
-                            color: isOutgoing ? metaColor : Colors.green[700],
-                          ),
+                    Padding(
+                      padding: gifId != null
+                          ? const EdgeInsets.only(left: 8, right: 8, bottom: 4)
+                          : EdgeInsets.zero,
+                      child: Wrap(
+                        spacing: 4,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
                           Text(
-                            '${(message.tripTimeMs! / 1000).toStringAsFixed(1)}s',
+                            _formatTime(message.timestamp),
                             style: TextStyle(
-                              fontSize: 9,
-                              color: isOutgoing ? metaColor : Colors.green[700],
+                              fontSize: 10,
+                              color: metaColor,
                             ),
                           ),
+                          if (isOutgoing) ...[
+                            const SizedBox(width: 4),
+                            _buildStatusIcon(metaColor),
+                          ],
+                          if (message.tripTimeMs != null &&
+                              message.status == MessageStatus.delivered) ...[
+                            const SizedBox(width: 4),
+                            Icon(
+                              Icons.speed,
+                              size: 10,
+                              color: isOutgoing ? metaColor : Colors.green[700],
+                            ),
+                            Text(
+                              '${(message.tripTimeMs! / 1000).toStringAsFixed(1)}s',
+                              style: TextStyle(
+                                fontSize: 9,
+                                color: isOutgoing ? metaColor : Colors.green[700],
+                              ),
+                            ),
+                          ],
                         ],
-                      ],
+                      ),
                     ),
                   ],
                 ),
@@ -1055,7 +1192,7 @@ class _MessageBubble extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'POI Shared',
+                context.l10n.chat_poiShared,
                 style: TextStyle(
                   color: textColor,
                   fontWeight: FontWeight.w600,

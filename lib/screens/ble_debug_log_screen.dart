@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
+import '../l10n/l10n.dart';
 import '../services/ble_debug_log_service.dart';
 import '../connector/meshcore_protocol.dart';
 
@@ -26,10 +27,10 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
         final hasEntries = showingFrames ? entries.isNotEmpty : rawEntries.isNotEmpty;
         return Scaffold(
           appBar: AppBar(
-            title: const Text('BLE Debug Log'),
+            title: Text(context.l10n.debugLog_bleTitle),
             actions: [
               IconButton(
-                tooltip: 'Copy log',
+                tooltip: context.l10n.debugLog_copyLog,
                 icon: const Icon(Icons.copy),
                 onPressed: hasEntries
                     ? () async {
@@ -43,13 +44,13 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
                         await Clipboard.setData(ClipboardData(text: text));
                         if (!context.mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('BLE log copied')),
+                          SnackBar(content: Text(context.l10n.debugLog_bleCopied)),
                         );
                       }
                     : null,
               ),
               IconButton(
-                tooltip: 'Clear log',
+                tooltip: context.l10n.debugLog_clearLog,
                 icon: const Icon(Icons.delete_outline),
                 onPressed: hasEntries
                     ? () {
@@ -66,9 +67,9 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
                   child: SegmentedButton<_BleLogView>(
-                    segments: const [
-                      ButtonSegment(value: _BleLogView.frames, label: Text('Frames')),
-                      ButtonSegment(value: _BleLogView.rawLogRx, label: Text('Raw Log-RX')),
+                    segments: [
+                      ButtonSegment(value: _BleLogView.frames, label: Text(context.l10n.debugLog_frames)),
+                      ButtonSegment(value: _BleLogView.rawLogRx, label: Text(context.l10n.debugLog_rawLogRx)),
                     ],
                     selected: {_view},
                     onSelectionChanged: (selection) {
@@ -113,8 +114,8 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
                             );
                           },
                         )
-                      : const Center(
-                          child: Text('No BLE activity yet'),
+                      : Center(
+                          child: Text(context.l10n.debugLog_noBleActivity),
                         ),
                 ),
               ],
@@ -136,7 +137,7 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: Text(context.l10n.common_close),
           ),
         ],
       ),

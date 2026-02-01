@@ -1,9 +1,12 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:meshcore_open/widgets/path_trace_dialog.dart';
 import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
+import '../l10n/l10n.dart';
 import '../connector/meshcore_protocol.dart';
 import '../models/contact.dart';
 import '../models/contact_group.dart';
@@ -18,6 +21,7 @@ import '../widgets/list_filter_widget.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/quick_switch_bar.dart';
 import '../widgets/repeater_login_dialog.dart';
+import '../widgets/room_login_dialog.dart';
 import '../widgets/unread_badge.dart';
 import 'channels_screen.dart';
 import 'chat_screen.dart';
@@ -25,13 +29,15 @@ import 'map_screen.dart';
 import 'repeater_hub_screen.dart';
 import 'settings_screen.dart';
 
+enum RoomLoginDestination {
+  chat,
+  management,
+}
+
 class ContactsScreen extends StatefulWidget {
   final bool hideBackButton;
 
-  const ContactsScreen({
-    super.key,
-    this.hideBackButton = false,
-  });
+  const ContactsScreen({super.key, this.hideBackButton = false});
 
   @override
   State<ContactsScreen> createState() => _ContactsScreenState();
@@ -47,7 +53,7 @@ class _ContactsScreenState extends State<ContactsScreen>
   final ContactGroupStore _groupStore = ContactGroupStore();
   List<ContactGroup> _groups = [];
   Timer? _searchDebounce;
-
+  
   @override
   void initState() {
     super.initState();
@@ -88,18 +94,18 @@ class _ContactsScreenState extends State<ContactsScreen>
       child: Scaffold(
         appBar: AppBar(
           leading: BatteryIndicator(connector: connector),
-          title: const Text('Contacts'),
+          title: Text(context.l10n.contacts_title),
           centerTitle: true,
           automaticallyImplyLeading: false,
           actions: [
             IconButton(
               icon: const Icon(Icons.bluetooth_disabled),
-              tooltip: 'Disconnect',
+              tooltip: context.l10n.common_disconnect,
               onPressed: () => _disconnect(context, connector),
             ),
             IconButton(
               icon: const Icon(Icons.tune),
-              tooltip: 'Settings',
+              tooltip: context.l10n.common_settings,
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const SettingsScreen()),
@@ -112,7 +118,8 @@ class _ContactsScreenState extends State<ContactsScreen>
           top: false,
           child: QuickSwitchBar(
             selectedIndex: 0,
-            onDestinationSelected: (index) => _handleQuickSwitch(index, context),
+            onDestinationSelected: (index) =>
+                _handleQuickSwitch(index, context),
           ),
         ),
       ),
@@ -158,16 +165,17 @@ class _ContactsScreenState extends State<ContactsScreen>
     }
 
     if (contacts.isEmpty && _groups.isEmpty) {
-      return const EmptyState(
+      return EmptyState(
         icon: Icons.people_outline,
-        title: 'No contacts yet',
-        subtitle: 'Contacts will appear when devices advertise',
+        title: context.l10n.contacts_noContacts,
+        subtitle: context.l10n.contacts_contactsWillAppear,
       );
     }
 
     final filteredAndSorted = _filterAndSortContacts(contacts, connector);
-    final filteredGroups =
-        _showUnreadOnly ? const <ContactGroup>[] : _filterAndSortGroups(_groups, contacts);
+    final filteredGroups = _showUnreadOnly
+        ? const <ContactGroup>[]
+        : _filterAndSortGroups(_groups, contacts);
 
     return Column(
       children: [
@@ -176,7 +184,7 @@ class _ContactsScreenState extends State<ContactsScreen>
           child: TextField(
             controller: _searchController,
             decoration: InputDecoration(
-              hintText: 'Search contacts...',
+              hintText: context.l10n.contacts_searchContacts,
               prefixIcon: const Icon(Icons.search),
               suffixIcon: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -197,7 +205,10 @@ class _ContactsScreenState extends State<ContactsScreen>
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 12,
+              ),
             ),
             onChanged: (value) {
               _searchDebounce?.cancel();
@@ -220,8 +231,8 @@ class _ContactsScreenState extends State<ContactsScreen>
                       const SizedBox(height: 16),
                       Text(
                         _showUnreadOnly
-                            ? 'No unread contacts'
-                            : 'No contacts or groups found',
+                            ? context.l10n.contacts_noUnreadContacts
+                            : context.l10n.contacts_noContactsFound,
                         style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                       ),
                     ],
@@ -236,14 +247,18 @@ class _ContactsScreenState extends State<ContactsScreen>
                         final group = filteredGroups[index];
                         return _buildGroupTile(context, group, contacts);
                       }
-                      final contact = filteredAndSorted[index - filteredGroups.length];
-                      final unreadCount = connector.getUnreadCountForContact(contact);
+                      final contact =
+                          filteredAndSorted[index - filteredGroups.length];
+                      final unreadCount = connector.getUnreadCountForContact(
+                        contact,
+                      );
                       return _ContactTile(
                         contact: contact,
                         lastSeen: _resolveLastSeen(contact),
                         unreadCount: unreadCount,
                         onTap: () => _openChat(context, contact),
-                        onLongPress: () => _showContactOptions(context, connector, contact),
+                        onLongPress: () =>
+                            _showContactOptions(context, connector, contact),
                       );
                     },
                   ),
@@ -253,39 +268,60 @@ class _ContactsScreenState extends State<ContactsScreen>
     );
   }
 
-  List<ContactGroup> _filterAndSortGroups(List<ContactGroup> groups, List<Contact> contacts) {
+  List<ContactGroup> _filterAndSortGroups(
+    List<ContactGroup> groups,
+    List<Contact> contacts,
+  ) {
     final query = _searchQuery.trim().toLowerCase();
     final contactsByKey = <String, Contact>{};
     for (final contact in contacts) {
       contactsByKey[contact.publicKeyHex] = contact;
     }
 
-    final filtered = groups.where((group) {
-      if (query.isEmpty) return true;
-      if (group.name.toLowerCase().contains(query)) return true;
-      for (final key in group.memberKeys) {
-        final contact = contactsByKey[key];
-        if (contact != null && matchesContactQuery(contact, query)) return true;
-      }
-      return false;
-    }).where((group) {
-      if (_typeFilter == ContactTypeFilter.all) return true;
-      for (final key in group.memberKeys) {
-        final contact = contactsByKey[key];
-        if (contact != null && _matchesTypeFilter(contact)) return true;
-      }
-      return false;
-    }).toList();
+    final filtered = groups
+        .where((group) {
+          if (query.isEmpty) return true;
+          if (group.name.toLowerCase().contains(query)) return true;
+          for (final key in group.memberKeys) {
+            final contact = contactsByKey[key];
+            if (contact != null && matchesContactQuery(contact, query)) {
+              return true;
+            }
+          }
+          return false;
+        })
+        .where((group) {
+          if (_typeFilter == ContactTypeFilter.all) return true;
+          for (final key in group.memberKeys) {
+            final contact = contactsByKey[key];
+            if (contact != null && _matchesTypeFilter(contact)) return true;
+          }
+          return false;
+        })
+        .toList();
 
-    filtered.sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+    filtered.sort(
+      (a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()),
+    );
     return filtered;
   }
 
-  List<Contact> _filterAndSortContacts(List<Contact> contacts, MeshCoreConnector connector) {
+  List<Contact> _filterAndSortContacts(
+    List<Contact> contacts,
+    MeshCoreConnector connector,
+  ) {
     var filtered = contacts.where((contact) {
       if (_searchQuery.isEmpty) return true;
       return matchesContactQuery(contact, _searchQuery);
     }).toList();
+
+    // Filter out own node from the list
+    if (connector.selfPublicKey != null) {
+      final selfPubKeyHex = pubKeyToHex(connector.selfPublicKey!);
+      filtered = filtered.where((contact) {
+        return contact.publicKeyHex != selfPubKeyHex;
+      }).toList();
+    }
 
     if (_typeFilter != ContactTypeFilter.all) {
       filtered = filtered.where(_matchesTypeFilter).toList();
@@ -299,19 +335,27 @@ class _ContactsScreenState extends State<ContactsScreen>
 
     switch (_sortOption) {
       case ContactSortOption.lastSeen:
-        filtered.sort((a, b) => _resolveLastSeen(b).compareTo(_resolveLastSeen(a)));
+        filtered.sort(
+          (a, b) => _resolveLastSeen(b).compareTo(_resolveLastSeen(a)),
+        );
         break;
       case ContactSortOption.recentMessages:
         filtered.sort((a, b) {
           final aMessages = connector.getMessages(a);
           final bMessages = connector.getMessages(b);
-          final aLastMsg = aMessages.isEmpty ? DateTime(1970) : aMessages.last.timestamp;
-          final bLastMsg = bMessages.isEmpty ? DateTime(1970) : bMessages.last.timestamp;
+          final aLastMsg = aMessages.isEmpty
+              ? DateTime(1970)
+              : aMessages.last.timestamp;
+          final bLastMsg = bMessages.isEmpty
+              ? DateTime(1970)
+              : bMessages.last.timestamp;
           return bLastMsg.compareTo(aLastMsg);
         });
         break;
       case ContactSortOption.name:
-        filtered.sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+        filtered.sort(
+          (a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()),
+        );
         break;
     }
 
@@ -338,9 +382,13 @@ class _ContactsScreenState extends State<ContactsScreen>
         : contact.lastSeen;
   }
 
-  Widget _buildGroupTile(BuildContext context, ContactGroup group, List<Contact> contacts) {
+  Widget _buildGroupTile(
+    BuildContext context,
+    ContactGroup group,
+    List<Contact> contacts,
+  ) {
     final memberContacts = _resolveGroupContacts(group, contacts);
-    final subtitle = _formatGroupMembers(memberContacts);
+    final subtitle = _formatGroupMembers(context, memberContacts);
     return ListTile(
       leading: const CircleAvatar(
         backgroundColor: Colors.teal,
@@ -357,7 +405,10 @@ class _ContactsScreenState extends State<ContactsScreen>
     );
   }
 
-  List<Contact> _resolveGroupContacts(ContactGroup group, List<Contact> contacts) {
+  List<Contact> _resolveGroupContacts(
+    ContactGroup group,
+    List<Contact> contacts,
+  ) {
     final byKey = <String, Contact>{};
     for (final contact in contacts) {
       byKey[contact.publicKeyHex] = contact;
@@ -369,12 +420,14 @@ class _ContactsScreenState extends State<ContactsScreen>
         resolved.add(contact);
       }
     }
-    resolved.sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+    resolved.sort(
+      (a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()),
+    );
     return resolved;
   }
 
-  String _formatGroupMembers(List<Contact> members) {
-    if (members.isEmpty) return 'No members';
+  String _formatGroupMembers(BuildContext context, List<Contact> members) {
+    if (members.isEmpty) return context.l10n.contacts_noMembers;
     final names = members.map((c) => c.name).toList();
     if (names.length <= 2) return names.join(', ');
     return '${names.take(2).join(', ')} +${names.length - 2}';
@@ -384,6 +437,8 @@ class _ContactsScreenState extends State<ContactsScreen>
     // Check if this is a repeater
     if (contact.type == advTypeRepeater) {
       _showRepeaterLogin(context, contact);
+    } else if (contact.type == advTypeRoom) {
+      _showRoomLogin(context, contact, RoomLoginDestination.chat);
     } else {
       context.read<MeshCoreConnector>().markContactRead(contact.publicKeyHex);
       Navigator.push(
@@ -399,17 +454,13 @@ class _ContactsScreenState extends State<ContactsScreen>
       case 1:
         Navigator.pushReplacement(
           context,
-          buildQuickSwitchRoute(
-            const ChannelsScreen(hideBackButton: true),
-          ),
+          buildQuickSwitchRoute(const ChannelsScreen(hideBackButton: true)),
         );
         break;
       case 2:
         Navigator.pushReplacement(
           context,
-          buildQuickSwitchRoute(
-            const MapScreen(hideBackButton: true),
-          ),
+          buildQuickSwitchRoute(const MapScreen(hideBackButton: true)),
         );
         break;
     }
@@ -425,10 +476,8 @@ class _ContactsScreenState extends State<ContactsScreen>
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => RepeaterHubScreen(
-                repeater: repeater,
-                password: password,
-              ),
+              builder: (context) =>
+                  RepeaterHubScreen(repeater: repeater, password: password),
             ),
           );
         },
@@ -436,7 +485,35 @@ class _ContactsScreenState extends State<ContactsScreen>
     );
   }
 
-  void _showGroupOptions(BuildContext context, ContactGroup group, List<Contact> contacts) {
+  void _showRoomLogin(
+    BuildContext context,
+    Contact room,
+    RoomLoginDestination destination,
+  ) {
+    showDialog(
+      context: context,
+      builder: (context) => RoomLoginDialog(
+        room: room,
+        onLogin: (password) {
+          context.read<MeshCoreConnector>().markContactRead(room.publicKeyHex);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => destination == RoomLoginDestination.management
+                  ? RepeaterHubScreen(repeater: room, password: password)
+                  : ChatScreen(contact: room),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  void _showGroupOptions(
+    BuildContext context,
+    ContactGroup group,
+    List<Contact> contacts,
+  ) {
     final members = _resolveGroupContacts(group, contacts);
     showModalBottomSheet(
       context: context,
@@ -447,7 +524,7 @@ class _ContactsScreenState extends State<ContactsScreen>
             children: [
               ListTile(
                 leading: const Icon(Icons.edit),
-                title: const Text('Edit Group'),
+                title: Text(context.l10n.contacts_editGroup),
                 onTap: () {
                   Navigator.pop(sheetContext);
                   _showGroupEditor(context, contacts, group: group);
@@ -455,7 +532,10 @@ class _ContactsScreenState extends State<ContactsScreen>
               ),
               ListTile(
                 leading: const Icon(Icons.delete, color: Colors.red),
-                title: const Text('Delete Group', style: TextStyle(color: Colors.red)),
+                title: Text(
+                  context.l10n.contacts_deleteGroup,
+                  style: const TextStyle(color: Colors.red),
+                ),
                 onTap: () {
                   Navigator.pop(sheetContext);
                   _confirmDeleteGroup(context, group);
@@ -484,12 +564,12 @@ class _ContactsScreenState extends State<ContactsScreen>
     showDialog(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        title: const Text('Delete Group'),
-        content: Text('Remove "${group.name}"?'),
+        title: Text(context.l10n.contacts_deleteGroup),
+        content: Text(context.l10n.contacts_deleteGroupConfirm(group.name)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(dialogContext),
-            child: const Text('Cancel'),
+            child: Text(context.l10n.common_cancel),
           ),
           TextButton(
             onPressed: () async {
@@ -499,7 +579,10 @@ class _ContactsScreenState extends State<ContactsScreen>
               });
               await _saveGroups();
             },
-            child: const Text('Delete', style: TextStyle(color: Colors.red)),
+            child: Text(
+              context.l10n.common_delete,
+              style: const TextStyle(color: Colors.red),
+            ),
           ),
         ],
       ),
@@ -525,10 +608,16 @@ class _ContactsScreenState extends State<ContactsScreen>
           final filteredContacts = filterQuery.isEmpty
               ? sortedContacts
               : sortedContacts
-                  .where((contact) => matchesContactQuery(contact, filterQuery))
-                  .toList();
+                    .where(
+                      (contact) => matchesContactQuery(contact, filterQuery),
+                    )
+                    .toList();
           return AlertDialog(
-            title: Text(isEditing ? 'Edit Group' : 'New Group'),
+            title: Text(
+              isEditing
+                  ? context.l10n.contacts_editGroup
+                  : context.l10n.contacts_newGroup,
+            ),
             content: SizedBox(
               width: double.maxFinite,
               child: Column(
@@ -536,17 +625,17 @@ class _ContactsScreenState extends State<ContactsScreen>
                 children: [
                   TextField(
                     controller: nameController,
-                    decoration: const InputDecoration(
-                      labelText: 'Group name',
-                      border: OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      labelText: context.l10n.contacts_groupName,
+                      border: const OutlineInputBorder(),
                     ),
                   ),
                   const SizedBox(height: 12),
                   TextField(
-                    decoration: const InputDecoration(
-                      hintText: 'Filter contacts...',
-                      prefixIcon: Icon(Icons.search),
-                      border: OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      hintText: context.l10n.contacts_filterContacts,
+                      prefixIcon: const Icon(Icons.search),
+                      border: const OutlineInputBorder(),
                       isDense: true,
                     ),
                     onChanged: (value) {
@@ -559,12 +648,18 @@ class _ContactsScreenState extends State<ContactsScreen>
                   SizedBox(
                     height: 240,
                     child: filteredContacts.isEmpty
-                        ? const Center(child: Text('No contacts match your filter'))
+                        ? Center(
+                            child: Text(
+                              context.l10n.contacts_noContactsMatchFilter,
+                            ),
+                          )
                         : ListView.builder(
                             itemCount: filteredContacts.length,
                             itemBuilder: (context, index) {
                               final contact = filteredContacts[index];
-                              final isSelected = selectedKeys.contains(contact.publicKeyHex);
+                              final isSelected = selectedKeys.contains(
+                                contact.publicKeyHex,
+                              );
                               return CheckboxListTile(
                                 value: isSelected,
                                 title: Text(contact.name),
@@ -588,14 +683,16 @@ class _ContactsScreenState extends State<ContactsScreen>
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(dialogContext),
-                child: const Text('Cancel'),
+                child: Text(context.l10n.common_cancel),
               ),
               TextButton(
                 onPressed: () async {
                   final name = nameController.text.trim();
                   if (name.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Group name is required')),
+                      SnackBar(
+                        content: Text(context.l10n.contacts_groupNameRequired),
+                      ),
                     );
                     return;
                   }
@@ -605,13 +702,19 @@ class _ContactsScreenState extends State<ContactsScreen>
                   });
                   if (exists) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Group "$name" already exists')),
+                      SnackBar(
+                        content: Text(
+                          context.l10n.contacts_groupAlreadyExists(name),
+                        ),
+                      ),
                     );
                     return;
                   }
                   setState(() {
                     if (isEditing) {
-                      final index = _groups.indexWhere((g) => g.name == group.name);
+                      final index = _groups.indexWhere(
+                        (g) => g.name == group.name,
+                      );
                       if (index != -1) {
                         _groups[index] = ContactGroup(
                           name: name,
@@ -619,7 +722,12 @@ class _ContactsScreenState extends State<ContactsScreen>
                         );
                       }
                     } else {
-                      _groups.add(ContactGroup(name: name, memberKeys: selectedKeys.toList()));
+                      _groups.add(
+                        ContactGroup(
+                          name: name,
+                          memberKeys: selectedKeys.toList(),
+                        ),
+                      );
                     }
                   });
                   await _saveGroups();
@@ -627,7 +735,11 @@ class _ContactsScreenState extends State<ContactsScreen>
                     Navigator.pop(dialogContext);
                   }
                 },
-                child: Text(isEditing ? 'Save' : 'Create'),
+                child: Text(
+                  isEditing
+                      ? context.l10n.common_save
+                      : context.l10n.common_create,
+                ),
               ),
             ],
           );
@@ -642,39 +754,98 @@ class _ContactsScreenState extends State<ContactsScreen>
     Contact contact,
   ) {
     final isRepeater = contact.type == advTypeRepeater;
+    final isRoom = contact.type == advTypeRoom;
 
     showModalBottomSheet(
       context: context,
-      builder: (context) => SafeArea(
+      builder: (sheetContext) => SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (isRepeater)
+            if (isRepeater) ...[
+              ListTile(
+                leading: const Icon(Icons.radar, color: Colors.green),
+                title: contact.pathLength > 0 ? Text(context.l10n.contacts_pathTrace) : Text(context.l10n.contacts_ping),
+                onTap: () {
+                  showDialog(context: context, builder: (context) {
+                    return PathTraceDialog(
+                      title: contact.pathLength > 0 ? context.l10n.contacts_repeaterPathTrace : context.l10n.contacts_repeaterPing,
+                      path: contact.traceRouteBytes ?? Uint8List(0),
+                    );
+                  });
+                }
+              ),
               ListTile(
                 leading: const Icon(Icons.cell_tower, color: Colors.orange),
-                title: const Text('Manage Repeater'),
+                title: Text(context.l10n.contacts_manageRepeater),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pop(sheetContext);
                   _showRepeaterLogin(context, contact);
                 },
               )
-            else
+            ]else if (isRoom) ...[
+              ListTile(
+                leading: const Icon(Icons.radar, color: Colors.green),
+                title: contact.pathLength > 0 ? Text(context.l10n.contacts_pathTrace) : Text(context.l10n.contacts_ping),
+                onTap: () {
+                  showDialog(context: context, builder: (context) {
+                    return PathTraceDialog(
+                      title: contact.pathLength > 0 ? context.l10n.contacts_roomPathTrace : context.l10n.contacts_roomPing,
+                      path: contact.traceRouteBytes ?? Uint8List(0),
+                    );
+                  });
+                }
+              ),
+              ListTile(
+                leading: const Icon(Icons.room, color: Colors.blue),
+                title: Text(context.l10n.contacts_roomLogin),
+                onTap: () {
+                  Navigator.pop(sheetContext);
+                  _showRoomLogin(context, contact, RoomLoginDestination.chat);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.room_preferences, color: Colors.orange),
+                title: Text(context.l10n.room_management),
+                onTap: () {
+                  Navigator.pop(sheetContext);
+                  _showRoomLogin(context, contact, RoomLoginDestination.management);
+                },
+              ),
+            ] else ...[
+              if(contact.pathLength > 0)
+              ListTile(
+                leading: const Icon(Icons.radar, color: Colors.green),
+                title: Text(context.l10n.contacts_chatTraceRoute),
+                onTap: () {
+                  showDialog(context: context, builder: (context) {
+                    return PathTraceDialog(
+                      title: context.l10n.contacts_pathTraceTo(contact.name),
+                      path: contact.traceRouteBytes ?? Uint8List(0),
+                    );
+                  });
+                }
+              ),
               ListTile(
                 leading: const Icon(Icons.chat),
-                title: const Text('Open Chat'),
+                title: Text(context.l10n.contacts_openChat),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pop(sheetContext);
                   _openChat(context, contact);
                 },
               ),
             ListTile(
               leading: const Icon(Icons.delete, color: Colors.red),
-              title: const Text('Delete Contact', style: TextStyle(color: Colors.red)),
+              title: Text(
+                context.l10n.contacts_deleteContact,
+                style: const TextStyle(color: Colors.red),
+              ),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pop(sheetContext);
                 _confirmDelete(context, connector, contact);
               },
             ),
+            ],
           ],
         ),
       ),
@@ -688,20 +859,23 @@ class _ContactsScreenState extends State<ContactsScreen>
   ) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Delete Contact'),
-        content: Text('Remove ${contact.name} from contacts?'),
+      builder: (dialogContext) => AlertDialog(
+        title: Text(context.l10n.contacts_deleteContact),
+        content: Text(context.l10n.contacts_removeConfirm(contact.name)),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            onPressed: () => Navigator.pop(dialogContext),
+            child: Text(context.l10n.common_cancel),
           ),
           TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pop(dialogContext);
               connector.removeContact(contact);
             },
-            child: const Text('Delete', style: TextStyle(color: Colors.red)),
+            child: Text(
+              context.l10n.common_delete,
+              style: const TextStyle(color: Colors.red),
+            ),
           ),
         ],
       ),
@@ -732,22 +906,33 @@ class _ContactTile extends StatelessWidget {
         child: _buildContactAvatar(contact),
       ),
       title: Text(contact.name),
-      subtitle: Text('${contact.typeLabel} • ${contact.pathLabel}'),
-      trailing: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          if (unreadCount > 0) ...[
-            UnreadBadge(count: unreadCount),
-            const SizedBox(height: 4),
-          ],
-          Text(
-            _formatLastSeen(lastSeen),
-            style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+      subtitle: Text(
+        '${contact.typeLabel} • ${contact.pathLabel} ${contact.shortPubKeyHex}',
+      ),
+      // Clamp text scaling in trailing section to prevent overflow while
+      // maintaining accessibility. Primary content (title/subtitle) scales normally.
+      trailing: MediaQuery(
+        data: MediaQuery.of(context).copyWith(
+          textScaler: TextScaler.linear(
+            MediaQuery.textScalerOf(context).scale(1.0).clamp(1.0, 1.3),
           ),
-          if (contact.hasLocation)
-            Icon(Icons.location_on, size: 14, color: Colors.grey[400]),
-        ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            if (unreadCount > 0) ...[
+              UnreadBadge(count: unreadCount),
+              const SizedBox(height: 4),
+            ],
+            Text(
+              _formatLastSeen(context, lastSeen),
+              style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+            ),
+            if (contact.hasLocation)
+              Icon(Icons.location_on, size: 14, color: Colors.grey[400]),
+          ],
+        ),
       ),
       onTap: onTap,
       onLongPress: onLongPress,
@@ -757,10 +942,7 @@ class _ContactTile extends StatelessWidget {
   Widget _buildContactAvatar(Contact contact) {
     final emoji = firstEmoji(contact.name);
     if (emoji != null) {
-      return Text(
-        emoji,
-        style: const TextStyle(fontSize: 18),
-      );
+      return Text(emoji, style: const TextStyle(fontSize: 18));
     }
     return Icon(_getTypeIcon(contact.type), color: Colors.white, size: 20);
   }
@@ -795,17 +977,25 @@ class _ContactTile extends StatelessWidget {
     }
   }
 
-  String _formatLastSeen(DateTime lastSeen) {
+  String _formatLastSeen(BuildContext context, DateTime lastSeen) {
     final now = DateTime.now();
     final diff = now.difference(lastSeen);
 
-    if (diff.isNegative || diff.inMinutes < 5) return 'Last seen now';
-    if (diff.inMinutes < 60) return 'Last seen ${diff.inMinutes} mins ago';
+    if (diff.isNegative || diff.inMinutes < 5) {
+      return context.l10n.contacts_lastSeenNow;
+    }
+    if (diff.inMinutes < 60) {
+      return context.l10n.contacts_lastSeenMinsAgo(diff.inMinutes);
+    }
     if (diff.inHours < 24) {
       final hours = diff.inHours;
-      return hours == 1 ? 'Last seen 1 hour ago' : 'Last seen $hours hours ago';
+      return hours == 1
+          ? context.l10n.contacts_lastSeenHourAgo
+          : context.l10n.contacts_lastSeenHoursAgo(hours);
     }
     final days = diff.inDays;
-    return days == 1 ? 'Last seen 1 day ago' : 'Last seen $days days ago';
+    return days == 1
+        ? context.l10n.contacts_lastSeenDayAgo
+        : context.l10n.contacts_lastSeenDaysAgo(days);
   }
 }

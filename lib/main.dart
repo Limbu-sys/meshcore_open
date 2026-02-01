@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import 'connector/meshcore_connector.dart';
@@ -25,7 +27,7 @@ void main() async {
   final storage = StorageService();
   final connector = MeshCoreConnector();
   final pathHistoryService = PathHistoryService(storage);
-  final retryService = MessageRetryService(storage);
+  final retryService = MessageRetryService();
   final appSettingsService = AppSettingsService();
   final bleDebugLogService = BleDebugLogService();
   final appDebugLogService = AppDebugLogService();
@@ -115,6 +117,14 @@ class MeshCoreApp extends StatelessWidget {
           return MaterialApp(
             title: 'MeshCore Open',
             debugShowCheckedModeBanner: false,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: AppLocalizations.supportedLocales,
+            locale: _localeFromSetting(settingsService.settings.languageOverride),
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
               useMaterial3: true,
@@ -143,5 +153,10 @@ class MeshCoreApp extends StatelessWidget {
       default:
         return ThemeMode.system;
     }
+  }
+
+  Locale? _localeFromSetting(String? languageCode) {
+    if (languageCode == null) return null;
+    return Locale(languageCode);
   }
 }

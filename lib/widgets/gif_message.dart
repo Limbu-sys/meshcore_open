@@ -6,16 +6,14 @@ class GifMessage extends StatefulWidget {
   final String url;
   final Color backgroundColor;
   final Color fallbackTextColor;
-  final double width;
-  final double height;
+  final double maxSize;
 
   const GifMessage({
     super.key,
     required this.url,
     required this.backgroundColor,
     required this.fallbackTextColor,
-    this.width = 200,
-    this.height = 140,
+    this.maxSize = 200,
   });
 
   @override
@@ -122,6 +120,28 @@ class _GifMessageState extends State<GifMessage> {
 
   @override
   Widget build(BuildContext context) {
+    // Calculate display size based on image aspect ratio
+    // Use 4:3 placeholder aspect ratio during loading to minimize layout shifts
+    double displayWidth = widget.maxSize;
+    double displayHeight = widget.maxSize * 0.75;
+
+    if (_image != null) {
+      final imageWidth = _image!.width.toDouble();
+      final imageHeight = _image!.height.toDouble();
+      final aspectRatio = imageWidth / imageHeight;
+
+      // Fit within maxSize, calculating dimensions from aspect ratio
+      if (aspectRatio >= 1) {
+        // Wider than tall: constrain by width
+        displayWidth = widget.maxSize;
+        displayHeight = displayWidth / aspectRatio;
+      } else {
+        // Taller than wide: constrain by height
+        displayHeight = widget.maxSize;
+        displayWidth = displayHeight * aspectRatio;
+      }
+    }
+
     Widget content;
 
     if (_error != null) {
@@ -151,33 +171,30 @@ class _GifMessageState extends State<GifMessage> {
     } else {
       content = RawImage(
         image: _image,
-        fit: BoxFit.cover,
-        width: widget.width,
-        height: widget.height,
+        fit: BoxFit.contain,
+        width: displayWidth,
+        height: displayHeight,
       );
     }
 
     return GestureDetector(
       onTap: _togglePause,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: Container(
-          color: widget.backgroundColor,
-          width: widget.width,
-          height: widget.height,
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              content,
-              if (_isPaused && _image != null)
-                Container(
-                  color: Colors.black.withValues(alpha: 0.2),
-                  child: const Center(
-                    child: Icon(Icons.pause, color: Colors.white70, size: 28),
-                  ),
+      child: Container(
+        color: widget.backgroundColor,
+        width: displayWidth,
+        height: displayHeight,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            content,
+            if (_isPaused && _image != null)
+              Container(
+                color: Colors.black.withValues(alpha: 0.2),
+                child: const Center(
+                  child: Icon(Icons.pause, color: Colors.white70, size: 28),
                 ),
-            ],
-          ),
+              ),
+          ],
         ),
       ),
     );

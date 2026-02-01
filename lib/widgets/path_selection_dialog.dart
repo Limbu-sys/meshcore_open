@@ -1,19 +1,20 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import '../l10n/l10n.dart';
 import '../models/contact.dart';
 
 class PathSelectionDialog extends StatefulWidget {
   final List<Contact> availableContacts;
-  final String? initialPath;
   final String title;
+  final String? initialPath;
   final String? currentPathLabel;
   final VoidCallback? onRefresh;
 
   const PathSelectionDialog({
     super.key,
     required this.availableContacts,
+    required this.title,
     this.initialPath,
-    this.title = 'Enter Custom Path',
     this.currentPathLabel,
     this.onRefresh,
   });
@@ -24,8 +25,8 @@ class PathSelectionDialog extends StatefulWidget {
   static Future<Uint8List?> show(
     BuildContext context, {
     required List<Contact> availableContacts,
+    String? title,
     String? initialPath,
-    String title = 'Enter Custom Path',
     String? currentPathLabel,
     VoidCallback? onRefresh,
   }) {
@@ -33,8 +34,8 @@ class PathSelectionDialog extends StatefulWidget {
       context: context,
       builder: (context) => PathSelectionDialog(
         availableContacts: availableContacts,
+        title: title ?? context.l10n.path_enterCustomPath,
         initialPath: initialPath,
-        title: title,
         currentPathLabel: currentPathLabel,
         onRefresh: onRefresh,
       ),
@@ -98,6 +99,7 @@ class _PathSelectionDialogState extends State<PathSelectionDialog> {
   }
 
   Future<void> _validateAndSubmit() async {
+    final l10n = context.l10n;
     final path = _controller.text.trim().toUpperCase();
     if (path.isEmpty) {
       if (mounted) Navigator.pop(context);
@@ -130,7 +132,7 @@ class _PathSelectionDialogState extends State<PathSelectionDialog> {
     if (invalidPrefixes.isNotEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Invalid hex prefixes: ${invalidPrefixes.join(", ")}'),
+          content: Text(l10n.path_invalidHexPrefixes(invalidPrefixes.join(", "))),
           duration: const Duration(seconds: 3),
           backgroundColor: Colors.red,
         ),
@@ -141,9 +143,9 @@ class _PathSelectionDialogState extends State<PathSelectionDialog> {
     // Check max path length (64 hops)
     if (pathBytesList.length > 64) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Path too long. Maximum 64 hops allowed.'),
-          duration: Duration(seconds: 3),
+        SnackBar(
+          content: Text(l10n.path_tooLong),
+          duration: const Duration(seconds: 3),
           backgroundColor: Colors.red,
         ),
       );
@@ -163,6 +165,7 @@ class _PathSelectionDialogState extends State<PathSelectionDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return AlertDialog(
       title: Text(widget.title),
       content: SingleChildScrollView(
@@ -175,16 +178,16 @@ class _PathSelectionDialogState extends State<PathSelectionDialog> {
               if (widget.currentPathLabel != null) ...[
                 Row(
                   children: [
-                    const Text(
-                      'Current path',
-                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                    Text(
+                      l10n.path_currentPathLabel,
+                      style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                     ),
                     const Spacer(),
                     if (widget.onRefresh != null)
                       TextButton.icon(
                         onPressed: widget.onRefresh,
                         icon: const Icon(Icons.refresh, size: 16),
-                        label: const Text('Reload'),
+                        label: Text(l10n.common_reload),
                       ),
                   ],
                 ),
@@ -194,23 +197,23 @@ class _PathSelectionDialogState extends State<PathSelectionDialog> {
                 ),
                 const SizedBox(height: 16),
               ],
-              const Text(
-                'Enter 2-character hex prefixes for each hop, separated by commas.',
-                style: TextStyle(fontSize: 12, color: Colors.grey),
+              Text(
+                l10n.path_hexPrefixInstructions,
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
               ),
               const SizedBox(height: 8),
-              const Text(
-                'Example: A1,F2,3C (each node uses first byte of its public key)',
-                style: TextStyle(fontSize: 11, color: Colors.grey),
+              Text(
+                l10n.path_hexPrefixExample,
+                style: const TextStyle(fontSize: 11, color: Colors.grey),
               ),
               const SizedBox(height: 16),
               TextField(
                 controller: _controller,
-                decoration: const InputDecoration(
-                  labelText: 'Path (hex prefixes)',
-                  hintText: 'A1,F2,3C',
-                  border: OutlineInputBorder(),
-                  helperText: 'Max 64 hops. Each prefix is 2 hex characters (1 byte)',
+                decoration: InputDecoration(
+                  labelText: l10n.path_labelHexPrefixes,
+                  hintText: l10n.path_hexPrefixExample,
+                  border: const OutlineInputBorder(),
+                  helperText: l10n.path_helperMaxHops,
                 ),
                 textCapitalization: TextCapitalization.characters,
                 maxLength: 191, // 64 hops * 2 chars + 63 commas
@@ -220,36 +223,36 @@ class _PathSelectionDialogState extends State<PathSelectionDialog> {
               const SizedBox(height: 8),
               Row(
                 children: [
-                  const Text(
-                    'Or select from contacts:',
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  Text(
+                    l10n.path_selectFromContacts,
+                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                   ),
                   const Spacer(),
                   if (_selectedContacts.isNotEmpty)
                     TextButton(
                       onPressed: _clearSelection,
-                      child: const Text('Clear'),
+                      child: Text(l10n.common_clear),
                     ),
                 ],
               ),
               const SizedBox(height: 8),
               if (_validContacts.isEmpty) ...[
-                const Center(
+                Center(
                   child: Padding(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Column(
                       children: [
-                        Icon(Icons.info_outline, size: 48, color: Colors.grey),
-                        SizedBox(height: 16),
+                        const Icon(Icons.info_outline, size: 48, color: Colors.grey),
+                        const SizedBox(height: 16),
                         Text(
-                          'No repeaters or room servers found.',
-                          style: TextStyle(fontSize: 14),
+                          l10n.path_noRepeatersFound,
+                          style: const TextStyle(fontSize: 14),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(
-                          'Custom paths require intermediate hops that can relay messages.',
-                          style: TextStyle(fontSize: 12, color: Colors.grey),
+                          l10n.path_customPathsRequire,
+                          style: const TextStyle(fontSize: 12, color: Colors.grey),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -300,11 +303,11 @@ class _PathSelectionDialogState extends State<PathSelectionDialog> {
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: const Text('Cancel'),
+          child: Text(l10n.common_cancel),
         ),
         TextButton(
           onPressed: _validateAndSubmit,
-          child: const Text('Set Path'),
+          child: Text(l10n.path_setPath),
         ),
       ],
     );

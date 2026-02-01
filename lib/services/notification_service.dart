@@ -130,7 +130,7 @@ class NotificationService {
     await _notifications.show(
       contactId?.hashCode ?? 0,
       'New message from $contactName',
-      message.length > 100 ? '${message.substring(0, 100)}...' : message,
+      message,
       notificationDetails,
       payload: 'message:$contactId',
     );
@@ -221,10 +221,10 @@ class NotificationService {
       macOS: macDetails,
     );
 
-    final preview = _truncateMessage(message, 30);
+    final preview = message.trim();
     final body = preview.isEmpty
         ? 'Received new message'
-        : 'Received new message: $preview';
+        : preview;
 
     await _notifications.show(
       channelIndex?.hashCode ?? DateTime.now().millisecondsSinceEpoch,
@@ -233,27 +233,6 @@ class NotificationService {
       notificationDetails,
       payload: 'channel:$channelIndex',
     );
-  }
-
-  String _truncateMessage(String message, int maxLength) {
-    final trimmed = message.trim();
-    if (trimmed.length <= maxLength) return trimmed;
-    return '${trimmed.substring(0, maxLength)}...';
-  }
-
-  /// Returns a privacy-safe identifier for debug logging.
-  /// - advert: shows device name (body contains contactName)
-  /// - message: shows "from: sender" (avoids logging message content)
-  /// - channelMessage: shows "in: channel" (avoids logging message content)
-  String _getNotificationIdentifier(_PendingNotification n) {
-    switch (n.type) {
-      case _NotificationType.advert:
-        return n.body;
-      case _NotificationType.message:
-        return 'from: ${n.title}';
-      case _NotificationType.channelMessage:
-        return 'in: ${n.title}';
-    }
   }
 
   void _onNotificationTapped(NotificationResponse response) {

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
+import '../l10n/l10n.dart';
 import '../models/contact.dart';
 import '../services/path_history_service.dart';
 import 'path_selection_dialog.dart';
@@ -12,13 +13,11 @@ class PathManagementDialog {
   static Future<void> show(
     BuildContext context, {
     required Contact contact,
-    String title = 'Path Management',
   }) {
     return showDialog<void>(
       context: context,
       builder: (context) => _PathManagementDialog(
         contact: contact,
-        title: title,
       ),
     );
   }
@@ -26,11 +25,9 @@ class PathManagementDialog {
 
 class _PathManagementDialog extends StatelessWidget {
   final Contact contact;
-  final String title;
 
   const _PathManagementDialog({
     required this.contact,
-    required this.title,
   });
 
   Contact _resolveContact(MeshCoreConnector connector) {
@@ -40,20 +37,22 @@ class _PathManagementDialog extends StatelessWidget {
     );
   }
 
-  String _formatRelativeTime(DateTime time) {
+  String _formatRelativeTime(BuildContext context, DateTime time) {
+    final l10n = context.l10n;
     final diff = DateTime.now().difference(time);
-    if (diff.inSeconds < 60) return 'Just now';
-    if (diff.inMinutes < 60) return '${diff.inMinutes}m ago';
-    if (diff.inHours < 24) return '${diff.inHours}h ago';
-    return '${diff.inDays}d ago';
+    if (diff.inSeconds < 60) return l10n.time_justNow;
+    if (diff.inMinutes < 60) return l10n.time_minutesAgo(diff.inMinutes);
+    if (diff.inHours < 24) return l10n.time_hoursAgo(diff.inHours);
+    return l10n.time_daysAgo(diff.inDays);
   }
 
   void _showFullPathDialog(BuildContext context, List<int> pathBytes) {
+    final l10n = context.l10n;
     if (pathBytes.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Path details not available yet. Try sending a message to refresh.'),
-          duration: Duration(seconds: 2),
+        SnackBar(
+          content: Text(l10n.chat_pathDetailsNotAvailable),
+          duration: const Duration(seconds: 2),
         ),
       );
       return;
@@ -66,12 +65,12 @@ class _PathManagementDialog extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Full Path'),
+        title: Text(l10n.chat_fullPath),
         content: SelectableText(formattedPath),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: Text(l10n.common_close),
           ),
         ],
       ),
@@ -83,6 +82,7 @@ class _PathManagementDialog extends StatelessWidget {
     MeshCoreConnector connector,
     Contact currentContact,
   ) async {
+    final l10n = context.l10n;
     if (currentContact.pathLength > 0 && currentContact.path.isEmpty && connector.isConnected) {
       connector.getContacts();
     }
@@ -96,7 +96,6 @@ class _PathManagementDialog extends StatelessWidget {
       context,
       availableContacts: availableContacts,
       initialPath: pathForInput.isEmpty ? null : pathForInput,
-      title: 'Set Custom Path',
       currentPathLabel: currentContact.pathLabel,
       onRefresh: connector.isConnected ? connector.getContacts : null,
     );
@@ -111,7 +110,7 @@ class _PathManagementDialog extends StatelessWidget {
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Path set: ${result.length} ${result.length == 1 ? "hop" : "hops"}'),
+          content: Text(l10n.chat_hopsCount(result.length)),
           duration: const Duration(seconds: 2),
         ),
       );
@@ -120,27 +119,28 @@ class _PathManagementDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Consumer2<MeshCoreConnector, PathHistoryService>(
       builder: (context, connector, pathService, _) {
         final currentContact = _resolveContact(connector);
         final paths = pathService.getRecentPaths(currentContact.publicKeyHex);
 
         return AlertDialog(
-          title: Text(title),
+          title: Text(l10n.chat_pathManagement),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Current path: ${currentContact.pathLabel}',
+                  l10n.path_currentPath(currentContact.pathLabel),
                   style: const TextStyle(fontSize: 12, color: Colors.grey),
                 ),
                 const SizedBox(height: 12),
                 if (paths.isNotEmpty) ...[
-                  const Text(
-                    'Recent ACK Paths (tap to use):',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                  Text(
+                    l10n.chat_recentAckPaths,
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                   ),
                   if (paths.length >= 100) ...[
                     const SizedBox(height: 8),
@@ -151,9 +151,9 @@ class _PathManagementDialog extends StatelessWidget {
                         color: Colors.amberAccent,
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Text(
-                        'Path history is full. Remove entries to add new ones.',
-                        style: TextStyle(fontSize: 12),
+                      child: Text(
+                        l10n.chat_pathHistoryFull,
+                        style: const TextStyle(fontSize: 12),
                       ),
                     ),
                   ],
@@ -172,11 +172,11 @@ class _PathManagementDialog extends StatelessWidget {
                           ),
                         ),
                         title: Text(
-                          '${path.hopCount} ${path.hopCount == 1 ? 'hop' : 'hops'}',
+                          l10n.chat_hopsCount(path.hopCount),
                           style: const TextStyle(fontSize: 14),
                         ),
                         subtitle: Text(
-                          '${(path.tripTimeMs / 1000).toStringAsFixed(2)}s • ${_formatRelativeTime(path.timestamp)} • ${path.successCount} successes',
+                          '${(path.tripTimeMs / 1000).toStringAsFixed(2)}s • ${_formatRelativeTime(context, path.timestamp)} • ${path.successCount} ${l10n.chat_successes}',
                           style: const TextStyle(fontSize: 11),
                         ),
                         trailing: Row(
@@ -184,7 +184,7 @@ class _PathManagementDialog extends StatelessWidget {
                           children: [
                             IconButton(
                               icon: const Icon(Icons.close, size: 16),
-                              tooltip: 'Remove path',
+                              tooltip: l10n.chat_removePath,
                               onPressed: () async {
                                 await pathService.removePathRecord(
                                   currentContact.publicKeyHex,
@@ -201,9 +201,9 @@ class _PathManagementDialog extends StatelessWidget {
                         onTap: () async {
                           if (path.pathBytes.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Path details not available yet. Try sending a message to refresh.'),
-                                duration: Duration(seconds: 2),
+                              SnackBar(
+                                content: Text(l10n.chat_pathDetailsNotAvailable),
+                                duration: const Duration(seconds: 2),
                               ),
                             );
                             return;
@@ -222,7 +222,7 @@ class _PathManagementDialog extends StatelessWidget {
                           Navigator.pop(context);
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text('Using ${path.hopCount} ${path.hopCount == 1 ? 'hop' : 'hops'} path'),
+                              content: Text(l10n.path_usingHopsPath(path.hopCount)),
                               duration: const Duration(seconds: 2),
                             ),
                           );
@@ -232,13 +232,13 @@ class _PathManagementDialog extends StatelessWidget {
                   }),
                   const Divider(),
                 ] else ...[
-                  const Text('No path history yet.\nSend a message to discover paths.'),
+                  Text(l10n.chat_noPathHistoryYet),
                   const Divider(),
                 ],
                 const SizedBox(height: 8),
-                const Text(
-                  'Path Actions:',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                Text(
+                  l10n.chat_pathActions,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                 ),
                 const SizedBox(height: 8),
                 ListTile(
@@ -248,8 +248,8 @@ class _PathManagementDialog extends StatelessWidget {
                     backgroundColor: Colors.purple,
                     child: Icon(Icons.edit_road, size: 16),
                   ),
-                  title: const Text('Set Custom Path', style: TextStyle(fontSize: 14)),
-                  subtitle: const Text('Manually specify routing path', style: TextStyle(fontSize: 11)),
+                  title: Text(l10n.chat_setCustomPath, style: const TextStyle(fontSize: 14)),
+                  subtitle: Text(l10n.chat_setCustomPathSubtitle, style: const TextStyle(fontSize: 11)),
                   onTap: () async {
                     await _setCustomPath(context, connector, currentContact);
                   },
@@ -261,15 +261,15 @@ class _PathManagementDialog extends StatelessWidget {
                     backgroundColor: Colors.orange,
                     child: Icon(Icons.clear_all, size: 16),
                   ),
-                  title: const Text('Clear Path', style: TextStyle(fontSize: 14)),
-                  subtitle: const Text('Force rediscovery on next send', style: TextStyle(fontSize: 11)),
+                  title: Text(l10n.chat_clearPath, style: const TextStyle(fontSize: 14)),
+                  subtitle: Text(l10n.chat_clearPathSubtitle, style: const TextStyle(fontSize: 11)),
                   onTap: () async {
                     await connector.clearContactPath(currentContact);
                     if (!context.mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Path cleared. Next message will rediscover route.'),
-                        duration: Duration(seconds: 2),
+                      SnackBar(
+                        content: Text(l10n.chat_pathCleared),
+                        duration: const Duration(seconds: 2),
                       ),
                     );
                     Navigator.pop(context);
@@ -282,15 +282,15 @@ class _PathManagementDialog extends StatelessWidget {
                     backgroundColor: Colors.blue,
                     child: Icon(Icons.waves, size: 16),
                   ),
-                  title: const Text('Force Flood Mode', style: TextStyle(fontSize: 14)),
-                  subtitle: const Text('Use routing toggle in app bar', style: TextStyle(fontSize: 11)),
+                  title: Text(l10n.chat_forceFloodMode, style: const TextStyle(fontSize: 14)),
+                  subtitle: Text(l10n.chat_floodModeSubtitle, style: const TextStyle(fontSize: 11)),
                   onTap: () async {
                     await connector.setPathOverride(currentContact, pathLen: -1);
                     if (!context.mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Flood mode enabled. Toggle back via routing icon in app bar.'),
-                        duration: Duration(seconds: 2),
+                      SnackBar(
+                        content: Text(l10n.chat_floodModeEnabled),
+                        duration: const Duration(seconds: 2),
                       ),
                     );
                     Navigator.pop(context);
@@ -302,7 +302,7 @@ class _PathManagementDialog extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Close'),
+              child: Text(l10n.common_close),
             ),
           ],
         );
