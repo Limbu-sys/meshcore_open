@@ -235,6 +235,21 @@ class NotificationService {
     );
   }
 
+  /// Returns a privacy-safe identifier for debug logging.
+  /// - advert: shows device name (body contains contactName)
+  /// - message: shows "from: sender" (avoids logging message content)
+  /// - channelMessage: shows "in: channel" (avoids logging message content)
+  String _getNotificationIdentifier(_PendingNotification n) {
+    switch (n.type) {
+      case _NotificationType.advert:
+        return n.body;
+      case _NotificationType.message:
+        return 'from: ${n.title}';
+      case _NotificationType.channelMessage:
+        return 'in: ${n.title}';
+    }
+  }
+  
   void _onNotificationTapped(NotificationResponse response) {
     final payload = response.payload;
     if (payload != null) {
