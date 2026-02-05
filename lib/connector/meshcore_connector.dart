@@ -401,7 +401,9 @@ class MeshCoreConnector extends ChangeNotifier {
         'Contact $contactKeyHex marked as read (was $previousCount unread)',
         tag: 'Unread',
       );
-      _unreadStore.saveContactUnreadCount(Map<String, int>.from(_contactUnreadCount));
+      _unreadStore.saveContactUnreadCount(
+        Map<String, int>.from(_contactUnreadCount),
+      );
       notifyListeners();
     }
   }
@@ -415,9 +417,11 @@ class MeshCoreConnector extends ChangeNotifier {
         'Channel ${channel.name.isNotEmpty ? channel.name : channelIndex} marked as read (was $previousCount unread)',
         tag: 'Unread',
       );
-      unawaited(_channelStore.saveChannels(
-        _channels.isNotEmpty ? _channels : _cachedChannels,
-      ));
+      unawaited(
+        _channelStore.saveChannels(
+          _channels.isNotEmpty ? _channels : _cachedChannels,
+        ),
+      );
       notifyListeners();
     }
   }
@@ -1343,7 +1347,9 @@ class MeshCoreConnector extends ChangeNotifier {
     _conversations.remove(contact.publicKeyHex);
     _loadedConversationKeys.remove(contact.publicKeyHex);
     _contactUnreadCount.remove(contact.publicKeyHex);
-    _unreadStore.saveContactUnreadCount(Map<String, int>.from(_contactUnreadCount));
+    _unreadStore.saveContactUnreadCount(
+      Map<String, int>.from(_contactUnreadCount),
+    );
     _messageStore.clearMessages(contact.publicKeyHex);
     notifyListeners();
   }
@@ -2655,7 +2661,10 @@ class MeshCoreConnector extends ChangeNotifier {
         );
   }
 
-  void _maybeIncrementChannelUnread(ChannelMessage message, {required bool isNew}) {
+  void _maybeIncrementChannelUnread(
+    ChannelMessage message, {
+    required bool isNew,
+  }) {
     if (!isNew || message.isOutgoing) {
       _appDebugLogService?.info(
         'Skip unread increment: isNew=$isNew, isOutgoing=${message.isOutgoing}',
@@ -2687,9 +2696,11 @@ class MeshCoreConnector extends ChangeNotifier {
         'Channel ${channel.name.isNotEmpty ? channel.name : channelIndex} unread count incremented to ${channel.unreadCount}',
         tag: 'Unread',
       );
-      unawaited(_channelStore.saveChannels(
-        _channels.isNotEmpty ? _channels : _cachedChannels,
-      ));
+      unawaited(
+        _channelStore.saveChannels(
+          _channels.isNotEmpty ? _channels : _cachedChannels,
+        ),
+      );
     } else {
       _appDebugLogService?.info(
         'Channel $channelIndex not found in _channels (${_channels.length}) or _cachedChannels (${_cachedChannels.length})',
@@ -2729,7 +2740,9 @@ class MeshCoreConnector extends ChangeNotifier {
       'Contact $contactKey unread count incremented to ${currentCount + 1}',
       tag: 'Unread',
     );
-    _unreadStore.saveContactUnreadCount(Map<String, int>.from(_contactUnreadCount));
+    _unreadStore.saveContactUnreadCount(
+      Map<String, int>.from(_contactUnreadCount),
+    );
   }
 
   void _addMessage(String pubKeyHex, Message message) {
