@@ -41,6 +41,8 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
   final Map<String, GlobalKey> _messageKeys = {};
   bool _isLoadingOlder = false;
 
+  MeshCoreConnector? _connector;
+
   @override
   void initState() {
     super.initState();
@@ -48,7 +50,8 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
     _scrollController.onScrollNearTop = _loadOlderMessages;
     SchedulerBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      context.read<MeshCoreConnector>().setActiveChannel(widget.channel.index);
+      _connector = context.read<MeshCoreConnector>();
+      _connector?.setActiveChannel(widget.channel.index);
     });
   }
 
@@ -72,7 +75,7 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
 
   @override
   void dispose() {
-    context.read<MeshCoreConnector>().setActiveChannel(null);
+    _connector?.setActiveChannel(null);
     _textFieldFocusNode.removeListener(_onTextFieldFocusChange);
     _textFieldFocusNode.dispose();
     _textController.dispose();

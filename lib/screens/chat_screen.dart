@@ -44,6 +44,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final _scrollController = ChatScrollController();
   final _textFieldFocusNode = FocusNode();
   bool _isLoadingOlder = false;
+  MeshCoreConnector? _connector;
 
   @override
   void initState() {
@@ -52,9 +53,8 @@ class _ChatScreenState extends State<ChatScreen> {
     _scrollController.onScrollNearTop = _loadOlderMessages;
     SchedulerBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      context.read<MeshCoreConnector>().setActiveContact(
-        widget.contact.publicKeyHex,
-      );
+      _connector = context.read<MeshCoreConnector>();
+      _connector?.setActiveContact(widget.contact.publicKeyHex);
     });
   }
 
@@ -78,7 +78,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   void dispose() {
-    context.read<MeshCoreConnector>().setActiveContact(null);
+    _connector?.setActiveContact(null);
     _textFieldFocusNode.removeListener(_onTextFieldFocusChange);
     _textFieldFocusNode.dispose();
     _textController.dispose();

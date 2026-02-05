@@ -60,6 +60,7 @@ void main() async {
 
   await connector.loadContactCache();
   await connector.loadChannelSettings();
+  await connector.loadCachedChannels();
 
   // Load persisted channel messages
   await connector.loadAllChannelMessages();

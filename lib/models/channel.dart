@@ -9,8 +9,14 @@ class Channel {
   final int index;
   final String name;
   final Uint8List psk; // 16 bytes
+  int unreadCount;
 
-  Channel({required this.index, required this.name, required this.psk});
+  Channel({
+    required this.index,
+    required this.name,
+    required this.psk,
+    this.unreadCount = 0,
+  });
 
   String get pskHex => _bytesToHex(psk);
 

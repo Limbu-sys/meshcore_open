@@ -5,27 +5,23 @@ import 'prefs_manager.dart';
 
 /// Storage for unread message tracking with debounced writes to reduce I/O.
 class UnreadStore {
-  static const String _contactLastReadKey = 'contact_last_read';
-  static const String _channelLastReadKey = 'channel_last_read';
+  static const String _contactUnreadCountKey = 'contact_unread_count';
 
   // Debounce timers to batch rapid writes
-  Timer? _contactSaveTimer;
-  Timer? _channelSaveTimer;
+  Timer? _contactUnreadSaveTimer;
   static const Duration _saveDebounceDuration = Duration(milliseconds: 500);
 
   // Pending write data
-  Map<String, int>? _pendingContactLastRead;
-  Map<int, int>? _pendingChannelLastRead;
+  Map<String, int>? _pendingContactUnreadCount;
 
   /// Dispose timers when no longer needed
   void dispose() {
-    _contactSaveTimer?.cancel();
-    _channelSaveTimer?.cancel();
+    _contactUnreadSaveTimer?.cancel();
   }
 
-  Future<Map<String, int>> loadContactLastRead() async {
+  Future<Map<String, int>> loadContactUnreadCount() async {
     final prefs = PrefsManager.instance;
-    final jsonStr = prefs.getString(_contactLastReadKey);
+    final jsonStr = prefs.getString(_contactUnreadCountKey);
     if (jsonStr == null) return {};
 
     try {
@@ -36,75 +32,30 @@ class UnreadStore {
     }
   }
 
-  /// Save contact last read timestamps with debouncing.
-  /// Writes are delayed by 500ms and batched to reduce I/O operations.
-  void saveContactLastRead(Map<String, int> lastReadMs) {
-    _pendingContactLastRead = lastReadMs;
+  void saveContactUnreadCount(Map<String, int> counts) {
+    _pendingContactUnreadCount = counts;
 
-    // Cancel existing timer
-    _contactSaveTimer?.cancel();
+    _contactUnreadSaveTimer?.cancel();
 
-    // Schedule new write
-    _contactSaveTimer = Timer(_saveDebounceDuration, () async {
-      if (_pendingContactLastRead != null) {
-        await _flushContactLastRead();
+    _contactUnreadSaveTimer = Timer(_saveDebounceDuration, () async {
+      if (_pendingContactUnreadCount != null) {
+        await _flushContactUnreadCount();
       }
     });
   }
 
-  Future<Map<int, int>> loadChannelLastRead() async {
-    final prefs = PrefsManager.instance;
-    final jsonStr = prefs.getString(_channelLastReadKey);
-    if (jsonStr == null) return {};
-
-    try {
-      final json = jsonDecode(jsonStr) as Map<String, dynamic>;
-      return json.map((key, value) => MapEntry(int.parse(key), value as int));
-    } catch (_) {
-      return {};
-    }
-  }
-
-  /// Save channel last read timestamps with debouncing.
-  /// Writes are delayed by 500ms and batched to reduce I/O operations.
-  void saveChannelLastRead(Map<int, int> lastReadMs) {
-    _pendingChannelLastRead = lastReadMs;
-
-    _channelSaveTimer?.cancel();
-
-    _channelSaveTimer = Timer(_saveDebounceDuration, () async {
-      if (_pendingChannelLastRead != null) {
-        await _flushChannelLastRead();
-      }
-    });
-  }
-
-  Future<void> _flushContactLastRead() async {
-    if (_pendingContactLastRead == null) return;
+  Future<void> _flushContactUnreadCount() async {
+    if (_pendingContactUnreadCount == null) return;
 
     final prefs = PrefsManager.instance;
-    final jsonStr = jsonEncode(_pendingContactLastRead);
-    await prefs.setString(_contactLastReadKey, jsonStr);
-    _pendingContactLastRead = null;
-  }
-
-  Future<void> _flushChannelLastRead() async {
-    if (_pendingChannelLastRead == null) return;
-
-    final prefs = PrefsManager.instance;
-    final asString = _pendingChannelLastRead!.map(
-      (key, value) => MapEntry(key.toString(), value),
-    );
-    final jsonStr = jsonEncode(asString);
-    await prefs.setString(_channelLastReadKey, jsonStr);
-    _pendingChannelLastRead = null;
+    final jsonStr = jsonEncode(_pendingContactUnreadCount);
+    await prefs.setString(_contactUnreadCountKey, jsonStr);
+    _pendingContactUnreadCount = null;
   }
 
   /// Immediately flush pending writes (call before app termination or disposal)
   Future<void> flush() async {
-    _contactSaveTimer?.cancel();
-    _channelSaveTimer?.cancel();
-
-    await Future.wait([_flushContactLastRead(), _flushChannelLastRead()]);
+    _contactUnreadSaveTimer?.cancel();
+    await _flushContactUnreadCount();
   }
 }
