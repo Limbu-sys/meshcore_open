@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import '../l10n/l10n.dart';
 
 class QuickSwitchBar extends StatelessWidget {
   final int selectedIndex;
@@ -59,18 +60,18 @@ class QuickSwitchBar extends StatelessWidget {
                 height: 60,
                 selectedIndex: selectedIndex,
                 onDestinationSelected: onDestinationSelected,
-                destinations: const [
+                destinations: [
                   NavigationDestination(
-                    icon: Icon(Icons.people_outline),
-                    label: 'Contacts',
+                    icon: const Icon(Icons.people_outline),
+                    label: context.l10n.nav_contacts,
                   ),
                   NavigationDestination(
-                    icon: Icon(Icons.tag),
-                    label: 'Channels',
+                    icon: const Icon(Icons.tag),
+                    label: context.l10n.nav_channels,
                   ),
                   NavigationDestination(
-                    icon: Icon(Icons.map_outlined),
-                    label: 'Map',
+                    icon: const Icon(Icons.map_outlined),
+                    label: context.l10n.nav_map,
                   ),
                 ],
               ),

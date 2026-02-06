@@ -26,7 +26,9 @@ class RepeaterCommandService {
     int retries = maxRetries,
   }) async {
     final repeaterKey = repeater.publicKeyHex;
-    final hasPending = _pendingCommands.keys.any((id) => id.startsWith(repeaterKey));
+    final hasPending = _pendingCommands.keys.any(
+      (id) => id.startsWith(repeaterKey),
+    );
     if (hasPending) {
       throw Exception('Another command is still awaiting a response.');
     }
@@ -70,11 +72,6 @@ class RepeaterCommandService {
       _pendingByPrefix[prefix] = commandId;
       final framedCommand = '$prefix$command';
       final pathLengthValue = selection.useFlood ? -1 : selection.hopCount;
-      final timeoutMs = _connector.calculateTimeout(
-        pathLength: pathLengthValue,
-        messageBytes: framedCommand.length,
-      );
-      final timeoutSeconds = (timeoutMs / 1000).ceil();
       final timestampSeconds = DateTime.now().millisecondsSinceEpoch ~/ 1000;
       _connector.trackRepeaterAck(
         contact: repeater,
@@ -89,6 +86,14 @@ class RepeaterCommandService {
         attempt: attempt,
         timestampSeconds: timestampSeconds,
       );
+      final responseBytes = frame.length > maxFrameSize
+          ? frame.length
+          : maxFrameSize;
+      final timeoutMs = _connector.calculateTimeout(
+        pathLength: pathLengthValue,
+        messageBytes: responseBytes,
+      );
+      final timeoutSeconds = (timeoutMs / 1000).ceil();
       await _connector.sendFrame(frame);
       _commandTimeouts[commandId]?.cancel();
       _commandTimeouts[commandId] = Timer(
@@ -96,7 +101,9 @@ class RepeaterCommandService {
         () {
           final completer = _pendingCommands[commandId];
           if (completer != null && !completer.isCompleted) {
-            completer.completeError('Command timeout after $timeoutSeconds seconds');
+            completer.completeError(
+              'Command timeout after $timeoutSeconds seconds',
+            );
             _cleanup(commandId);
           }
         },

@@ -7,7 +7,10 @@ import 'prefs_manager.dart';
 class MessageStore {
   static const String _keyPrefix = 'messages_';
 
-  Future<void> saveMessages(String contactKeyHex, List<Message> messages) async {
+  Future<void> saveMessages(
+    String contactKeyHex,
+    List<Message> messages,
+  ) async {
     final prefs = PrefsManager.instance;
     final key = '$_keyPrefix$contactKeyHex';
     final jsonList = messages.map(_messageToJson).toList();
@@ -45,20 +48,27 @@ class MessageStore {
       'messageId': msg.messageId,
       'retryCount': msg.retryCount,
       'estimatedTimeoutMs': msg.estimatedTimeoutMs,
-      'expectedAckHash': msg.expectedAckHash != null ? base64Encode(msg.expectedAckHash!) : null,
+      'expectedAckHash': msg.expectedAckHash != null
+          ? base64Encode(msg.expectedAckHash!)
+          : null,
       'sentAt': msg.sentAt?.millisecondsSinceEpoch,
       'deliveredAt': msg.deliveredAt?.millisecondsSinceEpoch,
       'tripTimeMs': msg.tripTimeMs,
       'pathLength': msg.pathLength,
-      'pathBytes': msg.pathBytes.isNotEmpty ? base64Encode(msg.pathBytes) : null,
+      'pathBytes': msg.pathBytes.isNotEmpty
+          ? base64Encode(msg.pathBytes)
+          : null,
       'reactions': msg.reactions,
+      'fourByteRoomContactKey': base64Encode(msg.fourByteRoomContactKey),
     };
   }
 
   Message _messageFromJson(Map<String, dynamic> json) {
     final rawText = json['text'] as String;
     final isCli = json['isCli'] as bool? ?? false;
-    final decodedText = isCli ? rawText : (Smaz.tryDecodePrefixed(rawText) ?? rawText);
+    final decodedText = isCli
+        ? rawText
+        : (Smaz.tryDecodePrefixed(rawText) ?? rawText);
     return Message(
       senderKey: Uint8List.fromList(base64Decode(json['senderKey'] as String)),
       text: decodedText,
@@ -83,9 +93,16 @@ class MessageStore {
       pathBytes: json['pathBytes'] != null
           ? Uint8List.fromList(base64Decode(json['pathBytes'] as String))
           : Uint8List(0),
-      reactions: (json['reactions'] as Map<String, dynamic>?)?.map(
-        (key, value) => MapEntry(key, value as int),
-      ) ?? {},
+      reactions:
+          (json['reactions'] as Map<String, dynamic>?)?.map(
+            (key, value) => MapEntry(key, value as int),
+          ) ??
+          {},
+      fourByteRoomContactKey: json['fourByteRoomContactKey'] != null
+          ? Uint8List.fromList(
+              base64Decode(json['fourByteRoomContactKey'] as String),
+            )
+          : null,
     );
   }
 }

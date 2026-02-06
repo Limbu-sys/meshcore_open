@@ -42,20 +42,21 @@ class MapTileCacheService {
   late final TileProvider tileProvider;
 
   MapTileCacheService({BaseCacheManager? cacheManager})
-      : cacheManager = cacheManager ??
-            CacheManager(
-              Config(
-                cacheKey,
-                stalePeriod: const Duration(days: 365),
-                maxNrOfCacheObjects: 200000,
-              ),
-            ) {
+    : cacheManager =
+          cacheManager ??
+          CacheManager(
+            Config(
+              cacheKey,
+              stalePeriod: const Duration(days: 365),
+              maxNrOfCacheObjects: 200000,
+            ),
+          ) {
     tileProvider = CachedNetworkTileProvider(cacheManager: this.cacheManager);
   }
 
   Map<String, String> get defaultHeaders => {
-        'User-Agent': 'flutter_map ($userAgentPackageName)',
-      };
+    'User-Agent': 'flutter_map ($userAgentPackageName)',
+  };
 
   Future<void> clearCache() async {
     await cacheManager.emptyCache();
@@ -96,17 +97,21 @@ class MapTileCacheService {
       final future = cacheManager
           .downloadFile(url, key: url, authHeaders: authHeaders)
           .then((_) {
-        completed += 1;
-      }).catchError((_) {
-        completed += 1;
-        failed += 1;
-      }).whenComplete(() {
-        onProgress?.call(MapTileCacheProgress(
-          completed: completed,
-          total: total,
-          failed: failed,
-        ));
-      });
+            completed += 1;
+          })
+          .catchError((_) {
+            completed += 1;
+            failed += 1;
+          })
+          .whenComplete(() {
+            onProgress?.call(
+              MapTileCacheProgress(
+                completed: completed,
+                total: total,
+                failed: failed,
+              ),
+            );
+          });
 
       pending.add(future);
       if (pending.length >= safeConcurrency) {
@@ -189,11 +194,9 @@ class MapTileCacheService {
   int _latToTileY(double lat, int zoom, int maxIndex) {
     final n = 1 << zoom;
     final rad = lat * math.pi / 180.0;
-    final value = ((1 -
-                math.log(math.tan(rad) + 1 / math.cos(rad)) / math.pi) /
-            2 *
-            n)
-        .floor();
+    final value =
+        ((1 - math.log(math.tan(rad) + 1 / math.cos(rad)) / math.pi) / 2 * n)
+            .floor();
     return value.clamp(0, maxIndex);
   }
 

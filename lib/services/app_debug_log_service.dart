@@ -1,10 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-enum AppDebugLogLevel {
-  info,
-  warning,
-  error,
-}
+enum AppDebugLogLevel { info, warning, error }
 
 class AppDebugLogEntry {
   final DateTime timestamp;
@@ -51,7 +47,11 @@ class AppDebugLogService extends ChangeNotifier {
     notifyListeners();
   }
 
-  void log(String message, {String tag = 'App', AppDebugLogLevel level = AppDebugLogLevel.info}) {
+  void log(
+    String message, {
+    String tag = 'App',
+    AppDebugLogLevel level = AppDebugLogLevel.info,
+  }) {
     if (!_enabled) return;
 
     _entries.add(

@@ -61,44 +61,44 @@ class RadioSettings {
 
   // Preset configurations
   static RadioSettings get preset915MHz => RadioSettings(
-        frequencyMHz: 915.0,
-        bandwidth: LoRaBandwidth.bw125,
-        spreadingFactor: LoRaSpreadingFactor.sf7,
-        codingRate: LoRaCodingRate.cr4_5,
-        txPowerDbm: 20,
-      );
+    frequencyMHz: 915.0,
+    bandwidth: LoRaBandwidth.bw125,
+    spreadingFactor: LoRaSpreadingFactor.sf7,
+    codingRate: LoRaCodingRate.cr4_5,
+    txPowerDbm: 20,
+  );
 
   static RadioSettings get preset868MHz => RadioSettings(
-        frequencyMHz: 868.0,
-        bandwidth: LoRaBandwidth.bw125,
-        spreadingFactor: LoRaSpreadingFactor.sf7,
-        codingRate: LoRaCodingRate.cr4_5,
-        txPowerDbm: 14,
-      );
+    frequencyMHz: 868.0,
+    bandwidth: LoRaBandwidth.bw125,
+    spreadingFactor: LoRaSpreadingFactor.sf7,
+    codingRate: LoRaCodingRate.cr4_5,
+    txPowerDbm: 14,
+  );
 
   static RadioSettings get preset433MHz => RadioSettings(
-        frequencyMHz: 433.0,
-        bandwidth: LoRaBandwidth.bw125,
-        spreadingFactor: LoRaSpreadingFactor.sf7,
-        codingRate: LoRaCodingRate.cr4_5,
-        txPowerDbm: 20,
-      );
+    frequencyMHz: 433.0,
+    bandwidth: LoRaBandwidth.bw125,
+    spreadingFactor: LoRaSpreadingFactor.sf7,
+    codingRate: LoRaCodingRate.cr4_5,
+    txPowerDbm: 20,
+  );
 
   static RadioSettings get presetLongRange => RadioSettings(
-        frequencyMHz: 915.0,
-        bandwidth: LoRaBandwidth.bw125,
-        spreadingFactor: LoRaSpreadingFactor.sf12,
-        codingRate: LoRaCodingRate.cr4_8,
-        txPowerDbm: 20,
-      );
+    frequencyMHz: 915.0,
+    bandwidth: LoRaBandwidth.bw125,
+    spreadingFactor: LoRaSpreadingFactor.sf12,
+    codingRate: LoRaCodingRate.cr4_8,
+    txPowerDbm: 20,
+  );
 
   static RadioSettings get presetFastSpeed => RadioSettings(
-        frequencyMHz: 915.0,
-        bandwidth: LoRaBandwidth.bw500,
-        spreadingFactor: LoRaSpreadingFactor.sf7,
-        codingRate: LoRaCodingRate.cr4_5,
-        txPowerDbm: 20,
-      );
+    frequencyMHz: 915.0,
+    bandwidth: LoRaBandwidth.bw500,
+    spreadingFactor: LoRaSpreadingFactor.sf7,
+    codingRate: LoRaCodingRate.cr4_5,
+    txPowerDbm: 20,
+  );
 
   int get frequencyHz => (frequencyMHz * 1000).round();
   int get bandwidthHz => bandwidth.hz;

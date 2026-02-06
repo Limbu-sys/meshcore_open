@@ -8,7 +8,9 @@ class StorageService {
   static const String _repeaterPasswordsKey = 'repeater_passwords';
 
   Future<void> savePathHistory(
-      String contactPubKeyHex, ContactPathHistory history) async {
+    String contactPubKeyHex,
+    ContactPathHistory history,
+  ) async {
     final prefs = PrefsManager.instance;
     final key = '$_pathHistoryPrefix$contactPubKeyHex';
     final jsonStr = jsonEncode(history.toJson());
@@ -39,8 +41,9 @@ class StorageService {
   Future<void> clearAllPathHistories() async {
     final prefs = PrefsManager.instance;
     final keys = prefs.getKeys();
-    final pathHistoryKeys =
-        keys.where((key) => key.startsWith(_pathHistoryPrefix));
+    final pathHistoryKeys = keys.where(
+      (key) => key.startsWith(_pathHistoryPrefix),
+    );
 
     for (final key in pathHistoryKeys) {
       await prefs.remove(key);
@@ -74,7 +77,9 @@ class StorageService {
 
   /// Save a repeater password by public key hex
   Future<void> saveRepeaterPassword(
-      String repeaterPubKeyHex, String password) async {
+    String repeaterPubKeyHex,
+    String password,
+  ) async {
     final prefs = PrefsManager.instance;
     final passwords = await loadRepeaterPasswords();
     passwords[repeaterPubKeyHex] = password;

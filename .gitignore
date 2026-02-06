@@ -70,6 +70,7 @@ secrets.dart
 **/android/local.properties
 **/android/.externalNativeBuild/
 *.jks
+key.properties
 keystore.properties
 
 # Generated files

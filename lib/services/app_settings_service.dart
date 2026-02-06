@@ -82,10 +82,7 @@ class AppSettingsService extends ChangeNotifier {
     final safeMin = minZoom <= maxZoom ? minZoom : maxZoom;
     final safeMax = minZoom <= maxZoom ? maxZoom : minZoom;
     await updateSettings(
-      _settings.copyWith(
-        mapCacheMinZoom: safeMin,
-        mapCacheMaxZoom: safeMax,
-      ),
+      _settings.copyWith(mapCacheMinZoom: safeMin, mapCacheMaxZoom: safeMax),
     );
   }
 
@@ -113,15 +110,26 @@ class AppSettingsService extends ChangeNotifier {
     await updateSettings(_settings.copyWith(themeMode: value));
   }
 
+  Future<void> setLanguageOverride(String? value) async {
+    await updateSettings(_settings.copyWith(languageOverride: value));
+  }
+
   Future<void> setAppDebugLogEnabled(bool value) async {
     await updateSettings(_settings.copyWith(appDebugLogEnabled: value));
     // Update the global logger
     appLogger.setEnabled(value);
   }
 
-  Future<void> setBatteryChemistryForDevice(String deviceId, String chemistry) async {
-    final updated = Map<String, String>.from(_settings.batteryChemistryByDeviceId);
+  Future<void> setBatteryChemistryForDevice(
+    String deviceId,
+    String chemistry,
+  ) async {
+    final updated = Map<String, String>.from(
+      _settings.batteryChemistryByDeviceId,
+    );
     updated[deviceId] = chemistry;
-    await updateSettings(_settings.copyWith(batteryChemistryByDeviceId: updated));
+    await updateSettings(
+      _settings.copyWith(batteryChemistryByDeviceId: updated),
+    );
   }
 }

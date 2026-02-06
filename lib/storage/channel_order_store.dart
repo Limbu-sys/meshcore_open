@@ -16,7 +16,10 @@ class ChannelOrderStore {
     try {
       final decoded = jsonDecode(raw);
       if (decoded is List) {
-        return decoded.map((value) => value is int ? value : int.tryParse('$value')).whereType<int>().toList();
+        return decoded
+            .map((value) => value is int ? value : int.tryParse('$value'))
+            .whereType<int>()
+            .toList();
       }
     } catch (_) {
       // fall through to legacy parse

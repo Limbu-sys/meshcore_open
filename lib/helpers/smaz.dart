@@ -262,8 +262,9 @@ class Smaz {
     ".com",
   ];
 
-  static final List<Uint8List> _rcbBytes =
-      _rcb.map((s) => Uint8List.fromList(ascii.encode(s))).toList(growable: false);
+  static final List<Uint8List> _rcbBytes = _rcb
+      .map((s) => Uint8List.fromList(ascii.encode(s)))
+      .toList(growable: false);
   static final int _maxEntryLen = _rcbBytes.fold(0, (maxLen, entry) {
     return entry.length > maxLen ? entry.length : maxLen;
   });
@@ -358,24 +359,32 @@ class Smaz {
       final code = input[index];
       if (code == _verbatimSingle) {
         if (index + 1 >= input.length) {
-          throw const FormatException('Invalid SMAZ stream: truncated verbatim byte.');
+          throw const FormatException(
+            'Invalid SMAZ stream: truncated verbatim byte.',
+          );
         }
         out.addByte(input[index + 1]);
         index += 2;
       } else if (code == _verbatimRun) {
         if (index + 1 >= input.length) {
-          throw const FormatException('Invalid SMAZ stream: truncated verbatim length.');
+          throw const FormatException(
+            'Invalid SMAZ stream: truncated verbatim length.',
+          );
         }
         final len = input[index + 1] + 1;
         final end = index + 2 + len;
         if (end > input.length) {
-          throw const FormatException('Invalid SMAZ stream: truncated verbatim run.');
+          throw const FormatException(
+            'Invalid SMAZ stream: truncated verbatim run.',
+          );
         }
         out.add(input.sublist(index + 2, end));
         index = end;
       } else {
         if (code >= _rcbBytes.length) {
-          throw const FormatException('Invalid SMAZ stream: code out of range.');
+          throw const FormatException(
+            'Invalid SMAZ stream: code out of range.',
+          );
         }
         out.add(_rcbBytes[code]);
         index += 1;

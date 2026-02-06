@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
+import '../l10n/l10n.dart';
 import '../services/ble_debug_log_service.dart';
 import '../connector/meshcore_protocol.dart';
 
@@ -23,33 +24,43 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
         final entries = logService.entries.reversed.toList();
         final rawEntries = logService.rawLogRxEntries.reversed.toList();
         final showingFrames = _view == _BleLogView.frames;
-        final hasEntries = showingFrames ? entries.isNotEmpty : rawEntries.isNotEmpty;
+        final hasEntries = showingFrames
+            ? entries.isNotEmpty
+            : rawEntries.isNotEmpty;
         return Scaffold(
           appBar: AppBar(
-            title: const Text('BLE Debug Log'),
+            title: Text(context.l10n.debugLog_bleTitle),
             actions: [
               IconButton(
-                tooltip: 'Copy log',
+                tooltip: context.l10n.debugLog_copyLog,
                 icon: const Icon(Icons.copy),
                 onPressed: hasEntries
                     ? () async {
                         final text = showingFrames
                             ? entries
-                                .map((entry) => '${entry.description}\n${entry.hexPreview}\n')
-                                .join('\n')
+                                  .map(
+                                    (entry) =>
+                                        '${entry.description}\n${entry.hexPreview}\n',
+                                  )
+                                  .join('\n')
                             : rawEntries
-                                .map((entry) => 'RX RAW_LOG_RX_DATA\n${entry.hexPreview}\n')
-                                .join('\n');
+                                  .map(
+                                    (entry) =>
+                                        'RX RAW_LOG_RX_DATA\n${entry.hexPreview}\n',
+                                  )
+                                  .join('\n');
                         await Clipboard.setData(ClipboardData(text: text));
                         if (!context.mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('BLE log copied')),
+                          SnackBar(
+                            content: Text(context.l10n.debugLog_bleCopied),
+                          ),
                         );
                       }
                     : null,
               ),
               IconButton(
-                tooltip: 'Clear log',
+                tooltip: context.l10n.debugLog_clearLog,
                 icon: const Icon(Icons.delete_outline),
                 onPressed: hasEntries
                     ? () {
@@ -66,9 +77,15 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
                   child: SegmentedButton<_BleLogView>(
-                    segments: const [
-                      ButtonSegment(value: _BleLogView.frames, label: Text('Frames')),
-                      ButtonSegment(value: _BleLogView.rawLogRx, label: Text('Raw Log-RX')),
+                    segments: [
+                      ButtonSegment(
+                        value: _BleLogView.frames,
+                        label: Text(context.l10n.debugLog_frames),
+                      ),
+                      ButtonSegment(
+                        value: _BleLogView.rawLogRx,
+                        label: Text(context.l10n.debugLog_rawLogRx),
+                      ),
                     ],
                     selected: {_view},
                     onSelectionChanged: (selection) {
@@ -80,7 +97,9 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
                 Expanded(
                   child: hasEntries
                       ? ListView.separated(
-                          itemCount: showingFrames ? entries.length : rawEntries.length,
+                          itemCount: showingFrames
+                              ? entries.length
+                              : rawEntries.length,
                           separatorBuilder: (_, __) => const Divider(height: 1),
                           itemBuilder: (context, index) {
                             if (showingFrames) {
@@ -93,7 +112,9 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
                                 subtitle: Text('${entry.hexPreview}\n$time'),
                                 isThreeLine: true,
                                 leading: Icon(
-                                  entry.outgoing ? Icons.upload : Icons.download,
+                                  entry.outgoing
+                                      ? Icons.upload
+                                      : Icons.download,
                                   size: 18,
                                 ),
                               );
@@ -113,8 +134,8 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
                             );
                           },
                         )
-                      : const Center(
-                          child: Text('No BLE activity yet'),
+                      : Center(
+                          child: Text(context.l10n.debugLog_noBleActivity),
                         ),
                 ),
               ],
@@ -130,13 +151,11 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(info.title),
-        content: SingleChildScrollView(
-          child: SelectableText(info.rawHex),
-        ),
+        content: SingleChildScrollView(child: SelectableText(info.rawHex)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
+            child: Text(context.l10n.common_close),
           ),
         ],
       ),
@@ -194,11 +213,18 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
     }
     final payload = raw.sublist(index);
 
-    final title = 'RX ${_payloadTypeLabel(payloadType)} • ${_routeLabel(routeType)} • v$payloadVer';
+    final title =
+        'RX ${_payloadTypeLabel(payloadType)} • ${_routeLabel(routeType)} • v$payloadVer';
     final summary = _decodePayloadSummary(payloadType, payload);
-    final pathSummary = pathLen > 0 ? 'Path=${_bytesToHex(pathBytes)}' : 'Path=none';
+    final pathSummary = pathLen > 0
+        ? 'Path=${_bytesToHex(pathBytes)}'
+        : 'Path=none';
     final detail = '$summary • $pathSummary • len=${raw.length}';
-    return _RawPacketInfo(title: title, summary: detail, rawHex: _bytesToHex(raw));
+    return _RawPacketInfo(
+      title: title,
+      summary: detail,
+      rawHex: _bytesToHex(raw),
+    );
   }
 
   String _decodePayloadSummary(int payloadType, Uint8List payload) {
@@ -244,7 +270,10 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
       return 'ADVERT (short)';
     }
     var offset = 0;
-    final pubKey = _bytesToHex(payload.sublist(offset, offset + 32), spaced: false);
+    final pubKey = _bytesToHex(
+      payload.sublist(offset, offset + 32),
+      spaced: false,
+    );
     offset += 32;
     final timestamp = readUint32LE(payload, offset);
     offset += 4;

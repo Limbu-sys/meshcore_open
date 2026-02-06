@@ -59,15 +59,18 @@ class ChannelMessage {
     this.replyToSenderName,
     this.replyToText,
     Map<String, int>? reactions,
-  })  : messageId = messageId ?? '${timestamp.millisecondsSinceEpoch}_${senderName.hashCode}_${text.hashCode}',
-        reactions = reactions ?? {},
-        pathBytes = pathBytes ?? Uint8List(0),
-        pathVariants = _mergePathVariants(
-          pathBytes ?? Uint8List(0),
-          pathVariants,
-        );
+  }) : messageId =
+           messageId ??
+           '${timestamp.millisecondsSinceEpoch}_${senderName.hashCode}_${text.hashCode}',
+       reactions = reactions ?? {},
+       pathBytes = pathBytes ?? Uint8List(0),
+       pathVariants = _mergePathVariants(
+         pathBytes ?? Uint8List(0),
+         pathVariants,
+       );
 
-  String? get senderKeyHex => senderKey != null ? pubKeyToHex(senderKey!) : null;
+  String? get senderKeyHex =>
+      senderKey != null ? pubKeyToHex(senderKey!) : null;
 
   ChannelMessage copyWith({
     ChannelMessageStatus? status,
@@ -125,8 +128,10 @@ class ChannelMessage {
       final hasPathBytesFlag = (data[2] & 0x01) != 0;
       final canFitPath = pathLen > 0 && data.length >= cursor + pathLen + 5;
       final hasValidTxtType =
-          cursor < data.length && (data[cursor] == txtTypePlain || data[cursor] == txtTypeCliData);
-      if ((hasPathBytesFlag || (canFitPath && !hasValidTxtType)) && canFitPath) {
+          cursor < data.length &&
+          (data[cursor] == txtTypePlain || data[cursor] == txtTypeCliData);
+      if ((hasPathBytesFlag || (canFitPath && !hasValidTxtType)) &&
+          canFitPath) {
         pathBytes = Uint8List.fromList(data.sublist(cursor, cursor + pathLen));
         cursor += pathLen;
       }
@@ -162,7 +167,8 @@ class ChannelMessage {
       final potentialSender = text.substring(0, colonIndex);
       if (!RegExp(r'[:\[\]]').hasMatch(potentialSender)) {
         senderName = potentialSender;
-        final offset = (colonIndex + 1 < text.length && text[colonIndex + 1] == ' ')
+        final offset =
+            (colonIndex + 1 < text.length && text[colonIndex + 1] == ' ')
             ? colonIndex + 2
             : colonIndex + 1;
         actualText = text.substring(offset);
@@ -184,7 +190,11 @@ class ChannelMessage {
     );
   }
 
-  static ChannelMessage outgoing(String text, String senderName, int channelIndex) {
+  static ChannelMessage outgoing(
+    String text,
+    String senderName,
+    int channelIndex,
+  ) {
     return ChannelMessage(
       senderKey: null,
       senderName: senderName,
@@ -249,8 +259,5 @@ class ReplyInfo {
   final String mentionedNode;
   final String actualMessage;
 
-  ReplyInfo({
-    required this.mentionedNode,
-    required this.actualMessage,
-  });
+  ReplyInfo({required this.mentionedNode, required this.actualMessage});
 }

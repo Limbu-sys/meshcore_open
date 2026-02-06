@@ -2,14 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import '../l10n/l10n.dart';
 
 class GifPicker extends StatefulWidget {
   final Function(String gifId) onGifSelected;
 
-  const GifPicker({
-    super.key,
-    required this.onGifSelected,
-  });
+  const GifPicker({super.key, required this.onGifSelected});
 
   @override
   State<GifPicker> createState() => _GifPickerState();
@@ -44,11 +42,13 @@ class _GifPickerState extends State<GifPicker> {
     });
 
     try {
-      final response = await http.get(
-        Uri.parse(
-          'https://api.giphy.com/v1/gifs/trending?api_key=$_giphyApiKey&limit=25&rating=g',
-        ),
-      ).timeout(const Duration(seconds: 10));
+      final response = await http
+          .get(
+            Uri.parse(
+              'https://api.giphy.com/v1/gifs/trending?api_key=$_giphyApiKey&limit=25&rating=g',
+            ),
+          )
+          .timeout(const Duration(seconds: 10));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
@@ -57,14 +57,16 @@ class _GifPickerState extends State<GifPicker> {
           _isLoading = false;
         });
       } else {
+        if (!mounted) return;
         setState(() {
-          _error = 'Failed to load GIFs';
+          _error = context.l10n.gifPicker_failedLoad;
           _isLoading = false;
         });
       }
     } catch (e) {
+      if (!mounted) return;
       setState(() {
-        _error = 'No internet connection';
+        _error = context.l10n.gifPicker_noInternet;
         _isLoading = false;
       });
     }
@@ -82,11 +84,13 @@ class _GifPickerState extends State<GifPicker> {
     });
 
     try {
-      final response = await http.get(
-        Uri.parse(
-          'https://api.giphy.com/v1/gifs/search?api_key=$_giphyApiKey&q=${Uri.encodeComponent(query)}&limit=25&rating=g',
-        ),
-      ).timeout(const Duration(seconds: 10));
+      final response = await http
+          .get(
+            Uri.parse(
+              'https://api.giphy.com/v1/gifs/search?api_key=$_giphyApiKey&q=${Uri.encodeComponent(query)}&limit=25&rating=g',
+            ),
+          )
+          .timeout(const Duration(seconds: 10));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
@@ -95,14 +99,16 @@ class _GifPickerState extends State<GifPicker> {
           _isLoading = false;
         });
       } else {
+        if (!mounted) return;
         setState(() {
-          _error = 'Failed to search GIFs';
+          _error = context.l10n.gifPicker_failedSearch;
           _isLoading = false;
         });
       }
     } catch (e) {
+      if (!mounted) return;
       setState(() {
-        _error = 'No internet connection';
+        _error = context.l10n.gifPicker_noInternet;
         _isLoading = false;
       });
     }
@@ -120,9 +126,12 @@ class _GifPickerState extends State<GifPicker> {
             children: [
               const Icon(Icons.gif_box, size: 28),
               const SizedBox(width: 8),
-              const Text(
-                'Choose a GIF',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              Text(
+                context.l10n.gifPicker_title,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const Spacer(),
               IconButton(
@@ -137,7 +146,7 @@ class _GifPickerState extends State<GifPicker> {
           TextField(
             controller: _searchController,
             decoration: InputDecoration(
-              hintText: 'Search GIFs...',
+              hintText: context.l10n.gifPicker_searchHint,
               prefixIcon: const Icon(Icons.search),
               suffixIcon: _searchController.text.isNotEmpty
                   ? IconButton(
@@ -165,18 +174,13 @@ class _GifPickerState extends State<GifPicker> {
           const SizedBox(height: 16),
 
           // GIF grid
-          Expanded(
-            child: _buildContent(),
-          ),
+          Expanded(child: _buildContent()),
 
           // Powered by Giphy attribution
           const SizedBox(height: 8),
           Text(
-            'Powered by GIPHY',
-            style: TextStyle(
-              fontSize: 11,
-              color: Colors.grey[600],
-            ),
+            context.l10n.gifPicker_poweredBy,
+            style: TextStyle(fontSize: 11, color: Colors.grey[600]),
           ),
         ],
       ),
@@ -185,9 +189,7 @@ class _GifPickerState extends State<GifPicker> {
 
   Widget _buildContent() {
     if (_isLoading) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
+      return const Center(child: CircularProgressIndicator());
     }
 
     if (_error != null) {
@@ -205,7 +207,7 @@ class _GifPickerState extends State<GifPicker> {
             ElevatedButton.icon(
               onPressed: _loadTrendingGifs,
               icon: const Icon(Icons.refresh),
-              label: const Text('Retry'),
+              label: Text(context.l10n.common_retry),
             ),
           ],
         ),
@@ -220,7 +222,7 @@ class _GifPickerState extends State<GifPicker> {
             Icon(Icons.search_off, size: 64, color: Colors.grey[400]),
             const SizedBox(height: 16),
             Text(
-              'No GIFs found',
+              context.l10n.gifPicker_noGifsFound,
               style: TextStyle(fontSize: 16, color: Colors.grey[600]),
             ),
           ],
@@ -239,7 +241,8 @@ class _GifPickerState extends State<GifPicker> {
       itemBuilder: (context, index) {
         final gif = _gifs[index];
         final gifId = gif['id'] as String;
-        final previewUrl = gif['images']?['fixed_height_small']?['url'] as String?;
+        final previewUrl =
+            gif['images']?['fixed_height_small']?['url'] as String?;
 
         return GestureDetector(
           onTap: () {
@@ -260,20 +263,16 @@ class _GifPickerState extends State<GifPicker> {
                           child: CircularProgressIndicator(
                             value: loadingProgress.expectedTotalBytes != null
                                 ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes!
+                                      loadingProgress.expectedTotalBytes!
                                 : null,
                           ),
                         );
                       },
                       errorBuilder: (context, error, stackTrace) {
-                        return const Center(
-                          child: Icon(Icons.error_outline),
-                        );
+                        return const Center(child: Icon(Icons.error_outline));
                       },
                     )
-                  : const Center(
-                      child: Icon(Icons.gif_box),
-                    ),
+                  : const Center(child: Icon(Icons.gif_box)),
             ),
           ),
         );

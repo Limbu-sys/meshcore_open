@@ -44,7 +44,11 @@ class AppLogger {
   }
 
   /// Log a message with custom level
-  void log(String message, {String tag = 'App', AppDebugLogLevel level = AppDebugLogLevel.info}) {
+  void log(
+    String message, {
+    String tag = 'App',
+    AppDebugLogLevel level = AppDebugLogLevel.info,
+  }) {
     if (_enabled && _service != null) {
       _service!.log(message, tag: tag, level: level);
     }

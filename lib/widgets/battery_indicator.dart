@@ -29,10 +29,7 @@ BatteryUi batteryUiForPercent(int? percent) {
 class BatteryIndicator extends StatefulWidget {
   final MeshCoreConnector connector;
 
-  const BatteryIndicator({
-    super.key,
-    required this.connector,
-  });
+  const BatteryIndicator({super.key, required this.connector});
 
   @override
   State<BatteryIndicator> createState() => _BatteryIndicatorState();

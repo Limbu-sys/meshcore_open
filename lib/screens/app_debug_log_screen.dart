@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+import '../l10n/l10n.dart';
 import '../services/app_debug_log_service.dart';
 
 class AppDebugLogScreen extends StatelessWidget {
@@ -16,28 +17,30 @@ class AppDebugLogScreen extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
-            title: const Text('App Debug Log'),
+            title: Text(context.l10n.debugLog_appTitle),
             centerTitle: true,
             actions: [
               IconButton(
-                tooltip: 'Copy log',
+                tooltip: context.l10n.debugLog_copyLog,
                 icon: const Icon(Icons.copy),
                 onPressed: hasEntries
                     ? () async {
                         final text = entries
-                            .map((entry) =>
-                                '[${entry.formattedTime}] [${entry.levelLabel}] [${entry.tag}] ${entry.message}')
+                            .map(
+                              (entry) =>
+                                  '[${entry.formattedTime}] [${entry.levelLabel}] [${entry.tag}] ${entry.message}',
+                            )
                             .join('\n');
                         await Clipboard.setData(ClipboardData(text: text));
                         if (!context.mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Debug log copied')),
+                          SnackBar(content: Text(context.l10n.debugLog_copied)),
                         );
                       }
                     : null,
               ),
               IconButton(
-                tooltip: 'Clear log',
+                tooltip: context.l10n.debugLog_clearLog,
                 icon: const Icon(Icons.delete_outline),
                 onPressed: hasEntries
                     ? () {
@@ -60,11 +63,17 @@ class AppDebugLogScreen extends StatelessWidget {
                         leading: _buildLevelIcon(entry.level),
                         title: Text(
                           '[${entry.tag}] ${entry.message}',
-                          style: const TextStyle(fontSize: 12, fontFamily: 'monospace'),
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontFamily: 'monospace',
+                          ),
                         ),
                         subtitle: Text(
                           entry.formattedTime,
-                          style: TextStyle(fontSize: 10, color: Colors.grey[600]),
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Colors.grey[600],
+                          ),
                         ),
                       );
                     },
@@ -73,16 +82,26 @@ class AppDebugLogScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.bug_report_outlined, size: 64, color: Colors.grey[400]),
+                        Icon(
+                          Icons.bug_report_outlined,
+                          size: 64,
+                          color: Colors.grey[400],
+                        ),
                         const SizedBox(height: 16),
                         Text(
-                          'No debug logs yet',
-                          style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                          context.l10n.debugLog_noEntries,
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          'Enable app debug logging in settings',
-                          style: TextStyle(fontSize: 12, color: Colors.grey[500]),
+                          context.l10n.debugLog_enableInSettings,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey[500],
+                          ),
                         ),
                       ],
                     ),
@@ -98,7 +117,11 @@ class AppDebugLogScreen extends StatelessWidget {
       case AppDebugLogLevel.info:
         return const Icon(Icons.info_outline, size: 18, color: Colors.blue);
       case AppDebugLogLevel.warning:
-        return const Icon(Icons.warning_amber_outlined, size: 18, color: Colors.orange);
+        return const Icon(
+          Icons.warning_amber_outlined,
+          size: 18,
+          color: Colors.orange,
+        );
       case AppDebugLogLevel.error:
         return const Icon(Icons.error_outline, size: 18, color: Colors.red);
     }

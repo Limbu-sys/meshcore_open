@@ -61,7 +61,10 @@ class PathHistoryService extends ChangeNotifier {
     int? tripTimeMs,
   }) {
     if (selection.useFlood) {
-      final stats = _floodStats.putIfAbsent(contactPubKeyHex, () => _FloodStats());
+      final stats = _floodStats.putIfAbsent(
+        contactPubKeyHex,
+        () => _FloodStats(),
+      );
       if (success) {
         stats.successCount += 1;
         if (tripTimeMs != null) stats.lastTripTimeMs = tripTimeMs;
@@ -88,23 +91,28 @@ class PathHistoryService extends ChangeNotifier {
   }
 
   PathSelection getNextAutoPathSelection(String contactPubKeyHex) {
-    final ranked = _getRankedPaths(contactPubKeyHex)
-        .take(_autoRotationTopCount)
-        .toList();
+    final ranked = _getRankedPaths(
+      contactPubKeyHex,
+    ).take(_autoRotationTopCount).toList();
     if (ranked.isEmpty) {
       return const PathSelection(pathBytes: [], hopCount: -1, useFlood: true);
     }
 
     _trackAccess(contactPubKeyHex);
 
-    final selections = ranked
-        .map((path) => PathSelection(
-              pathBytes: path.pathBytes,
-              hopCount: path.hopCount,
-              useFlood: false,
-            ))
-        .toList()
-      ..add(const PathSelection(pathBytes: [], hopCount: -1, useFlood: true));
+    final selections =
+        ranked
+            .map(
+              (path) => PathSelection(
+                pathBytes: path.pathBytes,
+                hopCount: path.hopCount,
+                useFlood: false,
+              ),
+            )
+            .toList()
+          ..add(
+            const PathSelection(pathBytes: [], hopCount: -1, useFlood: true),
+          );
 
     final currentIndex = _autoRotationIndex[contactPubKeyHex] ?? 0;
     final selection = selections[currentIndex % selections.length];
@@ -241,7 +249,8 @@ class PathHistoryService extends ChangeNotifier {
   }
 
   Future<ContactPathHistory?> _loadHistoryFromStorage(
-      String contactPubKeyHex) async {
+    String contactPubKeyHex,
+  ) async {
     return await _storage.loadPathHistory(contactPubKeyHex);
   }
 
@@ -308,8 +317,10 @@ class PathHistoryService extends ChangeNotifier {
       ..removeWhere((p) => p.pathBytes.isEmpty);
 
     ranked.sort((a, b) {
-      final aRate = (a.successCount + 1) / (a.successCount + a.failureCount + 2);
-      final bRate = (b.successCount + 1) / (b.successCount + b.failureCount + 2);
+      final aRate =
+          (a.successCount + 1) / (a.successCount + a.failureCount + 2);
+      final bRate =
+          (b.successCount + 1) / (b.successCount + b.failureCount + 2);
       if (aRate != bRate) return bRate.compareTo(aRate);
       if (a.successCount != b.successCount) {
         return b.successCount.compareTo(a.successCount);
@@ -329,7 +340,10 @@ class PathHistoryService extends ChangeNotifier {
   }
 
   void _updateFloodStats(String contactPubKeyHex) {
-    final stats = _floodStats.putIfAbsent(contactPubKeyHex, () => _FloodStats());
+    final stats = _floodStats.putIfAbsent(
+      contactPubKeyHex,
+      () => _FloodStats(),
+    );
     stats.lastUsed = DateTime.now();
   }
 

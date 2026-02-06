@@ -14,7 +14,9 @@ class ContactStore {
 
     try {
       final jsonList = jsonDecode(jsonStr) as List<dynamic>;
-      return jsonList.map((entry) => _fromJson(entry as Map<String, dynamic>)).toList();
+      return jsonList
+          .map((entry) => _fromJson(entry as Map<String, dynamic>))
+          .toList();
     } catch (_) {
       return [];
     }
@@ -57,12 +59,16 @@ class ContactStore {
           : Uint8List(0),
       pathOverride: json['pathOverride'] as int?,
       pathOverrideBytes: json['pathOverrideBytes'] != null
-          ? Uint8List.fromList(base64Decode(json['pathOverrideBytes'] as String))
+          ? Uint8List.fromList(
+              base64Decode(json['pathOverrideBytes'] as String),
+            )
           : null,
       latitude: (json['latitude'] as num?)?.toDouble(),
       longitude: (json['longitude'] as num?)?.toDouble(),
       lastSeen: DateTime.fromMillisecondsSinceEpoch(lastSeenMs),
-      lastMessageAt: DateTime.fromMillisecondsSinceEpoch(lastMessageMs ?? lastSeenMs),
+      lastMessageAt: DateTime.fromMillisecondsSinceEpoch(
+        lastMessageMs ?? lastSeenMs,
+      ),
     );
   }
 }

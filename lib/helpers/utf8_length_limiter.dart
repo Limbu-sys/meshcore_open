@@ -8,7 +8,10 @@ class Utf8LengthLimitingTextInputFormatter extends TextInputFormatter {
   const Utf8LengthLimitingTextInputFormatter(this.maxBytes);
 
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     if (maxBytes <= 0) return oldValue;
     final bytes = utf8.encode(newValue.text);
     if (bytes.length <= maxBytes) return newValue;

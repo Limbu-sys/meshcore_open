@@ -8,7 +8,10 @@ class ChannelMessageStore {
   static const String _keyPrefix = 'channel_messages_';
 
   /// Save messages for a specific channel
-  Future<void> saveChannelMessages(int channelIndex, List<ChannelMessage> messages) async {
+  Future<void> saveChannelMessages(
+    int channelIndex,
+    List<ChannelMessage> messages,
+  ) async {
     final prefs = PrefsManager.instance;
     final key = '$_keyPrefix$channelIndex';
 
@@ -96,7 +99,8 @@ class ChannelMessageStore {
       pathVariants: (json['pathVariants'] as List<dynamic>?)
           ?.map((entry) => Uint8List.fromList(base64Decode(entry as String)))
           .toList(),
-      repeats: (json['repeats'] as List<dynamic>?)
+      repeats:
+          (json['repeats'] as List<dynamic>?)
               ?.map((entry) => _repeatFromJson(entry as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -105,15 +109,19 @@ class ChannelMessageStore {
       replyToMessageId: json['replyToMessageId'] as String?,
       replyToSenderName: json['replyToSenderName'] as String?,
       replyToText: json['replyToText'] as String?,
-      reactions: (json['reactions'] as Map<String, dynamic>?)?.map(
-        (key, value) => MapEntry(key, value as int),
-      ) ?? {},
+      reactions:
+          (json['reactions'] as Map<String, dynamic>?)?.map(
+            (key, value) => MapEntry(key, value as int),
+          ) ??
+          {},
     );
   }
 
   Map<String, dynamic> _repeatToJson(Repeat repeat) {
     return {
-      'repeaterKey': repeat.repeaterKey != null ? base64Encode(repeat.repeaterKey!) : null,
+      'repeaterKey': repeat.repeaterKey != null
+          ? base64Encode(repeat.repeaterKey!)
+          : null,
       'repeaterName': repeat.repeaterName,
       'tripTimeMs': repeat.tripTimeMs,
       'path': repeat.path?.map((bytes) => base64Encode(bytes)).toList() ?? [],

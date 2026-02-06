@@ -18,6 +18,7 @@ class AppSettings {
   final bool notifyOnNewAdvert;
   final bool autoRouteRotationEnabled;
   final String themeMode;
+  final String? languageOverride; // null = system default
   final bool appDebugLogEnabled;
   final Map<String, String> batteryChemistryByDeviceId;
 
@@ -39,6 +40,7 @@ class AppSettings {
     this.notifyOnNewAdvert = true,
     this.autoRouteRotationEnabled = false,
     this.themeMode = 'system',
+    this.languageOverride,
     this.appDebugLogEnabled = false,
     Map<String, String>? batteryChemistryByDeviceId,
   }) : batteryChemistryByDeviceId = batteryChemistryByDeviceId ?? {};
@@ -62,6 +64,7 @@ class AppSettings {
       'notify_on_new_advert': notifyOnNewAdvert,
       'auto_route_rotation_enabled': autoRouteRotationEnabled,
       'theme_mode': themeMode,
+      'language_override': languageOverride,
       'app_debug_log_enabled': appDebugLogEnabled,
       'battery_chemistry_by_device_id': batteryChemistryByDeviceId,
     };
@@ -73,13 +76,14 @@ class AppSettings {
       mapShowRepeaters: json['map_show_repeaters'] as bool? ?? true,
       mapShowChatNodes: json['map_show_chat_nodes'] as bool? ?? true,
       mapShowOtherNodes: json['map_show_other_nodes'] as bool? ?? true,
-      mapTimeFilterHours: (json['map_time_filter_hours'] as num?)?.toDouble() ?? 0,
+      mapTimeFilterHours:
+          (json['map_time_filter_hours'] as num?)?.toDouble() ?? 0,
       mapKeyPrefixEnabled: json['map_key_prefix_enabled'] as bool? ?? false,
       mapKeyPrefix: json['map_key_prefix'] as String? ?? '',
       mapShowMarkers: json['map_show_markers'] as bool? ?? true,
       mapCacheBounds: (json['map_cache_bounds'] as Map?)?.map(
-            (key, value) => MapEntry(key.toString(), (value as num).toDouble()),
-          ),
+        (key, value) => MapEntry(key.toString(), (value as num).toDouble()),
+      ),
       mapCacheMinZoom: json['map_cache_min_zoom'] as int? ?? 10,
       mapCacheMaxZoom: json['map_cache_max_zoom'] as int? ?? 15,
       notificationsEnabled: json['notifications_enabled'] as bool? ?? true,
@@ -87,10 +91,13 @@ class AppSettings {
       notifyOnNewChannelMessage:
           json['notify_on_new_channel_message'] as bool? ?? true,
       notifyOnNewAdvert: json['notify_on_new_advert'] as bool? ?? true,
-      autoRouteRotationEnabled: json['auto_route_rotation_enabled'] as bool? ?? false,
+      autoRouteRotationEnabled:
+          json['auto_route_rotation_enabled'] as bool? ?? false,
       themeMode: json['theme_mode'] as String? ?? 'system',
+      languageOverride: json['language_override'] as String?,
       appDebugLogEnabled: json['app_debug_log_enabled'] as bool? ?? false,
-      batteryChemistryByDeviceId: (json['battery_chemistry_by_device_id'] as Map?)?.map(
+      batteryChemistryByDeviceId:
+          (json['battery_chemistry_by_device_id'] as Map?)?.map(
             (key, value) => MapEntry(key.toString(), value.toString()),
           ) ??
           {},
@@ -115,6 +122,7 @@ class AppSettings {
     bool? notifyOnNewAdvert,
     bool? autoRouteRotationEnabled,
     String? themeMode,
+    Object? languageOverride = _unset,
     bool? appDebugLogEnabled,
     Map<String, String>? batteryChemistryByDeviceId,
   }) {
@@ -127,8 +135,9 @@ class AppSettings {
       mapKeyPrefixEnabled: mapKeyPrefixEnabled ?? this.mapKeyPrefixEnabled,
       mapKeyPrefix: mapKeyPrefix ?? this.mapKeyPrefix,
       mapShowMarkers: mapShowMarkers ?? this.mapShowMarkers,
-      mapCacheBounds:
-          mapCacheBounds == _unset ? this.mapCacheBounds : mapCacheBounds as Map<String, double>?,
+      mapCacheBounds: mapCacheBounds == _unset
+          ? this.mapCacheBounds
+          : mapCacheBounds as Map<String, double>?,
       mapCacheMinZoom: mapCacheMinZoom ?? this.mapCacheMinZoom,
       mapCacheMaxZoom: mapCacheMaxZoom ?? this.mapCacheMaxZoom,
       notificationsEnabled: notificationsEnabled ?? this.notificationsEnabled,
@@ -136,10 +145,15 @@ class AppSettings {
       notifyOnNewChannelMessage:
           notifyOnNewChannelMessage ?? this.notifyOnNewChannelMessage,
       notifyOnNewAdvert: notifyOnNewAdvert ?? this.notifyOnNewAdvert,
-      autoRouteRotationEnabled: autoRouteRotationEnabled ?? this.autoRouteRotationEnabled,
+      autoRouteRotationEnabled:
+          autoRouteRotationEnabled ?? this.autoRouteRotationEnabled,
       themeMode: themeMode ?? this.themeMode,
+      languageOverride: languageOverride == _unset
+          ? this.languageOverride
+          : languageOverride as String?,
       appDebugLogEnabled: appDebugLogEnabled ?? this.appDebugLogEnabled,
-      batteryChemistryByDeviceId: batteryChemistryByDeviceId ?? this.batteryChemistryByDeviceId,
+      batteryChemistryByDeviceId:
+          batteryChemistryByDeviceId ?? this.batteryChemistryByDeviceId,
     );
   }
 }

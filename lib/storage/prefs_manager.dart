@@ -21,7 +21,8 @@ class PrefsManager {
   static SharedPreferences get instance {
     if (_instance == null) {
       throw StateError(
-          'PrefsManager not initialized. Call PrefsManager.initialize() in main() before use.');
+        'PrefsManager not initialized. Call PrefsManager.initialize() in main() before use.',
+      );
     }
     return _instance!;
   }

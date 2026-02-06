@@ -38,7 +38,8 @@ class PathRecord {
       tripTimeMs: json['trip_time_ms'] as int,
       timestamp: DateTime.parse(json['timestamp'] as String),
       wasFloodDiscovery: json['was_flood'] as bool,
-      pathBytes: (json['path_bytes'] as List?)?.map((b) => b as int).toList() ?? [],
+      pathBytes:
+          (json['path_bytes'] as List?)?.map((b) => b as int).toList() ?? [],
       successCount: json['success_count'] as int? ?? 0,
       failureCount: json['failure_count'] as int? ?? 0,
     );
@@ -65,14 +66,15 @@ class ContactPathHistory {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'recent_paths': recentPaths.map((p) => p.toJson()).toList(),
-    };
+    return {'recent_paths': recentPaths.map((p) => p.toJson()).toList()};
   }
 
   factory ContactPathHistory.fromJson(
-      String contactPubKeyHex, Map<String, dynamic> json) {
-    final pathsList = (json['recent_paths'] as List?)
+    String contactPubKeyHex,
+    Map<String, dynamic> json,
+  ) {
+    final pathsList =
+        (json['recent_paths'] as List?)
             ?.map((p) => PathRecord.fromJson(p as Map<String, dynamic>))
             .toList() ??
         [];

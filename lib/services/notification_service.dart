@@ -6,7 +6,8 @@ class NotificationService {
   factory NotificationService() => _instance;
   NotificationService._internal();
 
-  final FlutterLocalNotificationsPlugin _notifications = FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin _notifications =
+      FlutterLocalNotificationsPlugin();
   bool _isInitialized = false;
 
   // Rate limiting to prevent notification storms
@@ -30,7 +31,9 @@ class NotificationService {
   Future<void> initialize() async {
     if (_isInitialized) return;
 
-    const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+    const androidSettings = AndroidInitializationSettings(
+      '@mipmap/ic_launcher',
+    );
     const iosSettings = DarwinInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
@@ -65,16 +68,20 @@ class NotificationService {
     }
 
     // Request Android 13+ notification permission
-    final androidPlugin = _notifications.resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>();
+    final androidPlugin = _notifications
+        .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin
+        >();
     if (androidPlugin != null) {
       final granted = await androidPlugin.requestNotificationsPermission();
       return granted ?? false;
     }
 
     // iOS permissions are requested during initialization
-    final iosPlugin = _notifications.resolvePlatformSpecificImplementation<
-        IOSFlutterLocalNotificationsPlugin>();
+    final iosPlugin = _notifications
+        .resolvePlatformSpecificImplementation<
+          IOSFlutterLocalNotificationsPlugin
+        >();
     if (iosPlugin != null) {
       final granted = await iosPlugin.requestPermissions(
         alert: true,
@@ -129,8 +136,8 @@ class NotificationService {
 
     await _notifications.show(
       contactId?.hashCode ?? 0,
-      'New message from $contactName',
-      message.length > 100 ? '${message.substring(0, 100)}...' : message,
+      contactName,
+      message,
       notificationDetails,
       payload: 'message:$contactId',
     );
@@ -221,10 +228,8 @@ class NotificationService {
       macOS: macDetails,
     );
 
-    final preview = _truncateMessage(message, 30);
-    final body = preview.isEmpty
-        ? 'Received new message'
-        : 'Received new message: $preview';
+    final preview = message.trim();
+    final body = preview.isEmpty ? 'Received new message' : preview;
 
     await _notifications.show(
       channelIndex?.hashCode ?? DateTime.now().millisecondsSinceEpoch,
@@ -233,12 +238,6 @@ class NotificationService {
       notificationDetails,
       payload: 'channel:$channelIndex',
     );
-  }
-
-  String _truncateMessage(String message, int maxLength) {
-    final trimmed = message.trim();
-    if (trimmed.length <= maxLength) return trimmed;
-    return '${trimmed.substring(0, maxLength)}...';
   }
 
   /// Returns a privacy-safe identifier for debug logging.
@@ -255,6 +254,7 @@ class NotificationService {
         return 'in: ${n.title}';
     }
   }
+
 
   void _onNotificationTapped(NotificationResponse response) {
     final payload = response.payload;

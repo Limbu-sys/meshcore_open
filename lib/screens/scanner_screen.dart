@@ -3,18 +3,56 @@ import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
+import '../l10n/l10n.dart';
 import '../widgets/device_tile.dart';
 import 'contacts_screen.dart';
 
 /// Screen for scanning and connecting to MeshCore devices
-class ScannerScreen extends StatelessWidget {
+class ScannerScreen extends StatefulWidget {
   const ScannerScreen({super.key});
+
+  @override
+  State<ScannerScreen> createState() => _ScannerScreenState();
+}
+
+class _ScannerScreenState extends State<ScannerScreen> {
+  bool _changedNavigation = false;
+  late final VoidCallback _connectionListener;
+
+  @override
+  void initState() {
+    super.initState();
+    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+
+    _connectionListener = () {
+      if (connector.state == MeshCoreConnectionState.disconnected) {
+        _changedNavigation = false;
+      } else if (connector.state == MeshCoreConnectionState.connected &&
+          !_changedNavigation) {
+        _changedNavigation = true;
+        if (mounted) {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const ContactsScreen()),
+          );
+        }
+      }
+    };
+
+    connector.addListener(_connectionListener);
+  }
+
+  @override
+  void dispose() {
+    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    connector.removeListener(_connectionListener);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MeshCore Open'),
+        title: Text(context.l10n.scanner_title),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -28,9 +66,7 @@ class ScannerScreen extends StatelessWidget {
                 _buildStatusBar(context, connector),
 
                 // Device list
-                Expanded(
-                  child: _buildDeviceList(context, connector),
-                ),
+                Expanded(child: _buildDeviceList(context, connector)),
               ],
             );
           },
@@ -38,8 +74,9 @@ class ScannerScreen extends StatelessWidget {
       ),
       floatingActionButton: Consumer<MeshCoreConnector>(
         builder: (context, connector, child) {
-          final isScanning = connector.state == MeshCoreConnectionState.scanning;
-          
+          final isScanning =
+              connector.state == MeshCoreConnectionState.scanning;
+
           return FloatingActionButton.extended(
             onPressed: () {
               if (isScanning) {
@@ -48,7 +85,7 @@ class ScannerScreen extends StatelessWidget {
                 connector.startScan();
               }
             },
-            icon: isScanning 
+            icon: isScanning
                 ? const SizedBox(
                     width: 20,
                     height: 20,
@@ -58,7 +95,11 @@ class ScannerScreen extends StatelessWidget {
                     ),
                   )
                 : const Icon(Icons.bluetooth_searching),
-            label: Text(isScanning ? 'Stop' : 'Scan'),
+            label: Text(
+              isScanning
+                  ? context.l10n.scanner_stop
+                  : context.l10n.scanner_scan,
+            ),
           );
         },
       ),
@@ -69,25 +110,26 @@ class ScannerScreen extends StatelessWidget {
     String statusText;
     Color statusColor;
 
+    final l10n = context.l10n;
     switch (connector.state) {
       case MeshCoreConnectionState.scanning:
-        statusText = 'Scanning for devices...';
+        statusText = l10n.scanner_scanning;
         statusColor = Colors.blue;
         break;
       case MeshCoreConnectionState.connecting:
-        statusText = 'Connecting...';
+        statusText = l10n.scanner_connecting;
         statusColor = Colors.orange;
         break;
       case MeshCoreConnectionState.connected:
-        statusText = 'Connected to ${connector.deviceDisplayName}';
+        statusText = l10n.scanner_connectedTo(connector.deviceDisplayName);
         statusColor = Colors.green;
         break;
       case MeshCoreConnectionState.disconnecting:
-        statusText = 'Disconnecting...';
+        statusText = l10n.scanner_disconnecting;
         statusColor = Colors.orange;
         break;
       case MeshCoreConnectionState.disconnected:
-        statusText = 'Not connected';
+        statusText = l10n.scanner_notConnected;
         statusColor = Colors.grey;
         break;
     }
@@ -115,20 +157,13 @@ class ScannerScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.bluetooth,
-              size: 64,
-              color: Colors.grey[400],
-            ),
+            Icon(Icons.bluetooth, size: 64, color: Colors.grey[400]),
             const SizedBox(height: 16),
             Text(
               connector.state == MeshCoreConnectionState.scanning
-                  ? 'Searching for MeshCore devices...'
-                  : 'Tap Scan to find MeshCore devices',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey[600],
-              ),
+                  ? context.l10n.scanner_searchingDevices
+                  : context.l10n.scanner_tapToScan,
+              style: TextStyle(fontSize: 16, color: Colors.grey[600]),
             ),
           ],
         ),
@@ -159,20 +194,11 @@ class ScannerScreen extends StatelessWidget {
           ? result.device.platformName
           : result.advertisementData.advName;
       await connector.connect(result.device, displayName: name);
-      
-      if (context.mounted && connector.isConnected) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const ContactsScreen(),
-          ),
-        );
-      }
     } catch (e) {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Connection failed: $e'),
+            content: Text(context.l10n.scanner_connectionFailed(e.toString())),
             backgroundColor: Colors.red,
           ),
         );
