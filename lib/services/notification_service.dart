@@ -269,7 +269,6 @@ class NotificationService {
     }
   }
 
-
   void _onNotificationTapped(NotificationResponse response) {
     final payload = response.payload;
     if (payload != null) {
