@@ -4855,6 +4855,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Copying advert to Clipboard failed.'**
   String get contacts_contactAdvertCopyFailed;
+
+  /// No description provided for @notification_activityTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MeshCore Activity'**
+  String get notification_activityTitle;
+
+  /// No description provided for @notification_messagesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} {count, plural, =1{message} other{messages}}'**
+  String notification_messagesCount(int count);
+
+  /// No description provided for @notification_channelMessagesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} {count, plural, =1{channel message} other{channel messages}}'**
+  String notification_channelMessagesCount(int count);
+
+  /// No description provided for @notification_newNodesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} {count, plural, =1{new node} other{new nodes}}'**
+  String notification_newNodesCount(int count);
+
+  /// No description provided for @notification_newTypeDiscovered.
+  ///
+  /// In en, this message translates to:
+  /// **'New {contactType} discovered'**
+  String notification_newTypeDiscovered(String contactType);
+
+  /// No description provided for @notification_receivedNewMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Received new message'**
+  String get notification_receivedNewMessage;
 }
 
 class _AppLocalizationsDelegate

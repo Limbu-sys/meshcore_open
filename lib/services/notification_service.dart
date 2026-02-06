@@ -1,5 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter/foundation.dart';
+
+import '../l10n/app_localizations.dart';
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
@@ -9,6 +13,16 @@ class NotificationService {
   final FlutterLocalNotificationsPlugin _notifications =
       FlutterLocalNotificationsPlugin();
   bool _isInitialized = false;
+
+  // Locale for localized notification strings
+  Locale _locale = const Locale('en');
+
+  /// Set the locale for notification strings (call when app locale changes)
+  void setLocale(Locale locale) {
+    _locale = locale;
+  }
+
+  AppLocalizations get _l10n => lookupAppLocalizations(_locale);
 
   // Rate limiting to prevent notification storms
   // (Added after getting notification-flooded while evaluating RF flood management. The irony.)
@@ -181,7 +195,7 @@ class NotificationService {
 
     await _notifications.show(
       contactId?.hashCode ?? DateTime.now().millisecondsSinceEpoch,
-      'New $contactType discovered',
+      _l10n.notification_newTypeDiscovered(contactType),
       contactName,
       notificationDetails,
       payload: 'advert:$contactId',
@@ -229,7 +243,7 @@ class NotificationService {
     );
 
     final preview = message.trim();
-    final body = preview.isEmpty ? 'Received new message' : preview;
+    final body = preview.isEmpty ? _l10n.notification_receivedNewMessage : preview;
 
     await _notifications.show(
       channelIndex?.hashCode ?? DateTime.now().millisecondsSinceEpoch,
@@ -404,16 +418,16 @@ class NotificationService {
     final adverts = batch.where((n) => n.type == _NotificationType.advert).toList();
     final channelMsgs = batch.where((n) => n.type == _NotificationType.channelMessage).toList();
 
-    // Build summary text
+    // Build summary text using localized plurals
     final parts = <String>[];
     if (messages.isNotEmpty) {
-      parts.add('${messages.length} message${messages.length > 1 ? 's' : ''}');
+      parts.add(_l10n.notification_messagesCount(messages.length));
     }
     if (channelMsgs.isNotEmpty) {
-      parts.add('${channelMsgs.length} channel message${channelMsgs.length > 1 ? 's' : ''}');
+      parts.add(_l10n.notification_channelMessagesCount(channelMsgs.length));
     }
     if (adverts.isNotEmpty) {
-      parts.add('${adverts.length} new node${adverts.length > 1 ? 's' : ''}');
+      parts.add(_l10n.notification_newNodesCount(adverts.length));
     }
 
     if (parts.isEmpty) return;
@@ -439,7 +453,7 @@ class NotificationService {
 
     await _notifications.show(
       'batch_summary'.hashCode,
-      'MeshCore Activity',
+      _l10n.notification_activityTitle,
       parts.join(', '),
       notificationDetails,
       payload: 'batch',

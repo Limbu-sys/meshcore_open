@@ -1343,5 +1343,32 @@
   "contacts_zeroHopContactAdvertSent": "Sent contact by advert.",
   "contacts_zeroHopContactAdvertFailed": "Failed to send contact.",
   "contacts_contactAdvertCopied": "Advert copied to Clipboard.",
-  "contacts_contactAdvertCopyFailed": "Copying advert to Clipboard failed."
+  "contacts_contactAdvertCopyFailed": "Copying advert to Clipboard failed.",
+
+  "notification_activityTitle": "MeshCore Activity",
+  "notification_messagesCount": "{count} {count, plural, =1{message} other{messages}}",
+  "@notification_messagesCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "notification_channelMessagesCount": "{count} {count, plural, =1{channel message} other{channel messages}}",
+  "@notification_channelMessagesCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "notification_newNodesCount": "{count} {count, plural, =1{new node} other{new nodes}}",
+  "@notification_newNodesCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "notification_newTypeDiscovered": "New {contactType} discovered",
+  "@notification_newTypeDiscovered": {
+    "placeholders": {
+      "contactType": {"type": "String"}
+    }
+  },
+  "notification_receivedNewMessage": "Received new message"
 }

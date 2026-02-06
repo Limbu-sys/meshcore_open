@@ -150,6 +150,12 @@ class MeshCoreApp extends StatelessWidget {
             themeMode: _themeModeFromSetting(
               settingsService.settings.themeMode,
             ),
+            builder: (context, child) {
+              // Update notification service with resolved locale
+              final locale = Localizations.localeOf(context);
+              NotificationService().setLocale(locale);
+              return child ?? const SizedBox.shrink();
+            },
             home: const ScannerScreen(),
           );
         },

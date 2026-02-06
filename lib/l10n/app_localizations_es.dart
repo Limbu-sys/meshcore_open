@@ -2766,4 +2766,48 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get contacts_contactAdvertCopyFailed =>
       'Copiar anuncio al Portapapeles ha fallado.';
+
+  @override
+  String get notification_activityTitle => 'MeshCore Activity';
+
+  @override
+  String notification_messagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'messages',
+      one: 'message',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_channelMessagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'channel messages',
+      one: 'channel message',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_newNodesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'new nodes',
+      one: 'new node',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_newTypeDiscovered(String contactType) {
+    return 'New $contactType discovered';
+  }
+
+  @override
+  String get notification_receivedNewMessage => 'Received new message';
 }

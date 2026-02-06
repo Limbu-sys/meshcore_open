@@ -1,1 +1,127 @@
-{}
+{
+  "bg": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ],
+
+  "de": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ],
+
+  "es": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ],
+
+  "fr": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ],
+
+  "it": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ],
+
+  "nl": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ],
+
+  "pl": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ],
+
+  "pt": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ],
+
+  "ru": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ],
+
+  "sk": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ],
+
+  "sl": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ],
+
+  "sv": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ],
+
+  "uk": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ],
+
+  "zh": [
+    "notification_activityTitle",
+    "notification_messagesCount",
+    "notification_channelMessagesCount",
+    "notification_newNodesCount",
+    "notification_newTypeDiscovered",
+    "notification_receivedNewMessage"
+  ]
+}
