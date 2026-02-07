@@ -1568,5 +1568,11 @@
   "contacts_contactAdvertCopied": "Oglas je bil kopiran v odložišče.",
   "contacts_contactAdvertCopyFailed": "Kopiranje oglasa v odložišče je spodletelo.",
   "contacts_ShareContactZeroHop": "Deliti kontakt prek oglasa",
-  "contacts_ShareContact": "Kopiraj stik v Odložišče"
+  "contacts_ShareContact": "Kopiraj stik v Odložišče",
+  "notification_activityTitle": "Aktivnost MeshCore",
+  "notification_messagesCount": "{count} {count, plural, =1{sporočilo} =2{sporočili} few{sporočila} other{sporočil}}",
+  "notification_channelMessagesCount": "{count} {count, plural, =1{sporočilo kanala} =2{sporočili kanala} few{sporočila kanala} other{sporočil kanala}}",
+  "notification_newNodesCount": "{count} {count, plural, =1{novo vozlišče} =2{novi vozlišči} few{nova vozlišča} other{novih vozlišč}}",
+  "notification_newTypeDiscovered": "Odkrito novo {contactType}",
+  "notification_receivedNewMessage": "Prejeto novo sporočilo"
 }

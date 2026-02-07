@@ -2768,15 +2768,15 @@ class AppLocalizationsBg extends AppLocalizations {
       'Копирането на обявата в клипборда не успя.';
 
   @override
-  String get notification_activityTitle => 'MeshCore Activity';
+  String get notification_activityTitle => 'Активност на MeshCore';
 
   @override
   String notification_messagesCount(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'messages',
-      one: 'message',
+      other: 'съобщения',
+      one: 'съобщение',
     );
     return '$count $_temp0';
   }
@@ -2786,8 +2786,8 @@ class AppLocalizationsBg extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'channel messages',
-      one: 'channel message',
+      other: 'съобщения в канали',
+      one: 'съобщение в канал',
     );
     return '$count $_temp0';
   }
@@ -2797,17 +2797,17 @@ class AppLocalizationsBg extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'new nodes',
-      one: 'new node',
+      other: 'нови възли',
+      one: 'нов възел',
     );
     return '$count $_temp0';
   }
 
   @override
   String notification_newTypeDiscovered(String contactType) {
-    return 'New $contactType discovered';
+    return 'Открит нов $contactType';
   }
 
   @override
-  String get notification_receivedNewMessage => 'Received new message';
+  String get notification_receivedNewMessage => 'Получено ново съобщение';
 }

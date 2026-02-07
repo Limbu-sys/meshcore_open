@@ -1568,5 +1568,11 @@
   "contacts_contactAdvertCopyFailed": "Kopiowanie ogłoszenia do schowka nie powiodło się.",
   "contacts_ShareContactZeroHop": "Udostępnij kontakt przez ogłoszenie",
   "contacts_ShareContact": "Kopiuj kontakt do schowka",
-  "contacts_zeroHopContactAdvertFailed": "Nie udało się wysłać kontaktu."
+  "contacts_zeroHopContactAdvertFailed": "Nie udało się wysłać kontaktu.",
+  "notification_activityTitle": "Aktywność MeshCore",
+  "notification_messagesCount": "{count} {count, plural, =1{wiadomość} few{wiadomości} many{wiadomości} other{wiadomości}}",
+  "notification_channelMessagesCount": "{count} {count, plural, =1{wiadomość kanału} few{wiadomości kanału} many{wiadomości kanału} other{wiadomości kanału}}",
+  "notification_newNodesCount": "{count} {count, plural, =1{nowy węzeł} few{nowe węzły} many{nowych węzłów} other{nowych węzłów}}",
+  "notification_newTypeDiscovered": "Nowy {contactType} wykryty",
+  "notification_receivedNewMessage": "Otrzymano nową wiadomość"
 }

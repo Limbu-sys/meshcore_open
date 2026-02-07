@@ -2775,15 +2775,15 @@ class AppLocalizationsDe extends AppLocalizations {
       'Kopieren des Werbeinhalts in die Zwischenablage fehlgeschlagen.';
 
   @override
-  String get notification_activityTitle => 'MeshCore Activity';
+  String get notification_activityTitle => 'MeshCore Aktivität';
 
   @override
   String notification_messagesCount(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'messages',
-      one: 'message',
+      other: 'Nachrichten',
+      one: 'Nachricht',
     );
     return '$count $_temp0';
   }
@@ -2793,8 +2793,8 @@ class AppLocalizationsDe extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'channel messages',
-      one: 'channel message',
+      other: 'Kanalnachrichten',
+      one: 'Kanalnachricht',
     );
     return '$count $_temp0';
   }
@@ -2804,17 +2804,17 @@ class AppLocalizationsDe extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'new nodes',
-      one: 'new node',
+      other: 'neue Knoten',
+      one: 'neuer Knoten',
     );
     return '$count $_temp0';
   }
 
   @override
   String notification_newTypeDiscovered(String contactType) {
-    return 'New $contactType discovered';
+    return 'Neuer $contactType entdeckt';
   }
 
   @override
-  String get notification_receivedNewMessage => 'Received new message';
+  String get notification_receivedNewMessage => 'Neue Nachricht empfangen';
 }

@@ -1568,5 +1568,11 @@
   "contacts_contactAdvertCopyFailed": "Kopiëren van advertentie naar Clipboard is mislukt.",
   "contacts_ShareContact": "Kontakt naar Klembord kopiëren",
   "contacts_ShareContactZeroHop": "Contact delen via advertentie",
-  "contacts_zeroHopContactAdvertFailed": "Mislukt om contact te verzenden"
+  "contacts_zeroHopContactAdvertFailed": "Mislukt om contact te verzenden",
+  "notification_activityTitle": "MeshCore Activiteit",
+  "notification_messagesCount": "{count} {count, plural, =1{bericht} other{berichten}}",
+  "notification_channelMessagesCount": "{count} {count, plural, =1{kanaalbericht} other{kanaalberichten}}",
+  "notification_newNodesCount": "{count} {count, plural, =1{nieuw knooppunt} other{nieuwe knooppunten}}",
+  "notification_newTypeDiscovered": "Nieuw {contactType} ontdekt",
+  "notification_receivedNewMessage": "Nieuw bericht ontvangen"
 }

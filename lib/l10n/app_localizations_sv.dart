@@ -2741,15 +2741,15 @@ class AppLocalizationsSv extends AppLocalizations {
       'Kopiering av annons till Urklipp misslyckades.';
 
   @override
-  String get notification_activityTitle => 'MeshCore Activity';
+  String get notification_activityTitle => 'MeshCore Aktivitet';
 
   @override
   String notification_messagesCount(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'messages',
-      one: 'message',
+      other: 'meddelanden',
+      one: 'meddelande',
     );
     return '$count $_temp0';
   }
@@ -2759,8 +2759,8 @@ class AppLocalizationsSv extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'channel messages',
-      one: 'channel message',
+      other: 'kanalmeddelanden',
+      one: 'kanalmeddelande',
     );
     return '$count $_temp0';
   }
@@ -2770,17 +2770,17 @@ class AppLocalizationsSv extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'new nodes',
-      one: 'new node',
+      other: 'nya noder',
+      one: 'ny nod',
     );
     return '$count $_temp0';
   }
 
   @override
   String notification_newTypeDiscovered(String contactType) {
-    return 'New $contactType discovered';
+    return 'Ny $contactType upptäckt';
   }
 
   @override
-  String get notification_receivedNewMessage => 'Received new message';
+  String get notification_receivedNewMessage => 'Nytt meddelande mottaget';
 }

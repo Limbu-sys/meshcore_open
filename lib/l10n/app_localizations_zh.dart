@@ -2623,46 +2623,28 @@ class AppLocalizationsZh extends AppLocalizations {
   String get contacts_contactAdvertCopyFailed => '将广告复制到剪贴板操作失败。';
 
   @override
-  String get notification_activityTitle => 'MeshCore Activity';
+  String get notification_activityTitle => 'MeshCore 活动';
 
   @override
   String notification_messagesCount(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: 'messages',
-      one: 'message',
-    );
-    return '$count $_temp0';
+    return '$count 条消息';
   }
 
   @override
   String notification_channelMessagesCount(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: 'channel messages',
-      one: 'channel message',
-    );
-    return '$count $_temp0';
+    return '$count 条频道消息';
   }
 
   @override
   String notification_newNodesCount(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: 'new nodes',
-      one: 'new node',
-    );
-    return '$count $_temp0';
+    return '$count 个新节点';
   }
 
   @override
   String notification_newTypeDiscovered(String contactType) {
-    return 'New $contactType discovered';
+    return '发现新 $contactType';
   }
 
   @override
-  String get notification_receivedNewMessage => 'Received new message';
+  String get notification_receivedNewMessage => '收到新消息';
 }

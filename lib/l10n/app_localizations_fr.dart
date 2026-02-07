@@ -2789,7 +2789,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'La copie de l\'annonce vers le presse-papiers a échoué.';
 
   @override
-  String get notification_activityTitle => 'MeshCore Activity';
+  String get notification_activityTitle => 'Activité MeshCore';
 
   @override
   String notification_messagesCount(int count) {
@@ -2807,8 +2807,8 @@ class AppLocalizationsFr extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'channel messages',
-      one: 'channel message',
+      other: 'messages de canal',
+      one: 'message de canal',
     );
     return '$count $_temp0';
   }
@@ -2818,17 +2818,17 @@ class AppLocalizationsFr extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'new nodes',
-      one: 'new node',
+      other: 'nouveaux nœuds',
+      one: 'nouveau nœud',
     );
     return '$count $_temp0';
   }
 
   @override
   String notification_newTypeDiscovered(String contactType) {
-    return 'New $contactType discovered';
+    return 'Nouveau $contactType découvert';
   }
 
   @override
-  String get notification_receivedNewMessage => 'Received new message';
+  String get notification_receivedNewMessage => 'Nouveau message reçu';
 }

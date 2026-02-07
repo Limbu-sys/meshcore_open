@@ -1568,5 +1568,32 @@
   "contacts_zeroHopContactAdvertFailed": "Kontakt konnte nicht gesendet werden.",
   "contacts_zeroHopContactAdvertSent": "Kontakt über Anzeige gesendet",
   "contacts_contactAdvertCopied": "Anzeige in die Zwischenablage kopiert.",
-  "contacts_contactAdvertCopyFailed": "Kopieren des Werbeinhalts in die Zwischenablage fehlgeschlagen."
+  "contacts_contactAdvertCopyFailed": "Kopieren des Werbeinhalts in die Zwischenablage fehlgeschlagen.",
+
+  "notification_activityTitle": "MeshCore Aktivität",
+  "notification_messagesCount": "{count} {count, plural, =1{Nachricht} other{Nachrichten}}",
+  "@notification_messagesCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "notification_channelMessagesCount": "{count} {count, plural, =1{Kanalnachricht} other{Kanalnachrichten}}",
+  "@notification_channelMessagesCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "notification_newNodesCount": "{count} {count, plural, =1{neuer Knoten} other{neue Knoten}}",
+  "@notification_newNodesCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "notification_newTypeDiscovered": "Neuer {contactType} entdeckt",
+  "@notification_newTypeDiscovered": {
+    "placeholders": {
+      "contactType": {"type": "String"}
+    }
+  },
+  "notification_receivedNewMessage": "Neue Nachricht empfangen"
 }

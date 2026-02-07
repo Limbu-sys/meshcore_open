@@ -1568,5 +1568,11 @@
   "contacts_contactAdvertCopied": "Annonce copiée dans le presse-papiers.",
   "contacts_contactAdvertCopyFailed": "La copie de l'annonce vers le presse-papiers a échoué.",
   "contacts_zeroHopContactAdvertSent": "Envoyer un contact par annonce.",
-  "contacts_zeroHopContactAdvertFailed": "Échec de l'envoi du contact."
+  "contacts_zeroHopContactAdvertFailed": "Échec de l'envoi du contact.",
+  "notification_activityTitle": "Activité MeshCore",
+  "notification_messagesCount": "{count} {count, plural, =1{message} other{messages}}",
+  "notification_channelMessagesCount": "{count} {count, plural, =1{message de canal} other{messages de canal}}",
+  "notification_newNodesCount": "{count} {count, plural, =1{nouveau nœud} other{nouveaux nœuds}}",
+  "notification_newTypeDiscovered": "Nouveau {contactType} découvert",
+  "notification_receivedNewMessage": "Nouveau message reçu"
 }

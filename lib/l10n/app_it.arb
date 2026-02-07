@@ -1568,5 +1568,11 @@
   "contacts_contactAdvertCopyFailed": "Copia dell'annuncio nella Clipboard non riuscita.",
   "contacts_ShareContactZeroHop": "Condividi contatto tramite annuncio",
   "contacts_zeroHopContactAdvertFailed": "Invio del contatto non riuscito.",
-  "contacts_contactAdvertCopied": "Annuncio copiato negli Appunti."
+  "contacts_contactAdvertCopied": "Annuncio copiato negli Appunti.",
+  "notification_activityTitle": "Attività MeshCore",
+  "notification_messagesCount": "{count} {count, plural, =1{messaggio} other{messaggi}}",
+  "notification_channelMessagesCount": "{count} {count, plural, =1{messaggio del canale} other{messaggi del canale}}",
+  "notification_newNodesCount": "{count} {count, plural, =1{nuovo nodo} other{nuovi nodi}}",
+  "notification_newTypeDiscovered": "Nuovo {contactType} scoperto",
+  "notification_receivedNewMessage": "Nuovo messaggio ricevuto"
 }

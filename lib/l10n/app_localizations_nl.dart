@@ -2760,15 +2760,15 @@ class AppLocalizationsNl extends AppLocalizations {
       'Kopiëren van advertentie naar Clipboard is mislukt.';
 
   @override
-  String get notification_activityTitle => 'MeshCore Activity';
+  String get notification_activityTitle => 'MeshCore Activiteit';
 
   @override
   String notification_messagesCount(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'messages',
-      one: 'message',
+      other: 'berichten',
+      one: 'bericht',
     );
     return '$count $_temp0';
   }
@@ -2778,8 +2778,8 @@ class AppLocalizationsNl extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'channel messages',
-      one: 'channel message',
+      other: 'kanaalberichten',
+      one: 'kanaalbericht',
     );
     return '$count $_temp0';
   }
@@ -2789,17 +2789,17 @@ class AppLocalizationsNl extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'new nodes',
-      one: 'new node',
+      other: 'nieuwe knooppunten',
+      one: 'nieuw knooppunt',
     );
     return '$count $_temp0';
   }
 
   @override
   String notification_newTypeDiscovered(String contactType) {
-    return 'New $contactType discovered';
+    return 'Nieuw $contactType ontdekt';
   }
 
   @override
-  String get notification_receivedNewMessage => 'Received new message';
+  String get notification_receivedNewMessage => 'Nieuw bericht ontvangen';
 }

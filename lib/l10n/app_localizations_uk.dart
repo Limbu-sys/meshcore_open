@@ -2781,15 +2781,17 @@ class AppLocalizationsUk extends AppLocalizations {
       'Копіювання оголошення в буфер обміну завершилося невдало';
 
   @override
-  String get notification_activityTitle => 'MeshCore Activity';
+  String get notification_activityTitle => 'Активність MeshCore';
 
   @override
   String notification_messagesCount(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'messages',
-      one: 'message',
+      other: 'повідомлень',
+      many: 'повідомлень',
+      few: 'повідомлення',
+      one: 'повідомлення',
     );
     return '$count $_temp0';
   }
@@ -2799,8 +2801,10 @@ class AppLocalizationsUk extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'channel messages',
-      one: 'channel message',
+      other: 'повідомлень каналу',
+      many: 'повідомлень каналу',
+      few: 'повідомлення каналу',
+      one: 'повідомлення каналу',
     );
     return '$count $_temp0';
   }
@@ -2810,17 +2814,19 @@ class AppLocalizationsUk extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'new nodes',
-      one: 'new node',
+      other: 'нових вузлів',
+      many: 'нових вузлів',
+      few: 'нових вузли',
+      one: 'новий вузол',
     );
     return '$count $_temp0';
   }
 
   @override
   String notification_newTypeDiscovered(String contactType) {
-    return 'New $contactType discovered';
+    return 'Виявлено новий $contactType';
   }
 
   @override
-  String get notification_receivedNewMessage => 'Received new message';
+  String get notification_receivedNewMessage => 'Отримано нове повідомлення';
 }

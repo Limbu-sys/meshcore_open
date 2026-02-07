@@ -2768,15 +2768,15 @@ class AppLocalizationsEs extends AppLocalizations {
       'Copiar anuncio al Portapapeles ha fallado.';
 
   @override
-  String get notification_activityTitle => 'MeshCore Activity';
+  String get notification_activityTitle => 'Actividad de MeshCore';
 
   @override
   String notification_messagesCount(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'messages',
-      one: 'message',
+      other: 'mensajes',
+      one: 'mensaje',
     );
     return '$count $_temp0';
   }
@@ -2786,8 +2786,8 @@ class AppLocalizationsEs extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'channel messages',
-      one: 'channel message',
+      other: 'mensajes de canal',
+      one: 'mensaje de canal',
     );
     return '$count $_temp0';
   }
@@ -2797,17 +2797,17 @@ class AppLocalizationsEs extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'new nodes',
-      one: 'new node',
+      other: 'nuevos nodos',
+      one: 'nuevo nodo',
     );
     return '$count $_temp0';
   }
 
   @override
   String notification_newTypeDiscovered(String contactType) {
-    return 'New $contactType discovered';
+    return 'Nuevo $contactType descubierto';
   }
 
   @override
-  String get notification_receivedNewMessage => 'Received new message';
+  String get notification_receivedNewMessage => 'Nuevo mensaje recibido';
 }

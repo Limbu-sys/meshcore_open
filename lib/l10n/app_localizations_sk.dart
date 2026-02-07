@@ -2754,15 +2754,16 @@ class AppLocalizationsSk extends AppLocalizations {
       'Kopírovanie inzerátu do schránky zlyhalo.';
 
   @override
-  String get notification_activityTitle => 'MeshCore Activity';
+  String get notification_activityTitle => 'Aktivita MeshCore';
 
   @override
   String notification_messagesCount(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'messages',
-      one: 'message',
+      other: 'správ',
+      few: 'správy',
+      one: 'správa',
     );
     return '$count $_temp0';
   }
@@ -2772,8 +2773,9 @@ class AppLocalizationsSk extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'channel messages',
-      one: 'channel message',
+      other: 'správ kanálu',
+      few: 'správy kanálu',
+      one: 'správa kanálu',
     );
     return '$count $_temp0';
   }
@@ -2783,17 +2785,18 @@ class AppLocalizationsSk extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'new nodes',
-      one: 'new node',
+      other: 'nových uzlov',
+      few: 'nové uzly',
+      one: 'nový uzol',
     );
     return '$count $_temp0';
   }
 
   @override
   String notification_newTypeDiscovered(String contactType) {
-    return 'New $contactType discovered';
+    return 'Nový $contactType objavený';
   }
 
   @override
-  String get notification_receivedNewMessage => 'Received new message';
+  String get notification_receivedNewMessage => 'Prijatá nová správa';
 }

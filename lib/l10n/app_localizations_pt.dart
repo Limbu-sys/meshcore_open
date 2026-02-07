@@ -2770,15 +2770,15 @@ class AppLocalizationsPt extends AppLocalizations {
       'Cópia do anúncio para a Área de Transferência falhou.';
 
   @override
-  String get notification_activityTitle => 'MeshCore Activity';
+  String get notification_activityTitle => 'Atividade MeshCore';
 
   @override
   String notification_messagesCount(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'messages',
-      one: 'message',
+      other: 'mensagens',
+      one: 'mensagem',
     );
     return '$count $_temp0';
   }
@@ -2788,8 +2788,8 @@ class AppLocalizationsPt extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'channel messages',
-      one: 'channel message',
+      other: 'mensagens de canal',
+      one: 'mensagem de canal',
     );
     return '$count $_temp0';
   }
@@ -2799,17 +2799,17 @@ class AppLocalizationsPt extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'new nodes',
-      one: 'new node',
+      other: 'novos nós',
+      one: 'novo nó',
     );
     return '$count $_temp0';
   }
 
   @override
   String notification_newTypeDiscovered(String contactType) {
-    return 'New $contactType discovered';
+    return 'Novo $contactType descoberto';
   }
 
   @override
-  String get notification_receivedNewMessage => 'Received new message';
+  String get notification_receivedNewMessage => 'Nova mensagem recebida';
 }

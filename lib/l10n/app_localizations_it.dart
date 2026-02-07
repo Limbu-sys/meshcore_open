@@ -2771,15 +2771,15 @@ class AppLocalizationsIt extends AppLocalizations {
       'Copia dell\'annuncio nella Clipboard non riuscita.';
 
   @override
-  String get notification_activityTitle => 'MeshCore Activity';
+  String get notification_activityTitle => 'Attività MeshCore';
 
   @override
   String notification_messagesCount(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'messages',
-      one: 'message',
+      other: 'messaggi',
+      one: 'messaggio',
     );
     return '$count $_temp0';
   }
@@ -2789,8 +2789,8 @@ class AppLocalizationsIt extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'channel messages',
-      one: 'channel message',
+      other: 'messaggi del canale',
+      one: 'messaggio del canale',
     );
     return '$count $_temp0';
   }
@@ -2800,17 +2800,17 @@ class AppLocalizationsIt extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'new nodes',
-      one: 'new node',
+      other: 'nuovi nodi',
+      one: 'nuovo nodo',
     );
     return '$count $_temp0';
   }
 
   @override
   String notification_newTypeDiscovered(String contactType) {
-    return 'New $contactType discovered';
+    return 'Nuovo $contactType scoperto';
   }
 
   @override
-  String get notification_receivedNewMessage => 'Received new message';
+  String get notification_receivedNewMessage => 'Nuovo messaggio ricevuto';
 }

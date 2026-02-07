@@ -1568,5 +1568,11 @@
   "contacts_contactAdvertCopied": "Рекламата е копирана в клипборда.",
   "contacts_zeroHopContactAdvertFailed": "Неуспешно изпращане на контакт.",
   "contacts_zeroHopContactAdvertSent": "Изпратен контакт по обява.",
-  "contacts_contactAdvertCopyFailed": "Копирането на обявата в клипборда не успя."
+  "contacts_contactAdvertCopyFailed": "Копирането на обявата в клипборда не успя.",
+  "notification_activityTitle": "Активност на MeshCore",
+  "notification_messagesCount": "{count} {count, plural, =1{съобщение} other{съобщения}}",
+  "notification_channelMessagesCount": "{count} {count, plural, =1{съобщение в канал} other{съобщения в канали}}",
+  "notification_newNodesCount": "{count} {count, plural, =1{нов възел} other{нови възли}}",
+  "notification_newTypeDiscovered": "Открит нов {contactType}",
+  "notification_receivedNewMessage": "Получено ново съобщение"
 }

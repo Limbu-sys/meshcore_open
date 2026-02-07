@@ -1568,5 +1568,11 @@
   "contacts_contactAdvertCopyFailed": "Kopiering av annons till Urklipp misslyckades.",
   "contacts_ShareContact": "Kopiera kontakt till Urklipp",
   "contacts_zeroHopContactAdvertFailed": "Misslyckades med att skicka kontakt.",
-  "contacts_ShareContactZeroHop": "Dela kontakt via annons"
+  "contacts_ShareContactZeroHop": "Dela kontakt via annons",
+  "notification_activityTitle": "MeshCore Aktivitet",
+  "notification_messagesCount": "{count} {count, plural, =1{meddelande} other{meddelanden}}",
+  "notification_channelMessagesCount": "{count} {count, plural, =1{kanalmeddelande} other{kanalmeddelanden}}",
+  "notification_newNodesCount": "{count} {count, plural, =1{ny nod} other{nya noder}}",
+  "notification_newTypeDiscovered": "Ny {contactType} upptäckt",
+  "notification_receivedNewMessage": "Nytt meddelande mottaget"
 }

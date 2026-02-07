@@ -1568,5 +1568,11 @@
   "contacts_floodAdvert": "Anúncio de Inundação",
   "contacts_contactAdvertCopyFailed": "Cópia do anúncio para a Área de Transferência falhou.",
   "contacts_ShareContactZeroHop": "Compartilhar contato por anúncio",
-  "contacts_zeroHopContactAdvertFailed": "Falha ao enviar contato."
+  "contacts_zeroHopContactAdvertFailed": "Falha ao enviar contato.",
+  "notification_activityTitle": "Atividade MeshCore",
+  "notification_messagesCount": "{count} {count, plural, =1{mensagem} other{mensagens}}",
+  "notification_channelMessagesCount": "{count} {count, plural, =1{mensagem de canal} other{mensagens de canal}}",
+  "notification_newNodesCount": "{count} {count, plural, =1{novo nó} other{novos nós}}",
+  "notification_newTypeDiscovered": "Novo {contactType} descoberto",
+  "notification_receivedNewMessage": "Nova mensagem recebida"
 }

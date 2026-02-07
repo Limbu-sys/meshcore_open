@@ -1568,5 +1568,11 @@
   "contacts_contactAdvertCopyFailed": "Kopírovanie inzerátu do schránky zlyhalo.",
   "contacts_zeroHopContactAdvertFailed": "Zlyhalo odoslanie kontaktu.",
   "contacts_ShareContactZeroHop": "Zdieľať kontakt cez inzerát",
-  "contacts_ShareContact": "Kopírovať kontakt do schránky"
+  "contacts_ShareContact": "Kopírovať kontakt do schránky",
+  "notification_activityTitle": "Aktivita MeshCore",
+  "notification_messagesCount": "{count} {count, plural, =1{správa} few{správy} other{správ}}",
+  "notification_channelMessagesCount": "{count} {count, plural, =1{správa kanálu} few{správy kanálu} other{správ kanálu}}",
+  "notification_newNodesCount": "{count} {count, plural, =1{nový uzol} few{nové uzly} other{nových uzlov}}",
+  "notification_newTypeDiscovered": "Nový {contactType} objavený",
+  "notification_receivedNewMessage": "Prijatá nová správa"
 }

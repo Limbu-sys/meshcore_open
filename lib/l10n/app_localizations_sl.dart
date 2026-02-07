@@ -2756,15 +2756,17 @@ class AppLocalizationsSl extends AppLocalizations {
       'Kopiranje oglasa v odložišče je spodletelo.';
 
   @override
-  String get notification_activityTitle => 'MeshCore Activity';
+  String get notification_activityTitle => 'Aktivnost MeshCore';
 
   @override
   String notification_messagesCount(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'messages',
-      one: 'message',
+      other: 'sporočil',
+      few: 'sporočila',
+      two: 'sporočili',
+      one: 'sporočilo',
     );
     return '$count $_temp0';
   }
@@ -2774,8 +2776,10 @@ class AppLocalizationsSl extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'channel messages',
-      one: 'channel message',
+      other: 'sporočil kanala',
+      few: 'sporočila kanala',
+      two: 'sporočili kanala',
+      one: 'sporočilo kanala',
     );
     return '$count $_temp0';
   }
@@ -2785,17 +2789,19 @@ class AppLocalizationsSl extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: 'new nodes',
-      one: 'new node',
+      other: 'novih vozlišč',
+      few: 'nova vozlišča',
+      two: 'novi vozlišči',
+      one: 'novo vozlišče',
     );
     return '$count $_temp0';
   }
 
   @override
   String notification_newTypeDiscovered(String contactType) {
-    return 'New $contactType discovered';
+    return 'Odkrito novo $contactType';
   }
 
   @override
-  String get notification_receivedNewMessage => 'Received new message';
+  String get notification_receivedNewMessage => 'Prejeto novo sporočilo';
 }
