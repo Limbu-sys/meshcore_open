@@ -171,12 +171,14 @@ class ChannelMessage {
 
     final decodedText = Smaz.tryDecodePrefixed(actualText) ?? actualText;
 
+    final isOutgoingMsg = pathLen == 0;
+
     return ChannelMessage(
       senderKey: null,
       senderName: senderName,
       text: decodedText,
       timestamp: DateTime.fromMillisecondsSinceEpoch(timestampRaw * 1000),
-      isOutgoing: false,
+      isOutgoing: isOutgoingMsg,
       status: ChannelMessageStatus.sent,
       pathLength: pathLen,
       pathBytes: pathBytes,
