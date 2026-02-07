@@ -1696,6 +1696,9 @@ class AppLocalizationsSk extends AppLocalizations {
   String get repeater_battery => 'Batéria';
 
   @override
+  String get repeater_batteryChemistry => 'Battery Type';
+
+  @override
   String get repeater_clockAtLogin => 'Čas (při přihlášení)';
 
   @override

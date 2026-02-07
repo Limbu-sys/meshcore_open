@@ -1685,6 +1685,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get repeater_battery => 'Batteri';
 
   @override
+  String get repeater_batteryChemistry => 'Battery Type';
+
+  @override
   String get repeater_clockAtLogin => 'Klocka (vid inloggning)';
 
   @override

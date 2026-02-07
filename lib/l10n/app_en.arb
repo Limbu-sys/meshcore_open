@@ -806,6 +806,7 @@
   },
   "repeater_systemInformation": "System Information",
   "repeater_battery": "Battery",
+  "repeater_batteryChemistry": "Battery Type",
   "repeater_clockAtLogin": "Clock (at login)",
   "repeater_uptime": "Uptime",
   "repeater_queueLength": "Queue Length",

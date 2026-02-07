@@ -1700,6 +1700,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get repeater_battery => 'Batería';
 
   @override
+  String get repeater_batteryChemistry => 'Battery Type';
+
+  @override
   String get repeater_clockAtLogin => 'Reloj (al inicio de sesión)';
 
   @override

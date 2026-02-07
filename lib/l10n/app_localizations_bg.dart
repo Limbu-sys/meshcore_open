@@ -1706,6 +1706,9 @@ class AppLocalizationsBg extends AppLocalizations {
   String get repeater_battery => 'Батерия';
 
   @override
+  String get repeater_batteryChemistry => 'Battery Type';
+
+  @override
   String get repeater_clockAtLogin => 'Часовник (при влизане)';
 
   @override

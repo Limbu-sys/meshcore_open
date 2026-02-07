@@ -1711,6 +1711,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get repeater_battery => 'Batterie';
 
   @override
+  String get repeater_batteryChemistry => 'Battery Type';
+
+  @override
   String get repeater_clockAtLogin => 'Horloge (au démarrage)';
 
   @override

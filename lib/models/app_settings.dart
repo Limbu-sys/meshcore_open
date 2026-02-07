@@ -21,6 +21,7 @@ class AppSettings {
   final String? languageOverride; // null = system default
   final bool appDebugLogEnabled;
   final Map<String, String> batteryChemistryByDeviceId;
+  final Map<String, String> repeaterBatteryChemistryByPublicKey;
 
   AppSettings({
     this.clearPathOnMaxRetry = false,
@@ -43,7 +44,10 @@ class AppSettings {
     this.languageOverride,
     this.appDebugLogEnabled = false,
     Map<String, String>? batteryChemistryByDeviceId,
-  }) : batteryChemistryByDeviceId = batteryChemistryByDeviceId ?? {};
+    Map<String, String>? repeaterBatteryChemistryByPublicKey,
+  })  : batteryChemistryByDeviceId = batteryChemistryByDeviceId ?? {},
+        repeaterBatteryChemistryByPublicKey =
+            repeaterBatteryChemistryByPublicKey ?? {};
 
   Map<String, dynamic> toJson() {
     return {
@@ -67,6 +71,8 @@ class AppSettings {
       'language_override': languageOverride,
       'app_debug_log_enabled': appDebugLogEnabled,
       'battery_chemistry_by_device_id': batteryChemistryByDeviceId,
+      'repeater_battery_chemistry_by_public_key':
+          repeaterBatteryChemistryByPublicKey,
     };
   }
 
@@ -101,6 +107,11 @@ class AppSettings {
             (key, value) => MapEntry(key.toString(), value.toString()),
           ) ??
           {},
+      repeaterBatteryChemistryByPublicKey:
+          (json['repeater_battery_chemistry_by_public_key'] as Map?)?.map(
+            (key, value) => MapEntry(key.toString(), value.toString()),
+          ) ??
+          {},
     );
   }
 
@@ -125,6 +136,7 @@ class AppSettings {
     Object? languageOverride = _unset,
     bool? appDebugLogEnabled,
     Map<String, String>? batteryChemistryByDeviceId,
+    Map<String, String>? repeaterBatteryChemistryByPublicKey,
   }) {
     return AppSettings(
       clearPathOnMaxRetry: clearPathOnMaxRetry ?? this.clearPathOnMaxRetry,
@@ -154,6 +166,9 @@ class AppSettings {
       appDebugLogEnabled: appDebugLogEnabled ?? this.appDebugLogEnabled,
       batteryChemistryByDeviceId:
           batteryChemistryByDeviceId ?? this.batteryChemistryByDeviceId,
+      repeaterBatteryChemistryByPublicKey:
+          repeaterBatteryChemistryByPublicKey ??
+              this.repeaterBatteryChemistryByPublicKey,
     );
   }
 }

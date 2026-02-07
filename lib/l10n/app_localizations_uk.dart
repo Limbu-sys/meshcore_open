@@ -1704,6 +1704,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get repeater_battery => 'Батарея';
 
   @override
+  String get repeater_batteryChemistry => 'Battery Type';
+
+  @override
   String get repeater_clockAtLogin => 'Годинник (при вході)';
 
   @override

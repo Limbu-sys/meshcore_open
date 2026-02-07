@@ -1703,6 +1703,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get repeater_battery => 'Батарея';
 
   @override
+  String get repeater_batteryChemistry => 'Battery Type';
+
+  @override
   String get repeater_clockAtLogin => 'Время (при входе)';
 
   @override

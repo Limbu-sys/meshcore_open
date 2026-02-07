@@ -1695,6 +1695,9 @@ class AppLocalizationsSl extends AppLocalizations {
   String get repeater_battery => 'Baterija';
 
   @override
+  String get repeater_batteryChemistry => 'Battery Type';
+
+  @override
   String get repeater_clockAtLogin => 'Ure (pri prijavi)';
 
   @override

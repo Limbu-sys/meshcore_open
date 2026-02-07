@@ -132,4 +132,21 @@ class AppSettingsService extends ChangeNotifier {
       _settings.copyWith(batteryChemistryByDeviceId: updated),
     );
   }
+
+  String batteryChemistryForRepeater(String publicKeyHex) {
+    return _settings.repeaterBatteryChemistryByPublicKey[publicKeyHex] ?? 'nmc';
+  }
+
+  Future<void> setBatteryChemistryForRepeater(
+    String publicKeyHex,
+    String chemistry,
+  ) async {
+    final updated = Map<String, String>.from(
+      _settings.repeaterBatteryChemistryByPublicKey,
+    );
+    updated[publicKeyHex] = chemistry;
+    await updateSettings(
+      _settings.copyWith(repeaterBatteryChemistryByPublicKey: updated),
+    );
+  }
 }

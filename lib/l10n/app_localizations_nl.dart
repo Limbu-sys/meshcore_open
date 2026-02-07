@@ -1694,6 +1694,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get repeater_battery => 'Batterij';
 
   @override
+  String get repeater_batteryChemistry => 'Battery Type';
+
+  @override
   String get repeater_clockAtLogin => 'Tijd (bij aanmelden)';
 
   @override

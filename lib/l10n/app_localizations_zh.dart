@@ -1624,6 +1624,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get repeater_battery => '电池';
 
   @override
+  String get repeater_batteryChemistry => 'Battery Type';
+
+  @override
   String get repeater_clockAtLogin => '登录时的时间';
 
   @override

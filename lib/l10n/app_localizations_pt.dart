@@ -1701,6 +1701,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get repeater_battery => 'Bateria';
 
   @override
+  String get repeater_batteryChemistry => 'Battery Type';
+
+  @override
   String get repeater_clockAtLogin => 'Relógio (no login)';
 
   @override

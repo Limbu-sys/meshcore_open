@@ -3081,6 +3081,12 @@ abstract class AppLocalizations {
   /// **'Battery'**
   String get repeater_battery;
 
+  /// No description provided for @repeater_batteryChemistry.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery Type'**
+  String get repeater_batteryChemistry;
+
   /// No description provided for @repeater_clockAtLogin.
   ///
   /// In en, this message translates to:
