@@ -546,13 +546,16 @@ class AppLocalizationsRu extends AppLocalizations {
       'Подключитесь к устройству, чтобы выбрать';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3.0–4.2 В)';
+  String get appSettings_batteryNone => 'No Battery (External Power)';
+
+  @override
+  String get appSettings_batteryLipo => 'LiPo (3.0–4.2 В)';
 
   @override
   String get appSettings_batteryLifepo4 => 'LiFePO4 (2.6–3.65 В)';
 
   @override
-  String get appSettings_batteryLipo => 'LiPo (3.0–4.2 В)';
+  String get appSettings_batteryLeadAcid => 'Lead Acid (12V)';
 
   @override
   String get appSettings_mapDisplay => 'Отображение карты';

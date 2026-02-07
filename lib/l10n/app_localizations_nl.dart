@@ -543,13 +543,16 @@ class AppLocalizationsNl extends AppLocalizations {
       'Verbind met een apparaat om te selecteren';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3,0-4,2V)';
+  String get appSettings_batteryNone => 'No Battery (External Power)';
+
+  @override
+  String get appSettings_batteryLipo => 'LiPo (3,0-4,2V)';
 
   @override
   String get appSettings_batteryLifepo4 => 'LiFePO4 (2,6-3,65V)';
 
   @override
-  String get appSettings_batteryLipo => 'LiPo (3,0-4,2V)';
+  String get appSettings_batteryLeadAcid => 'Lead Acid (12V)';
 
   @override
   String get appSettings_mapDisplay => 'Kaartweergave';

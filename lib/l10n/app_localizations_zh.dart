@@ -517,13 +517,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get appSettings_batteryChemistryConnectFirst => '连接到设备以进行选择';
 
   @override
-  String get appSettings_batteryNmc => '18650 型号，NMC 电池（3.0-4.2V）';
+  String get appSettings_batteryNone => 'No Battery (External Power)';
+
+  @override
+  String get appSettings_batteryLipo => '锂离子电池 (3.0-4.2V)';
 
   @override
   String get appSettings_batteryLifepo4 => '磷酸铁锂 (2.6-3.65V)';
 
   @override
-  String get appSettings_batteryLipo => '锂离子电池 (3.0-4.2V)';
+  String get appSettings_batteryLeadAcid => 'Lead Acid (12V)';
 
   @override
   String get appSettings_mapDisplay => '地图展示';

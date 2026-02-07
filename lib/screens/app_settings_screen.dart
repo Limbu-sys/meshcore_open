@@ -393,7 +393,7 @@ class AppSettingsScreen extends StatelessWidget {
     final isConnected = connector.isConnected && deviceId != null;
     final selection = isConnected
         ? settingsService.batteryChemistryForDevice(deviceId)
-        : 'nmc';
+        : 'lipo';
 
     return Card(
       child: Column(
@@ -430,16 +430,20 @@ class AppSettingsScreen extends StatelessWidget {
                   : null,
               items: [
                 DropdownMenuItem(
-                  value: 'nmc',
-                  child: Text(context.l10n.appSettings_batteryNmc),
+                  value: 'none',
+                  child: Text(context.l10n.appSettings_batteryNone),
+                ),
+                DropdownMenuItem(
+                  value: 'lipo',
+                  child: Text(context.l10n.appSettings_batteryLipo),
                 ),
                 DropdownMenuItem(
                   value: 'lifepo4',
                   child: Text(context.l10n.appSettings_batteryLifepo4),
                 ),
                 DropdownMenuItem(
-                  value: 'lipo',
-                  child: Text(context.l10n.appSettings_batteryLipo),
+                  value: 'leadacid',
+                  child: Text(context.l10n.appSettings_batteryLeadAcid),
                 ),
               ],
             ),

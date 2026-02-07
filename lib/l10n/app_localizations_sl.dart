@@ -542,13 +542,16 @@ class AppLocalizationsSl extends AppLocalizations {
       'Za izbiro se poveži z napravo';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3,0-4,2V)';
+  String get appSettings_batteryNone => 'No Battery (External Power)';
+
+  @override
+  String get appSettings_batteryLipo => 'LiPo (3,0-4,2V)';
 
   @override
   String get appSettings_batteryLifepo4 => 'LiFePO4 (2,6–3,65 V)';
 
   @override
-  String get appSettings_batteryLipo => 'LiPo (3,0-4,2V)';
+  String get appSettings_batteryLeadAcid => 'Lead Acid (12V)';
 
   @override
   String get appSettings_mapDisplay => 'Prikaz zemljevida';

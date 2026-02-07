@@ -1,57 +1,85 @@
 {
   "bg": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ],
 
   "de": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ],
 
   "es": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ],
 
   "fr": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ],
 
   "it": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ],
 
   "nl": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ],
 
   "pl": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ],
 
   "pt": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ],
 
   "ru": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ],
 
   "sk": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ],
 
   "sl": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ],
 
   "sv": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ],
 
   "uk": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ],
 
   "zh": [
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
     "repeater_batteryChemistry"
   ]
 }

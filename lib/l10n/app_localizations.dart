@@ -1108,23 +1108,29 @@ abstract class AppLocalizations {
   /// **'Connect to a device to choose'**
   String get appSettings_batteryChemistryConnectFirst;
 
-  /// No description provided for @appSettings_batteryNmc.
+  /// No description provided for @appSettings_batteryNone.
   ///
   /// In en, this message translates to:
-  /// **'18650 NMC (3.0-4.2V)'**
-  String get appSettings_batteryNmc;
-
-  /// No description provided for @appSettings_batteryLifepo4.
-  ///
-  /// In en, this message translates to:
-  /// **'LiFePO4 (2.6-3.65V)'**
-  String get appSettings_batteryLifepo4;
+  /// **'No Battery (External Power)'**
+  String get appSettings_batteryNone;
 
   /// No description provided for @appSettings_batteryLipo.
   ///
   /// In en, this message translates to:
-  /// **'LiPo (3.0-4.2V)'**
+  /// **'LiPo (3.7V)'**
   String get appSettings_batteryLipo;
+
+  /// No description provided for @appSettings_batteryLifepo4.
+  ///
+  /// In en, this message translates to:
+  /// **'LiFePO4 (3.2V)'**
+  String get appSettings_batteryLifepo4;
+
+  /// No description provided for @appSettings_batteryLeadAcid.
+  ///
+  /// In en, this message translates to:
+  /// **'Lead Acid (12V)'**
+  String get appSettings_batteryLeadAcid;
 
   /// No description provided for @appSettings_mapDisplay.
   ///

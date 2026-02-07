@@ -161,14 +161,10 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
     final rxAirSecs = data.getUint32(offset, Endian.little);
 
     // Check for optional chemistry byte at offset 60 (protocol extension)
+    // 0=none, 1=lipo, 2=lifepo4, 3=leadacid
     String? reportedChem;
     if (frame.length > _statusResponseBytes) {
-      final chemByte = frame[_statusResponseBytes];
-      reportedChem = switch (chemByte) {
-        0x01 => 'lifepo4',
-        0x02 => 'lipo',
-        _ => 'nmc',
-      };
+      reportedChem = chemistryFromByte(frame[_statusResponseBytes]);
     }
 
     _statusTimeout?.cancel();
@@ -509,9 +505,11 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
     // Map chemistry code to display name
     String chemistryDisplayName(String chem) {
       return switch (chem) {
-        'lifepo4' => l10n.appSettings_batteryLifepo4,
+        'none' => l10n.appSettings_batteryNone,
         'lipo' => l10n.appSettings_batteryLipo,
-        _ => l10n.appSettings_batteryNmc,
+        'lifepo4' => l10n.appSettings_batteryLifepo4,
+        'leadacid' => l10n.appSettings_batteryLeadAcid,
+        _ => l10n.appSettings_batteryLipo,
       };
     }
 
@@ -562,16 +560,20 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
                     },
                     items: [
                       DropdownMenuItem(
-                        value: 'nmc',
-                        child: Text(l10n.appSettings_batteryNmc),
+                        value: 'none',
+                        child: Text(l10n.appSettings_batteryNone),
+                      ),
+                      DropdownMenuItem(
+                        value: 'lipo',
+                        child: Text(l10n.appSettings_batteryLipo),
                       ),
                       DropdownMenuItem(
                         value: 'lifepo4',
                         child: Text(l10n.appSettings_batteryLifepo4),
                       ),
                       DropdownMenuItem(
-                        value: 'lipo',
-                        child: Text(l10n.appSettings_batteryLipo),
+                        value: 'leadacid',
+                        child: Text(l10n.appSettings_batteryLeadAcid),
                       ),
                     ],
                   ),
@@ -700,7 +702,9 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
 
   String _batteryText(String chemistry) {
     if (_batteryMv == null) return '—';
+    if (chemistry == 'none') return 'N/A (external power)';
     final percent = estimateBatteryPercent(_batteryMv!, chemistry);
+    if (percent == null) return '—';
     final volts = (_batteryMv! / 1000.0).toStringAsFixed(2);
     return '$percent% / ${volts}V';
   }

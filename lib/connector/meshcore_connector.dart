@@ -225,12 +225,12 @@ class MeshCoreConnector extends ChangeNotifier {
     if (_reportedBatteryChemistry != null) return _reportedBatteryChemistry!;
     // Fall back to user setting
     final deviceId = _device?.remoteId.toString();
-    if (deviceId == null || _appSettingsService == null) return 'nmc';
+    if (deviceId == null || _appSettingsService == null) return 'lipo';
     return _appSettingsService!.batteryChemistryForDevice(deviceId);
   }
 
   // Uses shared utility from battery_utils.dart
-  int _estimateBatteryPercent(int millivolts, String chemistry) {
+  int? _estimateBatteryPercent(int millivolts, String chemistry) {
     return estimateBatteryPercent(millivolts, chemistry);
   }
 
@@ -1882,18 +1882,13 @@ class MeshCoreConnector extends ChangeNotifier {
     // [1-2] = battery_mv (uint16 LE)
     // [3-6] = storage_used_kb (uint32 LE)
     // [7-10] = storage_total_kb (uint32 LE)
-    // [11] = battery_chemistry (optional, 0=NMC, 1=LiFePO4, 2=LiPo)
+    // [11] = battery_chemistry (optional: 0=none, 1=lipo, 2=lifepo4, 3=leadacid)
     if (frame.length >= 3) {
       _batteryMillivolts = readUint16LE(frame, 1);
 
       // Check for optional chemistry byte at offset 11 (protocol extension)
       if (frame.length > 11) {
-        final chemByte = frame[11];
-        _reportedBatteryChemistry = switch (chemByte) {
-          0x01 => 'lifepo4',
-          0x02 => 'lipo',
-          _ => 'nmc',
-        };
+        _reportedBatteryChemistry = chemistryFromByte(frame[11]);
       }
 
       final volts = (_batteryMillivolts! / 1000.0).toStringAsFixed(2);

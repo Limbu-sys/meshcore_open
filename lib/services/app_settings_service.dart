@@ -13,8 +13,9 @@ class AppSettingsService extends ChangeNotifier {
 
   String batteryChemistryForDevice(String deviceId) {
     final stored = _settings.batteryChemistryByDeviceId[deviceId];
-    if (stored == 'liion') return 'nmc';
-    return stored ?? 'nmc';
+    // Migrate old values to new protocol
+    if (stored == 'liion' || stored == 'nmc') return 'lipo';
+    return stored ?? 'lipo';
   }
 
   Future<void> loadSettings() async {
@@ -134,7 +135,10 @@ class AppSettingsService extends ChangeNotifier {
   }
 
   String batteryChemistryForRepeater(String publicKeyHex) {
-    return _settings.repeaterBatteryChemistryByPublicKey[publicKeyHex] ?? 'nmc';
+    final stored = _settings.repeaterBatteryChemistryByPublicKey[publicKeyHex];
+    // Migrate old values to new protocol
+    if (stored == 'nmc') return 'lipo';
+    return stored ?? 'lipo';
   }
 
   Future<void> setBatteryChemistryForRepeater(

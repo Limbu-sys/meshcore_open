@@ -206,9 +206,10 @@
     }
   },
   "appSettings_batteryChemistryConnectFirst": "Connect to a device to choose",
-  "appSettings_batteryNmc": "18650 NMC (3.0-4.2V)",
-  "appSettings_batteryLifepo4": "LiFePO4 (2.6-3.65V)",
-  "appSettings_batteryLipo": "LiPo (3.0-4.2V)",
+  "appSettings_batteryNone": "No Battery (External Power)",
+  "appSettings_batteryLipo": "LiPo (3.7V)",
+  "appSettings_batteryLifepo4": "LiFePO4 (3.2V)",
+  "appSettings_batteryLeadAcid": "Lead Acid (12V)",
   "appSettings_mapDisplay": "Map Display",
   "appSettings_showRepeaters": "Show Repeaters",
   "appSettings_showRepeatersSubtitle": "Display repeater nodes on the map",
