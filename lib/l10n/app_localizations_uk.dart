@@ -1721,7 +1721,25 @@ class AppLocalizationsUk extends AppLocalizations {
   String get repeater_battery => 'Батарея';
 
   @override
-  String get repeater_batteryChemistry => 'Battery Type';
+  String get repeater_batteryChemistry => 'Тип батареї';
+
+  @override
+  String get repeater_powerSource => 'Джерело живлення';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Сонячна';
+
+  @override
+  String get repeater_powerCharging => 'Заряджання';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Тільки батарея';
+
+  @override
+  String get repeater_powerNone => 'Немає джерела живлення';
 
   @override
   String get repeater_clockAtLogin => 'Годинник (при вході)';

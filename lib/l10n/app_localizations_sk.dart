@@ -1713,7 +1713,25 @@ class AppLocalizationsSk extends AppLocalizations {
   String get repeater_battery => 'Batéria';
 
   @override
-  String get repeater_batteryChemistry => 'Battery Type';
+  String get repeater_batteryChemistry => 'Typ batérie';
+
+  @override
+  String get repeater_powerSource => 'Zdroj napájania';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Solárna';
+
+  @override
+  String get repeater_powerCharging => 'Nabíjanie';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Len batéria';
+
+  @override
+  String get repeater_powerNone => 'Žiadny zdroj napájania';
 
   @override
   String get repeater_clockAtLogin => 'Čas (při přihlášení)';

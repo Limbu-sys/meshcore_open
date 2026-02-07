@@ -1712,7 +1712,25 @@ class AppLocalizationsSl extends AppLocalizations {
   String get repeater_battery => 'Baterija';
 
   @override
-  String get repeater_batteryChemistry => 'Battery Type';
+  String get repeater_batteryChemistry => 'Tip baterije';
+
+  @override
+  String get repeater_powerSource => 'Vir napajanja';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Sončna';
+
+  @override
+  String get repeater_powerCharging => 'Polnjenje';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Samo baterija';
+
+  @override
+  String get repeater_powerNone => 'Ni vira napajanja';
 
   @override
   String get repeater_clockAtLogin => 'Ure (pri prijavi)';

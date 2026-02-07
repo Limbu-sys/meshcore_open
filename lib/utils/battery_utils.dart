@@ -44,3 +44,29 @@ String chemistryFromByte(int byte) {
     _ => 'lipo', // Default fallback
   };
 }
+
+/// Power state flags parsed from protocol byte 61.
+/// Bitmask: USB=0x01, Solar=0x02, Charging=0x04, Battery=0x08
+class PowerState {
+  static const int usbConnected = 0x01;
+  static const int solarConnected = 0x02;
+  static const int charging = 0x04;
+  static const int batteryPresent = 0x08;
+
+  final int flags;
+  final int? inputMv;
+
+  const PowerState(this.flags, [this.inputMv]);
+
+  bool get isUsbConnected => (flags & usbConnected) != 0;
+  bool get isSolarConnected => (flags & solarConnected) != 0;
+  bool get isCharging => (flags & charging) != 0;
+  bool get isBatteryPresent => (flags & batteryPresent) != 0;
+  bool get hasExternalPower => isUsbConnected || isSolarConnected;
+
+  /// Returns input voltage as a formatted string (e.g., "5.03"), or null if unavailable.
+  String? get inputVoltageString {
+    if (inputMv == null || inputMv == 0) return null;
+    return (inputMv! / 1000.0).toStringAsFixed(2);
+  }
+}

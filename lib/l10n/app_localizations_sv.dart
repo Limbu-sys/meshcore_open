@@ -1702,7 +1702,25 @@ class AppLocalizationsSv extends AppLocalizations {
   String get repeater_battery => 'Batteri';
 
   @override
-  String get repeater_batteryChemistry => 'Battery Type';
+  String get repeater_batteryChemistry => 'Batterityp';
+
+  @override
+  String get repeater_powerSource => 'Strömkälla';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Sol';
+
+  @override
+  String get repeater_powerCharging => 'Laddar';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Endast batteri';
+
+  @override
+  String get repeater_powerNone => 'Ingen strömkälla';
 
   @override
   String get repeater_clockAtLogin => 'Klocka (vid inloggning)';

@@ -1711,7 +1711,25 @@ class AppLocalizationsNl extends AppLocalizations {
   String get repeater_battery => 'Batterij';
 
   @override
-  String get repeater_batteryChemistry => 'Battery Type';
+  String get repeater_batteryChemistry => 'Batterijtype';
+
+  @override
+  String get repeater_powerSource => 'Stroombron';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Zonne-energie';
+
+  @override
+  String get repeater_powerCharging => 'Opladen';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Alleen batterij';
+
+  @override
+  String get repeater_powerNone => 'Geen stroombron';
 
   @override
   String get repeater_clockAtLogin => 'Tijd (bij aanmelden)';

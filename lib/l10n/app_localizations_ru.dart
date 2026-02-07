@@ -1720,7 +1720,25 @@ class AppLocalizationsRu extends AppLocalizations {
   String get repeater_battery => 'Батарея';
 
   @override
-  String get repeater_batteryChemistry => 'Battery Type';
+  String get repeater_batteryChemistry => 'Тип батареи';
+
+  @override
+  String get repeater_powerSource => 'Источник питания';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Солнечная';
+
+  @override
+  String get repeater_powerCharging => 'Зарядка';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Только батарея';
+
+  @override
+  String get repeater_powerNone => 'Нет питания';
 
   @override
   String get repeater_clockAtLogin => 'Время (при входе)';

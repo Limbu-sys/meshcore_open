@@ -1720,7 +1720,25 @@ class AppLocalizationsDe extends AppLocalizations {
   String get repeater_battery => 'Akku';
 
   @override
-  String get repeater_batteryChemistry => 'Battery Type';
+  String get repeater_batteryChemistry => 'Akkutyp';
+
+  @override
+  String get repeater_powerSource => 'Stromquelle';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Solar';
+
+  @override
+  String get repeater_powerCharging => 'Lädt';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Nur Akku';
+
+  @override
+  String get repeater_powerNone => 'Keine Stromquelle';
 
   @override
   String get repeater_clockAtLogin => 'Uhr (bei Anmeldung)';

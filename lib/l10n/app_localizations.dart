@@ -3117,6 +3117,42 @@ abstract class AppLocalizations {
   /// **'Battery Type'**
   String get repeater_batteryChemistry;
 
+  /// No description provided for @repeater_powerSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Power Source'**
+  String get repeater_powerSource;
+
+  /// No description provided for @repeater_powerUsb.
+  ///
+  /// In en, this message translates to:
+  /// **'USB'**
+  String get repeater_powerUsb;
+
+  /// No description provided for @repeater_powerSolar.
+  ///
+  /// In en, this message translates to:
+  /// **'Solar'**
+  String get repeater_powerSolar;
+
+  /// No description provided for @repeater_powerCharging.
+  ///
+  /// In en, this message translates to:
+  /// **'Charging'**
+  String get repeater_powerCharging;
+
+  /// No description provided for @repeater_powerBatteryOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery only'**
+  String get repeater_powerBatteryOnly;
+
+  /// No description provided for @repeater_powerNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No power source'**
+  String get repeater_powerNone;
+
   /// No description provided for @repeater_clockAtLogin.
   ///
   /// In en, this message translates to:

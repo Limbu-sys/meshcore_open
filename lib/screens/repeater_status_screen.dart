@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../l10n/l10n.dart';
+import '../l10n/app_localizations.dart';
 import '../models/contact.dart';
 import '../models/path_selection.dart';
 import '../connector/meshcore_connector.dart';
@@ -57,6 +58,7 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
   int? _dupDirect;
   PathSelection? _pendingStatusSelection;
   String? _reportedChemistry; // From firmware, if available
+  PowerState? _powerState; // Power source info from firmware
 
   @override
   void initState() {
@@ -163,8 +165,20 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
     // Check for optional chemistry byte at offset 60 (protocol extension)
     // 0=none, 1=lipo, 2=lifepo4, 3=leadacid
     String? reportedChem;
+    PowerState? powerState;
     if (frame.length > _statusResponseBytes) {
       reportedChem = chemistryFromByte(frame[_statusResponseBytes]);
+
+      // Parse power state byte (offset 61) and input voltage (bytes 62-63)
+      if (frame.length > _statusResponseBytes + 1) {
+        final powerFlags = frame[_statusResponseBytes + 1];
+        int? inputMv;
+        if (frame.length > _statusResponseBytes + 3) {
+          inputMv = frame[_statusResponseBytes + 2] |
+              (frame[_statusResponseBytes + 3] << 8);
+        }
+        powerState = PowerState(powerFlags, inputMv);
+      }
     }
 
     _statusTimeout?.cancel();
@@ -189,6 +203,7 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
       _dupDirect = directDups;
       _dupFlood = floodDups;
       _reportedChemistry = reportedChem;
+      _powerState = powerState;
     });
     _recordStatusResult(true);
   }
@@ -263,6 +278,7 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
       _dupFlood = null;
       _dupDirect = null;
       _reportedChemistry = null;
+      _powerState = null;
     });
 
     try {
@@ -487,6 +503,8 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
                 chemistry,
                 isFromFirmware: _reportedChemistry != null,
               ),
+            // Show power source row if firmware reports power state
+            if (_powerState != null) _buildPowerSourceRow(l10n),
             _buildInfoRow(l10n.repeater_clockAtLogin, _clockText()),
             _buildInfoRow(l10n.repeater_uptime, _formatDuration(_uptimeSecs)),
             _buildInfoRow(l10n.repeater_queueLength, _formatValue(_queueLen)),
@@ -582,6 +600,80 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
                       ),
                     ],
                   ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPowerSourceRow(AppLocalizations l10n) {
+    final power = _powerState;
+    if (power == null) return const SizedBox.shrink();
+
+    // Build list of status parts
+    final parts = <String>[];
+    if (power.isUsbConnected) parts.add(l10n.repeater_powerUsb);
+    if (power.isSolarConnected) parts.add(l10n.repeater_powerSolar);
+    if (power.isCharging) parts.add(l10n.repeater_powerCharging);
+
+    // Add input voltage if available
+    final voltageStr = power.inputVoltageString;
+    if (voltageStr != null) parts.add('${voltageStr}V');
+
+    // Fallback text if no external power
+    final statusText = parts.isEmpty
+        ? (power.isBatteryPresent
+            ? l10n.repeater_powerBatteryOnly
+            : l10n.repeater_powerNone)
+        : parts.join(' / ');
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 130,
+            child: Text(
+              l10n.repeater_powerSource,
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                // USB icon
+                if (power.isUsbConnected)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6),
+                    child: Icon(Icons.usb, size: 18, color: Colors.blue[600]),
+                  ),
+                // Solar icon
+                if (power.isSolarConnected)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6),
+                    child:
+                        Icon(Icons.wb_sunny, size: 18, color: Colors.orange[600]),
+                  ),
+                // Charging icon
+                if (power.isCharging)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6),
+                    child: Icon(Icons.battery_charging_full,
+                        size: 18, color: Colors.green[600]),
+                  ),
+                Flexible(
+                  child: Text(
+                    statusText,
+                    style: const TextStyle(fontWeight: FontWeight.w400),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

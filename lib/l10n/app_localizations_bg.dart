@@ -1723,7 +1723,25 @@ class AppLocalizationsBg extends AppLocalizations {
   String get repeater_battery => 'Батерия';
 
   @override
-  String get repeater_batteryChemistry => 'Battery Type';
+  String get repeater_batteryChemistry => 'Тип батерия';
+
+  @override
+  String get repeater_powerSource => 'Източник на захранване';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Слънчева';
+
+  @override
+  String get repeater_powerCharging => 'Зареждане';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Само батерия';
+
+  @override
+  String get repeater_powerNone => 'Няма захранване';
 
   @override
   String get repeater_clockAtLogin => 'Часовник (при влизане)';

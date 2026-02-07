@@ -1696,6 +1696,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get repeater_batteryChemistry => 'Battery Type';
 
   @override
+  String get repeater_powerSource => 'Power Source';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Solar';
+
+  @override
+  String get repeater_powerCharging => 'Charging';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Battery only';
+
+  @override
+  String get repeater_powerNone => 'No power source';
+
+  @override
   String get repeater_clockAtLogin => 'Clock (at login)';
 
   @override
