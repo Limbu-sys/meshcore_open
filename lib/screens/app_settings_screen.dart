@@ -391,9 +391,27 @@ class AppSettingsScreen extends StatelessWidget {
   ) {
     final deviceId = connector.deviceId;
     final isConnected = connector.isConnected && deviceId != null;
-    final selection = isConnected
-        ? settingsService.batteryChemistryForDevice(deviceId)
+    final isFromFirmware = connector.reportedBatteryChemistry != null;
+    final chemistry = isConnected
+        ? (isFromFirmware
+            ? connector.reportedBatteryChemistry!
+            : settingsService.batteryChemistryForDevice(deviceId))
         : 'lipo';
+
+    // Don't show battery card if firmware reports no battery
+    if (isFromFirmware && chemistry == 'none') {
+      return const SizedBox.shrink();
+    }
+
+    String chemistryDisplayName(String chem) {
+      return switch (chem) {
+        'none' => context.l10n.appSettings_batteryNone,
+        'lipo' => context.l10n.appSettings_batteryLipo,
+        'lifepo4' => context.l10n.appSettings_batteryLifepo4,
+        'leadacid' => context.l10n.appSettings_batteryLeadAcid,
+        _ => context.l10n.appSettings_batteryLipo,
+      };
+    }
 
     return Card(
       child: Column(
@@ -416,37 +434,52 @@ class AppSettingsScreen extends StatelessWidget {
                     )
                   : context.l10n.appSettings_batteryChemistryConnectFirst,
             ),
-            trailing: DropdownButton<String>(
-              value: selection,
-              onChanged: isConnected
-                  ? (value) {
-                      if (value != null) {
-                        settingsService.setBatteryChemistryForDevice(
-                          deviceId,
-                          value,
-                        );
-                      }
-                    }
-                  : null,
-              items: [
-                DropdownMenuItem(
-                  value: 'none',
-                  child: Text(context.l10n.appSettings_batteryNone),
-                ),
-                DropdownMenuItem(
-                  value: 'lipo',
-                  child: Text(context.l10n.appSettings_batteryLipo),
-                ),
-                DropdownMenuItem(
-                  value: 'lifepo4',
-                  child: Text(context.l10n.appSettings_batteryLifepo4),
-                ),
-                DropdownMenuItem(
-                  value: 'leadacid',
-                  child: Text(context.l10n.appSettings_batteryLeadAcid),
-                ),
-              ],
-            ),
+            trailing: isFromFirmware
+                // Firmware-reported: show as read-only text with lock icon
+                ? Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(chemistryDisplayName(chemistry)),
+                      const SizedBox(width: 8),
+                      Icon(
+                        Icons.lock_outline,
+                        size: 16,
+                        color: Colors.grey[500],
+                      ),
+                    ],
+                  )
+                // User-configurable: show dropdown
+                : DropdownButton<String>(
+                    value: chemistry,
+                    onChanged: isConnected
+                        ? (value) {
+                            if (value != null) {
+                              settingsService.setBatteryChemistryForDevice(
+                                deviceId,
+                                value,
+                              );
+                            }
+                          }
+                        : null,
+                    items: [
+                      DropdownMenuItem(
+                        value: 'none',
+                        child: Text(context.l10n.appSettings_batteryNone),
+                      ),
+                      DropdownMenuItem(
+                        value: 'lipo',
+                        child: Text(context.l10n.appSettings_batteryLipo),
+                      ),
+                      DropdownMenuItem(
+                        value: 'lifepo4',
+                        child: Text(context.l10n.appSettings_batteryLifepo4),
+                      ),
+                      DropdownMenuItem(
+                        value: 'leadacid',
+                        child: Text(context.l10n.appSettings_batteryLeadAcid),
+                      ),
+                    ],
+                  ),
           ),
         ],
       ),

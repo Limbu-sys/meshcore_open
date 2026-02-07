@@ -205,6 +205,7 @@ class MeshCoreConnector extends ChangeNotifier {
   int? get currentCr => _currentCr;
   Map<String, String>? get currentCustomVars => _currentCustomVars;
   int? get batteryMillivolts => _batteryMillivolts;
+  String? get reportedBatteryChemistry => _reportedBatteryChemistry;
   int get maxContacts => _maxContacts;
   int get maxChannels => _maxChannels;
   bool get isSyncingQueuedMessages => _isSyncingQueuedMessages;
@@ -221,12 +222,16 @@ class MeshCoreConnector extends ChangeNotifier {
         );
 
   String _batteryChemistryForDevice() {
-    // Prefer firmware-reported chemistry if available
-    if (_reportedBatteryChemistry != null) return _reportedBatteryChemistry!;
-    // Fall back to user setting
+    // User setting is the source of truth (they can override firmware)
     final deviceId = _device?.remoteId.toString();
-    if (deviceId == null || _appSettingsService == null) return 'lipo';
-    return _appSettingsService!.batteryChemistryForDevice(deviceId);
+    if (deviceId != null && _appSettingsService != null) {
+      return _appSettingsService!.batteryChemistryForDevice(deviceId);
+    }
+    // Fall back to firmware if available and meaningful (not 'none')
+    if (_reportedBatteryChemistry != null && _reportedBatteryChemistry != 'none') {
+      return _reportedBatteryChemistry!;
+    }
+    return 'lipo';
   }
 
   // Uses shared utility from battery_utils.dart

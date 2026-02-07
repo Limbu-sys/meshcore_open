@@ -82,6 +82,15 @@
   "settings_radioSettings": "Radio Settings",
   "settings_radioSettingsSubtitle": "Frequency, power, spreading factor",
   "settings_radioSettingsUpdated": "Radio settings updated",
+  "settings_batterySettings": "Battery Settings",
+  "settings_batterySettingsSubtitle": "Battery chemistry type",
+  "settings_batteryType": "Type",
+  "settings_batteryFirmwareDefault": "Device default: {chemistry}",
+  "@settings_batteryFirmwareDefault": {
+    "placeholders": {
+      "chemistry": {"type": "String"}
+    }
+  },
   "settings_location": "Location",
   "settings_locationSubtitle": "GPS coordinates",
   "settings_locationUpdated": "Location and GPS settings updated",

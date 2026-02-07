@@ -460,6 +460,30 @@ abstract class AppLocalizations {
   /// **'Radio settings updated'**
   String get settings_radioSettingsUpdated;
 
+  /// No description provided for @settings_batterySettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery Settings'**
+  String get settings_batterySettings;
+
+  /// No description provided for @settings_batterySettingsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery chemistry type'**
+  String get settings_batterySettingsSubtitle;
+
+  /// No description provided for @settings_batteryType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get settings_batteryType;
+
+  /// No description provided for @settings_batteryFirmwareDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Device default: {chemistry}'**
+  String settings_batteryFirmwareDefault(String chemistry);
+
   /// No description provided for @settings_location.
   ///
   /// In en, this message translates to:
