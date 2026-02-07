@@ -206,7 +206,7 @@
     }
   },
   "appSettings_batteryChemistryConnectFirst": "Connect to a device to choose",
-  "appSettings_batteryNone": "No Battery (External Power)",
+  "appSettings_batteryNone": "No Battery",
   "appSettings_batteryLipo": "LiPo (3.7V)",
   "appSettings_batteryLifepo4": "LiFePO4 (3.2V)",
   "appSettings_batteryLeadAcid": "Lead Acid (12V)",

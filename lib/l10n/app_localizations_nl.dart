@@ -543,7 +543,7 @@ class AppLocalizationsNl extends AppLocalizations {
       'Verbind met een apparaat om te selecteren';
 
   @override
-  String get appSettings_batteryNone => 'No Battery (External Power)';
+  String get appSettings_batteryNone => 'No Battery';
 
   @override
   String get appSettings_batteryLipo => 'LiPo (3,0-4,2V)';

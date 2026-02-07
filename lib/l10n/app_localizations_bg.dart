@@ -548,7 +548,7 @@ class AppLocalizationsBg extends AppLocalizations {
       'Свържете се с устройство, за да изберете.';
 
   @override
-  String get appSettings_batteryNone => 'No Battery (External Power)';
+  String get appSettings_batteryNone => 'No Battery';
 
   @override
   String get appSettings_batteryLipo => 'Литиев полимер (3.0-4.2V)';

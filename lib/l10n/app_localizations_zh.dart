@@ -517,7 +517,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get appSettings_batteryChemistryConnectFirst => '连接到设备以进行选择';
 
   @override
-  String get appSettings_batteryNone => 'No Battery (External Power)';
+  String get appSettings_batteryNone => 'No Battery';
 
   @override
   String get appSettings_batteryLipo => '锂离子电池 (3.0-4.2V)';

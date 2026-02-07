@@ -547,7 +547,7 @@ class AppLocalizationsPt extends AppLocalizations {
       'Conecte-se a um dispositivo para escolher';
 
   @override
-  String get appSettings_batteryNone => 'No Battery (External Power)';
+  String get appSettings_batteryNone => 'No Battery';
 
   @override
   String get appSettings_batteryLipo => 'LiPo (3,0-4,2V)';

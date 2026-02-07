@@ -537,7 +537,7 @@ class AppLocalizationsSv extends AppLocalizations {
       'Anslut till en enhet för att välja';
 
   @override
-  String get appSettings_batteryNone => 'No Battery (External Power)';
+  String get appSettings_batteryNone => 'No Battery';
 
   @override
   String get appSettings_batteryLipo => 'LiPo (3.0-4.2V)';

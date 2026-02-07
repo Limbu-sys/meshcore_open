@@ -480,11 +480,13 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
             ),
             const Divider(),
             _buildInfoRow(l10n.repeater_battery, _batteryText(chemistry)),
-            _buildBatteryChemistryRow(
-              settingsService,
-              chemistry,
-              isFromFirmware: _reportedChemistry != null,
-            ),
+            // Only show chemistry row if there's a battery to configure
+            if (chemistry != 'none')
+              _buildBatteryChemistryRow(
+                settingsService,
+                chemistry,
+                isFromFirmware: _reportedChemistry != null,
+              ),
             _buildInfoRow(l10n.repeater_clockAtLogin, _clockText()),
             _buildInfoRow(l10n.repeater_uptime, _formatDuration(_uptimeSecs)),
             _buildInfoRow(l10n.repeater_queueLength, _formatValue(_queueLen)),
@@ -533,9 +535,12 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
                 // Firmware-reported: show as read-only text with indicator
                 ? Row(
                     children: [
-                      Text(
-                        chemistryDisplayName(currentChemistry),
-                        style: const TextStyle(fontWeight: FontWeight.w400),
+                      Flexible(
+                        child: Text(
+                          chemistryDisplayName(currentChemistry),
+                          style: const TextStyle(fontWeight: FontWeight.w400),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                       const SizedBox(width: 8),
                       Icon(

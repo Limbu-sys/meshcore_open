@@ -546,7 +546,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Подключитесь к устройству, чтобы выбрать';
 
   @override
-  String get appSettings_batteryNone => 'No Battery (External Power)';
+  String get appSettings_batteryNone => 'No Battery';
 
   @override
   String get appSettings_batteryLipo => 'LiPo (3.0–4.2 В)';

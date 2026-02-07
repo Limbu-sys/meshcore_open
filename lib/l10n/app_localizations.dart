@@ -1111,7 +1111,7 @@ abstract class AppLocalizations {
   /// No description provided for @appSettings_batteryNone.
   ///
   /// In en, this message translates to:
-  /// **'No Battery (External Power)'**
+  /// **'No Battery'**
   String get appSettings_batteryNone;
 
   /// No description provided for @appSettings_batteryLipo.
