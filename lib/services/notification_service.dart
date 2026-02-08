@@ -243,7 +243,9 @@ class NotificationService {
     );
 
     final preview = message.trim();
-    final body = preview.isEmpty ? _l10n.notification_receivedNewMessage : preview;
+    final body = preview.isEmpty
+        ? _l10n.notification_receivedNewMessage
+        : preview;
 
     await _notifications.show(
       channelIndex?.hashCode ?? DateTime.now().millisecondsSinceEpoch,
@@ -298,13 +300,15 @@ class NotificationService {
   }) async {
     if (_suppressNotifications) return;
 
-    _queueNotification(_PendingNotification(
-      type: _NotificationType.message,
-      title: contactName,
-      body: message,
-      id: contactId,
-      badgeCount: badgeCount,
-    ));
+    _queueNotification(
+      _PendingNotification(
+        type: _NotificationType.message,
+        title: contactName,
+        body: message,
+        id: contactId,
+        badgeCount: badgeCount,
+      ),
+    );
   }
 
   Future<void> showAdvertNotification({
@@ -314,12 +318,14 @@ class NotificationService {
   }) async {
     if (_suppressNotifications) return;
 
-    _queueNotification(_PendingNotification(
-      type: _NotificationType.advert,
-      title: contactType,
-      body: contactName,
-      id: contactId,
-    ));
+    _queueNotification(
+      _PendingNotification(
+        type: _NotificationType.advert,
+        title: contactType,
+        body: contactName,
+        id: contactId,
+      ),
+    );
   }
 
   Future<void> showChannelMessageNotification({
@@ -330,13 +336,15 @@ class NotificationService {
   }) async {
     if (_suppressNotifications) return;
 
-    _queueNotification(_PendingNotification(
-      type: _NotificationType.channelMessage,
-      title: channelName,
-      body: message,
-      id: channelIndex?.toString(),
-      badgeCount: badgeCount,
-    ));
+    _queueNotification(
+      _PendingNotification(
+        type: _NotificationType.channelMessage,
+        title: channelName,
+        body: message,
+        id: channelIndex?.toString(),
+        badgeCount: badgeCount,
+      ),
+    );
   }
 
   void _queueNotification(_PendingNotification notification) {
@@ -346,7 +354,9 @@ class NotificationService {
     if (_lastNotificationTime != null &&
         now.difference(_lastNotificationTime!) < _minNotificationInterval) {
       _pendingNotifications.add(notification);
-      debugPrint('[Notification] queued: ${notification.type.name} (${_getNotificationIdentifier(notification)})');
+      debugPrint(
+        '[Notification] queued: ${notification.type.name} (${_getNotificationIdentifier(notification)})',
+      );
 
       // Start batch timer if not already running
       if (!_isBatchingActive) {
@@ -357,7 +367,9 @@ class NotificationService {
     }
 
     // Show immediately if enough time has passed
-    debugPrint('[Notification] sent immediately: ${notification.type.name} (${_getNotificationIdentifier(notification)})');
+    debugPrint(
+      '[Notification] sent immediately: ${notification.type.name} (${_getNotificationIdentifier(notification)})',
+    );
     _showNotificationImmediately(notification);
     _lastNotificationTime = now;
   }
@@ -381,7 +393,9 @@ class NotificationService {
     _lastNotificationTime = DateTime.now();
   }
 
-  Future<void> _showNotificationImmediately(_PendingNotification notification) async {
+  Future<void> _showNotificationImmediately(
+    _PendingNotification notification,
+  ) async {
     switch (notification.type) {
       case _NotificationType.message:
         await _showMessageNotificationImpl(
@@ -413,9 +427,15 @@ class NotificationService {
     if (!_isInitialized) await initialize();
 
     // Group by type
-    final messages = batch.where((n) => n.type == _NotificationType.message).toList();
-    final adverts = batch.where((n) => n.type == _NotificationType.advert).toList();
-    final channelMsgs = batch.where((n) => n.type == _NotificationType.channelMessage).toList();
+    final messages = batch
+        .where((n) => n.type == _NotificationType.message)
+        .toList();
+    final adverts = batch
+        .where((n) => n.type == _NotificationType.advert)
+        .toList();
+    final channelMsgs = batch
+        .where((n) => n.type == _NotificationType.channelMessage)
+        .toList();
 
     // Build summary text using localized plurals
     final parts = <String>[];
@@ -446,9 +466,7 @@ class NotificationService {
       icon: '@mipmap/ic_launcher',
     );
 
-    const notificationDetails = NotificationDetails(
-      android: androidDetails,
-    );
+    const notificationDetails = NotificationDetails(android: androidDetails);
 
     await _notifications.show(
       'batch_summary'.hashCode,
