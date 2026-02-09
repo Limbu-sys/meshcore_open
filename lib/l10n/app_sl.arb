@@ -1574,5 +1574,23 @@
   "notification_channelMessagesCount": "{count} {count, plural, =1{sporočilo kanala} =2{sporočili kanala} few{sporočila kanala} other{sporočil kanala}}",
   "notification_newNodesCount": "{count} {count, plural, =1{novo vozlišče} =2{novi vozlišči} few{nova vozlišča} other{novih vozlišč}}",
   "notification_newTypeDiscovered": "Odkrito novo {contactType}",
-  "notification_receivedNewMessage": "Prejeto novo sporočilo"
+  "notification_receivedNewMessage": "Prejeto novo sporočilo",
+  "contacts_ShareContact": "Kopiraj stik v Odložišče",
+  "settings_gpxExportAll": "Izvozi vse kontakte v GPX",
+  "settings_gpxExportContacts": "Izvoz spremljevalcev v GPX",
+  "settings_gpxExportRepeatersSubtitle": "Izvozi ponovljene oddajnike / strežnik sobe z lokacijo v datoteko GPX.",
+  "settings_gpxExportRepeaters": "Izvoz ponoviteljev / strežnika sobe v GPX",
+  "settings_gpxExportError": "Pri izvozu je prišlo do napake.",
+  "settings_gpxExportRepeatersRoom": "Lokacije ponovljivca in strežnika sobe",
+  "settings_gpxExportChat": "Lokacije spremljevalcev",
+  "settings_gpxExportAllContacts": "Lokacije vseh stikov",
+  "settings_gpxExportContactsSubtitle": "Izvozi spremljevalce z lokacijo v datoteko GPX.",
+  "settings_gpxExportAllSubtitle": "Izvozi vse kontakte z lokacijo v datoteko GPX.",
+  "settings_gpxExportSuccess": "Uspešno izvoz GPX datoteke.",
+  "settings_gpxExportShareText": "Podatki kart izvoženi iz meshcore-open",
+  "settings_gpxExportNoContacts": "Ni stikov za izvoz.",
+  "settings_gpxExportNotAvailable": "Ni podprto na vašem napravi/operacijskem sistemu",
+  "settings_gpxExportShareSubject": "meshcore-open izvoz podatkov GPX karte",
+  "pathTrace_someHopsNoLocation": "Ena ali več hmelju manjka lokacija!"
+
 }

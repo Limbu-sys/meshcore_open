@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:meshcore_open/widgets/path_trace_dialog.dart';
 import 'package:flutter/services.dart';
+import 'package:meshcore_open/screens/path_trace_map.dart';
 import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
@@ -982,16 +982,16 @@ class _ContactsScreenState extends State<ContactsScreen>
                     ? Text(context.l10n.contacts_pathTrace)
                     : Text(context.l10n.contacts_ping),
                 onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return PathTraceDialog(
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PathTraceMapScreen(
                         title: contact.pathLength > 0
                             ? context.l10n.contacts_repeaterPathTrace
                             : context.l10n.contacts_repeaterPing,
                         path: contact.traceRouteBytes ?? Uint8List(0),
-                      );
-                    },
+                      ),
+                    ),
                   );
                 },
               ),
@@ -1010,16 +1010,16 @@ class _ContactsScreenState extends State<ContactsScreen>
                     ? Text(context.l10n.contacts_pathTrace)
                     : Text(context.l10n.contacts_ping),
                 onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return PathTraceDialog(
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PathTraceMapScreen(
                         title: contact.pathLength > 0
                             ? context.l10n.contacts_roomPathTrace
                             : context.l10n.contacts_roomPing,
                         path: contact.traceRouteBytes ?? Uint8List(0),
-                      );
-                    },
+                      ),
+                    ),
                   );
                 },
               ),
@@ -1052,16 +1052,16 @@ class _ContactsScreenState extends State<ContactsScreen>
                   leading: const Icon(Icons.radar, color: Colors.green),
                   title: Text(context.l10n.contacts_chatTraceRoute),
                   onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return PathTraceDialog(
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PathTraceMapScreen(
                           title: context.l10n.contacts_pathTraceTo(
                             contact.name,
                           ),
                           path: contact.traceRouteBytes ?? Uint8List(0),
-                        );
-                      },
+                        ),
+                      ),
                     );
                   },
                 ),

@@ -2656,6 +2656,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pathTrace_refreshTooltip => 'Refresh Path Trace.';
 
   @override
+  String get pathTrace_someHopsNoLocation =>
+      'One or more of the hops is missing a location!';
+
+  @override
   String get contacts_pathTrace => 'Path Trace';
 
   @override
@@ -2767,4 +2771,57 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notification_receivedNewMessage => 'Received new message';
+
+  @override
+  String get settings_gpxExportRepeaters =>
+      'Export repeaters / room server to GPX';
+
+  @override
+  String get settings_gpxExportRepeatersSubtitle =>
+      'Exports repeaters / roomserver with a location to GPX file.';
+
+  @override
+  String get settings_gpxExportContacts => 'Export companions to GPX';
+
+  @override
+  String get settings_gpxExportContactsSubtitle =>
+      'Exports companions with a location to GPX file.';
+
+  @override
+  String get settings_gpxExportAll => 'Export all contacts to GPX';
+
+  @override
+  String get settings_gpxExportAllSubtitle =>
+      'Exports all contacts with a location to GPX file.';
+
+  @override
+  String get settings_gpxExportSuccess => 'Successfully exported GPX file.';
+
+  @override
+  String get settings_gpxExportNoContacts => 'No contacts to export.';
+
+  @override
+  String get settings_gpxExportNotAvailable =>
+      'Not supported on your device/OS';
+
+  @override
+  String get settings_gpxExportError => 'There was an error when exporting.';
+
+  @override
+  String get settings_gpxExportRepeatersRoom =>
+      'Repeater & room server locations';
+
+  @override
+  String get settings_gpxExportChat => 'Companion locations';
+
+  @override
+  String get settings_gpxExportAllContacts => 'All contacts locations';
+
+  @override
+  String get settings_gpxExportShareText =>
+      'Map data exported from meshcore-open';
+
+  @override
+  String get settings_gpxExportShareSubject =>
+      'meshcore-open GPX map data export';
 }

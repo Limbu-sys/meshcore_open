@@ -4724,6 +4724,12 @@ abstract class AppLocalizations {
   /// **'Refresh Path Trace.'**
   String get pathTrace_refreshTooltip;
 
+  /// No description provided for @pathTrace_someHopsNoLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'One or more of the hops is missing a location!'**
+  String get pathTrace_someHopsNoLocation;
+
   /// No description provided for @contacts_pathTrace.
   ///
   /// In en, this message translates to:
@@ -4891,6 +4897,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Received new message'**
   String get notification_receivedNewMessage;
+
+  /// No description provided for @settings_gpxExportRepeaters.
+  ///
+  /// In en, this message translates to:
+  /// **'Export repeaters / room server to GPX'**
+  String get settings_gpxExportRepeaters;
+
+  /// No description provided for @settings_gpxExportRepeatersSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Exports repeaters / roomserver with a location to GPX file.'**
+  String get settings_gpxExportRepeatersSubtitle;
+
+  /// No description provided for @settings_gpxExportContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'Export companions to GPX'**
+  String get settings_gpxExportContacts;
+
+  /// No description provided for @settings_gpxExportContactsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Exports companions with a location to GPX file.'**
+  String get settings_gpxExportContactsSubtitle;
+
+  /// No description provided for @settings_gpxExportAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Export all contacts to GPX'**
+  String get settings_gpxExportAll;
+
+  /// No description provided for @settings_gpxExportAllSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Exports all contacts with a location to GPX file.'**
+  String get settings_gpxExportAllSubtitle;
+
+  /// No description provided for @settings_gpxExportSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Successfully exported GPX file.'**
+  String get settings_gpxExportSuccess;
+
+  /// No description provided for @settings_gpxExportNoContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'No contacts to export.'**
+  String get settings_gpxExportNoContacts;
+
+  /// No description provided for @settings_gpxExportNotAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Not supported on your device/OS'**
+  String get settings_gpxExportNotAvailable;
+
+  /// No description provided for @settings_gpxExportError.
+  ///
+  /// In en, this message translates to:
+  /// **'There was an error when exporting.'**
+  String get settings_gpxExportError;
+
+  /// No description provided for @settings_gpxExportRepeatersRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeater & room server locations'**
+  String get settings_gpxExportRepeatersRoom;
+
+  /// No description provided for @settings_gpxExportChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Companion locations'**
+  String get settings_gpxExportChat;
+
+  /// No description provided for @settings_gpxExportAllContacts.
+  ///
+  /// In en, this message translates to:
+  /// **'All contacts locations'**
+  String get settings_gpxExportAllContacts;
+
+  /// No description provided for @settings_gpxExportShareText.
+  ///
+  /// In en, this message translates to:
+  /// **'Map data exported from meshcore-open'**
+  String get settings_gpxExportShareText;
+
+  /// No description provided for @settings_gpxExportShareSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'meshcore-open GPX map data export'**
+  String get settings_gpxExportShareSubject;
 }
 
 class _AppLocalizationsDelegate

@@ -1574,5 +1574,23 @@
   "notification_channelMessagesCount": "{count} {count, plural, =1{message de canal} other{messages de canal}}",
   "notification_newNodesCount": "{count} {count, plural, =1{nouveau nœud} other{nouveaux nœuds}}",
   "notification_newTypeDiscovered": "Nouveau {contactType} découvert",
-  "notification_receivedNewMessage": "Nouveau message reçu"
+  "notification_receivedNewMessage": "Nouveau message reçu",
+  "contacts_zeroHopContactAdvertFailed": "Échec de l'envoi du contact.",
+  "settings_gpxExportRepeaters": "Exporter les répéteurs / serveur de salle au format GPX",
+  "settings_gpxExportRepeatersSubtitle": "Exporte les répéteurs / roomserver avec une localisation vers un fichier GPX.",
+  "settings_gpxExportNoContacts": "Aucun contact à exporter.",
+  "settings_gpxExportNotAvailable": "Non pris en charge sur votre appareil/Système d'exploitation",
+  "settings_gpxExportError": "Une erreur s'est produite lors de l'exportation.",
+  "settings_gpxExportRepeatersRoom": "Emplacements des serveurs de répéteur et de salle",
+  "settings_gpxExportContacts": "Exporter les compagnons au format GPX",
+  "settings_gpxExportAll": "Exporter tous les contacts au format GPX",
+  "settings_gpxExportAllSubtitle": "Exporte tous les contacts avec une localisation vers un fichier GPX.",
+  "settings_gpxExportContactsSubtitle": "Exporte les compagnons avec un emplacement vers un fichier GPX.",
+  "settings_gpxExportChat": "Emplacements des compagnons",
+  "settings_gpxExportSuccess": "Fichier GPX exporté avec succès.",
+  "settings_gpxExportAllContacts": "Tous les emplacements des contacts",
+  "settings_gpxExportShareText": "Données de carte exportées à partir de meshcore-open",
+  "settings_gpxExportShareSubject": "meshcore-open exporter les données de carte GPX",
+  "pathTrace_someHopsNoLocation": "Une ou plusieurs des houblons manquent d'une localisation !"
+
 }

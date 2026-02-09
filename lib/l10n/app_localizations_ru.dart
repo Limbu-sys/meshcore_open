@@ -2699,6 +2699,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get pathTrace_refreshTooltip => 'Обновить Path Trace';
 
   @override
+  String get pathTrace_someHopsNoLocation =>
+      'Одному или нескольким хмелям не указано местоположение!';
+
+  @override
   String get contacts_pathTrace => 'Трассировка пути';
 
   @override
@@ -2823,4 +2827,57 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get notification_receivedNewMessage => 'Получено новое сообщение';
+
+  @override
+  String get settings_gpxExportRepeaters =>
+      'Экспортировать рипитеры / сервер комнаты в GPX';
+
+  @override
+  String get settings_gpxExportRepeatersSubtitle =>
+      'Экспортирует ретрансляторы / сервер комнат с местоположением в файл GPX.';
+
+  @override
+  String get settings_gpxExportContacts => 'Экспортировать спутников в GPX';
+
+  @override
+  String get settings_gpxExportContactsSubtitle =>
+      'Экспортирует спутников с местоположением в файл GPX.';
+
+  @override
+  String get settings_gpxExportAll => 'Экспортировать все контакты в GPX';
+
+  @override
+  String get settings_gpxExportAllSubtitle =>
+      'Экспортирует все контакты с местоположением в файл GPX.';
+
+  @override
+  String get settings_gpxExportSuccess => 'Успешно экспортирован файл GPX.';
+
+  @override
+  String get settings_gpxExportNoContacts => 'Нет контактов для экспорта.';
+
+  @override
+  String get settings_gpxExportNotAvailable =>
+      'Не поддерживается на вашем устройстве/ОС';
+
+  @override
+  String get settings_gpxExportError => 'Произошла ошибка при экспорте.';
+
+  @override
+  String get settings_gpxExportRepeatersRoom =>
+      'Местоположения повторителей и серверов комнат';
+
+  @override
+  String get settings_gpxExportChat => 'Местоположения спутников';
+
+  @override
+  String get settings_gpxExportAllContacts => 'Все местоположения контактов';
+
+  @override
+  String get settings_gpxExportShareText =>
+      'Данные карты экспортированы из meshcore-open';
+
+  @override
+  String get settings_gpxExportShareSubject =>
+      'meshcore-open экспорт данных карты GPX';
 }

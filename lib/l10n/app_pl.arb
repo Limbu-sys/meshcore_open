@@ -1574,5 +1574,23 @@
   "notification_channelMessagesCount": "{count} {count, plural, =1{wiadomość kanału} few{wiadomości kanału} many{wiadomości kanału} other{wiadomości kanału}}",
   "notification_newNodesCount": "{count} {count, plural, =1{nowy węzeł} few{nowe węzły} many{nowych węzłów} other{nowych węzłów}}",
   "notification_newTypeDiscovered": "Nowy {contactType} wykryty",
-  "notification_receivedNewMessage": "Otrzymano nową wiadomość"
+  "notification_receivedNewMessage": "Otrzymano nową wiadomość",
+  "contacts_zeroHopContactAdvertFailed": "Nie udało się wysłać kontaktu.",
+  "settings_gpxExportContacts": "Eksportuj towarzyszy do GPX",
+  "settings_gpxExportRepeaters": "Eksportuj powtórki / serwer pokojowy do GPX",
+  "settings_gpxExportRepeatersSubtitle": "Eksportuje powtarzacze / roomserver z lokalizacją do pliku GPX.",
+  "settings_gpxExportSuccess": "Pomyślnie wyeksportowano plik GPX.",
+  "settings_gpxExportNotAvailable": "Nie obsługiwane na Twoim urządzeniu/systemie operacyjnym",
+  "settings_gpxExportError": "Wystąpił błąd podczas eksportowania.",
+  "settings_gpxExportRepeatersRoom": "Lokalizacje serwerów powtarzających i pomieszczeń",
+  "settings_gpxExportContactsSubtitle": "Eksportuje towarzyszy z lokalizacją do pliku GPX.",
+  "settings_gpxExportAll": "Eksportuj wszystkie kontakty do GPX",
+  "settings_gpxExportAllSubtitle": "Eksportuje wszystkie kontakty z lokalizacją do pliku GPX.",
+  "settings_gpxExportAllContacts": "Wszystkie lokalizacje kontaktów",
+  "settings_gpxExportNoContacts": "Brak kontaktów do wyeksportowania.",
+  "settings_gpxExportChat": "Lokalizacje towarzyszy",
+  "settings_gpxExportShareText": "Dane mapy wyeksportowane z meshcore-open",
+  "settings_gpxExportShareSubject": "Eksport danych mapy GPX meshcore-open",
+  "pathTrace_someHopsNoLocation": "Jeden lub więcej z chmieli nie ma określonej lokalizacji!"
+
 }

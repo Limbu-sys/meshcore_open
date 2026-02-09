@@ -1595,5 +1595,23 @@
       "contactType": {"type": "String"}
     }
   },
-  "notification_receivedNewMessage": "Nuevo mensaje recibido"
+  "notification_receivedNewMessage": "Nuevo mensaje recibido",
+  "contacts_contactAdvertCopyFailed": "Copiar anuncio al Portapapeles ha fallado.",
+  "settings_gpxExportContactsSubtitle": "Exporta compañeros con una ubicación a archivo GPX.",
+  "settings_gpxExportRepeaters": "Exportar repetidores / servidor de sala a GPX",
+  "settings_gpxExportSuccess": "Archivo GPX exportado con éxito.",
+  "settings_gpxExportNoContacts": "No hay contactos para exportar.",
+  "settings_gpxExportNotAvailable": "No compatible con tu dispositivo/SO",
+  "settings_gpxExportError": "Hubo un error al exportar.",
+  "settings_gpxExportRepeatersSubtitle": "Exporta repetidores o roomserver con una ubicación a un archivo GPX.",
+  "settings_gpxExportAllSubtitle": "Exporta todos los contactos con una ubicación a un archivo GPX.",
+  "settings_gpxExportAll": "Exportar todos los contactos a GPX",
+  "settings_gpxExportContacts": "Exportar compañeros a GPX",
+  "settings_gpxExportChat": "Ubicaciones de compañero",
+  "settings_gpxExportRepeatersRoom": "Ubicaciones del servidor de repetidor y sala",
+  "settings_gpxExportAllContacts": "Todas las ubicaciones de contactos",
+  "settings_gpxExportShareText": "Datos del mapa exportados desde meshcore-open",
+  "settings_gpxExportShareSubject": "meshcore-open exportación de datos de mapa GPX",
+  "pathTrace_someHopsNoLocation": "Uno o más de los lúpulos carecen de una ubicación"
+
 }

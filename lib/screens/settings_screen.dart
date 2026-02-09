@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meshcore_open/utils/gpx_export.dart';
 import 'package:meshcore_open/widgets/elements_ui.dart';
 import 'package:provider/provider.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -56,6 +57,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 _buildActionsCard(context, connector),
                 const SizedBox(height: 16),
                 _buildDebugCard(context),
+                const SizedBox(height: 16),
+                _buildExportCard(connector),
                 const SizedBox(height: 16),
                 _buildAboutCard(context),
               ],
@@ -682,6 +685,110 @@ class _SettingsScreenState extends State<SettingsScreen> {
         const SizedBox(height: 16),
         Text(l10n.settings_aboutDescription),
       ],
+    );
+  }
+
+  _gpxExport(
+    GpxExport exporter,
+    String name,
+    String description,
+    String filename,
+    String shareText,
+    String subject,
+  ) async {
+    final l10n = context.l10n;
+    final result = await exporter.exportGPX(
+      name,
+      description,
+      filename,
+      shareText,
+      subject,
+    );
+    if (!mounted) return;
+    switch (result) {
+      case gpxExportSuccess:
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.settings_gpxExportSuccess)));
+      case gpxExportNoContacts:
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(l10n.settings_gpxExportNoContacts)),
+        );
+        break;
+      case gpxExportNotAvailable:
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(l10n.settings_gpxExportNotAvailable)),
+        );
+        break;
+      case gpxExportFailed:
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.settings_gpxExportError)));
+        break;
+    }
+  }
+
+  _buildExportCard(MeshCoreConnector connector) {
+    final l10n = context.l10n;
+    return Card(
+      child: Column(
+        children: [
+          ListTile(
+            leading: const Icon(Icons.download_outlined),
+            title: Text(l10n.settings_gpxExportRepeaters),
+            subtitle: Text(l10n.settings_gpxExportRepeatersSubtitle),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () async {
+              final exporter = GpxExport(connector);
+              exporter.addRepeaters();
+              _gpxExport(
+                exporter,
+                l10n.map_repeater,
+                l10n.settings_gpxExportRepeatersRoom,
+                "meshcore_repeaters_",
+                l10n.settings_gpxExportShareText,
+                l10n.settings_gpxExportShareSubject,
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.download_outlined),
+            title: Text(l10n.settings_gpxExportContacts),
+            subtitle: Text(l10n.settings_gpxExportContactsSubtitle),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () async {
+              final exporter = GpxExport(connector);
+              exporter.addContacts();
+              _gpxExport(
+                exporter,
+                l10n.map_repeater,
+                l10n.settings_gpxExportChat,
+                "meshcore_contacts_",
+                l10n.settings_gpxExportShareText,
+                l10n.settings_gpxExportShareSubject,
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.download_outlined),
+            title: Text(l10n.settings_gpxExportAll),
+            subtitle: Text(l10n.settings_gpxExportAllSubtitle),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () async {
+              final exporter = GpxExport(connector);
+              exporter.addAll();
+              _gpxExport(
+                exporter,
+                l10n.map_repeater,
+                l10n.settings_gpxExportAllContacts,
+                "meshcore_all_",
+                l10n.settings_gpxExportShareText,
+                l10n.settings_gpxExportShareSubject,
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }

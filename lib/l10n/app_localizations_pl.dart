@@ -2694,6 +2694,10 @@ class AppLocalizationsPl extends AppLocalizations {
   String get pathTrace_refreshTooltip => 'Odśwież ścieżkę.';
 
   @override
+  String get pathTrace_someHopsNoLocation =>
+      'Jeden lub więcej z chmieli nie ma określonej lokalizacji!';
+
+  @override
   String get contacts_pathTrace => 'Śledzenie Ścieżek';
 
   @override
@@ -2816,4 +2820,58 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get notification_receivedNewMessage => 'Otrzymano nową wiadomość';
+
+  @override
+  String get settings_gpxExportRepeaters =>
+      'Eksportuj powtórki / serwer pokojowy do GPX';
+
+  @override
+  String get settings_gpxExportRepeatersSubtitle =>
+      'Eksportuje powtarzacze / roomserver z lokalizacją do pliku GPX.';
+
+  @override
+  String get settings_gpxExportContacts => 'Eksportuj towarzyszy do GPX';
+
+  @override
+  String get settings_gpxExportContactsSubtitle =>
+      'Eksportuje towarzyszy z lokalizacją do pliku GPX.';
+
+  @override
+  String get settings_gpxExportAll => 'Eksportuj wszystkie kontakty do GPX';
+
+  @override
+  String get settings_gpxExportAllSubtitle =>
+      'Eksportuje wszystkie kontakty z lokalizacją do pliku GPX.';
+
+  @override
+  String get settings_gpxExportSuccess => 'Pomyślnie wyeksportowano plik GPX.';
+
+  @override
+  String get settings_gpxExportNoContacts =>
+      'Brak kontaktów do wyeksportowania.';
+
+  @override
+  String get settings_gpxExportNotAvailable =>
+      'Nie obsługiwane na Twoim urządzeniu/systemie operacyjnym';
+
+  @override
+  String get settings_gpxExportError => 'Wystąpił błąd podczas eksportowania.';
+
+  @override
+  String get settings_gpxExportRepeatersRoom =>
+      'Lokalizacje serwerów powtarzających i pomieszczeń';
+
+  @override
+  String get settings_gpxExportChat => 'Lokalizacje towarzyszy';
+
+  @override
+  String get settings_gpxExportAllContacts => 'Wszystkie lokalizacje kontaktów';
+
+  @override
+  String get settings_gpxExportShareText =>
+      'Dane mapy wyeksportowane z meshcore-open';
+
+  @override
+  String get settings_gpxExportShareSubject =>
+      'Eksport danych mapy GPX meshcore-open';
 }

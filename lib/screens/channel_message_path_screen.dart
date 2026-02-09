@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:meshcore_open/screens/path_trace_map.dart';
 import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
@@ -41,6 +42,21 @@ class ChannelMessagePathScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text(l10n.channelPath_title),
             actions: [
+              IconButton(
+                icon: const Icon(Icons.radar_outlined),
+                tooltip: l10n.channelPath_viewMap,
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PathTraceMapScreen(
+                      title: context.l10n.contacts_repeaterPathTrace,
+                      path: Uint8List.fromList(primaryPath),
+                      flipPathRound: true,
+                      reversePathRound: true,
+                    ),
+                  ),
+                ),
+              ),
               IconButton(
                 icon: const Icon(Icons.map_outlined),
                 tooltip: l10n.channelPath_viewMap,
@@ -263,6 +279,7 @@ class ChannelMessagePathMapScreen extends StatefulWidget {
 class _ChannelMessagePathMapScreenState
     extends State<ChannelMessagePathMapScreen> {
   Uint8List? _selectedPath;
+  double _pathDistance = 0.0;
 
   @override
   void initState() {
@@ -280,6 +297,17 @@ class _ChannelMessagePathMapScreenState
         )) {
       _selectedPath = widget.initialPath;
     }
+  }
+
+  double _getPathDistance(List<LatLng> points) {
+    double totalDistance = 0.0;
+    final distanceCalculator = Distance();
+
+    for (int i = 0; i < points.length - 1; i++) {
+      totalDistance += distanceCalculator(points[i], points[i + 1]);
+    }
+
+    return totalDistance;
   }
 
   @override
@@ -306,10 +334,15 @@ class _ChannelMessagePathMapScreenState
           connector.contacts,
           context.l10n,
         );
-        final points = hops
-            .where((hop) => hop.hasLocation)
-            .map((hop) => hop.position!)
-            .toList();
+
+        final points = <LatLng>[];
+        for (final hop in hops) {
+          if (hop.hasLocation) {
+            points.add(hop.position!);
+          }
+        }
+        points.add(LatLng(connector.selfLatitude!, connector.selfLongitude!));
+
         final polylines = points.length > 1
             ? [
                 Polyline(
@@ -327,7 +360,10 @@ class _ChannelMessagePathMapScreenState
         final bounds = points.length > 1
             ? LatLngBounds.fromPoints(points)
             : null;
-        final mapKey = ValueKey(_formatPathPrefixes(selectedPath));
+        final mapKey = ValueKey(
+          '${_formatPathPrefixes(selectedPath)},${context.l10n.pathTrace_you}',
+        );
+        _pathDistance = _getPathDistance(points);
 
         return Scaffold(
           appBar: AppBar(title: Text(context.l10n.channelPath_mapTitle)),
@@ -487,6 +523,37 @@ class _ChannelMessagePathMapScreenState
               ),
             ),
           ),
+      Marker(
+        point: LatLng(
+          context.read<MeshCoreConnector>().selfLatitude ?? 0.0,
+          context.read<MeshCoreConnector>().selfLongitude ?? 0.0,
+        ),
+        width: 40,
+        height: 40,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            shape: BoxShape.circle,
+            border: Border.all(color: Colors.white, width: 2),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.3),
+                blurRadius: 4,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+          alignment: Alignment.center,
+          child: Text(
+            context.l10n.pathTrace_you,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 12,
+            ),
+          ),
+        ),
+      ),
     ];
   }
 
@@ -509,7 +576,7 @@ class _ChannelMessagePathMapScreenState
               Padding(
                 padding: const EdgeInsets.all(12),
                 child: Text(
-                  l10n.channelPath_repeaterHops,
+                  '${l10n.channelPath_repeaterHops} (${(_pathDistance / 1609.34).toStringAsFixed(2)} Miles / ${(_pathDistance / 1000).toStringAsFixed(2)} Km)',
                   style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
               ),

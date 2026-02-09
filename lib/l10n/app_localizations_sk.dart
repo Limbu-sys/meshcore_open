@@ -2682,6 +2682,10 @@ class AppLocalizationsSk extends AppLocalizations {
   String get pathTrace_refreshTooltip => 'Obnoviť Path Trace.';
 
   @override
+  String get pathTrace_someHopsNoLocation =>
+      'Jedna alebo viac chmeľov chýba lokalita!';
+
+  @override
   String get contacts_pathTrace => 'Sledovanie lúčov';
 
   @override
@@ -2799,4 +2803,57 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get notification_receivedNewMessage => 'Prijatá nová správa';
+
+  @override
+  String get settings_gpxExportRepeaters =>
+      'Exportovať repeater / server miestnosti do GPX';
+
+  @override
+  String get settings_gpxExportRepeatersSubtitle =>
+      'Exportuje repeater / roomserver s lokalitou do súboru GPX.';
+
+  @override
+  String get settings_gpxExportContacts => 'Export sprievodcov do GPX';
+
+  @override
+  String get settings_gpxExportContactsSubtitle =>
+      'Exportuje sprievodcov s umiestnením do súboru GPX.';
+
+  @override
+  String get settings_gpxExportAll => 'Exportovať všetky kontakty do GPX';
+
+  @override
+  String get settings_gpxExportAllSubtitle =>
+      'Exportuje všetky kontakty s lokalitou do súboru GPX.';
+
+  @override
+  String get settings_gpxExportSuccess => 'Úspešne exportovaný súbor GPX.';
+
+  @override
+  String get settings_gpxExportNoContacts => 'Žiadne kontakty na export.';
+
+  @override
+  String get settings_gpxExportNotAvailable =>
+      'Nie je podporované na vašom zariadení/operáciomnom systéme';
+
+  @override
+  String get settings_gpxExportError => 'Vyskytol sa chyba počas exportu.';
+
+  @override
+  String get settings_gpxExportRepeatersRoom =>
+      'Umiestnenia opakovačov a serverov miestností';
+
+  @override
+  String get settings_gpxExportChat => 'Lokácie sprievodcov';
+
+  @override
+  String get settings_gpxExportAllContacts => 'Všetky kontaktné lokality';
+
+  @override
+  String get settings_gpxExportShareText =>
+      'Mapové údaje exportované z meshcore-open';
+
+  @override
+  String get settings_gpxExportShareSubject =>
+      'meshcore-open export dát GPX mapových údajov';
 }
