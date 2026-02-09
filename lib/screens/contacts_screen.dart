@@ -48,7 +48,7 @@ class _ContactsScreenState extends State<ContactsScreen>
   String _searchQuery = '';
   ContactSortOption _sortOption = ContactSortOption.lastSeen;
   bool _showUnreadOnly = false;
-  bool _prioritizePeople = true;
+  bool _prioritizeUsers = true;
   ContactTypeFilter _typeFilter = ContactTypeFilter.all;
   final ContactGroupStore _groupStore = ContactGroupStore();
   List<ContactGroup> _groups = [];
@@ -353,7 +353,7 @@ class _ContactsScreenState extends State<ContactsScreen>
       sortOption: _sortOption,
       typeFilter: _typeFilter,
       showUnreadOnly: _showUnreadOnly,
-      prioritizePeople: _prioritizePeople,
+      prioritizeUsers: _prioritizeUsers,
       onSortChanged: (value) {
         setState(() {
           _sortOption = value;
@@ -369,9 +369,9 @@ class _ContactsScreenState extends State<ContactsScreen>
           _showUnreadOnly = value;
         });
       },
-      onPrioritizePeopleChanged: (value) {
+      onPrioritizeUsersChanged: (value) {
         setState(() {
-          _prioritizePeople = value;
+          _prioritizeUsers = value;
         });
       },
       onNewGroup: () => _showGroupEditor(context, connector.contacts),
@@ -554,18 +554,19 @@ class _ContactsScreenState extends State<ContactsScreen>
       }).toList();
     }
 
-    // Apply sorting within groups if prioritizing people
-    if (_prioritizePeople) {
-      // Separate people (advTypeChat) from others
-      final people = filtered.where((c) => c.type == advTypeChat).toList();
+    // Apply "users first" partitioning: separate users from other node types,
+    // sort each partition, then combine with users on top
+    if (_prioritizeUsers) {
+      // Separate users (advTypeChat) from others
+      final users = filtered.where((c) => c.type == advTypeChat).toList();
       final others = filtered.where((c) => c.type != advTypeChat).toList();
 
       // Sort each group separately
-      _applySorting(people, connector);
+      _applySorting(users, connector);
       _applySorting(others, connector);
 
-      // Combine: people first, then others
-      filtered = [...people, ...others];
+      // Combine: users first, then others
+      filtered = [...users, ...others];
     } else {
       _applySorting(filtered, connector);
     }
