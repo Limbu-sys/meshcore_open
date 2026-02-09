@@ -1,4 +1,4 @@
-name: Flutter and Dart Analysis
+name: Flutter and Dart
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  analyze_and_format:
+  analyze:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,3 +26,6 @@ jobs:
 
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .
+
+      - name: Run tests
+        run: flutter test -r github

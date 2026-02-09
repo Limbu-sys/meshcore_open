@@ -2659,6 +2659,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pathTrace_refreshTooltip => 'Refresh Path Trace.';
 
   @override
+  String get pathTrace_someHopsNoLocation =>
+      'One or more of the hops is missing a location!';
+
+  @override
   String get contacts_pathTrace => 'Path Trace';
 
   @override
@@ -2726,4 +2730,101 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get contacts_contactAdvertCopyFailed =>
       'Copying advert to Clipboard failed.';
+
+  @override
+  String get notification_activityTitle => 'MeshCore Activity';
+
+  @override
+  String notification_messagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'messages',
+      one: 'message',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_channelMessagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'channel messages',
+      one: 'channel message',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_newNodesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'new nodes',
+      one: 'new node',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_newTypeDiscovered(String contactType) {
+    return 'New $contactType discovered';
+  }
+
+  @override
+  String get notification_receivedNewMessage => 'Received new message';
+
+  @override
+  String get settings_gpxExportRepeaters =>
+      'Export repeaters / room server to GPX';
+
+  @override
+  String get settings_gpxExportRepeatersSubtitle =>
+      'Exports repeaters / roomserver with a location to GPX file.';
+
+  @override
+  String get settings_gpxExportContacts => 'Export companions to GPX';
+
+  @override
+  String get settings_gpxExportContactsSubtitle =>
+      'Exports companions with a location to GPX file.';
+
+  @override
+  String get settings_gpxExportAll => 'Export all contacts to GPX';
+
+  @override
+  String get settings_gpxExportAllSubtitle =>
+      'Exports all contacts with a location to GPX file.';
+
+  @override
+  String get settings_gpxExportSuccess => 'Successfully exported GPX file.';
+
+  @override
+  String get settings_gpxExportNoContacts => 'No contacts to export.';
+
+  @override
+  String get settings_gpxExportNotAvailable =>
+      'Not supported on your device/OS';
+
+  @override
+  String get settings_gpxExportError => 'There was an error when exporting.';
+
+  @override
+  String get settings_gpxExportRepeatersRoom =>
+      'Repeater & room server locations';
+
+  @override
+  String get settings_gpxExportChat => 'Companion locations';
+
+  @override
+  String get settings_gpxExportAllContacts => 'All contacts locations';
+
+  @override
+  String get settings_gpxExportShareText =>
+      'Map data exported from meshcore-open';
+
+  @override
+  String get settings_gpxExportShareSubject =>
+      'meshcore-open GPX map data export';
 }

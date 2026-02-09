@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:meshcore_open/screens/path_trace_map.dart';
 import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
@@ -61,6 +62,19 @@ class _PathManagementDialog extends StatelessWidget {
         title: Text(l10n.chat_fullPath),
         content: SelectableText(formattedPath),
         actions: [
+          TextButton(
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PathTraceMapScreen(
+                  title: context.l10n.contacts_repeaterPathTrace,
+                  path: Uint8List.fromList(pathBytes),
+                  flipPathRound: true,
+                ),
+              ),
+            ),
+            child: Text(context.l10n.contacts_pathTrace),
+          ),
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(l10n.common_close),

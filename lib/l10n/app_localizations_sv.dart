@@ -2673,6 +2673,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get pathTrace_refreshTooltip => 'Uppdatera Path Trace';
 
   @override
+  String get pathTrace_someHopsNoLocation =>
+      'En eller flera av humlen saknar en plats!';
+
+  @override
   String get contacts_pathTrace => 'Path Trace';
 
   @override
@@ -2742,4 +2746,102 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get contacts_contactAdvertCopyFailed =>
       'Kopiering av annons till Urklipp misslyckades.';
+
+  @override
+  String get notification_activityTitle => 'MeshCore Aktivitet';
+
+  @override
+  String notification_messagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'meddelanden',
+      one: 'meddelande',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_channelMessagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'kanalmeddelanden',
+      one: 'kanalmeddelande',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_newNodesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'nya noder',
+      one: 'ny nod',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_newTypeDiscovered(String contactType) {
+    return 'Ny $contactType upptäckt';
+  }
+
+  @override
+  String get notification_receivedNewMessage => 'Nytt meddelande mottaget';
+
+  @override
+  String get settings_gpxExportRepeaters =>
+      'Exportera repeater / rumsservrar till GPX';
+
+  @override
+  String get settings_gpxExportRepeatersSubtitle =>
+      'Exporterar repeater / roomserver med plats till GPX-fil.';
+
+  @override
+  String get settings_gpxExportContacts => 'Exportera följeslagare till GPX';
+
+  @override
+  String get settings_gpxExportContactsSubtitle =>
+      'Exporterar följeslagare med en plats till GPX-fil.';
+
+  @override
+  String get settings_gpxExportAll => 'Exportera alla kontakter till GPX';
+
+  @override
+  String get settings_gpxExportAllSubtitle =>
+      'Exporterar alla kontakter med en plats till GPX-fil.';
+
+  @override
+  String get settings_gpxExportSuccess => 'Har exporterat GPX-fil med framgång';
+
+  @override
+  String get settings_gpxExportNoContacts => 'Inga kontakter att exportera.';
+
+  @override
+  String get settings_gpxExportNotAvailable =>
+      'Stöds inte på din enhet/operativsystem';
+
+  @override
+  String get settings_gpxExportError =>
+      'Det uppstod ett fel när data exporterades.';
+
+  @override
+  String get settings_gpxExportRepeatersRoom =>
+      'Repeater- och rumsserverplatser';
+
+  @override
+  String get settings_gpxExportChat => 'Medhjälparplatser';
+
+  @override
+  String get settings_gpxExportAllContacts => 'Alla kontakters platser';
+
+  @override
+  String get settings_gpxExportShareText =>
+      'Kartdata exporterad från meshcore-open';
+
+  @override
+  String get settings_gpxExportShareSubject =>
+      'meshcore-open export av GPX-kartdata';
 }

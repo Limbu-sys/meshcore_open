@@ -2709,6 +2709,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get pathTrace_refreshTooltip => 'Оновити трасування шляху';
 
   @override
+  String get pathTrace_someHopsNoLocation =>
+      'Одне або більше хмелів відсутнє місце розташування!';
+
+  @override
   String get contacts_pathTrace => 'Трасування шляхів';
 
   @override
@@ -2782,4 +2786,107 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get contacts_contactAdvertCopyFailed =>
       'Копіювання оголошення в буфер обміну завершилося невдало';
+
+  @override
+  String get notification_activityTitle => 'Активність MeshCore';
+
+  @override
+  String notification_messagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'повідомлень',
+      many: 'повідомлень',
+      few: 'повідомлення',
+      one: 'повідомлення',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_channelMessagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'повідомлень каналу',
+      many: 'повідомлень каналу',
+      few: 'повідомлення каналу',
+      one: 'повідомлення каналу',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_newNodesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'нових вузлів',
+      many: 'нових вузлів',
+      few: 'нових вузли',
+      one: 'новий вузол',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_newTypeDiscovered(String contactType) {
+    return 'Виявлено новий $contactType';
+  }
+
+  @override
+  String get notification_receivedNewMessage => 'Отримано нове повідомлення';
+
+  @override
+  String get settings_gpxExportRepeaters =>
+      'Експортувати ретранслятори / сервер кімнати до GPX';
+
+  @override
+  String get settings_gpxExportRepeatersSubtitle =>
+      'Експортує ретранслятори / сервер кімнати з місцезнаходженням у файл GPX.';
+
+  @override
+  String get settings_gpxExportContacts => 'Експортувати супутників до GPX';
+
+  @override
+  String get settings_gpxExportContactsSubtitle =>
+      'Експортує супутників з місцезнаходженням у файл GPX.';
+
+  @override
+  String get settings_gpxExportAll => 'Експортувати всі контакти до GPX';
+
+  @override
+  String get settings_gpxExportAllSubtitle =>
+      'Експортує всі контакти з місцем розташування у файл GPX.';
+
+  @override
+  String get settings_gpxExportSuccess => 'Успішно експортовано файл GPX.';
+
+  @override
+  String get settings_gpxExportNoContacts => 'Немає контактів для експорту.';
+
+  @override
+  String get settings_gpxExportNotAvailable =>
+      'Не підтримується на вашому пристрої/операційній системі';
+
+  @override
+  String get settings_gpxExportError => 'Сталася помилка під час експорту.';
+
+  @override
+  String get settings_gpxExportRepeatersRoom =>
+      'Місцезнаходження повторювача та сервера кімнати';
+
+  @override
+  String get settings_gpxExportChat => 'Місця супутників';
+
+  @override
+  String get settings_gpxExportAllContacts => 'Усі місця контактів';
+
+  @override
+  String get settings_gpxExportShareText =>
+      'Дані карти експортовані з meshcore-open';
+
+  @override
+  String get settings_gpxExportShareSubject =>
+      'експорт даних карти meshcore-open у форматі GPX';
 }

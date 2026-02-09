@@ -1568,5 +1568,50 @@
   "contacts_zeroHopContactAdvertFailed": "No se pudo enviar el contacto.",
   "contacts_zeroHopContactAdvertSent": "Envió contacto por anuncio.",
   "contacts_contactAdvertCopied": "Anuncio copiado al Portapapeles.",
-  "contacts_contactAdvertCopyFailed": "Copiar anuncio al Portapapeles ha fallado."
+  "contacts_contactAdvertCopyFailed": "Copiar anuncio al Portapapeles ha fallado.",
+
+  "notification_activityTitle": "Actividad de MeshCore",
+  "notification_messagesCount": "{count} {count, plural, =1{mensaje} other{mensajes}}",
+  "@notification_messagesCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "notification_channelMessagesCount": "{count} {count, plural, =1{mensaje de canal} other{mensajes de canal}}",
+  "@notification_channelMessagesCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "notification_newNodesCount": "{count} {count, plural, =1{nuevo nodo} other{nuevos nodos}}",
+  "@notification_newNodesCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "notification_newTypeDiscovered": "Nuevo {contactType} descubierto",
+  "@notification_newTypeDiscovered": {
+    "placeholders": {
+      "contactType": {"type": "String"}
+    }
+  },
+  "notification_receivedNewMessage": "Nuevo mensaje recibido",
+  "contacts_contactAdvertCopyFailed": "Copiar anuncio al Portapapeles ha fallado.",
+  "settings_gpxExportContactsSubtitle": "Exporta compañeros con una ubicación a archivo GPX.",
+  "settings_gpxExportRepeaters": "Exportar repetidores / servidor de sala a GPX",
+  "settings_gpxExportSuccess": "Archivo GPX exportado con éxito.",
+  "settings_gpxExportNoContacts": "No hay contactos para exportar.",
+  "settings_gpxExportNotAvailable": "No compatible con tu dispositivo/SO",
+  "settings_gpxExportError": "Hubo un error al exportar.",
+  "settings_gpxExportRepeatersSubtitle": "Exporta repetidores o roomserver con una ubicación a un archivo GPX.",
+  "settings_gpxExportAllSubtitle": "Exporta todos los contactos con una ubicación a un archivo GPX.",
+  "settings_gpxExportAll": "Exportar todos los contactos a GPX",
+  "settings_gpxExportContacts": "Exportar compañeros a GPX",
+  "settings_gpxExportChat": "Ubicaciones de compañero",
+  "settings_gpxExportRepeatersRoom": "Ubicaciones del servidor de repetidor y sala",
+  "settings_gpxExportAllContacts": "Todas las ubicaciones de contactos",
+  "settings_gpxExportShareText": "Datos del mapa exportados desde meshcore-open",
+  "settings_gpxExportShareSubject": "meshcore-open exportación de datos de mapa GPX",
+  "pathTrace_someHopsNoLocation": "Uno o más de los lúpulos carecen de una ubicación"
+
 }

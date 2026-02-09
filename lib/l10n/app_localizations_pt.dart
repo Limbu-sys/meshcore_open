@@ -2700,6 +2700,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get pathTrace_refreshTooltip => 'Atualizar Path Trace.';
 
   @override
+  String get pathTrace_someHopsNoLocation =>
+      'Um ou mais dos lúpulos estão sem localização!';
+
+  @override
   String get contacts_pathTrace => 'Traçado de Caminho';
 
   @override
@@ -2771,4 +2775,101 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get contacts_contactAdvertCopyFailed =>
       'Cópia do anúncio para a Área de Transferência falhou.';
+
+  @override
+  String get notification_activityTitle => 'Atividade MeshCore';
+
+  @override
+  String notification_messagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'mensagens',
+      one: 'mensagem',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_channelMessagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'mensagens de canal',
+      one: 'mensagem de canal',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_newNodesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'novos nós',
+      one: 'novo nó',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_newTypeDiscovered(String contactType) {
+    return 'Novo $contactType descoberto';
+  }
+
+  @override
+  String get notification_receivedNewMessage => 'Nova mensagem recebida';
+
+  @override
+  String get settings_gpxExportRepeaters =>
+      'Exportar repetidores / servidor de sala para GPX';
+
+  @override
+  String get settings_gpxExportRepeatersSubtitle =>
+      'Exporta repetidores / roomserver com localização para arquivo GPX.';
+
+  @override
+  String get settings_gpxExportContacts => 'Exportar companheiros para GPX';
+
+  @override
+  String get settings_gpxExportContactsSubtitle =>
+      'Exporta companheiros com uma localização para um arquivo GPX.';
+
+  @override
+  String get settings_gpxExportAll => 'Exportar todos os contatos para GPX';
+
+  @override
+  String get settings_gpxExportAllSubtitle =>
+      'Exporta todos os contatos com uma localização para um arquivo GPX.';
+
+  @override
+  String get settings_gpxExportSuccess => 'Arquivo GPX exportado com sucesso.';
+
+  @override
+  String get settings_gpxExportNoContacts => 'Nenhum contato para exportar.';
+
+  @override
+  String get settings_gpxExportNotAvailable =>
+      'Não suportado no seu dispositivo/SO';
+
+  @override
+  String get settings_gpxExportError => 'Ocorreu um erro ao exportar.';
+
+  @override
+  String get settings_gpxExportRepeatersRoom =>
+      'Localizações do servidor de repetidor e sala';
+
+  @override
+  String get settings_gpxExportChat => 'Localizações de companheiros';
+
+  @override
+  String get settings_gpxExportAllContacts => 'Todos os locais de contatos';
+
+  @override
+  String get settings_gpxExportShareText =>
+      'Dados do mapa exportados do meshcore-open';
+
+  @override
+  String get settings_gpxExportShareSubject =>
+      'meshcore-open exportação de dados de mapa GPX';
 }

@@ -2685,6 +2685,10 @@ class AppLocalizationsSk extends AppLocalizations {
   String get pathTrace_refreshTooltip => 'Obnoviť Path Trace.';
 
   @override
+  String get pathTrace_someHopsNoLocation =>
+      'Jedna alebo viac chmeľov chýba lokalita!';
+
+  @override
   String get contacts_pathTrace => 'Sledovanie lúčov';
 
   @override
@@ -2755,4 +2759,104 @@ class AppLocalizationsSk extends AppLocalizations {
   @override
   String get contacts_contactAdvertCopyFailed =>
       'Kopírovanie inzerátu do schránky zlyhalo.';
+
+  @override
+  String get notification_activityTitle => 'Aktivita MeshCore';
+
+  @override
+  String notification_messagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'správ',
+      few: 'správy',
+      one: 'správa',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_channelMessagesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'správ kanálu',
+      few: 'správy kanálu',
+      one: 'správa kanálu',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_newNodesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'nových uzlov',
+      few: 'nové uzly',
+      one: 'nový uzol',
+    );
+    return '$count $_temp0';
+  }
+
+  @override
+  String notification_newTypeDiscovered(String contactType) {
+    return 'Nový $contactType objavený';
+  }
+
+  @override
+  String get notification_receivedNewMessage => 'Prijatá nová správa';
+
+  @override
+  String get settings_gpxExportRepeaters =>
+      'Exportovať repeater / server miestnosti do GPX';
+
+  @override
+  String get settings_gpxExportRepeatersSubtitle =>
+      'Exportuje repeater / roomserver s lokalitou do súboru GPX.';
+
+  @override
+  String get settings_gpxExportContacts => 'Export sprievodcov do GPX';
+
+  @override
+  String get settings_gpxExportContactsSubtitle =>
+      'Exportuje sprievodcov s umiestnením do súboru GPX.';
+
+  @override
+  String get settings_gpxExportAll => 'Exportovať všetky kontakty do GPX';
+
+  @override
+  String get settings_gpxExportAllSubtitle =>
+      'Exportuje všetky kontakty s lokalitou do súboru GPX.';
+
+  @override
+  String get settings_gpxExportSuccess => 'Úspešne exportovaný súbor GPX.';
+
+  @override
+  String get settings_gpxExportNoContacts => 'Žiadne kontakty na export.';
+
+  @override
+  String get settings_gpxExportNotAvailable =>
+      'Nie je podporované na vašom zariadení/operáciomnom systéme';
+
+  @override
+  String get settings_gpxExportError => 'Vyskytol sa chyba počas exportu.';
+
+  @override
+  String get settings_gpxExportRepeatersRoom =>
+      'Umiestnenia opakovačov a serverov miestností';
+
+  @override
+  String get settings_gpxExportChat => 'Lokácie sprievodcov';
+
+  @override
+  String get settings_gpxExportAllContacts => 'Všetky kontaktné lokality';
+
+  @override
+  String get settings_gpxExportShareText =>
+      'Mapové údaje exportované z meshcore-open';
+
+  @override
+  String get settings_gpxExportShareSubject =>
+      'meshcore-open export dát GPX mapových údajov';
 }
