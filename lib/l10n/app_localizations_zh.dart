@@ -2522,6 +2522,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get listFilter_az => 'A 到 Z';
 
   @override
+  String get listFilter_usersFirst => 'Users first';
+
+  @override
   String get listFilter_filters => '过滤器';
 
   @override

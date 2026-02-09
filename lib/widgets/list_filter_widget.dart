@@ -99,14 +99,17 @@ const int _actionFilterRepeaters = 6;
 const int _actionFilterRooms = 7;
 const int _actionToggleUnreadOnly = 8;
 const int _actionNewGroup = 9;
+const int _actionTogglePrioritizePeople = 10;
 
 class ContactsFilterMenu extends StatelessWidget {
   final ContactSortOption sortOption;
   final ContactTypeFilter typeFilter;
   final bool showUnreadOnly;
+  final bool prioritizePeople;
   final ValueChanged<ContactSortOption> onSortChanged;
   final ValueChanged<ContactTypeFilter> onTypeFilterChanged;
   final ValueChanged<bool> onUnreadOnlyChanged;
+  final ValueChanged<bool> onPrioritizePeopleChanged;
   final VoidCallback onNewGroup;
 
   const ContactsFilterMenu({
@@ -114,9 +117,11 @@ class ContactsFilterMenu extends StatelessWidget {
     required this.sortOption,
     required this.typeFilter,
     required this.showUnreadOnly,
+    required this.prioritizePeople,
     required this.onSortChanged,
     required this.onTypeFilterChanged,
     required this.onUnreadOnlyChanged,
+    required this.onPrioritizePeopleChanged,
     required this.onNewGroup,
   });
 
@@ -143,6 +148,11 @@ class ContactsFilterMenu extends StatelessWidget {
               value: _actionSortName,
               label: l10n.listFilter_az,
               checked: sortOption == ContactSortOption.name,
+            ),
+            SortFilterMenuOption(
+              value: _actionTogglePrioritizePeople,
+              label: l10n.listFilter_usersFirst,
+              checked: prioritizePeople,
             ),
           ],
         ),
@@ -191,6 +201,9 @@ class ContactsFilterMenu extends StatelessWidget {
             break;
           case _actionSortLastSeen:
             onSortChanged(ContactSortOption.lastSeen);
+            break;
+          case _actionTogglePrioritizePeople:
+            onPrioritizePeopleChanged(!prioritizePeople);
             break;
           case _actionFilterAll:
             onTypeFilterChanged(ContactTypeFilter.all);

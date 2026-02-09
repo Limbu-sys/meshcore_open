@@ -48,6 +48,7 @@ class _ContactsScreenState extends State<ContactsScreen>
   String _searchQuery = '';
   ContactSortOption _sortOption = ContactSortOption.lastSeen;
   bool _showUnreadOnly = false;
+  bool _prioritizePeople = true;
   ContactTypeFilter _typeFilter = ContactTypeFilter.all;
   final ContactGroupStore _groupStore = ContactGroupStore();
   List<ContactGroup> _groups = [];
@@ -332,6 +333,8 @@ class _ContactsScreenState extends State<ContactsScreen>
             selectedIndex: 0,
             onDestinationSelected: (index) =>
                 _handleQuickSwitch(index, context),
+            contactsUnreadCount: connector.getTotalContactsUnreadCount(),
+            channelsUnreadCount: connector.getTotalChannelsUnreadCount(),
           ),
         ),
       ),
@@ -350,6 +353,7 @@ class _ContactsScreenState extends State<ContactsScreen>
       sortOption: _sortOption,
       typeFilter: _typeFilter,
       showUnreadOnly: _showUnreadOnly,
+      prioritizePeople: _prioritizePeople,
       onSortChanged: (value) {
         setState(() {
           _sortOption = value;
@@ -363,6 +367,11 @@ class _ContactsScreenState extends State<ContactsScreen>
       onUnreadOnlyChanged: (value) {
         setState(() {
           _showUnreadOnly = value;
+        });
+      },
+      onPrioritizePeopleChanged: (value) {
+        setState(() {
+          _prioritizePeople = value;
         });
       },
       onNewGroup: () => _showGroupEditor(context, connector.contacts),
@@ -545,14 +554,34 @@ class _ContactsScreenState extends State<ContactsScreen>
       }).toList();
     }
 
+    // Apply sorting within groups if prioritizing people
+    if (_prioritizePeople) {
+      // Separate people (advTypeChat) from others
+      final people = filtered.where((c) => c.type == advTypeChat).toList();
+      final others = filtered.where((c) => c.type != advTypeChat).toList();
+
+      // Sort each group separately
+      _applySorting(people, connector);
+      _applySorting(others, connector);
+
+      // Combine: people first, then others
+      filtered = [...people, ...others];
+    } else {
+      _applySorting(filtered, connector);
+    }
+
+    return filtered;
+  }
+
+  void _applySorting(List<Contact> contacts, MeshCoreConnector connector) {
     switch (_sortOption) {
       case ContactSortOption.lastSeen:
-        filtered.sort(
+        contacts.sort(
           (a, b) => _resolveLastSeen(b).compareTo(_resolveLastSeen(a)),
         );
         break;
       case ContactSortOption.recentMessages:
-        filtered.sort((a, b) {
+        contacts.sort((a, b) {
           final aMessages = connector.getMessages(a);
           final bMessages = connector.getMessages(b);
           final aLastMsg = aMessages.isEmpty
@@ -565,13 +594,11 @@ class _ContactsScreenState extends State<ContactsScreen>
         });
         break;
       case ContactSortOption.name:
-        filtered.sort(
+        contacts.sort(
           (a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()),
         );
         break;
     }
-
-    return filtered;
   }
 
   bool _matchesTypeFilter(Contact contact) {

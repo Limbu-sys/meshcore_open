@@ -337,14 +337,25 @@ class MeshCoreConnector extends ChangeNotifier {
 
   int getTotalUnreadCount() {
     if (!_unreadStateLoaded) return 0;
+    return getTotalContactsUnreadCount() + getTotalChannelsUnreadCount();
+  }
+
+  int getTotalContactsUnreadCount() {
+    if (!_unreadStateLoaded) return 0;
     var total = 0;
-    // Count unread contact messages
     for (final contact in _contacts) {
       total += getUnreadCountForContact(contact);
     }
-    // Count unread channel messages
-    for (final channelIndex in _channelMessages.keys) {
-      total += getUnreadCountForChannelIndex(channelIndex);
+    return total;
+  }
+
+  int getTotalChannelsUnreadCount() {
+    if (!_unreadStateLoaded) return 0;
+    var total = 0;
+    // Check all channels (from _channels or _cachedChannels)
+    final allChannels = _channels.isNotEmpty ? _channels : _cachedChannels;
+    for (final channel in allChannels) {
+      total += channel.unreadCount;
     }
     return total;
   }

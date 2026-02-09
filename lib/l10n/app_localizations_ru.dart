@@ -2666,6 +2666,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get listFilter_az => 'По алфавиту';
 
   @override
+  String get listFilter_usersFirst => 'Users first';
+
+  @override
   String get listFilter_filters => 'Фильтры';
 
   @override

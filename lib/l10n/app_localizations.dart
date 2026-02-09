@@ -4658,6 +4658,12 @@ abstract class AppLocalizations {
   /// **'A-Z'**
   String get listFilter_az;
 
+  /// No description provided for @listFilter_usersFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Users first'**
+  String get listFilter_usersFirst;
+
   /// No description provided for @listFilter_filters.
   ///
   /// In en, this message translates to:
