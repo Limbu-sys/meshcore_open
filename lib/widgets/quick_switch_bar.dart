@@ -103,7 +103,7 @@ class QuickSwitchBar extends StatelessWidget {
 
   Widget _buildIconWithBadge(Icon icon, int count) {
     if (count <= 0) return icon;
-    
+
     return Badge(
       label: Text(
         count > 99 ? '99+' : count.toString(),
