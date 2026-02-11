@@ -460,6 +460,30 @@ abstract class AppLocalizations {
   /// **'Radio settings updated'**
   String get settings_radioSettingsUpdated;
 
+  /// No description provided for @settings_batterySettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery Settings'**
+  String get settings_batterySettings;
+
+  /// No description provided for @settings_batterySettingsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery chemistry type'**
+  String get settings_batterySettingsSubtitle;
+
+  /// No description provided for @settings_batteryType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get settings_batteryType;
+
+  /// No description provided for @settings_batteryFirmwareDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Device default: {chemistry}'**
+  String settings_batteryFirmwareDefault(String chemistry);
+
   /// No description provided for @settings_location.
   ///
   /// In en, this message translates to:
@@ -1108,23 +1132,29 @@ abstract class AppLocalizations {
   /// **'Connect to a device to choose'**
   String get appSettings_batteryChemistryConnectFirst;
 
-  /// No description provided for @appSettings_batteryNmc.
+  /// No description provided for @appSettings_batteryNone.
   ///
   /// In en, this message translates to:
-  /// **'18650 NMC (3.0-4.2V)'**
-  String get appSettings_batteryNmc;
-
-  /// No description provided for @appSettings_batteryLifepo4.
-  ///
-  /// In en, this message translates to:
-  /// **'LiFePO4 (2.6-3.65V)'**
-  String get appSettings_batteryLifepo4;
+  /// **'No Battery'**
+  String get appSettings_batteryNone;
 
   /// No description provided for @appSettings_batteryLipo.
   ///
   /// In en, this message translates to:
-  /// **'LiPo (3.0-4.2V)'**
+  /// **'LiPo (3.7V)'**
   String get appSettings_batteryLipo;
+
+  /// No description provided for @appSettings_batteryLifepo4.
+  ///
+  /// In en, this message translates to:
+  /// **'LiFePO4 (3.2V)'**
+  String get appSettings_batteryLifepo4;
+
+  /// No description provided for @appSettings_batteryLeadAcid.
+  ///
+  /// In en, this message translates to:
+  /// **'Lead Acid (12V)'**
+  String get appSettings_batteryLeadAcid;
 
   /// No description provided for @appSettings_mapDisplay.
   ///
@@ -3080,6 +3110,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Battery'**
   String get repeater_battery;
+
+  /// No description provided for @repeater_batteryChemistry.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery Type'**
+  String get repeater_batteryChemistry;
+
+  /// No description provided for @repeater_powerSource.
+  ///
+  /// In en, this message translates to:
+  /// **'Power Source'**
+  String get repeater_powerSource;
+
+  /// No description provided for @repeater_powerUsb.
+  ///
+  /// In en, this message translates to:
+  /// **'USB'**
+  String get repeater_powerUsb;
+
+  /// No description provided for @repeater_powerSolar.
+  ///
+  /// In en, this message translates to:
+  /// **'Solar'**
+  String get repeater_powerSolar;
+
+  /// No description provided for @repeater_powerCharging.
+  ///
+  /// In en, this message translates to:
+  /// **'Charging'**
+  String get repeater_powerCharging;
+
+  /// No description provided for @repeater_powerBatteryOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery only'**
+  String get repeater_powerBatteryOnly;
+
+  /// No description provided for @repeater_powerNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No power source'**
+  String get repeater_powerNone;
 
   /// No description provided for @repeater_clockAtLogin.
   ///

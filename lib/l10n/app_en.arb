@@ -82,6 +82,15 @@
   "settings_radioSettings": "Radio Settings",
   "settings_radioSettingsSubtitle": "Frequency, power, spreading factor",
   "settings_radioSettingsUpdated": "Radio settings updated",
+  "settings_batterySettings": "Battery Settings",
+  "settings_batterySettingsSubtitle": "Battery chemistry type",
+  "settings_batteryType": "Type",
+  "settings_batteryFirmwareDefault": "Device default: {chemistry}",
+  "@settings_batteryFirmwareDefault": {
+    "placeholders": {
+      "chemistry": {"type": "String"}
+    }
+  },
   "settings_location": "Location",
   "settings_locationSubtitle": "GPS coordinates",
   "settings_locationUpdated": "Location and GPS settings updated",
@@ -206,9 +215,10 @@
     }
   },
   "appSettings_batteryChemistryConnectFirst": "Connect to a device to choose",
-  "appSettings_batteryNmc": "18650 NMC (3.0-4.2V)",
-  "appSettings_batteryLifepo4": "LiFePO4 (2.6-3.65V)",
-  "appSettings_batteryLipo": "LiPo (3.0-4.2V)",
+  "appSettings_batteryNone": "No Battery",
+  "appSettings_batteryLipo": "LiPo (3.7V)",
+  "appSettings_batteryLifepo4": "LiFePO4 (3.2V)",
+  "appSettings_batteryLeadAcid": "Lead Acid (12V)",
   "appSettings_mapDisplay": "Map Display",
   "appSettings_showRepeaters": "Show Repeaters",
   "appSettings_showRepeatersSubtitle": "Display repeater nodes on the map",
@@ -806,6 +816,13 @@
   },
   "repeater_systemInformation": "System Information",
   "repeater_battery": "Battery",
+  "repeater_batteryChemistry": "Battery Type",
+  "repeater_powerSource": "Power Source",
+  "repeater_powerUsb": "USB",
+  "repeater_powerSolar": "Solar",
+  "repeater_powerCharging": "Charging",
+  "repeater_powerBatteryOnly": "Battery only",
+  "repeater_powerNone": "No power source",
   "repeater_clockAtLogin": "Clock (at login)",
   "repeater_uptime": "Uptime",
   "repeater_queueLength": "Queue Length",

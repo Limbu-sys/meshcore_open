@@ -189,6 +189,20 @@ class AppLocalizationsBg extends AppLocalizations {
       'Радио настройките са актуализирани';
 
   @override
+  String get settings_batterySettings => 'Battery Settings';
+
+  @override
+  String get settings_batterySettingsSubtitle => 'Battery chemistry type';
+
+  @override
+  String get settings_batteryType => 'Type';
+
+  @override
+  String settings_batteryFirmwareDefault(String chemistry) {
+    return 'Device default: $chemistry';
+  }
+
+  @override
   String get settings_location => 'Местоположение';
 
   @override
@@ -548,13 +562,16 @@ class AppLocalizationsBg extends AppLocalizations {
       'Свържете се с устройство, за да изберете.';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3.0-4.2V)';
+  String get appSettings_batteryNone => 'No Battery';
+
+  @override
+  String get appSettings_batteryLipo => 'Литиев полимер (3.0-4.2V)';
 
   @override
   String get appSettings_batteryLifepo4 => 'Литиево желязо фосфат (2.6-3.65V)';
 
   @override
-  String get appSettings_batteryLipo => 'Литиев полимер (3.0-4.2V)';
+  String get appSettings_batteryLeadAcid => 'Lead Acid (12V)';
 
   @override
   String get appSettings_mapDisplay => 'Карта за показване';
@@ -1704,6 +1721,27 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get repeater_battery => 'Батерия';
+
+  @override
+  String get repeater_batteryChemistry => 'Тип батерия';
+
+  @override
+  String get repeater_powerSource => 'Източник на захранване';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Слънчева';
+
+  @override
+  String get repeater_powerCharging => 'Зареждане';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Само батерия';
+
+  @override
+  String get repeater_powerNone => 'Няма захранване';
 
   @override
   String get repeater_clockAtLogin => 'Часовник (при влизане)';

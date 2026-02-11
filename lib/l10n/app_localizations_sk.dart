@@ -188,6 +188,20 @@ class AppLocalizationsSk extends AppLocalizations {
   String get settings_radioSettingsUpdated => 'Nastavenia rádia aktualizované';
 
   @override
+  String get settings_batterySettings => 'Battery Settings';
+
+  @override
+  String get settings_batterySettingsSubtitle => 'Battery chemistry type';
+
+  @override
+  String get settings_batteryType => 'Type';
+
+  @override
+  String settings_batteryFirmwareDefault(String chemistry) {
+    return 'Device default: $chemistry';
+  }
+
+  @override
   String get settings_location => 'Lokalita';
 
   @override
@@ -540,13 +554,16 @@ class AppLocalizationsSk extends AppLocalizations {
       'Pripojte sa k zariadeniu na výber';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3,0-4,2V)';
+  String get appSettings_batteryNone => 'No Battery';
+
+  @override
+  String get appSettings_batteryLipo => 'LiPo (3,0-4,2V)';
 
   @override
   String get appSettings_batteryLifepo4 => 'LiFePO4 (2,6–3,65V)';
 
   @override
-  String get appSettings_batteryLipo => 'LiPo (3,0-4,2V)';
+  String get appSettings_batteryLeadAcid => 'Lead Acid (12V)';
 
   @override
   String get appSettings_mapDisplay => 'Zobrazenie mapy';
@@ -1694,6 +1711,27 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get repeater_battery => 'Batéria';
+
+  @override
+  String get repeater_batteryChemistry => 'Typ batérie';
+
+  @override
+  String get repeater_powerSource => 'Zdroj napájania';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Solárna';
+
+  @override
+  String get repeater_powerCharging => 'Nabíjanie';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Len batéria';
+
+  @override
+  String get repeater_powerNone => 'Žiadny zdroj napájania';
 
   @override
   String get repeater_clockAtLogin => 'Čas (při přihlášení)';

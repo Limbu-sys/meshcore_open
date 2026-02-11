@@ -188,6 +188,20 @@ class AppLocalizationsSl extends AppLocalizations {
   String get settings_radioSettingsUpdated => 'Radio nastavitve posodobljene';
 
   @override
+  String get settings_batterySettings => 'Battery Settings';
+
+  @override
+  String get settings_batterySettingsSubtitle => 'Battery chemistry type';
+
+  @override
+  String get settings_batteryType => 'Type';
+
+  @override
+  String settings_batteryFirmwareDefault(String chemistry) {
+    return 'Device default: $chemistry';
+  }
+
+  @override
   String get settings_location => 'Lokacija';
 
   @override
@@ -542,13 +556,16 @@ class AppLocalizationsSl extends AppLocalizations {
       'Za izbiro se poveži z napravo';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3,0-4,2V)';
+  String get appSettings_batteryNone => 'No Battery';
+
+  @override
+  String get appSettings_batteryLipo => 'LiPo (3,0-4,2V)';
 
   @override
   String get appSettings_batteryLifepo4 => 'LiFePO4 (2,6–3,65 V)';
 
   @override
-  String get appSettings_batteryLipo => 'LiPo (3,0-4,2V)';
+  String get appSettings_batteryLeadAcid => 'Lead Acid (12V)';
 
   @override
   String get appSettings_mapDisplay => 'Prikaz zemljevida';
@@ -1693,6 +1710,27 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get repeater_battery => 'Baterija';
+
+  @override
+  String get repeater_batteryChemistry => 'Tip baterije';
+
+  @override
+  String get repeater_powerSource => 'Vir napajanja';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Sončna';
+
+  @override
+  String get repeater_powerCharging => 'Polnjenje';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Samo baterija';
+
+  @override
+  String get repeater_powerNone => 'Ni vira napajanja';
 
   @override
   String get repeater_clockAtLogin => 'Ure (pri prijavi)';

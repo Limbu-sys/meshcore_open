@@ -6,8 +6,10 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import '../connector/meshcore_connector.dart';
 import '../connector/meshcore_protocol.dart';
+import '../l10n/app_localizations.dart';
 import '../l10n/l10n.dart';
 import '../models/radio_settings.dart';
+import '../services/app_settings_service.dart';
 import 'app_settings_screen.dart';
 import 'app_debug_log_screen.dart';
 import 'ble_debug_log_screen.dart';
@@ -229,6 +231,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           const Divider(height: 1),
           ListTile(
+            leading: const Icon(Icons.battery_full),
+            title: Text(l10n.settings_batterySettings),
+            subtitle: Text(l10n.settings_batterySettingsSubtitle),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => _showBatterySettings(context, connector),
+          ),
+          const Divider(height: 1),
+          ListTile(
             leading: const Icon(Icons.visibility_off_outlined),
             title: Text(l10n.settings_privacyMode),
             subtitle: Text(l10n.settings_privacyModeSubtitle),
@@ -429,6 +439,113 @@ class _SettingsScreenState extends State<SettingsScreen> {
       context: context,
       builder: (context) => _RadioSettingsDialog(connector: connector),
     );
+  }
+
+  void _showBatterySettings(BuildContext context, MeshCoreConnector connector) {
+    final l10n = context.l10n;
+    final settingsService = Provider.of<AppSettingsService>(context, listen: false);
+    final deviceId = connector.deviceId;
+    final firmwareChemistry = connector.reportedBatteryChemistry;
+    // User setting takes precedence, fall back to firmware, then default
+    final chemistry = deviceId != null
+        ? settingsService.batteryChemistryForDevice(deviceId)
+        : (firmwareChemistry ?? 'lipo');
+
+    final millivolts = connector.batteryMillivolts;
+    final percent = connector.batteryPercent;
+
+    showDialog(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(l10n.settings_batterySettings),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (millivolts != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '${(millivolts / 1000.0).toStringAsFixed(2)}V',
+                      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    if (percent != null) ...[
+                      const SizedBox(width: 12),
+                      Text(
+                        '($percent%)',
+                        style: TextStyle(fontSize: 18, color: Colors.grey[400]),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(l10n.settings_batteryType),
+              trailing: DropdownButton<String>(
+                value: chemistry,
+                onChanged: deviceId != null
+                    ? (value) {
+                        if (value != null) {
+                          settingsService.setBatteryChemistryForDevice(deviceId, value);
+                          Navigator.pop(dialogContext);
+                          // Reopen to show updated value
+                          _showBatterySettings(context, connector);
+                        }
+                      }
+                    : null,
+                items: [
+                  DropdownMenuItem(
+                    value: 'none',
+                    child: Text(l10n.appSettings_batteryNone),
+                  ),
+                  DropdownMenuItem(
+                    value: 'lipo',
+                    child: Text(l10n.appSettings_batteryLipo),
+                  ),
+                  DropdownMenuItem(
+                    value: 'lifepo4',
+                    child: Text(l10n.appSettings_batteryLifepo4),
+                  ),
+                  DropdownMenuItem(
+                    value: 'leadacid',
+                    child: Text(l10n.appSettings_batteryLeadAcid),
+                  ),
+                ],
+              ),
+            ),
+            if (firmwareChemistry != null && firmwareChemistry != 'none')
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Text(
+                  l10n.settings_batteryFirmwareDefault(
+                    _chemistryDisplayName(l10n, firmwareChemistry),
+                  ),
+                  style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                ),
+              ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: Text(l10n.common_close),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _chemistryDisplayName(AppLocalizations l10n, String chem) {
+    return switch (chem) {
+      'none' => l10n.appSettings_batteryNone,
+      'lipo' => l10n.appSettings_batteryLipo,
+      'lifepo4' => l10n.appSettings_batteryLifepo4,
+      'leadacid' => l10n.appSettings_batteryLeadAcid,
+      _ => l10n.appSettings_batteryLipo,
+    };
   }
 
   void _editLocation(BuildContext context, MeshCoreConnector connector) {

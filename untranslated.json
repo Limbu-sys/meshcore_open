@@ -1,1 +1,141 @@
-{}
+{
+  "bg": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ],
+
+  "de": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ],
+
+  "es": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ],
+
+  "fr": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ],
+
+  "it": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ],
+
+  "nl": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ],
+
+  "pl": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ],
+
+  "pt": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ],
+
+  "ru": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ],
+
+  "sk": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ],
+
+  "sl": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ],
+
+  "sv": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ],
+
+  "uk": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ],
+
+  "zh": [
+    "settings_batterySettings",
+    "settings_batterySettingsSubtitle",
+    "settings_batteryType",
+    "settings_batteryFirmwareDefault",
+    "appSettings_batteryNone",
+    "appSettings_batteryLeadAcid",
+    "repeater_batteryChemistry"
+  ]
+}

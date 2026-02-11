@@ -185,6 +185,20 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settings_radioSettingsUpdated => '收音机设置已更新';
 
   @override
+  String get settings_batterySettings => 'Battery Settings';
+
+  @override
+  String get settings_batterySettingsSubtitle => 'Battery chemistry type';
+
+  @override
+  String get settings_batteryType => 'Type';
+
+  @override
+  String settings_batteryFirmwareDefault(String chemistry) {
+    return 'Device default: $chemistry';
+  }
+
+  @override
   String get settings_location => '地点';
 
   @override
@@ -517,13 +531,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String get appSettings_batteryChemistryConnectFirst => '连接到设备以进行选择';
 
   @override
-  String get appSettings_batteryNmc => '18650 型号，NMC 电池（3.0-4.2V）';
+  String get appSettings_batteryNone => 'No Battery';
+
+  @override
+  String get appSettings_batteryLipo => '锂离子电池 (3.0-4.2V)';
 
   @override
   String get appSettings_batteryLifepo4 => '磷酸铁锂 (2.6-3.65V)';
 
   @override
-  String get appSettings_batteryLipo => '锂离子电池 (3.0-4.2V)';
+  String get appSettings_batteryLeadAcid => 'Lead Acid (12V)';
 
   @override
   String get appSettings_mapDisplay => '地图展示';
@@ -1622,6 +1639,27 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get repeater_battery => '电池';
+
+  @override
+  String get repeater_batteryChemistry => '电池类型';
+
+  @override
+  String get repeater_powerSource => '电源';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => '太阳能';
+
+  @override
+  String get repeater_powerCharging => '充电中';
+
+  @override
+  String get repeater_powerBatteryOnly => '仅电池';
+
+  @override
+  String get repeater_powerNone => '无电源';
 
   @override
   String get repeater_clockAtLogin => '登录时的时间';

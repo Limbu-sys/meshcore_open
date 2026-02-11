@@ -14,6 +14,7 @@ import '../models/path_selection.dart';
 import '../helpers/reaction_helper.dart';
 import '../helpers/smaz.dart';
 import '../services/app_debug_log_service.dart';
+import '../utils/battery_utils.dart';
 import '../services/ble_debug_log_service.dart';
 import '../services/message_retry_service.dart';
 import '../services/path_history_service.dart';
@@ -91,6 +92,7 @@ class MeshCoreConnector extends ChangeNotifier {
   int? _currentSf;
   int? _currentCr;
   int? _batteryMillivolts;
+  String? _reportedBatteryChemistry; // From firmware, if available
   double? _selfLatitude;
   double? _selfLongitude;
   bool _isLoadingContacts = false;
@@ -202,6 +204,7 @@ class MeshCoreConnector extends ChangeNotifier {
   int? get currentCr => _currentCr;
   Map<String, String>? get currentCustomVars => _currentCustomVars;
   int? get batteryMillivolts => _batteryMillivolts;
+  String? get reportedBatteryChemistry => _reportedBatteryChemistry;
   int get maxContacts => _maxContacts;
   int get maxChannels => _maxChannels;
   bool get isSyncingQueuedMessages => _isSyncingQueuedMessages;
@@ -218,30 +221,21 @@ class MeshCoreConnector extends ChangeNotifier {
         );
 
   String _batteryChemistryForDevice() {
+    // User setting is the source of truth (they can override firmware)
     final deviceId = _device?.remoteId.toString();
-    if (deviceId == null || _appSettingsService == null) return 'nmc';
-    return _appSettingsService!.batteryChemistryForDevice(deviceId);
-  }
-
-  int _estimateBatteryPercent(int millivolts, String chemistry) {
-    final range = _batteryVoltageRange(chemistry);
-    final minMv = range.$1;
-    final maxMv = range.$2;
-    if (millivolts <= minMv) return 0;
-    if (millivolts >= maxMv) return 100;
-    return (((millivolts - minMv) * 100) / (maxMv - minMv)).round();
-  }
-
-  (int, int) _batteryVoltageRange(String chemistry) {
-    switch (chemistry) {
-      case 'lifepo4':
-        return (2600, 3650);
-      case 'lipo':
-        return (3000, 4200);
-      case 'nmc':
-      default:
-        return (3000, 4200);
+    if (deviceId != null && _appSettingsService != null) {
+      return _appSettingsService!.batteryChemistryForDevice(deviceId);
     }
+    // Fall back to firmware if available and meaningful (not 'none')
+    if (_reportedBatteryChemistry != null && _reportedBatteryChemistry != 'none') {
+      return _reportedBatteryChemistry!;
+    }
+    return 'lipo';
+  }
+
+  // Uses shared utility from battery_utils.dart
+  int? _estimateBatteryPercent(int millivolts, String chemistry) {
+    return estimateBatteryPercent(millivolts, chemistry);
   }
 
   List<Message> getMessages(Contact contact) {
@@ -917,6 +911,7 @@ class MeshCoreConnector extends ChangeNotifier {
     _selfLatitude = null;
     _selfLongitude = null;
     _batteryMillivolts = null;
+    _reportedBatteryChemistry = null;
     _batteryRequested = false;
     _awaitingSelfInfo = false;
     _maxContacts = _defaultMaxContacts;
@@ -1886,11 +1881,21 @@ class MeshCoreConnector extends ChangeNotifier {
     // [1-2] = battery_mv (uint16 LE)
     // [3-6] = storage_used_kb (uint32 LE)
     // [7-10] = storage_total_kb (uint32 LE)
+    // [11] = battery_chemistry (optional: 0=none, 1=lipo, 2=lifepo4, 3=leadacid)
     if (frame.length >= 3) {
       _batteryMillivolts = readUint16LE(frame, 1);
+
+      // Check for optional chemistry byte at offset 11 (protocol extension)
+      if (frame.length > 11) {
+        _reportedBatteryChemistry = chemistryFromByte(frame[11]);
+      }
+
       final volts = (_batteryMillivolts! / 1000.0).toStringAsFixed(2);
+      final chemInfo = _reportedBatteryChemistry != null
+          ? ' [$_reportedBatteryChemistry]'
+          : '';
       _appDebugLogService?.info(
-        'Pulled battery: $volts V ($_batteryMillivolts mV)',
+        'Pulled battery: $volts V ($_batteryMillivolts mV)$chemInfo',
         tag: 'Battery',
       );
       notifyListeners();

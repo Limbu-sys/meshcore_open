@@ -4,11 +4,14 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../l10n/l10n.dart';
+import '../l10n/app_localizations.dart';
 import '../models/contact.dart';
 import '../models/path_selection.dart';
 import '../connector/meshcore_connector.dart';
 import '../connector/meshcore_protocol.dart';
 import '../services/repeater_command_service.dart';
+import '../services/app_settings_service.dart';
+import '../utils/battery_utils.dart';
 import '../widgets/path_management_dialog.dart';
 
 class RepeaterStatusScreen extends StatefulWidget {
@@ -54,6 +57,8 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
   int? _dupFlood;
   int? _dupDirect;
   PathSelection? _pendingStatusSelection;
+  String? _reportedChemistry; // From firmware, if available
+  PowerState? _powerState; // Power source info from firmware
 
   @override
   void initState() {
@@ -157,6 +162,25 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
     offset += 2;
     final rxAirSecs = data.getUint32(offset, Endian.little);
 
+    // Check for optional chemistry byte at offset 60 (protocol extension)
+    // 0=none, 1=lipo, 2=lifepo4, 3=leadacid
+    String? reportedChem;
+    PowerState? powerState;
+    if (frame.length > _statusResponseBytes) {
+      reportedChem = chemistryFromByte(frame[_statusResponseBytes]);
+
+      // Parse power state byte (offset 61) and input voltage (bytes 62-63)
+      if (frame.length > _statusResponseBytes + 1) {
+        final powerFlags = frame[_statusResponseBytes + 1];
+        int? inputMv;
+        if (frame.length > _statusResponseBytes + 3) {
+          inputMv = frame[_statusResponseBytes + 2] |
+              (frame[_statusResponseBytes + 3] << 8);
+        }
+        powerState = PowerState(powerFlags, inputMv);
+      }
+    }
+
     _statusTimeout?.cancel();
     if (!mounted) return;
     setState(() {
@@ -178,6 +202,8 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
       _lastSnr = lastSnrRaw / 4.0;
       _dupDirect = directDups;
       _dupFlood = floodDups;
+      _reportedChemistry = reportedChem;
+      _powerState = powerState;
     });
     _recordStatusResult(true);
   }
@@ -251,6 +277,8 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
       _directRx = null;
       _dupFlood = null;
       _dupDirect = null;
+      _reportedChemistry = null;
+      _powerState = null;
     });
 
     try {
@@ -438,6 +466,12 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
 
   Widget _buildSystemInfoCard() {
     final l10n = context.l10n;
+    final settingsService = context.watch<AppSettingsService>();
+    final userChemistry =
+        settingsService.batteryChemistryForRepeater(widget.repeater.publicKeyHex);
+    // Prefer firmware-reported chemistry, fall back to user setting
+    final chemistry = _reportedChemistry ?? userChemistry;
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -461,13 +495,187 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
               ],
             ),
             const Divider(),
-            _buildInfoRow(l10n.repeater_battery, _batteryText()),
+            _buildInfoRow(l10n.repeater_battery, _batteryText(chemistry)),
+            // Only show chemistry row if there's a battery to configure
+            if (chemistry != 'none')
+              _buildBatteryChemistryRow(
+                settingsService,
+                chemistry,
+                isFromFirmware: _reportedChemistry != null,
+              ),
+            // Show power source row if firmware reports power state
+            if (_powerState != null) _buildPowerSourceRow(l10n),
             _buildInfoRow(l10n.repeater_clockAtLogin, _clockText()),
             _buildInfoRow(l10n.repeater_uptime, _formatDuration(_uptimeSecs)),
             _buildInfoRow(l10n.repeater_queueLength, _formatValue(_queueLen)),
             _buildInfoRow(l10n.repeater_debugFlags, _formatValue(_debugFlags)),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildBatteryChemistryRow(
+    AppSettingsService settingsService,
+    String currentChemistry, {
+    required bool isFromFirmware,
+  }) {
+    final l10n = context.l10n;
+
+    // Map chemistry code to display name
+    String chemistryDisplayName(String chem) {
+      return switch (chem) {
+        'none' => l10n.appSettings_batteryNone,
+        'lipo' => l10n.appSettings_batteryLipo,
+        'lifepo4' => l10n.appSettings_batteryLifepo4,
+        'leadacid' => l10n.appSettings_batteryLeadAcid,
+        _ => l10n.appSettings_batteryLipo,
+      };
+    }
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 130,
+            child: Text(
+              l10n.repeater_batteryChemistry,
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          Expanded(
+            child: isFromFirmware
+                // Firmware-reported: show as read-only text with indicator
+                ? Row(
+                    children: [
+                      Flexible(
+                        child: Text(
+                          chemistryDisplayName(currentChemistry),
+                          style: const TextStyle(fontWeight: FontWeight.w400),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Icon(
+                        Icons.lock_outline,
+                        size: 16,
+                        color: Colors.grey[500],
+                      ),
+                    ],
+                  )
+                // User-configurable: show dropdown
+                : DropdownButton<String>(
+                    value: currentChemistry,
+                    isDense: true,
+                    underline: const SizedBox.shrink(),
+                    onChanged: (value) {
+                      if (value != null) {
+                        settingsService.setBatteryChemistryForRepeater(
+                          widget.repeater.publicKeyHex,
+                          value,
+                        );
+                      }
+                    },
+                    items: [
+                      DropdownMenuItem(
+                        value: 'none',
+                        child: Text(l10n.appSettings_batteryNone),
+                      ),
+                      DropdownMenuItem(
+                        value: 'lipo',
+                        child: Text(l10n.appSettings_batteryLipo),
+                      ),
+                      DropdownMenuItem(
+                        value: 'lifepo4',
+                        child: Text(l10n.appSettings_batteryLifepo4),
+                      ),
+                      DropdownMenuItem(
+                        value: 'leadacid',
+                        child: Text(l10n.appSettings_batteryLeadAcid),
+                      ),
+                    ],
+                  ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPowerSourceRow(AppLocalizations l10n) {
+    final power = _powerState;
+    if (power == null) return const SizedBox.shrink();
+
+    // Build list of status parts
+    final parts = <String>[];
+    if (power.isUsbConnected) parts.add(l10n.repeater_powerUsb);
+    if (power.isSolarConnected) parts.add(l10n.repeater_powerSolar);
+    if (power.isCharging) parts.add(l10n.repeater_powerCharging);
+
+    // Add input voltage if available
+    final voltageStr = power.inputVoltageString;
+    if (voltageStr != null) parts.add('${voltageStr}V');
+
+    // Fallback text if no external power
+    final statusText = parts.isEmpty
+        ? (power.isBatteryPresent
+            ? l10n.repeater_powerBatteryOnly
+            : l10n.repeater_powerNone)
+        : parts.join(' / ');
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 130,
+            child: Text(
+              l10n.repeater_powerSource,
+              style: TextStyle(
+                color: Colors.grey[600],
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                // USB icon
+                if (power.isUsbConnected)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6),
+                    child: Icon(Icons.usb, size: 18, color: Colors.blue[600]),
+                  ),
+                // Solar icon
+                if (power.isSolarConnected)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6),
+                    child:
+                        Icon(Icons.wb_sunny, size: 18, color: Colors.orange[600]),
+                  ),
+                // Charging icon
+                if (power.isCharging)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6),
+                    child: Icon(Icons.battery_charging_full,
+                        size: 18, color: Colors.green[600]),
+                  ),
+                Flexible(
+                  child: Text(
+                    statusText,
+                    style: const TextStyle(fontWeight: FontWeight.w400),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -589,19 +797,13 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
     return double.tryParse(value.toString());
   }
 
-  String _batteryText() {
+  String _batteryText(String chemistry) {
     if (_batteryMv == null) return '—';
-    final percent = _batteryPercentFromMv(_batteryMv!);
+    if (chemistry == 'none') return 'N/A (external power)';
+    final percent = estimateBatteryPercent(_batteryMv!, chemistry);
+    if (percent == null) return '—';
     final volts = (_batteryMv! / 1000.0).toStringAsFixed(2);
     return '$percent% / ${volts}V';
-  }
-
-  int _batteryPercentFromMv(int millivolts) {
-    const minMv = 3000;
-    const maxMv = 4200;
-    if (millivolts <= minMv) return 0;
-    if (millivolts >= maxMv) return 100;
-    return (((millivolts - minMv) * 100) / (maxMv - minMv)).round();
   }
 
   String _clockText() {

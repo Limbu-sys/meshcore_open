@@ -188,6 +188,20 @@ class AppLocalizationsSv extends AppLocalizations {
       'Radioinställningarna har uppdaterats';
 
   @override
+  String get settings_batterySettings => 'Battery Settings';
+
+  @override
+  String get settings_batterySettingsSubtitle => 'Battery chemistry type';
+
+  @override
+  String get settings_batteryType => 'Type';
+
+  @override
+  String settings_batteryFirmwareDefault(String chemistry) {
+    return 'Device default: $chemistry';
+  }
+
+  @override
   String get settings_location => 'Plats';
 
   @override
@@ -537,13 +551,16 @@ class AppLocalizationsSv extends AppLocalizations {
       'Anslut till en enhet för att välja';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3.0-4.2V)';
+  String get appSettings_batteryNone => 'No Battery';
+
+  @override
+  String get appSettings_batteryLipo => 'LiPo (3.0-4.2V)';
 
   @override
   String get appSettings_batteryLifepo4 => 'LiFePO4 (2,6–3,65V)';
 
   @override
-  String get appSettings_batteryLipo => 'LiPo (3.0-4.2V)';
+  String get appSettings_batteryLeadAcid => 'Lead Acid (12V)';
 
   @override
   String get appSettings_mapDisplay => 'Kartvisning';
@@ -1683,6 +1700,27 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get repeater_battery => 'Batteri';
+
+  @override
+  String get repeater_batteryChemistry => 'Batterityp';
+
+  @override
+  String get repeater_powerSource => 'Strömkälla';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Sol';
+
+  @override
+  String get repeater_powerCharging => 'Laddar';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Endast batteri';
+
+  @override
+  String get repeater_powerNone => 'Ingen strömkälla';
 
   @override
   String get repeater_clockAtLogin => 'Klocka (vid inloggning)';

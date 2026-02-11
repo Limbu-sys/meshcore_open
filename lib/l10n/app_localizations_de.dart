@@ -188,6 +188,20 @@ class AppLocalizationsDe extends AppLocalizations {
   String get settings_radioSettingsUpdated => 'Funkparameter aktualisiert';
 
   @override
+  String get settings_batterySettings => 'Battery Settings';
+
+  @override
+  String get settings_batterySettingsSubtitle => 'Battery chemistry type';
+
+  @override
+  String get settings_batteryType => 'Type';
+
+  @override
+  String settings_batteryFirmwareDefault(String chemistry) {
+    return 'Device default: $chemistry';
+  }
+
+  @override
   String get settings_location => 'Ort';
 
   @override
@@ -545,13 +559,16 @@ class AppLocalizationsDe extends AppLocalizations {
       'Verbinde ein Gerät, um zu wählen';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3,0–4,2 V)';
+  String get appSettings_batteryNone => 'No Battery';
+
+  @override
+  String get appSettings_batteryLipo => 'LiPo (3,0–4,2V)';
 
   @override
   String get appSettings_batteryLifepo4 => 'LiFePO4 (2,6–3,65 V)';
 
   @override
-  String get appSettings_batteryLipo => 'LiPo (3,0–4,2V)';
+  String get appSettings_batteryLeadAcid => 'Lead Acid (12V)';
 
   @override
   String get appSettings_mapDisplay => 'Kartendarstellung';
@@ -1701,6 +1718,27 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get repeater_battery => 'Akku';
+
+  @override
+  String get repeater_batteryChemistry => 'Akkutyp';
+
+  @override
+  String get repeater_powerSource => 'Stromquelle';
+
+  @override
+  String get repeater_powerUsb => 'USB';
+
+  @override
+  String get repeater_powerSolar => 'Solar';
+
+  @override
+  String get repeater_powerCharging => 'Lädt';
+
+  @override
+  String get repeater_powerBatteryOnly => 'Nur Akku';
+
+  @override
+  String get repeater_powerNone => 'Keine Stromquelle';
 
   @override
   String get repeater_clockAtLogin => 'Uhr (bei Anmeldung)';
