@@ -51,6 +51,7 @@ class _MapScreenState extends State<MapScreen> {
   bool _isSelectingPoi = false;
   bool _hasInitializedMap = false;
   bool _removedMarkersLoaded = false;
+  bool _legendExpanded = false;
 
   @override
   void initState() {
@@ -503,60 +504,102 @@ class _MapScreenState extends State<MapScreen> {
       top: 16,
       right: 16,
       child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                context.l10n.map_nodesCount(nodeCount),
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            InkWell(
+              borderRadius: BorderRadius.circular(12),
+              onTap: () {
+                setState(() {
+                  _legendExpanded = !_legendExpanded;
+                });
+              },
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          context.l10n.map_nodesCount(nodeCount),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                        ),
+                        Text(
+                          context.l10n.map_pinsCount(markerCount),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(width: 8),
+                    AnimatedRotation(
+                      turns: _legendExpanded ? 0.5 : 0,
+                      duration: const Duration(milliseconds: 200),
+                      child: const Icon(Icons.expand_more, size: 20),
+                    ),
+                  ],
                 ),
               ),
-              Text(
-                context.l10n.map_pinsCount(markerCount),
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
+            ),
+            AnimatedCrossFade(
+              firstChild: const SizedBox.shrink(),
+              secondChild: Padding(
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 6),
+                    _buildLegendItem(
+                      Icons.person,
+                      context.l10n.map_chat,
+                      Colors.blue,
+                    ),
+                    _buildLegendItem(
+                      Icons.router,
+                      context.l10n.map_repeater,
+                      Colors.green,
+                    ),
+                    _buildLegendItem(
+                      Icons.meeting_room,
+                      context.l10n.map_room,
+                      Colors.purple,
+                    ),
+                    _buildLegendItem(
+                      Icons.sensors,
+                      context.l10n.map_sensor,
+                      Colors.orange,
+                    ),
+                    _buildLegendItem(
+                      Icons.flag,
+                      context.l10n.map_pinDm,
+                      Colors.blue,
+                    ),
+                    _buildLegendItem(
+                      Icons.flag,
+                      context.l10n.map_pinPrivate,
+                      Colors.purple,
+                    ),
+                    _buildLegendItem(
+                      Icons.flag,
+                      context.l10n.map_pinPublic,
+                      Colors.orange,
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 8),
-              _buildLegendItem(
-                Icons.person,
-                context.l10n.map_chat,
-                Colors.blue,
-              ),
-              _buildLegendItem(
-                Icons.router,
-                context.l10n.map_repeater,
-                Colors.green,
-              ),
-              _buildLegendItem(
-                Icons.meeting_room,
-                context.l10n.map_room,
-                Colors.purple,
-              ),
-              _buildLegendItem(
-                Icons.sensors,
-                context.l10n.map_sensor,
-                Colors.orange,
-              ),
-              _buildLegendItem(Icons.flag, context.l10n.map_pinDm, Colors.blue),
-              _buildLegendItem(
-                Icons.flag,
-                context.l10n.map_pinPrivate,
-                Colors.purple,
-              ),
-              _buildLegendItem(
-                Icons.flag,
-                context.l10n.map_pinPublic,
-                Colors.orange,
-              ),
-            ],
-          ),
+              crossFadeState: _legendExpanded
+                  ? CrossFadeState.showSecond
+                  : CrossFadeState.showFirst,
+              duration: const Duration(milliseconds: 200),
+            ),
+          ],
         ),
       ),
     );
