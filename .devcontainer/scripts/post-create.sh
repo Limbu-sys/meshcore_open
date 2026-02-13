@@ -19,7 +19,7 @@ fi
 flutter config --no-analytics --android-sdk "${ANDROID_SDK_ROOT:-/opt/android-sdk}" --enable-android --enable-linux-desktop --enable-web
 # Licenses/doctor should not block opening the devcontainer.
 flutter doctor --android-licenses < <(yes) || true
-bash .devcontainer/scripts/pub-get.sh || echo "[devcontainer] 'flutter pub get' failed during onCreate; continuing."
+bash .devcontainer/scripts/pub-get.sh
 
 # Skip Android warmup build during container creation to avoid large NDK/Gradle downloads.
 # Build caches will be populated on first explicit Android build/run command instead.

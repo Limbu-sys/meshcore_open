@@ -10,7 +10,7 @@ This folder defines the development container used by Codespaces and local Dev C
 
 - Builds from `mcr.microsoft.com/devcontainers/base:ubuntu-24.04`.
 - Installs core Linux tooling plus Flutter/Linux desktop dependencies.
-- Installs Flutter (stable channel) into `/opt/flutter`.
+- Installs Flutter `3.41.0` into `/opt/flutter`.
 - Installs Android SDK command-line tools into `/opt/android-sdk`.
 - Pre-installs Android components required by this project:
   - `platform-tools`

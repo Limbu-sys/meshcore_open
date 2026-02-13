@@ -6,6 +6,7 @@ ENV FLUTTER_ROOT=/opt/flutter \
     ANDROID_SDK_ROOT=/opt/android-sdk \
     ANDROID_HOME=/opt/android-sdk \
     JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ARG FLUTTER_VERSION=3.41.0
 
 # Core tooling + Flutter Linux desktop prerequisites.
 RUN apt-get update \
@@ -35,7 +36,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # Install Flutter SDK.
-RUN git clone --depth 1 --branch stable https://github.com/flutter/flutter.git ${FLUTTER_ROOT}
+RUN git clone --depth 1 --branch ${FLUTTER_VERSION} https://github.com/flutter/flutter.git ${FLUTTER_ROOT}
 
 # Install Android SDK command line tools.
 RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools /tmp/android-cmdline \
