@@ -39,8 +39,8 @@ RUN git clone --depth 1 --branch stable https://github.com/flutter/flutter.git $
 
 # Install Android SDK command line tools.
 RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools /tmp/android-cmdline \
-  && CMDLINE_TOOLS_ZIP="$(wget -O- --tries=5 --timeout=30 https://dl.google.com/android/repository/repository2-1.xml | grep -oE 'commandlinetools-linux-[0-9]+_latest.zip' | sort -uV | tail -n1)" \
-  && wget --tries=5 --timeout=30 "https://dl.google.com/android/repository/${CMDLINE_TOOLS_ZIP}" -O /tmp/cmdline-tools.zip \
+  && CMDLINE_TOOLS_ZIP="$(wget -qO- https://dl.google.com/android/repository/repository2-1.xml | grep -oE 'commandlinetools-linux-[0-9]+_latest.zip' | sort -uV | tail -n1)" \
+  && wget -q "https://dl.google.com/android/repository/${CMDLINE_TOOLS_ZIP}" -O /tmp/cmdline-tools.zip \
   && unzip -q /tmp/cmdline-tools.zip -d /tmp/android-cmdline \
   && mv /tmp/android-cmdline/cmdline-tools ${ANDROID_SDK_ROOT}/cmdline-tools/latest \
   && rm -rf /tmp/cmdline-tools.zip /tmp/android-cmdline
@@ -57,7 +57,7 @@ RUN yes | sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses >/dev/null \
     "build-tools;36.0.0" \
     "ndk;28.2.13676358"
 
-# Configure Flutter. Only pre-cache Android artifacts; avoid full multi-platform pre-caches to keep image size lower.
+# Configure Flutter. Avoid large pre-caches during image build to keep disk usage lower.
 RUN flutter config --no-analytics --android-sdk ${ANDROID_SDK_ROOT} --enable-android --enable-linux-desktop --enable-web \
   && flutter precache --android
 
@@ -65,4 +65,4 @@ RUN flutter config --no-analytics --android-sdk ${ANDROID_SDK_ROOT} --enable-and
 RUN chown -R vscode:vscode ${FLUTTER_ROOT} ${ANDROID_SDK_ROOT}
 
 USER vscode
-WORKDIR /workspaces/meshcore-open
+WORKDIR /workspace/meshcore-open
