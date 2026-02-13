@@ -43,12 +43,16 @@ ENV PATH=${FLUTTER_ROOT}/bin:${FLUTTER_ROOT}/bin/cache/dart-sdk/bin:${ANDROID_SD
 
 # Preinstall Android components needed by Flutter and accept licenses.
 RUN yes | sdkmanager --licenses >/dev/null \
-  && LATEST_PLATFORM="$(sdkmanager --list | grep -oE 'platforms;android-[0-9]+' | sort -uV | tail -n1)" \
-  && LATEST_BUILD_TOOLS="$(sdkmanager --list | grep -oE 'build-tools;[0-9]+\\.[0-9]+\\.[0-9]+' | sort -uV | tail -n1)" \
+  && sdkmanager --list > /tmp/sdkmanager-list.txt 2>&1 \
+  && LATEST_PLATFORM="$(grep -E 'platforms;android-[0-9]+' /tmp/sdkmanager-list.txt | cut -d'|' -f1 | tr -d '[:space:]' | sort -uV | tail -n1)" \
+  && LATEST_BUILD_TOOLS="$(grep -E 'build-tools;[0-9]+\\.[0-9]+\\.[0-9]+' /tmp/sdkmanager-list.txt | cut -d'|' -f1 | tr -d '[:space:]' | sort -uV | tail -n1)" \
+  && test -n "${LATEST_PLATFORM}" \
+  && test -n "${LATEST_BUILD_TOOLS}" \
   && sdkmanager \
     "platform-tools" \
     "${LATEST_PLATFORM}" \
-    "${LATEST_BUILD_TOOLS}"
+    "${LATEST_BUILD_TOOLS}" \
+  && rm -f /tmp/sdkmanager-list.txt
 
 # Configure Flutter + pre-cache assets for an immediate first run.
 RUN flutter config --no-analytics --android-sdk ${ANDROID_SDK_ROOT} --enable-android --enable-linux-desktop --enable-web \
