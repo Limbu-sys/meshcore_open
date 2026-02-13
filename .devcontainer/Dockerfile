@@ -18,6 +18,7 @@ RUN apt-get update \
     git \
     libglu1-mesa \
     libgtk-3-dev \
+    lld-18 \
     liblzma-dev \
     ninja-build \
     openjdk-17-jdk \
@@ -27,7 +28,10 @@ RUN apt-get update \
     xz-utils \
     zip \
     chromium \
-  && if [ -x /usr/bin/chromium-browser ] && [ ! -e /usr/bin/chromium ]; then ln -s /usr/bin/chromium-browser /usr/bin/chromium; fi \
+  && mkdir -p /usr/lib/llvm-18/bin \
+  && if [ -x /usr/bin/chromium-browser ] && [ ! -x /usr/bin/chromium ]; then ln -sf /usr/bin/chromium-browser /usr/bin/chromium; fi \
+  && if [ -x /usr/bin/ld.lld-18 ] && [ ! -x /usr/lib/llvm-18/bin/ld.lld ]; then ln -sf /usr/bin/ld.lld-18 /usr/lib/llvm-18/bin/ld.lld; fi \
+  && if [ -x /usr/bin/ld ] && [ ! -x /usr/lib/llvm-18/bin/ld ]; then ln -sf /usr/bin/ld /usr/lib/llvm-18/bin/ld; fi \
   && rm -rf /var/lib/apt/lists/*
 
 # Install Flutter SDK.
