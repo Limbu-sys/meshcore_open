@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/devcontainers/base:ubuntu-24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-ARG FLUTTER_VERSION=3.29.2
+ARG FLUTTER_VERSION=3.41.0
 ARG ANDROID_CMDLINE_TOOLS_VERSION=11076708
 
 ENV FLUTTER_ROOT=/opt/flutter \
