@@ -47,11 +47,14 @@ RUN yes | sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses >/dev/null \
   && sdkmanager --sdk_root=${ANDROID_SDK_ROOT} \
     "platform-tools" \
     "platforms;android-34" \
-    "build-tools;34.0.0"
+    "platforms;android-36" \
+    "build-tools;34.0.0" \
+    "build-tools;36.0.0" \
+    "ndk;28.2.13676358"
 
-# Configure Flutter + pre-cache assets for an immediate first run.
+# Configure Flutter. Avoid large pre-caches during image build to keep disk usage lower.
 RUN flutter config --no-analytics --android-sdk ${ANDROID_SDK_ROOT} --enable-android --enable-linux-desktop --enable-web \
-  && flutter precache --android --linux --web
+  && flutter precache --android
 
 # Ensure vscode user can write to SDK folders.
 RUN chown -R vscode:vscode ${FLUTTER_ROOT} ${ANDROID_SDK_ROOT}

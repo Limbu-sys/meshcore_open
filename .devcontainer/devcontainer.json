@@ -31,6 +31,6 @@
   },
   "initializeCommand": "bash .devcontainer/scripts/validate-host.sh",
   "onCreateCommand": "bash .devcontainer/scripts/post-create.sh",
-  "updateContentCommand": "bash .devcontainer/scripts/pub-get.sh",
+  "updateContentCommand": "bash .devcontainer/scripts/pub-get.sh || true",
   "postStartCommand": "bash .devcontainer/scripts/doctor-summary.sh"
 }
