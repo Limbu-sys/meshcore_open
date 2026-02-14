@@ -10,6 +10,16 @@ import 'app_settings_service.dart';
 import 'app_debug_log_service.dart';
 import 'storage_service.dart';
 
+enum RoomSyncStatusKind {
+  syncOff,
+  syncDisabled,
+  syncing,
+  connectedWaitingSync,
+  connectedStale,
+  connectedSynced,
+  notLoggedIn,
+}
+
 class RoomSyncService extends ChangeNotifier {
   static const Duration _loginTimeoutFallback = Duration(seconds: 12);
   static const int _maxAutoLoginAttempts = 3;
@@ -325,23 +335,41 @@ class RoomSyncService extends ChangeNotifier {
     return Duration(milliseconds: doubledMs);
   }
 
-  String? roomStatusLabel(String roomPubKeyHex) {
-    if (!_roomSyncEnabled) return 'Room sync off';
-    if (!isRoomAutoSyncEnabled(roomPubKeyHex)) return 'Sync disabled';
-    if (_syncInFlight) return 'Syncing...';
+  RoomSyncStatusKind roomStatusKind(String roomPubKeyHex) {
+    if (!_roomSyncEnabled) return RoomSyncStatusKind.syncOff;
+    if (!isRoomAutoSyncEnabled(roomPubKeyHex)) {
+      return RoomSyncStatusKind.syncDisabled;
+    }
+    if (_syncInFlight) return RoomSyncStatusKind.syncing;
     final state = _states[roomPubKeyHex];
     if (_activeRoomSessions.contains(roomPubKeyHex)) {
       if (state?.lastSuccessfulSyncAtMs == null) {
-        return 'Connected, waiting sync';
+        return RoomSyncStatusKind.connectedWaitingSync;
       }
       return isRoomStale(roomPubKeyHex)
-          ? 'Connected, stale'
-          : 'Connected, synced';
+          ? RoomSyncStatusKind.connectedStale
+          : RoomSyncStatusKind.connectedSynced;
     }
-    if (state?.lastFailureAtMs != null) {
-      return 'Not logged in';
+    return RoomSyncStatusKind.notLoggedIn;
+  }
+
+  String? roomStatusLabel(String roomPubKeyHex) {
+    switch (roomStatusKind(roomPubKeyHex)) {
+      case RoomSyncStatusKind.syncOff:
+        return 'Room sync off';
+      case RoomSyncStatusKind.syncDisabled:
+        return 'Sync disabled';
+      case RoomSyncStatusKind.syncing:
+        return 'Syncing...';
+      case RoomSyncStatusKind.connectedWaitingSync:
+        return 'Connected, waiting sync';
+      case RoomSyncStatusKind.connectedStale:
+        return 'Connected, stale';
+      case RoomSyncStatusKind.connectedSynced:
+        return 'Connected, synced';
+      case RoomSyncStatusKind.notLoggedIn:
+        return 'Not logged in';
     }
-    return 'Not synced';
   }
 
   void _recordLoginAttempt(String roomPubKeyHex) {
