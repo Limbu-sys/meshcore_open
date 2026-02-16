@@ -191,7 +191,7 @@ class _PathManagementDialog extends StatelessWidget {
                         directRepeater != null &&
                         path.pathBytes.isNotEmpty &&
                         directRepeater.pubkeyFirstByte == path.pathBytes.first;
-                    final isSecoundDirectRepeater =
+                    final isSecondDirectRepeater =
                         secondDirectRepeater != null &&
                         path.pathBytes.isNotEmpty &&
                         secondDirectRepeater.pubkeyFirstByte ==
@@ -205,7 +205,7 @@ class _PathManagementDialog extends StatelessWidget {
                     Color color = Colors.grey;
                     if (isDirectRepeater) {
                       color = Colors.green;
-                    } else if (isSecoundDirectRepeater) {
+                    } else if (isSecondDirectRepeater) {
                       color = Colors.yellow;
                     } else if (isThirdDirectRepeater) {
                       color = Colors.red;
