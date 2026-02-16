@@ -133,17 +133,24 @@ class _PathManagementDialog extends StatelessWidget {
       builder: (context, connector, pathService, _) {
         final currentContact = _resolveContact(connector);
         final paths = pathService.getRecentPaths(currentContact.publicKeyHex);
-        final directRepeaters = List.of(connector.directRepeaters)
-          ..sort((a, b) => (b.snr).compareTo(a.snr));
-        final directRepeater = directRepeaters.isEmpty
+
+        final RepeatersList = List.of(connector.directRepeaters)
+          ..sort((a, b) => b.lastUpdated.compareTo(a.lastUpdated));
+
+        final topSNRRepeaters = List.of(RepeatersList)
+          ..sort((a, b) => b.snr.compareTo(a.snr));
+
+        final topThreeRepeaters = topSNRRepeaters.take(3).toList();
+
+        final directRepeater = topThreeRepeaters.isEmpty
             ? null
-            : directRepeaters.first;
-        final secondDirectRepeater = directRepeaters.length < 2
+            : topThreeRepeaters.first;
+        final secondDirectRepeater = topThreeRepeaters.length < 2
             ? null
-            : directRepeaters.elementAt(1);
-        final thirdDirectRepeater = directRepeaters.length < 3
+            : topThreeRepeaters.elementAt(1);
+        final thirdDirectRepeater = topThreeRepeaters.length < 3
             ? null
-            : directRepeaters.elementAt(2);
+            : topThreeRepeaters.elementAt(2);
 
         return AlertDialog(
           title: Text(l10n.chat_pathManagement),
