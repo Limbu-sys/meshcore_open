@@ -134,23 +134,18 @@ class _PathManagementDialog extends StatelessWidget {
         final currentContact = _resolveContact(connector);
         final paths = pathService.getRecentPaths(currentContact.publicKeyHex);
 
-        final RepeatersList = List.of(connector.directRepeaters)
-          ..sort((a, b) => b.lastUpdated.compareTo(a.lastUpdated));
+        final repeatersList = List.of(connector.directRepeaters)
+          ..sort((a, b) => b.ranking.compareTo(a.ranking));
 
-        final topSNRRepeaters = List.of(RepeatersList)
-          ..sort((a, b) => b.snr.compareTo(a.snr));
-
-        final topThreeRepeaters = topSNRRepeaters.take(3).toList();
-
-        final directRepeater = topThreeRepeaters.isEmpty
+        final directRepeater = repeatersList.isEmpty
             ? null
-            : topThreeRepeaters.first;
-        final secondDirectRepeater = topThreeRepeaters.length < 2
+            : repeatersList.first;
+        final secondDirectRepeater = repeatersList.length < 2
             ? null
-            : topThreeRepeaters.elementAt(1);
-        final thirdDirectRepeater = topThreeRepeaters.length < 3
+            : repeatersList.elementAt(1);
+        final thirdDirectRepeater = repeatersList.length < 3
             ? null
-            : topThreeRepeaters.elementAt(2);
+            : repeatersList.elementAt(2);
 
         return AlertDialog(
           title: Text(l10n.chat_pathManagement),
@@ -206,6 +201,7 @@ class _PathManagementDialog extends StatelessWidget {
                         path.pathBytes.isNotEmpty &&
                         thirdDirectRepeater.pubkeyFirstByte ==
                             path.pathBytes.first;
+
                     Color color = Colors.grey;
                     if (isDirectRepeater) {
                       color = Colors.green;

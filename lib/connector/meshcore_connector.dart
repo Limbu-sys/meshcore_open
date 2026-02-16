@@ -54,6 +54,19 @@ class DirectRepeater {
     lastUpdated = DateTime.now();
   }
 
+  int get ranking {
+    if (isStale()) {
+      return -1; // Stale repeaters get lowest rank
+    }
+    // Higher SNR gets higher rank and recency within maxAgeMinutes breaks ties.
+    final ageMs =
+        DateTime.now().millisecondsSinceEpoch -
+        lastUpdated.millisecondsSinceEpoch;
+    final maxAgeMs = maxAgeMinutes * 60 * 1000;
+    final recencyScore = (maxAgeMs - ageMs).clamp(0, maxAgeMs);
+    return (snr * 1000).round() + recencyScore;
+  }
+
   bool isStale() {
     return DateTime.now().difference(lastUpdated) >
         const Duration(minutes: maxAgeMinutes);
@@ -3466,8 +3479,7 @@ class MeshCoreConnector extends ChangeNotifier {
       return;
     }
 
-    if (publicKey == _selfPublicKey) {
-      appLogger.info('Ignoring advert from self', tag: 'Connector');
+    if (listEquals(publicKey, _selfPublicKey)) {
       return;
     }
 
@@ -3480,7 +3492,9 @@ class MeshCoreConnector extends ChangeNotifier {
         name: name,
         type: type,
         pathLength: path.length,
-        path: path,
+        path: Uint8List.fromList(
+          path.reversed.toList(),
+        ), // Store path in reverse for easier use in outgoing messages
         latitude: latitude,
         longitude: longitude,
         lastSeen: DateTime.fromMillisecondsSinceEpoch(timestamp * 1000),
@@ -3510,13 +3524,19 @@ class MeshCoreConnector extends ChangeNotifier {
         latitude: hasLocation ? latitude : existing.latitude,
         longitude: hasLocation ? longitude : existing.longitude,
         name: hasName ? name : existing.name,
-        path: path,
+        path: Uint8List.fromList(path.reversed.toList()),
         pathLength: path.length,
         lastMessageAt: mergedLastMessageAt,
         lastSeen: DateTime.fromMillisecondsSinceEpoch(timestamp * 1000),
         pathOverride: existing.pathOverride, // Preserve user's path choice
         pathOverrideBytes: existing.pathOverrideBytes,
       );
+
+      // Add path to history if we have a valid path
+      if (_pathHistoryService != null &&
+          _contacts[existingIndex].pathLength >= 0) {
+        _pathHistoryService!.handlePathUpdated(_contacts[existingIndex]);
+      }
 
       _updateDirectRepeater(_contacts[existingIndex], snr, path);
 

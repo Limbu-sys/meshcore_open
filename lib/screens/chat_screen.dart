@@ -437,6 +437,20 @@ class _ChatScreenState extends State<ChatScreen> {
       builder: (context) => Consumer<PathHistoryService>(
         builder: (context, pathService, _) {
           final paths = pathService.getRecentPaths(widget.contact.publicKeyHex);
+
+          final repeatersList = List.of(connector.directRepeaters)
+            ..sort((a, b) => b.ranking.compareTo(a.ranking));
+
+          final directRepeater = repeatersList.isEmpty
+              ? null
+              : repeatersList.first;
+          final secondDirectRepeater = repeatersList.length < 2
+              ? null
+              : repeatersList.elementAt(1);
+          final thirdDirectRepeater = repeatersList.length < 3
+              ? null
+              : repeatersList.elementAt(2);
+
           return AlertDialog(
             title: Row(
               children: [
@@ -478,15 +492,38 @@ class _ChatScreenState extends State<ChatScreen> {
                     ],
                     const SizedBox(height: 8),
                     ...paths.map((path) {
+                      final isDirectRepeater =
+                          directRepeater != null &&
+                          path.pathBytes.isNotEmpty &&
+                          directRepeater.pubkeyFirstByte ==
+                              path.pathBytes.first;
+                      final isSecoundDirectRepeater =
+                          secondDirectRepeater != null &&
+                          path.pathBytes.isNotEmpty &&
+                          secondDirectRepeater.pubkeyFirstByte ==
+                              path.pathBytes.first;
+                      final isThirdDirectRepeater =
+                          thirdDirectRepeater != null &&
+                          path.pathBytes.isNotEmpty &&
+                          thirdDirectRepeater.pubkeyFirstByte ==
+                              path.pathBytes.first;
+                      Color color = Colors.grey;
+                      if (isDirectRepeater) {
+                        color = Colors.green;
+                      } else if (isSecoundDirectRepeater) {
+                        color = Colors.yellow;
+                      } else if (isThirdDirectRepeater) {
+                        color = Colors.red;
+                      } else if (path.wasFloodDiscovery) {
+                        color = Colors.blue;
+                      }
                       return Card(
                         margin: const EdgeInsets.symmetric(vertical: 4),
                         child: ListTile(
                           dense: true,
                           leading: CircleAvatar(
                             radius: 16,
-                            backgroundColor: path.wasFloodDiscovery
-                                ? Colors.blue
-                                : Colors.green,
+                            backgroundColor: color,
                             child: Text(
                               '${path.hopCount}',
                               style: const TextStyle(fontSize: 12),
