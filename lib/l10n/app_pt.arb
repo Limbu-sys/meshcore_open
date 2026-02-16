@@ -1356,12 +1356,12 @@
       }
     }
   },
-  "repeater_neighbours": "Vizinhos",
+  "repeater_neighbors": "Vizinhos",
   "neighbors_receivedData": "Dados dos Vizinhos Recebidos",
-  "repeater_neighboursSubtitle": "Visualizar vizinhos de salto zero.",
+  "repeater_neighborsSubtitle": "Visualizar vizinhos de salto zero.",
   "neighbors_requestTimedOut": "Vizinhos solicitam tempo limite esgotado.",
   "neighbors_errorLoading": "Erro ao carregar vizinhos: {error}",
-  "neighbors_repeatersNeighbours": "Repetidores Vizinhos",
+  "neighbors_repeatersNeighbors": "Repetidores Vizinhos",
   "neighbors_noData": "Não estão disponíveis dados de vizinhos.",
   "channels_createPrivateChannelDesc": "Protegido com uma chave secreta.",
   "channels_joinPrivateChannelDesc": "Inserir uma chave secreta manualmente.",

@@ -1601,10 +1601,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get repeater_cliSubtitle => '向复用器发送指令';
 
   @override
-  String get repeater_neighbours => '邻居';
+  String get repeater_neighbors => '邻居';
 
   @override
-  String get repeater_neighboursSubtitle => '查看邻居节点（无需中间节点）。';
+  String get repeater_neighborsSubtitle => '查看邻居节点（无需中间节点）。';
 
   @override
   String get repeater_settings => '设置';
@@ -2251,7 +2251,7 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => '重复使用的邻居';
+  String get neighbors_repeatersNeighbors => '重复使用的邻居';
 
   @override
   String get neighbors_noData => '没有可用的邻居信息。';

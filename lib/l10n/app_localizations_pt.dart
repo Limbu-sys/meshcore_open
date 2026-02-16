@@ -1678,11 +1678,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get repeater_cliSubtitle => 'Enviar comandos ao repetidor';
 
   @override
-  String get repeater_neighbours => 'Vizinhos';
+  String get repeater_neighbors => 'Vizinhos';
 
   @override
-  String get repeater_neighboursSubtitle =>
-      'Visualizar vizinhos de salto zero.';
+  String get repeater_neighborsSubtitle => 'Visualizar vizinhos de salto zero.';
 
   @override
   String get repeater_settings => 'Configurações';
@@ -2381,7 +2380,7 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Repetidores Vizinhos';
+  String get neighbors_repeatersNeighbors => 'Repetidores Vizinhos';
 
   @override
   String get neighbors_noData => 'Não estão disponíveis dados de vizinhos.';

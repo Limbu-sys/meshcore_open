@@ -1356,12 +1356,12 @@
       }
     }
   },
-  "repeater_neighbours": "Vicini",
-  "repeater_neighboursSubtitle": "Visualizza vicini di salto pari a zero.",
+  "repeater_neighbors": "Vicini",
+  "repeater_neighborsSubtitle": "Visualizza vicini di salto pari a zero.",
   "neighbors_receivedData": "Ricevute dati vicini",
   "neighbors_requestTimedOut": "I vicini richiedono un timeout.",
   "neighbors_errorLoading": "Errore nel caricamento dei vicini: {error}",
-  "neighbors_repeatersNeighbours": "Ripetitori Vicini",
+  "neighbors_repeatersNeighbors": "Ripetitori Vicini",
   "neighbors_noData": "Nessun dato sugli vicini disponibile.",
   "channels_createPrivateChannel": "Crea un Canale Privato",
   "channels_createPrivateChannelDesc": "Protetta con una chiave segreta.",

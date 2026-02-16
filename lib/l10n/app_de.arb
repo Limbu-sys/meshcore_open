@@ -1356,12 +1356,12 @@
       }
     }
   },
-  "repeater_neighbours": "Nachbarn",
-  "repeater_neighboursSubtitle": "Anzahl der Hop-Nachbarn anzeigen.",
+  "repeater_neighbors": "Nachbarn",
+  "repeater_neighborsSubtitle": "Anzahl der Hop-Nachbarn anzeigen.",
   "neighbors_receivedData": "Empfangene Nachbarsdaten",
   "neighbors_requestTimedOut": "Anfrage durch Timeout fehlgeschlagen.",
   "neighbors_errorLoading": "Fehler beim Laden der Nachbarn: {error}",
-  "neighbors_repeatersNeighbours": "Nachbarn",
+  "neighbors_repeatersNeighbors": "Nachbarn",
   "neighbors_noData": "Keine Nachbarsdaten verfügbar.",
   "channels_joinPrivateChannel": "Treten Sie einem privaten Kanal bei",
   "channels_joinPrivateChannelDesc": "Manuelle Eingabe eines geheimen Schlüssels.",

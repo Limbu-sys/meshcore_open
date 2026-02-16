@@ -497,7 +497,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           path.pathBytes.isNotEmpty &&
                           directRepeater.pubkeyFirstByte ==
                               path.pathBytes.first;
-                      final isSecoundDirectRepeater =
+                      final isSecondDirectRepeater =
                           secondDirectRepeater != null &&
                           path.pathBytes.isNotEmpty &&
                           secondDirectRepeater.pubkeyFirstByte ==
@@ -510,7 +510,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       Color color = Colors.grey;
                       if (isDirectRepeater) {
                         color = Colors.green;
-                      } else if (isSecoundDirectRepeater) {
+                      } else if (isSecondDirectRepeater) {
                         color = Colors.yellow;
                       } else if (isThirdDirectRepeater) {
                         color = Colors.red;

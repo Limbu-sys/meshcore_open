@@ -1681,10 +1681,10 @@ class AppLocalizationsBg extends AppLocalizations {
   String get repeater_cliSubtitle => 'Изпрати команди към ретранслатора';
 
   @override
-  String get repeater_neighbours => 'Съседи';
+  String get repeater_neighbors => 'Съседи';
 
   @override
-  String get repeater_neighboursSubtitle =>
+  String get repeater_neighborsSubtitle =>
       'Преглед на съседни възли с нулев скок.';
 
   @override
@@ -2384,7 +2384,7 @@ class AppLocalizationsBg extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Повторители Съседи';
+  String get neighbors_repeatersNeighbors => 'Повторители Съседи';
 
   @override
   String get neighbors_noData => 'Няма налични данни за съседи.';

@@ -1673,10 +1673,10 @@ class AppLocalizationsSk extends AppLocalizations {
   String get repeater_cliSubtitle => 'Pošlite príkazy opakovaču';
 
   @override
-  String get repeater_neighbours => 'Súsezný';
+  String get repeater_neighbors => 'Súsezný';
 
   @override
-  String get repeater_neighboursSubtitle => 'Zobraziť susedné body bez skokov.';
+  String get repeater_neighborsSubtitle => 'Zobraziť susedné body bez skokov.';
 
   @override
   String get repeater_settings => 'Nastavenia';
@@ -2367,7 +2367,7 @@ class AppLocalizationsSk extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Opakovadlá Súsezná';
+  String get neighbors_repeatersNeighbors => 'Opakovadlá Súsezná';
 
   @override
   String get neighbors_noData =>

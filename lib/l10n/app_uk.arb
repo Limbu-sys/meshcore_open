@@ -1357,12 +1357,12 @@
       }
     }
   },
-  "repeater_neighbours": "Сусіди",
-  "repeater_neighboursSubtitle": "Показати сусідів нульового стрибка.",
+  "repeater_neighbors": "Сусіди",
+  "repeater_neighborsSubtitle": "Показати сусідів нульового стрибка.",
   "neighbors_receivedData": "Дані сусідів отримано",
   "neighbors_requestTimedOut": "Час запиту сусідів вичерпано.",
   "neighbors_errorLoading": "Помилка завантаження сусідів: {error}",
-  "neighbors_repeatersNeighbours": "Ретранслятори-сусіди",
+  "neighbors_repeatersNeighbors": "Ретранслятори-сусіди",
   "neighbors_noData": "Дані про сусідів недоступні.",
   "channels_createPrivateChannelDesc": "Захищено секретним ключем.",
   "channels_joinPrivateChannel": "Приєднатися до приватного каналу",

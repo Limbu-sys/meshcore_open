@@ -1680,10 +1680,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get repeater_cliSubtitle => 'Sende Befehle an den Repeater';
 
   @override
-  String get repeater_neighbours => 'Nachbarn';
+  String get repeater_neighbors => 'Nachbarn';
 
   @override
-  String get repeater_neighboursSubtitle => 'Anzahl der Hop-Nachbarn anzeigen.';
+  String get repeater_neighborsSubtitle => 'Anzahl der Hop-Nachbarn anzeigen.';
 
   @override
   String get repeater_settings => 'Einstellungen';
@@ -2386,7 +2386,7 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Nachbarn';
+  String get neighbors_repeatersNeighbors => 'Nachbarn';
 
   @override
   String get neighbors_noData => 'Keine Nachbarsdaten verfügbar.';

@@ -12,28 +12,28 @@ import '../services/repeater_command_service.dart';
 import '../widgets/path_management_dialog.dart';
 import '../widgets/snr_indicator.dart';
 
-class NeighboursScreen extends StatefulWidget {
+class NeighborsScreen extends StatefulWidget {
   final Contact repeater;
   final String password;
 
-  const NeighboursScreen({
+  const NeighborsScreen({
     super.key,
     required this.repeater,
     required this.password,
   });
 
   @override
-  State<NeighboursScreen> createState() => _NeighboursScreenState();
+  State<NeighborsScreen> createState() => _NeighborsScreenState();
 }
 
-class _NeighboursScreenState extends State<NeighboursScreen> {
-  static const int _reqNeighboursKeyLen = 4;
+class _NeighborsScreenState extends State<NeighborsScreen> {
+  static const int _reqNeighborsKeyLen = 4;
   static const int _statusPayloadOffset = 8;
   static const int _statusStatsSize = 52;
   static const int _statusResponseBytes =
       _statusPayloadOffset + _statusStatsSize;
   Uint8List _tagData = Uint8List(4);
-  int _neighbourCount = 0;
+  int _neighborCount = 0;
 
   bool _isLoading = false;
   bool _isLoaded = false;
@@ -42,7 +42,7 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
   StreamSubscription<Uint8List>? _frameSubscription;
   RepeaterCommandService? _commandService;
   PathSelection? _pendingStatusSelection;
-  List<Map<String, dynamic>>? _parsedNeighbours;
+  List<Map<String, dynamic>>? _parsedNeighbors;
 
   @override
   void initState() {
@@ -50,7 +50,7 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
     final connector = Provider.of<MeshCoreConnector>(context, listen: false);
     _commandService = RepeaterCommandService(connector);
     _setupMessageListener();
-    _loadNeighbours();
+    _loadNeighbors();
     _hasData = false;
   }
 
@@ -63,13 +63,12 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
 
       if (frame[0] == respCodeSent) {
         _tagData = frame.sublist(2, 6);
-        //_timeEstment = frame.buffer.asByteData().getUint32(6, Endian.little);
       }
 
       // Check if it's a binary response
       if (frame[0] == pushCodeBinaryResponse &&
           listEquals(frame.sublist(2, 6), _tagData)) {
-        _handleNeighboursResponse(connector, frame.sublist(6));
+        _handleNeighborsResponse(connector, frame.sublist(6));
       }
     });
   }
@@ -92,14 +91,14 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
     return '${h}h ${m2}m';
   }
 
-  static List<Map<String, dynamic>> parseNeighboursData(
+  static List<Map<String, dynamic>> parseNeighborsData(
     BufferReader buffer,
     int resultsCount,
   ) {
-    final Map<int, Map<String, dynamic>> neighbours = {};
+    final Map<int, Map<String, dynamic>> neighbors = {};
     try {
       for (var i = 0; i < resultsCount; i++) {
-        final neighbourData = neighbours.putIfAbsent(
+        final neighborData = neighbors.putIfAbsent(
           i,
           () => {
             'contact': null,
@@ -108,46 +107,43 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
             'snr': <double>{},
           },
         );
-        neighbourData['publicKey'] = buffer.readBytes(_reqNeighboursKeyLen);
-        neighbourData['lastHeard'] = buffer.readUInt32LE();
-        neighbourData['snr'] = buffer.readInt8() / 4.0;
+        neighborData['publicKey'] = buffer.readBytes(_reqNeighborsKeyLen);
+        neighborData['lastHeard'] = buffer.readUInt32LE();
+        neighborData['snr'] = buffer.readInt8() / 4.0;
       }
 
-      return neighbours.values.toList();
+      return neighbors.values.toList();
     } catch (e) {
       appLogger.error(
-        'Error parsing neighbours data: $e',
-        tag: 'NeighboursScreen',
+        'Error parsing neighbors data: $e',
+        tag: 'NeighborsScreen',
       );
       return [];
     }
   }
 
-  void _handleNeighboursResponse(MeshCoreConnector connector, Uint8List frame) {
+  void _handleNeighborsResponse(MeshCoreConnector connector, Uint8List frame) {
     final buffer = BufferReader(frame);
     try {
-      final neighbourCount = buffer.readUInt16LE();
-      final parsedNeighbours = parseNeighboursData(
-        buffer,
-        buffer.readUInt16LE(),
-      );
+      final neighborCount = buffer.readUInt16LE();
+      final parsedNeighbors = parseNeighborsData(buffer, buffer.readUInt16LE());
       connector.contacts.where((c) => c.type == advTypeRepeater).forEach((
         repeater,
       ) {
-        for (var neighbourData in parsedNeighbours) {
-          final publicKey = neighbourData['publicKey'];
+        for (var neighborData in parsedNeighbors) {
+          final publicKey = neighborData['publicKey'];
           if (listEquals(
-            repeater.publicKey.sublist(0, _reqNeighboursKeyLen),
+            repeater.publicKey.sublist(0, _reqNeighborsKeyLen),
             publicKey,
           )) {
-            neighbourData['contact'] = repeater;
+            neighborData['contact'] = repeater;
           }
         }
       });
 
       setState(() {
-        _parsedNeighbours = parsedNeighbours;
-        _neighbourCount = neighbourCount;
+        _parsedNeighbors = parsedNeighbors;
+        _neighborCount = neighborCount;
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -164,7 +160,7 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
         _hasData = true;
       });
     } catch (e) {
-      appLogger.error('Error handling neighbours response: $e');
+      appLogger.error('Error handling neighbors response: $e');
     }
   }
 
@@ -175,7 +171,7 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
     );
   }
 
-  Future<void> _loadNeighbours() async {
+  Future<void> _loadNeighbors() async {
     if (_commandService == null) return;
 
     setState(() {
@@ -188,17 +184,17 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
       final selection = await connector.preparePathForContactSend(repeater);
       _pendingStatusSelection = selection;
 
-      //[version][number of requested neighbours][offset_16bit][order by][len of public key]
+      //[version][number of requested neighbors][offset_16bit][order by][len of public key]
       final frame = buildSendBinaryReq(
         repeater.publicKey,
         payload: Uint8List.fromList([
-          reqTypeGetNeighbours,
+          reqTypeGetNeighbors,
           0x00,
           0x0F,
           0x00,
           0x00,
           0x00,
-          _reqNeighboursKeyLen,
+          _reqNeighborsKeyLen,
         ]),
       );
       await connector.sendFrame(frame);
@@ -274,7 +270,7 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              l10n.neighbors_repeatersNeighbours,
+              l10n.neighbors_repeatersNeighbors,
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Text(
@@ -361,7 +357,7 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
                 : const Icon(Icons.refresh),
-            onPressed: _isLoading ? null : _loadNeighbours,
+            onPressed: _isLoading ? null : _loadNeighbors,
             tooltip: l10n.repeater_refresh,
           ),
         ],
@@ -369,13 +365,13 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
       body: SafeArea(
         top: false,
         child: RefreshIndicator(
-          onRefresh: _loadNeighbours,
+          onRefresh: _loadNeighbors,
           child: ListView(
             padding: const EdgeInsets.all(16),
             children: [
               if (!_isLoaded &&
                   !_hasData &&
-                  (_parsedNeighbours == null || _parsedNeighbours!.isEmpty))
+                  (_parsedNeighbors == null || _parsedNeighbors!.isEmpty))
                 Center(
                   child: Text(
                     l10n.neighbors_noData,
@@ -384,10 +380,9 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
                 ),
               if (_isLoaded ||
                   _hasData &&
-                      !(_parsedNeighbours == null ||
-                          _parsedNeighbours!.isEmpty))
-                _buildNeighboursInfoCard(
-                  "${l10n.repeater_neighbours} - $_neighbourCount",
+                      !(_parsedNeighbors == null || _parsedNeighbors!.isEmpty))
+                _buildNeighborsInfoCard(
+                  "${l10n.repeater_neighbors} - $_neighborCount",
                 ),
             ],
           ),
@@ -396,7 +391,7 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
     );
   }
 
-  Widget _buildNeighboursInfoCard(String title) {
+  Widget _buildNeighborsInfoCard(String title) {
     final connector = Provider.of<MeshCoreConnector>(context, listen: false);
     return Card(
       child: Padding(
@@ -421,7 +416,7 @@ class _NeighboursScreenState extends State<NeighboursScreen> {
               ],
             ),
             const Divider(),
-            for (final entry in _parsedNeighbours!.asMap().entries)
+            for (final entry in _parsedNeighbors!.asMap().entries)
               _buildInfoRow(
                 entry.value['contact'] != null
                     ? entry.value['contact'].name

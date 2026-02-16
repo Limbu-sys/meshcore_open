@@ -1356,12 +1356,12 @@
       }
     }
   },
-  "repeater_neighbours": "Sąsiedzi",
-  "repeater_neighboursSubtitle": "Wyświetl sąsiedztwo zerowych hopów.",
+  "repeater_neighbors": "Sąsiedzi",
+  "repeater_neighborsSubtitle": "Wyświetl sąsiedztwo zerowych hopów.",
   "neighbors_receivedData": "Otrzymano dane sąsiedztwa",
   "neighbors_requestTimedOut": "Sąsiedzi proszą o wyłączenie timingu.",
   "neighbors_errorLoading": "Błąd podczas ładowania sąsiadów: {error}",
-  "neighbors_repeatersNeighbours": "Powtarzacze Sąsiedzi",
+  "neighbors_repeatersNeighbors": "Powtarzacze Sąsiedzi",
   "neighbors_noData": "Brak danych dotyczących sąsiadów.",
   "channels_joinPrivateChannelDesc": "Ręcznie wprowadź klucz tajny.",
   "channels_createPrivateChannel": "Utwórz Prywatny Kanał",

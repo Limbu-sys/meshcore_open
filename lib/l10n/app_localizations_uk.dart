@@ -1679,10 +1679,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get repeater_cliSubtitle => 'Надіслати команди ретранслятору';
 
   @override
-  String get repeater_neighbours => 'Сусіди';
+  String get repeater_neighbors => 'Сусіди';
 
   @override
-  String get repeater_neighboursSubtitle =>
+  String get repeater_neighborsSubtitle =>
       'Показати сусідів нульового стрибка.';
 
   @override
@@ -2384,7 +2384,7 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Ретранслятори-сусіди';
+  String get neighbors_repeatersNeighbors => 'Ретранслятори-сусіди';
 
   @override
   String get neighbors_noData => 'Дані про сусідів недоступні.';

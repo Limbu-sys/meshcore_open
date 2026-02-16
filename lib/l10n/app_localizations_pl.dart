@@ -1680,10 +1680,10 @@ class AppLocalizationsPl extends AppLocalizations {
   String get repeater_cliSubtitle => 'Wyślij polecenia do powielacza';
 
   @override
-  String get repeater_neighbours => 'Sąsiedzi';
+  String get repeater_neighbors => 'Sąsiedzi';
 
   @override
-  String get repeater_neighboursSubtitle =>
+  String get repeater_neighborsSubtitle =>
       'Wyświetl sąsiedztwo zerowych hopów.';
 
   @override
@@ -2379,7 +2379,7 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Powtarzacze Sąsiedzi';
+  String get neighbors_repeatersNeighbors => 'Powtarzacze Sąsiedzi';
 
   @override
   String get neighbors_noData => 'Brak danych dotyczących sąsiadów.';

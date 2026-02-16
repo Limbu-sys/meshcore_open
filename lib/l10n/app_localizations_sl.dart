@@ -1672,10 +1672,10 @@ class AppLocalizationsSl extends AppLocalizations {
       'Pošlji ukazne povelje na ponovitveno enoto.';
 
   @override
-  String get repeater_neighbours => 'Sosedi';
+  String get repeater_neighbors => 'Sosedi';
 
   @override
-  String get repeater_neighboursSubtitle => 'Pogledati nič sosednjih hopjev.';
+  String get repeater_neighborsSubtitle => 'Pogledati nič sosednjih hopjev.';
 
   @override
   String get repeater_settings => 'Nastavitve';
@@ -2371,7 +2371,7 @@ class AppLocalizationsSl extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Ponovitve Sosedi';
+  String get neighbors_repeatersNeighbors => 'Ponovitve Sosedi';
 
   @override
   String get neighbors_noData => 'Niso na voljo podatki o sosedih.';

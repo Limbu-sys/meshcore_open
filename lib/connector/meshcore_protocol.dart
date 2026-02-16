@@ -177,7 +177,7 @@ const int reqTypeGetStatus = 0x01;
 const int reqTypeKeepAlive = 0x02;
 const int reqTypeGetTelemetry = 0x03;
 const int reqTypeGetAccessList = 0x05;
-const int reqTypeGetNeighbours = 0x06;
+const int reqTypeGetNeighbors = 0x06;
 
 // Repeater response codes
 const int respServerLoginOk = 0;

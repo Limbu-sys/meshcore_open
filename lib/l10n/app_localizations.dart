@@ -3039,17 +3039,17 @@ abstract class AppLocalizations {
   /// **'Send commands to the repeater'**
   String get repeater_cliSubtitle;
 
-  /// No description provided for @repeater_neighbours.
+  /// No description provided for @repeater_neighbors.
   ///
   /// In en, this message translates to:
   /// **'Neighbors'**
-  String get repeater_neighbours;
+  String get repeater_neighbors;
 
-  /// No description provided for @repeater_neighboursSubtitle.
+  /// No description provided for @repeater_neighborsSubtitle.
   ///
   /// In en, this message translates to:
   /// **'View zero hop neighbors.'**
-  String get repeater_neighboursSubtitle;
+  String get repeater_neighborsSubtitle;
 
   /// No description provided for @repeater_settings.
   ///
@@ -4193,13 +4193,13 @@ abstract class AppLocalizations {
   /// No description provided for @neighbors_receivedData.
   ///
   /// In en, this message translates to:
-  /// **'Received Neighbours Data'**
+  /// **'Received Neighbors Data'**
   String get neighbors_receivedData;
 
   /// No description provided for @neighbors_requestTimedOut.
   ///
   /// In en, this message translates to:
-  /// **'Neighbours request timed out.'**
+  /// **'Neighbors request timed out.'**
   String get neighbors_requestTimedOut;
 
   /// No description provided for @neighbors_errorLoading.
@@ -4208,16 +4208,16 @@ abstract class AppLocalizations {
   /// **'Error loading neighbors: {error}'**
   String neighbors_errorLoading(String error);
 
-  /// No description provided for @neighbors_repeatersNeighbours.
+  /// No description provided for @neighbors_repeatersNeighbors.
   ///
   /// In en, this message translates to:
-  /// **'Repeaters Neighbours'**
-  String get neighbors_repeatersNeighbours;
+  /// **'Repeaters Neighbors'**
+  String get neighbors_repeatersNeighbors;
 
   /// No description provided for @neighbors_noData.
   ///
   /// In en, this message translates to:
-  /// **'No neighbours data available.'**
+  /// **'No neighbors data available.'**
   String get neighbors_noData;
 
   /// No description provided for @neighbors_unknownContact.

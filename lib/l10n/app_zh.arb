@@ -900,8 +900,8 @@
   "repeater_telemetrySubtitle": "查看传感器和系统状态的数据。",
   "repeater_cli": "命令行界面",
   "repeater_cliSubtitle": "向复用器发送指令",
-  "repeater_neighbours": "邻居",
-  "repeater_neighboursSubtitle": "查看邻居节点（无需中间节点）。",
+  "repeater_neighbors": "邻居",
+  "repeater_neighborsSubtitle": "查看邻居节点（无需中间节点）。",
   "repeater_settings": "设置",
   "repeater_settingsSubtitle": "配置重复器参数",
   "repeater_statusTitle": "重复器状态",
@@ -1271,7 +1271,7 @@
       }
     }
   },
-  "neighbors_repeatersNeighbours": "重复使用的邻居",
+  "neighbors_repeatersNeighbors": "重复使用的邻居",
   "neighbors_noData": "没有可用的邻居信息。",
   "neighbors_unknownContact": "Unknown {pubkey}",
   "@neighbors_unknownContact": {

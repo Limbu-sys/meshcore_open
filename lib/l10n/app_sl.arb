@@ -1356,12 +1356,12 @@
       }
     }
   },
-  "repeater_neighboursSubtitle": "Pogledati nič sosednjih hopjev.",
-  "repeater_neighbours": "Sosedi",
+  "repeater_neighborsSubtitle": "Pogledati nič sosednjih hopjev.",
+  "repeater_neighbors": "Sosedi",
   "neighbors_receivedData": "Prejeto podatke o sosedih",
   "neighbors_requestTimedOut": "Sosedi zahtevajo izklop po dogovoru.",
   "neighbors_errorLoading": "Napaka pri obnašanju sosedov: {error}",
-  "neighbors_repeatersNeighbours": "Ponovitve Sosedi",
+  "neighbors_repeatersNeighbors": "Ponovitve Sosedi",
   "neighbors_noData": "Niso na voljo podatki o sosedih.",
   "channels_joinPrivateChannel": "Pridružite se zasebni skupini",
   "channels_createPrivateChannelDesc": "Varno zaklenjeno s skrivnim ključem.",

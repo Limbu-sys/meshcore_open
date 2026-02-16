@@ -1356,12 +1356,12 @@
       }
     }
   },
-  "repeater_neighbours": "Grannar",
-  "repeater_neighboursSubtitle": "Visa noll hoppgrannar.",
+  "repeater_neighbors": "Grannar",
+  "repeater_neighborsSubtitle": "Visa noll hoppgrannar.",
   "neighbors_receivedData": "Mottagna grannars data",
   "neighbors_requestTimedOut": "Grannar begär tidsinställd utskick.",
   "neighbors_errorLoading": "Fel vid inläsning av grannar: {error}",
-  "neighbors_repeatersNeighbours": "Upprepar grannar",
+  "neighbors_repeatersNeighbors": "Upprepar grannar",
   "neighbors_noData": "Inga grannuppgifter finns tillgängliga.",
   "channels_createPrivateChannel": "Skapa en privat kanal",
   "channels_joinPrivateChannel": "Gå med i en Privat Kanal",

@@ -1356,12 +1356,12 @@
       }
     }
   },
-  "repeater_neighbours": "Buren",
-  "repeater_neighboursSubtitle": "Bekijk nul hops buren.",
+  "repeater_neighbors": "Buren",
+  "repeater_neighborsSubtitle": "Bekijk nul hops buren.",
   "neighbors_receivedData": "Ontvangen Buurdata",
   "neighbors_requestTimedOut": "Buren vragen om tijdelijk uitgeschakeld.",
   "neighbors_errorLoading": "Fout bij het laden van buren: {error}",
-  "neighbors_repeatersNeighbours": "Herhalingen Buren",
+  "neighbors_repeatersNeighbors": "Herhalingen Buren",
   "neighbors_noData": "Geen gegevens van buren beschikbaar.",
   "channels_createPrivateChannelDesc": "Beveiligd met een geheime sleutel.",
   "channels_createPrivateChannel": "Maak een Privé Kanaal",

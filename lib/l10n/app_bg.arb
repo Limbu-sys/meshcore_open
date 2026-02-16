@@ -1356,12 +1356,12 @@
       }
     }
   },
-  "repeater_neighboursSubtitle": "Преглед на съседни възли с нулев скок.",
-  "repeater_neighbours": "Съседи",
+  "repeater_neighborsSubtitle": "Преглед на съседни възли с нулев скок.",
+  "repeater_neighbors": "Съседи",
   "neighbors_receivedData": "Получени данни за съседи",
   "neighbors_requestTimedOut": "Съседите поискат изтичане на време.",
   "neighbors_errorLoading": "Грешка при зареждане на съседи: {error}",
-  "neighbors_repeatersNeighbours": "Повторители Съседи",
+  "neighbors_repeatersNeighbors": "Повторители Съседи",
   "neighbors_noData": "Няма налични данни за съседи.",
   "channels_createPrivateChannel": "Създай Частен Канал",
   "channels_joinPrivateChannel": "Присъедини се към Частен Канал",

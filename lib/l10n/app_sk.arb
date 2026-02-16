@@ -1356,12 +1356,12 @@
       }
     }
   },
-  "repeater_neighboursSubtitle": "Zobraziť susedné body bez skokov.",
+  "repeater_neighborsSubtitle": "Zobraziť susedné body bez skokov.",
   "neighbors_requestTimedOut": "Súďia žiadajú o časové ukončenie.",
   "neighbors_receivedData": "Obdielo dáta suseda",
-  "repeater_neighbours": "Súsezný",
+  "repeater_neighbors": "Súsezný",
   "neighbors_errorLoading": "Chyba pri načítaní susedov: {error}",
-  "neighbors_repeatersNeighbours": "Opakovadlá Súsezná",
+  "neighbors_repeatersNeighbors": "Opakovadlá Súsezná",
   "neighbors_noData": "Nie je dostupná žiadna informácia o susedoch.",
   "channels_createPrivateChannel": "Vytvorte súkromný kanál",
   "channels_joinPrivateChannel": "Pripojiť sa k súkromnému kanálu",

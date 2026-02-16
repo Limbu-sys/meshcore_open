@@ -793,8 +793,8 @@
   "repeater_telemetrySubtitle": "View telemetry of sensors and system stats",
   "repeater_cli": "CLI",
   "repeater_cliSubtitle": "Send commands to the repeater",
-  "repeater_neighbours": "Neighbors",
-  "repeater_neighboursSubtitle": "View zero hop neighbors.",
+  "repeater_neighbors": "Neighbors",
+  "repeater_neighborsSubtitle": "View zero hop neighbors.",
   "repeater_settings": "Settings",
   "repeater_settingsSubtitle": "Configure repeater parameters",
 
@@ -1098,16 +1098,16 @@
     }
   },
 
-  "neighbors_receivedData": "Received Neighbours Data",
-  "neighbors_requestTimedOut": "Neighbours request timed out.",
+  "neighbors_receivedData": "Received Neighbors Data",
+  "neighbors_requestTimedOut": "Neighbors request timed out.",
   "neighbors_errorLoading": "Error loading neighbors: {error}",
   "@neighbors_errorLoading": {
     "placeholders": {
       "error": {"type": "String"}
     }
   },
-  "neighbors_repeatersNeighbours": "Repeaters Neighbours",
-  "neighbors_noData": "No neighbours data available.",
+  "neighbors_repeatersNeighbors": "Repeaters Neighbors",
+  "neighbors_noData": "No neighbors data available.",
   "neighbors_unknownContact": "Unknown {pubkey}",
   "@neighbors_unknownContact": {
     "placeholders": {
