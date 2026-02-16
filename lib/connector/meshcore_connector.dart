@@ -3534,7 +3534,9 @@ class MeshCoreConnector extends ChangeNotifier {
 
     _directRepeaters.removeWhere((r) => r.isStale());
 
-    if (contact.type == advTypeChat || contact.type == advTypeSensor) {
+    //We can use adverts from chat and sensor nodes, but only if the advert has a path to get the last hop.
+    if ((contact.type == advTypeChat || contact.type == advTypeSensor) &&
+        path.isEmpty) {
       notifyListeners();
       return;
     }
