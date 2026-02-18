@@ -1864,6 +1864,40 @@ class AppLocalizationsNl extends AppLocalizations {
   String get repeater_txPowerHelper => '1-30 dBm';
 
   @override
+  String get repeater_advancedSettings => 'Advanced Settings';
+
+  @override
+  String get repeater_interferenceThreshold => 'Interference Threshold';
+
+  @override
+  String get repeater_interferenceThresholdHelper =>
+      'dB threshold (default 14). Set 0 to disable channel interference detection.';
+
+  @override
+  String get repeater_agcResetInterval => 'AGC Reset Interval';
+
+  @override
+  String get repeater_agcResetIntervalHelper =>
+      'Seconds between AGC resets. Set 0 to disable.';
+
+  @override
+  String get repeater_floodMaxHops => 'Flood Max Hops';
+
+  @override
+  String get repeater_floodMaxHopsHelper =>
+      'Maximum hops for forwarding inbound flood packets.';
+
+  @override
+  String get repeater_multiAcks => 'Multi ACKs';
+
+  @override
+  String get repeater_multiAcksHelper =>
+      'Enable double ACK behavior (0 or 1 in firmware).';
+
+  @override
+  String get repeater_hopsShort => 'hops';
+
+  @override
   String get repeater_bandwidth => 'Bandbreedte';
 
   @override
@@ -2001,6 +2035,22 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get repeater_refreshRadioSettings =>
       'Radiozender Instellingen Verversen';
+
+  @override
+  String get repeater_refreshAdvancedSettings => 'Refresh Advanced Settings';
+
+  @override
+  String get repeater_refreshInterferenceThreshold =>
+      'Refresh interference threshold';
+
+  @override
+  String get repeater_refreshAgcResetInterval => 'Refresh AGC reset interval';
+
+  @override
+  String get repeater_refreshFloodMaxHops => 'Refresh flood max hops';
+
+  @override
+  String get repeater_refreshMultiAcks => 'Refresh multi ACKs';
 
   @override
   String get repeater_refreshTxPower => 'Nieuw laden TX-vermogen';
