@@ -24,10 +24,7 @@ class AppBarTitle extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               leading ?? const SizedBox.shrink(),
-              Text(
-                title,
-                overflow: TextOverflow.ellipsis,
-              ),
+              Text(title, overflow: TextOverflow.ellipsis),
               if (connector.isConnected && connector.selfName != null)
                 Center(
                   child: Text(
