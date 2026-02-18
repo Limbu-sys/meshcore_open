@@ -59,13 +59,12 @@ class DirectRepeater {
       return -1; // Stale repeaters get lowest rank
     }
     // Higher SNR gets higher rank and recency within maxAgeMinutes breaks ties.
-    final snrOffset = snr + 31.75;
     final ageMs =
         DateTime.now().millisecondsSinceEpoch -
         lastUpdated.millisecondsSinceEpoch;
     final maxAgeMs = maxAgeMinutes * 60 * 1000;
     final recencyScore = (maxAgeMs - ageMs).clamp(0, maxAgeMs);
-    return (snrOffset * 1000).round() + recencyScore;
+    return (snr * snr).round() + recencyScore;
   }
 
   bool isStale() {

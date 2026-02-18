@@ -105,7 +105,7 @@ class _MapScreenState extends State<MapScreen> {
   double _zoomFromStdDev(double latStdDev, double lonStdDev) {
     final maxSpread = max(latStdDev, lonStdDev);
     if (maxSpread <= 0) return 13.0;
-    // Approzimate: each zoom level halves the visible area
+    // Approximate: each zoom level halves the visible area
     // ~0.01 degrees spread -> zoom 13, ~0.1 -> zoom 10, ~1.0 -> zoom 7
     final zoom = 10.0 - log(maxSpread * 10 + 1) / ln10 * 3;
     return zoom.clamp(4.0, 15.0);
@@ -825,7 +825,7 @@ class _MapScreenState extends State<MapScreen> {
               color: _getNodeColor(contact.type),
             ),
             const SizedBox(width: 8),
-            Expanded(child: Text(contact.name)),
+            Expanded(child: SelectableText(contact.name)),
           ],
         ),
         content: Column(
@@ -996,7 +996,7 @@ class _MapScreenState extends State<MapScreen> {
             ),
           ),
           const SizedBox(height: 2),
-          Text(value, style: const TextStyle(fontSize: 14)),
+          SelectableText(value, style: const TextStyle(fontSize: 14)),
         ],
       ),
     );

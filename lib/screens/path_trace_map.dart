@@ -46,6 +46,7 @@ class PathTraceData {
 class PathTraceMapScreen extends StatefulWidget {
   final String title;
   final Uint8List path;
+  final int? repeaterId;
   final bool flipPathRound;
   final bool reversePathRound;
 
@@ -53,6 +54,7 @@ class PathTraceMapScreen extends StatefulWidget {
     super.key,
     required this.title,
     required this.path,
+    this.repeaterId,
     this.flipPathRound = false,
     this.reversePathRound = false,
   });
@@ -97,7 +99,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
     super.dispose();
   }
 
-  Uint8List addReturnpath(Uint8List pathBytes) {
+  Uint8List addReturnPath(Uint8List pathBytes) {
     Uint8List? traceBytes;
     final len = (pathBytes.length + pathBytes.length - 1);
     traceBytes = Uint8List(len);
@@ -125,10 +127,12 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
         : widget.path;
 
     if (widget.flipPathRound) {
-      path = addReturnpath(pathTmp);
+      path = addReturnPath(pathTmp);
     } else {
       path = pathTmp;
     }
+
+    print('Initiating path trace with path: ${_formatPathPrefixes(path)}');
 
     final connector = Provider.of<MeshCoreConnector>(context, listen: false);
     final frame = buildTraceReq(

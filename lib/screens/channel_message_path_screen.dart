@@ -17,18 +17,27 @@ import '../models/contact.dart';
 
 class ChannelMessagePathScreen extends StatelessWidget {
   final ChannelMessage message;
-
-  const ChannelMessagePathScreen({super.key, required this.message});
+  final bool channelMessage;
+  const ChannelMessagePathScreen({
+    super.key,
+    required this.message,
+    this.channelMessage = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Consumer<MeshCoreConnector>(
       builder: (context, connector, _) {
         final l10n = context.l10n;
-        final primaryPath = _selectPrimaryPath(
+        final primaryPathTmp = _selectPrimaryPath(
           message.pathBytes,
           message.pathVariants,
         );
+
+        final primaryPath = !channelMessage && !message.isOutgoing
+            ? Uint8List.fromList(primaryPathTmp.reversed.toList())
+            : primaryPathTmp;
+
         final hops = _buildPathHops(primaryPath, connector.contacts, l10n);
         final hasHopDetails = primaryPath.isNotEmpty;
         final observedLabel = _formatObservedHops(
@@ -37,7 +46,6 @@ class ChannelMessagePathScreen extends StatelessWidget {
           l10n,
         );
         final extraPaths = _otherPaths(primaryPath, message.pathVariants);
-
         return Scaffold(
           appBar: AppBar(
             title: Text(l10n.channelPath_title),
@@ -50,9 +58,9 @@ class ChannelMessagePathScreen extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => PathTraceMapScreen(
                       title: context.l10n.contacts_repeaterPathTrace,
-                      path: Uint8List.fromList(primaryPath),
+                      path: primaryPath,
                       flipPathRound: true,
-                      reversePathRound: true,
+                      reversePathRound: !message.isOutgoing,
                     ),
                   ),
                 ),
@@ -62,7 +70,7 @@ class ChannelMessagePathScreen extends StatelessWidget {
                 tooltip: l10n.channelPath_viewMap,
                 onPressed: hasHopDetails
                     ? () {
-                        _openPathMap(context);
+                        _openPathMap(context, channelMessage: channelMessage);
                       }
                     : null,
               ),
@@ -248,13 +256,18 @@ class ChannelMessagePathScreen extends StatelessWidget {
     );
   }
 
-  void _openPathMap(BuildContext context, {Uint8List? initialPath}) {
+  void _openPathMap(
+    BuildContext context, {
+    Uint8List? initialPath,
+    bool channelMessage = false,
+  }) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => ChannelMessagePathMapScreen(
           message: message,
           initialPath: initialPath,
+          channelMessage: channelMessage,
         ),
       ),
     );
@@ -264,11 +277,13 @@ class ChannelMessagePathScreen extends StatelessWidget {
 class ChannelMessagePathMapScreen extends StatefulWidget {
   final ChannelMessage message;
   final Uint8List? initialPath;
+  final bool channelMessage;
 
   const ChannelMessagePathMapScreen({
     super.key,
     required this.message,
     this.initialPath,
+    this.channelMessage = false,
   });
 
   @override
@@ -323,11 +338,16 @@ class _ChannelMessagePathMapScreenState
           primaryPath,
           widget.message.pathVariants,
         );
-        final selectedPath = _resolveSelectedPath(
+        final selectedPathTmp = _resolveSelectedPath(
           _selectedPath,
           observedPaths,
           primaryPath,
         );
+
+        final selectedPath = !widget.channelMessage && widget.message.isOutgoing
+            ? Uint8List.fromList(selectedPathTmp.reversed.toList())
+            : selectedPathTmp;
+
         final selectedIndex = _indexForPath(selectedPath, observedPaths);
         final hops = _buildPathHops(
           selectedPath,
