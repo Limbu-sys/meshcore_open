@@ -2477,15 +2477,23 @@ class MeshCoreConnector extends ChangeNotifier {
         return;
       }
 
-      if (_retryService != null) {
-        _retryService!.updateMessageFromSent(ackHash, timeoutMs);
+      final retryService = _retryService;
+      bool matchedDirectMessage = false;
+      if (retryService != null) {
+        matchedDirectMessage = retryService.updateMessageFromSent(
+          ackHash,
+          timeoutMs,
+        );
       }
-      _markMostRecentPendingChannelMessageSent();
+      // Only promote channel pending->sent when this RESP_CODE_SENT was not
+      // matched to a direct message and there are no pending direct retries.
+      if (retryService != null &&
+          !matchedDirectMessage &&
+          !retryService.hasPendingMessages) {
+        _markMostRecentPendingChannelMessageSent();
+      }
     } else {
       // Fallback to old behavior
-      if (_markMostRecentPendingChannelMessageSent()) {
-        return;
-      }
       for (var messages in _conversations.values) {
         for (int i = messages.length - 1; i >= 0; i--) {
           if (messages[i].isOutgoing &&
