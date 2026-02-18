@@ -19,19 +19,25 @@ class AppBarTitle extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         leading ?? const SizedBox.shrink(),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            leading ?? const SizedBox.shrink(),
-            Text(title),
-            if (connector.isConnected && connector.selfName != null)
-              Center(
-                child: Text(
-                  '(${connector.selfName})',
-                  style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-                ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              leading ?? const SizedBox.shrink(),
+              Text(
+                title,
+                overflow: TextOverflow.ellipsis,
               ),
-          ],
+              if (connector.isConnected && connector.selfName != null)
+                Center(
+                  child: Text(
+                    '(${connector.selfName})',
+                    style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+            ],
+          ),
         ),
         const SizedBox(width: 8),
         Row(
