@@ -60,7 +60,7 @@ class ChannelMessagePathScreen extends StatelessWidget {
                       title: context.l10n.contacts_repeaterPathTrace,
                       path: primaryPath,
                       flipPathRound: true,
-                      reversePathRound: !message.isOutgoing,
+                      reversePathRound: !message.isOutgoing && !channelMessage,
                     ),
                   ),
                 ),
@@ -165,7 +165,11 @@ class ChannelMessagePathScreen extends StatelessWidget {
               ),
               subtitle: Text(_formatPathPrefixes(variants[i])),
               trailing: const Icon(Icons.map_outlined, size: 20),
-              onTap: () => _openPathMap(context, initialPath: variants[i]),
+              onTap: () => _openPathMap(
+                context,
+                initialPath: variants[i],
+                channelMessage: channelMessage,
+              ),
             ),
           ),
       ],
@@ -344,7 +348,9 @@ class _ChannelMessagePathMapScreenState
           primaryPath,
         );
 
-        final selectedPath = !widget.channelMessage && widget.message.isOutgoing
+        final selectedPath =
+            ((!widget.message.isOutgoing && !widget.channelMessage) ||
+                (widget.message.isOutgoing && widget.channelMessage))
             ? Uint8List.fromList(selectedPathTmp.reversed.toList())
             : selectedPathTmp;
 
@@ -356,12 +362,24 @@ class _ChannelMessagePathMapScreenState
         );
 
         final points = <LatLng>[];
+        print(
+          'outgoing: ${widget.message.isOutgoing}, channelMsg: ${widget.channelMessage}',
+        );
+        if ((widget.message.isOutgoing && !widget.channelMessage) ||
+            (widget.message.isOutgoing && widget.channelMessage)) {
+          points.add(LatLng(connector.selfLatitude!, connector.selfLongitude!));
+        }
+
         for (final hop in hops) {
           if (hop.hasLocation) {
             points.add(hop.position!);
           }
         }
-        points.add(LatLng(connector.selfLatitude!, connector.selfLongitude!));
+
+        if ((!widget.message.isOutgoing && !widget.channelMessage) ||
+            (!widget.message.isOutgoing && widget.channelMessage)) {
+          points.add(LatLng(connector.selfLatitude!, connector.selfLongitude!));
+        }
 
         final polylines = points.length > 1
             ? [

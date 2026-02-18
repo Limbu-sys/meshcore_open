@@ -64,7 +64,7 @@ class DirectRepeater {
         lastUpdated.millisecondsSinceEpoch;
     final maxAgeMs = maxAgeMinutes * 60 * 1000;
     final recencyScore = (maxAgeMs - ageMs).clamp(0, maxAgeMs);
-    return (snr * snr).round() + recencyScore;
+    return ((snr - 31.75) * 1000).round() + recencyScore;
   }
 
   bool isStale() {
