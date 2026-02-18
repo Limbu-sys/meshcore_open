@@ -418,7 +418,7 @@ class MeshCoreConnector extends ChangeNotifier {
     final previousCount = _contactUnreadCount[contactKeyHex] ?? 0;
     if (previousCount > 0) {
       _contactUnreadCount[contactKeyHex] = 0;
-      _cachedContactsUnreadTotal -= previousCount;
+      _cachedContactsUnreadTotal = (_cachedContactsUnreadTotal - previousCount).clamp(0, _cachedContactsUnreadTotal);
       _appDebugLogService?.info(
         'Contact $contactKeyHex marked as read (was $previousCount unread)',
         tag: 'Unread',
@@ -435,7 +435,7 @@ class MeshCoreConnector extends ChangeNotifier {
     if (channel != null && channel.unreadCount > 0) {
       final previousCount = channel.unreadCount;
       channel.unreadCount = 0;
-      _cachedChannelsUnreadTotal -= previousCount;
+      _cachedChannelsUnreadTotal = (_cachedChannelsUnreadTotal - previousCount).clamp(0, _cachedChannelsUnreadTotal);
       _appDebugLogService?.info(
         'Channel ${channel.name.isNotEmpty ? channel.name : channelIndex} marked as read (was $previousCount unread)',
         tag: 'Unread',
