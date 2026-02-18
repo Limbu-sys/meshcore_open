@@ -2480,8 +2480,12 @@ class MeshCoreConnector extends ChangeNotifier {
       if (_retryService != null) {
         _retryService!.updateMessageFromSent(ackHash, timeoutMs);
       }
+      _markMostRecentPendingChannelMessageSent();
     } else {
       // Fallback to old behavior
+      if (_markMostRecentPendingChannelMessageSent()) {
+        return;
+      }
       for (var messages in _conversations.values) {
         for (int i = messages.length - 1; i >= 0; i--) {
           if (messages[i].isOutgoing &&
@@ -2493,6 +2497,49 @@ class MeshCoreConnector extends ChangeNotifier {
         }
       }
     }
+  }
+
+  bool _markMostRecentPendingChannelMessageSent() {
+    int? targetChannelIndex;
+    int? targetMessageIndex;
+    DateTime? newestTimestamp;
+
+    for (final entry in _channelMessages.entries) {
+      final messages = entry.value;
+      for (int i = messages.length - 1; i >= 0; i--) {
+        final message = messages[i];
+        if (!message.isOutgoing ||
+            message.status != ChannelMessageStatus.pending) {
+          continue;
+        }
+        if (newestTimestamp == null ||
+            message.timestamp.isAfter(newestTimestamp)) {
+          targetChannelIndex = entry.key;
+          targetMessageIndex = i;
+          newestTimestamp = message.timestamp;
+        }
+        // Iterating backwards means first match is newest for this channel.
+        break;
+      }
+    }
+
+    if (targetChannelIndex == null || targetMessageIndex == null) {
+      return false;
+    }
+
+    final channelMessages = _channelMessages[targetChannelIndex]!;
+    final message = channelMessages[targetMessageIndex];
+    channelMessages[targetMessageIndex] = message.copyWith(
+      status: ChannelMessageStatus.sent,
+    );
+    unawaited(
+      _channelMessageStore.saveChannelMessages(
+        targetChannelIndex,
+        channelMessages,
+      ),
+    );
+    notifyListeners();
+    return true;
   }
 
   void _handleSendConfirmed(Uint8List frame) {
