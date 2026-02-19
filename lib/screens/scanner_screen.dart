@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
 import '../l10n/l10n.dart';
+import '../widgets/adaptive_app_bar_title.dart';
 import '../widgets/device_tile.dart';
 import 'contacts_screen.dart';
 
@@ -70,7 +71,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.l10n.scanner_title),
+        title: AdaptiveAppBarTitle(context.l10n.scanner_title),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),

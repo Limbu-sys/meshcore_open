@@ -9,7 +9,7 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
-  String get appTitle => 'MeshCore Open';
+  String get appTitle => 'Núcleo de malla abierto';
 
   @override
   String get nav_contacts => 'Contactos';
@@ -106,7 +106,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get scanner_title => 'MeshCore Open';
+  String get scanner_title => 'Núcleo de malla abierto';
 
   @override
   String get scanner_scanning => 'Escaneando dispositivos...';
@@ -157,7 +157,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get device_quickSwitch => 'Cambiar rápidamente';
 
   @override
-  String get device_meshcore => 'MeshCore';
+  String get device_meshcore => 'Núcleo de malla';
 
   @override
   String get settings_title => 'Configuración';
@@ -313,7 +313,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String settings_aboutVersion(String version) {
-    return 'MeshCore Open v$version';
+    return 'MeshCore abierto v$version';
   }
 
   @override
@@ -324,10 +324,14 @@ class AppLocalizationsEs extends AppLocalizations {
       'Un cliente de código abierto de Flutter para dispositivos de red mesh LoRa de MeshCore.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'Datos de elevación LOS: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Nombre';
 
   @override
-  String get settings_infoId => 'ID';
+  String get settings_infoId => 'IDENTIFICACIÓN';
 
   @override
   String get settings_infoStatus => 'Estado';
@@ -415,40 +419,40 @@ class AppLocalizationsEs extends AppLocalizations {
   String get appSettings_languageSystem => 'Predeterminado del sistema';
 
   @override
-  String get appSettings_languageEn => 'English';
+  String get appSettings_languageEn => 'Inglés';
 
   @override
-  String get appSettings_languageFr => 'Français';
+  String get appSettings_languageFr => 'francés';
 
   @override
   String get appSettings_languageEs => 'Español';
 
   @override
-  String get appSettings_languageDe => 'Deutsch';
+  String get appSettings_languageDe => 'alemán';
 
   @override
-  String get appSettings_languagePl => 'Polski';
+  String get appSettings_languagePl => 'Polonia';
 
   @override
-  String get appSettings_languageSl => 'Slovenščina';
+  String get appSettings_languageSl => 'esloveno';
 
   @override
-  String get appSettings_languagePt => 'Português';
+  String get appSettings_languagePt => 'portugués';
 
   @override
-  String get appSettings_languageIt => 'Italiano';
+  String get appSettings_languageIt => 'italiano';
 
   @override
   String get appSettings_languageZh => '中文';
 
   @override
-  String get appSettings_languageSv => 'Svenska';
+  String get appSettings_languageSv => 'Svenská';
 
   @override
-  String get appSettings_languageNl => 'Nederlands';
+  String get appSettings_languageNl => 'Países Bajos';
 
   @override
-  String get appSettings_languageSk => 'Slovenčina';
+  String get appSettings_languageSk => 'Eslovenia';
 
   @override
   String get appSettings_languageBg => 'Български';
@@ -552,13 +556,13 @@ class AppLocalizationsEs extends AppLocalizations {
       'Conéctate a un dispositivo para elegir';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3.0-4.2V)';
+  String get appSettings_batteryNmc => '18650 NMC (3,0-4,2 V)';
 
   @override
-  String get appSettings_batteryLifepo4 => 'LiFePO4 (2.6-3.65V)';
+  String get appSettings_batteryLifepo4 => 'LiFePO4 (2,6-3,65 V)';
 
   @override
-  String get appSettings_batteryLipo => 'LiPo (3.0-4.2V)';
+  String get appSettings_batteryLipo => 'Li-Po (3,0-4,2 V)';
 
   @override
   String get appSettings_mapDisplay => 'Visualización del Mapa';
@@ -619,6 +623,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get appSettings_offlineMapCache => 'Caché de Mapa Offline';
+
+  @override
+  String get appSettings_unitsTitle => 'Unidades';
+
+  @override
+  String get appSettings_unitsMetric => 'Métrico (m/km)';
+
+  @override
+  String get appSettings_unitsImperial => 'Imperial (pies/millas)';
 
   @override
   String get appSettings_noAreaSelected => 'No se ha seleccionado ningún área';
@@ -812,7 +825,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get channels_standardPublicPsk => 'PSK estándar público';
 
   @override
-  String get channels_pskHex => 'PSK (Hex)';
+  String get channels_pskHex => 'PSK (hexadecimal)';
 
   @override
   String get channels_generateRandomPsk => 'Generar PSK aleatorio';
@@ -853,7 +866,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get channels_sortManual => 'Manual';
 
   @override
-  String get channels_sortAZ => 'A-Z';
+  String get channels_sortAZ => 'ARIZONA';
 
   @override
   String get channels_sortLatestMessages => 'Últimos mensajes';
@@ -981,7 +994,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get gifPicker_searchHint => 'Buscar GIFs...';
 
   @override
-  String get gifPicker_poweredBy => 'Powered by GIPHY';
+  String get gifPicker_poweredBy => 'Desarrollado por GIPHY';
 
   @override
   String get gifPicker_noGifsFound => 'No se encontraron GIFs';
@@ -1238,6 +1251,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get map_title => 'Mapa de Nodos';
 
   @override
+  String get map_lineOfSight => 'Línea de visión';
+
+  @override
+  String get map_losScreenTitle => 'Línea de visión';
+
+  @override
   String get map_noNodesWithLocation => 'No hay nodos con datos de ubicación';
 
   @override
@@ -1255,7 +1274,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get map_chat => 'Chat';
+  String get map_chat => 'Charlar';
 
   @override
   String get map_repeater => 'Repetidor';
@@ -1661,7 +1680,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Ver el estado, las estadísticas y los vecinos del repetidor';
 
   @override
-  String get repeater_telemetry => 'Telemetry';
+  String get repeater_telemetry => 'Telemetria';
 
   @override
   String get repeater_telemetrySubtitle =>
@@ -1742,10 +1761,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get repeater_noiseFloor => 'Nivel de Ruido';
 
   @override
-  String get repeater_txAirtime => 'TX Airtime';
+  String get repeater_txAirtime => 'TX tiempo aire';
 
   @override
-  String get repeater_rxAirtime => 'RX Airtime';
+  String get repeater_rxAirtime => 'Tiempo aire RX';
 
   @override
   String get repeater_packetStatistics => 'Estadísticas del Paquete';
@@ -1822,13 +1841,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get repeater_frequencyMhz => 'Frecuencia (MHz)';
 
   @override
-  String get repeater_frequencyHelper => '300-2500 MHz';
+  String get repeater_frequencyHelper => '300-2500MHz';
 
   @override
   String get repeater_txPower => 'TX Potencia';
 
   @override
-  String get repeater_txPowerHelper => '1-30 dBm';
+  String get repeater_txPowerHelper => '1-30dBm';
 
   @override
   String get repeater_bandwidth => 'Ancho de banda';
@@ -2677,7 +2696,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get listFilter_heardRecently => 'Escuchado recientemente';
 
   @override
-  String get listFilter_az => 'A-Z';
+  String get listFilter_az => 'ARIZONA';
 
   @override
   String get listFilter_filters => 'Filtros';
@@ -2720,10 +2739,122 @@ class AppLocalizationsEs extends AppLocalizations {
   String get pathTrace_clearTooltip => 'Borrar ruta';
 
   @override
+  String get losSelectStartEnd =>
+      'Seleccione los nodos de inicio y fin para LOS.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Error en la comprobación de la línea de visión: $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Borrar todos los puntos';
+
+  @override
+  String get losRunToViewElevationProfile =>
+      'Ejecute LOS para ver el perfil de elevación';
+
+  @override
+  String get losMenuTitle => 'Menú LOS';
+
+  @override
+  String get losMenuSubtitle =>
+      'Toque nodos o mantenga presionado el mapa para puntos personalizados';
+
+  @override
+  String get losShowDisplayNodes => 'Mostrar nodos de visualización';
+
+  @override
+  String get losCustomPoints => 'Puntos personalizados';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Personalizado $index';
+  }
+
+  @override
+  String get losPointA => 'Punto A';
+
+  @override
+  String get losPointB => 'Punto B';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Antena A: $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Antena B: $value $unit';
+  }
+
+  @override
+  String get losRun => 'Ejecutar LOS';
+
+  @override
+  String get losNoElevationData => 'Sin datos de elevación';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, despejar LOS, autorización mínima $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, bloqueado por $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'LOS: comprobando...';
+
+  @override
+  String get losStatusNoData => 'LOS: sin datos';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS: $clear/$total claro, $blocked bloqueado, $unknown desconocido';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Datos de elevación no disponibles para una o más muestras.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Datos de puntos/elevación no válidos para el cálculo de LOS.';
+
+  @override
+  String get losRenameCustomPoint =>
+      'Cambiar el nombre del punto personalizado';
+
+  @override
+  String get losPointName => 'Nombre del punto';
+
+  @override
+  String get losShowPanelTooltip => 'Mostrar panel LOS';
+
+  @override
+  String get losHidePanelTooltip => 'Ocultar panel LOS';
+
+  @override
+  String get losElevationAttribution =>
+      'Datos de elevación: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get contacts_pathTrace => 'Rastreo de caminos';
 
   @override
-  String get contacts_ping => 'Ping';
+  String get contacts_ping => 'Silbido';
 
   @override
   String get contacts_repeaterPathTrace => 'Rastrear ruta al repetidor';

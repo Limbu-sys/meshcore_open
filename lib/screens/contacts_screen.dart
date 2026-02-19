@@ -23,6 +23,7 @@ import '../widgets/quick_switch_bar.dart';
 import '../widgets/repeater_login_dialog.dart';
 import '../widgets/room_login_dialog.dart';
 import '../widgets/unread_badge.dart';
+import '../widgets/adaptive_app_bar_title.dart';
 import 'channels_screen.dart';
 import 'chat_screen.dart';
 import 'map_screen.dart';
@@ -230,7 +231,7 @@ class _ContactsScreenState extends State<ContactsScreen>
       child: Scaffold(
         appBar: AppBar(
           leading: BatteryIndicator(connector: connector),
-          title: Text(context.l10n.contacts_title),
+          title: AdaptiveAppBarTitle(context.l10n.contacts_title),
           centerTitle: true,
           automaticallyImplyLeading: false,
           actions: [
@@ -1160,12 +1161,17 @@ class _ContactTile extends StatelessWidget {
         backgroundColor: _getTypeColor(contact.type),
         child: _buildContactAvatar(contact),
       ),
-      title: Text(contact.name),
+      title: Text(contact.name, maxLines: 1, overflow: TextOverflow.ellipsis),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(contact.pathLabel),
-          Text(contact.shortPubKeyHex, style: TextStyle(fontSize: 12)),
+          Text(contact.pathLabel, maxLines: 1, overflow: TextOverflow.ellipsis),
+          Text(
+            contact.shortPubKeyHex,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(fontSize: 12),
+          ),
         ],
       ),
       // Clamp text scaling in trailing section to prevent overflow while
@@ -1176,26 +1182,32 @@ class _ContactTile extends StatelessWidget {
             MediaQuery.textScalerOf(context).scale(1.0).clamp(1.0, 1.3),
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            if (unreadCount > 0) ...[
-              UnreadBadge(count: unreadCount),
-              const SizedBox(height: 4),
-            ],
-            Text(
-              _formatLastSeen(context, lastSeen),
-              style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (contact.hasLocation)
-                  Icon(Icons.location_on, size: 14, color: Colors.grey[400]),
+        child: SizedBox(
+          width: 120,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              if (unreadCount > 0) ...[
+                UnreadBadge(count: unreadCount),
+                const SizedBox(height: 4),
               ],
-            ),
-          ],
+              Text(
+                _formatLastSeen(context, lastSeen),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.right,
+                style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (contact.hasLocation)
+                    Icon(Icons.location_on, size: 14, color: Colors.grey[400]),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
       onTap: onTap,

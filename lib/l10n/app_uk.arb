@@ -28,7 +28,7 @@
   "common_reboot": "Перезавантажити",
   "common_loading": "Завантаження...",
   "common_notAvailable": "—",
-  "common_voltageValue": "{volts} В",
+  "common_voltageValue": "{volts} Ð'",
   "@common_voltageValue": {
     "placeholders": {
       "volts": {
@@ -132,7 +132,7 @@
   "settings_infoChannelCount": "Кількість каналів",
   "settings_presets": "Попередні налаштування",
   "settings_frequency": "Частота (МГц)",
-  "settings_frequencyHelper": "300.0 - 2500.0",
+  "settings_frequencyHelper": "300,0 - 2500,0",
   "settings_frequencyInvalid": "Некоректна частота (300-2500 МГц)",
   "settings_bandwidth": "Смуга пропускання",
   "settings_spreadingFactor": "Коефіцієнт розширення",
@@ -156,18 +156,18 @@
   "appSettings_themeDark": "Темна",
   "appSettings_language": "Мова",
   "appSettings_languageSystem": "Як у системі",
-  "appSettings_languageEn": "English",
+  "appSettings_languageEn": "англійська",
   "appSettings_languageFr": "Français",
   "appSettings_languageEs": "Español",
   "appSettings_languageDe": "Deutsch",
   "appSettings_languagePl": "Polski",
-  "appSettings_languageSl": "Slovenščina",
+  "appSettings_languageSl": "Словенщина",
   "appSettings_languagePt": "Português",
   "appSettings_languageIt": "Italiano",
   "appSettings_languageZh": "中文",
-  "appSettings_languageSv": "Svenska",
-  "appSettings_languageNl": "Nederlands",
-  "appSettings_languageSk": "Slovenčina",
+  "appSettings_languageSv": "Свенська",
+  "appSettings_languageNl": "Нідерланди",
+  "appSettings_languageSk": "Словенчина",
   "appSettings_languageBg": "Български",
   "appSettings_languageUk": "Українська",
   "appSettings_notifications": "Сповіщення",
@@ -202,9 +202,9 @@
     }
   },
   "appSettings_batteryChemistryConnectFirst": "Підключіть пристрій, щоб вибрати",
-  "appSettings_batteryNmc": "18650 NMC (3.0-4.2В)",
-  "appSettings_batteryLifepo4": "LiFePO4 (2.6-3.65В)",
-  "appSettings_batteryLipo": "LiPo (3.0-4.2В)",
+  "appSettings_batteryNmc": "18650 NMC (3.0-4.2Ð')",
+  "appSettings_batteryLifepo4": "LiFePO4 (2.6-3.65Ð')",
+  "appSettings_batteryLipo": "LiPo (3.0-4.2Ð')",
   "appSettings_mapDisplay": "Відображення карти",
   "appSettings_showRepeaters": "Показувати ретранслятори",
   "appSettings_showRepeatersSubtitle": "Відображати вузли-ретранслятори на карті",
@@ -357,7 +357,7 @@
   "channels_channelName": "Назва каналу",
   "channels_usePublicChannel": "Використовувати публічний канал",
   "channels_standardPublicPsk": "Стандартний публічний PSK",
-  "channels_pskHex": "PSK (Hex)",
+  "channels_pskHex": "PSK (шістнадцятковий)",
   "channels_generateRandomPsk": "Згенерувати випадковий ключ PSK",
   "channels_enterChannelName": "Будь ласка, введіть назву каналу",
   "channels_pskMustBe32Hex": "PSK має складатися з 32 шістнадцяткових символів.",
@@ -1196,7 +1196,7 @@
   "telemetry_mcuTemperatureLabel": "Температура MCU",
   "telemetry_temperatureLabel": "Температура",
   "telemetry_currentLabel": "Поточний струм",
-  "telemetry_batteryValue": "{percent}% / {volts}В",
+  "telemetry_batteryValue": "{percent}% / {volts}Ð'",
   "@telemetry_batteryValue": {
     "placeholders": {
       "percent": {
@@ -1207,7 +1207,7 @@
       }
     }
   },
-  "telemetry_voltageValue": "{volts}В",
+  "telemetry_voltageValue": "{volts}Ð'",
   "@telemetry_voltageValue": {
     "placeholders": {
       "volts": {
@@ -1596,5 +1596,148 @@
   "scanner_bluetoothOff": "Bluetooth вимкнено",
   "settings_clientRepeatFreqWarning": "Повтор без підключення до мережі вимагає частоти 433, 869 або 918 МГц.",
   "settings_clientRepeatSubtitle": "Дозвольте цьому пристрою повторювати пакети даних для інших пристроїв.",
-  "settings_clientRepeat": "Автономна система"
+  "settings_clientRepeat": "Автономна система",
+  "settings_aboutOpenMeteoAttribution": "Дані про висоту LOS: Open-Meteo (CC BY 4.0)",
+  "map_lineOfSight": "Пряма видимість",
+  "map_losScreenTitle": "Пряма видимість",
+  "losSelectStartEnd": "Виберіть початковий і кінцевий вузли для LOS.",
+  "losRunFailed": "Помилка перевірки прямої видимості: {error}",
+  "losClearAllPoints": "Очистити всі пункти",
+  "losRunToViewElevationProfile": "Запустіть LOS, щоб переглянути профіль висоти",
+  "losMenuTitle": "Меню LOS",
+  "losMenuSubtitle": "Торкніться вузлів або утримуйте карту, щоб отримати власні точки",
+  "losShowDisplayNodes": "Показати вузли відображення",
+  "losCustomPoints": "Користувальницькі точки",
+  "losCustomPointLabel": "Спеціальний {index}",
+  "losPointA": "Точка А",
+  "losPointB": "Точка Б",
+  "losAntennaA": "Антена A: {value} {unit}",
+  "losAntennaB": "Антена B: {value} {unit}",
+  "losRun": "Запустіть LOS",
+  "losNoElevationData": "Немає даних про висоту",
+  "losProfileClear": "{distance} {distanceUnit}, чистий LOS, мінімальний зазор {clearance} {heightUnit}",
+  "losProfileBlocked": "{distance} {distanceUnit}, заблоковано {obstruction} {heightUnit}",
+  "losStatusChecking": "LOS: перевірка...",
+  "losStatusNoData": "LOS: немає даних",
+  "losStatusSummary": "LOS: {clear}/{total} очищено, {blocked} заблоковано, {unknown} невідомо",
+  "losErrorElevationUnavailable": "Дані про висоту недоступні для одного чи кількох зразків.",
+  "losErrorInvalidInput": "Недійсні дані про точки/висоту для розрахунку LOS.",
+  "losRenameCustomPoint": "Перейменуйте спеціальну точку",
+  "losPointName": "Назва точки",
+  "losShowPanelTooltip": "Показати панель LOS",
+  "losHidePanelTooltip": "Приховати панель LOS",
+  "losElevationAttribution": "Дані про висоту: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "одиниці",
+  "appSettings_unitsMetric": "Метричний (м / км)",
+  "appSettings_unitsImperial": "Імперська (ft / mi)",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_messagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_channelMessagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_newNodesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_newTypeDiscovered": {
+    "placeholders": {
+      "contactType": {
+        "type": "String"
+      }
+    }
+  }
 }

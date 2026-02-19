@@ -7,6 +7,7 @@ import '../l10n/app_localizations.dart';
 import '../l10n/l10n.dart';
 import '../services/app_settings_service.dart';
 import '../services/map_tile_cache_service.dart';
+import '../widgets/adaptive_app_bar_title.dart';
 
 class MapCacheScreen extends StatefulWidget {
   const MapCacheScreen({super.key});
@@ -224,7 +225,10 @@ class _MapCacheScreenState extends State<MapCacheScreen> {
         : (_completedTiles / _estimatedTiles).clamp(0.0, 1.0).toDouble();
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.mapCache_title), centerTitle: true),
+      appBar: AppBar(
+        title: AdaptiveAppBarTitle(l10n.mapCache_title),
+        centerTitle: true,
+      ),
       body: Column(
         children: [
           Expanded(

@@ -140,7 +140,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get scanner_stop => 'Stoppen';
 
   @override
-  String get scanner_scan => 'Scan';
+  String get scanner_scan => 'Scannen';
 
   @override
   String get scanner_bluetoothOff => 'Bluetooth is uitgeschakeld';
@@ -234,7 +234,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get settings_longitude => 'Lengtegraad';
 
   @override
-  String get settings_privacyMode => 'Privacy Mode';
+  String get settings_privacyMode => 'Privacymodus';
 
   @override
   String get settings_privacyModeSubtitle =>
@@ -290,17 +290,17 @@ class AppLocalizationsNl extends AppLocalizations {
       'Ben je er zeker van dat je het apparaat opnieuw wilt opstarten? Je wordt losgekoppeld.';
 
   @override
-  String get settings_debug => 'Debug';
+  String get settings_debug => 'Foutopsporing';
 
   @override
-  String get settings_bleDebugLog => 'BLE Debug Log';
+  String get settings_bleDebugLog => 'BLE-foutopsporingslogboek';
 
   @override
   String get settings_bleDebugLogSubtitle =>
       'BLE commando\'s, antwoorden en ruwe data';
 
   @override
-  String get settings_appDebugLog => 'App Debug Log';
+  String get settings_appDebugLog => 'Foutopsporingslogboek voor apps';
 
   @override
   String get settings_appDebugLogSubtitle => 'Toepassingsdebugberichten';
@@ -321,10 +321,14 @@ class AppLocalizationsNl extends AppLocalizations {
       'Een open-source Flutter client voor MeshCore LoRa mesh netwerkapparaten.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'LOS-hoogtegegevens: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Naam';
 
   @override
-  String get settings_infoId => 'ID';
+  String get settings_infoId => 'Identiteitskaart';
 
   @override
   String get settings_infoStatus => 'Status';
@@ -342,7 +346,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get settings_infoChannelCount => 'Aantal Kanalen';
 
   @override
-  String get settings_presets => 'Presets';
+  String get settings_presets => 'Voorinstellingen';
 
   @override
   String get settings_frequency => 'Frequentie (MHz)';
@@ -412,16 +416,16 @@ class AppLocalizationsNl extends AppLocalizations {
   String get appSettings_languageSystem => 'Standaardinstelling';
 
   @override
-  String get appSettings_languageEn => 'English';
+  String get appSettings_languageEn => 'Engels';
 
   @override
-  String get appSettings_languageFr => 'Français';
+  String get appSettings_languageFr => 'Frans';
 
   @override
-  String get appSettings_languageEs => 'Español';
+  String get appSettings_languageEs => 'Spaans';
 
   @override
-  String get appSettings_languageDe => 'Deutsch';
+  String get appSettings_languageDe => 'Duits';
 
   @override
   String get appSettings_languagePl => 'Polski';
@@ -430,22 +434,22 @@ class AppLocalizationsNl extends AppLocalizations {
   String get appSettings_languageSl => 'Slovenščina';
 
   @override
-  String get appSettings_languagePt => 'Português';
+  String get appSettings_languagePt => 'Portugees';
 
   @override
-  String get appSettings_languageIt => 'Italiano';
+  String get appSettings_languageIt => 'Italiaans';
 
   @override
   String get appSettings_languageZh => '中文';
 
   @override
-  String get appSettings_languageSv => 'Svenska';
+  String get appSettings_languageSv => 'Zweeds';
 
   @override
   String get appSettings_languageNl => 'Nederlands';
 
   @override
-  String get appSettings_languageSk => 'Slovenčina';
+  String get appSettings_languageSk => 'Slovenië';
 
   @override
   String get appSettings_languageBg => 'Български';
@@ -618,6 +622,15 @@ class AppLocalizationsNl extends AppLocalizations {
   String get appSettings_offlineMapCache => 'Offline Kaarten Cache';
 
   @override
+  String get appSettings_unitsTitle => 'Eenheden';
+
+  @override
+  String get appSettings_unitsMetric => 'Metrisch (m / km)';
+
+  @override
+  String get appSettings_unitsImperial => 'Imperiaal (ft / mi)';
+
+  @override
   String get appSettings_noAreaSelected => 'Geen gebied geselecteerd';
 
   @override
@@ -626,7 +639,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get appSettings_debugCard => 'Debug';
+  String get appSettings_debugCard => 'Foutopsporing';
 
   @override
   String get appSettings_appDebugLogging => 'App Debuggen Loggen';
@@ -680,7 +693,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get contacts_roomLogin => 'Ruimte Inloggen';
 
   @override
-  String get contacts_openChat => 'Open Chat';
+  String get contacts_openChat => 'Chat openen';
 
   @override
   String get contacts_editGroup => 'Groep bewerken';
@@ -808,7 +821,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get channels_standardPublicPsk => 'Standaard open PSK';
 
   @override
-  String get channels_pskHex => 'PSK (Hex)';
+  String get channels_pskHex => 'PSK (hexadecimaal)';
 
   @override
   String get channels_generateRandomPsk => 'Willekeurige PSK genereren';
@@ -991,10 +1004,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get gifPicker_noInternet => 'Geen internetverbinding';
 
   @override
-  String get debugLog_appTitle => 'App Debug Log';
+  String get debugLog_appTitle => 'Foutopsporingslogboek voor apps';
 
   @override
-  String get debugLog_bleTitle => 'BLE Debug Log';
+  String get debugLog_bleTitle => 'BLE-foutopsporingslogboek';
 
   @override
   String get debugLog_copyLog => 'Kopieer log';
@@ -1069,7 +1082,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get debugFrame_hexDump => 'Hex Dump:';
+  String get debugFrame_hexDump => 'Hex-dump:';
 
   @override
   String get chat_pathManagement => 'Beheer van Paden';
@@ -1198,7 +1211,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get chat_floodAuto => 'Flood (auto)';
+  String get chat_floodAuto => 'Overstroming (automatisch)';
 
   @override
   String get chat_direct => 'Direct';
@@ -1230,7 +1243,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get chat_invalidLink => 'Ongeldig linkformaat';
 
   @override
-  String get map_title => 'Node Map';
+  String get map_title => 'Knooppuntkaart';
+
+  @override
+  String get map_lineOfSight => 'Zichtlijn';
+
+  @override
+  String get map_losScreenTitle => 'Zichtlijn';
 
   @override
   String get map_noNodesWithLocation => 'Geen nodes met locatiegegevens';
@@ -1241,7 +1260,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String map_nodesCount(int count) {
-    return 'Nodes: $count';
+    return 'Knooppunten: $count';
   }
 
   @override
@@ -1250,7 +1269,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get map_chat => 'Chat';
+  String get map_chat => 'Chatten';
 
   @override
   String get map_repeater => 'Repeater';
@@ -1320,7 +1339,7 @@ class AppLocalizationsNl extends AppLocalizations {
       'Verbind met een apparaat om markers te delen';
 
   @override
-  String get map_filterNodes => 'Filter Nodes';
+  String get map_filterNodes => 'Knooppunten filteren';
 
   @override
   String get map_nodeTypes => 'Nodetypes';
@@ -1394,7 +1413,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get mapCache_downloadAction => 'Download';
+  String get mapCache_downloadAction => 'Downloaden';
 
   @override
   String mapCache_cachedTiles(int count) {
@@ -1542,7 +1561,7 @@ class AppLocalizationsNl extends AppLocalizations {
       'Voer het wachtwoord van de kamer in om toegang te krijgen tot instellingen en status.';
 
   @override
-  String get login_routing => 'Routing';
+  String get login_routing => 'Routering';
 
   @override
   String get login_routingMode => 'Routeerwijze';
@@ -1655,7 +1674,7 @@ class AppLocalizationsNl extends AppLocalizations {
       'Status, statistieken en buren bekijken';
 
   @override
-  String get repeater_telemetry => 'Telemetry';
+  String get repeater_telemetry => 'Telemetrie';
 
   @override
   String get repeater_telemetrySubtitle =>
@@ -1737,10 +1756,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get repeater_noiseFloor => 'Ruisvloer';
 
   @override
-  String get repeater_txAirtime => 'TX Airtime';
+  String get repeater_txAirtime => 'TX-zendtijd';
 
   @override
-  String get repeater_rxAirtime => 'RX Airtime';
+  String get repeater_rxAirtime => 'RX-zendtijd';
 
   @override
   String get repeater_packetStatistics => 'Pakketstatistieken';
@@ -1776,7 +1795,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String repeater_duplicatesFloodDirect(String flood, String direct) {
-    return 'Flood: $flood, Direct: $direct';
+    return 'Overstroming: $flood, Direct: $direct';
   }
 
   @override
@@ -1818,7 +1837,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get repeater_frequencyHelper => '300-2500 MHz';
 
   @override
-  String get repeater_txPower => 'TX Power';
+  String get repeater_txPower => 'TX-vermogen';
 
   @override
   String get repeater_txPowerHelper => '1-30 dBm';
@@ -1994,7 +2013,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get repeater_cliTitle => 'Repeater CLI';
+  String get repeater_cliTitle => 'Repeater-CLI';
 
   @override
   String get repeater_debugNextCommand => 'Debug Volgende Commando';
@@ -2280,7 +2299,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get repeater_bridge => 'Bruggen';
 
   @override
-  String get repeater_logging => 'Logging';
+  String get repeater_logging => 'Loggen';
 
   @override
   String get repeater_neighborsRepeaterOnly => 'Buren (Alleen repeaters)';
@@ -2392,7 +2411,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get channelPath_otherObservedPaths => 'Overige Waargenomen Paden';
 
   @override
-  String get channelPath_repeaterHops => 'Repeater Hops';
+  String get channelPath_repeaterHops => 'Repeater-hop';
 
   @override
   String get channelPath_noHopDetails =>
@@ -2408,7 +2427,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get channelPath_timeLabel => 'Tijd';
 
   @override
-  String get channelPath_repeatsLabel => 'Repeats';
+  String get channelPath_repeatsLabel => 'Herhalingen';
 
   @override
   String channelPath_pathLabel(int index) {
@@ -2440,7 +2459,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get channelPath_unknownPath => 'Onbekend';
 
   @override
-  String get channelPath_floodPath => 'Flood';
+  String get channelPath_floodPath => 'Overstroming';
 
   @override
   String get channelPath_directPath => 'Direct';
@@ -2712,6 +2731,117 @@ class AppLocalizationsNl extends AppLocalizations {
   String get pathTrace_clearTooltip => 'Weg wissen';
 
   @override
+  String get losSelectStartEnd =>
+      'Selecteer begin- en eindknooppunten voor LOS.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Zichtlijncontrole mislukt: $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Wis alle punten';
+
+  @override
+  String get losRunToViewElevationProfile =>
+      'Voer LOS uit om het hoogteprofiel te bekijken';
+
+  @override
+  String get losMenuTitle => 'LOS-menu';
+
+  @override
+  String get losMenuSubtitle =>
+      'Tik op knooppunten of druk lang op de kaart voor aangepaste punten';
+
+  @override
+  String get losShowDisplayNodes => 'Toon weergaveknooppunten';
+
+  @override
+  String get losCustomPoints => 'Aangepaste punten';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Aangepast $index';
+  }
+
+  @override
+  String get losPointA => 'Punt A';
+
+  @override
+  String get losPointB => 'Punt B';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Antenne A: $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Antenne B: $value $unit';
+  }
+
+  @override
+  String get losRun => 'Voer LOS uit';
+
+  @override
+  String get losNoElevationData => 'Geen hoogtegegevens';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, vrije LOS, min. vrije ruimte $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, geblokkeerd door $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'LOS: controleren...';
+
+  @override
+  String get losStatusNoData => 'LOS: geen gegevens';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS: $clear/$total gewist, $blocked geblokkeerd, $unknown onbekend';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Hoogtegegevens niet beschikbaar voor een of meer monsters.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Ongeldige punten/hoogtegegevens voor LOS-berekening.';
+
+  @override
+  String get losRenameCustomPoint => 'Hernoem aangepast punt';
+
+  @override
+  String get losPointName => 'Puntnaam';
+
+  @override
+  String get losShowPanelTooltip => 'Toon LOS-paneel';
+
+  @override
+  String get losHidePanelTooltip => 'LOS-paneel verbergen';
+
+  @override
+  String get losElevationAttribution =>
+      'Hoogtegegevens: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get contacts_pathTrace => 'Pad Traceren';
 
   @override
@@ -2721,7 +2851,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get contacts_repeaterPathTrace => 'Pad traceren naar repeater';
 
   @override
-  String get contacts_repeaterPing => 'Ping repeater';
+  String get contacts_repeaterPing => 'Ping-repeater';
 
   @override
   String get contacts_roomPathTrace => 'Padtrace naar room server';
@@ -2734,7 +2864,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String contacts_pathTraceTo(String name) {
-    return 'Trace route to $name';
+    return 'Traceer route naar $name';
   }
 
   @override

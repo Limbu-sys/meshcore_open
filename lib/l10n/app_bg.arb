@@ -156,18 +156,18 @@
   "appSettings_themeDark": "Тъмно",
   "appSettings_language": "Език",
   "appSettings_languageSystem": "Система по подразбиране",
-  "appSettings_languageEn": "English",
+  "appSettings_languageEn": "английски",
   "appSettings_languageFr": "Français",
   "appSettings_languageEs": "Español",
   "appSettings_languageDe": "Deutsch",
-  "appSettings_languagePl": "Polski",
-  "appSettings_languageSl": "Slovenščina",
-  "appSettings_languagePt": "Português",
-  "appSettings_languageIt": "Italiano",
+  "appSettings_languagePl": "Полски",
+  "appSettings_languageSl": "словенски",
+  "appSettings_languagePt": "португалски",
+  "appSettings_languageIt": "Италиано",
   "appSettings_languageZh": "中文",
-  "appSettings_languageSv": "Svenska",
-  "appSettings_languageNl": "Nederlands",
-  "appSettings_languageSk": "Slovenčina",
+  "appSettings_languageSv": "Свенска",
+  "appSettings_languageNl": "Холандия",
+  "appSettings_languageSk": "Словенчина",
   "appSettings_languageBg": "Български",
   "appSettings_notifications": "Уведомления",
   "appSettings_enableNotifications": "Активирай Известия",
@@ -356,7 +356,7 @@
   "channels_channelName": "Име на канала",
   "channels_usePublicChannel": "Използвайте публичен канал",
   "channels_standardPublicPsk": "Стандартен публичен PSK",
-  "channels_pskHex": "PSK (Hex)",
+  "channels_pskHex": "PSK (шестнадесетичен)",
   "channels_generateRandomPsk": "Генерирай случайна PSK",
   "channels_enterChannelName": "Моля, въведете име на канал.",
   "channels_pskMustBe32Hex": "PSK трябва да бъде 32 шестнаредни знака.",
@@ -388,7 +388,7 @@
   "channels_publicChannelAdded": "Публичен канал добавен",
   "channels_sortBy": "Сортирай по",
   "channels_sortManual": "Ръчно",
-  "channels_sortAZ": "A-Z",
+  "channels_sortAZ": "А-Я",
   "channels_sortLatestMessages": "Последни съобщения",
   "channels_sortUnread": "Непрочетено",
   "chat_noMessages": "Няма съобщения.",
@@ -466,7 +466,7 @@
   "debugLog_noEntries": "Все още няма дебъг логове.",
   "debugLog_enableInSettings": "Активирайте отстраняване на грешки в настройките на приложението",
   "debugLog_frames": "Рамки",
-  "debugLog_rawLogRx": "Raw Log-RX",
+  "debugLog_rawLogRx": "Необработен Log-RX",
   "debugLog_noBleActivity": "Няма BLE активност към момента.",
   "debugFrame_length": "Дължина на кадъра: {count} байта",
   "@debugFrame_length": {
@@ -901,8 +901,8 @@
   "repeater_lastRssi": "Последна RSSI",
   "repeater_lastSnr": "Последна SNR",
   "repeater_noiseFloor": "Ниво на шум",
-  "repeater_txAirtime": "TX Airtime",
-  "repeater_rxAirtime": "RX Airtime",
+  "repeater_txAirtime": "TX Ефирно време",
+  "repeater_rxAirtime": "RX Ефирно време",
   "repeater_packetStatistics": "Статистика на пакетите",
   "repeater_sent": "Изпратено",
   "repeater_received": "Получено",
@@ -982,7 +982,7 @@
   "repeater_radioSettings": "Настройки на радиостанцията",
   "repeater_frequencyMhz": "Честота (MHz)",
   "repeater_frequencyHelper": "300-2500 MHz",
-  "repeater_txPower": "TX Power",
+  "repeater_txPower": "TX мощност",
   "repeater_txPowerHelper": "1-30 dBm",
   "repeater_bandwidth": "Ширина на честотния спектър",
   "repeater_spreadingFactor": "Фактор на разпространение",
@@ -1336,7 +1336,7 @@
   "listFilter_sortBy": "Сортирай по",
   "listFilter_latestMessages": "Последни съобщения",
   "listFilter_heardRecently": "Слушано е наскоро",
-  "listFilter_az": "A-Z",
+  "listFilter_az": "А-Я",
   "listFilter_filters": "Филтри",
   "listFilter_all": "Всички",
   "listFilter_users": "Потребители",
@@ -1596,5 +1596,148 @@
   "scanner_bluetoothOffMessage": "Моля, активирайте Bluetooth, за да сканирате за устройства.",
   "settings_clientRepeatSubtitle": "Позволете на това устройство да предава пакети към мрежата за други устройства.",
   "settings_clientRepeatFreqWarning": "За повторение извън мрежата са необходими честоти от 433, 869 или 918 MHz.",
-  "settings_clientRepeat": "Без електричество – повторение"
+  "settings_clientRepeat": "Без електричество – повторение",
+  "settings_aboutOpenMeteoAttribution": "Данни за надморска височина на LOS: Open-Meteo (CC BY 4.0)",
+  "map_lineOfSight": "Линия на видимост",
+  "map_losScreenTitle": "Линия на видимост",
+  "losSelectStartEnd": "Изберете начални и крайни възли за LOS.",
+  "losRunFailed": "Проверката на пряката видимост е неуспешна: {error}",
+  "losClearAllPoints": "Изчистете всички точки",
+  "losRunToViewElevationProfile": "Стартирайте LOS, за да видите профила на надморската височина",
+  "losMenuTitle": "LOS меню",
+  "losMenuSubtitle": "Докоснете възли или натиснете продължително карта за персонализирани точки",
+  "losShowDisplayNodes": "Показване на възли на дисплея",
+  "losCustomPoints": "Персонализирани точки",
+  "losCustomPointLabel": "Персонализирано {index}",
+  "losPointA": "Точка А",
+  "losPointB": "Точка Б",
+  "losAntennaA": "Антена A: {value} {unit}",
+  "losAntennaB": "Антена B: {value} {unit}",
+  "losRun": "Стартирайте LOS",
+  "losNoElevationData": "Няма данни за надморска височина",
+  "losProfileClear": "{distance} {distanceUnit}, чист LOS, минимално разстояние {clearance} {heightUnit}",
+  "losProfileBlocked": "{distance} {distanceUnit}, блокиран от {obstruction} {heightUnit}",
+  "losStatusChecking": "LOS: проверка...",
+  "losStatusNoData": "LOS: няма данни",
+  "losStatusSummary": "LOS: {clear}/{total} ясно, {blocked} блокирано, {unknown} неизвестно",
+  "losErrorElevationUnavailable": "Няма налични данни за надморска височина за една или повече проби.",
+  "losErrorInvalidInput": "Невалидни данни за точки/надморска височина за изчисляване на LOS.",
+  "losRenameCustomPoint": "Преименувайте персонализирана точка",
+  "losPointName": "Име на точката",
+  "losShowPanelTooltip": "Показване на LOS панел",
+  "losHidePanelTooltip": "Скриване на LOS панела",
+  "losElevationAttribution": "Данни за надморска височина: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "единици",
+  "appSettings_unitsMetric": "Метрика (m / km)",
+  "appSettings_unitsImperial": "Имперска (ft / mi)",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_messagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_channelMessagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_newNodesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_newTypeDiscovered": {
+    "placeholders": {
+      "contactType": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "appTitle": "MeshCore Open",
+  "appTitle": "MeshCore geöffnet",
   "nav_contacts": "Kontakte",
   "nav_channels": "Kanäle",
   "nav_map": "Karte",
@@ -44,7 +44,7 @@
       }
     }
   },
-  "scanner_title": "MeshCore Open",
+  "scanner_title": "MeshCore geöffnet",
   "scanner_scanning": "Scannen nach Geräten...",
   "scanner_connecting": "Verbunden...",
   "scanner_disconnecting": "Trenne...",
@@ -124,7 +124,7 @@
   "settings_aboutLegalese": "MeshCore Open Source Projekt 2026",
   "settings_aboutDescription": "Ein Open-Source-Flutter-Client für MeshCore LoRa-Meshnetzwerkgeräte.",
   "settings_infoName": "Name",
-  "settings_infoId": "ID",
+  "settings_infoId": "AUSWEIS",
   "settings_infoStatus": "Status",
   "settings_infoBattery": "Akku",
   "settings_infoPublicKey": "Öffentlicher Schlüssel",
@@ -150,25 +150,25 @@
   },
   "appSettings_title": "App-Einstellungen",
   "appSettings_appearance": "Aussehen",
-  "appSettings_theme": "Theme",
+  "appSettings_theme": "Thema",
   "appSettings_themeSystem": "Systemstandard",
   "appSettings_themeLight": "Hell",
   "appSettings_themeDark": "Dunkel",
   "appSettings_language": "Sprache",
   "appSettings_languageSystem": "Systemstandard",
-  "appSettings_languageEn": "English",
-  "appSettings_languageFr": "Français",
-  "appSettings_languageEs": "Español",
+  "appSettings_languageEn": "Englisch",
+  "appSettings_languageFr": "Französisch",
+  "appSettings_languageEs": "Spanisch",
   "appSettings_languageDe": "Deutsch",
-  "appSettings_languagePl": "Polski",
-  "appSettings_languageSl": "Slovenščina",
-  "appSettings_languagePt": "Português",
-  "appSettings_languageIt": "Italiano",
+  "appSettings_languagePl": "Polnisch",
+  "appSettings_languageSl": "Slowenisch",
+  "appSettings_languagePt": "Portugiesisch",
+  "appSettings_languageIt": "Italienisch",
   "appSettings_languageZh": "中文",
   "appSettings_languageSv": "Svenska",
-  "appSettings_languageNl": "Nederlands",
-  "appSettings_languageSk": "Slovenčina",
-  "appSettings_languageBg": "Български",
+  "appSettings_languageNl": "Niederlande",
+  "appSettings_languageSk": "Slowenien",
+  "appSettings_languageBg": "Weißrussland",
   "appSettings_notifications": "Benachrichtigungen",
   "appSettings_enableNotifications": "Benachrichtigungen aktivieren",
   "appSettings_enableNotificationsSubtitle": "Erhalte Benachrichtigungen für Nachrichten und Ankündigungen",
@@ -522,7 +522,7 @@
   },
   "debugFrame_textTypeCli": "CLI",
   "debugFrame_textTypePlain": "Einfach",
-  "debugFrame_text": "- Text: \"{text}\"",
+  "debugFrame_text": "- Text: „{text}“",
   "@debugFrame_text": {
     "placeholders": {
       "text": {
@@ -636,15 +636,15 @@
   "map_sensor": "Sensor",
   "map_pinDm": "Pin (Kontakt)",
   "map_pinPrivate": "Pin (Channel)",
-  "map_pinPublic": "Pin (Public)",
+  "map_pinPublic": "Pin (Öffentlich)",
   "map_lastSeen": "Letzte Sichtung",
   "map_disconnectConfirm": "Sind Sie sicher, dass Sie sich von diesem Gerät trennen möchten?",
   "map_from": "Von",
   "map_source": "Quelle",
-  "map_flags": "Flags",
+  "map_flags": "Flaggen",
   "map_shareMarkerHere": "Teilen Sie den Marker hier.",
   "map_pinLabel": "Pin Name",
-  "map_label": "Label",
+  "map_label": "Etikett",
   "map_pointOfInterest": "Punkt von Interesse",
   "map_sendToContact": "Senden an Kontakt",
   "map_sendToChannel": "Senden an Kanal",
@@ -901,8 +901,8 @@
   "repeater_lastRssi": "Letzter RSSI",
   "repeater_lastSnr": "Letzter SNR",
   "repeater_noiseFloor": "Rauschpegel",
-  "repeater_txAirtime": "TX Airtime",
-  "repeater_rxAirtime": "RX Airtime",
+  "repeater_txAirtime": "TX-Sendezeit",
+  "repeater_rxAirtime": "RX-Sendezeit",
   "repeater_packetStatistics": "Paketstatistiken",
   "repeater_sent": "Gesendet",
   "repeater_received": "Empfangen",
@@ -973,7 +973,7 @@
   },
   "repeater_settingsTitle": "Repeater Einstellungen",
   "repeater_basicSettings": "Grundlegende Einstellungen",
-  "repeater_repeaterName": "Repeater Name",
+  "repeater_repeaterName": "Repeater-Name",
   "repeater_repeaterNameHelper": "Anzeigename für diesen Repeater",
   "repeater_adminPassword": "Admin-Passwort",
   "repeater_adminPasswordHelper": "Vollzugriffspasswort",
@@ -982,7 +982,7 @@
   "repeater_radioSettings": "Funk Einstellungen",
   "repeater_frequencyMhz": "Frequenz (MHz)",
   "repeater_frequencyHelper": "300-2500 MHz",
-  "repeater_txPower": "TX Power",
+  "repeater_txPower": "TX-Leistung",
   "repeater_txPowerHelper": "1-30 dBm",
   "repeater_bandwidth": "Bandbreite",
   "repeater_spreadingFactor": "Verteilungsfaktor",
@@ -1080,7 +1080,7 @@
       }
     }
   },
-  "repeater_cliTitle": "Repeater CLI",
+  "repeater_cliTitle": "Repeater-CLI",
   "repeater_debugNextCommand": "Fehlersuche des nächsten Befehls",
   "repeater_commandHelp": "Hilfe",
   "repeater_clearHistory": "Löschen der Historie",
@@ -1161,7 +1161,7 @@
   "repeater_cliHelpGpsAdvert": "Gibt Konfiguration für die Standortanzeige des Knotens:\n- none: Standort nicht in Anzeigen einbeziehen\n- share: GPS-Standort teilen (von SensorManager)\n- prefs: Standort aus Einstellungen anzeigen",
   "repeater_cliHelpGpsAdvertSet": "Legt die Standort-Anzeigekonfiguration fest.",
   "repeater_commandsListTitle": "Befehlsliste",
-  "repeater_commandsListNote": "ACHTUNG: Für die verschiedenen „set ...“-Befehle gibt es auch einen „get ...“-Befehl.",
+  "repeater_commandsListNote": "ACHTUNG: Für die verschiedenen \"set ...\"-Befehle gibt es auch einen \"get ...\"-Befehl.",
   "repeater_general": "Allgemein",
   "repeater_settingsCategory": "Einstellungen",
   "repeater_bridge": "Brücke",
@@ -1239,7 +1239,7 @@
   "channelPath_repeaterHops": "Repeater-Sprünge",
   "channelPath_noHopDetails": "Die Detailangaben für dieses Paket sind nicht verfügbar.",
   "channelPath_messageDetails": "Nachrichtendetails",
-  "channelPath_senderLabel": "Sender",
+  "channelPath_senderLabel": "Absender",
   "channelPath_timeLabel": "Zeit",
   "channelPath_repeatsLabel": "Wiederholungen",
   "channelPath_pathLabel": "Pfad {index}",
@@ -1459,14 +1459,14 @@
   "community_showQr": "Zeige QR-Code",
   "community_publicChannel": "Community Öffentlich",
   "community_enterName": "Bitte Community-Name eingeben",
-  "community_title": "Community",
+  "community_title": "Gemeinschaft",
   "community_created": "Community \"{name}\" wurde erstellt",
   "community_joined": "Community \"{name}\" beigetreten",
   "community_qrTitle": "Teile Community",
   "community_qrInstructions": "Scannen Sie diesen QR-Code, um sich \"{name}\" anzuschließen.",
   "community_hashtagPrivacyHint": "Community-Hashtag-Kanäle können nur von Mitgliedern der Community betreten werden",
-  "community_hashtagChannel": "Community Hashtag",
-  "community_name": "Community Name",
+  "community_hashtagChannel": "Community-Hashtag",
+  "community_name": "Community-Name",
   "community_invalidQrCode": "Ungültiger Community-QR-Code",
   "community_alreadyMember": "Bereits registriert",
   "community_alreadyMemberMessage": "Sie sind bereits Mitglied von \"{name}\".",
@@ -1493,7 +1493,7 @@
   "community_regularHashtagDesc": "Öffentlicher Hashtag (jeder kann teilnehmen)",
   "community_communityHashtagDesc": "Nur für Mitglieder der Community",
   "community_forCommunity": "Für {name}",
-  "community_communityHashtag": "Community Hashtag",
+  "community_communityHashtag": "Community-Hashtag",
   "@community_regenerateSecretConfirm": {
     "placeholders": {
       "name": {
@@ -1624,5 +1624,120 @@
   "scanner_enableBluetooth": "Bluetooth aktivieren",
   "settings_clientRepeat": "Wiederholung, ohne Stromanschluss",
   "settings_clientRepeatFreqWarning": "Die Kommunikation ohne Stromversorgung erfordert Frequenzen von 433, 869 oder 918 MHz.",
-  "settings_clientRepeatSubtitle": "Ermöglichen Sie diesem Gerät, Mesh-Pakete für andere zu wiederholen."
+  "settings_clientRepeatSubtitle": "Ermöglichen Sie diesem Gerät, Mesh-Pakete für andere zu wiederholen.",
+  "settings_aboutOpenMeteoAttribution": "LOS-Höhendaten: Open-Meteo (CC BY 4.0)",
+  "map_lineOfSight": "Sichtlinie",
+  "map_losScreenTitle": "Sichtlinie",
+  "losSelectStartEnd": "Wählen Sie Start- und Endknoten für LOS aus.",
+  "losRunFailed": "Sichtlinienprüfung fehlgeschlagen: {error}",
+  "losClearAllPoints": "Löschen Sie alle Punkte",
+  "losRunToViewElevationProfile": "Führen Sie LOS aus, um das Höhenprofil anzuzeigen",
+  "losMenuTitle": "LOS-Menü",
+  "losMenuSubtitle": "Tippen Sie auf Knoten oder drücken Sie lange auf die Karte, um benutzerdefinierte Punkte anzuzeigen",
+  "losShowDisplayNodes": "Anzeigeknoten anzeigen",
+  "losCustomPoints": "Benutzerdefinierte Punkte",
+  "losCustomPointLabel": "Benutzerdefiniert {index}",
+  "losPointA": "Punkt A",
+  "losPointB": "Punkt B",
+  "losAntennaA": "Antenne A: {value} {unit}",
+  "losAntennaB": "Antenne B: {value} {unit}",
+  "losRun": "Führen Sie LOS aus",
+  "losNoElevationData": "Keine Höhendaten",
+  "losProfileClear": "{distance} {distanceUnit}, freie Sichtlinie, Mindestabstand {clearance} {heightUnit}",
+  "losProfileBlocked": "{distance} {distanceUnit}, blockiert durch {obstruction} {heightUnit}",
+  "losStatusChecking": "LOS: Überprüfen...",
+  "losStatusNoData": "LOS: keine Daten",
+  "losStatusSummary": "Sichtlinie: {clear}/{total} frei, {blocked} blockiert, {unknown} unbekannt",
+  "losErrorElevationUnavailable": "Für eine oder mehrere Proben sind keine Höhendaten verfügbar.",
+  "losErrorInvalidInput": "Ungültige Punkte/Höhendaten für die LOS-Berechnung.",
+  "losRenameCustomPoint": "Benennen Sie den benutzerdefinierten Punkt um",
+  "losPointName": "Punktname",
+  "losShowPanelTooltip": "LOS-Panel anzeigen",
+  "losHidePanelTooltip": "LOS-Panel ausblenden",
+  "losElevationAttribution": "Höhendaten: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Einheiten",
+  "appSettings_unitsMetric": "Metrisch (m/km)",
+  "appSettings_unitsImperial": "Imperial (ft/mi)",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  }
 }
