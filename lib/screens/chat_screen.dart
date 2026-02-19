@@ -510,16 +510,17 @@ class _ChatScreenState extends State<ChatScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (pathsWithRepeaters.isNotEmpty) ...[
-                      FeatureToggleRow(
-                        title: context.l10n.chat_ShowAllPaths,
-                        subtitle: "",
-                        value: showAllPaths,
-                        onChanged: (val) {
-                          setDialogState(() {
-                            showAllPaths = val;
-                          });
-                        },
-                      ),
+                      if (repeatersList.isNotEmpty)
+                        FeatureToggleRow(
+                          title: context.l10n.chat_ShowAllPaths,
+                          subtitle: "",
+                          value: showAllPaths,
+                          onChanged: (val) {
+                            setDialogState(() {
+                              showAllPaths = val;
+                            });
+                          },
+                        ),
                       Text(
                         context.l10n.chat_recentAckPaths,
                         style: const TextStyle(

@@ -209,16 +209,17 @@ class _PathManagementDialogState extends State<_PathManagementDialog> {
                 ),
                 const SizedBox(height: 12),
                 if (paths.isNotEmpty) ...[
-                  FeatureToggleRow(
-                    title: l10n.chat_ShowAllPaths,
-                    subtitle: "",
-                    value: _showAllPaths,
-                    onChanged: (val) {
-                      setState(() {
-                        _showAllPaths = val;
-                      });
-                    },
-                  ),
+                  if (repeatersList.isNotEmpty)
+                    FeatureToggleRow(
+                      title: l10n.chat_ShowAllPaths,
+                      subtitle: "",
+                      value: _showAllPaths,
+                      onChanged: (val) {
+                        setState(() {
+                          _showAllPaths = val;
+                        });
+                      },
+                    ),
                   Text(
                     l10n.chat_recentAckPaths,
                     style: const TextStyle(

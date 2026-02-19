@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
@@ -214,7 +215,10 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
       buffer.skipBytes(5); // Skip Flag byte and tag data
       buffer.skipBytes(4); // Skip auth code
       Uint8List pathData = buffer.readBytes(pathLength);
-      Uint8List snrData = buffer.readRemainingBytes();
+      List<double> snrData = buffer
+          .readRemainingBytes()
+          .map((snr) => snr.toSigned(8).toDouble() / 4)
+          .toList();
 
       Map<int, Contact> pathContacts = {};
 
@@ -236,7 +240,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
         _hasData = true;
         _traceData = PathTraceData(
           pathData: pathData,
-          snrData: snrData.map((e) => e.toSigned(8).toDouble() / 4).toList(),
+          snrData: snrData,
           pathContacts: pathContacts,
         );
         _points = <LatLng>[];
