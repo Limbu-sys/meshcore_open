@@ -1600,5 +1600,6 @@
   "scanner_bluetoothOff": "Bluetooth je vypnutý",
   "scanner_enableBluetooth": "Povolte Bluetooth",
   "snrIndicator_lastSeen": "Naposledy videný",
-  "snrIndicator_nearByRepeaters": "Miestne opakovače"
+  "snrIndicator_nearByRepeaters": "Miestne opakovače",
+  "chat_ShowAllPaths": "Zobraziť všetky cesty"
 }

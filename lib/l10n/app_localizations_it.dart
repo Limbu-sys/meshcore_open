@@ -1082,6 +1082,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get chat_pathManagement => 'Gestione Percorsi';
 
   @override
+  String get chat_ShowAllPaths => 'Mostra tutti i percorsi';
+
+  @override
   String get chat_routingMode => 'Modalità di routing';
 
   @override

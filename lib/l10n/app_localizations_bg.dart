@@ -1085,6 +1085,9 @@ class AppLocalizationsBg extends AppLocalizations {
   String get chat_pathManagement => 'Управление на пътища';
 
   @override
+  String get chat_ShowAllPaths => 'Покажи всички пътища';
+
+  @override
   String get chat_routingMode => 'Режим на маршрутизиране';
 
   @override

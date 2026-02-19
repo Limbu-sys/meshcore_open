@@ -1037,6 +1037,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get chat_pathManagement => '路径管理';
 
   @override
+  String get chat_ShowAllPaths => '显示所有路径';
+
+  @override
   String get chat_routingMode => '路由模式';
 
   @override

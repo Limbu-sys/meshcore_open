@@ -1600,5 +1600,6 @@
   "scanner_enableBluetooth": "Активирайте Bluetooth",
   "scanner_bluetoothOffMessage": "Моля, активирайте Bluetooth, за да сканирате за устройства.",
   "snrIndicator_lastSeen": "Последно видян",
-  "snrIndicator_nearByRepeaters": "Близки повтарящи се устройства"
+  "snrIndicator_nearByRepeaters": "Близки повтарящи се устройства",
+  "chat_ShowAllPaths": "Покажи всички пътища"
 }

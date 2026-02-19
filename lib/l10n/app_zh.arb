@@ -1600,5 +1600,6 @@
   "scanner_bluetoothOff": "蓝牙已关闭",
   "scanner_enableBluetooth": "启用蓝牙",
   "snrIndicator_lastSeen": "最近访问",
-  "snrIndicator_nearByRepeaters": "附近的重复器"
+  "snrIndicator_nearByRepeaters": "附近的重复器",
+  "chat_ShowAllPaths": "显示所有路径"
 }

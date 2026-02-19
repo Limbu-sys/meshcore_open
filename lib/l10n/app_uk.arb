@@ -1600,5 +1600,6 @@
   "scanner_bluetoothOffMessage": "Будь ласка, увімкніть Bluetooth, щоб сканувати пристрої.",
   "scanner_bluetoothOff": "Bluetooth вимкнено",
   "snrIndicator_lastSeen": "Останній раз бачили",
-  "snrIndicator_nearByRepeaters": "Ближні ретранслятори"
+  "snrIndicator_nearByRepeaters": "Ближні ретранслятори",
+  "chat_ShowAllPaths": "Показати всі шляхи"
 }

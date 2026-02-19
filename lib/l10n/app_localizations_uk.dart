@@ -1080,6 +1080,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get chat_pathManagement => 'Керування шляхами';
 
   @override
+  String get chat_ShowAllPaths => 'Показати всі шляхи';
+
+  @override
   String get chat_routingMode => 'Режим маршрутизації';
 
   @override

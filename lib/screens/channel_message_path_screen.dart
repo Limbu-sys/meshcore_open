@@ -362,9 +362,7 @@ class _ChannelMessagePathMapScreenState
         );
 
         final points = <LatLng>[];
-        print(
-          'outgoing: ${widget.message.isOutgoing}, channelMsg: ${widget.channelMessage}',
-        );
+
         if ((widget.message.isOutgoing && !widget.channelMessage) ||
             (widget.message.isOutgoing && widget.channelMessage)) {
           points.add(LatLng(connector.selfLatitude!, connector.selfLongitude!));

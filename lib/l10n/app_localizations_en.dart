@@ -1070,6 +1070,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chat_pathManagement => 'Path Management';
 
   @override
+  String get chat_ShowAllPaths => 'Show all paths';
+
+  @override
   String get chat_routingMode => 'Routing mode';
 
   @override

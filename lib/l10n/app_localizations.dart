@@ -2044,6 +2044,12 @@ abstract class AppLocalizations {
   /// **'Path Management'**
   String get chat_pathManagement;
 
+  /// No description provided for @chat_ShowAllPaths.
+  ///
+  /// In en, this message translates to:
+  /// **'Show all paths'**
+  String get chat_ShowAllPaths;
+
   /// No description provided for @chat_routingMode.
   ///
   /// In en, this message translates to:

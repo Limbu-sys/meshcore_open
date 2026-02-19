@@ -1600,5 +1600,6 @@
   "scanner_bluetoothOffMessage": "Vänligen aktivera Bluetooth för att söka efter enheter.",
   "scanner_bluetoothOff": "Bluetooth är avstängt",
   "snrIndicator_lastSeen": "Senast sedd",
-  "snrIndicator_nearByRepeaters": "Närliggande uppreparstationer"
+  "snrIndicator_nearByRepeaters": "Närliggande uppreparstationer",
+  "chat_ShowAllPaths": "Visa alla vägar"
 }

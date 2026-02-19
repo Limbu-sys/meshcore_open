@@ -1079,6 +1079,9 @@ class AppLocalizationsSk extends AppLocalizations {
   String get chat_pathManagement => 'Správa ciest';
 
   @override
+  String get chat_ShowAllPaths => 'Zobraziť všetky cesty';
+
+  @override
   String get chat_routingMode => 'Režim trasy';
 
   @override

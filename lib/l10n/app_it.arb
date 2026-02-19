@@ -1600,5 +1600,6 @@
   "scanner_bluetoothOffMessage": "Si prega di attivare il Bluetooth per effettuare la scansione dei dispositivi.",
   "scanner_enableBluetooth": "Abilita il Bluetooth",
   "snrIndicator_nearByRepeaters": "Ripetitori vicini",
-  "snrIndicator_lastSeen": "Ultimo accesso"
+  "snrIndicator_lastSeen": "Ultimo accesso",
+  "chat_ShowAllPaths": "Mostra tutti i percorsi"
 }

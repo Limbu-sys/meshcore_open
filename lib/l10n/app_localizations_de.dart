@@ -1085,6 +1085,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get chat_pathManagement => 'Pfadverwaltung';
 
   @override
+  String get chat_ShowAllPaths => 'Alle Pfade anzeigen';
+
+  @override
   String get chat_routingMode => 'Routenmodus';
 
   @override

@@ -1600,5 +1600,6 @@
   "scanner_bluetoothOff": "Bluetooth está desativado",
   "scanner_bluetoothOffMessage": "Por favor, ative o Bluetooth para escanear por dispositivos.",
   "snrIndicator_nearByRepeaters": "Repetidores Próximos",
-  "snrIndicator_lastSeen": "Visto pela última vez"
+  "snrIndicator_lastSeen": "Visto pela última vez",
+  "chat_ShowAllPaths": "Mostrar todos os caminhos"
 }

@@ -1084,6 +1084,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get chat_pathManagement => 'Zarządzanie ścieżkami';
 
   @override
+  String get chat_ShowAllPaths => 'Pokaż wszystkie ścieżki';
+
+  @override
   String get chat_routingMode => 'Tryb routingu';
 
   @override

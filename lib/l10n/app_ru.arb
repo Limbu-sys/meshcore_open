@@ -840,5 +840,6 @@
   "scanner_bluetoothOff": "Bluetooth выключен",
   "scanner_bluetoothOffMessage": "Пожалуйста, включите Bluetooth, чтобы найти устройства.",
   "snrIndicator_nearByRepeaters": "Ближайшие ретрансляторы",
-  "snrIndicator_lastSeen": "Последний раз видели"
+  "snrIndicator_lastSeen": "Последний раз видели",
+  "chat_ShowAllPaths": "Показать все пути"
 }

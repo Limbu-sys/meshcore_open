@@ -1600,5 +1600,6 @@
   "scanner_bluetoothOff": "Le Bluetooth est désactivé.",
   "scanner_enableBluetooth": "Activer le Bluetooth",
   "snrIndicator_lastSeen": "Dernière fois vu",
-  "snrIndicator_nearByRepeaters": "Répéteurs à proximité"
+  "snrIndicator_nearByRepeaters": "Répéteurs à proximité",
+  "chat_ShowAllPaths": "Afficher tous les chemins"
 }

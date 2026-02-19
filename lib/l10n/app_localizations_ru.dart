@@ -1082,6 +1082,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get chat_pathManagement => 'Управление маршрутами';
 
   @override
+  String get chat_ShowAllPaths => 'Показать все пути';
+
+  @override
   String get chat_routingMode => 'Режим маршрутизации';
 
   @override

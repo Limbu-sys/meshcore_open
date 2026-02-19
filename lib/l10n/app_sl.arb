@@ -1600,5 +1600,6 @@
   "scanner_bluetoothOffMessage": "Prosimo, vklopite Bluetooth, da lahko poiščete naprave.",
   "scanner_bluetoothOff": "Bluetooth je izklopljen",
   "snrIndicator_lastSeen": "Zadnjič videno",
-  "snrIndicator_nearByRepeaters": "Bližnji ponovitelji"
+  "snrIndicator_nearByRepeaters": "Bližnji ponovitelji",
+  "chat_ShowAllPaths": "Prikaži vse poti"
 }

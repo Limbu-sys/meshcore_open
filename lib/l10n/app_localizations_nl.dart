@@ -1079,6 +1079,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get chat_pathManagement => 'Beheer van Paden';
 
   @override
+  String get chat_ShowAllPaths => 'Toon alle paden';
+
+  @override
   String get chat_routingMode => 'Routeerwijze';
 
   @override

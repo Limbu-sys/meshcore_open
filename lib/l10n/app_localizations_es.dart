@@ -1084,6 +1084,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get chat_pathManagement => 'Gestión de Rutas';
 
   @override
+  String get chat_ShowAllPaths => 'Mostrar todos los caminos';
+
+  @override
   String get chat_routingMode => 'Modo de enrutamiento';
 
   @override

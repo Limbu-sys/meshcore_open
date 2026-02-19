@@ -1077,6 +1077,9 @@ class AppLocalizationsSl extends AppLocalizations {
   String get chat_pathManagement => 'Upravljanje poti';
 
   @override
+  String get chat_ShowAllPaths => 'Prikaži vse poti';
+
+  @override
   String get chat_routingMode => 'Navodilo za usmerjevalni način';
 
   @override

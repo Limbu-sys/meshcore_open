@@ -132,8 +132,6 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
       path = pathTmp;
     }
 
-    print('Initiating path trace with path: ${_formatPathPrefixes(path)}');
-
     final connector = Provider.of<MeshCoreConnector>(context, listen: false);
     final frame = buildTraceReq(
       DateTime.now().millisecondsSinceEpoch ~/ 1000,
@@ -157,17 +155,20 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
         if (code == respCodeSent) {
           frameBuffer.skipBytes(1); //reserved
           tagData = frameBuffer.readBytes(4);
-          final timeoutSeconds = frameBuffer.readUInt32LE();
+          final timeoutMilliseconds = frameBuffer.readUInt32LE();
 
           // Start timeout timer for trace response
           _timeoutTimer?.cancel();
-          _timeoutTimer = Timer(Duration(milliseconds: timeoutSeconds), () {
-            if (!mounted) return;
-            setState(() {
-              _isLoading = false;
-              _failed2Loaded = true;
-            });
-          });
+          _timeoutTimer = Timer(
+            Duration(milliseconds: timeoutMilliseconds),
+            () {
+              if (!mounted) return;
+              setState(() {
+                _isLoading = false;
+                _failed2Loaded = true;
+              });
+            },
+          );
         }
 
         if (code == respCodeErr) {

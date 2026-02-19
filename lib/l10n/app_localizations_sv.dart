@@ -1074,6 +1074,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get chat_pathManagement => 'Stigarhantering';
 
   @override
+  String get chat_ShowAllPaths => 'Visa alla vägar';
+
+  @override
   String get chat_routingMode => 'Ruttläge';
 
   @override

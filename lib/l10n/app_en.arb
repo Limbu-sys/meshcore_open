@@ -498,6 +498,7 @@
   },
   "debugFrame_hexDump": "Hex Dump:",
   "chat_pathManagement": "Path Management",
+  "chat_ShowAllPaths": "Show all paths",
   "chat_routingMode": "Routing mode",
   "chat_autoUseSavedPath": "Auto (use saved path)",
   "chat_forceFloodMode": "Force Flood Mode",
