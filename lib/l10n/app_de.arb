@@ -131,9 +131,6 @@
   "settings_infoContactsCount": "Anzahl Kontakte",
   "settings_infoChannelCount": "Anzahl Kanäle",
   "settings_presets": "Voreinstellungen",
-  "settings_preset915Mhz": "915 MHz",
-  "settings_preset868Mhz": "868 MHz",
-  "settings_preset433Mhz": "433 MHz",
   "settings_frequency": "Frequenz (MHz)",
   "settings_frequencyHelper": "300,00 - 2.500,00",
   "settings_frequencyInvalid": "Ungültige Frequenz (300-2500 MHz)",
@@ -143,8 +140,6 @@
   "settings_txPower": "TX-Leistung (dBm)",
   "settings_txPowerHelper": "0 - 22",
   "settings_txPowerInvalid": "Ungültige TX-Leistung (0-22 dBm)",
-  "settings_longRange": "Grosse Reichweite",
-  "settings_fastSpeed": "Schnelle Geschwindigkeit",
   "settings_error": "Fehler: {message}",
   "@settings_error": {
     "placeholders": {
@@ -1629,5 +1624,8 @@
   "scanner_enableBluetooth": "Bluetooth aktivieren",
   "snrIndicator_lastSeen": "Zuletzt gesehen",
   "snrIndicator_nearByRepeaters": "In der Nähe befindliche Repeater",
-  "chat_ShowAllPaths": "Alle Pfade anzeigen"
+  "chat_ShowAllPaths": "Alle Pfade anzeigen",
+  "settings_clientRepeat": "Wiederholung, ohne Stromanschluss",
+  "settings_clientRepeatFreqWarning": "Die Kommunikation ohne Stromversorgung erfordert Frequenzen von 433, 869 oder 918 MHz.",
+  "settings_clientRepeatSubtitle": "Ermöglichen Sie diesem Gerät, Mesh-Pakete für andere zu wiederholen."
 }

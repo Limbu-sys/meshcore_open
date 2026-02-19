@@ -748,24 +748,6 @@ abstract class AppLocalizations {
   /// **'Presets'**
   String get settings_presets;
 
-  /// No description provided for @settings_preset915Mhz.
-  ///
-  /// In en, this message translates to:
-  /// **'915 MHz'**
-  String get settings_preset915Mhz;
-
-  /// No description provided for @settings_preset868Mhz.
-  ///
-  /// In en, this message translates to:
-  /// **'868 MHz'**
-  String get settings_preset868Mhz;
-
-  /// No description provided for @settings_preset433Mhz.
-  ///
-  /// In en, this message translates to:
-  /// **'433 MHz'**
-  String get settings_preset433Mhz;
-
   /// No description provided for @settings_frequency.
   ///
   /// In en, this message translates to:
@@ -820,17 +802,23 @@ abstract class AppLocalizations {
   /// **'Invalid TX power (0-22 dBm)'**
   String get settings_txPowerInvalid;
 
-  /// No description provided for @settings_longRange.
+  /// No description provided for @settings_clientRepeat.
   ///
   /// In en, this message translates to:
-  /// **'Long Range'**
-  String get settings_longRange;
+  /// **'Off-Grid Repeat'**
+  String get settings_clientRepeat;
 
-  /// No description provided for @settings_fastSpeed.
+  /// No description provided for @settings_clientRepeatSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Fast Speed'**
-  String get settings_fastSpeed;
+  /// **'Allow this device to repeat mesh packets for others'**
+  String get settings_clientRepeatSubtitle;
+
+  /// No description provided for @settings_clientRepeatFreqWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Off-grid repeat requires 433, 869, or 918 MHz frequency'**
+  String get settings_clientRepeatFreqWarning;
 
   /// No description provided for @settings_error.
   ///

@@ -343,15 +343,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings_presets => 'Presets';
 
   @override
-  String get settings_preset915Mhz => '915 MHz';
-
-  @override
-  String get settings_preset868Mhz => '868 MHz';
-
-  @override
-  String get settings_preset433Mhz => '433 MHz';
-
-  @override
   String get settings_frequency => 'Frequency (MHz)';
 
   @override
@@ -379,10 +370,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings_txPowerInvalid => 'Invalid TX power (0-22 dBm)';
 
   @override
-  String get settings_longRange => 'Long Range';
+  String get settings_clientRepeat => 'Off-Grid Repeat';
 
   @override
-  String get settings_fastSpeed => 'Fast Speed';
+  String get settings_clientRepeatSubtitle =>
+      'Allow this device to repeat mesh packets for others';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'Off-grid repeat requires 433, 869, or 918 MHz frequency';
 
   @override
   String settings_error(String message) {

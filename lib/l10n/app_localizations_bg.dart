@@ -351,15 +351,6 @@ class AppLocalizationsBg extends AppLocalizations {
   String get settings_presets => 'Предварителни настройки';
 
   @override
-  String get settings_preset915Mhz => '915 MHz';
-
-  @override
-  String get settings_preset868Mhz => '868 MHz';
-
-  @override
-  String get settings_preset433Mhz => '433 MHz';
-
-  @override
   String get settings_frequency => 'Честота (MHz)';
 
   @override
@@ -387,10 +378,15 @@ class AppLocalizationsBg extends AppLocalizations {
   String get settings_txPowerInvalid => 'Невалидна мощност на TX (0-22 dBm)';
 
   @override
-  String get settings_longRange => 'Дълъг обхват';
+  String get settings_clientRepeat => 'Без електричество – повторение';
 
   @override
-  String get settings_fastSpeed => 'Бърза скорост';
+  String get settings_clientRepeatSubtitle =>
+      'Позволете на това устройство да предава пакети към мрежата за други устройства.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'За повторение извън мрежата са необходими честоти от 433, 869 или 918 MHz.';
 
   @override
   String settings_error(String message) {

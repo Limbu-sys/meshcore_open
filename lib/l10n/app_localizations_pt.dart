@@ -349,15 +349,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get settings_presets => 'Presets';
 
   @override
-  String get settings_preset915Mhz => '915 MHz';
-
-  @override
-  String get settings_preset868Mhz => '868 MHz';
-
-  @override
-  String get settings_preset433Mhz => '433 MHz';
-
-  @override
   String get settings_frequency => 'Frequência (MHz)';
 
   @override
@@ -385,10 +376,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get settings_txPowerInvalid => 'Potência de TX inválida (0-22 dBm)';
 
   @override
-  String get settings_longRange => 'Alcance Longo';
+  String get settings_clientRepeat => 'Repetição sem rede';
 
   @override
-  String get settings_fastSpeed => 'Velocidade Rápida';
+  String get settings_clientRepeatSubtitle =>
+      'Permita que este dispositivo repita pacotes de rede para outros dispositivos.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'A repetição fora da rede requer frequências de 433, 869 ou 918 MHz.';
 
   @override
   String settings_error(String message) {

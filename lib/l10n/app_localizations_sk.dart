@@ -345,15 +345,6 @@ class AppLocalizationsSk extends AppLocalizations {
   String get settings_presets => 'Prednastavenia';
 
   @override
-  String get settings_preset915Mhz => '915 MHz';
-
-  @override
-  String get settings_preset868Mhz => '868 MHz';
-
-  @override
-  String get settings_preset433Mhz => '433 MHz';
-
-  @override
   String get settings_frequency => 'Frekvencia (MHz)';
 
   @override
@@ -381,10 +372,15 @@ class AppLocalizationsSk extends AppLocalizations {
   String get settings_txPowerInvalid => 'Neplatná hodnota výkonu TX (0-22 dBm)';
 
   @override
-  String get settings_longRange => 'Dlhý dosah';
+  String get settings_clientRepeat => 'Opätovné použitie bez elektrickej siete';
 
   @override
-  String get settings_fastSpeed => 'Rýchla rýchlosť';
+  String get settings_clientRepeatSubtitle =>
+      'Umožnite, aby toto zariadenie opakovávalo siete pre ostatných.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'Použitie off-grid systému vyžaduje frekvencie 433, 869 alebo 918 MHz.';
 
   @override
   String settings_error(String message) {

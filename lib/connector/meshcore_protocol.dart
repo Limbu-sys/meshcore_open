@@ -585,18 +585,29 @@ Uint8List buildSetChannelFrame(int channelIndex, String name, Uint8List psk) {
 }
 
 // Build CMD_SET_RADIO_PARAMS frame
-// Format: [cmd][freq x4][bw x4][sf][cr]
+// Format: [cmd][freq x4][bw x4][sf][cr] (pre-v9)
+//         [cmd][freq x4][bw x4][sf][cr][repeat] (firmware v9+)
 // freq: frequency in Hz (300000-2500000)
 // bw: bandwidth in Hz (7000-500000)
 // sf: spreading factor (5-12)
 // cr: coding rate (5-8)
-Uint8List buildSetRadioParamsFrame(int freqHz, int bwHz, int sf, int cr) {
+// clientRepeat: enable off-grid packet repeat (firmware v9+, omit for older)
+Uint8List buildSetRadioParamsFrame(
+  int freqHz,
+  int bwHz,
+  int sf,
+  int cr, {
+  bool? clientRepeat,
+}) {
   final writer = BufferWriter();
   writer.writeByte(cmdSetRadioParams);
   writer.writeUInt32LE(freqHz);
   writer.writeUInt32LE(bwHz);
   writer.writeByte(sf);
   writer.writeByte(cr);
+  if (clientRepeat != null) {
+    writer.writeByte(clientRepeat ? 1 : 0);
+  }
   return writer.toBytes();
 }
 

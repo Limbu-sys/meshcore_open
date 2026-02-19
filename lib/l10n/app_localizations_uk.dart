@@ -347,15 +347,6 @@ class AppLocalizationsUk extends AppLocalizations {
   String get settings_presets => 'Попередні налаштування';
 
   @override
-  String get settings_preset915Mhz => '915 МГц';
-
-  @override
-  String get settings_preset868Mhz => '868 МГц';
-
-  @override
-  String get settings_preset433Mhz => '433 МГц';
-
-  @override
   String get settings_frequency => 'Частота (МГц)';
 
   @override
@@ -383,10 +374,15 @@ class AppLocalizationsUk extends AppLocalizations {
   String get settings_txPowerInvalid => 'Некоректна потужність TX (0-22 дБм)';
 
   @override
-  String get settings_longRange => 'Дальній діапазон';
+  String get settings_clientRepeat => 'Автономна система';
 
   @override
-  String get settings_fastSpeed => 'Висока швидкість';
+  String get settings_clientRepeatSubtitle =>
+      'Дозвольте цьому пристрою повторювати пакети даних для інших пристроїв.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'Повтор без підключення до мережі вимагає частоти 433, 869 або 918 МГц.';
 
   @override
   String settings_error(String message) {
