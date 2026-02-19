@@ -1,12 +1,12 @@
 {
   "@@locale": "pl",
-  "appTitle": "MeshCore Open",
+  "appTitle": "Otwórz MeshCore",
   "nav_contacts": "Kontakty",
   "nav_channels": "Kanały",
   "nav_map": "Mapa",
   "common_cancel": "Anuluj",
   "common_connect": "Połącz",
-  "common_unknownDevice": "Nieznane urządzenie",
+  "common_unknownDevice": "Nieznane urzÄ…dzenie",
   "common_save": "Zapisz",
   "common_delete": "Usuń",
   "common_close": "Zamknąć",
@@ -28,7 +28,7 @@
   "common_reboot": "Zrestartować",
   "common_loading": "Ładowanie...",
   "common_notAvailable": "—",
-  "common_voltageValue": "{volts} V",
+  "common_voltageValue": "{volts} W",
   "@common_voltageValue": {
     "placeholders": {
       "volts": {
@@ -44,7 +44,7 @@
       }
     }
   },
-  "scanner_title": "MeshCore Open",
+  "scanner_title": "Otwórz MeshCore",
   "scanner_scanning": "Skanowanie urządzeń...",
   "scanner_connecting": "Łączenie...",
   "scanner_disconnecting": "Odłączanie...",
@@ -70,16 +70,16 @@
   "scanner_stop": "Zatrzymaj",
   "scanner_scan": "Przeskanuj",
   "device_quickSwitch": "Szybka zmiana",
-  "device_meshcore": "MeshCore",
+  "device_meshcore": "SiatkaCore",
   "settings_title": "Ustawienia",
-  "settings_deviceInfo": "Informacje o urządzeniu",
+  "settings_deviceInfo": "Informacje o urzÄ…dzeniu",
   "settings_appSettings": "Ustawienia aplikacji",
   "settings_appSettingsSubtitle": "Powiadomienia, wiadomości i preferencje mapy",
   "settings_nodeSettings": "Ustawienia węzła",
   "settings_nodeName": "Nazwa węzła",
   "settings_nodeNameNotSet": "Nie ustawione",
   "settings_nodeNameHint": "Wprowadź nazwę węzła",
-  "settings_nodeNameUpdated": "Imię zaktualizowane",
+  "settings_nodeNameUpdated": "ImiÄ™ zaktualizowane",
   "settings_radioSettings": "Ustawienia radia",
   "settings_radioSettingsSubtitle": "Częstotliwość, moc, współczynnik rozpraszania",
   "settings_radioSettingsUpdated": "Ustawienia radia zostały zaktualizowane",
@@ -91,7 +91,7 @@
   "settings_latitude": "Szerokość",
   "settings_longitude": "Długość",
   "settings_privacyMode": "Tryb Prywatny",
-  "settings_privacyModeSubtitle": "Ukryj imię/lokalizację w reklamach",
+  "settings_privacyModeSubtitle": "Ukryj imiÄ™/lokalizacjÄ™ w reklamach",
   "settings_privacyModeToggle": "Włącz tryb prywatności, aby ukryć swoje imię i lokalizację w reklamach.",
   "settings_privacyModeEnabled": "Tryb prywatności włączony",
   "settings_privacyModeDisabled": "Tryb prywatności wyłączony",
@@ -100,20 +100,20 @@
   "settings_sendAdvertisementSubtitle": "Obecność transmisji jest teraz",
   "settings_advertisementSent": "Reklama wysłana",
   "settings_syncTime": "Czas synchronizacji",
-  "settings_syncTimeSubtitle": "Ustaw zegar urządzenia na czas telefonu.",
+  "settings_syncTimeSubtitle": "Ustaw zegar urzÄ…dzenia na czas telefonu.",
   "settings_timeSynchronized": "Synchronizacja czasu",
   "settings_refreshContacts": "Odśwież Kontakty",
   "settings_refreshContactsSubtitle": "Odśwież listę kontaktów z urządzenia",
-  "settings_rebootDevice": "Zrestartuj Urządzenie",
-  "settings_rebootDeviceSubtitle": "Zrestartuj urządzenie MeshCore",
+  "settings_rebootDevice": "Zrestartuj UrzÄ…dzenie",
+  "settings_rebootDeviceSubtitle": "Zrestartuj urzÄ…dzenie MeshCore",
   "settings_rebootDeviceConfirm": "Czy na pewno chcesz zrestartować urządzenie? Będziesz odłączony.",
-  "settings_debug": "Debug",
+  "settings_debug": "Odpluskwić",
   "settings_bleDebugLog": "Log błędów BLE",
   "settings_bleDebugLogSubtitle": "Polecenia BLE, odpowiedzi i surowe dane",
   "settings_appDebugLog": "Log Wykonywania Aplikacji",
   "settings_appDebugLogSubtitle": "Komunikaty debugowania aplikacji",
   "settings_about": "O mnie",
-  "settings_aboutVersion": "MeshCore Open v{version}",
+  "settings_aboutVersion": "MeshCore Otwórz v{version}",
   "@settings_aboutVersion": {
     "placeholders": {
       "version": {
@@ -123,7 +123,7 @@
   },
   "settings_aboutLegalese": "Projekt MeshCore Open Source 2026",
   "settings_aboutDescription": "Otwarty kod źródłowy klient Flutter dla urządzeń do sieci mesh LoRa MeshCore.",
-  "settings_infoName": "Imię",
+  "settings_infoName": "ImiÄ™",
   "settings_infoId": "ID",
   "settings_infoStatus": "Status",
   "settings_infoBattery": "Bateria",
@@ -149,25 +149,25 @@
     }
   },
   "appSettings_title": "Ustawienia aplikacji",
-  "appSettings_appearance": "Wygląd",
+  "appSettings_appearance": "WyglÄ…d",
   "appSettings_theme": "Motyw",
   "appSettings_themeSystem": "Domyślne ustawienia systemu",
   "appSettings_themeLight": "Jasne",
   "appSettings_themeDark": "Ciemny",
   "appSettings_language": "Język",
   "appSettings_languageSystem": "Domyślny systemowy",
-  "appSettings_languageEn": "English",
-  "appSettings_languageFr": "Français",
-  "appSettings_languageEs": "Español",
-  "appSettings_languageDe": "Deutsch",
+  "appSettings_languageEn": "angielski",
+  "appSettings_languageFr": "francuski",
+  "appSettings_languageEs": "hiszpański",
+  "appSettings_languageDe": "Niemiecki",
   "appSettings_languagePl": "Polski",
-  "appSettings_languageSl": "Slovenščina",
-  "appSettings_languagePt": "Português",
-  "appSettings_languageIt": "Italiano",
+  "appSettings_languageSl": "Słowenia",
+  "appSettings_languagePt": "portugalski",
+  "appSettings_languageIt": "włoski",
   "appSettings_languageZh": "中文",
   "appSettings_languageSv": "Svenska",
-  "appSettings_languageNl": "Nederlands",
-  "appSettings_languageSk": "Slovenčina",
+  "appSettings_languageNl": "Holandia",
+  "appSettings_languageSk": "Słowenia",
   "appSettings_languageBg": "Български",
   "appSettings_notifications": "Powiadomienia",
   "appSettings_enableNotifications": "Włącz Powiadomienia",
@@ -192,7 +192,7 @@
   "appSettings_autoRouteRotationDisabled": "Automatyczne obracanie tras wyłączone",
   "appSettings_battery": "Bateria",
   "appSettings_batteryChemistry": "Chemia Baterii",
-  "appSettings_batteryChemistryPerDevice": "Ustawione na urządzenie ({deviceName})",
+  "appSettings_batteryChemistryPerDevice": "Ustawione na urzÄ…dzenie ({deviceName})",
   "@appSettings_batteryChemistryPerDevice": {
     "placeholders": {
       "deviceName": {
@@ -241,7 +241,7 @@
       }
     }
   },
-  "appSettings_debugCard": "Debug",
+  "appSettings_debugCard": "Odpluskwić",
   "appSettings_appDebugLogging": "Logowanie Debugowania Aplikacji",
   "appSettings_appDebugLoggingSubtitle": "Loguj wiadomości debugowania aplikacji w celu rozwiązywania problemów.",
   "appSettings_appDebugLoggingEnabled": "Zdebugowanie aplikacji włączone",
@@ -264,7 +264,7 @@
   "contacts_manageRepeater": "Zarządzaj Powtórzami",
   "contacts_roomLogin": "Logowanie do pokoju",
   "contacts_openChat": "Otwórz czat",
-  "contacts_editGroup": "Edytuj Grupę",
+  "contacts_editGroup": "Edytuj GrupÄ™",
   "contacts_deleteGroup": "Usuń Grupę",
   "contacts_deleteGroupConfirm": "Usuń \"{groupName}\"?",
   "@contacts_deleteGroupConfirm": {
@@ -297,7 +297,7 @@
       }
     }
   },
-  "contacts_lastSeenHourAgo": "Ostatni raz widziany 1 godzinę temu",
+  "contacts_lastSeenHourAgo": "Ostatni raz widziany 1 godzinÄ™ temu",
   "contacts_lastSeenHoursAgo": "Ostatnie połączenie {hours} godzin temu",
   "@contacts_lastSeenHoursAgo": {
     "placeholders": {
@@ -355,8 +355,8 @@
   "channels_channelIndexLabel": "Indeks kanału",
   "channels_channelName": "Nazwa kanału",
   "channels_usePublicChannel": "Użyj kanału publicznego",
-  "channels_standardPublicPsk": "Standard public PSK",
-  "channels_pskHex": "PSK (Hex)",
+  "channels_standardPublicPsk": "Standardowy publiczny PSK",
+  "channels_pskHex": "PSK (szesnastkowo)",
   "channels_generateRandomPsk": "Wygeneruj losowy klucz PSK",
   "channels_enterChannelName": "Proszę podać nazwę kanału.",
   "channels_pskMustBe32Hex": "PSK musi mieć 32 znaki szesnastkowe.",
@@ -444,7 +444,7 @@
   },
   "chat_sendGif": "Wyślij GIF",
   "chat_reply": "Odpowiedz",
-  "chat_addReaction": "Dodaj Reakcję",
+  "chat_addReaction": "Dodaj ReakcjÄ™",
   "chat_me": "Ja",
   "emojiCategorySmileys": "Emoji",
   "emojiCategoryGestures": "Gestikulacje",
@@ -493,7 +493,7 @@
       }
     }
   },
-  "debugFrame_timestamp": "- Timestamp: {timestamp}",
+  "debugFrame_timestamp": "- Znacznik czasu: {timestamp}",
   "@debugFrame_timestamp": {
     "placeholders": {
       "timestamp": {
@@ -520,7 +520,7 @@
       }
     }
   },
-  "debugFrame_textTypeCli": "CLI",
+  "debugFrame_textTypeCli": "interfejs wiersza polecenia",
   "debugFrame_textTypePlain": "Proste",
   "debugFrame_text": "- Tekst: \"{text}\"",
   "@debugFrame_text": {
@@ -572,7 +572,7 @@
     }
   },
   "chat_pathSavedLocally": "Zapisano lokalnie. Połącz się, aby zsynchronizować.",
-  "chat_pathDeviceConfirmed": "Urządzenie potwierdzone.",
+  "chat_pathDeviceConfirmed": "UrzÄ…dzenie potwierdzone.",
   "chat_pathDeviceNotConfirmed": "Urządzenie nie zostało jeszcze potwierdzone.",
   "chat_type": "Wprowadź",
   "chat_path": "Ścieżka",
@@ -643,7 +643,7 @@
   "map_source": "Źródło",
   "map_flags": "Flagi",
   "map_shareMarkerHere": "Udostępnij znacznik tutaj",
-  "map_pinLabel": "Oznacz etykietę",
+  "map_pinLabel": "Oznacz etykietÄ™",
   "map_label": "Etykieta",
   "map_pointOfInterest": "Punkt zainteresowań",
   "map_sendToContact": "Wyślij do kontaktu",
@@ -789,7 +789,7 @@
   "time_days": "dni",
   "time_week": "tydzień",
   "time_weeks": "tygodnie",
-  "time_month": "miesiąc",
+  "time_month": "miesiÄ…c",
   "time_months": "miesiace",
   "time_minutes": "minuty",
   "time_allTime": "Wszystko czasowo",
@@ -808,7 +808,7 @@
   "login_autoUseSavedPath": "Automatycznie (użyj zapisanej ścieżki)",
   "login_forceFloodMode": "Wymusz Tryb Powodowany",
   "login_managePaths": "Zarządzaj Ścieżkami",
-  "login_login": "Zaloguj się",
+  "login_login": "Zaloguj siÄ™",
   "login_attempt": "Próba {current}/{max}",
   "@login_attempt": {
     "placeholders": {
@@ -870,9 +870,9 @@
   "repeater_managementTools": "Narzędzia Zarządzania",
   "repeater_status": "Status",
   "repeater_statusSubtitle": "Wyświetl status powtarzacza, statystyki i sąsiadów.",
-  "repeater_telemetry": "Telemetry",
+  "repeater_telemetry": "Telemetria",
   "repeater_telemetrySubtitle": "Wyświetl dane telemetryczne z czujników i statystyki systemu",
-  "repeater_cli": "CLI",
+  "repeater_cli": "interfejs wiersza polecenia",
   "repeater_cliSubtitle": "Wyślij polecenia do powielacza",
   "repeater_settings": "Ustawienia",
   "repeater_settingsSubtitle": "Skonfiguruj parametry powtarzacza",
@@ -901,8 +901,8 @@
   "repeater_lastRssi": "Ostatni RSSI",
   "repeater_lastSnr": "Ostatnie SNR",
   "repeater_noiseFloor": "Poziom Szumów",
-  "repeater_txAirtime": "TX Airtime",
-  "repeater_rxAirtime": "RX Airtime",
+  "repeater_txAirtime": "Czas antenowy w Teksasie",
+  "repeater_rxAirtime": "Czas antenowy RX",
   "repeater_packetStatistics": "Statystyki pakietów",
   "repeater_sent": "Wysłane",
   "repeater_received": "Otrzymano",
@@ -982,7 +982,7 @@
   "repeater_radioSettings": "Ustawienia radia",
   "repeater_frequencyMhz": "Częstotliwość (MHz)",
   "repeater_frequencyHelper": "300-2500 MHz",
-  "repeater_txPower": "TX Power",
+  "repeater_txPower": "Moc TX",
   "repeater_txPowerHelper": "1-30 dBm",
   "repeater_bandwidth": "Przepustowość",
   "repeater_spreadingFactor": "Rozkład Czynnika",
@@ -998,7 +998,7 @@
   "repeater_guestAccess": "Dostęp dla gości",
   "repeater_guestAccessSubtitle": "Umożliw dostęp tylko do odczytu dla gości.",
   "repeater_privacyMode": "Tryb Prywatności",
-  "repeater_privacyModeSubtitle": "Ukryj imię/lokalizację w reklamach",
+  "repeater_privacyModeSubtitle": "Ukryj imiÄ™/lokalizacjÄ™ w reklamach",
   "repeater_advertisementSettings": "Ustawienia Reklam",
   "repeater_localAdvertInterval": "Interwał Reklamy Lokalnej",
   "repeater_localAdvertIntervalMinutes": "{minutes} minut",
@@ -1021,10 +1021,10 @@
   "repeater_encryptedAdvertInterval": "Zaszyfrowany Interwał Reklamowy",
   "repeater_dangerZone": "Strefa Zagrożeń",
   "repeater_rebootRepeater": "Zrestartuj Powtarzacz",
-  "repeater_rebootRepeaterSubtitle": "Zrestartuj urządzenie powtarzające.",
+  "repeater_rebootRepeaterSubtitle": "Zrestartuj urzÄ…dzenie powtarzajÄ…ce.",
   "repeater_rebootRepeaterConfirm": "Czy na pewno chcesz zrestartować ten repeater?",
   "repeater_regenerateIdentityKey": "Wygeneruj klucz tożsamości",
-  "repeater_regenerateIdentityKeySubtitle": "Wygeneruj nową parę kluczy publicznych/prywatnych",
+  "repeater_regenerateIdentityKeySubtitle": "Wygeneruj nowÄ… parÄ™ kluczy publicznych/prywatnych",
   "repeater_regenerateIdentityKeyConfirm": "To zostanie wygenerowane nowe tożsamość dla powtarzacza. Kontynuować?",
   "repeater_eraseFileSystem": "Wyczyść System Plików",
   "repeater_eraseFileSystemSubtitle": "Sformatuj system plików powielacza",
@@ -1099,10 +1099,10 @@
       }
     }
   },
-  "repeater_cliQuickGetName": "Pobierz imię",
+  "repeater_cliQuickGetName": "Pobierz imiÄ™",
   "repeater_cliQuickGetRadio": "Uzyskaj Radio",
   "repeater_cliQuickGetTx": "Pobierz TX",
-  "repeater_cliQuickNeighbors": "Sąsiedzi",
+  "repeater_cliQuickNeighbors": "SÄ…siedzi",
   "repeater_cliQuickVersion": "Wersja",
   "repeater_cliQuickAdvertise": "Reklama",
   "repeater_cliQuickClock": "Godzina",
@@ -1123,7 +1123,7 @@
   "repeater_cliHelpSetAdvertInterval": "Ustawia interwał timera w minutach do wysyłania pakietu reklamy lokalnej (bezpośredniej). Ustaw na 0, aby wyłączyć.",
   "repeater_cliHelpSetFloodAdvertInterval": "Ustawia interwał timera w godzinach do wysłania pakietu reklamowego typu \"powiew\". Ustaw na 0, aby wyłączyć.",
   "repeater_cliHelpSetGuestPassword": "Ustawia/aktualizuje hasło gościa. (dla repeaterów, loginy gości mogą wysyłać żądanie \"Get Stats\")",
-  "repeater_cliHelpSetName": "Ustawia nazwę reklamy.",
+  "repeater_cliHelpSetName": "Ustawia nazwÄ™ reklamy.",
   "repeater_cliHelpSetLat": "Ustawia współrzędną geograficzne (w stopniach dziesiętnych) mapy reklam.",
   "repeater_cliHelpSetLon": "Ustawia współrzędną długościową mapy reklamy. (stopnie dziesiętne)",
   "repeater_cliHelpSetRadio": "Ustawia nowe parametry radia i zapisuje je w preferencjach. Wymaga polecenia \"reboot\" do zastosowania.",
@@ -1147,7 +1147,7 @@
   "repeater_cliHelpRegion": "(tylko seria) Wyświetla wszystkie zdefiniowane regiony i aktualne uprawnienia do powodzi.",
   "repeater_cliHelpRegionLoad": "ZAPOMNIJ: to jest specjalne wywołanie wielokomendowe. Każda następna komenda jest nazwą regionu (wcięta spacjami, aby wskazywać hierarchię nadrzędną, z minimum jedną spacją). Zakończona wysłaniem pustej linii/komendy.",
   "repeater_cliHelpRegionGet": "Wyszukuje region o podanej nazwie prefiksu (lub \"\" dla zakresu globalnego). Odpowiada \"-> region-name (parent-name) 'F'\"",
-  "repeater_cliHelpRegionPut": "Dodaje lub aktualizuje definicję regionu z podaną nazwą.",
+  "repeater_cliHelpRegionPut": "Dodaje lub aktualizuje definicjÄ™ regionu z podanÄ… nazwÄ….",
   "repeater_cliHelpRegionRemove": "Usuwa definicję regionu o podanej nazwie. (musi się dokładnie zgadzać i nie może mieć podregionów).",
   "repeater_cliHelpRegionAllowf": "Ustawia uprawnienia 'P'łytkowe dla podanego regionu. ('' dla zakresu globalnego/starszego)",
   "repeater_cliHelpRegionDenyf": "Usuwa uprawnienie 'Pływające' dla podanej strefy. (ZALECANE: na tym etapie NIE zaleca się używania tego na globalnym/starszym zakresie!!).",
@@ -1158,18 +1158,18 @@
   "repeater_cliHelpGpsOnOff": "Włącza/wyłącza nawigację GPS.",
   "repeater_cliHelpGpsSync": "Synchronizuje czas węzła z zegarem GPS.",
   "repeater_cliHelpGpsSetLoc": "Ustawia pozycję węzła na współrzędne GPS i zapisuje preferencje.",
-  "repeater_cliHelpGpsAdvert": "Udostępnia konfigurację reklamy lokalizacji węzła:\n- brak: nie uwzględniaj lokalizacji w reklamach\n- udostępnia: udostępnia lokalizację GPS (z SensorManager)\n- ustawienia: reklamuj lokalizację przechowywaną w ustawieniach",
-  "repeater_cliHelpGpsAdvertSet": "Ustawia konfigurację reklamy w lokalizacji.",
+  "repeater_cliHelpGpsAdvert": "Udostępnia konfigurację reklamy lokalizacji węzła:\n- brak: nie uwzględniaj lokalizacji w reklamach\n- udostępnia: udostępnia lokalizację GPS (z SensorManager)\n- ustawienia: reklamuj lokalizacjÄ™ przechowywanÄ… w ustawieniach",
+  "repeater_cliHelpGpsAdvertSet": "Ustawia konfiguracjÄ™ reklamy w lokalizacji.",
   "repeater_commandsListTitle": "Lista poleceń",
   "repeater_commandsListNote": "ZAPAMIĘTAJ: dla różnych poleceń \"set ...\" istnieje również polecenie \"get ...\".",
   "repeater_general": "Ogólne",
   "repeater_settingsCategory": "Ustawienia",
   "repeater_bridge": "Most",
   "repeater_logging": "Rejestrowanie",
-  "repeater_neighborsRepeaterOnly": "Sąsiedzi (tylko powtarzacz)",
-  "repeater_regionManagementRepeaterOnly": "Zarządzanie Regionem (tylko Powtarzacz)",
+  "repeater_neighborsRepeaterOnly": "SÄ…siedzi (tylko powtarzacz)",
+  "repeater_regionManagementRepeaterOnly": "ZarzÄ…dzanie Regionem (tylko Powtarzacz)",
   "repeater_regionNote": "Wprowadzono komendy regionalne w celu zarządzania definicjami i uprawnieniami regionów.",
-  "repeater_gpsManagement": "Zarządzanie GPS",
+  "repeater_gpsManagement": "ZarzÄ…dzanie GPS",
   "repeater_gpsNote": "Polecenie GPS zostało wprowadzone w celu zarządzania tematami związanymi z lokalizacją.",
   "telemetry_receivedData": "Otrzymano Dane Telemetrii",
   "telemetry_requestTimeout": "Życzenie o danych telemetrycznych nie udało się.",
@@ -1351,12 +1351,12 @@
       }
     }
   },
-  "repeater_neighbours": "Sąsiedzi",
+  "repeater_neighbours": "SÄ…siedzi",
   "repeater_neighboursSubtitle": "Wyświetl sąsiedztwo zerowych hopów.",
-  "neighbors_receivedData": "Otrzymano dane sąsiedztwa",
+  "neighbors_receivedData": "Otrzymano dane sÄ…siedztwa",
   "neighbors_requestTimedOut": "Sąsiedzi proszą o wyłączenie timingu.",
   "neighbors_errorLoading": "Błąd podczas ładowania sąsiadów: {error}",
-  "neighbors_repeatersNeighbours": "Powtarzacze Sąsiedzi",
+  "neighbors_repeatersNeighbours": "Powtarzacze SÄ…siedzi",
   "neighbors_noData": "Brak danych dotyczących sąsiadów.",
   "channels_joinPrivateChannelDesc": "Ręcznie wprowadź klucz tajny.",
   "channels_createPrivateChannel": "Utwórz Prywatny Kanał",
@@ -1390,8 +1390,8 @@
   "settings_locationGPSEnableSubtitle": "Włącza automatyczne aktualizowanie pozycji za pomocą GPS.",
   "settings_locationIntervalSec": "Interwał dla GPS (Sekundy)",
   "settings_locationIntervalInvalid": "Interwał musi wynosić co najmniej 60 sekund i mniej niż 86400 sekund.",
-  "contacts_manageRoom": "Zarządzaj Serwerem Pokoju",
-  "room_management": "Zarządzanie Serwerem Pokoju",
+  "contacts_manageRoom": "ZarzÄ…dzaj Serwerem Pokoju",
+  "room_management": "ZarzÄ…dzanie Serwerem Pokoju",
   "@community_joinConfirmation": {
     "placeholders": {
       "name": {
@@ -1474,7 +1474,7 @@
   "community_addPublicChannelHint": "Automatycznie dodaj kanał publiczny dla tej społeczności.",
   "community_noCommunities": "Nie dołączono jeszcze żadnych społeczności.",
   "community_scanOrCreate": "Skanuj kod QR lub utwórz społeczność, aby zacząć.",
-  "community_manageCommunities": "Zarządzaj Grupami",
+  "community_manageCommunities": "ZarzÄ…dzaj Grupami",
   "community_delete": "Opuszczenie Społeczności",
   "community_deleteConfirm": "Opuścić \"{name}\"?",
   "community_deleteChannelsWarning": "Spowoduje to również usunięcie {count} kanału/kanałów i ich wiadomości.",
@@ -1572,14 +1572,14 @@
   "notification_receivedNewMessage": "Otrzymano nową wiadomość",
   "settings_gpxExportContacts": "Eksportuj towarzyszy do GPX",
   "settings_gpxExportRepeaters": "Eksportuj powtórki / serwer pokojowy do GPX",
-  "settings_gpxExportRepeatersSubtitle": "Eksportuje powtarzacze / roomserver z lokalizacją do pliku GPX.",
+  "settings_gpxExportRepeatersSubtitle": "Eksportuje powtarzacze / roomserver z lokalizacjÄ… do pliku GPX.",
   "settings_gpxExportSuccess": "Pomyślnie wyeksportowano plik GPX.",
   "settings_gpxExportNotAvailable": "Nie obsługiwane na Twoim urządzeniu/systemie operacyjnym",
   "settings_gpxExportError": "Wystąpił błąd podczas eksportowania.",
   "settings_gpxExportRepeatersRoom": "Lokalizacje serwerów powtarzających i pomieszczeń",
-  "settings_gpxExportContactsSubtitle": "Eksportuje towarzyszy z lokalizacją do pliku GPX.",
+  "settings_gpxExportContactsSubtitle": "Eksportuje towarzyszy z lokalizacjÄ… do pliku GPX.",
   "settings_gpxExportAll": "Eksportuj wszystkie kontakty do GPX",
-  "settings_gpxExportAllSubtitle": "Eksportuje wszystkie kontakty z lokalizacją do pliku GPX.",
+  "settings_gpxExportAllSubtitle": "Eksportuje wszystkie kontakty z lokalizacjÄ… do pliku GPX.",
   "settings_gpxExportAllContacts": "Wszystkie lokalizacje kontaktów",
   "settings_gpxExportNoContacts": "Brak kontaktów do wyeksportowania.",
   "settings_gpxExportChat": "Lokalizacje towarzyszy",
@@ -1596,5 +1596,148 @@
   "scanner_enableBluetooth": "Włącz Bluetooth",
   "settings_clientRepeatSubtitle": "Pozwól temu urządzeniu powtarzać pakiety danych dla innych urządzeń.",
   "settings_clientRepeat": "Powtórzenie: Niezależne od sieci",
-  "settings_clientRepeatFreqWarning": "Powtórka poza siecią wymaga częstotliwości 433, 869 lub 918 MHz."
+  "settings_clientRepeatFreqWarning": "Powtórka poza siecią wymaga częstotliwości 433, 869 lub 918 MHz.",
+  "settings_aboutOpenMeteoAttribution": "Dane wysokościowe LOS: Open-Meteo (CC BY 4.0)",
+  "map_lineOfSight": "Linia wzroku",
+  "map_losScreenTitle": "Linia wzroku",
+  "losSelectStartEnd": "Wybierz węzły początkowe i końcowe dla LOS.",
+  "losRunFailed": "Sprawdzenie pola widzenia nie powiodło się: {error}",
+  "losClearAllPoints": "Wyczyść wszystkie punkty",
+  "losRunToViewElevationProfile": "Uruchom LOS, aby wyświetlić profil wysokości",
+  "losMenuTitle": "Menu LOS",
+  "losMenuSubtitle": "Stuknij węzły lub naciśnij i przytrzymaj mapę, aby uzyskać niestandardowe punkty",
+  "losShowDisplayNodes": "Pokaż węzły wyświetlające",
+  "losCustomPoints": "Punkty niestandardowe",
+  "losCustomPointLabel": "Niestandardowe {index}",
+  "losPointA": "Punkt A",
+  "losPointB": "Punkt B",
+  "losAntennaA": "Antena A: {value} {unit}",
+  "losAntennaB": "Antena B: {value} {unit}",
+  "losRun": "Uruchom LOS-a",
+  "losNoElevationData": "Brak danych o wysokości",
+  "losProfileClear": "{distance} {distanceUnit}, czysty LOS, minimalny prześwit {clearance} {heightUnit}",
+  "losProfileBlocked": "{distance} {distanceUnit}, zablokowane przez {obstruction} {heightUnit}",
+  "losStatusChecking": "LOS: sprawdzam...",
+  "losStatusNoData": "LOS: brak danych",
+  "losStatusSummary": "LOS: {clear}/{total} jasne, {blocked} zablokowane, {unknown} nieznane",
+  "losErrorElevationUnavailable": "Dane dotyczące wysokości są niedostępne dla jednej lub większej liczby próbek.",
+  "losErrorInvalidInput": "Nieprawidłowe dane punktów/wysokości do obliczenia LOS.",
+  "losRenameCustomPoint": "Zmień nazwę punktu niestandardowego",
+  "losPointName": "Nazwa punktu",
+  "losShowPanelTooltip": "Pokaż panel LOS",
+  "losHidePanelTooltip": "Ukryj panel LOS",
+  "losElevationAttribution": "Dane dotyczące wysokości: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Jednostki",
+  "appSettings_unitsMetric": "Metryczne (m / km)",
+  "appSettings_unitsImperial": "Imperialne (ft / mi)",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_messagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_channelMessagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_newNodesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_newTypeDiscovered": {
+    "placeholders": {
+      "contactType": {
+        "type": "String"
+      }
+    }
+  }
 }

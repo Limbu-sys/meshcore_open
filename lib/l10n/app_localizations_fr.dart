@@ -9,7 +9,7 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
-  String get appTitle => 'MeshCore Open';
+  String get appTitle => 'MeshCore ouvert';
 
   @override
   String get nav_contacts => 'Contacts';
@@ -24,7 +24,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get common_cancel => 'Annuler';
 
   @override
-  String get common_ok => 'OK';
+  String get common_ok => 'D\'ACCORD';
 
   @override
   String get common_connect => 'Connecter';
@@ -106,7 +106,7 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get scanner_title => 'MeshCore Open';
+  String get scanner_title => 'MeshCore ouvert';
 
   @override
   String get scanner_scanning => 'Recherche de périphériques...';
@@ -157,7 +157,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get device_quickSwitch => 'Basculement rapide';
 
   @override
-  String get device_meshcore => 'MeshCore';
+  String get device_meshcore => 'Noyau maillé';
 
   @override
   String get settings_title => 'Paramètres';
@@ -253,7 +253,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Mode de confidentialité désactivé';
 
   @override
-  String get settings_actions => 'Actions';
+  String get settings_actions => 'Actes';
 
   @override
   String get settings_sendAdvertisement => 'S\'annoncer';
@@ -314,7 +314,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String settings_aboutVersion(String version) {
-    return 'MeshCore Open v$version';
+    return 'MeshCore Ouvert v$version';
   }
 
   @override
@@ -325,10 +325,14 @@ class AppLocalizationsFr extends AppLocalizations {
       'Un client Flutter open source pour les appareils de réseau mesh MeshCore LoRa.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'Données d\'élévation LOS : Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Nom';
 
   @override
-  String get settings_infoId => 'ID';
+  String get settings_infoId => 'IDENTIFIANT';
 
   @override
   String get settings_infoStatus => 'État';
@@ -416,40 +420,40 @@ class AppLocalizationsFr extends AppLocalizations {
   String get appSettings_languageSystem => 'Par défaut du système';
 
   @override
-  String get appSettings_languageEn => 'English';
+  String get appSettings_languageEn => 'Anglais';
 
   @override
   String get appSettings_languageFr => 'Français';
 
   @override
-  String get appSettings_languageEs => 'Español';
+  String get appSettings_languageEs => 'espagnol';
 
   @override
-  String get appSettings_languageDe => 'Deutsch';
+  String get appSettings_languageDe => 'Allemand';
 
   @override
-  String get appSettings_languagePl => 'Polski';
+  String get appSettings_languagePl => 'Pologne';
 
   @override
   String get appSettings_languageSl => 'Slovenščina';
 
   @override
-  String get appSettings_languagePt => 'Português';
+  String get appSettings_languagePt => 'Portugais';
 
   @override
-  String get appSettings_languageIt => 'Italiano';
+  String get appSettings_languageIt => 'Italien';
 
   @override
-  String get appSettings_languageZh => '中文';
+  String get appSettings_languageZh => 'Chine';
 
   @override
-  String get appSettings_languageSv => 'Svenska';
+  String get appSettings_languageSv => 'Suède';
 
   @override
-  String get appSettings_languageNl => 'Nederlands';
+  String get appSettings_languageNl => 'Pays-Bas';
 
   @override
-  String get appSettings_languageSk => 'Slovenčina';
+  String get appSettings_languageSk => 'Slovénie';
 
   @override
   String get appSettings_languageBg => 'Български';
@@ -623,6 +627,15 @@ class AppLocalizationsFr extends AppLocalizations {
   String get appSettings_offlineMapCache => 'Cache de Carte Hors Ligne';
 
   @override
+  String get appSettings_unitsTitle => 'Unités';
+
+  @override
+  String get appSettings_unitsMetric => 'Métrique (m/km)';
+
+  @override
+  String get appSettings_unitsImperial => 'Impérial (ft / mi)';
+
+  @override
   String get appSettings_noAreaSelected => 'Aucune zone sélectionnée';
 
   @override
@@ -771,7 +784,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get channels_hashtagChannel => 'Canal avec hashtag';
 
   @override
-  String get channels_public => 'Public';
+  String get channels_public => 'Publique';
 
   @override
   String get channels_private => 'Privé';
@@ -814,7 +827,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get channels_standardPublicPsk => 'PSK public standard';
 
   @override
-  String get channels_pskHex => 'PSK (Hex)';
+  String get channels_pskHex => 'PSK (hexadécimal)';
 
   @override
   String get channels_generateRandomPsk =>
@@ -1047,7 +1060,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String debugFrame_destinationPubKey(String pubKey) {
-    return '- Destination PubKey: $pubKey';
+    return '- Clé Publique de destination : $pubKey';
   }
 
   @override
@@ -1242,6 +1255,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get map_title => 'Carte des nœuds';
+
+  @override
+  String get map_lineOfSight => 'Ligne de vue';
+
+  @override
+  String get map_losScreenTitle => 'Ligne de vue';
 
   @override
   String get map_noNodesWithLocation =>
@@ -1754,10 +1773,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get repeater_noiseFloor => 'Niveau de Bruit';
 
   @override
-  String get repeater_txAirtime => 'TX Airtime';
+  String get repeater_txAirtime => 'Temps d\'antenne au Texas';
 
   @override
-  String get repeater_rxAirtime => 'RX Airtime';
+  String get repeater_rxAirtime => 'Temps d\'antenne RX';
 
   @override
   String get repeater_packetStatistics => 'Statistiques des paquets';
@@ -2200,7 +2219,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get repeater_cliHelpSetPerm =>
-      'Modifie l’ACL. Supprime l’entrée correspondante (par préfixe de clé publique) si \"permissions\" est égal à zéro. Ajoute une nouvelle entrée si la clé publique hexadécimale a une longueur complète et n’est pas actuellement dans l’ACL. Met à jour l’entrée en fonction du préfixe de clé publique. Les bits de permission varient en fonction du rôle du firmware, mais les 2 bits inférieurs sont : 0 (Invité), 1 (Lecture seule), 2 (Lecture/écriture), 3 (Administrateur).';
+      'Modifie l\'ACL. Supprime l\'entrée correspondante (par préfixe de clé publique) si \"permissions\" est égal à zéro. Ajoute une nouvelle entrée si la clé publique hexadécimale a une longueur complète et n\'est pas actuellement dans l\'ACL. Met à jour l\'entrée en fonction du préfixe de clé publique. Les bits de permission varient en fonction du rôle du firmware, mais les 2 bits inférieurs sont : 0 (Invité), 1 (Lecture seule), 2 (Lecture/écriture), 3 (Administrateur).';
 
   @override
   String get repeater_cliHelpGetBridgeType =>
@@ -2267,7 +2286,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get repeater_cliHelpGps =>
-      'Affiche l’état du GPS. Lorsque le GPS est éteint, il répond uniquement « éteint », si allumé, il répond avec « allumé », l’état, la correction, le nombre de satellites.';
+      'Affiche l\'état du GPS. Lorsque le GPS est éteint, il répond uniquement « éteint », si allumé, il répond avec « allumé », l\'état, la correction, le nombre de satellites.';
 
   @override
   String get repeater_cliHelpGpsOnOff => 'Activer/désactiver le GPS.';
@@ -2709,7 +2728,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get listFilter_repeaters => 'Répéteurs';
 
   @override
-  String get listFilter_roomServers => 'Room servers';
+  String get listFilter_roomServers => 'Serveurs de salle';
 
   @override
   String get listFilter_unreadOnly => 'Messages non lus seulement';
@@ -2735,6 +2754,117 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get pathTrace_clearTooltip => 'Effacer le chemin';
+
+  @override
+  String get losSelectStartEnd =>
+      'Sélectionnez les nœuds de début et de fin pour LOS.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Échec de la vérification de la ligne de vue : $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Effacer tous les points';
+
+  @override
+  String get losRunToViewElevationProfile =>
+      'Exécutez LOS pour afficher le profil d\'altitude';
+
+  @override
+  String get losMenuTitle => 'Menu LOS';
+
+  @override
+  String get losMenuSubtitle =>
+      'Appuyez sur les nœuds ou appuyez longuement sur la carte pour des points personnalisés';
+
+  @override
+  String get losShowDisplayNodes => 'Afficher les nœuds d\'affichage';
+
+  @override
+  String get losCustomPoints => 'Points personnalisés';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Personnalisé $index';
+  }
+
+  @override
+  String get losPointA => 'Point A';
+
+  @override
+  String get losPointB => 'Point B';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Antenne A : $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Antenne B : $value $unit';
+  }
+
+  @override
+  String get losRun => 'Exécuter la LOS';
+
+  @override
+  String get losNoElevationData => 'Aucune donnée d\'altitude';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, LOS clair, clairance minimale $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, bloqué par $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'LOS : vérification...';
+
+  @override
+  String get losStatusNoData => 'LOS : aucune donnée';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS : $clear/$total clair, $blocked bloqué, $unknown inconnu';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Données d\'altitude indisponibles pour un ou plusieurs échantillons.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Données de points/d\'altitude non valides pour le calcul de la LOS.';
+
+  @override
+  String get losRenameCustomPoint => 'Renommer le point personnalisé';
+
+  @override
+  String get losPointName => 'Nom du point';
+
+  @override
+  String get losShowPanelTooltip => 'Afficher le panneau LOS';
+
+  @override
+  String get losHidePanelTooltip => 'Masquer le panneau LOS';
+
+  @override
+  String get losElevationAttribution =>
+      'Données d\'altitude : Open-Meteo (CC BY 4.0)';
 
   @override
   String get contacts_pathTrace => 'Traçage de chemin';

@@ -97,7 +97,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String common_voltageValue(String volts) {
-    return '$volts В';
+    return '$volts Ð\'';
   }
 
   @override
@@ -323,6 +323,10 @@ class AppLocalizationsUk extends AppLocalizations {
       'Клієнт Flutter з відкритим вихідним кодом для пристроїв мережі MeshCore LoRa.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'Дані про висоту LOS: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Ім\'я';
 
   @override
@@ -350,7 +354,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get settings_frequency => 'Частота (МГц)';
 
   @override
-  String get settings_frequencyHelper => '300.0 - 2500.0';
+  String get settings_frequencyHelper => '300,0 - 2500,0';
 
   @override
   String get settings_frequencyInvalid => 'Некоректна частота (300-2500 МГц)';
@@ -414,7 +418,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get appSettings_languageSystem => 'Як у системі';
 
   @override
-  String get appSettings_languageEn => 'English';
+  String get appSettings_languageEn => 'англійська';
 
   @override
   String get appSettings_languageFr => 'Français';
@@ -429,7 +433,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get appSettings_languagePl => 'Polski';
 
   @override
-  String get appSettings_languageSl => 'Slovenščina';
+  String get appSettings_languageSl => 'Словенщина';
 
   @override
   String get appSettings_languagePt => 'Português';
@@ -441,13 +445,13 @@ class AppLocalizationsUk extends AppLocalizations {
   String get appSettings_languageZh => '中文';
 
   @override
-  String get appSettings_languageSv => 'Svenska';
+  String get appSettings_languageSv => 'Свенська';
 
   @override
-  String get appSettings_languageNl => 'Nederlands';
+  String get appSettings_languageNl => 'Нідерланди';
 
   @override
-  String get appSettings_languageSk => 'Slovenčina';
+  String get appSettings_languageSk => 'Словенчина';
 
   @override
   String get appSettings_languageBg => 'Български';
@@ -550,13 +554,13 @@ class AppLocalizationsUk extends AppLocalizations {
       'Підключіть пристрій, щоб вибрати';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3.0-4.2В)';
+  String get appSettings_batteryNmc => '18650 NMC (3.0-4.2Ð\')';
 
   @override
-  String get appSettings_batteryLifepo4 => 'LiFePO4 (2.6-3.65В)';
+  String get appSettings_batteryLifepo4 => 'LiFePO4 (2.6-3.65Ð\')';
 
   @override
-  String get appSettings_batteryLipo => 'LiPo (3.0-4.2В)';
+  String get appSettings_batteryLipo => 'LiPo (3.0-4.2Ð\')';
 
   @override
   String get appSettings_mapDisplay => 'Відображення карти';
@@ -617,6 +621,15 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get appSettings_offlineMapCache => 'Офлайн-кеш карти';
+
+  @override
+  String get appSettings_unitsTitle => 'одиниці';
+
+  @override
+  String get appSettings_unitsMetric => 'Метричний (м / км)';
+
+  @override
+  String get appSettings_unitsImperial => 'Імперська (ft / mi)';
 
   @override
   String get appSettings_noAreaSelected => 'Область не вибрано';
@@ -809,7 +822,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get channels_standardPublicPsk => 'Стандартний публічний PSK';
 
   @override
-  String get channels_pskHex => 'PSK (Hex)';
+  String get channels_pskHex => 'PSK (шістнадцятковий)';
 
   @override
   String get channels_generateRandomPsk => 'Згенерувати випадковий ключ PSK';
@@ -1236,6 +1249,12 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get map_title => 'Карта вузлів';
+
+  @override
+  String get map_lineOfSight => 'Пряма видимість';
+
+  @override
+  String get map_losScreenTitle => 'Пряма видимість';
 
   @override
   String get map_noNodesWithLocation =>
@@ -2350,12 +2369,12 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String telemetry_batteryValue(int percent, String volts) {
-    return '$percent% / $voltsВ';
+    return '$percent% / $voltsÐ\'';
   }
 
   @override
   String telemetry_voltageValue(String volts) {
-    return '$voltsВ';
+    return '$voltsÐ\'';
   }
 
   @override
@@ -2729,6 +2748,117 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get pathTrace_clearTooltip => 'Очистити шлях';
+
+  @override
+  String get losSelectStartEnd =>
+      'Виберіть початковий і кінцевий вузли для LOS.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Помилка перевірки прямої видимості: $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Очистити всі пункти';
+
+  @override
+  String get losRunToViewElevationProfile =>
+      'Запустіть LOS, щоб переглянути профіль висоти';
+
+  @override
+  String get losMenuTitle => 'Меню LOS';
+
+  @override
+  String get losMenuSubtitle =>
+      'Торкніться вузлів або утримуйте карту, щоб отримати власні точки';
+
+  @override
+  String get losShowDisplayNodes => 'Показати вузли відображення';
+
+  @override
+  String get losCustomPoints => 'Користувальницькі точки';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Спеціальний $index';
+  }
+
+  @override
+  String get losPointA => 'Точка А';
+
+  @override
+  String get losPointB => 'Точка Б';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Антена A: $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Антена B: $value $unit';
+  }
+
+  @override
+  String get losRun => 'Запустіть LOS';
+
+  @override
+  String get losNoElevationData => 'Немає даних про висоту';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, чистий LOS, мінімальний зазор $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, заблоковано $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'LOS: перевірка...';
+
+  @override
+  String get losStatusNoData => 'LOS: немає даних';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS: $clear/$total очищено, $blocked заблоковано, $unknown невідомо';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Дані про висоту недоступні для одного чи кількох зразків.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Недійсні дані про точки/висоту для розрахунку LOS.';
+
+  @override
+  String get losRenameCustomPoint => 'Перейменуйте спеціальну точку';
+
+  @override
+  String get losPointName => 'Назва точки';
+
+  @override
+  String get losShowPanelTooltip => 'Показати панель LOS';
+
+  @override
+  String get losHidePanelTooltip => 'Приховати панель LOS';
+
+  @override
+  String get losElevationAttribution =>
+      'Дані про висоту: Open-Meteo (CC BY 4.0)';
 
   @override
   String get contacts_pathTrace => 'Трасування шляхів';

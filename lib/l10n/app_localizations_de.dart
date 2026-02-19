@@ -9,7 +9,7 @@ class AppLocalizationsDe extends AppLocalizations {
   AppLocalizationsDe([String locale = 'de']) : super(locale);
 
   @override
-  String get appTitle => 'MeshCore Open';
+  String get appTitle => 'MeshCore geöffnet';
 
   @override
   String get nav_contacts => 'Kontakte';
@@ -106,7 +106,7 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get scanner_title => 'MeshCore Open';
+  String get scanner_title => 'MeshCore geöffnet';
 
   @override
   String get scanner_scanning => 'Scannen nach Geräten...';
@@ -321,10 +321,14 @@ class AppLocalizationsDe extends AppLocalizations {
       'Ein Open-Source-Flutter-Client für MeshCore LoRa-Meshnetzwerkgeräte.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'LOS-Höhendaten: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Name';
 
   @override
-  String get settings_infoId => 'ID';
+  String get settings_infoId => 'AUSWEIS';
 
   @override
   String get settings_infoStatus => 'Status';
@@ -394,7 +398,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get appSettings_appearance => 'Aussehen';
 
   @override
-  String get appSettings_theme => 'Theme';
+  String get appSettings_theme => 'Thema';
 
   @override
   String get appSettings_themeSystem => 'Systemstandard';
@@ -412,28 +416,28 @@ class AppLocalizationsDe extends AppLocalizations {
   String get appSettings_languageSystem => 'Systemstandard';
 
   @override
-  String get appSettings_languageEn => 'English';
+  String get appSettings_languageEn => 'Englisch';
 
   @override
-  String get appSettings_languageFr => 'Français';
+  String get appSettings_languageFr => 'Französisch';
 
   @override
-  String get appSettings_languageEs => 'Español';
+  String get appSettings_languageEs => 'Spanisch';
 
   @override
   String get appSettings_languageDe => 'Deutsch';
 
   @override
-  String get appSettings_languagePl => 'Polski';
+  String get appSettings_languagePl => 'Polnisch';
 
   @override
-  String get appSettings_languageSl => 'Slovenščina';
+  String get appSettings_languageSl => 'Slowenisch';
 
   @override
-  String get appSettings_languagePt => 'Português';
+  String get appSettings_languagePt => 'Portugiesisch';
 
   @override
-  String get appSettings_languageIt => 'Italiano';
+  String get appSettings_languageIt => 'Italienisch';
 
   @override
   String get appSettings_languageZh => '中文';
@@ -442,13 +446,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get appSettings_languageSv => 'Svenska';
 
   @override
-  String get appSettings_languageNl => 'Nederlands';
+  String get appSettings_languageNl => 'Niederlande';
 
   @override
-  String get appSettings_languageSk => 'Slovenčina';
+  String get appSettings_languageSk => 'Slowenien';
 
   @override
-  String get appSettings_languageBg => 'Български';
+  String get appSettings_languageBg => 'Weißrussland';
 
   @override
   String get appSettings_languageRu => 'Russisch';
@@ -618,6 +622,15 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get appSettings_offlineMapCache => 'Offline-Karten-Cache';
+
+  @override
+  String get appSettings_unitsTitle => 'Einheiten';
+
+  @override
+  String get appSettings_unitsMetric => 'Metrisch (m/km)';
+
+  @override
+  String get appSettings_unitsImperial => 'Imperial (ft/mi)';
 
   @override
   String get appSettings_noAreaSelected => 'Kein Bereich ausgewählt';
@@ -1071,7 +1084,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String debugFrame_text(String text) {
-    return '- Text: \"$text\"';
+    return '- Text: „$text“';
   }
 
   @override
@@ -1240,6 +1253,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get map_title => 'Karte';
 
   @override
+  String get map_lineOfSight => 'Sichtlinie';
+
+  @override
+  String get map_losScreenTitle => 'Sichtlinie';
+
+  @override
   String get map_noNodesWithLocation => 'Keine Knoten mit Standortdaten';
 
   @override
@@ -1275,7 +1294,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get map_pinPrivate => 'Pin (Channel)';
 
   @override
-  String get map_pinPublic => 'Pin (Public)';
+  String get map_pinPublic => 'Pin (Öffentlich)';
 
   @override
   String get map_lastSeen => 'Letzte Sichtung';
@@ -1291,7 +1310,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get map_source => 'Quelle';
 
   @override
-  String get map_flags => 'Flags';
+  String get map_flags => 'Flaggen';
 
   @override
   String get map_shareMarkerHere => 'Teilen Sie den Marker hier.';
@@ -1300,7 +1319,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get map_pinLabel => 'Pin Name';
 
   @override
-  String get map_label => 'Label';
+  String get map_label => 'Etikett';
 
   @override
   String get map_pointOfInterest => 'Punkt von Interesse';
@@ -1746,10 +1765,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get repeater_noiseFloor => 'Rauschpegel';
 
   @override
-  String get repeater_txAirtime => 'TX Airtime';
+  String get repeater_txAirtime => 'TX-Sendezeit';
 
   @override
-  String get repeater_rxAirtime => 'RX Airtime';
+  String get repeater_rxAirtime => 'RX-Sendezeit';
 
   @override
   String get repeater_packetStatistics => 'Paketstatistiken';
@@ -1800,7 +1819,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get repeater_basicSettings => 'Grundlegende Einstellungen';
 
   @override
-  String get repeater_repeaterName => 'Repeater Name';
+  String get repeater_repeaterName => 'Repeater-Name';
 
   @override
   String get repeater_repeaterNameHelper => 'Anzeigename für diesen Repeater';
@@ -1828,7 +1847,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get repeater_frequencyHelper => '300-2500 MHz';
 
   @override
-  String get repeater_txPower => 'TX Power';
+  String get repeater_txPower => 'TX-Leistung';
 
   @override
   String get repeater_txPowerHelper => '1-30 dBm';
@@ -2008,7 +2027,7 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get repeater_cliTitle => 'Repeater CLI';
+  String get repeater_cliTitle => 'Repeater-CLI';
 
   @override
   String get repeater_debugNextCommand => 'Fehlersuche des nächsten Befehls';
@@ -2282,7 +2301,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get repeater_commandsListNote =>
-      'ACHTUNG: Für die verschiedenen „set ...“-Befehle gibt es auch einen „get ...“-Befehl.';
+      'ACHTUNG: Für die verschiedenen \"set ...\"-Befehle gibt es auch einen \"get ...\"-Befehl.';
 
   @override
   String get repeater_general => 'Allgemein';
@@ -2417,7 +2436,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get channelPath_messageDetails => 'Nachrichtendetails';
 
   @override
-  String get channelPath_senderLabel => 'Sender';
+  String get channelPath_senderLabel => 'Absender';
 
   @override
   String get channelPath_timeLabel => 'Zeit';
@@ -2501,7 +2520,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get channelPath_unknownRepeater => 'Unbekannter Repeater';
 
   @override
-  String get community_title => 'Community';
+  String get community_title => 'Gemeinschaft';
 
   @override
   String get community_create => 'Erstelle Community';
@@ -2535,10 +2554,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get community_publicChannel => 'Community Öffentlich';
 
   @override
-  String get community_hashtagChannel => 'Community Hashtag';
+  String get community_hashtagChannel => 'Community-Hashtag';
 
   @override
-  String get community_name => 'Community Name';
+  String get community_name => 'Community-Name';
 
   @override
   String get community_enterName => 'Bitte Community-Name eingeben';
@@ -2660,7 +2679,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'Öffentlicher Hashtag (jeder kann teilnehmen)';
 
   @override
-  String get community_communityHashtag => 'Community Hashtag';
+  String get community_communityHashtag => 'Community-Hashtag';
 
   @override
   String get community_communityHashtagDesc =>
@@ -2725,6 +2744,117 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get pathTrace_clearTooltip => 'Pfad löschen';
+
+  @override
+  String get losSelectStartEnd =>
+      'Wählen Sie Start- und Endknoten für LOS aus.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Sichtlinienprüfung fehlgeschlagen: $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Löschen Sie alle Punkte';
+
+  @override
+  String get losRunToViewElevationProfile =>
+      'Führen Sie LOS aus, um das Höhenprofil anzuzeigen';
+
+  @override
+  String get losMenuTitle => 'LOS-Menü';
+
+  @override
+  String get losMenuSubtitle =>
+      'Tippen Sie auf Knoten oder drücken Sie lange auf die Karte, um benutzerdefinierte Punkte anzuzeigen';
+
+  @override
+  String get losShowDisplayNodes => 'Anzeigeknoten anzeigen';
+
+  @override
+  String get losCustomPoints => 'Benutzerdefinierte Punkte';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Benutzerdefiniert $index';
+  }
+
+  @override
+  String get losPointA => 'Punkt A';
+
+  @override
+  String get losPointB => 'Punkt B';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Antenne A: $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Antenne B: $value $unit';
+  }
+
+  @override
+  String get losRun => 'Führen Sie LOS aus';
+
+  @override
+  String get losNoElevationData => 'Keine Höhendaten';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, freie Sichtlinie, Mindestabstand $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, blockiert durch $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'LOS: Überprüfen...';
+
+  @override
+  String get losStatusNoData => 'LOS: keine Daten';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'Sichtlinie: $clear/$total frei, $blocked blockiert, $unknown unbekannt';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Für eine oder mehrere Proben sind keine Höhendaten verfügbar.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Ungültige Punkte/Höhendaten für die LOS-Berechnung.';
+
+  @override
+  String get losRenameCustomPoint =>
+      'Benennen Sie den benutzerdefinierten Punkt um';
+
+  @override
+  String get losPointName => 'Punktname';
+
+  @override
+  String get losShowPanelTooltip => 'LOS-Panel anzeigen';
+
+  @override
+  String get losHidePanelTooltip => 'LOS-Panel ausblenden';
+
+  @override
+  String get losElevationAttribution => 'Höhendaten: Open-Meteo (CC BY 4.0)';
 
   @override
   String get contacts_pathTrace => 'Pfadverfolgung';

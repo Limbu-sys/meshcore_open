@@ -9,7 +9,7 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get appTitle => 'MeshCore Open';
+  String get appTitle => 'MeshCore Открыть';
 
   @override
   String get nav_contacts => 'Контакты';
@@ -24,7 +24,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get common_cancel => 'Отмена';
 
   @override
-  String get common_ok => 'OK';
+  String get common_ok => 'ХОРОШО';
 
   @override
   String get common_connect => 'Коннект';
@@ -97,7 +97,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String common_voltageValue(String volts) {
-    return '$volts В';
+    return '$volts Ð\'';
   }
 
   @override
@@ -106,7 +106,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get scanner_title => 'MeshCore Open';
+  String get scanner_title => 'MeshCore Открыть';
 
   @override
   String get scanner_scanning => 'Поиск устройств...';
@@ -315,17 +315,22 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get settings_aboutLegalese => '2026 MeshCore Open Source Project';
+  String get settings_aboutLegalese =>
+      '2026 Проект MeshCore с открытым исходным кодом';
 
   @override
   String get settings_aboutDescription =>
       'Открытое клиентское приложение на Flutter для устройств MeshCore с LoRa-сетями.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'Данные о высоте LOS: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Имя';
 
   @override
-  String get settings_infoId => 'ID';
+  String get settings_infoId => 'ИДЕНТИФИКАТОР';
 
   @override
   String get settings_infoStatus => 'Статус';
@@ -456,7 +461,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appSettings_languageRu => 'Русский';
 
   @override
-  String get appSettings_languageUk => 'Українська';
+  String get appSettings_languageUk => 'Украинская';
 
   @override
   String get appSettings_notifications => 'Уведомления';
@@ -619,6 +624,15 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get appSettings_offlineMapCache => 'Кэш офлайн-карты';
+
+  @override
+  String get appSettings_unitsTitle => 'Единицы';
+
+  @override
+  String get appSettings_unitsMetric => 'Метрическая (м/км)';
+
+  @override
+  String get appSettings_unitsImperial => 'Имперская (ft / mi)';
 
   @override
   String get appSettings_noAreaSelected => 'Область не выбрана';
@@ -811,7 +825,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get channels_standardPublicPsk => 'Стандартный публичный PSK';
 
   @override
-  String get channels_pskHex => 'PSK (Hex)';
+  String get channels_pskHex => 'ПСК (шестнадцатеричный)';
 
   @override
   String get channels_generateRandomPsk => 'Сгенерировать случайный PSK';
@@ -1061,7 +1075,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get debugFrame_textTypeCli => 'CLI';
+  String get debugFrame_textTypeCli => 'интерфейс командной строки';
 
   @override
   String get debugFrame_textTypePlain => 'Обычный';
@@ -1238,6 +1252,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get map_title => 'Карта нод';
+
+  @override
+  String get map_lineOfSight => 'Линия видимости';
+
+  @override
+  String get map_losScreenTitle => 'Линия видимости';
 
   @override
   String get map_noNodesWithLocation => 'Нет нод с данными о местоположении';
@@ -1670,7 +1690,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Просмотр телеметрии датчиков и системной статистики';
 
   @override
-  String get repeater_cli => 'CLI';
+  String get repeater_cli => 'интерфейс командной строки';
 
   @override
   String get repeater_cliSubtitle => 'Отправка команд репитеру';
@@ -2348,12 +2368,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String telemetry_batteryValue(int percent, String volts) {
-    return '$percent% / $voltsВ';
+    return '$percent% / $voltsÐ\'';
   }
 
   @override
   String telemetry_voltageValue(String volts) {
-    return '$voltsВ';
+    return '$voltsÐ\'';
   }
 
   @override
@@ -2705,7 +2725,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get listFilter_newGroup => 'Новая группа';
 
   @override
-  String get pathTrace_you => 'Вы';
+  String get pathTrace_you => 'Ð\'Ñ‹';
 
   @override
   String get pathTrace_failed => 'Путь трассировки не выполнен.';
@@ -2722,6 +2742,116 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get pathTrace_clearTooltip => 'Очистить путь';
+
+  @override
+  String get losSelectStartEnd => 'Выберите начальный и конечный узлы для LOS.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Проверка прямой видимости не удалась: $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Очистить все точки';
+
+  @override
+  String get losRunToViewElevationProfile =>
+      'Запустите LOS, чтобы просмотреть профиль высот.';
+
+  @override
+  String get losMenuTitle => 'ЛОС Меню';
+
+  @override
+  String get losMenuSubtitle =>
+      'Коснитесь узлов или нажмите и удерживайте карту для выбора пользовательских точек.';
+
+  @override
+  String get losShowDisplayNodes => 'Показать узлы отображения';
+
+  @override
+  String get losCustomPoints => 'Пользовательские точки';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Пользовательский $index';
+  }
+
+  @override
+  String get losPointA => 'Точка А';
+
+  @override
+  String get losPointB => 'Точка Б';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Антенна А: $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Антенна Б: $value $unit';
+  }
+
+  @override
+  String get losRun => 'Запустить ЛОС';
+
+  @override
+  String get losNoElevationData => 'Нет данных о высоте';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, свободная зона видимости, минимальный зазор $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, заблокирован $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'ЛОС: проверяю...';
+
+  @override
+  String get losStatusNoData => 'ЛОС: нет данных';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS: $clear/$total очищено, $blocked заблокировано, $unknown неизвестно.';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Данные о высоте недоступны для одного или нескольких образцов.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Неверные данные о точках/высоте для расчета LOS.';
+
+  @override
+  String get losRenameCustomPoint => 'Переименовать пользовательскую точку';
+
+  @override
+  String get losPointName => 'Имя точки';
+
+  @override
+  String get losShowPanelTooltip => 'Показать панель LOS';
+
+  @override
+  String get losHidePanelTooltip => 'Скрыть панель LOS';
+
+  @override
+  String get losElevationAttribution =>
+      'Данные о высоте: Open-Meteo (CC BY 4.0)';
 
   @override
   String get contacts_pathTrace => 'Трассировка пути';
