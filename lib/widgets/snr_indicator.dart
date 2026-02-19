@@ -139,10 +139,10 @@ class _SNRIndicatorState extends State<SNRIndicator> {
     }
     if (diff.inHours < 24) {
       final hours = diff.inHours;
-      return hours == 1 ? "1h" : "${hours}hs";
+      return "${hours}h";
     }
     final days = diff.inDays;
-    return days == 1 ? "1d" : "${days}ds";
+    return "${days}d";
   }
 
   void _showFullPathDialog(

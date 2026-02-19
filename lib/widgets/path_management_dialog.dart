@@ -147,7 +147,9 @@ class _PathManagementDialogState extends State<_PathManagementDialog> {
           ..sort((a, b) => b.ranking.compareTo(a.ranking));
 
         if (repeatersList.isEmpty) {
-          _showAllPaths = true;
+          setState(() {
+            _showAllPaths = true;
+          });
         }
 
         final directRepeater = repeatersList.isEmpty

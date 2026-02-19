@@ -447,7 +447,9 @@ class _ChatScreenState extends State<ChatScreen> {
               ..sort((a, b) => b.ranking.compareTo(a.ranking));
 
             if (repeatersList.isEmpty) {
-              showAllPaths = true;
+              setDialogState(() {
+                showAllPaths = true;
+              });
             }
 
             final directRepeater = repeatersList.isEmpty

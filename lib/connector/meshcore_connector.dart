@@ -3590,10 +3590,17 @@ class MeshCoreConnector extends ChangeNotifier {
       (r) => r.pubkeyFirstByte == pubkeyFirstByte,
     );
 
+    final sortedRepeaters = List<DirectRepeater>.from(_directRepeaters)
+      ..sort((a, b) => b.snr.compareTo(a.snr));
+    final weakestRepeater = sortedRepeaters.last;
+
     if (isTracked.isNotEmpty) {
       final repeater = isTracked.first;
       repeater.update(snr);
-    } else if (_directRepeaters.length < 5) {
+    } else if (_directRepeaters.length < 5 || snr > weakestRepeater.snr) {
+      if (_directRepeaters.length >= 5) {
+        _directRepeaters.remove(weakestRepeater);
+      }
       _directRepeaters.add(
         DirectRepeater(pubkeyFirstByte: pubkeyFirstByte, snr: snr),
       );
