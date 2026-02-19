@@ -1,12 +1,9 @@
 {
   "@@locale": "en",
-
   "appTitle": "MeshCore Open",
-
   "nav_contacts": "Contacts",
   "nav_channels": "Channels",
   "nav_map": "Map",
-
   "common_cancel": "Cancel",
   "common_ok": "OK",
   "common_connect": "Connect",
@@ -35,16 +32,19 @@
   "common_voltageValue": "{volts} V",
   "@common_voltageValue": {
     "placeholders": {
-      "volts": {"type": "String"}
+      "volts": {
+        "type": "String"
+      }
     }
   },
   "common_percentValue": "{percent}%",
   "@common_percentValue": {
     "placeholders": {
-      "percent": {"type": "int"}
+      "percent": {
+        "type": "int"
+      }
     }
   },
-
   "scanner_title": "MeshCore Open",
   "scanner_scanning": "Scanning for devices...",
   "scanner_connecting": "Connecting...",
@@ -53,7 +53,9 @@
   "scanner_connectedTo": "Connected to {deviceName}",
   "@scanner_connectedTo": {
     "placeholders": {
-      "deviceName": {"type": "String"}
+      "deviceName": {
+        "type": "String"
+      }
     }
   },
   "scanner_searchingDevices": "Searching for MeshCore devices...",
@@ -61,7 +63,9 @@
   "scanner_connectionFailed": "Connection failed: {error}",
   "@scanner_connectionFailed": {
     "placeholders": {
-      "error": {"type": "String"}
+      "error": {
+        "type": "String"
+      }
     }
   },
   "scanner_stop": "Stop",
@@ -69,10 +73,8 @@
   "scanner_bluetoothOff": "Bluetooth is off",
   "scanner_bluetoothOffMessage": "Please turn on Bluetooth to scan for devices",
   "scanner_enableBluetooth": "Enable Bluetooth",
-
   "device_quickSwitch": "Quick switch",
   "device_meshcore": "MeshCore",
-
   "settings_title": "Settings",
   "settings_deviceInfo": "Device Info",
   "settings_appSettings": "App Settings",
@@ -122,7 +124,9 @@
   "settings_aboutVersion": "MeshCore Open v{version}",
   "@settings_aboutVersion": {
     "placeholders": {
-      "version": {"type": "String"}
+      "version": {
+        "type": "String"
+      }
     }
   },
   "settings_aboutLegalese": "2026 MeshCore Open Source Project",
@@ -135,9 +139,6 @@
   "settings_infoContactsCount": "Contacts Count",
   "settings_infoChannelCount": "Channel Count",
   "settings_presets": "Presets",
-  "settings_preset915Mhz": "915 MHz",
-  "settings_preset868Mhz": "868 MHz",
-  "settings_preset433Mhz": "433 MHz",
   "settings_frequency": "Frequency (MHz)",
   "settings_frequencyHelper": "300.0 - 2500.0",
   "settings_frequencyInvalid": "Invalid frequency (300-2500 MHz)",
@@ -147,15 +148,17 @@
   "settings_txPower": "TX Power (dBm)",
   "settings_txPowerHelper": "0 - 22",
   "settings_txPowerInvalid": "Invalid TX power (0-22 dBm)",
-  "settings_longRange": "Long Range",
-  "settings_fastSpeed": "Fast Speed",
+  "settings_clientRepeat": "Off-Grid Repeat",
+  "settings_clientRepeatSubtitle": "Allow this device to repeat mesh packets for others",
+  "settings_clientRepeatFreqWarning": "Off-grid repeat requires 433, 869, or 918 MHz frequency",
   "settings_error": "Error: {message}",
   "@settings_error": {
     "placeholders": {
-      "message": {"type": "String"}
+      "message": {
+        "type": "String"
+      }
     }
   },
-
   "appSettings_title": "App Settings",
   "appSettings_appearance": "Appearance",
   "appSettings_theme": "Theme",
@@ -205,7 +208,9 @@
   "appSettings_batteryChemistryPerDevice": "Set per device ({deviceName})",
   "@appSettings_batteryChemistryPerDevice": {
     "placeholders": {
-      "deviceName": {"type": "String"}
+      "deviceName": {
+        "type": "String"
+      }
     }
   },
   "appSettings_batteryChemistryConnectFirst": "Connect to a device to choose",
@@ -224,7 +229,9 @@
   "appSettings_timeFilterShowLast": "Show nodes from last {hours} hours",
   "@appSettings_timeFilterShowLast": {
     "placeholders": {
-      "hours": {"type": "int"}
+      "hours": {
+        "type": "int"
+      }
     }
   },
   "appSettings_mapTimeFilter": "Map Time Filter",
@@ -239,8 +246,12 @@
   "appSettings_areaSelectedZoom": "Area selected (zoom {minZoom}-{maxZoom})",
   "@appSettings_areaSelectedZoom": {
     "placeholders": {
-      "minZoom": {"type": "int"},
-      "maxZoom": {"type": "int"}
+      "minZoom": {
+        "type": "int"
+      },
+      "maxZoom": {
+        "type": "int"
+      }
     }
   },
   "appSettings_debugCard": "Debug",
@@ -248,7 +259,6 @@
   "appSettings_appDebugLoggingSubtitle": "Log app debug messages for troubleshooting",
   "appSettings_appDebugLoggingEnabled": "App debug logging enabled",
   "appSettings_appDebugLoggingDisabled": "App debug logging disabled",
-
   "contacts_title": "Contacts",
   "contacts_noContacts": "No contacts yet",
   "contacts_contactsWillAppear": "Contacts will appear when devices advertise",
@@ -259,7 +269,9 @@
   "contacts_removeConfirm": "Remove {contactName} from contacts?",
   "@contacts_removeConfirm": {
     "placeholders": {
-      "contactName": {"type": "String"}
+      "contactName": {
+        "type": "String"
+      }
     }
   },
   "contacts_manageRepeater": "Manage Repeater",
@@ -271,7 +283,9 @@
   "contacts_deleteGroupConfirm": "Remove \"{groupName}\"?",
   "@contacts_deleteGroupConfirm": {
     "placeholders": {
-      "groupName": {"type": "String"}
+      "groupName": {
+        "type": "String"
+      }
     }
   },
   "contacts_newGroup": "New Group",
@@ -280,7 +294,9 @@
   "contacts_groupAlreadyExists": "Group \"{name}\" already exists",
   "@contacts_groupAlreadyExists": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "contacts_filterContacts": "Filter contacts...",
@@ -290,24 +306,29 @@
   "contacts_lastSeenMinsAgo": "Last seen {minutes} mins ago",
   "@contacts_lastSeenMinsAgo": {
     "placeholders": {
-      "minutes": {"type": "int"}
+      "minutes": {
+        "type": "int"
+      }
     }
   },
   "contacts_lastSeenHourAgo": "Last seen 1 hour ago",
   "contacts_lastSeenHoursAgo": "Last seen {hours} hours ago",
   "@contacts_lastSeenHoursAgo": {
     "placeholders": {
-      "hours": {"type": "int"}
+      "hours": {
+        "type": "int"
+      }
     }
   },
   "contacts_lastSeenDayAgo": "Last seen 1 day ago",
   "contacts_lastSeenDaysAgo": "Last seen {days} days ago",
   "@contacts_lastSeenDaysAgo": {
     "placeholders": {
-      "days": {"type": "int"}
+      "days": {
+        "type": "int"
+      }
     }
   },
-
   "channels_title": "Channels",
   "channels_noChannelsConfigured": "No channels configured",
   "channels_addPublicChannel": "Add Public Channel",
@@ -316,7 +337,9 @@
   "channels_channelIndex": "Channel {index}",
   "@channels_channelIndex": {
     "placeholders": {
-      "index": {"type": "int"}
+      "index": {
+        "type": "int"
+      }
     }
   },
   "channels_hashtagChannel": "Hashtag channel",
@@ -329,13 +352,17 @@
   "channels_deleteChannelConfirm": "Delete \"{name}\"? This cannot be undone.",
   "@channels_deleteChannelConfirm": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "channels_channelDeleted": "Channel \"{name}\" deleted",
   "@channels_channelDeleted": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "channels_addChannel": "Add Channel",
@@ -350,20 +377,26 @@
   "channels_channelAdded": "Channel \"{name}\" added",
   "@channels_channelAdded": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "channels_editChannelTitle": "Edit Channel {index}",
   "@channels_editChannelTitle": {
     "placeholders": {
-      "index": {"type": "int"}
+      "index": {
+        "type": "int"
+      }
     }
   },
   "channels_smazCompression": "SMAZ compression",
   "channels_channelUpdated": "Channel \"{name}\" updated",
   "@channels_channelUpdated": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "channels_publicChannelAdded": "Public channel added",
@@ -384,34 +417,41 @@
   "channels_scanQrCodeComingSoon": "Coming soon",
   "channels_enterHashtag": "Enter hashtag",
   "channels_hashtagHint": "e.g. #team",
-
   "chat_noMessages": "No messages yet",
   "chat_sendMessageToStart": "Send a message to get started",
   "chat_originalMessageNotFound": "Original message not found",
   "chat_replyingTo": "Replying to {name}",
   "@chat_replyingTo": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "chat_replyTo": "Reply to {name}",
   "@chat_replyTo": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "chat_location": "Location",
   "chat_sendMessageTo": "Send a message to {contactName}",
   "@chat_sendMessageTo": {
     "placeholders": {
-      "contactName": {"type": "String"}
+      "contactName": {
+        "type": "String"
+      }
     }
   },
   "chat_typeMessage": "Type a message...",
   "chat_messageTooLong": "Message too long (max {maxBytes} bytes).",
   "@chat_messageTooLong": {
     "placeholders": {
-      "maxBytes": {"type": "int"}
+      "maxBytes": {
+        "type": "int"
+      }
     }
   },
   "chat_messageCopied": "Message copied",
@@ -420,8 +460,12 @@
   "chat_retryCount": "Retry {current}/{max}",
   "@chat_retryCount": {
     "placeholders": {
-      "current": {"type": "int"},
-      "max": {"type": "int"}
+      "current": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
     }
   },
   "chat_sendGif": "Send GIF",
@@ -453,39 +497,53 @@
   "debugFrame_length": "Frame Length: {count} bytes",
   "@debugFrame_length": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "debugFrame_command": "Command: 0x{value}",
   "@debugFrame_command": {
     "placeholders": {
-      "value": {"type": "String"}
+      "value": {
+        "type": "String"
+      }
     }
   },
   "debugFrame_textMessageHeader": "Text Message Frame:",
   "debugFrame_destinationPubKey": "- Destination PubKey: {pubKey}",
   "@debugFrame_destinationPubKey": {
     "placeholders": {
-      "pubKey": {"type": "String"}
+      "pubKey": {
+        "type": "String"
+      }
     }
   },
   "debugFrame_timestamp": "- Timestamp: {timestamp}",
   "@debugFrame_timestamp": {
     "placeholders": {
-      "timestamp": {"type": "int"}
+      "timestamp": {
+        "type": "int"
+      }
     }
   },
   "debugFrame_flags": "- Flags: 0x{value}",
   "@debugFrame_flags": {
     "placeholders": {
-      "value": {"type": "String"}
+      "value": {
+        "type": "String"
+      }
     }
   },
   "debugFrame_textType": "- Text Type: {type} ({label})",
   "@debugFrame_textType": {
     "placeholders": {
-      "type": {"type": "int"},
-      "label": {"type": "String"}
+      "type": {
+        "type": "int"
+      },
+      "label": {
+        "type": "String"
+      }
     }
   },
   "debugFrame_textTypeCli": "CLI",
@@ -493,7 +551,9 @@
   "debugFrame_text": "- Text: \"{text}\"",
   "@debugFrame_text": {
     "placeholders": {
-      "text": {"type": "String"}
+      "text": {
+        "type": "String"
+      }
     }
   },
   "debugFrame_hexDump": "Hex Dump:",
@@ -509,7 +569,9 @@
   "chat_hopsCount": "{count} {count, plural, =1{hop} other{hops}}",
   "@chat_hopsCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "chat_successes": "successes",
@@ -528,8 +590,12 @@
   "chat_pathSetHops": "Path set: {hopCount} {hopCount, plural, =1{hop} other{hops}} - {status}",
   "@chat_pathSetHops": {
     "placeholders": {
-      "hopCount": {"type": "int"},
-      "status": {"type": "String"}
+      "hopCount": {
+        "type": "int"
+      },
+      "status": {
+        "type": "String"
+      }
     }
   },
   "chat_pathSavedLocally": "Saved locally. Connect to sync.",
@@ -544,7 +610,9 @@
   "chat_hopsForced": "{count} hops (forced)",
   "@chat_hopsForced": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "chat_floodAuto": "Flood (auto)",
@@ -553,7 +621,9 @@
   "chat_unread": "Unread: {count}",
   "@chat_unread": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "chat_openLink": "Open Link?",
@@ -562,24 +632,29 @@
   "chat_couldNotOpenLink": "Could not open link: {url}",
   "@chat_couldNotOpenLink": {
     "placeholders": {
-      "url": {"type": "String"}
+      "url": {
+        "type": "String"
+      }
     }
   },
   "chat_invalidLink": "Invalid link format",
-
   "map_title": "Node Map",
   "map_noNodesWithLocation": "No nodes with location data",
   "map_nodesNeedGps": "Nodes need to share their GPS coordinates\nto appear on the map",
   "map_nodesCount": "Nodes: {count}",
   "@map_nodesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "map_pinsCount": "Pins: {count}",
   "@map_pinsCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "map_chat": "Chat",
@@ -605,7 +680,9 @@
   "map_publicLocationShareConfirm": "You are about to share a location in {channelLabel}. This channel is public and anyone with the PSK can see it.",
   "@map_publicLocationShareConfirm": {
     "placeholders": {
-      "channelLabel": {"type": "String"}
+      "channelLabel": {
+        "type": "String"
+      }
     }
   },
   "map_connectToShareMarkers": "Connect to a device to share markers",
@@ -634,21 +711,29 @@
   "mapCache_downloadTilesPrompt": "Download {count} tiles for offline use?",
   "@mapCache_downloadTilesPrompt": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "mapCache_downloadAction": "Download",
   "mapCache_cachedTiles": "Cached {count} tiles",
   "@mapCache_cachedTiles": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "mapCache_cachedTilesWithFailed": "Cached {downloaded} tiles ({failed} failed)",
   "@mapCache_cachedTilesWithFailed": {
     "placeholders": {
-      "downloaded": {"type": "int"},
-      "failed": {"type": "int"}
+      "downloaded": {
+        "type": "int"
+      },
+      "failed": {
+        "type": "int"
+      }
     }
   },
   "mapCache_clearOfflineCacheTitle": "Clear offline cache",
@@ -661,14 +746,20 @@
   "mapCache_estimatedTiles": "Estimated tiles: {count}",
   "@mapCache_estimatedTiles": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "mapCache_downloadedTiles": "Downloaded {completed} / {total}",
   "@mapCache_downloadedTiles": {
     "placeholders": {
-      "completed": {"type": "int"},
-      "total": {"type": "int"}
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "mapCache_downloadTilesButton": "Download Tiles",
@@ -676,36 +767,51 @@
   "mapCache_failedDownloads": "Failed downloads: {count}",
   "@mapCache_failedDownloads": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "mapCache_boundsLabel": "N {north}, S {south}, E {east}, W {west}",
   "@mapCache_boundsLabel": {
     "placeholders": {
-      "north": {"type": "String"},
-      "south": {"type": "String"},
-      "east": {"type": "String"},
-      "west": {"type": "String"}
+      "north": {
+        "type": "String"
+      },
+      "south": {
+        "type": "String"
+      },
+      "east": {
+        "type": "String"
+      },
+      "west": {
+        "type": "String"
+      }
     }
   },
-
   "time_justNow": "Just now",
   "time_minutesAgo": "{minutes}m ago",
   "@time_minutesAgo": {
     "placeholders": {
-      "minutes": {"type": "int"}
+      "minutes": {
+        "type": "int"
+      }
     }
   },
   "time_hoursAgo": "{hours}h ago",
   "@time_hoursAgo": {
     "placeholders": {
-      "hours": {"type": "int"}
+      "hours": {
+        "type": "int"
+      }
     }
   },
   "time_daysAgo": "{days}d ago",
   "@time_daysAgo": {
     "placeholders": {
-      "days": {"type": "int"}
+      "days": {
+        "type": "int"
+      }
     }
   },
   "time_hour": "hour",
@@ -718,10 +824,8 @@
   "time_months": "months",
   "time_minutes": "minutes",
   "time_allTime": "All Time",
-
   "dialog_disconnect": "Disconnect",
   "dialog_disconnectConfirm": "Are you sure you want to disconnect from this device?",
-
   "login_repeaterLogin": "Repeater Login",
   "login_roomLogin": "Room Server Login",
   "login_password": "Password",
@@ -739,32 +843,39 @@
   "login_attempt": "Attempt {current}/{max}",
   "@login_attempt": {
     "placeholders": {
-      "current": {"type": "int"},
-      "max": {"type": "int"}
+      "current": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
     }
   },
   "login_failed": "Login failed: {error}",
   "@login_failed": {
     "placeholders": {
-      "error": {"type": "String"}
+      "error": {
+        "type": "String"
+      }
     }
   },
   "login_failedMessage": "Login failed. Either the password is incorrect or the repeater is unreachable.",
-
-
   "common_reload": "Reload",
   "common_clear": "Clear",
-
   "path_currentPath": "Current path: {path}",
   "@path_currentPath": {
     "placeholders": {
-      "path": {"type": "String"}
+      "path": {
+        "type": "String"
+      }
     }
   },
   "path_usingHopsPath": "Using {count} {count, plural, =1{hop} other{hops}} path",
   "@path_usingHopsPath": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "path_enterCustomPath": "Enter Custom Path",
@@ -779,12 +890,13 @@
   "path_invalidHexPrefixes": "Invalid hex prefixes: {prefixes}",
   "@path_invalidHexPrefixes": {
     "placeholders": {
-      "prefixes": {"type": "String"}
+      "prefixes": {
+        "type": "String"
+      }
     }
   },
   "path_tooLong": "Path too long. Maximum 64 hops allowed.",
   "path_setPath": "Set Path",
-
   "repeater_management": "Repeater Management",
   "room_management": "Room Server Management",
   "repeater_managementTools": "Management Tools",
@@ -798,7 +910,6 @@
   "repeater_neighborsSubtitle": "View zero hop neighbors.",
   "repeater_settings": "Settings",
   "repeater_settingsSubtitle": "Configure repeater parameters",
-
   "repeater_statusTitle": "Repeater Status",
   "repeater_routingMode": "Routing mode",
   "repeater_autoUseSavedPath": "Auto (use saved path)",
@@ -809,7 +920,9 @@
   "repeater_errorLoadingStatus": "Error loading status: {error}",
   "@repeater_errorLoadingStatus": {
     "placeholders": {
-      "error": {"type": "String"}
+      "error": {
+        "type": "String"
+      }
     }
   },
   "repeater_systemInformation": "System Information",
@@ -831,42 +944,67 @@
   "repeater_daysHoursMinsSecs": "{days} days {hours}h {minutes}m {seconds}s",
   "@repeater_daysHoursMinsSecs": {
     "placeholders": {
-      "days": {"type": "int"},
-      "hours": {"type": "int"},
-      "minutes": {"type": "int"},
-      "seconds": {"type": "int"}
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
     }
   },
   "repeater_packetTxTotal": "Total: {total}, Flood: {flood}, Direct: {direct}",
   "@repeater_packetTxTotal": {
     "placeholders": {
-      "total": {"type": "int"},
-      "flood": {"type": "String"},
-      "direct": {"type": "String"}
+      "total": {
+        "type": "int"
+      },
+      "flood": {
+        "type": "String"
+      },
+      "direct": {
+        "type": "String"
+      }
     }
   },
   "repeater_packetRxTotal": "Total: {total}, Flood: {flood}, Direct: {direct}",
   "@repeater_packetRxTotal": {
     "placeholders": {
-      "total": {"type": "int"},
-      "flood": {"type": "String"},
-      "direct": {"type": "String"}
+      "total": {
+        "type": "int"
+      },
+      "flood": {
+        "type": "String"
+      },
+      "direct": {
+        "type": "String"
+      }
     }
   },
   "repeater_duplicatesFloodDirect": "Flood: {flood}, Direct: {direct}",
   "@repeater_duplicatesFloodDirect": {
     "placeholders": {
-      "flood": {"type": "String"},
-      "direct": {"type": "String"}
+      "flood": {
+        "type": "String"
+      },
+      "direct": {
+        "type": "String"
+      }
     }
   },
   "repeater_duplicatesTotal": "Total: {total}",
   "@repeater_duplicatesTotal": {
     "placeholders": {
-      "total": {"type": "int"}
+      "total": {
+        "type": "int"
+      }
     }
   },
-
   "repeater_settingsTitle": "Repeater Settings",
   "repeater_basicSettings": "Basic Settings",
   "repeater_repeaterName": "Repeater Name",
@@ -900,14 +1038,18 @@
   "repeater_localAdvertIntervalMinutes": "{minutes} minutes",
   "@repeater_localAdvertIntervalMinutes": {
     "placeholders": {
-      "minutes": {"type": "int"}
+      "minutes": {
+        "type": "int"
+      }
     }
   },
   "repeater_floodAdvertInterval": "Flood Advertisement Interval",
   "repeater_floodAdvertIntervalHours": "{hours} hours",
   "@repeater_floodAdvertIntervalHours": {
     "placeholders": {
-      "hours": {"type": "int"}
+      "hours": {
+        "type": "int"
+      }
     }
   },
   "repeater_encryptedAdvertInterval": "Encrypted Advertisement Interval",
@@ -925,13 +1067,17 @@
   "repeater_commandSent": "Command sent: {command}",
   "@repeater_commandSent": {
     "placeholders": {
-      "command": {"type": "String"}
+      "command": {
+        "type": "String"
+      }
     }
   },
   "repeater_errorSendingCommand": "Error sending command: {error}",
   "@repeater_errorSendingCommand": {
     "placeholders": {
-      "error": {"type": "String"}
+      "error": {
+        "type": "String"
+      }
     }
   },
   "repeater_confirm": "Confirm",
@@ -939,7 +1085,9 @@
   "repeater_errorSavingSettings": "Error saving settings: {error}",
   "@repeater_errorSavingSettings": {
     "placeholders": {
-      "error": {"type": "String"}
+      "error": {
+        "type": "String"
+      }
     }
   },
   "repeater_refreshBasicSettings": "Refresh Basic Settings",
@@ -953,16 +1101,19 @@
   "repeater_refreshed": "{label} refreshed",
   "@repeater_refreshed": {
     "placeholders": {
-      "label": {"type": "String"}
+      "label": {
+        "type": "String"
+      }
     }
   },
   "repeater_errorRefreshing": "Error refreshing {label}",
   "@repeater_errorRefreshing": {
     "placeholders": {
-      "label": {"type": "String"}
+      "label": {
+        "type": "String"
+      }
     }
   },
-
   "repeater_cliTitle": "Repeater CLI",
   "repeater_debugNextCommand": "Debug Next Command",
   "repeater_commandHelp": "Command Help",
@@ -977,7 +1128,9 @@
   "repeater_cliCommandError": "Error: {error}",
   "@repeater_cliCommandError": {
     "placeholders": {
-      "error": {"type": "String"}
+      "error": {
+        "type": "String"
+      }
     }
   },
   "repeater_cliQuickGetName": "Get Name",
@@ -1057,14 +1210,18 @@
   "telemetry_errorLoading": "Error loading telemetry: {error}",
   "@telemetry_errorLoading": {
     "placeholders": {
-      "error": {"type": "String"}
+      "error": {
+        "type": "String"
+      }
     }
   },
   "telemetry_noData": "No telemetry data available.",
   "telemetry_channelTitle": "Channel {channel}",
   "@telemetry_channelTitle": {
     "placeholders": {
-      "channel": {"type": "int"}
+      "channel": {
+        "type": "int"
+      }
     }
   },
   "telemetry_batteryLabel": "Battery",
@@ -1075,36 +1232,51 @@
   "telemetry_batteryValue": "{percent}% / {volts}V",
   "@telemetry_batteryValue": {
     "placeholders": {
-      "percent": {"type": "int"},
-      "volts": {"type": "String"}
+      "percent": {
+        "type": "int"
+      },
+      "volts": {
+        "type": "String"
+      }
     }
   },
   "telemetry_voltageValue": "{volts}V",
   "@telemetry_voltageValue": {
     "placeholders": {
-      "volts": {"type": "String"}
+      "volts": {
+        "type": "String"
+      }
     }
   },
   "telemetry_currentValue": "{amps}A",
   "@telemetry_currentValue": {
     "placeholders": {
-      "amps": {"type": "String"}
+      "amps": {
+        "type": "String"
+      }
     }
   },
   "telemetry_temperatureValue": "{celsius}°C / {fahrenheit}°F",
   "@telemetry_temperatureValue": {
     "placeholders": {
-      "celsius": {"type": "String"},
-      "fahrenheit": {"type": "String"}
+      "celsius": {
+        "type": "String"
+      },
+      "fahrenheit": {
+        "type": "String"
+      }
     }
   },
-
   "neighbors_receivedData": "Received Neighbors Data",
   "neighbors_requestTimedOut": "Neighbors request timed out.",
+  "neighbors_receivedData": "Received Neighbours Data",
+  "neighbors_requestTimedOut": "Neighbours request timed out.",
   "neighbors_errorLoading": "Error loading neighbors: {error}",
   "@neighbors_errorLoading": {
     "placeholders": {
-      "error": {"type": "String"}
+      "error": {
+        "type": "String"
+      }
     }
   },
   "neighbors_repeatersNeighbors": "Repeaters Neighbors",
@@ -1112,13 +1284,17 @@
   "neighbors_unknownContact": "Unknown {pubkey}",
   "@neighbors_unknownContact": {
     "placeholders": {
-      "pubkey": {"type": "String"}
+      "pubkey": {
+        "type": "String"
+      }
     }
   },
   "neighbors_heardAgo": "Heard: {time} ago",
   "@neighbors_heardAgo": {
     "placeholders": {
-      "time": {"type": "String"}
+      "time": {
+        "type": "String"
+      }
     }
   },
   "channelPath_title": "Packet Path",
@@ -1130,28 +1306,40 @@
   "channelPath_senderLabel": "Sender",
   "channelPath_timeLabel": "Time",
   "channelPath_repeatsLabel": "Repeats",
-  "channelPath_pathLabel": "Path",
+  "channelPath_pathLabel": "Path {index}",
   "channelPath_observedLabel": "Observed",
   "channelPath_observedPathTitle": "Observed path {index} • {hops}",
   "@channelPath_observedPathTitle": {
     "placeholders": {
-      "index": {"type": "int"},
-      "hops": {"type": "String"}
+      "index": {
+        "type": "int"
+      },
+      "hops": {
+        "type": "String"
+      }
     }
   },
   "channelPath_noLocationData": "No location data",
   "channelPath_timeWithDate": "{day}/{month} {time}",
   "@channelPath_timeWithDate": {
     "placeholders": {
-      "day": {"type": "int"},
-      "month": {"type": "int"},
-      "time": {"type": "String"}
+      "day": {
+        "type": "int"
+      },
+      "month": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
     }
   },
   "channelPath_timeOnly": "{time}",
   "@channelPath_timeOnly": {
     "placeholders": {
-      "time": {"type": "String"}
+      "time": {
+        "type": "String"
+      }
     }
   },
   "channelPath_unknownPath": "Unknown",
@@ -1160,14 +1348,20 @@
   "channelPath_observedZeroOf": "0 of {total} hops",
   "@channelPath_observedZeroOf": {
     "placeholders": {
-      "total": {"type": "int"}
+      "total": {
+        "type": "int"
+      }
     }
   },
   "channelPath_observedSomeOf": "{observed} of {total} hops",
   "@channelPath_observedSomeOf": {
     "placeholders": {
-      "observed": {"type": "int"},
-      "total": {"type": "int"}
+      "observed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
   "channelPath_mapTitle": "Path Map",
@@ -1175,13 +1369,16 @@
   "channelPath_primaryPath": "Path {index} (Primary)",
   "@channelPath_primaryPath": {
     "placeholders": {
-      "index": {"type": "int"}
+      "index": {
+        "type": "int"
+      }
     }
   },
-  "channelPath_pathLabel": "Path {index}",
   "@channelPath_pathLabel": {
     "placeholders": {
-      "index": {"type": "int"}
+      "index": {
+        "type": "int"
+      }
     }
   },
   "channelPath_pathLabelTitle": "Path",
@@ -1189,13 +1386,16 @@
   "channelPath_selectedPathLabel": "{label} • {prefixes}",
   "@channelPath_selectedPathLabel": {
     "placeholders": {
-      "label": {"type": "String"},
-      "prefixes": {"type": "String"}
+      "label": {
+        "type": "String"
+      },
+      "prefixes": {
+        "type": "String"
+      }
     }
   },
   "channelPath_noHopDetailsAvailable": "No hop details available for this packet.",
   "channelPath_unknownRepeater": "Unknown Repeater",
-
   "community_title": "Community",
   "community_create": "Create Community",
   "community_createDesc": "Create a new community and share via QR code.",
@@ -1204,7 +1404,9 @@
   "community_joinConfirmation": "Do you want to join the community \"{name}\"?",
   "@community_joinConfirmation": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "community_scanQr": "Scan Community QR",
@@ -1217,20 +1419,26 @@
   "community_created": "Community \"{name}\" created",
   "@community_created": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "community_joined": "Joined community \"{name}\"",
   "@community_joined": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "community_qrTitle": "Share Community",
   "community_qrInstructions": "Scan this QR code to join \"{name}\"",
   "@community_qrInstructions": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "community_hashtagPrivacyHint": "Community hashtag channels are only joinable by members of the community",
@@ -1239,7 +1447,9 @@
   "community_alreadyMemberMessage": "You are already a member of \"{name}\".",
   "@community_alreadyMemberMessage": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "community_addPublicChannel": "Add Community Public Channel",
@@ -1251,46 +1461,60 @@
   "community_deleteConfirm": "Leave \"{name}\"?",
   "@community_deleteConfirm": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "community_deleteChannelsWarning": "This will also delete {count} channel(s) and their messages.",
   "@community_deleteChannelsWarning": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "community_deleted": "Left community \"{name}\"",
   "@community_deleted": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "community_regenerateSecret": "Regenerate Secret",
   "community_regenerateSecretConfirm": "Regenerate the secret key for \"{name}\"? All members will need to scan the new QR code to continue communicating.",
   "@community_regenerateSecretConfirm": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "community_regenerate": "Regenerate",
   "community_secretRegenerated": "Secret regenerated for \"{name}\"",
   "@community_secretRegenerated": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "community_updateSecret": "Update Secret",
   "community_secretUpdated": "Secret updated for \"{name}\"",
   "@community_secretUpdated": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "community_scanToUpdateSecret": "Scan the new QR code to update the secret for \"{name}\"",
   "@community_scanToUpdateSecret": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "community_addHashtagChannel": "Add Community Hashtag",
@@ -1303,10 +1527,11 @@
   "community_forCommunity": "For {name}",
   "@community_forCommunity": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
-
   "listFilter_tooltip": "Filter and sort",
   "listFilter_sortBy": "Sort by",
   "listFilter_latestMessages": "Latest messages",
@@ -1319,7 +1544,6 @@
   "listFilter_roomServers": "Room servers",
   "listFilter_unreadOnly": "Unread only",
   "listFilter_newGroup": "New group",
-
   "pathTrace_you": "You",
   "pathTrace_failed": "Path trace failed.",
   "pathTrace_notAvailable": "Path trace not available.",
@@ -1336,52 +1560,59 @@
   "contacts_pathTraceTo": "Trace route to {name}",
   "@contacts_pathTraceTo": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
-
   "contacts_clipboardEmpty": "Clipboard is empty.",
   "contacts_invalidAdvertFormat": "Invalid contact data",
   "contacts_contactImported": "Contact has been imported.",
   "contacts_contactImportFailed": "Failed to import contact.",
-  "contacts_zeroHopAdvert":"Zero Hop Advert",
-  "contacts_floodAdvert":"Flood Advert",
-  "contacts_copyAdvertToClipboard":"Copy Advert to Clipboard",
-  "contacts_addContactFromClipboard":"Add Contact from Clipboard",
+  "contacts_zeroHopAdvert": "Zero Hop Advert",
+  "contacts_floodAdvert": "Flood Advert",
+  "contacts_copyAdvertToClipboard": "Copy Advert to Clipboard",
+  "contacts_addContactFromClipboard": "Add Contact from Clipboard",
   "contacts_ShareContact": "Copy contact to Clipboard",
   "contacts_ShareContactZeroHop": "Share contact by advert",
   "contacts_zeroHopContactAdvertSent": "Sent contact by advert.",
   "contacts_zeroHopContactAdvertFailed": "Failed to send contact.",
   "contacts_contactAdvertCopied": "Advert copied to Clipboard.",
   "contacts_contactAdvertCopyFailed": "Copying advert to Clipboard failed.",
-
   "notification_activityTitle": "MeshCore Activity",
   "notification_messagesCount": "{count} {count, plural, =1{message} other{messages}}",
   "@notification_messagesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "notification_channelMessagesCount": "{count} {count, plural, =1{channel message} other{channel messages}}",
   "@notification_channelMessagesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "notification_newNodesCount": "{count} {count, plural, =1{new node} other{new nodes}}",
   "@notification_newNodesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "notification_newTypeDiscovered": "New {contactType} discovered",
   "@notification_newTypeDiscovered": {
     "placeholders": {
-      "contactType": {"type": "String"}
+      "contactType": {
+        "type": "String"
+      }
     }
   },
   "notification_receivedNewMessage": "Received new message",
-
   "settings_gpxExportRepeaters": "Export repeaters / room server to GPX",
   "settings_gpxExportRepeatersSubtitle": "Exports repeaters / roomserver with a location to GPX file.",
   "settings_gpxExportContacts": "Export companions to GPX",

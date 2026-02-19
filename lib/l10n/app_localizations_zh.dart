@@ -332,15 +332,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settings_presets => '预设';
 
   @override
-  String get settings_preset915Mhz => '915 兆赫';
-
-  @override
-  String get settings_preset868Mhz => '868 兆赫';
-
-  @override
-  String get settings_preset433Mhz => '433 兆赫';
-
-  @override
   String get settings_frequency => '频率 (MHz)';
 
   @override
@@ -368,10 +359,14 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settings_txPowerInvalid => '无效的发射功率（0-22 dBm）';
 
   @override
-  String get settings_longRange => '远距离';
+  String get settings_clientRepeat => '离网重复';
 
   @override
-  String get settings_fastSpeed => '高速';
+  String get settings_clientRepeatSubtitle => '允许此设备重复发送网状数据包给其他设备';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      '离网重复通信需要使用 433、869 或 918 兆赫兹的频率。';
 
   @override
   String settings_error(String message) {

@@ -101,9 +101,6 @@
   "settings_infoContactsCount": "Количество контактов",
   "settings_infoChannelCount": "Количество каналов",
   "settings_presets": "Пресеты",
-  "settings_preset915Mhz": "915 МГц",
-  "settings_preset868Mhz": "868 МГц",
-  "settings_preset433Mhz": "433 МГц",
   "settings_frequency": "Частота (МГц)",
   "settings_frequencyHelper": "300.0 – 2500.0",
   "settings_frequencyInvalid": "Недопустимая частота (300–2500 МГц)",
@@ -113,8 +110,6 @@
   "settings_txPower": "Мощность передачи (дБм)",
   "settings_txPowerHelper": "0 – 22",
   "settings_txPowerInvalid": "Недопустимая мощность передачи (0–22 дБм)",
-  "settings_longRange": "Дальний радиус",
-  "settings_fastSpeed": "Высокая скорость",
   "settings_error": "Ошибка: {message}",
   "appSettings_title": "Настройки приложения",
   "appSettings_appearance": "Внешний вид",
@@ -841,5 +836,8 @@
   "scanner_bluetoothOffMessage": "Пожалуйста, включите Bluetooth, чтобы найти устройства.",
   "snrIndicator_nearByRepeaters": "Ближайшие ретрансляторы",
   "snrIndicator_lastSeen": "Последний раз видели",
-  "chat_ShowAllPaths": "Показать все пути"
+  "chat_ShowAllPaths": "Показать все пути",
+  "settings_clientRepeatFreqWarning": "Для работы в режиме \"без подключения к сети\" требуется частота 433, 869 или 918 МГц.",
+  "settings_clientRepeatSubtitle": "Позвольте этому устройству повторять пакеты данных для других устройств.",
+  "settings_clientRepeat": "Повторение \"вне сети\""
 }

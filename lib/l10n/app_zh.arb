@@ -136,9 +136,6 @@
   "settings_infoContactsCount": "联系人数量",
   "settings_infoChannelCount": "通道数量",
   "settings_presets": "预设",
-  "settings_preset915Mhz": "915 兆赫",
-  "settings_preset868Mhz": "868 兆赫",
-  "settings_preset433Mhz": "433 兆赫",
   "settings_frequency": "频率 (MHz)",
   "settings_frequencyHelper": "300.0 - 2500.0",
   "settings_frequencyInvalid": "无效频率（300-2500 MHz）",
@@ -148,8 +145,6 @@
   "settings_txPower": "TX 功率（dBm）",
   "settings_txPowerHelper": "0 - 22",
   "settings_txPowerInvalid": "无效的发射功率（0-22 dBm）",
-  "settings_longRange": "远距离",
-  "settings_fastSpeed": "高速",
   "settings_error": "[保存：{message}]\n错误：{message}",
   "@settings_error": {
     "placeholders": {
@@ -1601,5 +1596,8 @@
   "scanner_enableBluetooth": "启用蓝牙",
   "snrIndicator_lastSeen": "最近访问",
   "snrIndicator_nearByRepeaters": "附近的重复器",
-  "chat_ShowAllPaths": "显示所有路径"
+  "chat_ShowAllPaths": "显示所有路径",
+  "settings_clientRepeat": "离网重复",
+  "settings_clientRepeatSubtitle": "允许此设备重复发送网状数据包给其他设备",
+  "settings_clientRepeatFreqWarning": "离网重复通信需要使用 433、869 或 918 兆赫兹的频率。"
 }

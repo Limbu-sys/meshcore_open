@@ -344,15 +344,6 @@ class AppLocalizationsSl extends AppLocalizations {
   String get settings_presets => 'Prednastavitve';
 
   @override
-  String get settings_preset915Mhz => '915 MHz';
-
-  @override
-  String get settings_preset868Mhz => '868 MHz';
-
-  @override
-  String get settings_preset433Mhz => '433 MHz';
-
-  @override
   String get settings_frequency => 'Frekvenca (MHz)';
 
   @override
@@ -380,10 +371,15 @@ class AppLocalizationsSl extends AppLocalizations {
   String get settings_txPowerInvalid => 'Neveljavna TX moč (0-22 dBm)';
 
   @override
-  String get settings_longRange => 'DDolg doseg';
+  String get settings_clientRepeat => 'Neovadno ponavljanje';
 
   @override
-  String get settings_fastSpeed => 'Visoka hitrost';
+  String get settings_clientRepeatSubtitle =>
+      'Omogočite temu naprave, da ponavlja paketne sporočila za druge.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'Za ponovni prenos na brezžični način so potrebne frekvence 433, 869 ali 918 MHz.';
 
   @override
   String settings_error(String message) {

@@ -131,9 +131,6 @@
   "settings_infoContactsCount": "Número de contactos",
   "settings_infoChannelCount": "Número de canales",
   "settings_presets": "Preajustes",
-  "settings_preset915Mhz": "915 MHz",
-  "settings_preset868Mhz": "868 MHz",
-  "settings_preset433Mhz": "433 MHz",
   "settings_frequency": "Frecuencia (MHz)",
   "settings_frequencyHelper": "300,0 - 2500,0",
   "settings_frequencyInvalid": "Frecuencia inválida (300-2500 MHz)",
@@ -143,8 +140,6 @@
   "settings_txPower": "TX Potencia (dBm)",
   "settings_txPowerHelper": "0 - 22",
   "settings_txPowerInvalid": "Potencia de TX inválida (0-22 dBm)",
-  "settings_longRange": "Largo Alcance",
-  "settings_fastSpeed": "Velocidad Rápida",
   "settings_error": "Error: {message}",
   "@settings_error": {
     "placeholders": {
@@ -1629,5 +1624,8 @@
   "scanner_enableBluetooth": "Habilitar Bluetooth",
   "snrIndicator_nearByRepeaters": "Repetidores cercanos",
   "snrIndicator_lastSeen": "Visto por última vez",
-  "chat_ShowAllPaths": "Mostrar todos los caminos"
+  "chat_ShowAllPaths": "Mostrar todos los caminos",
+  "settings_clientRepeatFreqWarning": "Para la comunicación fuera de la red, se requiere una frecuencia de 433, 869 o 918 MHz.",
+  "settings_clientRepeat": "Repetir sin conexión",
+  "settings_clientRepeatSubtitle": "Permita que este dispositivo repita los paquetes de red para otros usuarios."
 }

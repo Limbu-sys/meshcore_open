@@ -862,6 +862,7 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
   LoRaSpreadingFactor _spreadingFactor = LoRaSpreadingFactor.sf7;
   LoRaCodingRate _codingRate = LoRaCodingRate.cr4_5;
   final _txPowerController = TextEditingController(text: '20');
+  bool _clientRepeat = false;
 
   @override
   void initState() {
@@ -911,6 +912,8 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
     if (widget.connector.currentTxPower != null) {
       _txPowerController.text = widget.connector.currentTxPower.toString();
     }
+
+    _clientRepeat = widget.connector.clientRepeat ?? false;
   }
 
   @override
@@ -960,9 +963,29 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
       widget.connector.currentCr,
     );
 
+    // if the client repeat isnt null then we know its supported
+    //otherwise we leave it out of the frame to avoid accidentally enabling
+    final knownRepeat = widget.connector.clientRepeat != null;
+
+    if (knownRepeat) {
+      const validRepeatFreqsKHz = {433000, 869000, 918000};
+      if (_clientRepeat && !validRepeatFreqsKHz.contains(freqHz)) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(l10n.settings_clientRepeatFreqWarning)),
+        );
+        return;
+      }
+    }
+
     try {
       await widget.connector.sendFrame(
-        buildSetRadioParamsFrame(freqHz, bwHz, sf, cr),
+        buildSetRadioParamsFrame(
+          freqHz,
+          bwHz,
+          sf,
+          cr,
+          clientRepeat: knownRepeat ? _clientRepeat : null,
+        ),
       );
       await widget.connector.sendFrame(buildSetRadioTxPowerFrame(txPower));
       await widget.connector.refreshDeviceInfo();
@@ -1001,37 +1024,25 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              l10n.settings_presets,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Wrap(
-              spacing: 8,
-              children: [
-                _PresetChip(
-                  label: l10n.settings_preset915Mhz,
-                  onTap: () => _applyPreset(RadioSettings.preset915MHz),
-                ),
-                _PresetChip(
-                  label: l10n.settings_preset868Mhz,
-                  onTap: () => _applyPreset(RadioSettings.preset868MHz),
-                ),
-                _PresetChip(
-                  label: l10n.settings_preset433Mhz,
-                  onTap: () => _applyPreset(RadioSettings.preset433MHz),
-                ),
-                _PresetChip(
-                  label: l10n.settings_longRange,
-                  onTap: () => _applyPreset(RadioSettings.presetLongRange),
-                ),
-                _PresetChip(
-                  label: l10n.settings_fastSpeed,
-                  onTap: () => _applyPreset(RadioSettings.presetFastSpeed),
-                ),
+            DropdownButtonFormField<int>(
+              decoration: InputDecoration(
+                labelText: l10n.settings_presets,
+                border: const OutlineInputBorder(),
+              ),
+              items: [
+                for (var i = 0; i < RadioSettings.presets.length; i++)
+                  DropdownMenuItem(
+                    value: i,
+                    child: Text(RadioSettings.presets[i].$1),
+                  ),
               ],
+              onChanged: (index) {
+                if (index != null) {
+                  _applyPreset(RadioSettings.presets[index].$2);
+                }
+              },
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 16),
             TextField(
               controller: _frequencyController,
               decoration: InputDecoration(
@@ -1103,6 +1114,16 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
               ),
               keyboardType: TextInputType.number,
             ),
+            if (widget.connector.clientRepeat != null) ...[
+              const SizedBox(height: 16),
+              SwitchListTile(
+                title: Text(l10n.settings_clientRepeat),
+                subtitle: Text(l10n.settings_clientRepeatSubtitle),
+                value: _clientRepeat,
+                onChanged: (value) => setState(() => _clientRepeat = value),
+                contentPadding: EdgeInsets.zero,
+              ),
+            ],
           ],
         ),
       ),
@@ -1114,17 +1135,5 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
         FilledButton(onPressed: _saveSettings, child: Text(l10n.common_save)),
       ],
     );
-  }
-}
-
-class _PresetChip extends StatelessWidget {
-  final String label;
-  final VoidCallback onTap;
-
-  const _PresetChip({required this.label, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return ActionChip(label: Text(label), onPressed: onTap);
   }
 }

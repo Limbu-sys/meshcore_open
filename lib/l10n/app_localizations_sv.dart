@@ -342,15 +342,6 @@ class AppLocalizationsSv extends AppLocalizations {
   String get settings_presets => 'Fördefinierade inställningar';
 
   @override
-  String get settings_preset915Mhz => '915 MHz';
-
-  @override
-  String get settings_preset868Mhz => '868 MHz';
-
-  @override
-  String get settings_preset433Mhz => '433 MHz';
-
-  @override
   String get settings_frequency => 'Frekvens (MHz)';
 
   @override
@@ -378,10 +369,15 @@ class AppLocalizationsSv extends AppLocalizations {
   String get settings_txPowerInvalid => 'Ogiltig TX-effekt (0-22 dBm)';
 
   @override
-  String get settings_longRange => 'Lång räckvidd';
+  String get settings_clientRepeat => 'Upprepa utan elnät';
 
   @override
-  String get settings_fastSpeed => 'Snabb hastighet';
+  String get settings_clientRepeatSubtitle =>
+      'Låt enheten repetera nätpaket för andra användare.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'För att kunna kommunicera utanför elnätet krävs frekvenserna 433, 869 eller 918 MHz.';
 
   @override
   String settings_error(String message) {

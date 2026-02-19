@@ -131,9 +131,6 @@
   "settings_infoContactsCount": "Liczba kontaktów",
   "settings_infoChannelCount": "Liczba kanałów",
   "settings_presets": "Preset",
-  "settings_preset915Mhz": "915 MHz",
-  "settings_preset868Mhz": "868 MHz",
-  "settings_preset433Mhz": "433 MHz",
   "settings_frequency": "Częstotliwość (MHz)",
   "settings_frequencyHelper": "300,0 - 2500,0",
   "settings_frequencyInvalid": "Nieprawidłowa częstotliwość (300-2500 MHz)",
@@ -143,8 +140,6 @@
   "settings_txPower": "TX Moc (dBm)",
   "settings_txPowerHelper": "0 - 22",
   "settings_txPowerInvalid": "Nieprawidłowa moc TX (0-22 dBm)",
-  "settings_longRange": "Długi zasięg",
-  "settings_fastSpeed": "Szybka prędkość",
   "settings_error": "Błąd: {message}",
   "@settings_error": {
     "placeholders": {
@@ -1601,5 +1596,8 @@
   "scanner_enableBluetooth": "Włącz Bluetooth",
   "snrIndicator_lastSeen": "Ostatnio widziany",
   "snrIndicator_nearByRepeaters": "Nadajniki w pobliżu",
-  "chat_ShowAllPaths": "Pokaż wszystkie ścieżki"
+  "chat_ShowAllPaths": "Pokaż wszystkie ścieżki",
+  "settings_clientRepeatSubtitle": "Pozwól temu urządzeniu powtarzać pakiety danych dla innych urządzeń.",
+  "settings_clientRepeat": "Powtórzenie: Niezależne od sieci",
+  "settings_clientRepeatFreqWarning": "Powtórka poza siecią wymaga częstotliwości 433, 869 lub 918 MHz."
 }

@@ -345,15 +345,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get settings_presets => 'Presets';
 
   @override
-  String get settings_preset915Mhz => '915 MHz';
-
-  @override
-  String get settings_preset868Mhz => '868 MHz';
-
-  @override
-  String get settings_preset433Mhz => '433 MHz';
-
-  @override
   String get settings_frequency => 'Frequentie (MHz)';
 
   @override
@@ -381,10 +372,15 @@ class AppLocalizationsNl extends AppLocalizations {
   String get settings_txPowerInvalid => 'Ongeldige TX-vermogen (0-22 dBm)';
 
   @override
-  String get settings_longRange => 'Lange Afstand';
+  String get settings_clientRepeat => 'Herhalen: Afgekoppeld';
 
   @override
-  String get settings_fastSpeed => 'Hoge Snelheid';
+  String get settings_clientRepeatSubtitle =>
+      'Laat dit apparaat de mesh-pakketten opnieuw verzenden voor andere apparaten.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'Om een signaal buiten het netwerk te versturen, zijn frequenties van 433, 869 of 918 MHz vereist.';
 
   @override
   String settings_error(String message) {

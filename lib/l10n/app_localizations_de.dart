@@ -345,15 +345,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get settings_presets => 'Voreinstellungen';
 
   @override
-  String get settings_preset915Mhz => '915 MHz';
-
-  @override
-  String get settings_preset868Mhz => '868 MHz';
-
-  @override
-  String get settings_preset433Mhz => '433 MHz';
-
-  @override
   String get settings_frequency => 'Frequenz (MHz)';
 
   @override
@@ -381,10 +372,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get settings_txPowerInvalid => 'Ungültige TX-Leistung (0-22 dBm)';
 
   @override
-  String get settings_longRange => 'Grosse Reichweite';
+  String get settings_clientRepeat => 'Wiederholung, ohne Stromanschluss';
 
   @override
-  String get settings_fastSpeed => 'Schnelle Geschwindigkeit';
+  String get settings_clientRepeatSubtitle =>
+      'Ermöglichen Sie diesem Gerät, Mesh-Pakete für andere zu wiederholen.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'Die Kommunikation ohne Stromversorgung erfordert Frequenzen von 433, 869 oder 918 MHz.';
 
   @override
   String settings_error(String message) {

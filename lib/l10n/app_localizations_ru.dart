@@ -346,15 +346,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String get settings_presets => 'Пресеты';
 
   @override
-  String get settings_preset915Mhz => '915 МГц';
-
-  @override
-  String get settings_preset868Mhz => '868 МГц';
-
-  @override
-  String get settings_preset433Mhz => '433 МГц';
-
-  @override
   String get settings_frequency => 'Частота (МГц)';
 
   @override
@@ -383,10 +374,15 @@ class AppLocalizationsRu extends AppLocalizations {
       'Недопустимая мощность передачи (0–22 дБм)';
 
   @override
-  String get settings_longRange => 'Дальний радиус';
+  String get settings_clientRepeat => 'Повторение \"вне сети\"';
 
   @override
-  String get settings_fastSpeed => 'Высокая скорость';
+  String get settings_clientRepeatSubtitle =>
+      'Позвольте этому устройству повторять пакеты данных для других устройств.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'Для работы в режиме \"без подключения к сети\" требуется частота 433, 869 или 918 МГц.';
 
   @override
   String settings_error(String message) {

@@ -348,15 +348,6 @@ class AppLocalizationsPl extends AppLocalizations {
   String get settings_presets => 'Preset';
 
   @override
-  String get settings_preset915Mhz => '915 MHz';
-
-  @override
-  String get settings_preset868Mhz => '868 MHz';
-
-  @override
-  String get settings_preset433Mhz => '433 MHz';
-
-  @override
   String get settings_frequency => 'Częstotliwość (MHz)';
 
   @override
@@ -385,10 +376,15 @@ class AppLocalizationsPl extends AppLocalizations {
   String get settings_txPowerInvalid => 'Nieprawidłowa moc TX (0-22 dBm)';
 
   @override
-  String get settings_longRange => 'Długi zasięg';
+  String get settings_clientRepeat => 'Powtórzenie: Niezależne od sieci';
 
   @override
-  String get settings_fastSpeed => 'Szybka prędkość';
+  String get settings_clientRepeatSubtitle =>
+      'Pozwól temu urządzeniu powtarzać pakiety danych dla innych urządzeń.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'Powtórka poza siecią wymaga częstotliwości 433, 869 lub 918 MHz.';
 
   @override
   String settings_error(String message) {
