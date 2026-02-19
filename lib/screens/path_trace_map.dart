@@ -9,6 +9,8 @@ import 'package:meshcore_open/connector/meshcore_connector.dart';
 import 'package:meshcore_open/connector/meshcore_protocol.dart';
 import 'package:meshcore_open/l10n/l10n.dart';
 import 'package:meshcore_open/models/contact.dart';
+import 'package:meshcore_open/models/app_settings.dart';
+import 'package:meshcore_open/services/app_settings_service.dart';
 import 'package:meshcore_open/services/map_tile_cache_service.dart';
 import 'package:meshcore_open/widgets/snr_indicator.dart';
 import 'package:provider/provider.dart';
@@ -26,8 +28,11 @@ double getPathDistanceMeters(List<LatLng> points) {
   return distanceMeters;
 }
 
-String formatDistance(double distanceMeters) {
-  return '(${(distanceMeters / 1609.34).toStringAsFixed(2)} Miles / ${(distanceMeters / 1000).toStringAsFixed(2)} Km)';
+String formatDistance(double distanceMeters, {required bool isImperial}) {
+  if (isImperial) {
+    return '(${(distanceMeters / 1609.34).toStringAsFixed(2)} mi)';
+  }
+  return '(${(distanceMeters / 1000).toStringAsFixed(2)} km)';
 }
 
 class PathTraceData {
@@ -61,6 +66,8 @@ class PathTraceMapScreen extends StatefulWidget {
 }
 
 class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
+  static const double _labelZoomThreshold = 8.5;
+
   StreamSubscription<Uint8List>? _frameSubscription;
   Timer? _timeoutTimer;
 
@@ -75,6 +82,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
   LatLngBounds? _bounds;
   ValueKey<String> _mapKey = const ValueKey('initial');
   double _pathDistanceMeters = 0.0;
+  bool _showNodeLabels = true;
 
   String _formatPathPrefixes(Uint8List pathBytes) {
     return pathBytes
@@ -241,6 +249,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
 
       _initialCenter = _points.isNotEmpty ? _points.first : const LatLng(0, 0);
       _initialZoom = _points.isNotEmpty ? 13.0 : 2.0;
+      _showNodeLabels = _initialZoom >= _labelZoomThreshold;
       _bounds = _points.length > 1 ? LatLngBounds.fromPoints(_points) : null;
       _mapKey = ValueKey(
         '${context.l10n.pathTrace_you},${_formatPathPrefixes(_traceData!.pathData)}',
@@ -253,6 +262,8 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
   Widget build(BuildContext context) {
     return Consumer<MeshCoreConnector>(
       builder: (context, connector, _) {
+        final settings = context.watch<AppSettingsService>().settings;
+        final isImperial = settings.unitSystem == UnitSystem.imperial;
         final tileCache = context.read<MapTileCacheService>();
 
         return Scaffold(
@@ -317,7 +328,8 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
                       ),
                     ),
                   ),
-                if (_hasData) _buildLegendCard(context, _traceData!),
+                if (_hasData)
+                  _buildLegendCard(context, _traceData!, isImperial),
               ],
             ),
           ),
@@ -326,55 +338,61 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
     );
   }
 
-  List<Marker> _buildHopMarkers(List<int> pathData) {
-    return [
-      for (final hop in pathData)
-        if (_traceData!.pathContacts[hop] != null &&
-            _traceData!.pathContacts[hop]!.hasLocation)
-          Marker(
-            point: LatLng(
-              _traceData!.pathContacts[hop]!.latitude!,
-              _traceData!.pathContacts[hop]!.longitude!,
-            ),
-            width: 35,
-            height: 35,
-            child: Container(
-              padding: const EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                color: Colors.green,
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.white, width: 2),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.3),
-                    blurRadius: 4,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              alignment: Alignment.center,
-              child: Text(
-                _traceData!.pathContacts[hop]!.publicKey
-                    .sublist(0, 1)
-                    .map(
-                      (b) => b.toRadixString(16).padLeft(2, '0').toUpperCase(),
-                    )
-                    .join(),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                ),
-              ),
-            ),
-          ),
-      if (context.read<MeshCoreConnector>().selfLatitude != null &&
-          context.read<MeshCoreConnector>().selfLongitude != null)
+  List<Marker> _buildHopMarkers(
+    List<int> pathData, {
+    required bool showLabels,
+  }) {
+    final markers = <Marker>[];
+    for (final hop in pathData) {
+      final contact = _traceData!.pathContacts[hop];
+      if (contact == null || !contact.hasLocation) continue;
+      final point = LatLng(contact.latitude!, contact.longitude!);
+      markers.add(
         Marker(
-          point: LatLng(
-            context.read<MeshCoreConnector>().selfLatitude!,
-            context.read<MeshCoreConnector>().selfLongitude!,
+          point: point,
+          width: 35,
+          height: 35,
+          child: Container(
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              color: Colors.green,
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.white, width: 2),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.3),
+                  blurRadius: 4,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              contact.publicKey
+                  .sublist(0, 1)
+                  .map((b) => b.toRadixString(16).padLeft(2, '0').toUpperCase())
+                  .join(),
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 12,
+              ),
+            ),
           ),
+        ),
+      );
+      if (showLabels) {
+        markers.add(_buildNodeLabelMarker(point: point, label: contact.name));
+      }
+    }
+
+    final selfLat = context.read<MeshCoreConnector>().selfLatitude;
+    final selfLon = context.read<MeshCoreConnector>().selfLongitude;
+    if (selfLat != null && selfLon != null) {
+      final selfPoint = LatLng(selfLat, selfLon);
+      markers.add(
+        Marker(
+          point: selfPoint,
           width: 35,
           height: 35,
           child: Container(
@@ -402,7 +420,56 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
             ),
           ),
         ),
-    ];
+      );
+      if (showLabels) {
+        markers.add(
+          _buildNodeLabelMarker(
+            point: selfPoint,
+            label: context.l10n.pathTrace_you,
+          ),
+        );
+      }
+    }
+
+    return markers;
+  }
+
+  Marker _buildNodeLabelMarker({required LatLng point, required String label}) {
+    return Marker(
+      point: point,
+      width: 120,
+      height: 24,
+      alignment: Alignment.topCenter,
+      child: IgnorePointer(
+        child: Transform.translate(
+          offset: const Offset(0, -26),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+            decoration: BoxDecoration(
+              color: Colors.black54,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: SizedBox(
+              width: 96,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  label,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   String formatDirectionText(PathTraceData pathTraceData, int index) {
@@ -482,6 +549,14 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
               ),
         minZoom: 2.0,
         maxZoom: 18.0,
+        onPositionChanged: (camera, hasGesture) {
+          final shouldShow = camera.zoom >= _labelZoomThreshold;
+          if (shouldShow != _showNodeLabels && mounted) {
+            setState(() {
+              _showNodeLabels = shouldShow;
+            });
+          }
+        },
       ),
       children: [
         TileLayer(
@@ -492,12 +567,21 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
         ),
         if (_polylines.isNotEmpty) PolylineLayer(polylines: _polylines),
         if (_traceData!.pathData.isNotEmpty)
-          MarkerLayer(markers: _buildHopMarkers(_traceData!.pathData)),
+          MarkerLayer(
+            markers: _buildHopMarkers(
+              _traceData!.pathData,
+              showLabels: _showNodeLabels,
+            ),
+          ),
       ],
     );
   }
 
-  Widget _buildLegendCard(BuildContext context, PathTraceData pathTraceData) {
+  Widget _buildLegendCard(
+    BuildContext context,
+    PathTraceData pathTraceData,
+    bool isImperial,
+  ) {
     final l10n = context.l10n;
     final maxHeight = MediaQuery.of(context).size.height * 0.35;
     final estimatedHeight = 72.0 + (pathTraceData.pathData.length * 56.0);
@@ -516,7 +600,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
               Padding(
                 padding: const EdgeInsets.all(12),
                 child: Text(
-                  '${l10n.channelPath_repeaterHops} ${formatDistance(_pathDistanceMeters)}',
+                  '${l10n.channelPath_repeaterHops} ${formatDistance(_pathDistanceMeters, isImperial: isImperial)}',
                   style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
               ),

@@ -9,11 +9,14 @@ import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
 import '../services/map_tile_cache_service.dart';
+import '../services/app_settings_service.dart';
 import '../connector/meshcore_protocol.dart';
 import '../l10n/app_localizations.dart';
 import '../l10n/l10n.dart';
 import '../models/channel_message.dart';
+import '../models/app_settings.dart';
 import '../models/contact.dart';
+import '../widgets/adaptive_app_bar_title.dart';
 
 class ChannelMessagePathScreen extends StatelessWidget {
   final ChannelMessage message;
@@ -40,7 +43,7 @@ class ChannelMessagePathScreen extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
-            title: Text(l10n.channelPath_title),
+            title: AdaptiveAppBarTitle(l10n.channelPath_title),
             actions: [
               IconButton(
                 icon: const Icon(Icons.radar_outlined),
@@ -278,8 +281,12 @@ class ChannelMessagePathMapScreen extends StatefulWidget {
 
 class _ChannelMessagePathMapScreenState
     extends State<ChannelMessagePathMapScreen> {
+  static const double _labelZoomThreshold = 8.5;
+
   Uint8List? _selectedPath;
   double _pathDistance = 0.0;
+  bool _showNodeLabels = true;
+  bool _didReceivePositionUpdate = false;
 
   @override
   void initState() {
@@ -314,6 +321,8 @@ class _ChannelMessagePathMapScreenState
   Widget build(BuildContext context) {
     return Consumer<MeshCoreConnector>(
       builder: (context, connector, _) {
+        final settings = context.watch<AppSettingsService>().settings;
+        final isImperial = settings.unitSystem == UnitSystem.imperial;
         final tileCache = context.read<MapTileCacheService>();
         final primaryPath = _selectPrimaryPath(
           widget.message.pathBytes,
@@ -357,6 +366,9 @@ class _ChannelMessagePathMapScreenState
             ? points.first
             : const LatLng(0, 0);
         final initialZoom = points.isNotEmpty ? 13.0 : 2.0;
+        if (!_didReceivePositionUpdate) {
+          _showNodeLabels = initialZoom >= _labelZoomThreshold;
+        }
         final bounds = points.length > 1
             ? LatLngBounds.fromPoints(points)
             : null;
@@ -366,7 +378,9 @@ class _ChannelMessagePathMapScreenState
         _pathDistance = _getPathDistance(points);
 
         return Scaffold(
-          appBar: AppBar(title: Text(context.l10n.channelPath_mapTitle)),
+          appBar: AppBar(
+            title: AdaptiveAppBarTitle(context.l10n.channelPath_mapTitle),
+          ),
           body: SafeArea(
             top: false,
             child: Stack(
@@ -388,6 +402,17 @@ class _ChannelMessagePathMapScreenState
                     interactionOptions: InteractionOptions(
                       flags: ~InteractiveFlag.rotate,
                     ),
+                    onPositionChanged: (camera, hasGesture) {
+                      final shouldShow = camera.zoom >= _labelZoomThreshold;
+                      if (!_didReceivePositionUpdate ||
+                          shouldShow != _showNodeLabels) {
+                        if (!mounted) return;
+                        setState(() {
+                          _didReceivePositionUpdate = true;
+                          _showNodeLabels = shouldShow;
+                        });
+                      }
+                    },
                   ),
                   children: [
                     TileLayer(
@@ -399,7 +424,12 @@ class _ChannelMessagePathMapScreenState
                     ),
                     if (polylines.isNotEmpty)
                       PolylineLayer(polylines: polylines),
-                    MarkerLayer(markers: _buildHopMarkers(hops)),
+                    MarkerLayer(
+                      markers: _buildHopMarkers(
+                        hops,
+                        showLabels: _showNodeLabels,
+                      ),
+                    ),
                   ],
                 ),
                 if (observedPaths.length > 1)
@@ -422,7 +452,7 @@ class _ChannelMessagePathMapScreenState
                       ),
                     ),
                   ),
-                _buildLegendCard(context, hops),
+                _buildLegendCard(context, hops, isImperial),
               ],
             ),
           ),
@@ -494,45 +524,61 @@ class _ChannelMessagePathMapScreenState
     );
   }
 
-  List<Marker> _buildHopMarkers(List<_PathHop> hops) {
-    return [
-      for (final hop in hops)
-        if (hop.hasLocation)
-          Marker(
-            point: hop.position!,
-            width: 35,
-            height: 35,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.green,
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.white, width: 2),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.3),
-                    blurRadius: 4,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              alignment: Alignment.center,
-              child: Text(
-                hop.index.toString(),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
+  List<Marker> _buildHopMarkers(
+    List<_PathHop> hops, {
+    required bool showLabels,
+  }) {
+    final markers = <Marker>[];
+    for (final hop in hops) {
+      if (!hop.hasLocation) continue;
+      final point = hop.position!;
+      markers.add(
+        Marker(
+          point: point,
+          width: 35,
+          height: 35,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.green,
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.white, width: 2),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.3),
+                  blurRadius: 4,
+                  offset: const Offset(0, 2),
                 ),
+              ],
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              hop.index.toString(),
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 12,
               ),
             ),
           ),
-      if (context.read<MeshCoreConnector>().selfLatitude != null &&
-          context.read<MeshCoreConnector>().selfLongitude != null)
-        Marker(
-          point: LatLng(
-            context.read<MeshCoreConnector>().selfLatitude!,
-            context.read<MeshCoreConnector>().selfLongitude!,
+        ),
+      );
+      if (showLabels) {
+        markers.add(
+          _buildNodeLabelMarker(
+            point: point,
+            label: hop.contact?.name ?? _formatPrefix(hop.prefix),
           ),
+        );
+      }
+    }
+
+    final selfLat = context.read<MeshCoreConnector>().selfLatitude;
+    final selfLon = context.read<MeshCoreConnector>().selfLongitude;
+    if (selfLat != null && selfLon != null) {
+      final selfPoint = LatLng(selfLat, selfLon);
+      markers.add(
+        Marker(
+          point: selfPoint,
           width: 35,
           height: 35,
           child: Container(
@@ -559,10 +605,63 @@ class _ChannelMessagePathMapScreenState
             ),
           ),
         ),
-    ];
+      );
+      if (showLabels) {
+        markers.add(
+          _buildNodeLabelMarker(
+            point: selfPoint,
+            label: context.l10n.pathTrace_you,
+          ),
+        );
+      }
+    }
+
+    return markers;
   }
 
-  Widget _buildLegendCard(BuildContext context, List<_PathHop> hops) {
+  Marker _buildNodeLabelMarker({required LatLng point, required String label}) {
+    return Marker(
+      point: point,
+      width: 120,
+      height: 24,
+      alignment: Alignment.topCenter,
+      child: IgnorePointer(
+        child: Transform.translate(
+          offset: const Offset(0, -26),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+            decoration: BoxDecoration(
+              color: Colors.black54,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: SizedBox(
+              width: 96,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  label,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLegendCard(
+    BuildContext context,
+    List<_PathHop> hops,
+    bool isImperial,
+  ) {
     final l10n = context.l10n;
     final maxHeight = MediaQuery.of(context).size.height * 0.35;
     final estimatedHeight = 72.0 + (hops.length * 56.0);
@@ -581,7 +680,7 @@ class _ChannelMessagePathMapScreenState
               Padding(
                 padding: const EdgeInsets.all(12),
                 child: Text(
-                  '${l10n.channelPath_repeaterHops} (${(_pathDistance / 1609.34).toStringAsFixed(2)} Miles / ${(_pathDistance / 1000).toStringAsFixed(2)} Km)',
+                  '${l10n.channelPath_repeaterHops} ${formatDistance(_pathDistance, isImperial: isImperial)}',
                   style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
               ),

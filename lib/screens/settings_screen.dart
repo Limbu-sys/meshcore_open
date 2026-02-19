@@ -8,6 +8,7 @@ import '../connector/meshcore_connector.dart';
 import '../connector/meshcore_protocol.dart';
 import '../l10n/l10n.dart';
 import '../models/radio_settings.dart';
+import '../widgets/adaptive_app_bar_title.dart';
 import 'app_settings_screen.dart';
 import 'app_debug_log_screen.dart';
 import 'ble_debug_log_screen.dart';
@@ -41,7 +42,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.settings_title), centerTitle: true),
+      appBar: AppBar(
+        title: AdaptiveAppBarTitle(l10n.settings_title),
+        centerTitle: true,
+      ),
       body: SafeArea(
         top: false,
         child: Consumer<MeshCoreConnector>(

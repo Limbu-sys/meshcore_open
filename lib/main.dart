@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter/foundation.dart';
 import 'l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -47,6 +48,7 @@ void main() async {
   final notificationService = NotificationService();
   await notificationService.initialize();
   await backgroundService.initialize();
+  _registerThirdPartyLicenses();
 
   // Wire up connector with services
   connector.initialize(
@@ -78,6 +80,27 @@ void main() async {
       mapTileCacheService: mapTileCacheService,
     ),
   );
+}
+
+void _registerThirdPartyLicenses() {
+  LicenseRegistry.addLicense(() async* {
+    yield const LicenseEntryWithLineBreaks(
+      <String>['Open-Meteo Elevation API Data'],
+      '''
+Data used by LOS elevation lookups is provided by Open-Meteo.
+
+Open-Meteo terms and attribution:
+https://open-meteo.com/en/terms
+
+Elevation API:
+https://open-meteo.com/en/docs/elevation-api
+
+Attribution license reference:
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+''',
+    );
+  });
 }
 
 class MeshCoreApp extends StatelessWidget {

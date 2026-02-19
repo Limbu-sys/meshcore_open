@@ -318,6 +318,10 @@ class AppLocalizationsSv extends AppLocalizations {
       'En öppen källkods Flutter-klient för MeshCore LoRa meshnätverksenheter.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'LOS-höjddata: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Namn';
 
   @override
@@ -409,7 +413,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get appSettings_languageSystem => 'Systemstandard';
 
   @override
-  String get appSettings_languageEn => 'English';
+  String get appSettings_languageEn => 'engelska';
 
   @override
   String get appSettings_languageFr => 'Français';
@@ -439,7 +443,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get appSettings_languageSv => 'Svenska';
 
   @override
-  String get appSettings_languageNl => 'Nederlands';
+  String get appSettings_languageNl => 'nederländska';
 
   @override
   String get appSettings_languageSk => 'Slovenčina';
@@ -543,13 +547,13 @@ class AppLocalizationsSv extends AppLocalizations {
       'Anslut till en enhet för att välja';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3.0-4.2V)';
+  String get appSettings_batteryNmc => '18650 NMC (3,0-4,2V)';
 
   @override
   String get appSettings_batteryLifepo4 => 'LiFePO4 (2,6–3,65V)';
 
   @override
-  String get appSettings_batteryLipo => 'LiPo (3.0-4.2V)';
+  String get appSettings_batteryLipo => 'LiPo (3,0-4,2V)';
 
   @override
   String get appSettings_mapDisplay => 'Kartvisning';
@@ -609,6 +613,15 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get appSettings_offlineMapCache => 'Offline Kartcache';
+
+  @override
+  String get appSettings_unitsTitle => 'Enheter';
+
+  @override
+  String get appSettings_unitsMetric => 'Metriskt (m/km)';
+
+  @override
+  String get appSettings_unitsImperial => 'Imperialt (ft / mi)';
 
   @override
   String get appSettings_noAreaSelected => 'Ingen area markerad';
@@ -857,21 +870,21 @@ class AppLocalizationsSv extends AppLocalizations {
       'Skyddat med en hemlig nyckel.';
 
   @override
-  String get channels_joinPrivateChannel => 'Gå med i en Privat Kanal';
+  String get channels_joinPrivateChannel => 'GÃ¥ med i en Privat Kanal';
 
   @override
   String get channels_joinPrivateChannelDesc =>
       'Ange en hemlig nyckel manuellt.';
 
   @override
-  String get channels_joinPublicChannel => 'Gå med i den Offentliga Kanalen';
+  String get channels_joinPublicChannel => 'GÃ¥ med i den Offentliga Kanalen';
 
   @override
   String get channels_joinPublicChannelDesc =>
       'Vem som helst kan gå med i denna kanal.';
 
   @override
-  String get channels_joinHashtagChannel => 'Gå med i en Hashtagkanal';
+  String get channels_joinHashtagChannel => 'GÃ¥ med i en Hashtagkanal';
 
   @override
   String get channels_joinHashtagChannelDesc =>
@@ -1014,7 +1027,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get debugLog_frames => 'Rammar';
 
   @override
-  String get debugLog_rawLogRx => 'Rå Log-RX';
+  String get debugLog_rawLogRx => 'RÃ¥ Log-RX';
 
   @override
   String get debugLog_noBleActivity => 'Ingen BLE-aktivitet ännu';
@@ -1226,6 +1239,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String get map_title => 'Nodkarta';
 
   @override
+  String get map_lineOfSight => 'Synlinje';
+
+  @override
+  String get map_losScreenTitle => 'Synlinje';
+
+  @override
   String get map_noNodesWithLocation => 'Inga noder med platsinformation';
 
   @override
@@ -1243,10 +1262,10 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get map_chat => 'Chat';
+  String get map_chat => 'Chatta';
 
   @override
-  String get map_repeater => 'Återuppspelare';
+  String get map_repeater => 'Ã…teruppspelare';
 
   @override
   String get map_room => 'Rum';
@@ -1255,10 +1274,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get map_sensor => 'Sensor';
 
   @override
-  String get map_pinDm => 'Lås (DM)';
+  String get map_pinDm => 'LÃ¥s (DM)';
 
   @override
-  String get map_pinPrivate => 'Lås (Privat)';
+  String get map_pinPrivate => 'LÃ¥s (Privat)';
 
   @override
   String get map_pinPublic => 'Anslå (Offentligt)';
@@ -1349,7 +1368,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get map_sharedPin => 'Delad PIN';
 
   @override
-  String get map_joinRoom => 'Gå med i rum';
+  String get map_joinRoom => 'GÃ¥ med i rum';
 
   @override
   String get map_manageRepeater => 'Hantera Upprepare';
@@ -1505,7 +1524,7 @@ class AppLocalizationsSv extends AppLocalizations {
       'Är du säker på att du vill koppla från enheten?';
 
   @override
-  String get login_repeaterLogin => 'Återuppta Inloggning';
+  String get login_repeaterLogin => 'Ã…teruppta Inloggning';
 
   @override
   String get login_roomLogin => 'Rum Inloggning';
@@ -1629,7 +1648,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get path_setPath => 'Ange Sökväg';
 
   @override
-  String get repeater_management => 'Återuppspelarens Hantering';
+  String get repeater_management => 'Ã…teruppspelarens Hantering';
 
   @override
   String get room_management => 'Rumserverhantering';
@@ -1645,7 +1664,7 @@ class AppLocalizationsSv extends AppLocalizations {
       'Visa återspolningsstatus, statistik och grannar';
 
   @override
-  String get repeater_telemetry => 'Telemetry';
+  String get repeater_telemetry => 'Telemetri';
 
   @override
   String get repeater_telemetrySubtitle =>
@@ -1670,7 +1689,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get repeater_settingsSubtitle => 'Konfigurera återspolarparametrar';
 
   @override
-  String get repeater_statusTitle => 'Återspelsstatus';
+  String get repeater_statusTitle => 'Ã…terspelsstatus';
 
   @override
   String get repeater_routingMode => 'Ruttläge';
@@ -1727,10 +1746,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get repeater_noiseFloor => 'Ljudnivå';
 
   @override
-  String get repeater_txAirtime => 'TX Airtime';
+  String get repeater_txAirtime => 'TX sändningstid';
 
   @override
-  String get repeater_rxAirtime => 'RX Airtime';
+  String get repeater_rxAirtime => 'RX sändningstid';
 
   @override
   String get repeater_packetStatistics => 'Paketstatistik';
@@ -1887,7 +1906,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get repeater_dangerZone => 'Faraområde';
 
   @override
-  String get repeater_rebootRepeater => 'Starta Återuppspelaren';
+  String get repeater_rebootRepeater => 'Starta Ã…teruppspelaren';
 
   @override
   String get repeater_rebootRepeaterSubtitle => 'Starta om repeternheten';
@@ -1982,7 +2001,7 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get repeater_cliTitle => 'Återuppspelaren CLI';
+  String get repeater_cliTitle => 'Ã…teruppspelaren CLI';
 
   @override
   String get repeater_debugNextCommand => 'Felsök Nästa Kommando';
@@ -2024,7 +2043,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get repeater_cliQuickGetName => 'Hämta namn';
 
   @override
-  String get repeater_cliQuickGetRadio => 'Få Radio';
+  String get repeater_cliQuickGetRadio => 'FÃ¥ Radio';
 
   @override
   String get repeater_cliQuickGetTx => 'Hämta TX';
@@ -2166,7 +2185,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get repeater_cliHelpGetBridgeType =>
-      'Får brotyperna ingen, rs232, espnow';
+      'FÃ¥r brotyperna ingen, rs232, espnow';
 
   @override
   String get repeater_cliHelpLogStart => 'Starta paketloggning till filsystem.';
@@ -2377,7 +2396,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get channelPath_otherObservedPaths => 'Övriga observerade stigar';
 
   @override
-  String get channelPath_repeaterHops => 'Återupptagningssteg';
+  String get channelPath_repeaterHops => 'Ã…terupptagningssteg';
 
   @override
   String get channelPath_noHopDetails =>
@@ -2481,10 +2500,10 @@ class AppLocalizationsSv extends AppLocalizations {
       'Skapa en ny gemenskap och dela via QR-kod.';
 
   @override
-  String get community_join => 'Gå med';
+  String get community_join => 'GÃ¥ med';
 
   @override
-  String get community_joinTitle => 'Gå med i gemenskapen';
+  String get community_joinTitle => 'GÃ¥ med i gemenskapen';
 
   @override
   String community_joinConfirmation(String name) {
@@ -2695,7 +2714,115 @@ class AppLocalizationsSv extends AppLocalizations {
   String get pathTrace_clearTooltip => 'Rensa väg';
 
   @override
-  String get contacts_pathTrace => 'Path Trace';
+  String get losSelectStartEnd => 'Välj start- och slutnoder för LOS.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Synlinjekontroll misslyckades: $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Rensa alla punkter';
+
+  @override
+  String get losRunToViewElevationProfile => 'Kör LOS för att se höjdprofil';
+
+  @override
+  String get losMenuTitle => 'LOS-menyn';
+
+  @override
+  String get losMenuSubtitle =>
+      'Tryck på noder eller tryck länge på kartan för anpassade punkter';
+
+  @override
+  String get losShowDisplayNodes => 'Visa displaynoder';
+
+  @override
+  String get losCustomPoints => 'Anpassade poäng';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Anpassad $index';
+  }
+
+  @override
+  String get losPointA => 'Punkt A';
+
+  @override
+  String get losPointB => 'Punkt B';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Antenn A: $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Antenn B: $value $unit';
+  }
+
+  @override
+  String get losRun => 'Kör LOS';
+
+  @override
+  String get losNoElevationData => 'Inga höjddata';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, rensa LOS, min clearance $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, blockerad av $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'LOS: kollar...';
+
+  @override
+  String get losStatusNoData => 'LOS: inga data';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS: $clear/$total rensa, $blocked blockerad, $unknown okänd';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Höjddata är inte tillgänglig för ett eller flera prover.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Ogiltiga poäng/höjddata för LOS-beräkning.';
+
+  @override
+  String get losRenameCustomPoint => 'Byt namn på anpassad punkt';
+
+  @override
+  String get losPointName => 'Punktnamn';
+
+  @override
+  String get losShowPanelTooltip => 'Visa LOS-panelen';
+
+  @override
+  String get losHidePanelTooltip => 'Dölj LOS-panelen';
+
+  @override
+  String get losElevationAttribution => 'Höjddata: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get contacts_pathTrace => 'Väg spår';
 
   @override
   String get contacts_ping => 'Ping';

@@ -132,4 +132,14 @@ class AppSettingsService extends ChangeNotifier {
       _settings.copyWith(batteryChemistryByDeviceId: updated),
     );
   }
+
+  Future<void> setUnitSystem(UnitSystem value) async {
+    await updateSettings(_settings.copyWith(unitSystem: value));
+  }
+
+  Future<void> setLosUnitSystem(String value) async {
+    await setUnitSystem(
+      value == 'imperial' ? UnitSystem.imperial : UnitSystem.metric,
+    );
+  }
 }

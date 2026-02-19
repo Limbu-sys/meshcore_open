@@ -20,6 +20,7 @@ import '../widgets/empty_state.dart';
 import '../widgets/qr_code_display.dart';
 import '../widgets/quick_switch_bar.dart';
 import '../widgets/unread_badge.dart';
+import '../widgets/adaptive_app_bar_title.dart';
 import 'channel_chat_screen.dart';
 import 'community_qr_scanner_screen.dart';
 import 'contacts_screen.dart';
@@ -117,7 +118,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       child: Scaffold(
         appBar: AppBar(
           leading: BatteryIndicator(connector: connector),
-          title: Text(context.l10n.channels_title),
+          title: AdaptiveAppBarTitle(context.l10n.channels_title),
           centerTitle: true,
           automaticallyImplyLeading: false,
           actions: [

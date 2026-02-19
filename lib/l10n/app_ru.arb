@@ -1,11 +1,11 @@
 {
   "@@locale": "ru",
-  "appTitle": "MeshCore Open",
+  "appTitle": "MeshCore Открыть",
   "nav_contacts": "Контакты",
   "nav_channels": "Каналы",
   "nav_map": "Карта",
   "common_cancel": "Отмена",
-  "common_ok": "OK",
+  "common_ok": "ХОРОШО",
   "common_connect": "Коннект",
   "common_unknownDevice": "Неизвестное устройство",
   "common_save": "Сохранить",
@@ -29,9 +29,9 @@
   "common_reboot": "Перезагрузить",
   "common_loading": "Загрузка...",
   "common_notAvailable": "—",
-  "common_voltageValue": "{volts} В",
+  "common_voltageValue": "{volts} Ð'",
   "common_percentValue": "{percent}%",
-  "scanner_title": "MeshCore Open",
+  "scanner_title": "MeshCore Открыть",
   "scanner_scanning": "Поиск устройств...",
   "scanner_connecting": "Подключение...",
   "scanner_disconnecting": "Отключение...",
@@ -91,10 +91,10 @@
   "settings_appDebugLogSubtitle": "Сообщения отладки приложения",
   "settings_about": "О программе",
   "settings_aboutVersion": "MeshCore Open v{version}",
-  "settings_aboutLegalese": "2026 MeshCore Open Source Project",
+  "settings_aboutLegalese": "2026 Проект MeshCore с открытым исходным кодом",
   "settings_aboutDescription": "Открытое клиентское приложение на Flutter для устройств MeshCore с LoRa-сетями.",
   "settings_infoName": "Имя",
-  "settings_infoId": "ID",
+  "settings_infoId": "ИДЕНТИФИКАТОР",
   "settings_infoStatus": "Статус",
   "settings_infoBattery": "Батарея",
   "settings_infoPublicKey": "Публичный ключ",
@@ -234,7 +234,7 @@
   "channels_channelName": "Имя канала",
   "channels_usePublicChannel": "Использовать публичный канал",
   "channels_standardPublicPsk": "Стандартный публичный PSK",
-  "channels_pskHex": "PSK (Hex)",
+  "channels_pskHex": "ПСК (шестнадцатеричный)",
   "channels_generateRandomPsk": "Сгенерировать случайный PSK",
   "channels_enterChannelName": "Введите имя канала",
   "channels_pskMustBe32Hex": "PSK должен содержать 32 шестнадцатеричных символа",
@@ -306,7 +306,7 @@
   "debugFrame_timestamp": "- Временная метка: {timestamp}",
   "debugFrame_flags": "- Флаги: 0x{value}",
   "debugFrame_textType": "- Тип текста: {type} ({label})",
-  "debugFrame_textTypeCli": "CLI",
+  "debugFrame_textTypeCli": "интерфейс командной строки",
   "debugFrame_textTypePlain": "Обычный",
   "debugFrame_text": "- Текст: \"{text}\"",
   "debugFrame_hexDump": "Шестнадцатеричный дамп:",
@@ -465,7 +465,7 @@
   "repeater_statusSubtitle": "Просмотр статуса, статистики и соседей репитера",
   "repeater_telemetry": "Телеметрия",
   "repeater_telemetrySubtitle": "Просмотр телеметрии датчиков и системной статистики",
-  "repeater_cli": "CLI",
+  "repeater_cli": "интерфейс командной строки",
   "repeater_cliSubtitle": "Отправка команд репитеру",
   "repeater_neighbours": "Соседи",
   "repeater_neighboursSubtitle": "Просмотр соседей на нулевом хопе.",
@@ -654,8 +654,8 @@
   "telemetry_mcuTemperatureLabel": "Температура МК",
   "telemetry_temperatureLabel": "Температура",
   "telemetry_currentLabel": "Ток",
-  "telemetry_batteryValue": "{percent}% / {volts}В",
-  "telemetry_voltageValue": "{volts}В",
+  "telemetry_batteryValue": "{percent}% / {volts}Ð'",
+  "telemetry_voltageValue": "{volts}Ð'",
   "telemetry_currentValue": "{amps}А",
   "telemetry_temperatureValue": "{celsius}°C / {fahrenheit}°F",
   "neighbors_receivedData": "Полученные данные о соседях",
@@ -777,7 +777,7 @@
       }
     }
   },
-  "pathTrace_you": "Вы",
+  "pathTrace_you": "Ð'Ñ‹",
   "pathTrace_failed": "Путь трассировки не выполнен.",
   "pathTrace_notAvailable": "Трассировка пути недоступна.",
   "pathTrace_refreshTooltip": "Обновить Path Trace",
@@ -793,7 +793,7 @@
   "contacts_contactImportFailed": "Контакт не удалось импортировать",
   "contacts_invalidAdvertFormat": "Недействительные контактные данные",
   "contacts_zeroHopAdvert": "Реклама Zero Hop",
-  "appSettings_languageUk": "Українська",
+  "appSettings_languageUk": "Украинская",
   "contacts_floodAdvert": "Рекламный поток",
   "contacts_clipboardEmpty": "Буфер обмена пуст.",
   "contacts_copyAdvertToClipboard": "Копировать рекламу в буфер обмена",
@@ -836,5 +836,909 @@
   "scanner_bluetoothOffMessage": "Пожалуйста, включите Bluetooth, чтобы найти устройства.",
   "settings_clientRepeatFreqWarning": "Для работы в режиме \"без подключения к сети\" требуется частота 433, 869 или 918 МГц.",
   "settings_clientRepeatSubtitle": "Позвольте этому устройству повторять пакеты данных для других устройств.",
-  "settings_clientRepeat": "Повторение \"вне сети\""
+  "settings_clientRepeat": "Повторение \"вне сети\"",
+  "settings_aboutOpenMeteoAttribution": "Данные о высоте LOS: Open-Meteo (CC BY 4.0)",
+  "map_lineOfSight": "Линия видимости",
+  "map_losScreenTitle": "Линия видимости",
+  "losSelectStartEnd": "Выберите начальный и конечный узлы для LOS.",
+  "losRunFailed": "Проверка прямой видимости не удалась: {error}",
+  "losClearAllPoints": "Очистить все точки",
+  "losRunToViewElevationProfile": "Запустите LOS, чтобы просмотреть профиль высот.",
+  "losMenuTitle": "ЛОС Меню",
+  "losMenuSubtitle": "Коснитесь узлов или нажмите и удерживайте карту для выбора пользовательских точек.",
+  "losShowDisplayNodes": "Показать узлы отображения",
+  "losCustomPoints": "Пользовательские точки",
+  "losCustomPointLabel": "Пользовательский {index}",
+  "losPointA": "Точка А",
+  "losPointB": "Точка Б",
+  "losAntennaA": "Антенна А: {value} {unit}",
+  "losAntennaB": "Антенна Б: {value} {unit}",
+  "losRun": "Запустить ЛОС",
+  "losNoElevationData": "Нет данных о высоте",
+  "losProfileClear": "{distance} {distanceUnit}, свободная зона видимости, минимальный зазор {clearance} {heightUnit}",
+  "losProfileBlocked": "{distance} {distanceUnit}, заблокирован {obstruction} {heightUnit}",
+  "losStatusChecking": "ЛОС: проверяю...",
+  "losStatusNoData": "ЛОС: нет данных",
+  "losStatusSummary": "LOS: {clear}/{total} очищено, {blocked} заблокировано, {unknown} неизвестно.",
+  "losErrorElevationUnavailable": "Данные о высоте недоступны для одного или нескольких образцов.",
+  "losErrorInvalidInput": "Неверные данные о точках/высоте для расчета LOS.",
+  "losRenameCustomPoint": "Переименовать пользовательскую точку",
+  "losPointName": "Имя точки",
+  "losShowPanelTooltip": "Показать панель LOS",
+  "losHidePanelTooltip": "Скрыть панель LOS",
+  "losElevationAttribution": "Данные о высоте: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Единицы",
+  "appSettings_unitsMetric": "Метрическая (м/км)",
+  "appSettings_unitsImperial": "Имперская (ft / mi)",
+  "@common_voltageValue": {
+    "placeholders": {
+      "volts": {
+        "type": "String"
+      }
+    }
+  },
+  "@common_percentValue": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "@scanner_connectedTo": {
+    "placeholders": {
+      "deviceName": {
+        "type": "String"
+      }
+    }
+  },
+  "@scanner_connectionFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@settings_aboutVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "@settings_error": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "@appSettings_batteryChemistryPerDevice": {
+    "placeholders": {
+      "deviceName": {
+        "type": "String"
+      }
+    }
+  },
+  "@appSettings_timeFilterShowLast": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@appSettings_areaSelectedZoom": {
+    "placeholders": {
+      "minZoom": {
+        "type": "int"
+      },
+      "maxZoom": {
+        "type": "int"
+      }
+    }
+  },
+  "@contacts_removeConfirm": {
+    "placeholders": {
+      "contactName": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_deleteGroupConfirm": {
+    "placeholders": {
+      "groupName": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_groupAlreadyExists": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_lastSeenMinsAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@contacts_lastSeenHoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@contacts_lastSeenDaysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@channels_channelIndex": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "@channels_deleteChannelConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@channels_channelDeleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@channels_channelAdded": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@channels_editChannelTitle": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "@channels_channelUpdated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@chat_replyingTo": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@chat_replyTo": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@chat_sendMessageTo": {
+    "placeholders": {
+      "contactName": {
+        "type": "String"
+      }
+    }
+  },
+  "@chat_messageTooLong": {
+    "placeholders": {
+      "maxBytes": {
+        "type": "int"
+      }
+    }
+  },
+  "@chat_retryCount": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "@debugFrame_length": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@debugFrame_command": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "@debugFrame_destinationPubKey": {
+    "placeholders": {
+      "pubKey": {
+        "type": "String"
+      }
+    }
+  },
+  "@debugFrame_timestamp": {
+    "placeholders": {
+      "timestamp": {
+        "type": "int"
+      }
+    }
+  },
+  "@debugFrame_flags": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "@debugFrame_textType": {
+    "placeholders": {
+      "type": {
+        "type": "int"
+      },
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "@debugFrame_text": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "@chat_hopsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@chat_pathSetHops": {
+    "placeholders": {
+      "hopCount": {
+        "type": "int"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "@chat_hopsForced": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@chat_unread": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@map_nodesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@map_pinsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@map_publicLocationShareConfirm": {
+    "placeholders": {
+      "channelLabel": {
+        "type": "String"
+      }
+    }
+  },
+  "@mapCache_downloadTilesPrompt": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@mapCache_cachedTiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@mapCache_cachedTilesWithFailed": {
+    "placeholders": {
+      "downloaded": {
+        "type": "int"
+      },
+      "failed": {
+        "type": "int"
+      }
+    }
+  },
+  "@mapCache_estimatedTiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@mapCache_downloadedTiles": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@mapCache_failedDownloads": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@mapCache_boundsLabel": {
+    "placeholders": {
+      "north": {
+        "type": "String"
+      },
+      "south": {
+        "type": "String"
+      },
+      "east": {
+        "type": "String"
+      },
+      "west": {
+        "type": "String"
+      }
+    }
+  },
+  "@time_minutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@time_hoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@time_daysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@login_attempt": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "@login_failed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@path_currentPath": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "@path_usingHopsPath": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@path_invalidHexPrefixes": {
+    "placeholders": {
+      "prefixes": {
+        "type": "String"
+      }
+    }
+  },
+  "@repeater_errorLoadingStatus": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@repeater_daysHoursMinsSecs": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@repeater_packetTxTotal": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "flood": {
+        "type": "String"
+      },
+      "direct": {
+        "type": "String"
+      }
+    }
+  },
+  "@repeater_packetRxTotal": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "flood": {
+        "type": "String"
+      },
+      "direct": {
+        "type": "String"
+      }
+    }
+  },
+  "@repeater_duplicatesFloodDirect": {
+    "placeholders": {
+      "flood": {
+        "type": "String"
+      },
+      "direct": {
+        "type": "String"
+      }
+    }
+  },
+  "@repeater_duplicatesTotal": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@repeater_localAdvertIntervalMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "@repeater_floodAdvertIntervalHours": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "@repeater_commandSent": {
+    "placeholders": {
+      "command": {
+        "type": "String"
+      }
+    }
+  },
+  "@repeater_errorSendingCommand": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@repeater_errorSavingSettings": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@repeater_refreshed": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "@repeater_errorRefreshing": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "@repeater_cliCommandError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@telemetry_errorLoading": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@telemetry_channelTitle": {
+    "placeholders": {
+      "channel": {
+        "type": "int"
+      }
+    }
+  },
+  "@telemetry_batteryValue": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      },
+      "volts": {
+        "type": "String"
+      }
+    }
+  },
+  "@telemetry_voltageValue": {
+    "placeholders": {
+      "volts": {
+        "type": "String"
+      }
+    }
+  },
+  "@telemetry_currentValue": {
+    "placeholders": {
+      "amps": {
+        "type": "String"
+      }
+    }
+  },
+  "@telemetry_temperatureValue": {
+    "placeholders": {
+      "celsius": {
+        "type": "String"
+      },
+      "fahrenheit": {
+        "type": "String"
+      }
+    }
+  },
+  "@neighbors_errorLoading": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@neighbors_unknownContact": {
+    "placeholders": {
+      "pubkey": {
+        "type": "String"
+      }
+    }
+  },
+  "@channelPath_observedPathTitle": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "hops": {
+        "type": "String"
+      }
+    }
+  },
+  "@channelPath_timeWithDate": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "month": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@channelPath_timeOnly": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@channelPath_observedZeroOf": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@channelPath_observedSomeOf": {
+    "placeholders": {
+      "observed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@channelPath_primaryPath": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "@channelPath_pathLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "@channelPath_selectedPathLabel": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "prefixes": {
+        "type": "String"
+      }
+    }
+  },
+  "@community_joinConfirmation": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@community_created": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@community_joined": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@community_qrInstructions": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@community_alreadyMemberMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@community_deleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@community_deleteChannelsWarning": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@community_deleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@community_regenerateSecretConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@community_secretRegenerated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@community_secretUpdated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@community_scanToUpdateSecret": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@community_forCommunity": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_messagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_channelMessagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_newNodesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@notification_newTypeDiscovered": {
+    "placeholders": {
+      "contactType": {
+        "type": "String"
+      }
+    }
+  }
 }
