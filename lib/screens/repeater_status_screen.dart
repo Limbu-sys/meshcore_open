@@ -8,7 +8,9 @@ import '../models/contact.dart';
 import '../models/path_selection.dart';
 import '../connector/meshcore_connector.dart';
 import '../connector/meshcore_protocol.dart';
+import '../services/app_settings_service.dart';
 import '../services/repeater_command_service.dart';
+import '../utils/battery_utils.dart';
 import '../widgets/path_management_dialog.dart';
 
 class RepeaterStatusScreen extends StatefulWidget {
@@ -591,17 +593,19 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
 
   String _batteryText() {
     if (_batteryMv == null) return '—';
-    final percent = _batteryPercentFromMv(_batteryMv!);
+    final percent = estimateBatteryPercentFromMillivolts(
+      _batteryMv!,
+      _batteryChemistry(),
+    );
     final volts = (_batteryMv! / 1000.0).toStringAsFixed(2);
     return '$percent% / ${volts}V';
   }
 
-  int _batteryPercentFromMv(int millivolts) {
-    const minMv = 3000;
-    const maxMv = 4200;
-    if (millivolts <= minMv) return 0;
-    if (millivolts >= maxMv) return 100;
-    return (((millivolts - minMv) * 100) / (maxMv - minMv)).round();
+  String _batteryChemistry() {
+    final settingsService = context.read<AppSettingsService>();
+    return settingsService.batteryChemistryForRepeater(
+      widget.repeater.publicKeyHex,
+    );
   }
 
   String _clockText() {

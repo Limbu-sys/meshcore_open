@@ -7,9 +7,11 @@ import '../models/contact.dart';
 import '../models/path_selection.dart';
 import '../connector/meshcore_connector.dart';
 import '../connector/meshcore_protocol.dart';
+import '../services/app_settings_service.dart';
 import '../services/repeater_command_service.dart';
 import '../widgets/path_management_dialog.dart';
 import '../helpers/cayenne_lpp.dart';
+import '../utils/battery_utils.dart';
 
 class TelemetryScreen extends StatefulWidget {
   final Contact repeater;
@@ -408,17 +410,17 @@ class _TelemetryScreenState extends State<TelemetryScreen> {
   String _batteryText(double? batteryMv) {
     final l10n = context.l10n;
     if (batteryMv == null) return l10n.common_notAvailable;
-    final percent = _batteryPercentFromMv(batteryMv);
+    final chemistry = _batteryChemistry();
+    final percent = estimateBatteryPercentFromVolts(batteryMv, chemistry);
     final volts = batteryMv.toStringAsFixed(2);
     return l10n.telemetry_batteryValue(percent, volts);
   }
 
-  int _batteryPercentFromMv(double millivolts) {
-    const minMv = 2.800;
-    const maxMv = 4.200;
-    if (millivolts <= minMv) return 0;
-    if (millivolts >= maxMv) return 100;
-    return (((millivolts - minMv) * 100) / (maxMv - minMv)).round();
+  String _batteryChemistry() {
+    final settingsService = context.read<AppSettingsService>();
+    return settingsService.batteryChemistryForRepeater(
+      widget.repeater.publicKeyHex,
+    );
   }
 
   String _temperatureText(double? tempC) {

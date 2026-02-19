@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:meshcore_open/connector/meshcore_protocol.dart';
+import 'package:provider/provider.dart';
 import '../l10n/l10n.dart';
 import '../models/contact.dart';
+import '../services/app_settings_service.dart';
 import 'repeater_status_screen.dart';
 import 'repeater_cli_screen.dart';
 import 'repeater_settings_screen.dart';
@@ -21,6 +23,10 @@ class RepeaterHubScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final settingsService = context.watch<AppSettingsService>();
+    final chemistry = settingsService.batteryChemistryForRepeater(
+      repeater.publicKeyHex,
+    );
     return Scaffold(
       appBar: AppBar(
         title: Column(
@@ -102,6 +108,62 @@ class RepeaterHubScreen extends StatelessWidget {
                         ],
                       ),
                     ],
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 24),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.battery_full),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            l10n.appSettings_batteryChemistry,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    DropdownButtonFormField<String>(
+                      initialValue: chemistry,
+                      isExpanded: true,
+                      decoration: const InputDecoration(
+                        border: UnderlineInputBorder(),
+                        isDense: true,
+                      ),
+                      onChanged: (value) {
+                        if (value == null) return;
+                        settingsService.setBatteryChemistryForRepeater(
+                          repeater.publicKeyHex,
+                          value,
+                        );
+                      },
+                      items: [
+                        DropdownMenuItem(
+                          value: 'nmc',
+                          child: Text(l10n.appSettings_batteryNmc),
+                        ),
+                        DropdownMenuItem(
+                          value: 'lifepo4',
+                          child: Text(l10n.appSettings_batteryLifepo4),
+                        ),
+                        DropdownMenuItem(
+                          value: 'lipo',
+                          child: Text(l10n.appSettings_batteryLipo),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

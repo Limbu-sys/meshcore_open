@@ -29,6 +29,7 @@ import '../storage/contact_store.dart';
 import '../storage/message_store.dart';
 import '../storage/unread_store.dart';
 import '../utils/app_logger.dart';
+import '../utils/battery_utils.dart';
 import 'meshcore_protocol.dart';
 
 class MeshCoreUuids {
@@ -216,7 +217,7 @@ class MeshCoreConnector extends ChangeNotifier {
       : 0;
   int? get batteryPercent => _batteryMillivolts == null
       ? null
-      : _estimateBatteryPercent(
+      : estimateBatteryPercentFromMillivolts(
           _batteryMillivolts!,
           _batteryChemistryForDevice(),
         );
@@ -225,27 +226,6 @@ class MeshCoreConnector extends ChangeNotifier {
     final deviceId = _device?.remoteId.toString();
     if (deviceId == null || _appSettingsService == null) return 'nmc';
     return _appSettingsService!.batteryChemistryForDevice(deviceId);
-  }
-
-  int _estimateBatteryPercent(int millivolts, String chemistry) {
-    final range = _batteryVoltageRange(chemistry);
-    final minMv = range.$1;
-    final maxMv = range.$2;
-    if (millivolts <= minMv) return 0;
-    if (millivolts >= maxMv) return 100;
-    return (((millivolts - minMv) * 100) / (maxMv - minMv)).round();
-  }
-
-  (int, int) _batteryVoltageRange(String chemistry) {
-    switch (chemistry) {
-      case 'lifepo4':
-        return (2600, 3650);
-      case 'lipo':
-        return (3000, 4200);
-      case 'nmc':
-      default:
-        return (3000, 4200);
-    }
   }
 
   List<Message> getMessages(Contact contact) {

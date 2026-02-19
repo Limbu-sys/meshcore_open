@@ -17,6 +17,12 @@ class AppSettingsService extends ChangeNotifier {
     return stored ?? 'nmc';
   }
 
+  String batteryChemistryForRepeater(String repeaterPubKeyHex) {
+    final stored = _settings.batteryChemistryByRepeaterId[repeaterPubKeyHex];
+    if (stored == 'liion') return 'nmc';
+    return stored ?? 'nmc';
+  }
+
   Future<void> loadSettings() async {
     final prefs = PrefsManager.instance;
     final jsonStr = prefs.getString(_settingsKey);
@@ -130,6 +136,19 @@ class AppSettingsService extends ChangeNotifier {
     updated[deviceId] = chemistry;
     await updateSettings(
       _settings.copyWith(batteryChemistryByDeviceId: updated),
+    );
+  }
+
+  Future<void> setBatteryChemistryForRepeater(
+    String repeaterPubKeyHex,
+    String chemistry,
+  ) async {
+    final updated = Map<String, String>.from(
+      _settings.batteryChemistryByRepeaterId,
+    );
+    updated[repeaterPubKeyHex] = chemistry;
+    await updateSettings(
+      _settings.copyWith(batteryChemistryByRepeaterId: updated),
     );
   }
 }
