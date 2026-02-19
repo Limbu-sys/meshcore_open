@@ -353,6 +353,17 @@ class RoomSyncService extends ChangeNotifier {
     return RoomSyncStatusKind.notLoggedIn;
   }
 
+  Future<void> registerManualRoomLogin(String roomPubKeyHex) async {
+    if (!isRoomAutoSyncEnabled(roomPubKeyHex)) return;
+    _activeRoomSessions.add(roomPubKeyHex);
+    _recordLoginSuccess(roomPubKeyHex);
+    await _persistStates();
+    notifyListeners();
+    if (_roomSyncEnabled) {
+      _scheduleNextSync(Duration.zero);
+    }
+  }
+
   String? roomStatusLabel(String roomPubKeyHex) {
     switch (roomStatusKind(roomPubKeyHex)) {
       case RoomSyncStatusKind.syncOff:
