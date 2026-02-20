@@ -123,7 +123,7 @@ class RoomSyncService extends ChangeNotifier {
     _lastConnectionState = state;
     if (state == MeshCoreConnectionState.connected) {
       _onConnected();
-    } else if (state == MeshCoreConnectionState.disconnected) {
+    } else {
       _onDisconnected();
     }
   }
@@ -341,8 +341,10 @@ class RoomSyncService extends ChangeNotifier {
       return RoomSyncStatusKind.syncDisabled;
     }
     if (_syncInFlight) return RoomSyncStatusKind.syncing;
+    final connector = _connector;
+    final isActivelyConnected = connector != null && connector.isConnected;
     final state = _states[roomPubKeyHex];
-    if (_activeRoomSessions.contains(roomPubKeyHex)) {
+    if (isActivelyConnected && _activeRoomSessions.contains(roomPubKeyHex)) {
       if (state?.lastSuccessfulSyncAtMs == null) {
         return RoomSyncStatusKind.connectedWaitingSync;
       }
