@@ -3436,27 +3436,33 @@ class MeshCoreConnector extends ChangeNotifier {
 
   void _handleRxData(Uint8List frame) {
     final packet = BufferReader(frame);
+    double snr = 0.0;
+    int routeType = 0;
+    int payloadType = 0;
+    Uint8List pathBytes = Uint8List(0);
+    Uint8List payload = Uint8List(0);
     try {
       packet.skipBytes(1); // Skip frame type byte
-      final snr = packet.readInt8() / 4.0;
+      snr = packet.readInt8() / 4.0;
       packet.skipBytes(1); // Skip RSSI byte
       //final rssi = packet.readByte();
       final header = packet.readByte();
-      final routeType = header & 0x03;
-      final payloadType = (header >> 2) & 0x0F;
+      routeType = header & 0x03;
+      payloadType = (header >> 2) & 0x0F;
       //final payloadVer = (header >> 6) & 0x03;
       final pathLen = packet.readByte();
-      final pathBytes = packet.readBytes(pathLen);
-      final payload = packet.readBytes(packet.remaining);
-
-      switch (payloadType) {
-        case payloadTypeADVERT:
-          _handlePayloadAdvertReceived(payload, pathBytes, routeType, snr);
-          break;
-        default:
-      }
+      pathBytes = packet.readBytes(pathLen);
+      payload = packet.readBytes(packet.remaining);
     } catch (e) {
       appLogger.warn('Malformed RX frame: $e', tag: 'Connector');
+      return;
+    }
+
+    switch (payloadType) {
+      case payloadTypeADVERT:
+        _handlePayloadAdvertReceived(payload, pathBytes, routeType, snr);
+        break;
+      default:
     }
   }
 
@@ -3592,15 +3598,20 @@ class MeshCoreConnector extends ChangeNotifier {
 
     final sortedRepeaters = List<DirectRepeater>.from(_directRepeaters)
       ..sort((a, b) => b.snr.compareTo(a.snr));
-    final weakestRepeater = sortedRepeaters.last;
+    final weakestRepeater = sortedRepeaters.isNotEmpty
+        ? sortedRepeaters.last
+        : null;
+
+    if (_directRepeaters.length >= 5 &&
+        weakestRepeater != null &&
+        isTracked.isEmpty) {
+      _directRepeaters.remove(weakestRepeater);
+    }
 
     if (isTracked.isNotEmpty) {
       final repeater = isTracked.first;
       repeater.update(snr);
-    } else if (_directRepeaters.length < 5 || snr > weakestRepeater.snr) {
-      if (_directRepeaters.length >= 5) {
-        _directRepeaters.remove(weakestRepeater);
-      }
+    } else if (_directRepeaters.length < 5) {
       _directRepeaters.add(
         DirectRepeater(pubkeyFirstByte: pubkeyFirstByte, snr: snr),
       );
