@@ -81,6 +81,7 @@ class _RoomLoginDialogState extends State<RoomLoginDialog> {
 
     try {
       final password = _passwordController.text;
+      final roomSyncService = context.read<RoomSyncService>();
       final room = _resolveRepeater(_connector);
       appLogger.info(
         'Login started for ${room.name} (${room.publicKeyHex})',
@@ -153,9 +154,7 @@ class _RoomLoginDialogState extends State<RoomLoginDialog> {
         await _storage.removeRepeaterPassword(widget.room.publicKeyHex);
       }
 
-      await context.read<RoomSyncService>().registerManualRoomLogin(
-        widget.room.publicKeyHex,
-      );
+      await roomSyncService.registerManualRoomLogin(widget.room.publicKeyHex);
 
       if (mounted) {
         Navigator.pop(context, password);
