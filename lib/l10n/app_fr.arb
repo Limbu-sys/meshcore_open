@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "appTitle": "MeshCore ouvert",
+  "appTitle": "MeshCore Open",
   "nav_contacts": "Contacts",
   "nav_channels": "Canaux",
   "nav_map": "Carte",
@@ -44,7 +44,7 @@
       }
     }
   },
-  "scanner_title": "MeshCore ouvert",
+  "scanner_title": "MeshCore Open",
   "scanner_scanning": "Recherche de périphériques...",
   "scanner_connecting": "Connexion en cours...",
   "scanner_disconnecting": "Déconnexion...",
@@ -70,7 +70,7 @@
   "scanner_stop": "Arrêter",
   "scanner_scan": "Scanner",
   "device_quickSwitch": "Basculement rapide",
-  "device_meshcore": "Noyau maillé",
+  "device_meshcore": "MeshCore",
   "settings_title": "Paramètres",
   "settings_deviceInfo": "Informations du périphérique",
   "settings_appSettings": "Paramètres de l'application",
@@ -95,7 +95,7 @@
   "settings_privacyModeToggle": "Activer le mode confidentialité pour masquer votre nom et votre localisation dans les annonces.",
   "settings_privacyModeEnabled": "Mode de confidentialité activé",
   "settings_privacyModeDisabled": "Mode de confidentialité désactivé",
-  "settings_actions": "Actes",
+  "settings_actions": "Actions",
   "settings_sendAdvertisement": "S'annoncer",
   "settings_sendAdvertisementSubtitle": "Présence diffusée maintenant",
   "settings_advertisementSent": "Annonce envoyée",
@@ -113,7 +113,7 @@
   "settings_appDebugLog": "Journal de débogage de l'application",
   "settings_appDebugLogSubtitle": "Messages de débogage de l'application",
   "settings_about": "À propos",
-  "settings_aboutVersion": "MeshCore Ouvert v{version}",
+  "settings_aboutVersion": "MeshCore Open v{version}",
   "@settings_aboutVersion": {
     "placeholders": {
       "version": {
@@ -124,7 +124,7 @@
   "settings_aboutLegalese": "Projet MeshCore Open Source 2026",
   "settings_aboutDescription": "Un client Flutter open source pour les appareils de réseau mesh MeshCore LoRa.",
   "settings_infoName": "Nom",
-  "settings_infoId": "IDENTIFIANT",
+  "settings_infoId": "ID",
   "settings_infoStatus": "État",
   "settings_infoBattery": "Batterie",
   "settings_infoPublicKey": "Clé Publique",
@@ -156,18 +156,18 @@
   "appSettings_themeDark": "Sombre",
   "appSettings_language": "Langue",
   "appSettings_languageSystem": "Par défaut du système",
-  "appSettings_languageEn": "Anglais",
+  "appSettings_languageEn": "English",
   "appSettings_languageFr": "Français",
-  "appSettings_languageEs": "espagnol",
-  "appSettings_languageDe": "Allemand",
-  "appSettings_languagePl": "Pologne",
+  "appSettings_languageEs": "Español",
+  "appSettings_languageDe": "Deutsch",
+  "appSettings_languagePl": "Polski",
   "appSettings_languageSl": "Slovenščina",
-  "appSettings_languagePt": "Portugais",
-  "appSettings_languageIt": "Italien",
-  "appSettings_languageZh": "Chine",
-  "appSettings_languageSv": "Suède",
-  "appSettings_languageNl": "Pays-Bas",
-  "appSettings_languageSk": "Slovénie",
+  "appSettings_languagePt": "Português",
+  "appSettings_languageIt": "Italiano",
+  "appSettings_languageZh": "中文",
+  "appSettings_languageSv": "Svenska",
+  "appSettings_languageNl": "Nederlands",
+  "appSettings_languageSk": "Slovenčina",
   "appSettings_languageBg": "Български",
   "appSettings_notifications": "Notifications",
   "appSettings_enableNotifications": "Activer les Notifications",
@@ -329,7 +329,7 @@
     }
   },
   "channels_hashtagChannel": "Canal avec hashtag",
-  "channels_public": "Publique",
+  "channels_public": "Public",
   "channels_private": "Privé",
   "channels_publicChannel": "Canal public",
   "channels_privateChannel": "Canal privé",
@@ -356,7 +356,7 @@
   "channels_channelName": "Nom du canal",
   "channels_usePublicChannel": "Utiliser le canal public",
   "channels_standardPublicPsk": "PSK public standard",
-  "channels_pskHex": "PSK (hexadécimal)",
+  "channels_pskHex": "PSK (Hex)",
   "channels_generateRandomPsk": "Générer une clé de modulation PSK aléatoire",
   "channels_enterChannelName": "Veuillez entrer un nom de canal",
   "channels_pskMustBe32Hex": "Le PKS doit être composé de 32 caractères hexadécimaux.",
@@ -485,7 +485,7 @@
     }
   },
   "debugFrame_textMessageHeader": "Message :",
-  "debugFrame_destinationPubKey": "- Clé Publique de destination : {pubKey}",
+  "debugFrame_destinationPubKey": "- Destination PubKey: {pubKey}",
   "@debugFrame_destinationPubKey": {
     "placeholders": {
       "pubKey": {
@@ -901,8 +901,8 @@
   "repeater_lastRssi": "Dernier RSSI",
   "repeater_lastSnr": "Dernier SNR",
   "repeater_noiseFloor": "Niveau de Bruit",
-  "repeater_txAirtime": "Temps d'antenne au Texas",
-  "repeater_rxAirtime": "Temps d'antenne RX",
+  "repeater_txAirtime": "TX Airtime",
+  "repeater_rxAirtime": "RX Airtime",
   "repeater_packetStatistics": "Statistiques des paquets",
   "repeater_sent": "Envoyé",
   "repeater_received": "Reçu",
@@ -1137,7 +1137,7 @@
   "repeater_cliHelpSetBridgeSecret": "Définir le secret du pont pour les ponts espnow.",
   "repeater_cliHelpSetAdcMultiplier": "Définit un facteur personnalisé pour ajuster la tension de la batterie signalée (uniquement pris en charge sur certains cartes).",
   "repeater_cliHelpTempRadio": "Définit des paramètres radio temporaires pour le nombre de minutes donné, puis revient aux paramètres radio d'origine. (ne sauvegarde pas dans les préférences).",
-  "repeater_cliHelpSetPerm": "Modifie l'ACL. Supprime l'entrée correspondante (par préfixe de clé publique) si \"permissions\" est égal à zéro. Ajoute une nouvelle entrée si la clé publique hexadécimale a une longueur complète et n'est pas actuellement dans l'ACL. Met à jour l'entrée en fonction du préfixe de clé publique. Les bits de permission varient en fonction du rôle du firmware, mais les 2 bits inférieurs sont : 0 (Invité), 1 (Lecture seule), 2 (Lecture/écriture), 3 (Administrateur).",
+  "repeater_cliHelpSetPerm": "Modifie l’ACL. Supprime l’entrée correspondante (par préfixe de clé publique) si \"permissions\" est égal à zéro. Ajoute une nouvelle entrée si la clé publique hexadécimale a une longueur complète et n’est pas actuellement dans l’ACL. Met à jour l’entrée en fonction du préfixe de clé publique. Les bits de permission varient en fonction du rôle du firmware, mais les 2 bits inférieurs sont : 0 (Invité), 1 (Lecture seule), 2 (Lecture/écriture), 3 (Administrateur).",
   "repeater_cliHelpGetBridgeType": "Obtenir le type de pont : aucun, rs232, espnow",
   "repeater_cliHelpLogStart": "Démarre l'enregistrement des paquets dans le système de fichiers.",
   "repeater_cliHelpLogStop": "Arrêter de journaliser les paquets vers le système de fichiers.",
@@ -1154,7 +1154,7 @@
   "repeater_cliHelpRegionHome": "Répond avec la région 'maison' actuelle. (Note appliquée nulle part pour l'instant, réservée à une utilisation future)",
   "repeater_cliHelpRegionHomeSet": "Définit la région 'maison'.",
   "repeater_cliHelpRegionSave": "Conserve la liste/la carte des régions dans le stockage.",
-  "repeater_cliHelpGps": "Affiche l'état du GPS. Lorsque le GPS est éteint, il répond uniquement « éteint », si allumé, il répond avec « allumé », l'état, la correction, le nombre de satellites.",
+  "repeater_cliHelpGps": "Affiche l’état du GPS. Lorsque le GPS est éteint, il répond uniquement « éteint », si allumé, il répond avec « allumé », l’état, la correction, le nombre de satellites.",
   "repeater_cliHelpGpsOnOff": "Activer/désactiver le GPS.",
   "repeater_cliHelpGpsSync": "Synchronise l'heure du nœud avec l'horloge GPS.",
   "repeater_cliHelpGpsSetLoc": "Définit la position du nœud aux coordonnées GPS et enregistre les préférences.",
@@ -1341,7 +1341,7 @@
   "listFilter_all": "Tout",
   "listFilter_users": "Utilisateurs",
   "listFilter_repeaters": "Répéteurs",
-  "listFilter_roomServers": "Serveurs de salle",
+  "listFilter_roomServers": "Room servers",
   "listFilter_unreadOnly": "Messages non lus seulement",
   "listFilter_newGroup": "Nouveau groupe",
   "@neighbors_errorLoading": {
@@ -1448,7 +1448,7 @@
       }
     }
   },
-  "common_ok": "D'ACCORD",
+  "common_ok": "OK",
   "community_title": "Communauté",
   "community_create": "Créer une Communauté",
   "community_createDesc": "Créer une nouvelle communauté et la partager via QR code.",
@@ -1598,38 +1598,13 @@
   "settings_clientRepeatSubtitle": "Permettez à cet appareil de répéter les paquets de données pour les autres.",
   "settings_clientRepeat": "Répétition hors réseau",
   "settings_aboutOpenMeteoAttribution": "Données d'élévation LOS : Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Unités",
+  "appSettings_unitsMetric": "Métrique (m/km)",
+  "appSettings_unitsImperial": "Impérial (ft / mi)",
   "map_lineOfSight": "Ligne de vue",
   "map_losScreenTitle": "Ligne de vue",
   "losSelectStartEnd": "Sélectionnez les nœuds de début et de fin pour LOS.",
   "losRunFailed": "Échec de la vérification de la ligne de vue : {error}",
-  "losClearAllPoints": "Effacer tous les points",
-  "losRunToViewElevationProfile": "Exécutez LOS pour afficher le profil d'altitude",
-  "losMenuTitle": "Menu LOS",
-  "losMenuSubtitle": "Appuyez sur les nœuds ou appuyez longuement sur la carte pour des points personnalisés",
-  "losShowDisplayNodes": "Afficher les nœuds d'affichage",
-  "losCustomPoints": "Points personnalisés",
-  "losCustomPointLabel": "Personnalisé {index}",
-  "losPointA": "Point A",
-  "losPointB": "Point B",
-  "losAntennaA": "Antenne A : {value} {unit}",
-  "losAntennaB": "Antenne B : {value} {unit}",
-  "losRun": "Exécuter la LOS",
-  "losNoElevationData": "Aucune donnée d'altitude",
-  "losProfileClear": "{distance} {distanceUnit}, LOS clair, clairance minimale {clearance} {heightUnit}",
-  "losProfileBlocked": "{distance} {distanceUnit}, bloqué par {obstruction} {heightUnit}",
-  "losStatusChecking": "LOS : vérification...",
-  "losStatusNoData": "LOS : aucune donnée",
-  "losStatusSummary": "LOS : {clear}/{total} clair, {blocked} bloqué, {unknown} inconnu",
-  "losErrorElevationUnavailable": "Données d'altitude indisponibles pour un ou plusieurs échantillons.",
-  "losErrorInvalidInput": "Données de points/d'altitude non valides pour le calcul de la LOS.",
-  "losRenameCustomPoint": "Renommer le point personnalisé",
-  "losPointName": "Nom du point",
-  "losShowPanelTooltip": "Afficher le panneau LOS",
-  "losHidePanelTooltip": "Masquer le panneau LOS",
-  "losElevationAttribution": "Données d'altitude : Open-Meteo (CC BY 4.0)",
-  "appSettings_unitsTitle": "Unités",
-  "appSettings_unitsMetric": "Métrique (m/km)",
-  "appSettings_unitsImperial": "Impérial (ft / mi)",
   "@losRunFailed": {
     "placeholders": {
       "error": {
@@ -1637,6 +1612,13 @@
       }
     }
   },
+  "losClearAllPoints": "Effacer tous les points",
+  "losRunToViewElevationProfile": "Exécutez LOS pour afficher le profil d'altitude",
+  "losMenuTitle": "Menu LOS",
+  "losMenuSubtitle": "Appuyez sur les nœuds ou appuyez longuement sur la carte pour des points personnalisés",
+  "losShowDisplayNodes": "Afficher les nœuds d'affichage",
+  "losCustomPoints": "Points personnalisés",
+  "losCustomPointLabel": "Personnalisé {index}",
   "@losCustomPointLabel": {
     "placeholders": {
       "index": {
@@ -1644,6 +1626,9 @@
       }
     }
   },
+  "losPointA": "Point A",
+  "losPointB": "Point B",
+  "losAntennaA": "Antenne A : {value} {unit}",
   "@losAntennaA": {
     "placeholders": {
       "value": {
@@ -1654,6 +1639,7 @@
       }
     }
   },
+  "losAntennaB": "Antenne B : {value} {unit}",
   "@losAntennaB": {
     "placeholders": {
       "value": {
@@ -1664,6 +1650,9 @@
       }
     }
   },
+  "losRun": "Exécuter la LOS",
+  "losNoElevationData": "Aucune donnée d'altitude",
+  "losProfileClear": "{distance} {distanceUnit}, LOS clair, clairance minimale {clearance} {heightUnit}",
   "@losProfileClear": {
     "placeholders": {
       "distance": {
@@ -1680,6 +1669,7 @@
       }
     }
   },
+  "losProfileBlocked": "{distance} {distanceUnit}, bloqué par {obstruction} {heightUnit}",
   "@losProfileBlocked": {
     "placeholders": {
       "distance": {
@@ -1696,6 +1686,9 @@
       }
     }
   },
+  "losStatusChecking": "LOS : vérification...",
+  "losStatusNoData": "LOS : aucune donnée",
+  "losStatusSummary": "LOS : {clear}/{total} clair, {blocked} bloqué, {unknown} inconnu",
   "@losStatusSummary": {
     "placeholders": {
       "clear": {
@@ -1712,32 +1705,11 @@
       }
     }
   },
-  "@notification_messagesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_channelMessagesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_newNodesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_newTypeDiscovered": {
-    "placeholders": {
-      "contactType": {
-        "type": "String"
-      }
-    }
-  }
+  "losErrorElevationUnavailable": "Données d'altitude indisponibles pour un ou plusieurs échantillons.",
+  "losErrorInvalidInput": "Données de points/d'altitude non valides pour le calcul de la LOS.",
+  "losRenameCustomPoint": "Renommer le point personnalisé",
+  "losPointName": "Nom du point",
+  "losShowPanelTooltip": "Afficher le panneau LOS",
+  "losHidePanelTooltip": "Masquer le panneau LOS",
+  "losElevationAttribution": "Données d'altitude : Open-Meteo (CC BY 4.0)"
 }

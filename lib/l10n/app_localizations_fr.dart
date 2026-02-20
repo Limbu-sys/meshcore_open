@@ -9,7 +9,7 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
-  String get appTitle => 'MeshCore ouvert';
+  String get appTitle => 'MeshCore Open';
 
   @override
   String get nav_contacts => 'Contacts';
@@ -24,7 +24,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get common_cancel => 'Annuler';
 
   @override
-  String get common_ok => 'D\'ACCORD';
+  String get common_ok => 'OK';
 
   @override
   String get common_connect => 'Connecter';
@@ -106,7 +106,7 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get scanner_title => 'MeshCore ouvert';
+  String get scanner_title => 'MeshCore Open';
 
   @override
   String get scanner_scanning => 'Recherche de périphériques...';
@@ -157,7 +157,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get device_quickSwitch => 'Basculement rapide';
 
   @override
-  String get device_meshcore => 'Noyau maillé';
+  String get device_meshcore => 'MeshCore';
 
   @override
   String get settings_title => 'Paramètres';
@@ -253,7 +253,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Mode de confidentialité désactivé';
 
   @override
-  String get settings_actions => 'Actes';
+  String get settings_actions => 'Actions';
 
   @override
   String get settings_sendAdvertisement => 'S\'annoncer';
@@ -314,7 +314,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String settings_aboutVersion(String version) {
-    return 'MeshCore Ouvert v$version';
+    return 'MeshCore Open v$version';
   }
 
   @override
@@ -332,7 +332,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get settings_infoName => 'Nom';
 
   @override
-  String get settings_infoId => 'IDENTIFIANT';
+  String get settings_infoId => 'ID';
 
   @override
   String get settings_infoStatus => 'État';
@@ -420,40 +420,40 @@ class AppLocalizationsFr extends AppLocalizations {
   String get appSettings_languageSystem => 'Par défaut du système';
 
   @override
-  String get appSettings_languageEn => 'Anglais';
+  String get appSettings_languageEn => 'English';
 
   @override
   String get appSettings_languageFr => 'Français';
 
   @override
-  String get appSettings_languageEs => 'espagnol';
+  String get appSettings_languageEs => 'Español';
 
   @override
-  String get appSettings_languageDe => 'Allemand';
+  String get appSettings_languageDe => 'Deutsch';
 
   @override
-  String get appSettings_languagePl => 'Pologne';
+  String get appSettings_languagePl => 'Polski';
 
   @override
   String get appSettings_languageSl => 'Slovenščina';
 
   @override
-  String get appSettings_languagePt => 'Portugais';
+  String get appSettings_languagePt => 'Português';
 
   @override
-  String get appSettings_languageIt => 'Italien';
+  String get appSettings_languageIt => 'Italiano';
 
   @override
-  String get appSettings_languageZh => 'Chine';
+  String get appSettings_languageZh => '中文';
 
   @override
-  String get appSettings_languageSv => 'Suède';
+  String get appSettings_languageSv => 'Svenska';
 
   @override
-  String get appSettings_languageNl => 'Pays-Bas';
+  String get appSettings_languageNl => 'Nederlands';
 
   @override
-  String get appSettings_languageSk => 'Slovénie';
+  String get appSettings_languageSk => 'Slovenčina';
 
   @override
   String get appSettings_languageBg => 'Български';
@@ -784,7 +784,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get channels_hashtagChannel => 'Canal avec hashtag';
 
   @override
-  String get channels_public => 'Publique';
+  String get channels_public => 'Public';
 
   @override
   String get channels_private => 'Privé';
@@ -827,7 +827,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get channels_standardPublicPsk => 'PSK public standard';
 
   @override
-  String get channels_pskHex => 'PSK (hexadécimal)';
+  String get channels_pskHex => 'PSK (Hex)';
 
   @override
   String get channels_generateRandomPsk =>
@@ -1060,7 +1060,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String debugFrame_destinationPubKey(String pubKey) {
-    return '- Clé Publique de destination : $pubKey';
+    return '- Destination PubKey: $pubKey';
   }
 
   @override
@@ -1773,10 +1773,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get repeater_noiseFloor => 'Niveau de Bruit';
 
   @override
-  String get repeater_txAirtime => 'Temps d\'antenne au Texas';
+  String get repeater_txAirtime => 'TX Airtime';
 
   @override
-  String get repeater_rxAirtime => 'Temps d\'antenne RX';
+  String get repeater_rxAirtime => 'RX Airtime';
 
   @override
   String get repeater_packetStatistics => 'Statistiques des paquets';
@@ -2219,7 +2219,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get repeater_cliHelpSetPerm =>
-      'Modifie l\'ACL. Supprime l\'entrée correspondante (par préfixe de clé publique) si \"permissions\" est égal à zéro. Ajoute une nouvelle entrée si la clé publique hexadécimale a une longueur complète et n\'est pas actuellement dans l\'ACL. Met à jour l\'entrée en fonction du préfixe de clé publique. Les bits de permission varient en fonction du rôle du firmware, mais les 2 bits inférieurs sont : 0 (Invité), 1 (Lecture seule), 2 (Lecture/écriture), 3 (Administrateur).';
+      'Modifie l’ACL. Supprime l’entrée correspondante (par préfixe de clé publique) si \"permissions\" est égal à zéro. Ajoute une nouvelle entrée si la clé publique hexadécimale a une longueur complète et n’est pas actuellement dans l’ACL. Met à jour l’entrée en fonction du préfixe de clé publique. Les bits de permission varient en fonction du rôle du firmware, mais les 2 bits inférieurs sont : 0 (Invité), 1 (Lecture seule), 2 (Lecture/écriture), 3 (Administrateur).';
 
   @override
   String get repeater_cliHelpGetBridgeType =>
@@ -2286,7 +2286,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get repeater_cliHelpGps =>
-      'Affiche l\'état du GPS. Lorsque le GPS est éteint, il répond uniquement « éteint », si allumé, il répond avec « allumé », l\'état, la correction, le nombre de satellites.';
+      'Affiche l’état du GPS. Lorsque le GPS est éteint, il répond uniquement « éteint », si allumé, il répond avec « allumé », l’état, la correction, le nombre de satellites.';
 
   @override
   String get repeater_cliHelpGpsOnOff => 'Activer/désactiver le GPS.';
@@ -2728,7 +2728,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get listFilter_repeaters => 'Répéteurs';
 
   @override
-  String get listFilter_roomServers => 'Serveurs de salle';
+  String get listFilter_roomServers => 'Room servers';
 
   @override
   String get listFilter_unreadOnly => 'Messages non lus seulement';

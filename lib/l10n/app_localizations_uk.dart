@@ -97,7 +97,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String common_voltageValue(String volts) {
-    return '$volts Ð\'';
+    return '$volts В';
   }
 
   @override
@@ -354,7 +354,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get settings_frequency => 'Частота (МГц)';
 
   @override
-  String get settings_frequencyHelper => '300,0 - 2500,0';
+  String get settings_frequencyHelper => '300.0 - 2500.0';
 
   @override
   String get settings_frequencyInvalid => 'Некоректна частота (300-2500 МГц)';
@@ -418,7 +418,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get appSettings_languageSystem => 'Як у системі';
 
   @override
-  String get appSettings_languageEn => 'англійська';
+  String get appSettings_languageEn => 'English';
 
   @override
   String get appSettings_languageFr => 'Français';
@@ -433,7 +433,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get appSettings_languagePl => 'Polski';
 
   @override
-  String get appSettings_languageSl => 'Словенщина';
+  String get appSettings_languageSl => 'Slovenščina';
 
   @override
   String get appSettings_languagePt => 'Português';
@@ -445,13 +445,13 @@ class AppLocalizationsUk extends AppLocalizations {
   String get appSettings_languageZh => '中文';
 
   @override
-  String get appSettings_languageSv => 'Свенська';
+  String get appSettings_languageSv => 'Svenska';
 
   @override
-  String get appSettings_languageNl => 'Нідерланди';
+  String get appSettings_languageNl => 'Nederlands';
 
   @override
-  String get appSettings_languageSk => 'Словенчина';
+  String get appSettings_languageSk => 'Slovenčina';
 
   @override
   String get appSettings_languageBg => 'Български';
@@ -554,13 +554,13 @@ class AppLocalizationsUk extends AppLocalizations {
       'Підключіть пристрій, щоб вибрати';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3.0-4.2Ð\')';
+  String get appSettings_batteryNmc => '18650 NMC (3.0-4.2В)';
 
   @override
-  String get appSettings_batteryLifepo4 => 'LiFePO4 (2.6-3.65Ð\')';
+  String get appSettings_batteryLifepo4 => 'LiFePO4 (2.6-3.65В)';
 
   @override
-  String get appSettings_batteryLipo => 'LiPo (3.0-4.2Ð\')';
+  String get appSettings_batteryLipo => 'LiPo (3.0-4.2В)';
 
   @override
   String get appSettings_mapDisplay => 'Відображення карти';
@@ -822,7 +822,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get channels_standardPublicPsk => 'Стандартний публічний PSK';
 
   @override
-  String get channels_pskHex => 'PSK (шістнадцятковий)';
+  String get channels_pskHex => 'PSK (Hex)';
 
   @override
   String get channels_generateRandomPsk => 'Згенерувати випадковий ключ PSK';
@@ -2369,12 +2369,12 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String telemetry_batteryValue(int percent, String volts) {
-    return '$percent% / $voltsÐ\'';
+    return '$percent% / $voltsВ';
   }
 
   @override
   String telemetry_voltageValue(String volts) {
-    return '$voltsÐ\'';
+    return '$voltsВ';
   }
 
   @override

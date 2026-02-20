@@ -140,7 +140,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get scanner_stop => 'Stoppen';
 
   @override
-  String get scanner_scan => 'Scannen';
+  String get scanner_scan => 'Scan';
 
   @override
   String get scanner_bluetoothOff => 'Bluetooth is uitgeschakeld';
@@ -234,7 +234,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get settings_longitude => 'Lengtegraad';
 
   @override
-  String get settings_privacyMode => 'Privacymodus';
+  String get settings_privacyMode => 'Privacy Mode';
 
   @override
   String get settings_privacyModeSubtitle =>
@@ -290,17 +290,17 @@ class AppLocalizationsNl extends AppLocalizations {
       'Ben je er zeker van dat je het apparaat opnieuw wilt opstarten? Je wordt losgekoppeld.';
 
   @override
-  String get settings_debug => 'Foutopsporing';
+  String get settings_debug => 'Debug';
 
   @override
-  String get settings_bleDebugLog => 'BLE-foutopsporingslogboek';
+  String get settings_bleDebugLog => 'BLE Debug Log';
 
   @override
   String get settings_bleDebugLogSubtitle =>
       'BLE commando\'s, antwoorden en ruwe data';
 
   @override
-  String get settings_appDebugLog => 'Foutopsporingslogboek voor apps';
+  String get settings_appDebugLog => 'App Debug Log';
 
   @override
   String get settings_appDebugLogSubtitle => 'Toepassingsdebugberichten';
@@ -328,7 +328,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get settings_infoName => 'Naam';
 
   @override
-  String get settings_infoId => 'Identiteitskaart';
+  String get settings_infoId => 'ID';
 
   @override
   String get settings_infoStatus => 'Status';
@@ -346,7 +346,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get settings_infoChannelCount => 'Aantal Kanalen';
 
   @override
-  String get settings_presets => 'Voorinstellingen';
+  String get settings_presets => 'Presets';
 
   @override
   String get settings_frequency => 'Frequentie (MHz)';
@@ -416,16 +416,16 @@ class AppLocalizationsNl extends AppLocalizations {
   String get appSettings_languageSystem => 'Standaardinstelling';
 
   @override
-  String get appSettings_languageEn => 'Engels';
+  String get appSettings_languageEn => 'English';
 
   @override
-  String get appSettings_languageFr => 'Frans';
+  String get appSettings_languageFr => 'Français';
 
   @override
-  String get appSettings_languageEs => 'Spaans';
+  String get appSettings_languageEs => 'Español';
 
   @override
-  String get appSettings_languageDe => 'Duits';
+  String get appSettings_languageDe => 'Deutsch';
 
   @override
   String get appSettings_languagePl => 'Polski';
@@ -434,22 +434,22 @@ class AppLocalizationsNl extends AppLocalizations {
   String get appSettings_languageSl => 'Slovenščina';
 
   @override
-  String get appSettings_languagePt => 'Portugees';
+  String get appSettings_languagePt => 'Português';
 
   @override
-  String get appSettings_languageIt => 'Italiaans';
+  String get appSettings_languageIt => 'Italiano';
 
   @override
   String get appSettings_languageZh => '中文';
 
   @override
-  String get appSettings_languageSv => 'Zweeds';
+  String get appSettings_languageSv => 'Svenska';
 
   @override
   String get appSettings_languageNl => 'Nederlands';
 
   @override
-  String get appSettings_languageSk => 'Slovenië';
+  String get appSettings_languageSk => 'Slovenčina';
 
   @override
   String get appSettings_languageBg => 'Български';
@@ -639,7 +639,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get appSettings_debugCard => 'Foutopsporing';
+  String get appSettings_debugCard => 'Debug';
 
   @override
   String get appSettings_appDebugLogging => 'App Debuggen Loggen';
@@ -693,7 +693,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get contacts_roomLogin => 'Ruimte Inloggen';
 
   @override
-  String get contacts_openChat => 'Chat openen';
+  String get contacts_openChat => 'Open Chat';
 
   @override
   String get contacts_editGroup => 'Groep bewerken';
@@ -821,7 +821,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get channels_standardPublicPsk => 'Standaard open PSK';
 
   @override
-  String get channels_pskHex => 'PSK (hexadecimaal)';
+  String get channels_pskHex => 'PSK (Hex)';
 
   @override
   String get channels_generateRandomPsk => 'Willekeurige PSK genereren';
@@ -1004,10 +1004,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get gifPicker_noInternet => 'Geen internetverbinding';
 
   @override
-  String get debugLog_appTitle => 'Foutopsporingslogboek voor apps';
+  String get debugLog_appTitle => 'App Debug Log';
 
   @override
-  String get debugLog_bleTitle => 'BLE-foutopsporingslogboek';
+  String get debugLog_bleTitle => 'BLE Debug Log';
 
   @override
   String get debugLog_copyLog => 'Kopieer log';
@@ -1082,7 +1082,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get debugFrame_hexDump => 'Hex-dump:';
+  String get debugFrame_hexDump => 'Hex Dump:';
 
   @override
   String get chat_pathManagement => 'Beheer van Paden';
@@ -1211,7 +1211,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get chat_floodAuto => 'Overstroming (automatisch)';
+  String get chat_floodAuto => 'Flood (auto)';
 
   @override
   String get chat_direct => 'Direct';
@@ -1243,7 +1243,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get chat_invalidLink => 'Ongeldig linkformaat';
 
   @override
-  String get map_title => 'Knooppuntkaart';
+  String get map_title => 'Node Map';
 
   @override
   String get map_lineOfSight => 'Zichtlijn';
@@ -1260,7 +1260,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String map_nodesCount(int count) {
-    return 'Knooppunten: $count';
+    return 'Nodes: $count';
   }
 
   @override
@@ -1269,7 +1269,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get map_chat => 'Chatten';
+  String get map_chat => 'Chat';
 
   @override
   String get map_repeater => 'Repeater';
@@ -1339,7 +1339,7 @@ class AppLocalizationsNl extends AppLocalizations {
       'Verbind met een apparaat om markers te delen';
 
   @override
-  String get map_filterNodes => 'Knooppunten filteren';
+  String get map_filterNodes => 'Filter Nodes';
 
   @override
   String get map_nodeTypes => 'Nodetypes';
@@ -1413,7 +1413,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get mapCache_downloadAction => 'Downloaden';
+  String get mapCache_downloadAction => 'Download';
 
   @override
   String mapCache_cachedTiles(int count) {
@@ -1561,7 +1561,7 @@ class AppLocalizationsNl extends AppLocalizations {
       'Voer het wachtwoord van de kamer in om toegang te krijgen tot instellingen en status.';
 
   @override
-  String get login_routing => 'Routering';
+  String get login_routing => 'Routing';
 
   @override
   String get login_routingMode => 'Routeerwijze';
@@ -1674,7 +1674,7 @@ class AppLocalizationsNl extends AppLocalizations {
       'Status, statistieken en buren bekijken';
 
   @override
-  String get repeater_telemetry => 'Telemetrie';
+  String get repeater_telemetry => 'Telemetry';
 
   @override
   String get repeater_telemetrySubtitle =>
@@ -1756,10 +1756,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get repeater_noiseFloor => 'Ruisvloer';
 
   @override
-  String get repeater_txAirtime => 'TX-zendtijd';
+  String get repeater_txAirtime => 'TX Airtime';
 
   @override
-  String get repeater_rxAirtime => 'RX-zendtijd';
+  String get repeater_rxAirtime => 'RX Airtime';
 
   @override
   String get repeater_packetStatistics => 'Pakketstatistieken';
@@ -1795,7 +1795,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String repeater_duplicatesFloodDirect(String flood, String direct) {
-    return 'Overstroming: $flood, Direct: $direct';
+    return 'Flood: $flood, Direct: $direct';
   }
 
   @override
@@ -1837,7 +1837,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get repeater_frequencyHelper => '300-2500 MHz';
 
   @override
-  String get repeater_txPower => 'TX-vermogen';
+  String get repeater_txPower => 'TX Power';
 
   @override
   String get repeater_txPowerHelper => '1-30 dBm';
@@ -2013,7 +2013,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get repeater_cliTitle => 'Repeater-CLI';
+  String get repeater_cliTitle => 'Repeater CLI';
 
   @override
   String get repeater_debugNextCommand => 'Debug Volgende Commando';
@@ -2299,7 +2299,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get repeater_bridge => 'Bruggen';
 
   @override
-  String get repeater_logging => 'Loggen';
+  String get repeater_logging => 'Logging';
 
   @override
   String get repeater_neighborsRepeaterOnly => 'Buren (Alleen repeaters)';
@@ -2411,7 +2411,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get channelPath_otherObservedPaths => 'Overige Waargenomen Paden';
 
   @override
-  String get channelPath_repeaterHops => 'Repeater-hop';
+  String get channelPath_repeaterHops => 'Repeater Hops';
 
   @override
   String get channelPath_noHopDetails =>
@@ -2427,7 +2427,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get channelPath_timeLabel => 'Tijd';
 
   @override
-  String get channelPath_repeatsLabel => 'Herhalingen';
+  String get channelPath_repeatsLabel => 'Repeats';
 
   @override
   String channelPath_pathLabel(int index) {
@@ -2459,7 +2459,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get channelPath_unknownPath => 'Onbekend';
 
   @override
-  String get channelPath_floodPath => 'Overstroming';
+  String get channelPath_floodPath => 'Flood';
 
   @override
   String get channelPath_directPath => 'Direct';
@@ -2851,7 +2851,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get contacts_repeaterPathTrace => 'Pad traceren naar repeater';
 
   @override
-  String get contacts_repeaterPing => 'Ping-repeater';
+  String get contacts_repeaterPing => 'Ping repeater';
 
   @override
   String get contacts_roomPathTrace => 'Padtrace naar room server';
@@ -2864,7 +2864,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String contacts_pathTraceTo(String name) {
-    return 'Traceer route naar $name';
+    return 'Trace route to $name';
   }
 
   @override

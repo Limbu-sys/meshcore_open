@@ -422,7 +422,7 @@ class AppLocalizationsBg extends AppLocalizations {
   String get appSettings_languageSystem => 'Система по подразбиране';
 
   @override
-  String get appSettings_languageEn => 'английски';
+  String get appSettings_languageEn => 'English';
 
   @override
   String get appSettings_languageFr => 'Français';
@@ -434,28 +434,28 @@ class AppLocalizationsBg extends AppLocalizations {
   String get appSettings_languageDe => 'Deutsch';
 
   @override
-  String get appSettings_languagePl => 'Полски';
+  String get appSettings_languagePl => 'Polski';
 
   @override
-  String get appSettings_languageSl => 'словенски';
+  String get appSettings_languageSl => 'Slovenščina';
 
   @override
-  String get appSettings_languagePt => 'португалски';
+  String get appSettings_languagePt => 'Português';
 
   @override
-  String get appSettings_languageIt => 'Италиано';
+  String get appSettings_languageIt => 'Italiano';
 
   @override
   String get appSettings_languageZh => '中文';
 
   @override
-  String get appSettings_languageSv => 'Свенска';
+  String get appSettings_languageSv => 'Svenska';
 
   @override
-  String get appSettings_languageNl => 'Холандия';
+  String get appSettings_languageNl => 'Nederlands';
 
   @override
-  String get appSettings_languageSk => 'Словенчина';
+  String get appSettings_languageSk => 'Slovenčina';
 
   @override
   String get appSettings_languageBg => 'Български';
@@ -827,7 +827,7 @@ class AppLocalizationsBg extends AppLocalizations {
   String get channels_standardPublicPsk => 'Стандартен публичен PSK';
 
   @override
-  String get channels_pskHex => 'PSK (шестнадесетичен)';
+  String get channels_pskHex => 'PSK (Hex)';
 
   @override
   String get channels_generateRandomPsk => 'Генерирай случайна PSK';
@@ -867,7 +867,7 @@ class AppLocalizationsBg extends AppLocalizations {
   String get channels_sortManual => 'Ръчно';
 
   @override
-  String get channels_sortAZ => 'А-Я';
+  String get channels_sortAZ => 'A-Z';
 
   @override
   String get channels_sortLatestMessages => 'Последни съобщения';
@@ -1038,7 +1038,7 @@ class AppLocalizationsBg extends AppLocalizations {
   String get debugLog_frames => 'Рамки';
 
   @override
-  String get debugLog_rawLogRx => 'Необработен Log-RX';
+  String get debugLog_rawLogRx => 'Raw Log-RX';
 
   @override
   String get debugLog_noBleActivity => 'Няма BLE активност към момента.';
@@ -1768,10 +1768,10 @@ class AppLocalizationsBg extends AppLocalizations {
   String get repeater_noiseFloor => 'Ниво на шум';
 
   @override
-  String get repeater_txAirtime => 'TX Ефирно време';
+  String get repeater_txAirtime => 'TX Airtime';
 
   @override
-  String get repeater_rxAirtime => 'RX Ефирно време';
+  String get repeater_rxAirtime => 'RX Airtime';
 
   @override
   String get repeater_packetStatistics => 'Статистика на пакетите';
@@ -1850,7 +1850,7 @@ class AppLocalizationsBg extends AppLocalizations {
   String get repeater_frequencyHelper => '300-2500 MHz';
 
   @override
-  String get repeater_txPower => 'TX мощност';
+  String get repeater_txPower => 'TX Power';
 
   @override
   String get repeater_txPowerHelper => '1-30 dBm';
@@ -2698,7 +2698,7 @@ class AppLocalizationsBg extends AppLocalizations {
   String get listFilter_heardRecently => 'Слушано е наскоро';
 
   @override
-  String get listFilter_az => 'А-Я';
+  String get listFilter_az => 'A-Z';
 
   @override
   String get listFilter_filters => 'Филтри';

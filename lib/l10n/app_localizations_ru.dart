@@ -9,7 +9,7 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get appTitle => 'MeshCore Открыть';
+  String get appTitle => 'MeshCore Open';
 
   @override
   String get nav_contacts => 'Контакты';
@@ -24,7 +24,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get common_cancel => 'Отмена';
 
   @override
-  String get common_ok => 'ХОРОШО';
+  String get common_ok => 'OK';
 
   @override
   String get common_connect => 'Коннект';
@@ -97,7 +97,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String common_voltageValue(String volts) {
-    return '$volts Ð\'';
+    return '$volts В';
   }
 
   @override
@@ -106,7 +106,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get scanner_title => 'MeshCore Открыть';
+  String get scanner_title => 'MeshCore Open';
 
   @override
   String get scanner_scanning => 'Поиск устройств...';
@@ -315,8 +315,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get settings_aboutLegalese =>
-      '2026 Проект MeshCore с открытым исходным кодом';
+  String get settings_aboutLegalese => '2026 MeshCore Open Source Project';
 
   @override
   String get settings_aboutDescription =>
@@ -330,7 +329,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get settings_infoName => 'Имя';
 
   @override
-  String get settings_infoId => 'ИДЕНТИФИКАТОР';
+  String get settings_infoId => 'ID';
 
   @override
   String get settings_infoStatus => 'Статус';
@@ -461,7 +460,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appSettings_languageRu => 'Русский';
 
   @override
-  String get appSettings_languageUk => 'Украинская';
+  String get appSettings_languageUk => 'Українська';
 
   @override
   String get appSettings_notifications => 'Уведомления';
@@ -825,7 +824,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get channels_standardPublicPsk => 'Стандартный публичный PSK';
 
   @override
-  String get channels_pskHex => 'ПСК (шестнадцатеричный)';
+  String get channels_pskHex => 'PSK (Hex)';
 
   @override
   String get channels_generateRandomPsk => 'Сгенерировать случайный PSK';
@@ -1075,7 +1074,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get debugFrame_textTypeCli => 'интерфейс командной строки';
+  String get debugFrame_textTypeCli => 'CLI';
 
   @override
   String get debugFrame_textTypePlain => 'Обычный';
@@ -1690,7 +1689,7 @@ class AppLocalizationsRu extends AppLocalizations {
       'Просмотр телеметрии датчиков и системной статистики';
 
   @override
-  String get repeater_cli => 'интерфейс командной строки';
+  String get repeater_cli => 'CLI';
 
   @override
   String get repeater_cliSubtitle => 'Отправка команд репитеру';
@@ -2368,12 +2367,12 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String telemetry_batteryValue(int percent, String volts) {
-    return '$percent% / $voltsÐ\'';
+    return '$percent% / $voltsВ';
   }
 
   @override
   String telemetry_voltageValue(String volts) {
-    return '$voltsÐ\'';
+    return '$voltsВ';
   }
 
   @override
@@ -2725,7 +2724,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get listFilter_newGroup => 'Новая группа';
 
   @override
-  String get pathTrace_you => 'Ð\'Ñ‹';
+  String get pathTrace_you => 'Вы';
 
   @override
   String get pathTrace_failed => 'Путь трассировки не выполнен.';

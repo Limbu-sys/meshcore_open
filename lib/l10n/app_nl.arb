@@ -68,7 +68,7 @@
     }
   },
   "scanner_stop": "Stoppen",
-  "scanner_scan": "Scannen",
+  "scanner_scan": "Scan",
   "device_quickSwitch": "Snelle overschakeling",
   "device_meshcore": "MeshCore",
   "settings_title": "Instellingen",
@@ -90,7 +90,7 @@
   "settings_locationInvalid": "Ongeldige breedtegraad of lengtegraad.",
   "settings_latitude": "Breedtegraad",
   "settings_longitude": "Lengtegraad",
-  "settings_privacyMode": "Privacymodus",
+  "settings_privacyMode": "Privacy Mode",
   "settings_privacyModeSubtitle": "Naam/locatie verbergen in advertenties",
   "settings_privacyModeToggle": "Schakel privacy modus in om je naam en locatie in advertenties te verbergen.",
   "settings_privacyModeEnabled": "Privacy modus is ingeschakeld",
@@ -107,10 +107,10 @@
   "settings_rebootDevice": "Apparaat opnieuw opstarten",
   "settings_rebootDeviceSubtitle": "Herstart het MeshCore apparaat",
   "settings_rebootDeviceConfirm": "Ben je er zeker van dat je het apparaat opnieuw wilt opstarten? Je wordt losgekoppeld.",
-  "settings_debug": "Foutopsporing",
-  "settings_bleDebugLog": "BLE-foutopsporingslogboek",
+  "settings_debug": "Debug",
+  "settings_bleDebugLog": "BLE Debug Log",
   "settings_bleDebugLogSubtitle": "BLE commando's, antwoorden en ruwe data",
-  "settings_appDebugLog": "Foutopsporingslogboek voor apps",
+  "settings_appDebugLog": "App Debug Log",
   "settings_appDebugLogSubtitle": "Toepassingsdebugberichten",
   "settings_about": "Over",
   "settings_aboutVersion": "MeshCore Open v{version}",
@@ -124,13 +124,13 @@
   "settings_aboutLegalese": "MeshCore Open Source Project 2024",
   "settings_aboutDescription": "Een open-source Flutter client voor MeshCore LoRa mesh netwerkapparaten.",
   "settings_infoName": "Naam",
-  "settings_infoId": "Identiteitskaart",
+  "settings_infoId": "ID",
   "settings_infoStatus": "Status",
   "settings_infoBattery": "Batterij",
   "settings_infoPublicKey": "Openbare Sleutel",
   "settings_infoContactsCount": "Aantal Contacten",
   "settings_infoChannelCount": "Aantal Kanalen",
-  "settings_presets": "Voorinstellingen",
+  "settings_presets": "Presets",
   "settings_frequency": "Frequentie (MHz)",
   "settings_frequencyHelper": "300,0 - 2500,0",
   "settings_frequencyInvalid": "Ongeldige frequentie (300-2500 MHz)",
@@ -156,18 +156,18 @@
   "appSettings_themeDark": "Donker",
   "appSettings_language": "Taal",
   "appSettings_languageSystem": "Standaardinstelling",
-  "appSettings_languageEn": "Engels",
-  "appSettings_languageFr": "Frans",
-  "appSettings_languageEs": "Spaans",
-  "appSettings_languageDe": "Duits",
+  "appSettings_languageEn": "English",
+  "appSettings_languageFr": "Français",
+  "appSettings_languageEs": "Español",
+  "appSettings_languageDe": "Deutsch",
   "appSettings_languagePl": "Polski",
   "appSettings_languageSl": "Slovenščina",
-  "appSettings_languagePt": "Portugees",
-  "appSettings_languageIt": "Italiaans",
+  "appSettings_languagePt": "Português",
+  "appSettings_languageIt": "Italiano",
   "appSettings_languageZh": "中文",
-  "appSettings_languageSv": "Zweeds",
+  "appSettings_languageSv": "Svenska",
   "appSettings_languageNl": "Nederlands",
-  "appSettings_languageSk": "Slovenië",
+  "appSettings_languageSk": "Slovenčina",
   "appSettings_languageBg": "Български",
   "appSettings_notifications": "Notificaties",
   "appSettings_enableNotifications": "Notificaties inschakelen",
@@ -241,7 +241,7 @@
       }
     }
   },
-  "appSettings_debugCard": "Foutopsporing",
+  "appSettings_debugCard": "Debug",
   "appSettings_appDebugLogging": "App Debuggen Loggen",
   "appSettings_appDebugLoggingSubtitle": "Log app debugberichten voor probleemoplossing",
   "appSettings_appDebugLoggingEnabled": "App debug logging is ingeschakeld",
@@ -263,7 +263,7 @@
   },
   "contacts_manageRepeater": "Beheer Repeater",
   "contacts_roomLogin": "Ruimte Inloggen",
-  "contacts_openChat": "Chat openen",
+  "contacts_openChat": "Open Chat",
   "contacts_editGroup": "Groep bewerken",
   "contacts_deleteGroup": "Groep verwijderen",
   "contacts_deleteGroupConfirm": "Verwijder {groupName}?",
@@ -356,7 +356,7 @@
   "channels_channelName": "Kanaalnaam",
   "channels_usePublicChannel": "Gebruik Open Kanaal",
   "channels_standardPublicPsk": "Standaard open PSK",
-  "channels_pskHex": "PSK (hexadecimaal)",
+  "channels_pskHex": "PSK (Hex)",
   "channels_generateRandomPsk": "Willekeurige PSK genereren",
   "channels_enterChannelName": "Voer een kanaalnaam in",
   "channels_pskMustBe32Hex": "De PSK moet 32 hexadecimale tekens zijn.",
@@ -457,8 +457,8 @@
   "gifPicker_failedLoad": "GIF's konden niet worden geladen",
   "gifPicker_failedSearch": "Zoeken mislukt",
   "gifPicker_noInternet": "Geen internetverbinding",
-  "debugLog_appTitle": "Foutopsporingslogboek voor apps",
-  "debugLog_bleTitle": "BLE-foutopsporingslogboek",
+  "debugLog_appTitle": "App Debug Log",
+  "debugLog_bleTitle": "BLE Debug Log",
   "debugLog_copyLog": "Kopieer log",
   "debugLog_clearLog": "Log wissen",
   "debugLog_copied": "Debuglog gekopieerd",
@@ -530,7 +530,7 @@
       }
     }
   },
-  "debugFrame_hexDump": "Hex-dump:",
+  "debugFrame_hexDump": "Hex Dump:",
   "chat_pathManagement": "Beheer van Paden",
   "chat_routingMode": "Routeerwijze",
   "chat_autoUseSavedPath": "Automatisch (gebruik opgeslagen pad)",
@@ -588,7 +588,7 @@
       }
     }
   },
-  "chat_floodAuto": "Overstroming (automatisch)",
+  "chat_floodAuto": "Flood (auto)",
   "chat_direct": "Direct",
   "chat_poiShared": "Gedeelde POI",
   "chat_unread": "Nieuw: {count}",
@@ -611,10 +611,10 @@
     }
   },
   "chat_invalidLink": "Ongeldig linkformaat",
-  "map_title": "Knooppuntkaart",
+  "map_title": "Node Map",
   "map_noNodesWithLocation": "Geen nodes met locatiegegevens",
   "map_nodesNeedGps": "Nodes moeten hun GPS-coördinaten delen\nom op de kaart te verschijnen",
-  "map_nodesCount": "Knooppunten: {count}",
+  "map_nodesCount": "Nodes: {count}",
   "@map_nodesCount": {
     "placeholders": {
       "count": {
@@ -630,7 +630,7 @@
       }
     }
   },
-  "map_chat": "Chatten",
+  "map_chat": "Chat",
   "map_repeater": "Repeater",
   "map_room": "Ruimte",
   "map_sensor": "Sensor",
@@ -659,7 +659,7 @@
     }
   },
   "map_connectToShareMarkers": "Verbind met een apparaat om markers te delen",
-  "map_filterNodes": "Knooppunten filteren",
+  "map_filterNodes": "Filter Nodes",
   "map_nodeTypes": "Nodetypes",
   "map_chatNodes": "Chatnodes",
   "map_repeaters": "Repeaters",
@@ -685,7 +685,7 @@
       }
     }
   },
-  "mapCache_downloadAction": "Downloaden",
+  "mapCache_downloadAction": "Download",
   "mapCache_cachedTiles": "Opgeslagen {count} tegels",
   "@mapCache_cachedTiles": {
     "placeholders": {
@@ -803,7 +803,7 @@
   "login_savePasswordSubtitle": "Het wachtwoord wordt veilig op dit apparaat opgeslagen.",
   "login_repeaterDescription": "Voer het wachtwoord van de repeater in om instellingen en status te openen.",
   "login_roomDescription": "Voer het wachtwoord van de kamer in om toegang te krijgen tot instellingen en status.",
-  "login_routing": "Routering",
+  "login_routing": "Routing",
   "login_routingMode": "Routeerwijze",
   "login_autoUseSavedPath": "Automatisch (gebruik opgeslagen pad)",
   "login_forceFloodMode": "Dwing Floodmodus Af",
@@ -870,7 +870,7 @@
   "repeater_managementTools": "Beheerinstrumenten",
   "repeater_status": "Status",
   "repeater_statusSubtitle": "Status, statistieken en buren bekijken",
-  "repeater_telemetry": "Telemetrie",
+  "repeater_telemetry": "Telemetry",
   "repeater_telemetrySubtitle": "Bekijk telemetrie van sensoren en systeemgegevens",
   "repeater_cli": "CLI",
   "repeater_cliSubtitle": "Verzend commando's naar de repeater",
@@ -901,8 +901,8 @@
   "repeater_lastRssi": "Laatste RSSI",
   "repeater_lastSnr": "Laatste SNR",
   "repeater_noiseFloor": "Ruisvloer",
-  "repeater_txAirtime": "TX-zendtijd",
-  "repeater_rxAirtime": "RX-zendtijd",
+  "repeater_txAirtime": "TX Airtime",
+  "repeater_rxAirtime": "RX Airtime",
   "repeater_packetStatistics": "Pakketstatistieken",
   "repeater_sent": "Verzonden",
   "repeater_received": "Ontvangen",
@@ -952,7 +952,7 @@
       }
     }
   },
-  "repeater_duplicatesFloodDirect": "Overstroming: {flood}, Direct: {direct}",
+  "repeater_duplicatesFloodDirect": "Flood: {flood}, Direct: {direct}",
   "@repeater_duplicatesFloodDirect": {
     "placeholders": {
       "flood": {
@@ -982,7 +982,7 @@
   "repeater_radioSettings": "Radio Instellingen",
   "repeater_frequencyMhz": "Frequentie (MHz)",
   "repeater_frequencyHelper": "300-2500 MHz",
-  "repeater_txPower": "TX-vermogen",
+  "repeater_txPower": "TX Power",
   "repeater_txPowerHelper": "1-30 dBm",
   "repeater_bandwidth": "Bandbreedte",
   "repeater_spreadingFactor": "Spreidingsfactor",
@@ -1080,7 +1080,7 @@
       }
     }
   },
-  "repeater_cliTitle": "Repeater-CLI",
+  "repeater_cliTitle": "Repeater CLI",
   "repeater_debugNextCommand": "Debug Volgende Commando",
   "repeater_commandHelp": "Help",
   "repeater_clearHistory": "Verwijder Geschiedenis",
@@ -1165,7 +1165,7 @@
   "repeater_general": "Algemeen",
   "repeater_settingsCategory": "Instellingen",
   "repeater_bridge": "Bruggen",
-  "repeater_logging": "Loggen",
+  "repeater_logging": "Logging",
   "repeater_neighborsRepeaterOnly": "Buren (Alleen repeaters)",
   "repeater_regionManagementRepeaterOnly": "Regiobeheer (Alleen Repeater)",
   "repeater_regionNote": "Regio-commando's zijn geïntroduceerd om regio-definities en permissies te beheren.",
@@ -1236,12 +1236,12 @@
   "channelPath_title": "Pakketpad",
   "channelPath_viewMap": "Kaart bekijken",
   "channelPath_otherObservedPaths": "Overige Waargenomen Paden",
-  "channelPath_repeaterHops": "Repeater-hop",
+  "channelPath_repeaterHops": "Repeater Hops",
   "channelPath_noHopDetails": "De details van de pakket zijn niet verstrekt.",
   "channelPath_messageDetails": "Details Bericht",
   "channelPath_senderLabel": "Afzender",
   "channelPath_timeLabel": "Tijd",
-  "channelPath_repeatsLabel": "Herhalingen",
+  "channelPath_repeatsLabel": "Repeats",
   "channelPath_pathLabel": "Pad {index}",
   "channelPath_observedLabel": "Waargenomen",
   "channelPath_observedPathTitle": "Waargenomen pad {index} • {hops}",
@@ -1279,7 +1279,7 @@
     }
   },
   "channelPath_unknownPath": "Onbekend",
-  "channelPath_floodPath": "Overstroming",
+  "channelPath_floodPath": "Flood",
   "channelPath_directPath": "Direct",
   "channelPath_observedZeroOf": "0 van {total} sprongen",
   "@channelPath_observedZeroOf": {
@@ -1543,11 +1543,11 @@
   "contacts_pathTrace": "Pad Traceren",
   "contacts_ping": "Pingen",
   "contacts_repeaterPathTrace": "Pad traceren naar repeater",
-  "contacts_repeaterPing": "Ping-repeater",
+  "contacts_repeaterPing": "Ping repeater",
   "contacts_roomPathTrace": "Padtrace naar room server",
   "contacts_roomPing": "Ping kamer server",
   "contacts_chatTraceRoute": "Route traceren",
-  "contacts_pathTraceTo": "Traceer route naar {name}",
+  "contacts_pathTraceTo": "Trace route to {name}",
   "appSettings_languageUk": "Oekraïens",
   "contacts_invalidAdvertFormat": "Ongeldige contactgegevens",
   "contacts_contactImportFailed": "Contact kon niet geïmporteerd worden.",
@@ -1598,38 +1598,13 @@
   "settings_clientRepeatSubtitle": "Laat dit apparaat de mesh-pakketten opnieuw verzenden voor andere apparaten.",
   "settings_clientRepeatFreqWarning": "Om een signaal buiten het netwerk te versturen, zijn frequenties van 433, 869 of 918 MHz vereist.",
   "settings_aboutOpenMeteoAttribution": "LOS-hoogtegegevens: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Eenheden",
+  "appSettings_unitsMetric": "Metrisch (m / km)",
+  "appSettings_unitsImperial": "Imperiaal (ft / mi)",
   "map_lineOfSight": "Zichtlijn",
   "map_losScreenTitle": "Zichtlijn",
   "losSelectStartEnd": "Selecteer begin- en eindknooppunten voor LOS.",
   "losRunFailed": "Zichtlijncontrole mislukt: {error}",
-  "losClearAllPoints": "Wis alle punten",
-  "losRunToViewElevationProfile": "Voer LOS uit om het hoogteprofiel te bekijken",
-  "losMenuTitle": "LOS-menu",
-  "losMenuSubtitle": "Tik op knooppunten of druk lang op de kaart voor aangepaste punten",
-  "losShowDisplayNodes": "Toon weergaveknooppunten",
-  "losCustomPoints": "Aangepaste punten",
-  "losCustomPointLabel": "Aangepast {index}",
-  "losPointA": "Punt A",
-  "losPointB": "Punt B",
-  "losAntennaA": "Antenne A: {value} {unit}",
-  "losAntennaB": "Antenne B: {value} {unit}",
-  "losRun": "Voer LOS uit",
-  "losNoElevationData": "Geen hoogtegegevens",
-  "losProfileClear": "{distance} {distanceUnit}, vrije LOS, min. vrije ruimte {clearance} {heightUnit}",
-  "losProfileBlocked": "{distance} {distanceUnit}, geblokkeerd door {obstruction} {heightUnit}",
-  "losStatusChecking": "LOS: controleren...",
-  "losStatusNoData": "LOS: geen gegevens",
-  "losStatusSummary": "LOS: {clear}/{total} gewist, {blocked} geblokkeerd, {unknown} onbekend",
-  "losErrorElevationUnavailable": "Hoogtegegevens niet beschikbaar voor een of meer monsters.",
-  "losErrorInvalidInput": "Ongeldige punten/hoogtegegevens voor LOS-berekening.",
-  "losRenameCustomPoint": "Hernoem aangepast punt",
-  "losPointName": "Puntnaam",
-  "losShowPanelTooltip": "Toon LOS-paneel",
-  "losHidePanelTooltip": "LOS-paneel verbergen",
-  "losElevationAttribution": "Hoogtegegevens: Open-Meteo (CC BY 4.0)",
-  "appSettings_unitsTitle": "Eenheden",
-  "appSettings_unitsMetric": "Metrisch (m / km)",
-  "appSettings_unitsImperial": "Imperiaal (ft / mi)",
   "@losRunFailed": {
     "placeholders": {
       "error": {
@@ -1637,6 +1612,13 @@
       }
     }
   },
+  "losClearAllPoints": "Wis alle punten",
+  "losRunToViewElevationProfile": "Voer LOS uit om het hoogteprofiel te bekijken",
+  "losMenuTitle": "LOS-menu",
+  "losMenuSubtitle": "Tik op knooppunten of druk lang op de kaart voor aangepaste punten",
+  "losShowDisplayNodes": "Toon weergaveknooppunten",
+  "losCustomPoints": "Aangepaste punten",
+  "losCustomPointLabel": "Aangepast {index}",
   "@losCustomPointLabel": {
     "placeholders": {
       "index": {
@@ -1644,6 +1626,9 @@
       }
     }
   },
+  "losPointA": "Punt A",
+  "losPointB": "Punt B",
+  "losAntennaA": "Antenne A: {value} {unit}",
   "@losAntennaA": {
     "placeholders": {
       "value": {
@@ -1654,6 +1639,7 @@
       }
     }
   },
+  "losAntennaB": "Antenne B: {value} {unit}",
   "@losAntennaB": {
     "placeholders": {
       "value": {
@@ -1664,6 +1650,9 @@
       }
     }
   },
+  "losRun": "Voer LOS uit",
+  "losNoElevationData": "Geen hoogtegegevens",
+  "losProfileClear": "{distance} {distanceUnit}, vrije LOS, min. vrije ruimte {clearance} {heightUnit}",
   "@losProfileClear": {
     "placeholders": {
       "distance": {
@@ -1680,6 +1669,7 @@
       }
     }
   },
+  "losProfileBlocked": "{distance} {distanceUnit}, geblokkeerd door {obstruction} {heightUnit}",
   "@losProfileBlocked": {
     "placeholders": {
       "distance": {
@@ -1696,6 +1686,9 @@
       }
     }
   },
+  "losStatusChecking": "LOS: controleren...",
+  "losStatusNoData": "LOS: geen gegevens",
+  "losStatusSummary": "LOS: {clear}/{total} gewist, {blocked} geblokkeerd, {unknown} onbekend",
   "@losStatusSummary": {
     "placeholders": {
       "clear": {
@@ -1712,32 +1705,11 @@
       }
     }
   },
-  "@notification_messagesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_channelMessagesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_newNodesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_newTypeDiscovered": {
-    "placeholders": {
-      "contactType": {
-        "type": "String"
-      }
-    }
-  }
+  "losErrorElevationUnavailable": "Hoogtegegevens niet beschikbaar voor een of meer monsters.",
+  "losErrorInvalidInput": "Ongeldige punten/hoogtegegevens voor LOS-berekening.",
+  "losRenameCustomPoint": "Hernoem aangepast punt",
+  "losPointName": "Puntnaam",
+  "losShowPanelTooltip": "Toon LOS-paneel",
+  "losHidePanelTooltip": "LOS-paneel verbergen",
+  "losElevationAttribution": "Hoogtegegevens: Open-Meteo (CC BY 4.0)"
 }

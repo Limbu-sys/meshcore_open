@@ -9,7 +9,7 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
-  String get appTitle => 'MeshCore aberto';
+  String get appTitle => 'MeshCore Open';
 
   @override
   String get nav_contacts => 'Contactos';
@@ -93,7 +93,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get common_loading => 'Carregando...';
 
   @override
-  String get common_notAvailable => '-';
+  String get common_notAvailable => '—';
 
   @override
   String common_voltageValue(String volts) {
@@ -106,7 +106,7 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get scanner_title => 'MeshCore aberto';
+  String get scanner_title => 'MeshCore Open';
 
   @override
   String get scanner_scanning => 'Procurando por dispositivos...';
@@ -157,7 +157,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get device_quickSwitch => 'Mudar rapidamente';
 
   @override
-  String get device_meshcore => 'MalhaCore';
+  String get device_meshcore => 'MeshCore';
 
   @override
   String get settings_title => 'Configurações';
@@ -314,7 +314,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String settings_aboutVersion(String version) {
-    return 'MeshCore aberto v$version';
+    return 'MeshCore Open v$version';
   }
 
   @override
@@ -332,7 +332,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get settings_infoName => 'Nome';
 
   @override
-  String get settings_infoId => 'EU IA';
+  String get settings_infoId => 'ID';
 
   @override
   String get settings_infoStatus => 'Status';
@@ -350,7 +350,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get settings_infoChannelCount => 'Número do Canal';
 
   @override
-  String get settings_presets => 'Predefinições';
+  String get settings_presets => 'Presets';
 
   @override
   String get settings_frequency => 'Frequência (MHz)';
@@ -420,22 +420,22 @@ class AppLocalizationsPt extends AppLocalizations {
   String get appSettings_languageSystem => 'Padrão do sistema';
 
   @override
-  String get appSettings_languageEn => 'Inglês';
+  String get appSettings_languageEn => 'English';
 
   @override
-  String get appSettings_languageFr => 'Francês';
+  String get appSettings_languageFr => 'Français';
 
   @override
-  String get appSettings_languageEs => 'Espanhol';
+  String get appSettings_languageEs => 'Español';
 
   @override
-  String get appSettings_languageDe => 'Alemão';
+  String get appSettings_languageDe => 'Deutsch';
 
   @override
-  String get appSettings_languagePl => 'Polaco';
+  String get appSettings_languagePl => 'Polski';
 
   @override
-  String get appSettings_languageSl => 'Eslovena';
+  String get appSettings_languageSl => 'Slovenščina';
 
   @override
   String get appSettings_languagePt => 'Português';
@@ -447,16 +447,16 @@ class AppLocalizationsPt extends AppLocalizations {
   String get appSettings_languageZh => '中文';
 
   @override
-  String get appSettings_languageSv => 'Sueca';
+  String get appSettings_languageSv => 'Svenska';
 
   @override
-  String get appSettings_languageNl => 'Holanda';
+  String get appSettings_languageNl => 'Nederlands';
 
   @override
-  String get appSettings_languageSk => 'Eslovena';
+  String get appSettings_languageSk => 'Slovenčina';
 
   @override
-  String get appSettings_languageBg => 'Búlgaro';
+  String get appSettings_languageBg => 'Български';
 
   @override
   String get appSettings_languageRu => 'Russo';
@@ -1062,7 +1062,7 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String debugFrame_timestamp(int timestamp) {
-    return '- Carimbo de data e hora: $timestamp';
+    return '- Timestamp: $timestamp';
   }
 
   @override
@@ -1275,7 +1275,7 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get map_chat => 'Bater papo';
+  String get map_chat => 'Chat';
 
   @override
   String get map_repeater => 'Repetidor';
@@ -1581,7 +1581,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get login_managePaths => 'Gerenciar Caminhos';
 
   @override
-  String get login_login => 'Conecte-se';
+  String get login_login => 'Login';
 
   @override
   String login_attempt(int current, int max) {
@@ -1762,10 +1762,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get repeater_noiseFloor => 'Nível de Ruído';
 
   @override
-  String get repeater_txAirtime => 'Tempo de antena TX';
+  String get repeater_txAirtime => 'TX Airtime';
 
   @override
-  String get repeater_rxAirtime => 'Tempo de antena RX';
+  String get repeater_rxAirtime => 'RX Airtime';
 
   @override
   String get repeater_packetStatistics => 'Estatísticas de Pacote';
@@ -1844,10 +1844,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get repeater_frequencyHelper => '300-2500 MHz';
 
   @override
-  String get repeater_txPower => 'Potência TX';
+  String get repeater_txPower => 'TX Power';
 
   @override
-  String get repeater_txPowerHelper => '1-30dBm';
+  String get repeater_txPowerHelper => '1-30 dBm';
 
   @override
   String get repeater_bandwidth => 'Largura de banda';

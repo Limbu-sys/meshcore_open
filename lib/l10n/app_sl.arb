@@ -36,7 +36,7 @@
       }
     }
   },
-  "common_percentValue": "{percent} %",
+  "common_percentValue": "{percent}%",
   "@common_percentValue": {
     "placeholders": {
       "percent": {
@@ -88,7 +88,7 @@
   "settings_locationUpdated": "Lokacija posodobljena",
   "settings_locationBothRequired": "Vnesite širino in dolžino.",
   "settings_locationInvalid": "Neveljavna zemeljska širina ali dolžina.",
-  "settings_latitude": "Å irina",
+  "settings_latitude": "Širina",
   "settings_longitude": "Dolžina",
   "settings_privacyMode": "Zasebnost",
   "settings_privacyModeSubtitle": "Skrita imena/lokacije v oglasih",
@@ -107,7 +107,7 @@
   "settings_rebootDevice": "Ponovni zagon naprave",
   "settings_rebootDeviceSubtitle": "Ponovno zaženi MeshCore napravo",
   "settings_rebootDeviceConfirm": "Ste prepričani, da želite ponovno zagnati napravo? Povezava bo prekinjena.",
-  "settings_debug": "Odpravljanje napak",
+  "settings_debug": "Debug",
   "settings_bleDebugLog": "BLE debug log (razhroščevanje)",
   "settings_bleDebugLogSubtitle": "BLE ukazi, odgovori in surovi podatki",
   "settings_appDebugLog": "Logi aplikacije",
@@ -125,11 +125,11 @@
   "settings_aboutDescription": "Odprtokodni Flutter klient za naprave za LoRa omrežje MeshCore.",
   "settings_infoName": "Ime",
   "settings_infoId": "ID",
-  "settings_infoStatus": "Stanje",
+  "settings_infoStatus": "Status",
   "settings_infoBattery": "Baterija",
   "settings_infoPublicKey": "Javni ključ",
-  "settings_infoContactsCount": "Å tevilo stikov",
-  "settings_infoChannelCount": "Å tevilo kanalov",
+  "settings_infoContactsCount": "Število stikov",
+  "settings_infoChannelCount": "Število kanalov",
   "settings_presets": "Prednastavitve",
   "settings_frequency": "Frekvenca (MHz)",
   "settings_frequencyHelper": "300,00 - 2500,00",
@@ -156,13 +156,13 @@
   "appSettings_themeDark": "Temno",
   "appSettings_language": "Jezik",
   "appSettings_languageSystem": "Sistemska privzeta vrednost",
-  "appSettings_languageEn": "angleščina",
+  "appSettings_languageEn": "English",
   "appSettings_languageFr": "Français",
   "appSettings_languageEs": "Español",
   "appSettings_languageDe": "Deutsch",
   "appSettings_languagePl": "Polski",
   "appSettings_languageSl": "Slovenščina",
-  "appSettings_languagePt": "português",
+  "appSettings_languagePt": "Português",
   "appSettings_languageIt": "Italiano",
   "appSettings_languageZh": "中文",
   "appSettings_languageSv": "Svenska",
@@ -356,7 +356,7 @@
   "channels_channelName": "Ime kanala",
   "channels_usePublicChannel": "Uporabi javni kanal",
   "channels_standardPublicPsk": "Standardni javni PSK",
-  "channels_pskHex": "PSK (Å estnajstbinska)",
+  "channels_pskHex": "PSK (Šestnajstbinska)",
   "channels_generateRandomPsk": "Generiraj naključni PSK",
   "channels_enterChannelName": "Vnesi ime kanala",
   "channels_pskMustBe32Hex": "PSK mora biti 32 heksadecimalnih znakov.",
@@ -388,7 +388,7 @@
   "channels_publicChannelAdded": "javna skupnost dodana",
   "channels_sortBy": "Sortiraj po",
   "channels_sortManual": "Ročno",
-  "channels_sortAZ": "A-Ž",
+  "channels_sortAZ": "A-Z",
   "channels_sortLatestMessages": "Najnovejše sporočilo",
   "channels_sortUnread": "Nerešeno",
   "chat_noMessages": "Še ni sporočil.",
@@ -493,7 +493,7 @@
       }
     }
   },
-  "debugFrame_timestamp": "- ÄŒasovnik: {timestamp}",
+  "debugFrame_timestamp": "- Časovnik: {timestamp}",
   "@debugFrame_timestamp": {
     "placeholders": {
       "timestamp": {
@@ -630,7 +630,7 @@
       }
     }
   },
-  "map_chat": "ÄŒistemar",
+  "map_chat": "Čistemar",
   "map_repeater": "Ponovitelj",
   "map_room": "Soba",
   "map_sensor": "Senzor",
@@ -661,7 +661,7 @@
   "map_connectToShareMarkers": "Povežite se z napravo za deljenje oznak.",
   "map_filterNodes": "Filtirirajte člene",
   "map_nodeTypes": "Vrste knope",
-  "map_chatNodes": "ÄŒuti zvezde",
+  "map_chatNodes": "Čuti zvezde",
   "map_repeaters": "Ponovljalniki",
   "map_otherNodes": "Druge vozlišča",
   "map_keyPrefix": "Predpona ključa",
@@ -868,7 +868,7 @@
   "path_setPath": "Nastavi Pot",
   "repeater_management": "Upravljanje ponovitve",
   "repeater_managementTools": "Upravne orodje",
-  "repeater_status": "Stanje",
+  "repeater_status": "Status",
   "repeater_statusSubtitle": "Pogledati stanje, statistike in sosede repeatera",
   "repeater_telemetry": "Telemetrija",
   "repeater_telemetrySubtitle": "Pogledate telemetrijo senzorjev in sistemske statistike",
@@ -894,15 +894,15 @@
   "repeater_systemInformation": "Informacije o sistemu",
   "repeater_battery": "Baterija",
   "repeater_clockAtLogin": "Ure (pri prijavi)",
-  "repeater_uptime": "ÄŒas delovanja",
+  "repeater_uptime": "Čas delovanja",
   "repeater_queueLength": "Dolžina čakalne vrste",
   "repeater_debugFlags": "Nastavitve odpravilnosti",
   "repeater_radioStatistics": "Radio Statistika",
   "repeater_lastRssi": "Potredno RSSI",
   "repeater_lastSnr": "Nazadnje zabeležena SNR",
-  "repeater_noiseFloor": "Å umovita raven",
-  "repeater_txAirtime": "Oddajanje TX",
-  "repeater_rxAirtime": "RX Oddajanje",
+  "repeater_noiseFloor": "Šumovita raven",
+  "repeater_txAirtime": "TX Airtime",
+  "repeater_rxAirtime": "RX Airtime",
   "repeater_packetStatistics": "Statistika paketa",
   "repeater_sent": "Pošljeno",
   "repeater_received": "Prejeto",
@@ -988,7 +988,7 @@
   "repeater_spreadingFactor": "Razširitveni faktor",
   "repeater_codingRate": "Programska hitrost",
   "repeater_locationSettings": "Nastavitve lokacije",
-  "repeater_latitude": "Å irina",
+  "repeater_latitude": "Širina",
   "repeater_latitudeHelper": "Desetbinske protiure (npr. 37.7749)",
   "repeater_longitude": "Dolžina",
   "repeater_longitudeHelper": "Desetbinske protiure (npr. -122,4194)",
@@ -1018,7 +1018,7 @@
       }
     }
   },
-  "repeater_encryptedAdvertInterval": "Å ifrirana Oglasovalska Trajanje",
+  "repeater_encryptedAdvertInterval": "Šifrirana Oglasovalska Trajanje",
   "repeater_dangerZone": "Opozorilo",
   "repeater_rebootRepeater": "Ponovni zagon Repeaterja",
   "repeater_rebootRepeaterSubtitle": "Ponovni zagon ponovitelja.",
@@ -1195,7 +1195,7 @@
   "telemetry_mcuTemperatureLabel": "MCU Temperatura",
   "telemetry_temperatureLabel": "Temperatura",
   "telemetry_currentLabel": "Trenutno",
-  "telemetry_batteryValue": "{percent} % / {volts}V",
+  "telemetry_batteryValue": "{percent}% / {volts}V",
   "@telemetry_batteryValue": {
     "placeholders": {
       "percent": {
@@ -1336,7 +1336,7 @@
   "listFilter_sortBy": "Sortiraj po",
   "listFilter_latestMessages": "Najnovejše sporočilo",
   "listFilter_heardRecently": "Nedavno slišan",
-  "listFilter_az": "A-Ž",
+  "listFilter_az": "A-Z",
   "listFilter_filters": "Filtri",
   "listFilter_all": "Vse",
   "listFilter_users": "Uporabniki",
@@ -1547,7 +1547,7 @@
   "contacts_roomPathTrace": "Sledenje poti do strežnika sobe",
   "contacts_roomPing": "Ping strežnik sobe",
   "contacts_chatTraceRoute": "Slediti poti žarkov",
-  "contacts_pathTraceTo": "Sledi poti do {name}",
+  "contacts_pathTraceTo": "Trace route to {name}",
   "appSettings_languageRu": "Ruščina",
   "appSettings_languageUk": "Ukrajinsko",
   "contacts_contactImported": "Kontakt je bil uvožen.",
@@ -1598,38 +1598,13 @@
   "settings_clientRepeatSubtitle": "Omogočite temu naprave, da ponavlja paketne sporočila za druge.",
   "settings_clientRepeat": "Neovadno ponavljanje",
   "settings_aboutOpenMeteoAttribution": "Podatki o višini LOS: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Enote",
+  "appSettings_unitsMetric": "Metrična (m/km)",
+  "appSettings_unitsImperial": "Imperialno (ft / mi)",
   "map_lineOfSight": "Linija vida",
   "map_losScreenTitle": "Linija vida",
   "losSelectStartEnd": "Izberite začetno in končno vozlišče za LOS.",
   "losRunFailed": "Preverjanje vidnega polja ni uspelo: {error}",
-  "losClearAllPoints": "Počisti vse točke",
-  "losRunToViewElevationProfile": "Zaženite LOS za ogled višinskega profila",
-  "losMenuTitle": "LOS meni",
-  "losMenuSubtitle": "Tapnite vozlišča ali dolgo pritisnite na zemljevid za točke po meri",
-  "losShowDisplayNodes": "Pokaži prikazna vozlišča",
-  "losCustomPoints": "Točke po meri",
-  "losCustomPointLabel": "Po meri {index}",
-  "losPointA": "Točka A",
-  "losPointB": "Točka B",
-  "losAntennaA": "Antena A: {value} {unit}",
-  "losAntennaB": "Antena B: {value} {unit}",
-  "losRun": "Zaženi LOS",
-  "losNoElevationData": "Ni podatkov o višini",
-  "losProfileClear": "{distance} {distanceUnit}, čisti LOS, najmanjša razdalja {clearance} {heightUnit}",
-  "losProfileBlocked": "{distance} {distanceUnit}, blokiral {obstruction} {heightUnit}",
-  "losStatusChecking": "LOS: preverjam ...",
-  "losStatusNoData": "LOS: ni podatkov",
-  "losStatusSummary": "LOS: {clear}/{total} jasno, {blocked} blokirano, {unknown} neznano",
-  "losErrorElevationUnavailable": "Podatki o nadmorski višini niso na voljo za enega ali več vzorcev.",
-  "losErrorInvalidInput": "Neveljavni podatki o točkah/višini za izračun LOS.",
-  "losRenameCustomPoint": "Preimenujte točko po meri",
-  "losPointName": "Ime točke",
-  "losShowPanelTooltip": "Pokaži ploščo LOS",
-  "losHidePanelTooltip": "Skrij ploščo LOS",
-  "losElevationAttribution": "Podatki o višini: Open-Meteo (CC BY 4.0)",
-  "appSettings_unitsTitle": "Enote",
-  "appSettings_unitsMetric": "Metrična (m/km)",
-  "appSettings_unitsImperial": "Imperialno (ft / mi)",
   "@losRunFailed": {
     "placeholders": {
       "error": {
@@ -1637,6 +1612,13 @@
       }
     }
   },
+  "losClearAllPoints": "Počisti vse točke",
+  "losRunToViewElevationProfile": "Zaženite LOS za ogled višinskega profila",
+  "losMenuTitle": "LOS meni",
+  "losMenuSubtitle": "Tapnite vozlišča ali dolgo pritisnite na zemljevid za točke po meri",
+  "losShowDisplayNodes": "Pokaži prikazna vozlišča",
+  "losCustomPoints": "Točke po meri",
+  "losCustomPointLabel": "Po meri {index}",
   "@losCustomPointLabel": {
     "placeholders": {
       "index": {
@@ -1644,6 +1626,9 @@
       }
     }
   },
+  "losPointA": "Točka A",
+  "losPointB": "Točka B",
+  "losAntennaA": "Antena A: {value} {unit}",
   "@losAntennaA": {
     "placeholders": {
       "value": {
@@ -1654,6 +1639,7 @@
       }
     }
   },
+  "losAntennaB": "Antena B: {value} {unit}",
   "@losAntennaB": {
     "placeholders": {
       "value": {
@@ -1664,6 +1650,9 @@
       }
     }
   },
+  "losRun": "Zaženi LOS",
+  "losNoElevationData": "Ni podatkov o višini",
+  "losProfileClear": "{distance} {distanceUnit}, čisti LOS, najmanjša razdalja {clearance} {heightUnit}",
   "@losProfileClear": {
     "placeholders": {
       "distance": {
@@ -1680,6 +1669,7 @@
       }
     }
   },
+  "losProfileBlocked": "{distance} {distanceUnit}, blokiral {obstruction} {heightUnit}",
   "@losProfileBlocked": {
     "placeholders": {
       "distance": {
@@ -1696,6 +1686,9 @@
       }
     }
   },
+  "losStatusChecking": "LOS: preverjam ...",
+  "losStatusNoData": "LOS: ni podatkov",
+  "losStatusSummary": "LOS: {clear}/{total} jasno, {blocked} blokirano, {unknown} neznano",
   "@losStatusSummary": {
     "placeholders": {
       "clear": {
@@ -1712,32 +1705,11 @@
       }
     }
   },
-  "@notification_messagesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_channelMessagesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_newNodesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_newTypeDiscovered": {
-    "placeholders": {
-      "contactType": {
-        "type": "String"
-      }
-    }
-  }
+  "losErrorElevationUnavailable": "Podatki o nadmorski višini niso na voljo za enega ali več vzorcev.",
+  "losErrorInvalidInput": "Neveljavni podatki o točkah/višini za izračun LOS.",
+  "losRenameCustomPoint": "Preimenujte točko po meri",
+  "losPointName": "Ime točke",
+  "losShowPanelTooltip": "Pokaži ploščo LOS",
+  "losHidePanelTooltip": "Skrij ploščo LOS",
+  "losElevationAttribution": "Podatki o višini: Open-Meteo (CC BY 4.0)"
 }

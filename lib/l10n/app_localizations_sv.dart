@@ -413,7 +413,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get appSettings_languageSystem => 'Systemstandard';
 
   @override
-  String get appSettings_languageEn => 'engelska';
+  String get appSettings_languageEn => 'English';
 
   @override
   String get appSettings_languageFr => 'Français';
@@ -443,7 +443,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get appSettings_languageSv => 'Svenska';
 
   @override
-  String get appSettings_languageNl => 'nederländska';
+  String get appSettings_languageNl => 'Nederlands';
 
   @override
   String get appSettings_languageSk => 'Slovenčina';
@@ -547,13 +547,13 @@ class AppLocalizationsSv extends AppLocalizations {
       'Anslut till en enhet för att välja';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3,0-4,2V)';
+  String get appSettings_batteryNmc => '18650 NMC (3.0-4.2V)';
 
   @override
   String get appSettings_batteryLifepo4 => 'LiFePO4 (2,6–3,65V)';
 
   @override
-  String get appSettings_batteryLipo => 'LiPo (3,0-4,2V)';
+  String get appSettings_batteryLipo => 'LiPo (3.0-4.2V)';
 
   @override
   String get appSettings_mapDisplay => 'Kartvisning';
@@ -870,21 +870,21 @@ class AppLocalizationsSv extends AppLocalizations {
       'Skyddat med en hemlig nyckel.';
 
   @override
-  String get channels_joinPrivateChannel => 'GÃ¥ med i en Privat Kanal';
+  String get channels_joinPrivateChannel => 'Gå med i en Privat Kanal';
 
   @override
   String get channels_joinPrivateChannelDesc =>
       'Ange en hemlig nyckel manuellt.';
 
   @override
-  String get channels_joinPublicChannel => 'GÃ¥ med i den Offentliga Kanalen';
+  String get channels_joinPublicChannel => 'Gå med i den Offentliga Kanalen';
 
   @override
   String get channels_joinPublicChannelDesc =>
       'Vem som helst kan gå med i denna kanal.';
 
   @override
-  String get channels_joinHashtagChannel => 'GÃ¥ med i en Hashtagkanal';
+  String get channels_joinHashtagChannel => 'Gå med i en Hashtagkanal';
 
   @override
   String get channels_joinHashtagChannelDesc =>
@@ -1027,7 +1027,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get debugLog_frames => 'Rammar';
 
   @override
-  String get debugLog_rawLogRx => 'RÃ¥ Log-RX';
+  String get debugLog_rawLogRx => 'Rå Log-RX';
 
   @override
   String get debugLog_noBleActivity => 'Ingen BLE-aktivitet ännu';
@@ -1262,10 +1262,10 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get map_chat => 'Chatta';
+  String get map_chat => 'Chat';
 
   @override
-  String get map_repeater => 'Ã…teruppspelare';
+  String get map_repeater => 'Återuppspelare';
 
   @override
   String get map_room => 'Rum';
@@ -1274,10 +1274,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get map_sensor => 'Sensor';
 
   @override
-  String get map_pinDm => 'LÃ¥s (DM)';
+  String get map_pinDm => 'Lås (DM)';
 
   @override
-  String get map_pinPrivate => 'LÃ¥s (Privat)';
+  String get map_pinPrivate => 'Lås (Privat)';
 
   @override
   String get map_pinPublic => 'Anslå (Offentligt)';
@@ -1368,7 +1368,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get map_sharedPin => 'Delad PIN';
 
   @override
-  String get map_joinRoom => 'GÃ¥ med i rum';
+  String get map_joinRoom => 'Gå med i rum';
 
   @override
   String get map_manageRepeater => 'Hantera Upprepare';
@@ -1524,7 +1524,7 @@ class AppLocalizationsSv extends AppLocalizations {
       'Är du säker på att du vill koppla från enheten?';
 
   @override
-  String get login_repeaterLogin => 'Ã…teruppta Inloggning';
+  String get login_repeaterLogin => 'Återuppta Inloggning';
 
   @override
   String get login_roomLogin => 'Rum Inloggning';
@@ -1648,7 +1648,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get path_setPath => 'Ange Sökväg';
 
   @override
-  String get repeater_management => 'Ã…teruppspelarens Hantering';
+  String get repeater_management => 'Återuppspelarens Hantering';
 
   @override
   String get room_management => 'Rumserverhantering';
@@ -1664,7 +1664,7 @@ class AppLocalizationsSv extends AppLocalizations {
       'Visa återspolningsstatus, statistik och grannar';
 
   @override
-  String get repeater_telemetry => 'Telemetri';
+  String get repeater_telemetry => 'Telemetry';
 
   @override
   String get repeater_telemetrySubtitle =>
@@ -1689,7 +1689,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get repeater_settingsSubtitle => 'Konfigurera återspolarparametrar';
 
   @override
-  String get repeater_statusTitle => 'Ã…terspelsstatus';
+  String get repeater_statusTitle => 'Återspelsstatus';
 
   @override
   String get repeater_routingMode => 'Ruttläge';
@@ -1746,10 +1746,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get repeater_noiseFloor => 'Ljudnivå';
 
   @override
-  String get repeater_txAirtime => 'TX sändningstid';
+  String get repeater_txAirtime => 'TX Airtime';
 
   @override
-  String get repeater_rxAirtime => 'RX sändningstid';
+  String get repeater_rxAirtime => 'RX Airtime';
 
   @override
   String get repeater_packetStatistics => 'Paketstatistik';
@@ -1906,7 +1906,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get repeater_dangerZone => 'Faraområde';
 
   @override
-  String get repeater_rebootRepeater => 'Starta Ã…teruppspelaren';
+  String get repeater_rebootRepeater => 'Starta Återuppspelaren';
 
   @override
   String get repeater_rebootRepeaterSubtitle => 'Starta om repeternheten';
@@ -2001,7 +2001,7 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get repeater_cliTitle => 'Ã…teruppspelaren CLI';
+  String get repeater_cliTitle => 'Återuppspelaren CLI';
 
   @override
   String get repeater_debugNextCommand => 'Felsök Nästa Kommando';
@@ -2043,7 +2043,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get repeater_cliQuickGetName => 'Hämta namn';
 
   @override
-  String get repeater_cliQuickGetRadio => 'FÃ¥ Radio';
+  String get repeater_cliQuickGetRadio => 'Få Radio';
 
   @override
   String get repeater_cliQuickGetTx => 'Hämta TX';
@@ -2185,7 +2185,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get repeater_cliHelpGetBridgeType =>
-      'FÃ¥r brotyperna ingen, rs232, espnow';
+      'Får brotyperna ingen, rs232, espnow';
 
   @override
   String get repeater_cliHelpLogStart => 'Starta paketloggning till filsystem.';
@@ -2396,7 +2396,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get channelPath_otherObservedPaths => 'Övriga observerade stigar';
 
   @override
-  String get channelPath_repeaterHops => 'Ã…terupptagningssteg';
+  String get channelPath_repeaterHops => 'Återupptagningssteg';
 
   @override
   String get channelPath_noHopDetails =>
@@ -2500,10 +2500,10 @@ class AppLocalizationsSv extends AppLocalizations {
       'Skapa en ny gemenskap och dela via QR-kod.';
 
   @override
-  String get community_join => 'GÃ¥ med';
+  String get community_join => 'Gå med';
 
   @override
-  String get community_joinTitle => 'GÃ¥ med i gemenskapen';
+  String get community_joinTitle => 'Gå med i gemenskapen';
 
   @override
   String community_joinConfirmation(String name) {
@@ -2822,7 +2822,7 @@ class AppLocalizationsSv extends AppLocalizations {
   String get losElevationAttribution => 'Höjddata: Open-Meteo (CC BY 4.0)';
 
   @override
-  String get contacts_pathTrace => 'Väg spår';
+  String get contacts_pathTrace => 'Path Trace';
 
   @override
   String get contacts_ping => 'Ping';

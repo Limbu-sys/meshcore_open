@@ -9,7 +9,7 @@ class AppLocalizationsDe extends AppLocalizations {
   AppLocalizationsDe([String locale = 'de']) : super(locale);
 
   @override
-  String get appTitle => 'MeshCore geöffnet';
+  String get appTitle => 'MeshCore Open';
 
   @override
   String get nav_contacts => 'Kontakte';
@@ -106,7 +106,7 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get scanner_title => 'MeshCore geöffnet';
+  String get scanner_title => 'MeshCore Open';
 
   @override
   String get scanner_scanning => 'Scannen nach Geräten...';
@@ -328,7 +328,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get settings_infoName => 'Name';
 
   @override
-  String get settings_infoId => 'AUSWEIS';
+  String get settings_infoId => 'ID';
 
   @override
   String get settings_infoStatus => 'Status';
@@ -398,7 +398,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get appSettings_appearance => 'Aussehen';
 
   @override
-  String get appSettings_theme => 'Thema';
+  String get appSettings_theme => 'Theme';
 
   @override
   String get appSettings_themeSystem => 'Systemstandard';
@@ -416,28 +416,28 @@ class AppLocalizationsDe extends AppLocalizations {
   String get appSettings_languageSystem => 'Systemstandard';
 
   @override
-  String get appSettings_languageEn => 'Englisch';
+  String get appSettings_languageEn => 'English';
 
   @override
-  String get appSettings_languageFr => 'Französisch';
+  String get appSettings_languageFr => 'Français';
 
   @override
-  String get appSettings_languageEs => 'Spanisch';
+  String get appSettings_languageEs => 'Español';
 
   @override
   String get appSettings_languageDe => 'Deutsch';
 
   @override
-  String get appSettings_languagePl => 'Polnisch';
+  String get appSettings_languagePl => 'Polski';
 
   @override
-  String get appSettings_languageSl => 'Slowenisch';
+  String get appSettings_languageSl => 'Slovenščina';
 
   @override
-  String get appSettings_languagePt => 'Portugiesisch';
+  String get appSettings_languagePt => 'Português';
 
   @override
-  String get appSettings_languageIt => 'Italienisch';
+  String get appSettings_languageIt => 'Italiano';
 
   @override
   String get appSettings_languageZh => '中文';
@@ -446,13 +446,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get appSettings_languageSv => 'Svenska';
 
   @override
-  String get appSettings_languageNl => 'Niederlande';
+  String get appSettings_languageNl => 'Nederlands';
 
   @override
-  String get appSettings_languageSk => 'Slowenien';
+  String get appSettings_languageSk => 'Slovenčina';
 
   @override
-  String get appSettings_languageBg => 'Weißrussland';
+  String get appSettings_languageBg => 'Български';
 
   @override
   String get appSettings_languageRu => 'Russisch';
@@ -1084,7 +1084,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String debugFrame_text(String text) {
-    return '- Text: „$text“';
+    return '- Text: \"$text\"';
   }
 
   @override
@@ -1294,7 +1294,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get map_pinPrivate => 'Pin (Channel)';
 
   @override
-  String get map_pinPublic => 'Pin (Öffentlich)';
+  String get map_pinPublic => 'Pin (Public)';
 
   @override
   String get map_lastSeen => 'Letzte Sichtung';
@@ -1310,7 +1310,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get map_source => 'Quelle';
 
   @override
-  String get map_flags => 'Flaggen';
+  String get map_flags => 'Flags';
 
   @override
   String get map_shareMarkerHere => 'Teilen Sie den Marker hier.';
@@ -1319,7 +1319,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get map_pinLabel => 'Pin Name';
 
   @override
-  String get map_label => 'Etikett';
+  String get map_label => 'Label';
 
   @override
   String get map_pointOfInterest => 'Punkt von Interesse';
@@ -1765,10 +1765,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get repeater_noiseFloor => 'Rauschpegel';
 
   @override
-  String get repeater_txAirtime => 'TX-Sendezeit';
+  String get repeater_txAirtime => 'TX Airtime';
 
   @override
-  String get repeater_rxAirtime => 'RX-Sendezeit';
+  String get repeater_rxAirtime => 'RX Airtime';
 
   @override
   String get repeater_packetStatistics => 'Paketstatistiken';
@@ -1819,7 +1819,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get repeater_basicSettings => 'Grundlegende Einstellungen';
 
   @override
-  String get repeater_repeaterName => 'Repeater-Name';
+  String get repeater_repeaterName => 'Repeater Name';
 
   @override
   String get repeater_repeaterNameHelper => 'Anzeigename für diesen Repeater';
@@ -1847,7 +1847,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get repeater_frequencyHelper => '300-2500 MHz';
 
   @override
-  String get repeater_txPower => 'TX-Leistung';
+  String get repeater_txPower => 'TX Power';
 
   @override
   String get repeater_txPowerHelper => '1-30 dBm';
@@ -2027,7 +2027,7 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
-  String get repeater_cliTitle => 'Repeater-CLI';
+  String get repeater_cliTitle => 'Repeater CLI';
 
   @override
   String get repeater_debugNextCommand => 'Fehlersuche des nächsten Befehls';
@@ -2301,7 +2301,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get repeater_commandsListNote =>
-      'ACHTUNG: Für die verschiedenen \"set ...\"-Befehle gibt es auch einen \"get ...\"-Befehl.';
+      'ACHTUNG: Für die verschiedenen „set ...“-Befehle gibt es auch einen „get ...“-Befehl.';
 
   @override
   String get repeater_general => 'Allgemein';
@@ -2436,7 +2436,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get channelPath_messageDetails => 'Nachrichtendetails';
 
   @override
-  String get channelPath_senderLabel => 'Absender';
+  String get channelPath_senderLabel => 'Sender';
 
   @override
   String get channelPath_timeLabel => 'Zeit';
@@ -2520,7 +2520,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get channelPath_unknownRepeater => 'Unbekannter Repeater';
 
   @override
-  String get community_title => 'Gemeinschaft';
+  String get community_title => 'Community';
 
   @override
   String get community_create => 'Erstelle Community';
@@ -2554,10 +2554,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get community_publicChannel => 'Community Öffentlich';
 
   @override
-  String get community_hashtagChannel => 'Community-Hashtag';
+  String get community_hashtagChannel => 'Community Hashtag';
 
   @override
-  String get community_name => 'Community-Name';
+  String get community_name => 'Community Name';
 
   @override
   String get community_enterName => 'Bitte Community-Name eingeben';
@@ -2679,7 +2679,7 @@ class AppLocalizationsDe extends AppLocalizations {
       'Öffentlicher Hashtag (jeder kann teilnehmen)';
 
   @override
-  String get community_communityHashtag => 'Community-Hashtag';
+  String get community_communityHashtag => 'Community Hashtag';
 
   @override
   String get community_communityHashtagDesc =>

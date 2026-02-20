@@ -102,7 +102,7 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String common_percentValue(int percent) {
-    return '$percent %';
+    return '$percent%';
   }
 
   @override
@@ -228,7 +228,7 @@ class AppLocalizationsSl extends AppLocalizations {
       'Intervallo mora biti vsaj 60 sekund in manj kot 86400 sekund.';
 
   @override
-  String get settings_latitude => 'Å irina';
+  String get settings_latitude => 'Širina';
 
   @override
   String get settings_longitude => 'Dolžina';
@@ -289,7 +289,7 @@ class AppLocalizationsSl extends AppLocalizations {
       'Ste prepričani, da želite ponovno zagnati napravo? Povezava bo prekinjena.';
 
   @override
-  String get settings_debug => 'Odpravljanje napak';
+  String get settings_debug => 'Debug';
 
   @override
   String get settings_bleDebugLog => 'BLE debug log (razhroščevanje)';
@@ -330,7 +330,7 @@ class AppLocalizationsSl extends AppLocalizations {
   String get settings_infoId => 'ID';
 
   @override
-  String get settings_infoStatus => 'Stanje';
+  String get settings_infoStatus => 'Status';
 
   @override
   String get settings_infoBattery => 'Baterija';
@@ -339,10 +339,10 @@ class AppLocalizationsSl extends AppLocalizations {
   String get settings_infoPublicKey => 'Javni ključ';
 
   @override
-  String get settings_infoContactsCount => 'Å tevilo stikov';
+  String get settings_infoContactsCount => 'Število stikov';
 
   @override
-  String get settings_infoChannelCount => 'Å tevilo kanalov';
+  String get settings_infoChannelCount => 'Število kanalov';
 
   @override
   String get settings_presets => 'Prednastavitve';
@@ -415,7 +415,7 @@ class AppLocalizationsSl extends AppLocalizations {
   String get appSettings_languageSystem => 'Sistemska privzeta vrednost';
 
   @override
-  String get appSettings_languageEn => 'angleščina';
+  String get appSettings_languageEn => 'English';
 
   @override
   String get appSettings_languageFr => 'Français';
@@ -433,7 +433,7 @@ class AppLocalizationsSl extends AppLocalizations {
   String get appSettings_languageSl => 'Slovenščina';
 
   @override
-  String get appSettings_languagePt => 'português';
+  String get appSettings_languagePt => 'Português';
 
   @override
   String get appSettings_languageIt => 'Italiano';
@@ -819,7 +819,7 @@ class AppLocalizationsSl extends AppLocalizations {
   String get channels_standardPublicPsk => 'Standardni javni PSK';
 
   @override
-  String get channels_pskHex => 'PSK (Å estnajstbinska)';
+  String get channels_pskHex => 'PSK (Šestnajstbinska)';
 
   @override
   String get channels_generateRandomPsk => 'Generiraj naključni PSK';
@@ -859,7 +859,7 @@ class AppLocalizationsSl extends AppLocalizations {
   String get channels_sortManual => 'Ročno';
 
   @override
-  String get channels_sortAZ => 'A-Ž';
+  String get channels_sortAZ => 'A-Z';
 
   @override
   String get channels_sortLatestMessages => 'Najnovejše sporočilo';
@@ -1055,7 +1055,7 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String debugFrame_timestamp(int timestamp) {
-    return '- ÄŒasovnik: $timestamp';
+    return '- Časovnik: $timestamp';
   }
 
   @override
@@ -1266,7 +1266,7 @@ class AppLocalizationsSl extends AppLocalizations {
   }
 
   @override
-  String get map_chat => 'ÄŒistemar';
+  String get map_chat => 'Čistemar';
 
   @override
   String get map_repeater => 'Ponovitelj';
@@ -1342,7 +1342,7 @@ class AppLocalizationsSl extends AppLocalizations {
   String get map_nodeTypes => 'Vrste knope';
 
   @override
-  String get map_chatNodes => 'ÄŒuti zvezde';
+  String get map_chatNodes => 'Čuti zvezde';
 
   @override
   String get map_repeaters => 'Ponovljalniki';
@@ -1666,7 +1666,7 @@ class AppLocalizationsSl extends AppLocalizations {
   String get repeater_managementTools => 'Upravne orodje';
 
   @override
-  String get repeater_status => 'Stanje';
+  String get repeater_status => 'Status';
 
   @override
   String get repeater_statusSubtitle =>
@@ -1735,7 +1735,7 @@ class AppLocalizationsSl extends AppLocalizations {
   String get repeater_clockAtLogin => 'Ure (pri prijavi)';
 
   @override
-  String get repeater_uptime => 'ÄŒas delovanja';
+  String get repeater_uptime => 'Čas delovanja';
 
   @override
   String get repeater_queueLength => 'Dolžina čakalne vrste';
@@ -1753,13 +1753,13 @@ class AppLocalizationsSl extends AppLocalizations {
   String get repeater_lastSnr => 'Nazadnje zabeležena SNR';
 
   @override
-  String get repeater_noiseFloor => 'Å umovita raven';
+  String get repeater_noiseFloor => 'Šumovita raven';
 
   @override
-  String get repeater_txAirtime => 'Oddajanje TX';
+  String get repeater_txAirtime => 'TX Airtime';
 
   @override
-  String get repeater_rxAirtime => 'RX Oddajanje';
+  String get repeater_rxAirtime => 'RX Airtime';
 
   @override
   String get repeater_packetStatistics => 'Statistika paketa';
@@ -1855,7 +1855,7 @@ class AppLocalizationsSl extends AppLocalizations {
   String get repeater_locationSettings => 'Nastavitve lokacije';
 
   @override
-  String get repeater_latitude => 'Å irina';
+  String get repeater_latitude => 'Širina';
 
   @override
   String get repeater_latitudeHelper => 'Desetbinske protiure (npr. 37.7749)';
@@ -1911,7 +1911,7 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get repeater_encryptedAdvertInterval =>
-      'Å ifrirana Oglasovalska Trajanje';
+      'Šifrirana Oglasovalska Trajanje';
 
   @override
   String get repeater_dangerZone => 'Opozorilo';
@@ -2355,7 +2355,7 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String telemetry_batteryValue(int percent, String volts) {
-    return '$percent % / ${volts}V';
+    return '$percent% / ${volts}V';
   }
 
   @override
@@ -2686,7 +2686,7 @@ class AppLocalizationsSl extends AppLocalizations {
   String get listFilter_heardRecently => 'Nedavno slišan';
 
   @override
-  String get listFilter_az => 'A-Ž';
+  String get listFilter_az => 'A-Z';
 
   @override
   String get listFilter_filters => 'Filtri';
@@ -2861,7 +2861,7 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String contacts_pathTraceTo(String name) {
-    return 'Sledi poti do $name';
+    return 'Trace route to $name';
   }
 
   @override

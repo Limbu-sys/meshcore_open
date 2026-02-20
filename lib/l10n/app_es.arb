@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "appTitle": "Núcleo de malla abierto",
+  "appTitle": "MeshCore Open",
   "nav_contacts": "Contactos",
   "nav_channels": "Canales",
   "nav_map": "Mapa",
@@ -44,7 +44,7 @@
       }
     }
   },
-  "scanner_title": "Núcleo de malla abierto",
+  "scanner_title": "MeshCore Open",
   "scanner_scanning": "Escaneando dispositivos...",
   "scanner_connecting": "Conectando...",
   "scanner_disconnecting": "Desconectando...",
@@ -70,7 +70,7 @@
   "scanner_stop": "Detener",
   "scanner_scan": "Escanea",
   "device_quickSwitch": "Cambiar rápidamente",
-  "device_meshcore": "Núcleo de malla",
+  "device_meshcore": "MeshCore",
   "settings_title": "Configuración",
   "settings_deviceInfo": "Información del dispositivo",
   "settings_appSettings": "Configuración de la App",
@@ -113,7 +113,7 @@
   "settings_appDebugLog": "Registro de Depuración de la App",
   "settings_appDebugLogSubtitle": "Mensajes de depuración de la aplicación",
   "settings_about": "Acerca de",
-  "settings_aboutVersion": "MeshCore abierto v{version}",
+  "settings_aboutVersion": "MeshCore Open v{version}",
   "@settings_aboutVersion": {
     "placeholders": {
       "version": {
@@ -124,7 +124,7 @@
   "settings_aboutLegalese": "2026 Proyecto Open Source MeshCore",
   "settings_aboutDescription": "Un cliente de código abierto de Flutter para dispositivos de red mesh LoRa de MeshCore.",
   "settings_infoName": "Nombre",
-  "settings_infoId": "IDENTIFICACIÓN",
+  "settings_infoId": "ID",
   "settings_infoStatus": "Estado",
   "settings_infoBattery": "Batería",
   "settings_infoPublicKey": "Clave Pública",
@@ -156,18 +156,18 @@
   "appSettings_themeDark": "Oscuro",
   "appSettings_language": "Idioma",
   "appSettings_languageSystem": "Predeterminado del sistema",
-  "appSettings_languageEn": "Inglés",
-  "appSettings_languageFr": "francés",
+  "appSettings_languageEn": "English",
+  "appSettings_languageFr": "Français",
   "appSettings_languageEs": "Español",
-  "appSettings_languageDe": "alemán",
-  "appSettings_languagePl": "Polonia",
-  "appSettings_languageSl": "esloveno",
-  "appSettings_languagePt": "portugués",
-  "appSettings_languageIt": "italiano",
+  "appSettings_languageDe": "Deutsch",
+  "appSettings_languagePl": "Polski",
+  "appSettings_languageSl": "Slovenščina",
+  "appSettings_languagePt": "Português",
+  "appSettings_languageIt": "Italiano",
   "appSettings_languageZh": "中文",
-  "appSettings_languageSv": "Svenská",
-  "appSettings_languageNl": "Países Bajos",
-  "appSettings_languageSk": "Eslovenia",
+  "appSettings_languageSv": "Svenska",
+  "appSettings_languageNl": "Nederlands",
+  "appSettings_languageSk": "Slovenčina",
   "appSettings_languageBg": "Български",
   "appSettings_notifications": "Notificaciones",
   "appSettings_enableNotifications": "Habilitar Notificaciones",
@@ -201,9 +201,9 @@
     }
   },
   "appSettings_batteryChemistryConnectFirst": "Conéctate a un dispositivo para elegir",
-  "appSettings_batteryNmc": "18650 NMC (3,0-4,2 V)",
-  "appSettings_batteryLifepo4": "LiFePO4 (2,6-3,65 V)",
-  "appSettings_batteryLipo": "Li-Po (3,0-4,2 V)",
+  "appSettings_batteryNmc": "18650 NMC (3.0-4.2V)",
+  "appSettings_batteryLifepo4": "LiFePO4 (2.6-3.65V)",
+  "appSettings_batteryLipo": "LiPo (3.0-4.2V)",
   "appSettings_mapDisplay": "Visualización del Mapa",
   "appSettings_showRepeaters": "Mostrar Repetidores",
   "appSettings_showRepeatersSubtitle": "Mostrar nodos de repetidor en el mapa",
@@ -356,7 +356,7 @@
   "channels_channelName": "Nombre del canal",
   "channels_usePublicChannel": "Usar Canal Público",
   "channels_standardPublicPsk": "PSK estándar público",
-  "channels_pskHex": "PSK (hexadecimal)",
+  "channels_pskHex": "PSK (Hex)",
   "channels_generateRandomPsk": "Generar PSK aleatorio",
   "channels_enterChannelName": "Por favor, introduce un nombre de canal",
   "channels_pskMustBe32Hex": "PSK debe ser de 32 caracteres hexadecimales.",
@@ -388,7 +388,7 @@
   "channels_publicChannelAdded": "Canal público añadido",
   "channels_sortBy": "Ordenar por",
   "channels_sortManual": "Manual",
-  "channels_sortAZ": "ARIZONA",
+  "channels_sortAZ": "A-Z",
   "channels_sortLatestMessages": "Últimos mensajes",
   "channels_sortUnread": "Sin leer",
   "chat_noMessages": "Aún no hay mensajes",
@@ -452,7 +452,7 @@
   "emojiCategoryObjects": "Objetos",
   "gifPicker_title": "Elegir un GIF",
   "gifPicker_searchHint": "Buscar GIFs...",
-  "gifPicker_poweredBy": "Desarrollado por GIPHY",
+  "gifPicker_poweredBy": "Powered by GIPHY",
   "gifPicker_noGifsFound": "No se encontraron GIFs",
   "gifPicker_failedLoad": "No se pudo cargar los GIFs",
   "gifPicker_failedSearch": "No se encontraron GIFs",
@@ -630,7 +630,7 @@
       }
     }
   },
-  "map_chat": "Charlar",
+  "map_chat": "Chat",
   "map_repeater": "Repetidor",
   "map_room": "Habitación",
   "map_sensor": "Sensor",
@@ -870,7 +870,7 @@
   "repeater_managementTools": "Herramientas de Gestión",
   "repeater_status": "Estado",
   "repeater_statusSubtitle": "Ver el estado, las estadísticas y los vecinos del repetidor",
-  "repeater_telemetry": "Telemetria",
+  "repeater_telemetry": "Telemetry",
   "repeater_telemetrySubtitle": "Ver la telemetría de los sensores y las estadísticas del sistema",
   "repeater_cli": "CLI",
   "repeater_cliSubtitle": "Enviar comandos al repetidor",
@@ -901,8 +901,8 @@
   "repeater_lastRssi": "Último RSSI",
   "repeater_lastSnr": "Último SNR",
   "repeater_noiseFloor": "Nivel de Ruido",
-  "repeater_txAirtime": "TX tiempo aire",
-  "repeater_rxAirtime": "Tiempo aire RX",
+  "repeater_txAirtime": "TX Airtime",
+  "repeater_rxAirtime": "RX Airtime",
   "repeater_packetStatistics": "Estadísticas del Paquete",
   "repeater_sent": "Enviado",
   "repeater_received": "Recibido",
@@ -981,9 +981,9 @@
   "repeater_guestPasswordHelper": "Acceso de solo lectura con contraseña",
   "repeater_radioSettings": "Configuración de Radio",
   "repeater_frequencyMhz": "Frecuencia (MHz)",
-  "repeater_frequencyHelper": "300-2500MHz",
+  "repeater_frequencyHelper": "300-2500 MHz",
   "repeater_txPower": "TX Potencia",
-  "repeater_txPowerHelper": "1-30dBm",
+  "repeater_txPowerHelper": "1-30 dBm",
   "repeater_bandwidth": "Ancho de banda",
   "repeater_spreadingFactor": "Factor de propagación",
   "repeater_codingRate": "Tasa de Programación",
@@ -1336,7 +1336,7 @@
   "listFilter_sortBy": "Ordenar por",
   "listFilter_latestMessages": "Últimos mensajes",
   "listFilter_heardRecently": "Escuchado recientemente",
-  "listFilter_az": "ARIZONA",
+  "listFilter_az": "A-Z",
   "listFilter_filters": "Filtros",
   "listFilter_all": "Todas",
   "listFilter_users": "Usuarios",
@@ -1542,7 +1542,7 @@
   "contacts_pathTrace": "Rastreo de caminos",
   "contacts_repeaterPathTrace": "Rastrear ruta al repetidor",
   "contacts_repeaterPing": "Pingar repetidor",
-  "contacts_ping": "Silbido",
+  "contacts_ping": "Ping",
   "pathTrace_notAvailable": "El trazado de ruta no está disponible.",
   "contacts_roomPing": "Pingar servidor de sala",
   "contacts_roomPathTrace": "Rastreo de ruta al servidor de la habitación",
@@ -1626,38 +1626,13 @@
   "settings_clientRepeat": "Repetir sin conexión",
   "settings_clientRepeatSubtitle": "Permita que este dispositivo repita los paquetes de red para otros usuarios.",
   "settings_aboutOpenMeteoAttribution": "Datos de elevación LOS: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Unidades",
+  "appSettings_unitsMetric": "Métrico (m/km)",
+  "appSettings_unitsImperial": "Imperial (pies/millas)",
   "map_lineOfSight": "Línea de visión",
   "map_losScreenTitle": "Línea de visión",
   "losSelectStartEnd": "Seleccione los nodos de inicio y fin para LOS.",
   "losRunFailed": "Error en la comprobación de la línea de visión: {error}",
-  "losClearAllPoints": "Borrar todos los puntos",
-  "losRunToViewElevationProfile": "Ejecute LOS para ver el perfil de elevación",
-  "losMenuTitle": "Menú LOS",
-  "losMenuSubtitle": "Toque nodos o mantenga presionado el mapa para puntos personalizados",
-  "losShowDisplayNodes": "Mostrar nodos de visualización",
-  "losCustomPoints": "Puntos personalizados",
-  "losCustomPointLabel": "Personalizado {index}",
-  "losPointA": "Punto A",
-  "losPointB": "Punto B",
-  "losAntennaA": "Antena A: {value} {unit}",
-  "losAntennaB": "Antena B: {value} {unit}",
-  "losRun": "Ejecutar LOS",
-  "losNoElevationData": "Sin datos de elevación",
-  "losProfileClear": "{distance} {distanceUnit}, despejar LOS, autorización mínima {clearance} {heightUnit}",
-  "losProfileBlocked": "{distance} {distanceUnit}, bloqueado por {obstruction} {heightUnit}",
-  "losStatusChecking": "LOS: comprobando...",
-  "losStatusNoData": "LOS: sin datos",
-  "losStatusSummary": "LOS: {clear}/{total} claro, {blocked} bloqueado, {unknown} desconocido",
-  "losErrorElevationUnavailable": "Datos de elevación no disponibles para una o más muestras.",
-  "losErrorInvalidInput": "Datos de puntos/elevación no válidos para el cálculo de LOS.",
-  "losRenameCustomPoint": "Cambiar el nombre del punto personalizado",
-  "losPointName": "Nombre del punto",
-  "losShowPanelTooltip": "Mostrar panel LOS",
-  "losHidePanelTooltip": "Ocultar panel LOS",
-  "losElevationAttribution": "Datos de elevación: Open-Meteo (CC BY 4.0)",
-  "appSettings_unitsTitle": "Unidades",
-  "appSettings_unitsMetric": "Métrico (m/km)",
-  "appSettings_unitsImperial": "Imperial (pies/millas)",
   "@losRunFailed": {
     "placeholders": {
       "error": {
@@ -1665,6 +1640,13 @@
       }
     }
   },
+  "losClearAllPoints": "Borrar todos los puntos",
+  "losRunToViewElevationProfile": "Ejecute LOS para ver el perfil de elevación",
+  "losMenuTitle": "Menú LOS",
+  "losMenuSubtitle": "Toque nodos o mantenga presionado el mapa para puntos personalizados",
+  "losShowDisplayNodes": "Mostrar nodos de visualización",
+  "losCustomPoints": "Puntos personalizados",
+  "losCustomPointLabel": "Personalizado {index}",
   "@losCustomPointLabel": {
     "placeholders": {
       "index": {
@@ -1672,6 +1654,9 @@
       }
     }
   },
+  "losPointA": "Punto A",
+  "losPointB": "Punto B",
+  "losAntennaA": "Antena A: {value} {unit}",
   "@losAntennaA": {
     "placeholders": {
       "value": {
@@ -1682,6 +1667,7 @@
       }
     }
   },
+  "losAntennaB": "Antena B: {value} {unit}",
   "@losAntennaB": {
     "placeholders": {
       "value": {
@@ -1692,6 +1678,9 @@
       }
     }
   },
+  "losRun": "Ejecutar LOS",
+  "losNoElevationData": "Sin datos de elevación",
+  "losProfileClear": "{distance} {distanceUnit}, despejar LOS, autorización mínima {clearance} {heightUnit}",
   "@losProfileClear": {
     "placeholders": {
       "distance": {
@@ -1708,6 +1697,7 @@
       }
     }
   },
+  "losProfileBlocked": "{distance} {distanceUnit}, bloqueado por {obstruction} {heightUnit}",
   "@losProfileBlocked": {
     "placeholders": {
       "distance": {
@@ -1724,6 +1714,9 @@
       }
     }
   },
+  "losStatusChecking": "LOS: comprobando...",
+  "losStatusNoData": "LOS: sin datos",
+  "losStatusSummary": "LOS: {clear}/{total} claro, {blocked} bloqueado, {unknown} desconocido",
   "@losStatusSummary": {
     "placeholders": {
       "clear": {
@@ -1739,5 +1732,12 @@
         "type": "int"
       }
     }
-  }
+  },
+  "losErrorElevationUnavailable": "Datos de elevación no disponibles para una o más muestras.",
+  "losErrorInvalidInput": "Datos de puntos/elevación no válidos para el cálculo de LOS.",
+  "losRenameCustomPoint": "Cambiar el nombre del punto personalizado",
+  "losPointName": "Nombre del punto",
+  "losShowPanelTooltip": "Mostrar panel LOS",
+  "losHidePanelTooltip": "Ocultar panel LOS",
+  "losElevationAttribution": "Datos de elevación: Open-Meteo (CC BY 4.0)"
 }

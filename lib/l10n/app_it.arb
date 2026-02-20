@@ -1,6 +1,6 @@
 {
   "@@locale": "it",
-  "appTitle": "MeshCore aperto",
+  "appTitle": "MeshCore Open",
   "nav_contacts": "Contatti",
   "nav_channels": "Canali",
   "nav_map": "Mappa",
@@ -44,7 +44,7 @@
       }
     }
   },
-  "scanner_title": "MeshCore aperto",
+  "scanner_title": "MeshCore Open",
   "scanner_scanning": "Scansione in corso per i dispositivi...",
   "scanner_connecting": "Connessione...",
   "scanner_disconnecting": "Disconnessione...",
@@ -113,7 +113,7 @@
   "settings_appDebugLog": "Log di Debug dell'App",
   "settings_appDebugLogSubtitle": "Messaggi di debug dell'applicazione",
   "settings_about": "Informazioni",
-  "settings_aboutVersion": "MeshCore aperto v{version}",
+  "settings_aboutVersion": "MeshCore Open v{version}",
   "@settings_aboutVersion": {
     "placeholders": {
       "version": {
@@ -156,17 +156,17 @@
   "appSettings_themeDark": "Scuro",
   "appSettings_language": "Lingua",
   "appSettings_languageSystem": "Predefinito di sistema",
-  "appSettings_languageEn": "Inglese",
-  "appSettings_languageFr": "Francese",
+  "appSettings_languageEn": "English",
+  "appSettings_languageFr": "Français",
   "appSettings_languageEs": "Español",
-  "appSettings_languageDe": "Tedesco",
+  "appSettings_languageDe": "Deutsch",
   "appSettings_languagePl": "Polski",
   "appSettings_languageSl": "Slovenščina",
   "appSettings_languagePt": "Português",
   "appSettings_languageIt": "Italiano",
   "appSettings_languageZh": "中文",
   "appSettings_languageSv": "Svenska",
-  "appSettings_languageNl": "Paesi Bassi",
+  "appSettings_languageNl": "Nederlands",
   "appSettings_languageSk": "Slovenčina",
   "appSettings_languageBg": "Български",
   "appSettings_notifications": "Notifiche",
@@ -356,7 +356,7 @@
   "channels_channelName": "Nome canale",
   "channels_usePublicChannel": "Utilizza il canale pubblico",
   "channels_standardPublicPsk": "PSK pubblico standard",
-  "channels_pskHex": "PSK (esadecimale)",
+  "channels_pskHex": "PSK (Hex)",
   "channels_generateRandomPsk": "Genera una chiave di permutazione casuale",
   "channels_enterChannelName": "Inserisci un nome per il canale",
   "channels_pskMustBe32Hex": "PSK deve essere composto da 32 caratteri esadecimali.",
@@ -630,7 +630,7 @@
       }
     }
   },
-  "map_chat": "Chiacchierata",
+  "map_chat": "Chat",
   "map_repeater": "Ripetitore",
   "map_room": "Stanza",
   "map_sensor": "Sensore",
@@ -870,7 +870,7 @@
   "repeater_managementTools": "Strumenti di Gestione",
   "repeater_status": "Stato",
   "repeater_statusSubtitle": "Visualizza lo stato, le statistiche e i vicini del ripetitore",
-  "repeater_telemetry": "Telemetria",
+  "repeater_telemetry": "Telemetry",
   "repeater_telemetrySubtitle": "Visualizza i dati di telemetria dei sensori e le statistiche di sistema",
   "repeater_cli": "CLI",
   "repeater_cliSubtitle": "Invia comandi al ripetitore",
@@ -901,8 +901,8 @@
   "repeater_lastRssi": "Ultimo RSSI",
   "repeater_lastSnr": "Ultimo SNR",
   "repeater_noiseFloor": "Livello del Rumore",
-  "repeater_txAirtime": "Tempo di trasmissione TX",
-  "repeater_rxAirtime": "Tempo di trasmissione RX",
+  "repeater_txAirtime": "TX Airtime",
+  "repeater_rxAirtime": "RX Airtime",
   "repeater_packetStatistics": "Statistiche del Pacchetto",
   "repeater_sent": "Inviato",
   "repeater_received": "Ricevuto",
@@ -985,7 +985,7 @@
   "repeater_txPower": "TX Potenza",
   "repeater_txPowerHelper": "1-30 dBm",
   "repeater_bandwidth": "Larghezza di banda",
-  "repeater_spreadingFactor": "Fattore di diffusione",
+  "repeater_spreadingFactor": "Spreading Factor",
   "repeater_codingRate": "Tasso di Codifica",
   "repeater_locationSettings": "Impostazioni Luogo",
   "repeater_latitude": "Latitudine",
@@ -1598,38 +1598,13 @@
   "settings_clientRepeatFreqWarning": "Per la comunicazione fuori rete, è necessario utilizzare frequenze di 433, 869 o 918 MHz.",
   "settings_clientRepeatSubtitle": "Permetti a questo dispositivo di ripetere i pacchetti di rete per gli altri.",
   "settings_aboutOpenMeteoAttribution": "Dati di elevazione LOS: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Unità",
+  "appSettings_unitsMetric": "Metrico (m/km)",
+  "appSettings_unitsImperial": "Imperiale (ft / mi)",
   "map_lineOfSight": "Linea di vista",
   "map_losScreenTitle": "Linea di vista",
   "losSelectStartEnd": "Seleziona i nodi iniziali e finali per la LOS.",
   "losRunFailed": "Controllo della linea di vista fallito: {error}",
-  "losClearAllPoints": "Cancella tutti i punti",
-  "losRunToViewElevationProfile": "Eseguire LOS per visualizzare il profilo altimetrico",
-  "losMenuTitle": "Menù LOS",
-  "losMenuSubtitle": "Tocca i nodi o premi a lungo la mappa per punti personalizzati",
-  "losShowDisplayNodes": "Mostra i nodi di visualizzazione",
-  "losCustomPoints": "Punti personalizzati",
-  "losCustomPointLabel": "Personalizzato {index}",
-  "losPointA": "Punto A",
-  "losPointB": "Punto B",
-  "losAntennaA": "Antenna A: {value} {unit}",
-  "losAntennaB": "Antenna B: {value} {unit}",
-  "losRun": "Esegui LOS",
-  "losNoElevationData": "Nessun dato di elevazione",
-  "losProfileClear": "{distance} {distanceUnit}, libera LOS, distanza minima {clearance} {heightUnit}",
-  "losProfileBlocked": "{distance} {distanceUnit}, bloccato da {obstruction} {heightUnit}",
-  "losStatusChecking": "LOS: controllo...",
-  "losStatusNoData": "LOS: nessun dato",
-  "losStatusSummary": "LOS: {clear}/{total} libera, {blocked} bloccato, {unknown} sconosciuto",
-  "losErrorElevationUnavailable": "Dati di elevazione non disponibili per uno o più campioni.",
-  "losErrorInvalidInput": "Dati punti/elevazione non validi per il calcolo della LOS.",
-  "losRenameCustomPoint": "Rinomina punto personalizzato",
-  "losPointName": "Nome del punto",
-  "losShowPanelTooltip": "Mostra il pannello LOS",
-  "losHidePanelTooltip": "Nascondi il pannello LOS",
-  "losElevationAttribution": "Dati di elevazione: Open-Meteo (CC BY 4.0)",
-  "appSettings_unitsTitle": "Unità",
-  "appSettings_unitsMetric": "Metrico (m/km)",
-  "appSettings_unitsImperial": "Imperiale (ft / mi)",
   "@losRunFailed": {
     "placeholders": {
       "error": {
@@ -1637,6 +1612,13 @@
       }
     }
   },
+  "losClearAllPoints": "Cancella tutti i punti",
+  "losRunToViewElevationProfile": "Eseguire LOS per visualizzare il profilo altimetrico",
+  "losMenuTitle": "Menù LOS",
+  "losMenuSubtitle": "Tocca i nodi o premi a lungo la mappa per punti personalizzati",
+  "losShowDisplayNodes": "Mostra i nodi di visualizzazione",
+  "losCustomPoints": "Punti personalizzati",
+  "losCustomPointLabel": "Personalizzato {index}",
   "@losCustomPointLabel": {
     "placeholders": {
       "index": {
@@ -1644,6 +1626,9 @@
       }
     }
   },
+  "losPointA": "Punto A",
+  "losPointB": "Punto B",
+  "losAntennaA": "Antenna A: {value} {unit}",
   "@losAntennaA": {
     "placeholders": {
       "value": {
@@ -1654,6 +1639,7 @@
       }
     }
   },
+  "losAntennaB": "Antenna B: {value} {unit}",
   "@losAntennaB": {
     "placeholders": {
       "value": {
@@ -1664,6 +1650,9 @@
       }
     }
   },
+  "losRun": "Esegui LOS",
+  "losNoElevationData": "Nessun dato di elevazione",
+  "losProfileClear": "{distance} {distanceUnit}, libera LOS, distanza minima {clearance} {heightUnit}",
   "@losProfileClear": {
     "placeholders": {
       "distance": {
@@ -1680,6 +1669,7 @@
       }
     }
   },
+  "losProfileBlocked": "{distance} {distanceUnit}, bloccato da {obstruction} {heightUnit}",
   "@losProfileBlocked": {
     "placeholders": {
       "distance": {
@@ -1696,6 +1686,9 @@
       }
     }
   },
+  "losStatusChecking": "LOS: controllo...",
+  "losStatusNoData": "LOS: nessun dato",
+  "losStatusSummary": "LOS: {clear}/{total} libera, {blocked} bloccato, {unknown} sconosciuto",
   "@losStatusSummary": {
     "placeholders": {
       "clear": {
@@ -1712,32 +1705,11 @@
       }
     }
   },
-  "@notification_messagesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_channelMessagesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_newNodesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_newTypeDiscovered": {
-    "placeholders": {
-      "contactType": {
-        "type": "String"
-      }
-    }
-  }
+  "losErrorElevationUnavailable": "Dati di elevazione non disponibili per uno o più campioni.",
+  "losErrorInvalidInput": "Dati punti/elevazione non validi per il calcolo della LOS.",
+  "losRenameCustomPoint": "Rinomina punto personalizzato",
+  "losPointName": "Nome del punto",
+  "losShowPanelTooltip": "Mostra il pannello LOS",
+  "losHidePanelTooltip": "Nascondi il pannello LOS",
+  "losElevationAttribution": "Dati di elevazione: Open-Meteo (CC BY 4.0)"
 }

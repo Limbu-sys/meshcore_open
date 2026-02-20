@@ -156,7 +156,7 @@
   "appSettings_themeDark": "Mörk",
   "appSettings_language": "Språk",
   "appSettings_languageSystem": "Systemstandard",
-  "appSettings_languageEn": "engelska",
+  "appSettings_languageEn": "English",
   "appSettings_languageFr": "Français",
   "appSettings_languageEs": "Español",
   "appSettings_languageDe": "Deutsch",
@@ -166,7 +166,7 @@
   "appSettings_languageIt": "Italiano",
   "appSettings_languageZh": "中文",
   "appSettings_languageSv": "Svenska",
-  "appSettings_languageNl": "nederländska",
+  "appSettings_languageNl": "Nederlands",
   "appSettings_languageSk": "Slovenčina",
   "appSettings_languageBg": "Български",
   "appSettings_notifications": "Meddelanden",
@@ -201,9 +201,9 @@
     }
   },
   "appSettings_batteryChemistryConnectFirst": "Anslut till en enhet för att välja",
-  "appSettings_batteryNmc": "18650 NMC (3,0-4,2V)",
+  "appSettings_batteryNmc": "18650 NMC (3.0-4.2V)",
   "appSettings_batteryLifepo4": "LiFePO4 (2,6–3,65V)",
-  "appSettings_batteryLipo": "LiPo (3,0-4,2V)",
+  "appSettings_batteryLipo": "LiPo (3.0-4.2V)",
   "appSettings_mapDisplay": "Kartvisning",
   "appSettings_showRepeaters": "Visa återuppslag",
   "appSettings_showRepeatersSubtitle": "Visa återspelsnoder på kartan",
@@ -466,7 +466,7 @@
   "debugLog_noEntries": "Inga felsökningsloggar ännu",
   "debugLog_enableInSettings": "Aktivera appens felsökningsloggning i inställningarna",
   "debugLog_frames": "Rammar",
-  "debugLog_rawLogRx": "RÃ¥ Log-RX",
+  "debugLog_rawLogRx": "Rå Log-RX",
   "debugLog_noBleActivity": "Ingen BLE-aktivitet ännu",
   "debugFrame_length": "Ramstorlek: {count} byte",
   "@debugFrame_length": {
@@ -630,12 +630,12 @@
       }
     }
   },
-  "map_chat": "Chatta",
-  "map_repeater": "Ã…teruppspelare",
+  "map_chat": "Chat",
+  "map_repeater": "Återuppspelare",
   "map_room": "Rum",
   "map_sensor": "Sensor",
-  "map_pinDm": "LÃ¥s (DM)",
-  "map_pinPrivate": "LÃ¥s (Privat)",
+  "map_pinDm": "Lås (DM)",
+  "map_pinPrivate": "Lås (Privat)",
   "map_pinPublic": "Anslå (Offentligt)",
   "map_lastSeen": "Senast sedd",
   "map_disconnectConfirm": "Är du säker på att du vill koppla från enheten?",
@@ -671,7 +671,7 @@
   "map_showSharedMarkers": "Visa delade markörer",
   "map_lastSeenTime": "Senaste Visats Tid",
   "map_sharedPin": "Delad PIN",
-  "map_joinRoom": "GÃ¥ med i rum",
+  "map_joinRoom": "Gå med i rum",
   "map_manageRepeater": "Hantera Upprepare",
   "mapCache_title": "Offline Kartcache",
   "mapCache_selectAreaFirst": "Välj ett område att cachera först",
@@ -795,7 +795,7 @@
   "time_allTime": "Alla tider",
   "dialog_disconnect": "Koppla från",
   "dialog_disconnectConfirm": "Är du säker på att du vill koppla från enheten?",
-  "login_repeaterLogin": "Ã…teruppta Inloggning",
+  "login_repeaterLogin": "Återuppta Inloggning",
   "login_roomLogin": "Rum Inloggning",
   "login_password": "Lösenord",
   "login_enterPassword": "Ange lösenord",
@@ -866,17 +866,17 @@
   },
   "path_tooLong": "Sökvägen är för lång. Max 64 hopp tillåtna.",
   "path_setPath": "Ange Sökväg",
-  "repeater_management": "Ã…teruppspelarens Hantering",
+  "repeater_management": "Återuppspelarens Hantering",
   "repeater_managementTools": "Administrationsverktyg",
   "repeater_status": "Status",
   "repeater_statusSubtitle": "Visa återspolningsstatus, statistik och grannar",
-  "repeater_telemetry": "Telemetri",
+  "repeater_telemetry": "Telemetry",
   "repeater_telemetrySubtitle": "Visa telemetri för sensorer och systemstatistik",
   "repeater_cli": "CLI",
   "repeater_cliSubtitle": "Skicka kommandon till repetitorn",
   "repeater_settings": "Inställningar",
   "repeater_settingsSubtitle": "Konfigurera återspolarparametrar",
-  "repeater_statusTitle": "Ã…terspelsstatus",
+  "repeater_statusTitle": "Återspelsstatus",
   "repeater_routingMode": "Ruttläge",
   "repeater_autoUseSavedPath": "Automatisk (använd sparad sökväg)",
   "repeater_forceFloodMode": "Tvinga Översvämningsläge",
@@ -901,8 +901,8 @@
   "repeater_lastRssi": "Senaste RSSI",
   "repeater_lastSnr": "Sista SNR",
   "repeater_noiseFloor": "Ljudnivå",
-  "repeater_txAirtime": "TX sändningstid",
-  "repeater_rxAirtime": "RX sändningstid",
+  "repeater_txAirtime": "TX Airtime",
+  "repeater_rxAirtime": "RX Airtime",
   "repeater_packetStatistics": "Paketstatistik",
   "repeater_sent": "Skickat",
   "repeater_received": "Mottaget",
@@ -1020,7 +1020,7 @@
   },
   "repeater_encryptedAdvertInterval": "Krypterad Annonsintervall",
   "repeater_dangerZone": "Faraområde",
-  "repeater_rebootRepeater": "Starta Ã…teruppspelaren",
+  "repeater_rebootRepeater": "Starta Återuppspelaren",
   "repeater_rebootRepeaterSubtitle": "Starta om repeternheten",
   "repeater_rebootRepeaterConfirm": "Är du säker på att du vill starta om denna repeater?",
   "repeater_regenerateIdentityKey": "Generera Identitetsknyckel",
@@ -1080,7 +1080,7 @@
       }
     }
   },
-  "repeater_cliTitle": "Ã…teruppspelaren CLI",
+  "repeater_cliTitle": "Återuppspelaren CLI",
   "repeater_debugNextCommand": "Felsök Nästa Kommando",
   "repeater_commandHelp": "Hjälp",
   "repeater_clearHistory": "Rensa Historik",
@@ -1100,7 +1100,7 @@
     }
   },
   "repeater_cliQuickGetName": "Hämta namn",
-  "repeater_cliQuickGetRadio": "FÃ¥ Radio",
+  "repeater_cliQuickGetRadio": "Få Radio",
   "repeater_cliQuickGetTx": "Hämta TX",
   "repeater_cliQuickNeighbors": "Grannar",
   "repeater_cliQuickVersion": "Version",
@@ -1138,7 +1138,7 @@
   "repeater_cliHelpSetAdcMultiplier": "Ställer in anpassad faktor för att justera rapporterad batterispänning (endast stödd på utvalda kort).",
   "repeater_cliHelpTempRadio": "Ställer temporära radioparametrar för det angivna antalet minuter, vilket återgår till de ursprungliga radioparametrarna efteråt. (sparar inte i inställningar).",
   "repeater_cliHelpSetPerm": "Modifierar ACL. Tar bort matchande post (genom pubkey-prefiks) om \"permissions\" är noll. Lägger till ny post om pubkey-hex är full längd och inte redan finns i ACL. Uppdaterar posten genom matchande pubkey-prefiks. Tillståndsbiten varierar per firmware-roll, men de låga 2 bitarna är: 0 (Gäst), 1 (endast läsa), 2 (läs- och skrivskydd), 3 (administratör).",
-  "repeater_cliHelpGetBridgeType": "FÃ¥r brotyperna ingen, rs232, espnow",
+  "repeater_cliHelpGetBridgeType": "Får brotyperna ingen, rs232, espnow",
   "repeater_cliHelpLogStart": "Starta paketloggning till filsystem.",
   "repeater_cliHelpLogStop": "Stoppar paketloggning till filsystem.",
   "repeater_cliHelpLogErase": "Raderar pakets loggar från filsystemet.",
@@ -1236,7 +1236,7 @@
   "channelPath_title": "Paketväg",
   "channelPath_viewMap": "Visa karta",
   "channelPath_otherObservedPaths": "Övriga observerade stigar",
-  "channelPath_repeaterHops": "Ã…terupptagningssteg",
+  "channelPath_repeaterHops": "Återupptagningssteg",
   "channelPath_noHopDetails": "Detaljer för denna paket är inte angivna.",
   "channelPath_messageDetails": "Meddelandets detaljer",
   "channelPath_senderLabel": "Avsändare",
@@ -1359,12 +1359,12 @@
   "neighbors_repeatersNeighbours": "Upprepar grannar",
   "neighbors_noData": "Inga grannuppgifter finns tillgängliga.",
   "channels_createPrivateChannel": "Skapa en privat kanal",
-  "channels_joinPrivateChannel": "GÃ¥ med i en Privat Kanal",
+  "channels_joinPrivateChannel": "Gå med i en Privat Kanal",
   "channels_joinPrivateChannelDesc": "Ange en hemlig nyckel manuellt.",
   "channels_createPrivateChannelDesc": "Skyddat med en hemlig nyckel.",
-  "channels_joinPublicChannel": "GÃ¥ med i den Offentliga Kanalen",
+  "channels_joinPublicChannel": "Gå med i den Offentliga Kanalen",
   "channels_joinPublicChannelDesc": "Vem som helst kan gå med i denna kanal.",
-  "channels_joinHashtagChannel": "GÃ¥ med i en Hashtagkanal",
+  "channels_joinHashtagChannel": "Gå med i en Hashtagkanal",
   "channels_joinHashtagChannelDesc": "Väldigt enkelt att gå med i hashtag-kanaler.",
   "channels_scanQrCode": "Skanna en QR-kod",
   "channels_scanQrCodeComingSoon": "Kommer snart",
@@ -1452,8 +1452,8 @@
   "community_createDesc": "Skapa en ny gemenskap och dela via QR-kod.",
   "common_ok": "Okej",
   "community_title": "Gemenskap",
-  "community_join": "GÃ¥ med",
-  "community_joinTitle": "GÃ¥ med i gemenskapen",
+  "community_join": "Gå med",
+  "community_joinTitle": "Gå med i gemenskapen",
   "community_joinConfirmation": "Vill du gå med i communityn \"{name}\"?",
   "community_scanQr": "Skanna Gemenskapens QR",
   "community_scanInstructions": "Rikta kameran mot en QR-kod i communityn",
@@ -1540,7 +1540,7 @@
   "pathTrace_failed": "Sökvägsföljning misslyckades.",
   "pathTrace_notAvailable": "Path trace ej tillgänglig.",
   "pathTrace_refreshTooltip": "Uppdatera Path Trace",
-  "contacts_pathTrace": "Väg spår",
+  "contacts_pathTrace": "Path Trace",
   "contacts_ping": "Ping",
   "contacts_repeaterPathTrace": "Vägspårning till repeater",
   "contacts_repeaterPing": "Ping-repeater",
@@ -1598,38 +1598,13 @@
   "settings_clientRepeat": "Upprepa utan elnät",
   "settings_clientRepeatFreqWarning": "För att kunna kommunicera utanför elnätet krävs frekvenserna 433, 869 eller 918 MHz.",
   "settings_aboutOpenMeteoAttribution": "LOS-höjddata: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Enheter",
+  "appSettings_unitsMetric": "Metriskt (m/km)",
+  "appSettings_unitsImperial": "Imperialt (ft / mi)",
   "map_lineOfSight": "Synlinje",
   "map_losScreenTitle": "Synlinje",
   "losSelectStartEnd": "Välj start- och slutnoder för LOS.",
   "losRunFailed": "Synlinjekontroll misslyckades: {error}",
-  "losClearAllPoints": "Rensa alla punkter",
-  "losRunToViewElevationProfile": "Kör LOS för att se höjdprofil",
-  "losMenuTitle": "LOS-menyn",
-  "losMenuSubtitle": "Tryck på noder eller tryck länge på kartan för anpassade punkter",
-  "losShowDisplayNodes": "Visa displaynoder",
-  "losCustomPoints": "Anpassade poäng",
-  "losCustomPointLabel": "Anpassad {index}",
-  "losPointA": "Punkt A",
-  "losPointB": "Punkt B",
-  "losAntennaA": "Antenn A: {value} {unit}",
-  "losAntennaB": "Antenn B: {value} {unit}",
-  "losRun": "Kör LOS",
-  "losNoElevationData": "Inga höjddata",
-  "losProfileClear": "{distance} {distanceUnit}, rensa LOS, min clearance {clearance} {heightUnit}",
-  "losProfileBlocked": "{distance} {distanceUnit}, blockerad av {obstruction} {heightUnit}",
-  "losStatusChecking": "LOS: kollar...",
-  "losStatusNoData": "LOS: inga data",
-  "losStatusSummary": "LOS: {clear}/{total} rensa, {blocked} blockerad, {unknown} okänd",
-  "losErrorElevationUnavailable": "Höjddata är inte tillgänglig för ett eller flera prover.",
-  "losErrorInvalidInput": "Ogiltiga poäng/höjddata för LOS-beräkning.",
-  "losRenameCustomPoint": "Byt namn på anpassad punkt",
-  "losPointName": "Punktnamn",
-  "losShowPanelTooltip": "Visa LOS-panelen",
-  "losHidePanelTooltip": "Dölj LOS-panelen",
-  "losElevationAttribution": "Höjddata: Open-Meteo (CC BY 4.0)",
-  "appSettings_unitsTitle": "Enheter",
-  "appSettings_unitsMetric": "Metriskt (m/km)",
-  "appSettings_unitsImperial": "Imperialt (ft / mi)",
   "@losRunFailed": {
     "placeholders": {
       "error": {
@@ -1637,6 +1612,13 @@
       }
     }
   },
+  "losClearAllPoints": "Rensa alla punkter",
+  "losRunToViewElevationProfile": "Kör LOS för att se höjdprofil",
+  "losMenuTitle": "LOS-menyn",
+  "losMenuSubtitle": "Tryck på noder eller tryck länge på kartan för anpassade punkter",
+  "losShowDisplayNodes": "Visa displaynoder",
+  "losCustomPoints": "Anpassade poäng",
+  "losCustomPointLabel": "Anpassad {index}",
   "@losCustomPointLabel": {
     "placeholders": {
       "index": {
@@ -1644,6 +1626,9 @@
       }
     }
   },
+  "losPointA": "Punkt A",
+  "losPointB": "Punkt B",
+  "losAntennaA": "Antenn A: {value} {unit}",
   "@losAntennaA": {
     "placeholders": {
       "value": {
@@ -1654,6 +1639,7 @@
       }
     }
   },
+  "losAntennaB": "Antenn B: {value} {unit}",
   "@losAntennaB": {
     "placeholders": {
       "value": {
@@ -1664,6 +1650,9 @@
       }
     }
   },
+  "losRun": "Kör LOS",
+  "losNoElevationData": "Inga höjddata",
+  "losProfileClear": "{distance} {distanceUnit}, rensa LOS, min clearance {clearance} {heightUnit}",
   "@losProfileClear": {
     "placeholders": {
       "distance": {
@@ -1680,6 +1669,7 @@
       }
     }
   },
+  "losProfileBlocked": "{distance} {distanceUnit}, blockerad av {obstruction} {heightUnit}",
   "@losProfileBlocked": {
     "placeholders": {
       "distance": {
@@ -1696,6 +1686,9 @@
       }
     }
   },
+  "losStatusChecking": "LOS: kollar...",
+  "losStatusNoData": "LOS: inga data",
+  "losStatusSummary": "LOS: {clear}/{total} rensa, {blocked} blockerad, {unknown} okänd",
   "@losStatusSummary": {
     "placeholders": {
       "clear": {
@@ -1712,32 +1705,11 @@
       }
     }
   },
-  "@notification_messagesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_channelMessagesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_newNodesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_newTypeDiscovered": {
-    "placeholders": {
-      "contactType": {
-        "type": "String"
-      }
-    }
-  }
+  "losErrorElevationUnavailable": "Höjddata är inte tillgänglig för ett eller flera prover.",
+  "losErrorInvalidInput": "Ogiltiga poäng/höjddata för LOS-beräkning.",
+  "losRenameCustomPoint": "Byt namn på anpassad punkt",
+  "losPointName": "Punktnamn",
+  "losShowPanelTooltip": "Visa LOS-panelen",
+  "losHidePanelTooltip": "Dölj LOS-panelen",
+  "losElevationAttribution": "Höjddata: Open-Meteo (CC BY 4.0)"
 }

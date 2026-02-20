@@ -1,6 +1,6 @@
 {
   "@@locale": "pt",
-  "appTitle": "MeshCore aberto",
+  "appTitle": "MeshCore Open",
   "nav_contacts": "Contactos",
   "nav_channels": "Canais",
   "nav_map": "Mapa",
@@ -27,7 +27,7 @@
   "common_disable": "Desativar",
   "common_reboot": "Reiniciar",
   "common_loading": "Carregando...",
-  "common_notAvailable": "-",
+  "common_notAvailable": "—",
   "common_voltageValue": "{volts} V",
   "@common_voltageValue": {
     "placeholders": {
@@ -44,7 +44,7 @@
       }
     }
   },
-  "scanner_title": "MeshCore aberto",
+  "scanner_title": "MeshCore Open",
   "scanner_scanning": "Procurando por dispositivos...",
   "scanner_connecting": "Conectando...",
   "scanner_disconnecting": "Desconectando...",
@@ -70,7 +70,7 @@
   "scanner_stop": "Pare",
   "scanner_scan": "Digitalizar",
   "device_quickSwitch": "Mudar rapidamente",
-  "device_meshcore": "MalhaCore",
+  "device_meshcore": "MeshCore",
   "settings_title": "Configurações",
   "settings_deviceInfo": "Informações do Dispositivo",
   "settings_appSettings": "Configurações do App",
@@ -113,7 +113,7 @@
   "settings_appDebugLog": "Log de Depuração do Aplicativo",
   "settings_appDebugLogSubtitle": "Mensagens de depuração do aplicativo",
   "settings_about": "Sobre",
-  "settings_aboutVersion": "MeshCore aberto v{version}",
+  "settings_aboutVersion": "MeshCore Open v{version}",
   "@settings_aboutVersion": {
     "placeholders": {
       "version": {
@@ -124,13 +124,13 @@
   "settings_aboutLegalese": "Projeto MeshCore de Código Aberto 2024",
   "settings_aboutDescription": "Um cliente Flutter de código aberto para dispositivos de rede mesh LoRa Core da MeshCore.",
   "settings_infoName": "Nome",
-  "settings_infoId": "EU IA",
+  "settings_infoId": "ID",
   "settings_infoStatus": "Status",
   "settings_infoBattery": "Bateria",
   "settings_infoPublicKey": "Chave Pública",
   "settings_infoContactsCount": "Número de Contatos",
   "settings_infoChannelCount": "Número do Canal",
-  "settings_presets": "Predefinições",
+  "settings_presets": "Presets",
   "settings_frequency": "Frequência (MHz)",
   "settings_frequencyHelper": "300,0 - 2500,0",
   "settings_frequencyInvalid": "Frequência inválida (300-2500 MHz)",
@@ -156,19 +156,19 @@
   "appSettings_themeDark": "Escuro",
   "appSettings_language": "Idioma",
   "appSettings_languageSystem": "Padrão do sistema",
-  "appSettings_languageEn": "Inglês",
-  "appSettings_languageFr": "Francês",
-  "appSettings_languageEs": "Espanhol",
-  "appSettings_languageDe": "Alemão",
-  "appSettings_languagePl": "Polaco",
-  "appSettings_languageSl": "Eslovena",
+  "appSettings_languageEn": "English",
+  "appSettings_languageFr": "Français",
+  "appSettings_languageEs": "Español",
+  "appSettings_languageDe": "Deutsch",
+  "appSettings_languagePl": "Polski",
+  "appSettings_languageSl": "Slovenščina",
   "appSettings_languagePt": "Português",
   "appSettings_languageIt": "Italiano",
   "appSettings_languageZh": "中文",
-  "appSettings_languageSv": "Sueca",
-  "appSettings_languageNl": "Holanda",
-  "appSettings_languageSk": "Eslovena",
-  "appSettings_languageBg": "Búlgaro",
+  "appSettings_languageSv": "Svenska",
+  "appSettings_languageNl": "Nederlands",
+  "appSettings_languageSk": "Slovenčina",
+  "appSettings_languageBg": "Български",
   "appSettings_notifications": "Notificações",
   "appSettings_enableNotifications": "Ativar Notificações",
   "appSettings_enableNotificationsSubtitle": "Receber notificações para mensagens e anúncios",
@@ -493,7 +493,7 @@
       }
     }
   },
-  "debugFrame_timestamp": "- Carimbo de data e hora: {timestamp}",
+  "debugFrame_timestamp": "- Timestamp: {timestamp}",
   "@debugFrame_timestamp": {
     "placeholders": {
       "timestamp": {
@@ -630,7 +630,7 @@
       }
     }
   },
-  "map_chat": "Bater papo",
+  "map_chat": "Chat",
   "map_repeater": "Repetidor",
   "map_room": "Quarto",
   "map_sensor": "Sensor",
@@ -808,7 +808,7 @@
   "login_autoUseSavedPath": "Auto (usar caminho salvo)",
   "login_forceFloodMode": "Modo de Inundação Forçado",
   "login_managePaths": "Gerenciar Caminhos",
-  "login_login": "Conecte-se",
+  "login_login": "Login",
   "login_attempt": "Tentar {current}/{max}",
   "@login_attempt": {
     "placeholders": {
@@ -901,8 +901,8 @@
   "repeater_lastRssi": "Último RSSI",
   "repeater_lastSnr": "Último SNR",
   "repeater_noiseFloor": "Nível de Ruído",
-  "repeater_txAirtime": "Tempo de antena TX",
-  "repeater_rxAirtime": "Tempo de antena RX",
+  "repeater_txAirtime": "TX Airtime",
+  "repeater_rxAirtime": "RX Airtime",
   "repeater_packetStatistics": "Estatísticas de Pacote",
   "repeater_sent": "Enviado",
   "repeater_received": "Recebido",
@@ -982,8 +982,8 @@
   "repeater_radioSettings": "Configurações de Rádio",
   "repeater_frequencyMhz": "Frequência (MHz)",
   "repeater_frequencyHelper": "300-2500 MHz",
-  "repeater_txPower": "Potência TX",
-  "repeater_txPowerHelper": "1-30dBm",
+  "repeater_txPower": "TX Power",
+  "repeater_txPowerHelper": "1-30 dBm",
   "repeater_bandwidth": "Largura de banda",
   "repeater_spreadingFactor": "Fator de Dispersão",
   "repeater_codingRate": "Taxa de Codificação",
@@ -1598,38 +1598,13 @@
   "settings_clientRepeat": "Repetição sem rede",
   "settings_clientRepeatSubtitle": "Permita que este dispositivo repita pacotes de rede para outros dispositivos.",
   "settings_aboutOpenMeteoAttribution": "Dados de elevação LOS: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Unidades",
+  "appSettings_unitsMetric": "Métrico (m/km)",
+  "appSettings_unitsImperial": "Imperial (ft/mi)",
   "map_lineOfSight": "Linha de visão",
   "map_losScreenTitle": "Linha de visão",
   "losSelectStartEnd": "Selecione nós iniciais e finais para LOS.",
   "losRunFailed": "Falha na verificação da linha de visão: {error}",
-  "losClearAllPoints": "Limpe todos os pontos",
-  "losRunToViewElevationProfile": "Execute o LOS para visualizar o perfil de elevação",
-  "losMenuTitle": "Menu LOS",
-  "losMenuSubtitle": "Toque nos nós ou mantenha pressionado o mapa para obter pontos personalizados",
-  "losShowDisplayNodes": "Mostrar nós de exibição",
-  "losCustomPoints": "Pontos personalizados",
-  "losCustomPointLabel": "{index} personalizado",
-  "losPointA": "Ponto A",
-  "losPointB": "Ponto B",
-  "losAntennaA": "Antena A: {value} {unit}",
-  "losAntennaB": "Antena B: {value} {unit}",
-  "losRun": "Executar LOS",
-  "losNoElevationData": "Sem dados de elevação",
-  "losProfileClear": "{distance} {distanceUnit}, limpar LOS, liberação mínima {clearance} {heightUnit}",
-  "losProfileBlocked": "{distance} {distanceUnit}, bloqueado por {obstruction} {heightUnit}",
-  "losStatusChecking": "LOS: verificando...",
-  "losStatusNoData": "LOS: sem dados",
-  "losStatusSummary": "LOS: {clear}/{total} limpo, {blocked} bloqueado, {unknown} desconhecido",
-  "losErrorElevationUnavailable": "Dados de elevação indisponíveis para uma ou mais amostras.",
-  "losErrorInvalidInput": "Dados de pontos/elevação inválidos para cálculo de LOS.",
-  "losRenameCustomPoint": "Renomear ponto personalizado",
-  "losPointName": "Nome do ponto",
-  "losShowPanelTooltip": "Mostrar painel LOS",
-  "losHidePanelTooltip": "Ocultar painel LOS",
-  "losElevationAttribution": "Dados de elevação: Open-Meteo (CC BY 4.0)",
-  "appSettings_unitsTitle": "Unidades",
-  "appSettings_unitsMetric": "Métrico (m/km)",
-  "appSettings_unitsImperial": "Imperial (ft/mi)",
   "@losRunFailed": {
     "placeholders": {
       "error": {
@@ -1637,6 +1612,13 @@
       }
     }
   },
+  "losClearAllPoints": "Limpe todos os pontos",
+  "losRunToViewElevationProfile": "Execute o LOS para visualizar o perfil de elevação",
+  "losMenuTitle": "Menu LOS",
+  "losMenuSubtitle": "Toque nos nós ou mantenha pressionado o mapa para obter pontos personalizados",
+  "losShowDisplayNodes": "Mostrar nós de exibição",
+  "losCustomPoints": "Pontos personalizados",
+  "losCustomPointLabel": "{index} personalizado",
   "@losCustomPointLabel": {
     "placeholders": {
       "index": {
@@ -1644,6 +1626,9 @@
       }
     }
   },
+  "losPointA": "Ponto A",
+  "losPointB": "Ponto B",
+  "losAntennaA": "Antena A: {value} {unit}",
   "@losAntennaA": {
     "placeholders": {
       "value": {
@@ -1654,6 +1639,7 @@
       }
     }
   },
+  "losAntennaB": "Antena B: {value} {unit}",
   "@losAntennaB": {
     "placeholders": {
       "value": {
@@ -1664,6 +1650,9 @@
       }
     }
   },
+  "losRun": "Executar LOS",
+  "losNoElevationData": "Sem dados de elevação",
+  "losProfileClear": "{distance} {distanceUnit}, limpar LOS, liberação mínima {clearance} {heightUnit}",
   "@losProfileClear": {
     "placeholders": {
       "distance": {
@@ -1680,6 +1669,7 @@
       }
     }
   },
+  "losProfileBlocked": "{distance} {distanceUnit}, bloqueado por {obstruction} {heightUnit}",
   "@losProfileBlocked": {
     "placeholders": {
       "distance": {
@@ -1696,6 +1686,9 @@
       }
     }
   },
+  "losStatusChecking": "LOS: verificando...",
+  "losStatusNoData": "LOS: sem dados",
+  "losStatusSummary": "LOS: {clear}/{total} limpo, {blocked} bloqueado, {unknown} desconhecido",
   "@losStatusSummary": {
     "placeholders": {
       "clear": {
@@ -1712,32 +1705,11 @@
       }
     }
   },
-  "@notification_messagesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_channelMessagesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_newNodesCount": {
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "@notification_newTypeDiscovered": {
-    "placeholders": {
-      "contactType": {
-        "type": "String"
-      }
-    }
-  }
+  "losErrorElevationUnavailable": "Dados de elevação indisponíveis para uma ou mais amostras.",
+  "losErrorInvalidInput": "Dados de pontos/elevação inválidos para cálculo de LOS.",
+  "losRenameCustomPoint": "Renomear ponto personalizado",
+  "losPointName": "Nome do ponto",
+  "losShowPanelTooltip": "Mostrar painel LOS",
+  "losHidePanelTooltip": "Ocultar painel LOS",
+  "losElevationAttribution": "Dados de elevação: Open-Meteo (CC BY 4.0)"
 }

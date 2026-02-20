@@ -9,7 +9,7 @@ class AppLocalizationsIt extends AppLocalizations {
   AppLocalizationsIt([String locale = 'it']) : super(locale);
 
   @override
-  String get appTitle => 'MeshCore aperto';
+  String get appTitle => 'MeshCore Open';
 
   @override
   String get nav_contacts => 'Contatti';
@@ -106,7 +106,7 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get scanner_title => 'MeshCore aperto';
+  String get scanner_title => 'MeshCore Open';
 
   @override
   String get scanner_scanning => 'Scansione in corso per i dispositivi...';
@@ -312,7 +312,7 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String settings_aboutVersion(String version) {
-    return 'MeshCore aperto v$version';
+    return 'MeshCore Open v$version';
   }
 
   @override
@@ -418,16 +418,16 @@ class AppLocalizationsIt extends AppLocalizations {
   String get appSettings_languageSystem => 'Predefinito di sistema';
 
   @override
-  String get appSettings_languageEn => 'Inglese';
+  String get appSettings_languageEn => 'English';
 
   @override
-  String get appSettings_languageFr => 'Francese';
+  String get appSettings_languageFr => 'Français';
 
   @override
   String get appSettings_languageEs => 'Español';
 
   @override
-  String get appSettings_languageDe => 'Tedesco';
+  String get appSettings_languageDe => 'Deutsch';
 
   @override
   String get appSettings_languagePl => 'Polski';
@@ -448,7 +448,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get appSettings_languageSv => 'Svenska';
 
   @override
-  String get appSettings_languageNl => 'Paesi Bassi';
+  String get appSettings_languageNl => 'Nederlands';
 
   @override
   String get appSettings_languageSk => 'Slovenčina';
@@ -823,7 +823,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get channels_standardPublicPsk => 'PSK pubblico standard';
 
   @override
-  String get channels_pskHex => 'PSK (esadecimale)';
+  String get channels_pskHex => 'PSK (Hex)';
 
   @override
   String get channels_generateRandomPsk =>
@@ -1273,7 +1273,7 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get map_chat => 'Chiacchierata';
+  String get map_chat => 'Chat';
 
   @override
   String get map_repeater => 'Ripetitore';
@@ -1678,7 +1678,7 @@ class AppLocalizationsIt extends AppLocalizations {
       'Visualizza lo stato, le statistiche e i vicini del ripetitore';
 
   @override
-  String get repeater_telemetry => 'Telemetria';
+  String get repeater_telemetry => 'Telemetry';
 
   @override
   String get repeater_telemetrySubtitle =>
@@ -1761,10 +1761,10 @@ class AppLocalizationsIt extends AppLocalizations {
   String get repeater_noiseFloor => 'Livello del Rumore';
 
   @override
-  String get repeater_txAirtime => 'Tempo di trasmissione TX';
+  String get repeater_txAirtime => 'TX Airtime';
 
   @override
-  String get repeater_rxAirtime => 'Tempo di trasmissione RX';
+  String get repeater_rxAirtime => 'RX Airtime';
 
   @override
   String get repeater_packetStatistics => 'Statistiche del Pacchetto';
@@ -1853,7 +1853,7 @@ class AppLocalizationsIt extends AppLocalizations {
   String get repeater_bandwidth => 'Larghezza di banda';
 
   @override
-  String get repeater_spreadingFactor => 'Fattore di diffusione';
+  String get repeater_spreadingFactor => 'Spreading Factor';
 
   @override
   String get repeater_codingRate => 'Tasso di Codifica';

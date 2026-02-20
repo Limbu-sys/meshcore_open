@@ -9,7 +9,7 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
-  String get appTitle => 'Núcleo de malla abierto';
+  String get appTitle => 'MeshCore Open';
 
   @override
   String get nav_contacts => 'Contactos';
@@ -106,7 +106,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get scanner_title => 'Núcleo de malla abierto';
+  String get scanner_title => 'MeshCore Open';
 
   @override
   String get scanner_scanning => 'Escaneando dispositivos...';
@@ -157,7 +157,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get device_quickSwitch => 'Cambiar rápidamente';
 
   @override
-  String get device_meshcore => 'Núcleo de malla';
+  String get device_meshcore => 'MeshCore';
 
   @override
   String get settings_title => 'Configuración';
@@ -313,7 +313,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String settings_aboutVersion(String version) {
-    return 'MeshCore abierto v$version';
+    return 'MeshCore Open v$version';
   }
 
   @override
@@ -331,7 +331,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get settings_infoName => 'Nombre';
 
   @override
-  String get settings_infoId => 'IDENTIFICACIÓN';
+  String get settings_infoId => 'ID';
 
   @override
   String get settings_infoStatus => 'Estado';
@@ -419,40 +419,40 @@ class AppLocalizationsEs extends AppLocalizations {
   String get appSettings_languageSystem => 'Predeterminado del sistema';
 
   @override
-  String get appSettings_languageEn => 'Inglés';
+  String get appSettings_languageEn => 'English';
 
   @override
-  String get appSettings_languageFr => 'francés';
+  String get appSettings_languageFr => 'Français';
 
   @override
   String get appSettings_languageEs => 'Español';
 
   @override
-  String get appSettings_languageDe => 'alemán';
+  String get appSettings_languageDe => 'Deutsch';
 
   @override
-  String get appSettings_languagePl => 'Polonia';
+  String get appSettings_languagePl => 'Polski';
 
   @override
-  String get appSettings_languageSl => 'esloveno';
+  String get appSettings_languageSl => 'Slovenščina';
 
   @override
-  String get appSettings_languagePt => 'portugués';
+  String get appSettings_languagePt => 'Português';
 
   @override
-  String get appSettings_languageIt => 'italiano';
+  String get appSettings_languageIt => 'Italiano';
 
   @override
   String get appSettings_languageZh => '中文';
 
   @override
-  String get appSettings_languageSv => 'Svenská';
+  String get appSettings_languageSv => 'Svenska';
 
   @override
-  String get appSettings_languageNl => 'Países Bajos';
+  String get appSettings_languageNl => 'Nederlands';
 
   @override
-  String get appSettings_languageSk => 'Eslovenia';
+  String get appSettings_languageSk => 'Slovenčina';
 
   @override
   String get appSettings_languageBg => 'Български';
@@ -556,13 +556,13 @@ class AppLocalizationsEs extends AppLocalizations {
       'Conéctate a un dispositivo para elegir';
 
   @override
-  String get appSettings_batteryNmc => '18650 NMC (3,0-4,2 V)';
+  String get appSettings_batteryNmc => '18650 NMC (3.0-4.2V)';
 
   @override
-  String get appSettings_batteryLifepo4 => 'LiFePO4 (2,6-3,65 V)';
+  String get appSettings_batteryLifepo4 => 'LiFePO4 (2.6-3.65V)';
 
   @override
-  String get appSettings_batteryLipo => 'Li-Po (3,0-4,2 V)';
+  String get appSettings_batteryLipo => 'LiPo (3.0-4.2V)';
 
   @override
   String get appSettings_mapDisplay => 'Visualización del Mapa';
@@ -825,7 +825,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get channels_standardPublicPsk => 'PSK estándar público';
 
   @override
-  String get channels_pskHex => 'PSK (hexadecimal)';
+  String get channels_pskHex => 'PSK (Hex)';
 
   @override
   String get channels_generateRandomPsk => 'Generar PSK aleatorio';
@@ -866,7 +866,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get channels_sortManual => 'Manual';
 
   @override
-  String get channels_sortAZ => 'ARIZONA';
+  String get channels_sortAZ => 'A-Z';
 
   @override
   String get channels_sortLatestMessages => 'Últimos mensajes';
@@ -994,7 +994,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get gifPicker_searchHint => 'Buscar GIFs...';
 
   @override
-  String get gifPicker_poweredBy => 'Desarrollado por GIPHY';
+  String get gifPicker_poweredBy => 'Powered by GIPHY';
 
   @override
   String get gifPicker_noGifsFound => 'No se encontraron GIFs';
@@ -1274,7 +1274,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get map_chat => 'Charlar';
+  String get map_chat => 'Chat';
 
   @override
   String get map_repeater => 'Repetidor';
@@ -1680,7 +1680,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Ver el estado, las estadísticas y los vecinos del repetidor';
 
   @override
-  String get repeater_telemetry => 'Telemetria';
+  String get repeater_telemetry => 'Telemetry';
 
   @override
   String get repeater_telemetrySubtitle =>
@@ -1761,10 +1761,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get repeater_noiseFloor => 'Nivel de Ruido';
 
   @override
-  String get repeater_txAirtime => 'TX tiempo aire';
+  String get repeater_txAirtime => 'TX Airtime';
 
   @override
-  String get repeater_rxAirtime => 'Tiempo aire RX';
+  String get repeater_rxAirtime => 'RX Airtime';
 
   @override
   String get repeater_packetStatistics => 'Estadísticas del Paquete';
@@ -1841,13 +1841,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get repeater_frequencyMhz => 'Frecuencia (MHz)';
 
   @override
-  String get repeater_frequencyHelper => '300-2500MHz';
+  String get repeater_frequencyHelper => '300-2500 MHz';
 
   @override
   String get repeater_txPower => 'TX Potencia';
 
   @override
-  String get repeater_txPowerHelper => '1-30dBm';
+  String get repeater_txPowerHelper => '1-30 dBm';
 
   @override
   String get repeater_bandwidth => 'Ancho de banda';
@@ -2696,7 +2696,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get listFilter_heardRecently => 'Escuchado recientemente';
 
   @override
-  String get listFilter_az => 'ARIZONA';
+  String get listFilter_az => 'A-Z';
 
   @override
   String get listFilter_filters => 'Filtros';
@@ -2854,7 +2854,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get contacts_pathTrace => 'Rastreo de caminos';
 
   @override
-  String get contacts_ping => 'Silbido';
+  String get contacts_ping => 'Ping';
 
   @override
   String get contacts_repeaterPathTrace => 'Rastrear ruta al repetidor';
