@@ -365,7 +365,8 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
                       ),
                     ),
                   ),
-                if (_hasData) _buildLegendCard(context, _traceData!, isImperial),
+                if (_hasData)
+                  _buildLegendCard(context, _traceData!, isImperial),
               ],
             ),
           ),
