@@ -419,7 +419,8 @@ class _MapScreenState extends State<MapScreen> {
                 ),
                 if (!_isBuildingPathTrace)
                   _buildLegend(
-                    contactsWithLocation.length,
+                    contactsWithLocation,
+                    settings,
                     sharedMarkers.length,
                   ),
                 if (_isBuildingPathTrace) _buildPathTraceOverlay(),
@@ -451,13 +452,17 @@ class _MapScreenState extends State<MapScreen> {
       if (!contact.hasLocation) continue;
 
       // Apply node type filters
-      if (contact.type == advTypeRepeater && !settings.mapShowRepeaters) {
+      if (contact.type == advTypeRepeater &&
+          (!settings.mapShowRepeaters && !_isBuildingPathTrace)) {
         continue;
       }
-      if (contact.type == advTypeChat && !settings.mapShowChatNodes) continue;
+      if (contact.type == advTypeChat &&
+          !(settings.mapShowChatNodes && !_isBuildingPathTrace)) {
+        continue;
+      }
       if (contact.type != advTypeChat &&
           contact.type != advTypeRepeater &&
-          !settings.mapShowOtherNodes) {
+          (!settings.mapShowOtherNodes && !_isBuildingPathTrace)) {
         continue;
       }
 
@@ -534,7 +539,26 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
-  Widget _buildLegend(int nodeCount, int markerCount) {
+  Widget _buildLegend(
+    List<Contact> contactsWithLocation,
+    settings,
+    int markerCount,
+  ) {
+    int nodeCount = 0;
+    for (final contact in contactsWithLocation) {
+      // Apply node type filters
+      if (contact.type == advTypeRepeater && !settings.mapShowRepeaters) {
+        continue;
+      }
+      if (contact.type == advTypeChat && !settings.mapShowChatNodes) continue;
+      if (contact.type != advTypeChat &&
+          contact.type != advTypeRepeater &&
+          !settings.mapShowOtherNodes) {
+        continue;
+      }
+      nodeCount++;
+    }
+
     return Positioned(
       top: 16,
       right: 16,
