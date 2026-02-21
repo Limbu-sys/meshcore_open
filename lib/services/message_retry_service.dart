@@ -234,7 +234,11 @@ class MessageRetryService extends ChangeNotifier {
     }
   }
 
-  bool updateMessageFromSent(Uint8List ackHash, int timeoutMs) {
+  bool updateMessageFromSent(
+    Uint8List ackHash,
+    int timeoutMs, {
+    bool allowQueueFallback = true,
+  }) {
     final ackHashHex = ackHash
         .map((b) => b.toRadixString(16).padLeft(2, '0'))
         .join();
@@ -277,7 +281,7 @@ class MessageRetryService extends ChangeNotifier {
     }
 
     // FALLBACK: Old queue-based matching (for messages sent before hash computation was added)
-    if (messageId == null) {
+    if (messageId == null && allowQueueFallback) {
       _debugLogService?.warn(
         'RESP_CODE_SENT: ACK hash $ackHashHex not found in hash table, falling back to queue',
         tag: 'AckHash',

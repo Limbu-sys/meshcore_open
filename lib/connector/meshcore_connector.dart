@@ -65,6 +65,8 @@ class MeshCoreConnector extends ChangeNotifier {
   final List<Channel> _channels = [];
   final Map<String, List<Message>> _conversations = {};
   final Map<int, List<ChannelMessage>> _channelMessages = {};
+  final List<String> _pendingChannelSentQueue = [];
+  final List<String> _pendingChannelCommandAckQueue = [];
   final Set<String> _loadedConversationKeys = {};
   final Map<int, Set<String>> _processedChannelReactions =
       {}; // channelIndex -> Set of "targetHash_emoji"
@@ -1325,6 +1327,8 @@ class MeshCoreConnector extends ChangeNotifier {
       channel.index,
     );
     _addChannelMessage(channel.index, message);
+    _pendingChannelSentQueue.add(message.messageId);
+    _pendingChannelCommandAckQueue.add(message.messageId);
     notifyListeners();
 
     final trimmed = text.trim();
@@ -1681,6 +1685,9 @@ class MeshCoreConnector extends ChangeNotifier {
     debugPrint('RX frame: code=$code len=${frame.length}');
 
     switch (code) {
+      case respCodeOk:
+        _handleOk();
+        break;
       case respCodeDeviceInfo:
         _handleDeviceInfo(frame);
         break;
@@ -2478,19 +2485,21 @@ class MeshCoreConnector extends ChangeNotifier {
       }
 
       final retryService = _retryService;
-      bool matchedDirectMessage = false;
-      if (retryService != null) {
-        matchedDirectMessage = retryService.updateMessageFromSent(
-          ackHash,
-          timeoutMs,
-        );
-      }
-      // Only promote channel pending->sent when this RESP_CODE_SENT was not
-      // matched to a direct message and there are no pending direct retries.
       if (retryService != null &&
-          !matchedDirectMessage &&
-          !retryService.hasPendingMessages) {
-        _markMostRecentPendingChannelMessageSent();
+          retryService.updateMessageFromSent(
+            ackHash,
+            timeoutMs,
+            allowQueueFallback: false,
+          )) {
+        return;
+      }
+
+      if (_markNextPendingChannelMessageSent()) {
+        return;
+      }
+
+      if (retryService != null) {
+        retryService.updateMessageFromSent(ackHash, timeoutMs);
       }
     } else {
       // Fallback to old behavior
@@ -2507,47 +2516,50 @@ class MeshCoreConnector extends ChangeNotifier {
     }
   }
 
-  bool _markMostRecentPendingChannelMessageSent() {
-    int? targetChannelIndex;
-    int? targetMessageIndex;
-    DateTime? newestTimestamp;
-
-    for (final entry in _channelMessages.entries) {
-      final messages = entry.value;
-      for (int i = messages.length - 1; i >= 0; i--) {
-        final message = messages[i];
-        if (!message.isOutgoing ||
-            message.status != ChannelMessageStatus.pending) {
-          continue;
-        }
-        if (newestTimestamp == null ||
-            message.timestamp.isAfter(newestTimestamp)) {
-          targetChannelIndex = entry.key;
-          targetMessageIndex = i;
-          newestTimestamp = message.timestamp;
-        }
-        // Iterating backwards means first match is newest for this channel.
-        break;
+  bool _markNextPendingChannelMessageSent() {
+    while (_pendingChannelSentQueue.isNotEmpty) {
+      final queuedMessageId = _pendingChannelSentQueue.removeAt(0);
+      if (_markPendingChannelMessageSentById(queuedMessageId)) {
+        return true;
       }
     }
+    return false;
+  }
 
-    if (targetChannelIndex == null || targetMessageIndex == null) {
-      return false;
+  bool _markPendingChannelMessageSentById(String messageId) {
+    for (final entry in _channelMessages.entries) {
+      final channelMessages = entry.value;
+      for (int i = channelMessages.length - 1; i >= 0; i--) {
+        final message = channelMessages[i];
+        if (message.messageId != messageId) {
+          continue;
+        }
+        if (!message.isOutgoing ||
+            message.status != ChannelMessageStatus.pending) {
+          return false;
+        }
+        channelMessages[i] = message.copyWith(
+          status: ChannelMessageStatus.sent,
+        );
+        _pendingChannelSentQueue.remove(messageId);
+        _pendingChannelCommandAckQueue.remove(messageId);
+        unawaited(
+          _channelMessageStore.saveChannelMessages(entry.key, channelMessages),
+        );
+        notifyListeners();
+        return true;
+      }
+    }
+    return false;
+  }
+
+  void _handleOk() {
+    if (_pendingChannelCommandAckQueue.isEmpty) {
+      return;
     }
 
-    final channelMessages = _channelMessages[targetChannelIndex]!;
-    final message = channelMessages[targetMessageIndex];
-    channelMessages[targetMessageIndex] = message.copyWith(
-      status: ChannelMessageStatus.sent,
-    );
-    unawaited(
-      _channelMessageStore.saveChannelMessages(
-        targetChannelIndex,
-        channelMessages,
-      ),
-    );
-    notifyListeners();
-    return true;
+    final queuedMessageId = _pendingChannelCommandAckQueue.removeAt(0);
+    _markPendingChannelMessageSentById(queuedMessageId);
   }
 
   void _handleSendConfirmed(Uint8List frame) {
@@ -3128,18 +3140,23 @@ class MeshCoreConnector extends ChangeNotifier {
         mergedPathBytes.length,
       );
       final newRepeatCount = existing.repeatCount + 1;
+      final promotedFromPending =
+          newRepeatCount == 1 &&
+          existing.status == ChannelMessageStatus.pending;
       messages[existingIndex] = existing.copyWith(
         repeatCount: newRepeatCount,
         pathLength: mergedPathLength,
         pathBytes: mergedPathBytes,
         pathVariants: mergedPathVariants,
         // Mark as sent when first repeat is heard
-        status:
-            newRepeatCount == 1 &&
-                existing.status == ChannelMessageStatus.pending
+        status: promotedFromPending
             ? ChannelMessageStatus.sent
             : existing.status,
       );
+      if (promotedFromPending) {
+        _pendingChannelSentQueue.remove(existing.messageId);
+        _pendingChannelCommandAckQueue.remove(existing.messageId);
+      }
     } else {
       messages.add(processedMessage);
     }
