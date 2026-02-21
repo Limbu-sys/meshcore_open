@@ -562,6 +562,7 @@
   },
   "debugFrame_hexDump": "Hex Dump:",
   "chat_pathManagement": "Path Management",
+  "chat_ShowAllPaths": "Show all paths",
   "chat_routingMode": "Routing mode",
   "chat_autoUseSavedPath": "Auto (use saved path)",
   "chat_forceFloodMode": "Force Flood Mode",
@@ -911,8 +912,8 @@
   "repeater_telemetrySubtitle": "View telemetry of sensors and system stats",
   "repeater_cli": "CLI",
   "repeater_cliSubtitle": "Send commands to the repeater",
-  "repeater_neighbours": "Neighbors",
-  "repeater_neighboursSubtitle": "View zero hop neighbors.",
+  "repeater_neighbors": "Neighbors",
+  "repeater_neighborsSubtitle": "View zero hop neighbors.",
   "repeater_settings": "Settings",
   "repeater_settingsSubtitle": "Configure repeater parameters",
   "repeater_statusTitle": "Repeater Status",
@@ -1272,8 +1273,8 @@
       }
     }
   },
-  "neighbors_receivedData": "Received Neighbours Data",
-  "neighbors_requestTimedOut": "Neighbours request timed out.",
+  "neighbors_receivedData": "Received Neighbors Data",
+  "neighbors_requestTimedOut": "Neighbors request timed out.",
   "neighbors_errorLoading": "Error loading neighbors: {error}",
   "@neighbors_errorLoading": {
     "placeholders": {
@@ -1282,8 +1283,8 @@
       }
     }
   },
-  "neighbors_repeatersNeighbours": "Repeaters Neighbours",
-  "neighbors_noData": "No neighbours data available.",
+  "neighbors_repeatersNeighbors": "Repeaters Neighbors",
+  "neighbors_noData": "No neighbors data available.",
   "neighbors_unknownContact": "Unknown {pubkey}",
   "@neighbors_unknownContact": {
     "placeholders": {
@@ -1739,5 +1740,7 @@
   "settings_gpxExportChat": "Companion locations",
   "settings_gpxExportAllContacts": "All contacts locations",
   "settings_gpxExportShareText": "Map data exported from meshcore-open",
-  "settings_gpxExportShareSubject": "meshcore-open GPX map data export"
+  "settings_gpxExportShareSubject": "meshcore-open GPX map data export",
+  "snrIndicator_nearByRepeaters": "Nearby Repeaters",
+  "snrIndicator_lastSeen": "Last seen"
 }

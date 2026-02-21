@@ -1,4 +1,6 @@
 import 'dart:typed_data';
+import 'package:meshcore_open/utils/app_logger.dart';
+
 import '../connector/meshcore_protocol.dart';
 
 class CayenneLpp {
@@ -84,180 +86,192 @@ class CayenneLpp {
   static List<Map<String, dynamic>> parse(Uint8List bytes) {
     final buffer = BufferReader(bytes);
     final telemetry = <Map<String, dynamic>>[];
+    try {
+      while (buffer.remaining >= 2) {
+        final channel = buffer.readUInt8();
+        final type = buffer.readUInt8();
 
-    while (buffer.remaining >= 2) {
-      final channel = buffer.readUInt8();
-      final type = buffer.readUInt8();
+        if (channel == 0 && type == 0) {
+          break;
+        }
 
-      if (channel == 0 && type == 0) {
-        break;
+        switch (type) {
+          case lppGenericSensor:
+            telemetry.add({
+              'channel': channel,
+              'type': type,
+              'value': buffer.readUInt32BE(),
+            });
+            break;
+          case lppLuminosity:
+            telemetry.add({
+              'channel': channel,
+              'type': type,
+              'value': buffer.readUInt16BE(),
+            });
+            break;
+          case lppPresence:
+            telemetry.add({
+              'channel': channel,
+              'type': type,
+              'value': buffer.readUInt8(),
+            });
+            break;
+          case lppTemperature:
+            telemetry.add({
+              'channel': channel,
+              'type': type,
+              'value': buffer.readInt16BE() / 10,
+            });
+            break;
+          case lppRelativeHumidity:
+            telemetry.add({
+              'channel': channel,
+              'type': type,
+              'value': buffer.readUInt8() / 2,
+            });
+            break;
+          case lppBarometricPressure:
+            telemetry.add({
+              'channel': channel,
+              'type': type,
+              'value': buffer.readUInt16BE() / 10,
+            });
+            break;
+          case lppVoltage:
+            telemetry.add({
+              'channel': channel,
+              'type': type,
+              'value': buffer.readInt16BE() / 100,
+            });
+            break;
+          case lppCurrent:
+            telemetry.add({
+              'channel': channel,
+              'type': type,
+              'value': buffer.readInt16BE() / 1000,
+            });
+            break;
+          case lppPercentage:
+            telemetry.add({
+              'channel': channel,
+              'type': type,
+              'value': buffer.readUInt8(),
+            });
+            break;
+          case lppConcentration:
+            telemetry.add({
+              'channel': channel,
+              'type': type,
+              'value': buffer.readUInt16BE(),
+            });
+            break;
+          case lppPower:
+            telemetry.add({
+              'channel': channel,
+              'type': type,
+              'value': buffer.readUInt16BE(),
+            });
+            break;
+          case lppGps:
+            telemetry.add({
+              'channel': channel,
+              'type': type,
+              'value': {
+                'latitude': buffer.readInt24BE() / 10000,
+                'longitude': buffer.readInt24BE() / 10000,
+                'altitude': buffer.readInt24BE() / 100,
+              },
+            });
+            break;
+          default:
+            return telemetry;
+        }
       }
-
-      switch (type) {
-        case lppGenericSensor:
-          telemetry.add({
-            'channel': channel,
-            'type': type,
-            'value': buffer.readUInt32BE(),
-          });
-          break;
-        case lppLuminosity:
-          telemetry.add({
-            'channel': channel,
-            'type': type,
-            'value': buffer.readUInt16BE(),
-          });
-          break;
-        case lppPresence:
-          telemetry.add({
-            'channel': channel,
-            'type': type,
-            'value': buffer.readUInt8(),
-          });
-          break;
-        case lppTemperature:
-          telemetry.add({
-            'channel': channel,
-            'type': type,
-            'value': buffer.readInt16BE() / 10,
-          });
-          break;
-        case lppRelativeHumidity:
-          telemetry.add({
-            'channel': channel,
-            'type': type,
-            'value': buffer.readUInt8() / 2,
-          });
-          break;
-        case lppBarometricPressure:
-          telemetry.add({
-            'channel': channel,
-            'type': type,
-            'value': buffer.readUInt16BE() / 10,
-          });
-          break;
-        case lppVoltage:
-          telemetry.add({
-            'channel': channel,
-            'type': type,
-            'value': buffer.readInt16BE() / 100,
-          });
-          break;
-        case lppCurrent:
-          telemetry.add({
-            'channel': channel,
-            'type': type,
-            'value': buffer.readInt16BE() / 1000,
-          });
-          break;
-        case lppPercentage:
-          telemetry.add({
-            'channel': channel,
-            'type': type,
-            'value': buffer.readUInt8(),
-          });
-          break;
-        case lppConcentration:
-          telemetry.add({
-            'channel': channel,
-            'type': type,
-            'value': buffer.readUInt16BE(),
-          });
-          break;
-        case lppPower:
-          telemetry.add({
-            'channel': channel,
-            'type': type,
-            'value': buffer.readUInt16BE(),
-          });
-          break;
-        case lppGps:
-          telemetry.add({
-            'channel': channel,
-            'type': type,
-            'value': {
-              'latitude': buffer.readInt24BE() / 10000,
-              'longitude': buffer.readInt24BE() / 10000,
-              'altitude': buffer.readInt24BE() / 100,
-            },
-          });
-          break;
-        default:
-          return telemetry;
-      }
+      return telemetry;
+    } catch (e) {
+      // Handle parsing errors, possibly due to malformed data
+      appLogger.error('Error parsing Cayenne LPP data: $e');
+      // Return any telemetry parsed so far to preserve partial data
+      return telemetry;
     }
-
-    return telemetry;
   }
 
   static List<Map<String, dynamic>> parseByChannel(Uint8List bytes) {
     final buffer = BufferReader(bytes);
     final Map<int, Map<String, dynamic>> channels = {};
+    try {
+      while (buffer.remaining >= 2) {
+        final channel = buffer.readUInt8();
+        final type = buffer.readUInt8();
 
-    while (buffer.remaining >= 2) {
-      final channel = buffer.readUInt8();
-      final type = buffer.readUInt8();
+        // Optional: stop on padding (00 00)
+        if (channel == 0 && type == 0) {
+          break;
+        }
 
-      // Optional: stop on padding (00 00)
-      if (channel == 0 && type == 0) {
-        break;
+        final channelData = channels.putIfAbsent(
+          channel,
+          () => {'channel': channel, 'values': <String, dynamic>{}},
+        );
+
+        switch (type) {
+          case lppGenericSensor:
+            channelData['values']['generic'] = buffer.readUInt32BE();
+            break;
+          case lppLuminosity:
+            channelData['values']['luminosity'] = buffer.readUInt16BE();
+            break;
+          case lppPresence:
+            channelData['values']['presence'] = buffer.readUInt8() != 0;
+            break;
+          case lppTemperature:
+            channelData['values']['temperature'] = buffer.readInt16BE() / 10.0;
+            break;
+          case lppRelativeHumidity:
+            channelData['values']['humidity'] = buffer.readUInt8() / 2.0;
+            break;
+          case lppBarometricPressure:
+            channelData['values']['pressure'] = buffer.readUInt16BE() / 10.0;
+            break;
+          case lppVoltage:
+            channelData['values']['voltage'] = buffer.readInt16BE() / 100.0;
+            break;
+          case lppCurrent:
+            channelData['values']['current'] = buffer.readInt16BE() / 1000.0;
+            break;
+          case lppPercentage:
+            channelData['values']['percentage'] = buffer.readUInt8();
+            break;
+          case lppConcentration:
+            channelData['values']['concentration'] = buffer.readUInt16BE();
+            break;
+          case lppPower:
+            channelData['values']['power'] = buffer.readUInt16BE();
+            break;
+          case lppGps:
+            channelData['values']['gps'] = {
+              'latitude': buffer.readInt24BE() / 10000.0,
+              'longitude': buffer.readInt24BE() / 10000.0,
+              'altitude': buffer.readInt24BE() / 100.0,
+            };
+            break;
+          // Add more types as needed...
+          default:
+            //Stopped parsing to avoid misalignment
+            return channels.values.toList();
+        }
       }
 
-      final channelData = channels.putIfAbsent(
-        channel,
-        () => {'channel': channel, 'values': <String, dynamic>{}},
-      );
-
-      switch (type) {
-        case lppGenericSensor:
-          channelData['values']['generic'] = buffer.readUInt32BE();
-          break;
-        case lppLuminosity:
-          channelData['values']['luminosity'] = buffer.readUInt16BE();
-          break;
-        case lppPresence:
-          channelData['values']['presence'] = buffer.readUInt8() != 0;
-          break;
-        case lppTemperature:
-          channelData['values']['temperature'] = buffer.readInt16BE() / 10.0;
-          break;
-        case lppRelativeHumidity:
-          channelData['values']['humidity'] = buffer.readUInt8() / 2.0;
-          break;
-        case lppBarometricPressure:
-          channelData['values']['pressure'] = buffer.readUInt16BE() / 10.0;
-          break;
-        case lppVoltage:
-          channelData['values']['voltage'] = buffer.readInt16BE() / 100.0;
-          break;
-        case lppCurrent:
-          channelData['values']['current'] = buffer.readInt16BE() / 1000.0;
-          break;
-        case lppPercentage:
-          channelData['values']['percentage'] = buffer.readUInt8();
-          break;
-        case lppConcentration:
-          channelData['values']['concentration'] = buffer.readUInt16BE();
-          break;
-        case lppPower:
-          channelData['values']['power'] = buffer.readUInt16BE();
-          break;
-        case lppGps:
-          channelData['values']['gps'] = {
-            'latitude': buffer.readInt24BE() / 10000.0,
-            'longitude': buffer.readInt24BE() / 10000.0,
-            'altitude': buffer.readInt24BE() / 100.0,
-          };
-          break;
-        // Add more types as needed...
-        default:
-          // Unknown type: skip or handle error?
-          continue;
-      }
+      final List<Map<String, dynamic>> channelsOut = channels.values.toList();
+      channelsOut.sort((a, b) => a['channel'].compareTo(b['channel']));
+      return channelsOut;
+    } catch (e) {
+      // Handle parsing errors, possibly due to malformed data
+      appLogger.error('Error parsing Cayenne LPP data: $e');
+      return <
+        Map<String, dynamic>
+      >[]; // Return an empty list on error to avoid crashing the app
     }
-
-    final List<Map<String, dynamic>> channelsOut = channels.values.toList();
-    channelsOut.sort((a, b) => a['channel'].compareTo(b['channel']));
-    return channelsOut;
   }
 }

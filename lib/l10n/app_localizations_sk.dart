@@ -1088,6 +1088,9 @@ class AppLocalizationsSk extends AppLocalizations {
   String get chat_pathManagement => 'Správa ciest';
 
   @override
+  String get chat_ShowAllPaths => 'Zobraziť všetky cesty';
+
+  @override
   String get chat_routingMode => 'Režim trasy';
 
   @override
@@ -1688,10 +1691,10 @@ class AppLocalizationsSk extends AppLocalizations {
   String get repeater_cliSubtitle => 'Pošlite príkazy opakovaču';
 
   @override
-  String get repeater_neighbours => 'Súsezný';
+  String get repeater_neighbors => 'Súsezný';
 
   @override
-  String get repeater_neighboursSubtitle => 'Zobraziť susedné body bez skokov.';
+  String get repeater_neighborsSubtitle => 'Zobraziť susedné body bez skokov.';
 
   @override
   String get repeater_settings => 'Nastavenia';
@@ -2382,7 +2385,7 @@ class AppLocalizationsSk extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Opakovadlá Súsezná';
+  String get neighbors_repeatersNeighbors => 'Opakovadlá Súsezná';
 
   @override
   String get neighbors_noData =>
@@ -3006,4 +3009,10 @@ class AppLocalizationsSk extends AppLocalizations {
   @override
   String get settings_gpxExportShareSubject =>
       'meshcore-open export dát GPX mapových údajov';
+
+  @override
+  String get snrIndicator_nearByRepeaters => 'Miestne opakovače';
+
+  @override
+  String get snrIndicator_lastSeen => 'Naposledy videný';
 }

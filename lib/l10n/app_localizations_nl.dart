@@ -1088,6 +1088,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get chat_pathManagement => 'Beheer van Paden';
 
   @override
+  String get chat_ShowAllPaths => 'Toon alle paden';
+
+  @override
   String get chat_routingMode => 'Routeerwijze';
 
   @override
@@ -1687,10 +1690,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get repeater_cliSubtitle => 'Verzend commando\'s naar de repeater';
 
   @override
-  String get repeater_neighbours => 'Buren';
+  String get repeater_neighbors => 'Buren';
 
   @override
-  String get repeater_neighboursSubtitle => 'Bekijk nul hops buren.';
+  String get repeater_neighborsSubtitle => 'Bekijk nul hops buren.';
 
   @override
   String get repeater_settings => 'Instellingen';
@@ -2386,7 +2389,7 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Herhalingen Buren';
+  String get neighbors_repeatersNeighbors => 'Herhalingen Buren';
 
   @override
   String get neighbors_noData => 'Geen gegevens van buren beschikbaar.';
@@ -3011,4 +3014,10 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get settings_gpxExportShareSubject =>
       'meshcore-open GPX kaartgegevens exporteren';
+
+  @override
+  String get snrIndicator_nearByRepeaters => 'Nabije herhalingseenheden';
+
+  @override
+  String get snrIndicator_lastSeen => 'Laatst gezien';
 }

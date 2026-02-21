@@ -12,6 +12,7 @@ import 'package:meshcore_open/models/app_settings.dart';
 import 'package:meshcore_open/models/contact.dart';
 import 'package:meshcore_open/services/app_settings_service.dart';
 import 'package:meshcore_open/services/map_tile_cache_service.dart';
+import 'package:meshcore_open/utils/app_logger.dart';
 import 'package:meshcore_open/widgets/snr_indicator.dart';
 import 'package:provider/provider.dart';
 
@@ -37,7 +38,7 @@ String formatDistance(double distanceMeters, {required bool isImperial}) {
 
 class PathTraceData {
   final Uint8List pathData;
-  final Uint8List snrData;
+  final List<double> snrData;
   final Map<int, Contact> pathContacts;
 
   PathTraceData({
@@ -50,6 +51,7 @@ class PathTraceData {
 class PathTraceMapScreen extends StatefulWidget {
   final String title;
   final Uint8List path;
+  final int? repeaterId;
   final bool flipPathRound;
   final bool reversePathRound;
 
@@ -57,6 +59,7 @@ class PathTraceMapScreen extends StatefulWidget {
     super.key,
     required this.title,
     required this.path,
+    this.repeaterId,
     this.flipPathRound = false,
     this.reversePathRound = false,
   });
@@ -104,7 +107,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
     super.dispose();
   }
 
-  Uint8List addReturnpath(Uint8List pathBytes) {
+  Uint8List addReturnPath(Uint8List pathBytes) {
     Uint8List? traceBytes;
     final len = (pathBytes.length + pathBytes.length - 1);
     traceBytes = Uint8List(len);
@@ -132,7 +135,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
         : widget.path;
 
     if (widget.flipPathRound) {
-      path = addReturnpath(pathTmp);
+      path = addReturnPath(pathTmp);
     } else {
       path = pathTmp;
     }
@@ -154,42 +157,57 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
     _frameSubscription = connector.receivedFrames.listen((frame) {
       if (frame.isEmpty) return;
       final frameBuffer = BufferReader(frame);
-      final code = frameBuffer.readUInt8();
+      try {
+        final code = frameBuffer.readUInt8();
 
-      if (code == respCodeSent) {
-        frameBuffer.skipBytes(1); //reserved
-        tagData = frameBuffer.readBytes(4);
-        final timeoutSeconds = frameBuffer.readUInt32LE();
+        if (code == respCodeSent) {
+          frameBuffer.skipBytes(1); //reserved
+          tagData = frameBuffer.readBytes(4);
+          final timeoutMilliseconds = frameBuffer.readUInt32LE();
 
-        // Start timeout timer for trace response
-        _timeoutTimer?.cancel();
-        _timeoutTimer = Timer(Duration(milliseconds: timeoutSeconds), () {
+          // Start timeout timer for trace response
+          _timeoutTimer?.cancel();
+          _timeoutTimer = Timer(
+            Duration(milliseconds: timeoutMilliseconds),
+            () {
+              if (!mounted) return;
+              setState(() {
+                _isLoading = false;
+                _failed2Loaded = true;
+              });
+            },
+          );
+        }
+
+        if (code == respCodeErr) {
+          _timeoutTimer?.cancel();
           if (!mounted) return;
           setState(() {
             _isLoading = false;
             _failed2Loaded = true;
           });
-        });
-      }
+        }
 
-      if (code == respCodeErr) {
+        // Check if it's a binary response
+        if (frame.length > 8 &&
+            code == pushCodeTraceData &&
+            listEquals(frame.sublist(4, 8), tagData)) {
+          _timeoutTimer?.cancel();
+          if (!mounted) return;
+          frameBuffer.skipBytes(3); //reserved + path length + flag
+          if (listEquals(frameBuffer.readBytes(4), tagData)) {
+            _handleTraceResponse(frame);
+          }
+        }
+      } catch (e) {
         _timeoutTimer?.cancel();
         if (!mounted) return;
         setState(() {
           _isLoading = false;
           _failed2Loaded = true;
         });
-      }
-      // Check if it's a binary response
-      if (frame.length > 8 &&
-          code == pushCodeTraceData &&
-          listEquals(frame.sublist(4, 8), tagData)) {
-        _timeoutTimer?.cancel();
-        if (!mounted) return;
-        frameBuffer.skipBytes(3); //reserved + path length + flag
-        if (listEquals(frameBuffer.readBytes(4), tagData)) {
-          _handleTraceResponse(frame);
-        }
+        // Handle any parsing errors gracefully
+        appLogger.error('Error parsing frame: $e', tag: 'PathTraceMapScreen');
       }
     });
   }
@@ -198,64 +216,83 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
     final connector = Provider.of<MeshCoreConnector>(context, listen: false);
 
     final buffer = BufferReader(frame);
-    buffer.skipBytes(2); // Skip push code and reserved byte
-    int pathLength = buffer.readUInt8();
-    buffer.skipBytes(5); // Skip Flag byte and tag data
-    buffer.skipBytes(4); // Skip auth code
-    Uint8List pathData = buffer.readBytes(pathLength);
-    Uint8List snrData = buffer.readRemainingBytes();
+    try {
+      buffer.skipBytes(2); // Skip push code and reserved byte
+      int pathLength = buffer.readUInt8();
+      buffer.skipBytes(5); // Skip Flag byte and tag data
+      buffer.skipBytes(4); // Skip auth code
+      Uint8List pathData = buffer.readBytes(pathLength);
+      List<double> snrData = buffer
+          .readRemainingBytes()
+          .map((snr) => snr.toSigned(8).toDouble() / 4)
+          .toList();
 
-    Map<int, Contact> pathContacts = {};
+      Map<int, Contact> pathContacts = {};
 
-    connector.contacts.where((c) => c.type != advTypeChat).forEach((repeater) {
-      for (var repeaterData in pathData) {
-        if (listEquals(
-          repeater.publicKey.sublist(0, 1),
-          Uint8List.fromList([repeaterData]),
-        )) {
-          pathContacts[repeaterData] = repeater;
+      connector.contacts.where((c) => c.type != advTypeChat).forEach((
+        repeater,
+      ) {
+        for (var repeaterData in pathData) {
+          if (listEquals(
+            repeater.publicKey.sublist(0, 1),
+            Uint8List.fromList([repeaterData]),
+          )) {
+            pathContacts[repeaterData] = repeater;
+          }
         }
-      }
-    });
+      });
 
-    setState(() {
-      _isLoading = false;
-      _hasData = true;
-      _traceData = PathTraceData(
-        pathData: pathData,
-        snrData: snrData,
-        pathContacts: pathContacts,
-      );
-      _points = <LatLng>[];
-      _points.add(LatLng(connector.selfLatitude!, connector.selfLongitude!));
-      for (final hop in _traceData!.pathData) {
-        final contact = _traceData!.pathContacts[hop];
-        if (contact != null &&
-            contact.hasLocation &&
-            contact.latitude != null &&
-            contact.longitude != null) {
-          _points.add(LatLng(contact.latitude!, contact.longitude!));
+      setState(() {
+        _isLoading = false;
+        _hasData = true;
+        _traceData = PathTraceData(
+          pathData: pathData,
+          snrData: snrData,
+          pathContacts: pathContacts,
+        );
+        _points = <LatLng>[];
+        _points.add(LatLng(connector.selfLatitude!, connector.selfLongitude!));
+        for (final hop in _traceData!.pathData) {
+          final contact = _traceData!.pathContacts[hop];
+          if (contact != null &&
+              contact.hasLocation &&
+              contact.latitude != null &&
+              contact.longitude != null) {
+            _points.add(LatLng(contact.latitude!, contact.longitude!));
+          }
         }
-      }
-      _polylines = _points.length > 1
-          ? [
-              Polyline(
-                points: _points,
-                strokeWidth: 4,
-                color: Colors.blueAccent,
-              ),
-            ]
-          : <Polyline>[];
+        _polylines = _points.length > 1
+            ? [
+                Polyline(
+                  points: _points,
+                  strokeWidth: 4,
+                  color: Colors.blueAccent,
+                ),
+              ]
+            : <Polyline>[];
 
-      _initialCenter = _points.isNotEmpty ? _points.first : const LatLng(0, 0);
-      _initialZoom = _points.isNotEmpty ? 13.0 : 2.0;
-      _showNodeLabels = _initialZoom >= _labelZoomThreshold;
-      _bounds = _points.length > 1 ? LatLngBounds.fromPoints(_points) : null;
-      _mapKey = ValueKey(
-        '${context.l10n.pathTrace_you},${_formatPathPrefixes(_traceData!.pathData)}',
+        _initialCenter = _points.isNotEmpty
+            ? _points.first
+            : const LatLng(0, 0);
+        _initialZoom = _points.isNotEmpty ? 13.0 : 2.0;
+        _bounds = _points.length > 1 ? LatLngBounds.fromPoints(_points) : null;
+        _mapKey = ValueKey(
+          '${context.l10n.pathTrace_you},${_formatPathPrefixes(_traceData!.pathData)}',
+        );
+        _pathDistanceMeters = getPathDistanceMeters(_points);
+      });
+    } catch (e) {
+      appLogger.error(
+        'Error handling trace response: $e',
+        tag: 'PathTraceMapScreen',
       );
-      _pathDistanceMeters = getPathDistanceMeters(_points);
-    });
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+          _failed2Loaded = true;
+        });
+      }
+    }
   }
 
   @override
@@ -615,6 +652,12 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
                           itemCount: pathTraceData.pathData.length + 1,
                           separatorBuilder: (_, _) => const Divider(height: 1),
                           itemBuilder: (context, index) {
+                            final snrUi = snrUiFromSNR(
+                              index < pathTraceData.snrData.length
+                                  ? pathTraceData.snrData[index]
+                                  : null,
+                              context.read<MeshCoreConnector>().currentSf,
+                            );
                             return Column(
                               children: [
                                 ListTile(
@@ -633,12 +676,22 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
                                     ),
                                     style: const TextStyle(fontSize: 14),
                                   ),
-                                  trailing: SNRIcon(
-                                    snr:
-                                        pathTraceData.snrData[index].toSigned(
-                                          8,
-                                        ) /
-                                        4.0,
+                                  trailing: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        snrUi.icon,
+                                        color: snrUi.color,
+                                        size: 18.0,
+                                      ),
+                                      Text(
+                                        snrUi.text,
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          color: snrUi.color,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                   onTap: () {
                                     // Handle item tap

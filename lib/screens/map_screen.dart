@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:meshcore_open/screens/path_trace_map.dart';
+import 'package:meshcore_open/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
@@ -19,7 +20,6 @@ import '../services/map_marker_service.dart';
 import '../services/map_tile_cache_service.dart';
 import '../utils/contact_search.dart';
 import '../utils/route_transitions.dart';
-import '../widgets/battery_indicator.dart';
 import '../widgets/quick_switch_bar.dart';
 import '../widgets/adaptive_app_bar_title.dart';
 import 'channels_screen.dart';
@@ -112,7 +112,7 @@ class _MapScreenState extends State<MapScreen> {
   double _zoomFromStdDev(double latStdDev, double lonStdDev) {
     final maxSpread = max(latStdDev, lonStdDev);
     if (maxSpread <= 0) return 13.0;
-    // Approzimate: each zoom level halves the visible area
+    // Approximate: each zoom level halves the visible area
     // ~0.01 degrees spread -> zoom 13, ~0.1 -> zoom 10, ~1.0 -> zoom 7
     final zoom = 10.0 - log(maxSpread * 10 + 1) / ln10 * 3;
     return zoom.clamp(4.0, 15.0);
@@ -270,8 +270,7 @@ class _MapScreenState extends State<MapScreen> {
           canPop: allowBack,
           child: Scaffold(
             appBar: AppBar(
-              leading: BatteryIndicator(connector: connector),
-              title: AdaptiveAppBarTitle(context.l10n.map_title),
+              title: AppBarTitle(context.l10n.map_title),
               centerTitle: true,
               automaticallyImplyLeading: false,
               actions: [
@@ -445,8 +444,8 @@ class _MapScreenState extends State<MapScreen> {
                               connector.selfLatitude!,
                               connector.selfLongitude!,
                             ),
-                            width: 35,
-                            height: 35,
+                            width: 40,
+                            height: 40,
                             child: Container(
                               padding: const EdgeInsets.all(4),
                               decoration: BoxDecoration(
@@ -947,7 +946,7 @@ class _MapScreenState extends State<MapScreen> {
               color: _getNodeColor(contact.type),
             ),
             const SizedBox(width: 8),
-            Expanded(child: Text(contact.name)),
+            Expanded(child: SelectableText(contact.name)),
           ],
         ),
         content: Column(
@@ -1118,7 +1117,7 @@ class _MapScreenState extends State<MapScreen> {
             ),
           ),
           const SizedBox(height: 2),
-          Text(value, style: const TextStyle(fontSize: 14)),
+          SelectableText(value, style: const TextStyle(fontSize: 14)),
         ],
       ),
     );

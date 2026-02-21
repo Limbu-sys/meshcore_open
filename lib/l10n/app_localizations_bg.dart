@@ -1094,6 +1094,9 @@ class AppLocalizationsBg extends AppLocalizations {
   String get chat_pathManagement => 'Управление на пътища';
 
   @override
+  String get chat_ShowAllPaths => 'Покажи всички пътища';
+
+  @override
   String get chat_routingMode => 'Режим на маршрутизиране';
 
   @override
@@ -1696,10 +1699,10 @@ class AppLocalizationsBg extends AppLocalizations {
   String get repeater_cliSubtitle => 'Изпрати команди към ретранслатора';
 
   @override
-  String get repeater_neighbours => 'Съседи';
+  String get repeater_neighbors => 'Съседи';
 
   @override
-  String get repeater_neighboursSubtitle =>
+  String get repeater_neighborsSubtitle =>
       'Преглед на съседни възли с нулев скок.';
 
   @override
@@ -2399,7 +2402,7 @@ class AppLocalizationsBg extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Повторители Съседи';
+  String get neighbors_repeatersNeighbors => 'Повторители Съседи';
 
   @override
   String get neighbors_noData => 'Няма налични данни за съседи.';
@@ -3019,4 +3022,10 @@ class AppLocalizationsBg extends AppLocalizations {
   @override
   String get settings_gpxExportShareSubject =>
       'meshcore-open износ на данни за карта в формат GPX';
+
+  @override
+  String get snrIndicator_nearByRepeaters => 'Близки повтарящи се устройства';
+
+  @override
+  String get snrIndicator_lastSeen => 'Последно видян';
 }

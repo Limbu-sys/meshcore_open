@@ -1089,6 +1089,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get chat_pathManagement => 'Керування шляхами';
 
   @override
+  String get chat_ShowAllPaths => 'Показати всі шляхи';
+
+  @override
   String get chat_routingMode => 'Режим маршрутизації';
 
   @override
@@ -1694,10 +1697,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get repeater_cliSubtitle => 'Надіслати команди ретранслятору';
 
   @override
-  String get repeater_neighbours => 'Сусіди';
+  String get repeater_neighbors => 'Сусіди';
 
   @override
-  String get repeater_neighboursSubtitle =>
+  String get repeater_neighborsSubtitle =>
       'Показати сусідів нульового стрибка.';
 
   @override
@@ -2399,7 +2402,7 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Ретранслятори-сусіди';
+  String get neighbors_repeatersNeighbors => 'Ретранслятори-сусіди';
 
   @override
   String get neighbors_noData => 'Дані про сусідів недоступні.';
@@ -3037,4 +3040,10 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get settings_gpxExportShareSubject =>
       'експорт даних карти meshcore-open у форматі GPX';
+
+  @override
+  String get snrIndicator_nearByRepeaters => 'Ближні ретранслятори';
+
+  @override
+  String get snrIndicator_lastSeen => 'Останній раз бачили';
 }
