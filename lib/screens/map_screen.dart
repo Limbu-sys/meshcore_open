@@ -462,13 +462,10 @@ class _MapScreenState extends State<MapScreen> {
                                 ],
                               ),
                               alignment: Alignment.center,
-                              child: Text(
-                                context.l10n.pathTrace_you,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12,
-                                ),
+                              child: const Icon(
+                                Icons.person_pin_circle,
+                                color: Colors.white,
+                                size: 20,
                               ),
                             ),
                           ),
@@ -480,7 +477,7 @@ class _MapScreenState extends State<MapScreen> {
                               connector.selfLatitude!,
                               connector.selfLongitude!,
                             ),
-                            label: connector.deviceDisplayName,
+                            label: context.l10n.pathTrace_you,
                           ),
                       ],
                     ),
@@ -598,27 +595,24 @@ class _MapScreenState extends State<MapScreen> {
       alignment: Alignment.topCenter,
       child: IgnorePointer(
         child: Transform.translate(
-          offset: const Offset(0, -26),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-            decoration: BoxDecoration(
-              color: Colors.black54,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: SizedBox(
-              width: 96,
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  label,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 11,
-                    fontWeight: FontWeight.w500,
-                  ),
+          offset: const Offset(0, -20),
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+              decoration: BoxDecoration(
+                color: Colors.black54,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
