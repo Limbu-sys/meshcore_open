@@ -323,6 +323,10 @@ class AppLocalizationsIt extends AppLocalizations {
       'Un client Flutter open-source per i dispositivi di rete mesh LoRa Core di MeshCore.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'Dati di elevazione LOS: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Nome';
 
   @override
@@ -618,6 +622,15 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get appSettings_offlineMapCache => 'Cache Mappa Offline';
+
+  @override
+  String get appSettings_unitsTitle => 'Unità';
+
+  @override
+  String get appSettings_unitsMetric => 'Metrico (m/km)';
+
+  @override
+  String get appSettings_unitsImperial => 'Imperiale (ft / mi)';
 
   @override
   String get appSettings_noAreaSelected => 'Nessun\'area selezionata';
@@ -1078,6 +1091,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get chat_pathManagement => 'Gestione Percorsi';
 
   @override
+  String get chat_ShowAllPaths => 'Mostra tutti i percorsi';
+
+  @override
   String get chat_routingMode => 'Modalità di routing';
 
   @override
@@ -1235,6 +1251,12 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get map_title => 'Mappa Nodi';
+
+  @override
+  String get map_lineOfSight => 'Linea di vista';
+
+  @override
+  String get map_losScreenTitle => 'Linea di vista';
 
   @override
   String get map_noNodesWithLocation => 'Nessun nodo con dati di posizione';
@@ -1672,10 +1694,10 @@ class AppLocalizationsIt extends AppLocalizations {
   String get repeater_cliSubtitle => 'Invia comandi al ripetitore';
 
   @override
-  String get repeater_neighbours => 'Vicini';
+  String get repeater_neighbors => 'Vicini';
 
   @override
-  String get repeater_neighboursSubtitle =>
+  String get repeater_neighborsSubtitle =>
       'Visualizza vicini di salto pari a zero.';
 
   @override
@@ -2376,7 +2398,7 @@ class AppLocalizationsIt extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Ripetitori Vicini';
+  String get neighbors_repeatersNeighbors => 'Ripetitori Vicini';
 
   @override
   String get neighbors_noData => 'Nessun dato sugli vicini disponibile.';
@@ -2721,6 +2743,117 @@ class AppLocalizationsIt extends AppLocalizations {
   String get pathTrace_clearTooltip => 'Pulisci percorso';
 
   @override
+  String get losSelectStartEnd =>
+      'Seleziona i nodi iniziali e finali per la LOS.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Controllo della linea di vista fallito: $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Cancella tutti i punti';
+
+  @override
+  String get losRunToViewElevationProfile =>
+      'Eseguire LOS per visualizzare il profilo altimetrico';
+
+  @override
+  String get losMenuTitle => 'Menù LOS';
+
+  @override
+  String get losMenuSubtitle =>
+      'Tocca i nodi o premi a lungo la mappa per punti personalizzati';
+
+  @override
+  String get losShowDisplayNodes => 'Mostra i nodi di visualizzazione';
+
+  @override
+  String get losCustomPoints => 'Punti personalizzati';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Personalizzato $index';
+  }
+
+  @override
+  String get losPointA => 'Punto A';
+
+  @override
+  String get losPointB => 'Punto B';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Antenna A: $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Antenna B: $value $unit';
+  }
+
+  @override
+  String get losRun => 'Esegui LOS';
+
+  @override
+  String get losNoElevationData => 'Nessun dato di elevazione';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, libera LOS, distanza minima $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, bloccato da $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'LOS: controllo...';
+
+  @override
+  String get losStatusNoData => 'LOS: nessun dato';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS: $clear/$total libera, $blocked bloccato, $unknown sconosciuto';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Dati di elevazione non disponibili per uno o più campioni.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Dati punti/elevazione non validi per il calcolo della LOS.';
+
+  @override
+  String get losRenameCustomPoint => 'Rinomina punto personalizzato';
+
+  @override
+  String get losPointName => 'Nome del punto';
+
+  @override
+  String get losShowPanelTooltip => 'Mostra il pannello LOS';
+
+  @override
+  String get losHidePanelTooltip => 'Nascondi il pannello LOS';
+
+  @override
+  String get losElevationAttribution =>
+      'Dati di elevazione: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get contacts_pathTrace => 'Traccia Percorso';
 
   @override
@@ -2893,4 +3026,10 @@ class AppLocalizationsIt extends AppLocalizations {
   @override
   String get settings_gpxExportShareSubject =>
       'meshcore-open esportazione dati mappa GPX';
+
+  @override
+  String get snrIndicator_nearByRepeaters => 'Ripetitori vicini';
+
+  @override
+  String get snrIndicator_lastSeen => 'Ultimo accesso';
 }

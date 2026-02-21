@@ -131,6 +131,7 @@
   },
   "settings_aboutLegalese": "2026 MeshCore Open Source Project",
   "settings_aboutDescription": "An open-source Flutter client for MeshCore LoRa mesh networking devices.",
+  "settings_aboutOpenMeteoAttribution": "LOS elevation data: Open-Meteo (CC BY 4.0)",
   "settings_infoName": "Name",
   "settings_infoId": "ID",
   "settings_infoStatus": "Status",
@@ -242,6 +243,9 @@
   "appSettings_last24Hours": "Last 24 hours",
   "appSettings_lastWeek": "Last week",
   "appSettings_offlineMapCache": "Offline Map Cache",
+  "appSettings_unitsTitle": "Units",
+  "appSettings_unitsMetric": "Metric (m / km)",
+  "appSettings_unitsImperial": "Imperial (ft / mi)",
   "appSettings_noAreaSelected": "No area selected",
   "appSettings_areaSelectedZoom": "Area selected (zoom {minZoom}-{maxZoom})",
   "@appSettings_areaSelectedZoom": {
@@ -558,6 +562,7 @@
   },
   "debugFrame_hexDump": "Hex Dump:",
   "chat_pathManagement": "Path Management",
+  "chat_ShowAllPaths": "Show all paths",
   "chat_routingMode": "Routing mode",
   "chat_autoUseSavedPath": "Auto (use saved path)",
   "chat_forceFloodMode": "Force Flood Mode",
@@ -638,6 +643,8 @@
   },
   "chat_invalidLink": "Invalid link format",
   "map_title": "Node Map",
+  "map_lineOfSight": "Line of Sight",
+  "map_losScreenTitle": "Line of Sight",
   "map_noNodesWithLocation": "No nodes with location data",
   "map_nodesNeedGps": "Nodes need to share their GPS coordinates\nto appear on the map",
   "map_nodesCount": "Nodes: {count}",
@@ -905,8 +912,8 @@
   "repeater_telemetrySubtitle": "View telemetry of sensors and system stats",
   "repeater_cli": "CLI",
   "repeater_cliSubtitle": "Send commands to the repeater",
-  "repeater_neighbours": "Neighbors",
-  "repeater_neighboursSubtitle": "View zero hop neighbors.",
+  "repeater_neighbors": "Neighbors",
+  "repeater_neighborsSubtitle": "View zero hop neighbors.",
   "repeater_settings": "Settings",
   "repeater_settingsSubtitle": "Configure repeater parameters",
   "repeater_statusTitle": "Repeater Status",
@@ -1266,8 +1273,8 @@
       }
     }
   },
-  "neighbors_receivedData": "Received Neighbours Data",
-  "neighbors_requestTimedOut": "Neighbours request timed out.",
+  "neighbors_receivedData": "Received Neighbors Data",
+  "neighbors_requestTimedOut": "Neighbors request timed out.",
   "neighbors_errorLoading": "Error loading neighbors: {error}",
   "@neighbors_errorLoading": {
     "placeholders": {
@@ -1276,8 +1283,8 @@
       }
     }
   },
-  "neighbors_repeatersNeighbours": "Repeaters Neighbours",
-  "neighbors_noData": "No neighbours data available.",
+  "neighbors_repeatersNeighbors": "Repeaters Neighbors",
+  "neighbors_noData": "No neighbors data available.",
   "neighbors_unknownContact": "Unknown {pubkey}",
   "@neighbors_unknownContact": {
     "placeholders": {
@@ -1547,6 +1554,115 @@
   "pathTrace_refreshTooltip": "Refresh Path Trace.",
   "pathTrace_someHopsNoLocation": "One or more of the hops is missing a location!",
   "pathTrace_clearTooltip": "Clear path.",
+  "losSelectStartEnd": "Select start and end nodes for LOS.",
+  "losRunFailed": "Line-of-sight check failed: {error}",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "losClearAllPoints": "Clear all points",
+  "losRunToViewElevationProfile": "Run LOS to view elevation profile",
+  "losMenuTitle": "LOS Menu",
+  "losMenuSubtitle": "Tap nodes or long-press map for custom points",
+  "losShowDisplayNodes": "Show display nodes",
+  "losCustomPoints": "Custom points",
+  "losCustomPointLabel": "Custom {index}",
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "losPointA": "Point A",
+  "losPointB": "Point B",
+  "losAntennaA": "Antenna A: {value} {unit}",
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losAntennaB": "Antenna B: {value} {unit}",
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losRun": "Run LOS",
+  "losNoElevationData": "No elevation data",
+  "losProfileClear": "{distance} {distanceUnit}, clear LOS, min clearance {clearance} {heightUnit}",
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losProfileBlocked": "{distance} {distanceUnit}, blocked by {obstruction} {heightUnit}",
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losStatusChecking": "LOS: checking...",
+  "losStatusNoData": "LOS: no data",
+  "losStatusSummary": "LOS: {clear}/{total} clear, {blocked} blocked, {unknown} unknown",
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "losErrorElevationUnavailable": "Elevation data unavailable for one or more samples.",
+  "losErrorInvalidInput": "Invalid points/elevation data for LOS calculation.",
+  "losRenameCustomPoint": "Rename custom point",
+  "losPointName": "Point name",
+  "losShowPanelTooltip": "Show LOS panel",
+  "losHidePanelTooltip": "Hide LOS panel",
+  "losElevationAttribution": "Elevation data: Open-Meteo (CC BY 4.0)",
   "contacts_pathTrace": "Path Trace",
   "contacts_ping": "Ping",
   "contacts_repeaterPathTrace": "Path trace to repeater",
@@ -1624,5 +1740,7 @@
   "settings_gpxExportChat": "Companion locations",
   "settings_gpxExportAllContacts": "All contacts locations",
   "settings_gpxExportShareText": "Map data exported from meshcore-open",
-  "settings_gpxExportShareSubject": "meshcore-open GPX map data export"
+  "settings_gpxExportShareSubject": "meshcore-open GPX map data export",
+  "snrIndicator_nearByRepeaters": "Nearby Repeaters",
+  "snrIndicator_lastSeen": "Last seen"
 }

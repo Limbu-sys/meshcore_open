@@ -68,20 +68,24 @@ class _BatteryIndicatorState extends State<BatteryIndicator> {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(batteryUi.icon, size: 18, color: batteryUi.color),
-            const SizedBox(width: 2),
-            Flexible(
-              child: Text(
-                displayText,
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500,
-                  color: batteryUi.color,
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(batteryUi.icon, size: 18, color: batteryUi.color),
+                const SizedBox(height: 2),
+                Flexible(
+                  child: Text(
+                    displayText,
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      color: batteryUi.color,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-                overflow: TextOverflow.visible,
-                maxLines: 1,
-                softWrap: false,
-              ),
+              ],
             ),
           ],
         ),

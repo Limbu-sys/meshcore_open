@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:meshcore_open/screens/path_trace_map.dart';
+import 'package:meshcore_open/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
 import '../l10n/l10n.dart';
 import '../connector/meshcore_protocol.dart';
+import '../models/app_settings.dart';
 import '../models/channel.dart';
 import '../models/contact.dart';
 import '../services/app_settings_service.dart';
@@ -17,7 +19,6 @@ import '../services/map_marker_service.dart';
 import '../services/map_tile_cache_service.dart';
 import '../utils/contact_search.dart';
 import '../utils/route_transitions.dart';
-import '../widgets/battery_indicator.dart';
 import '../widgets/quick_switch_bar.dart';
 import 'channels_screen.dart';
 import 'chat_screen.dart';
@@ -26,6 +27,7 @@ import '../widgets/repeater_login_dialog.dart';
 import '../widgets/room_login_dialog.dart';
 import 'repeater_hub_screen.dart';
 import 'settings_screen.dart';
+import 'line_of_sight_map_screen.dart';
 
 class MapScreen extends StatefulWidget {
   final LatLng? highlightPosition;
@@ -46,6 +48,8 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  static const double _labelZoomThreshold = 8.5;
+
   final MapController _mapController = MapController();
   final MapMarkerService _markerService = MapMarkerService();
   final Set<String> _hiddenMarkerIds = {};
@@ -58,6 +62,7 @@ class _MapScreenState extends State<MapScreen> {
   final List<LatLng> _points = [];
   final List<Polyline> _polylines = [];
   bool _legendExpanded = false;
+  bool _showNodeLabels = true;
 
   @override
   void initState() {
@@ -105,7 +110,7 @@ class _MapScreenState extends State<MapScreen> {
   double _zoomFromStdDev(double latStdDev, double lonStdDev) {
     final maxSpread = max(latStdDev, lonStdDev);
     if (maxSpread <= 0) return 13.0;
-    // Approzimate: each zoom level halves the visible area
+    // Approximate: each zoom level halves the visible area
     // ~0.01 degrees spread -> zoom 13, ~0.1 -> zoom 10, ~1.0 -> zoom 7
     final zoom = 10.0 - log(maxSpread * 10 + 1) / ln10 * 3;
     return zoom.clamp(4.0, 15.0);
@@ -247,6 +252,7 @@ class _MapScreenState extends State<MapScreen> {
         // Re center map after removed markers have loaded
         if (!_hasInitializedMap && _removedMarkersLoaded) {
           _hasInitializedMap = true;
+          _showNodeLabels = initialZoom >= _labelZoomThreshold;
           if (hasMapContent) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               if (mounted) {
@@ -262,8 +268,7 @@ class _MapScreenState extends State<MapScreen> {
           canPop: allowBack,
           child: Scaffold(
             appBar: AppBar(
-              leading: BatteryIndicator(connector: connector),
-              title: Text(context.l10n.map_title),
+              title: AppBarTitle(context.l10n.map_title),
               centerTitle: true,
               automaticallyImplyLeading: false,
               actions: [
@@ -272,6 +277,47 @@ class _MapScreenState extends State<MapScreen> {
                     icon: const Icon(Icons.radar),
                     onPressed: () => _startPath(),
                     tooltip: context.l10n.contacts_pathTrace,
+                  ),
+                if (!_isBuildingPathTrace)
+                  IconButton(
+                    icon: const Icon(Icons.visibility),
+                    onPressed: () {
+                      final candidates = <LineOfSightEndpoint>[];
+                      if (connector.selfLatitude != null &&
+                          connector.selfLongitude != null) {
+                        candidates.add(
+                          LineOfSightEndpoint(
+                            label: context.l10n.pathTrace_you,
+                            point: LatLng(
+                              connector.selfLatitude!,
+                              connector.selfLongitude!,
+                            ),
+                            color: Colors.teal,
+                            icon: Icons.person_pin_circle,
+                          ),
+                        );
+                      }
+                      for (final c in contactsWithLocation) {
+                        candidates.add(
+                          LineOfSightEndpoint(
+                            label: c.name,
+                            point: LatLng(c.latitude!, c.longitude!),
+                            color: _getNodeColor(c.type),
+                            icon: _getNodeIcon(c.type),
+                          ),
+                        );
+                      }
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LineOfSightMapScreen(
+                            title: context.l10n.map_losScreenTitle,
+                            candidates: candidates,
+                          ),
+                        ),
+                      );
+                    },
+                    tooltip: context.l10n.map_lineOfSight,
                   ),
                 PopupMenuButton(
                   itemBuilder: (context) => [
@@ -351,6 +397,14 @@ class _MapScreenState extends State<MapScreen> {
                         position: latLng,
                       );
                     },
+                    onPositionChanged: (camera, hasGesture) {
+                      final shouldShow = camera.zoom >= _labelZoomThreshold;
+                      if (shouldShow != _showNodeLabels && mounted) {
+                        setState(() {
+                          _showNodeLabels = shouldShow;
+                        });
+                      }
+                    },
                   ),
                   children: [
                     TileLayer(
@@ -375,7 +429,11 @@ class _MapScreenState extends State<MapScreen> {
                               size: 34,
                             ),
                           ),
-                        ..._buildMarkers(contactsWithLocation, settings),
+                        ..._buildMarkers(
+                          contactsWithLocation,
+                          settings,
+                          showLabels: _showNodeLabels,
+                        ),
                         ...sharedMarkers.map(_buildSharedMarker),
                         if (connector.selfLatitude != null &&
                             connector.selfLongitude != null)
@@ -384,8 +442,8 @@ class _MapScreenState extends State<MapScreen> {
                               connector.selfLatitude!,
                               connector.selfLongitude!,
                             ),
-                            width: 35,
-                            height: 35,
+                            width: 40,
+                            height: 40,
                             child: Container(
                               padding: const EdgeInsets.all(4),
                               decoration: BoxDecoration(
@@ -404,15 +462,22 @@ class _MapScreenState extends State<MapScreen> {
                                 ],
                               ),
                               alignment: Alignment.center,
-                              child: Text(
-                                context.l10n.pathTrace_you,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12,
-                                ),
+                              child: const Icon(
+                                Icons.person_pin_circle,
+                                color: Colors.white,
+                                size: 20,
                               ),
                             ),
+                          ),
+                        if (_showNodeLabels &&
+                            connector.selfLatitude != null &&
+                            connector.selfLongitude != null)
+                          _buildNodeLabelMarker(
+                            point: LatLng(
+                              connector.selfLatitude!,
+                              connector.selfLongitude!,
+                            ),
+                            label: context.l10n.pathTrace_you,
                           ),
                       ],
                     ),
@@ -420,7 +485,8 @@ class _MapScreenState extends State<MapScreen> {
                 ),
                 if (!_isBuildingPathTrace)
                   _buildLegend(
-                    contactsWithLocation.length,
+                    contactsWithLocation,
+                    settings,
                     sharedMarkers.length,
                   ),
                 if (_isBuildingPathTrace) _buildPathTraceOverlay(),
@@ -445,20 +511,28 @@ class _MapScreenState extends State<MapScreen> {
     );
   }
 
-  List<Marker> _buildMarkers(List<Contact> contacts, settings) {
+  List<Marker> _buildMarkers(
+    List<Contact> contacts,
+    settings, {
+    required bool showLabels,
+  }) {
     final markers = <Marker>[];
 
     for (final contact in contacts) {
       if (!contact.hasLocation) continue;
 
       // Apply node type filters
-      if (contact.type == advTypeRepeater && !settings.mapShowRepeaters) {
+      if (contact.type == advTypeRepeater &&
+          (!settings.mapShowRepeaters && !_isBuildingPathTrace)) {
         continue;
       }
-      if (contact.type == advTypeChat && !settings.mapShowChatNodes) continue;
+      if (contact.type == advTypeChat &&
+          !(settings.mapShowChatNodes && !_isBuildingPathTrace)) {
+        continue;
+      }
       if (contact.type != advTypeChat &&
           contact.type != advTypeRepeater &&
-          !settings.mapShowOtherNodes) {
+          (!settings.mapShowOtherNodes && !_isBuildingPathTrace)) {
         continue;
       }
 
@@ -500,9 +574,52 @@ class _MapScreenState extends State<MapScreen> {
       );
 
       markers.add(marker);
+      if (showLabels) {
+        markers.add(
+          _buildNodeLabelMarker(
+            point: LatLng(contact.latitude!, contact.longitude!),
+            label: contact.name,
+          ),
+        );
+      }
     }
 
     return markers;
+  }
+
+  Marker _buildNodeLabelMarker({required LatLng point, required String label}) {
+    return Marker(
+      point: point,
+      width: 120,
+      height: 24,
+      alignment: Alignment.topCenter,
+      child: IgnorePointer(
+        child: Transform.translate(
+          offset: const Offset(0, -20),
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+              decoration: BoxDecoration(
+                color: Colors.black54,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   Color _getNodeColor(int type) {
@@ -535,7 +652,26 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
-  Widget _buildLegend(int nodeCount, int markerCount) {
+  Widget _buildLegend(
+    List<Contact> contactsWithLocation,
+    settings,
+    int markerCount,
+  ) {
+    int nodeCount = 0;
+    for (final contact in contactsWithLocation) {
+      // Apply node type filters
+      if (contact.type == advTypeRepeater && !settings.mapShowRepeaters) {
+        continue;
+      }
+      if (contact.type == advTypeChat && !settings.mapShowChatNodes) continue;
+      if (contact.type != advTypeChat &&
+          contact.type != advTypeRepeater &&
+          !settings.mapShowOtherNodes) {
+        continue;
+      }
+      nodeCount++;
+    }
+
     return Positioned(
       top: 16,
       right: 16,
@@ -826,7 +962,7 @@ class _MapScreenState extends State<MapScreen> {
               color: _getNodeColor(contact.type),
             ),
             const SizedBox(width: 8),
-            Expanded(child: Text(contact.name)),
+            Expanded(child: SelectableText(contact.name)),
           ],
         ),
         content: Column(
@@ -997,7 +1133,7 @@ class _MapScreenState extends State<MapScreen> {
             ),
           ),
           const SizedBox(height: 2),
-          Text(value, style: const TextStyle(fontSize: 14)),
+          SelectableText(value, style: const TextStyle(fontSize: 14)),
         ],
       ),
     );
@@ -1520,6 +1656,9 @@ class _MapScreenState extends State<MapScreen> {
 
   Widget _buildPathTraceOverlay() {
     final l10n = context.l10n;
+    final isImperial =
+        context.read<AppSettingsService>().settings.unitSystem ==
+        UnitSystem.imperial;
     return Positioned(
       top: 16,
       left: 16,
@@ -1540,7 +1679,7 @@ class _MapScreenState extends State<MapScreen> {
               const SizedBox(height: 6),
               if (_pathTrace.isNotEmpty)
                 Text(
-                  "${l10n.path_currentPathLabel} ${formatDistance(getPathDistanceMeters(_points))}",
+                  "${l10n.path_currentPathLabel} ${formatDistance(getPathDistanceMeters(_points), isImperial: isImperial)}",
                   style: TextStyle(fontSize: 12, color: Colors.grey[700]),
                 ),
               SelectableText(
@@ -1550,8 +1689,10 @@ class _MapScreenState extends State<MapScreen> {
                 style: TextStyle(fontSize: 18),
               ),
               const SizedBox(height: 6),
-              Row(
-                mainAxisSize: MainAxisSize.min,
+              Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 8,
+                runSpacing: 8,
                 children: [
                   if (_pathTrace.isNotEmpty)
                     ElevatedButton(

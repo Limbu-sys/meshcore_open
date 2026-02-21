@@ -323,6 +323,10 @@ class AppLocalizationsUk extends AppLocalizations {
       'Клієнт Flutter з відкритим вихідним кодом для пристроїв мережі MeshCore LoRa.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'Дані про висоту LOS: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Ім\'я';
 
   @override
@@ -617,6 +621,15 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get appSettings_offlineMapCache => 'Офлайн-кеш карти';
+
+  @override
+  String get appSettings_unitsTitle => 'одиниці';
+
+  @override
+  String get appSettings_unitsMetric => 'Метричний (м / км)';
+
+  @override
+  String get appSettings_unitsImperial => 'Імперська (ft / mi)';
 
   @override
   String get appSettings_noAreaSelected => 'Область не вибрано';
@@ -1076,6 +1089,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get chat_pathManagement => 'Керування шляхами';
 
   @override
+  String get chat_ShowAllPaths => 'Показати всі шляхи';
+
+  @override
   String get chat_routingMode => 'Режим маршрутизації';
 
   @override
@@ -1236,6 +1252,12 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get map_title => 'Карта вузлів';
+
+  @override
+  String get map_lineOfSight => 'Пряма видимість';
+
+  @override
+  String get map_losScreenTitle => 'Пряма видимість';
 
   @override
   String get map_noNodesWithLocation =>
@@ -1675,10 +1697,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get repeater_cliSubtitle => 'Надіслати команди ретранслятору';
 
   @override
-  String get repeater_neighbours => 'Сусіди';
+  String get repeater_neighbors => 'Сусіди';
 
   @override
-  String get repeater_neighboursSubtitle =>
+  String get repeater_neighborsSubtitle =>
       'Показати сусідів нульового стрибка.';
 
   @override
@@ -2380,7 +2402,7 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Ретранслятори-сусіди';
+  String get neighbors_repeatersNeighbors => 'Ретранслятори-сусіди';
 
   @override
   String get neighbors_noData => 'Дані про сусідів недоступні.';
@@ -2731,6 +2753,117 @@ class AppLocalizationsUk extends AppLocalizations {
   String get pathTrace_clearTooltip => 'Очистити шлях';
 
   @override
+  String get losSelectStartEnd =>
+      'Виберіть початковий і кінцевий вузли для LOS.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Помилка перевірки прямої видимості: $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Очистити всі пункти';
+
+  @override
+  String get losRunToViewElevationProfile =>
+      'Запустіть LOS, щоб переглянути профіль висоти';
+
+  @override
+  String get losMenuTitle => 'Меню LOS';
+
+  @override
+  String get losMenuSubtitle =>
+      'Торкніться вузлів або утримуйте карту, щоб отримати власні точки';
+
+  @override
+  String get losShowDisplayNodes => 'Показати вузли відображення';
+
+  @override
+  String get losCustomPoints => 'Користувальницькі точки';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Спеціальний $index';
+  }
+
+  @override
+  String get losPointA => 'Точка А';
+
+  @override
+  String get losPointB => 'Точка Б';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Антена A: $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Антена B: $value $unit';
+  }
+
+  @override
+  String get losRun => 'Запустіть LOS';
+
+  @override
+  String get losNoElevationData => 'Немає даних про висоту';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, чистий LOS, мінімальний зазор $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, заблоковано $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'LOS: перевірка...';
+
+  @override
+  String get losStatusNoData => 'LOS: немає даних';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS: $clear/$total очищено, $blocked заблоковано, $unknown невідомо';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Дані про висоту недоступні для одного чи кількох зразків.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Недійсні дані про точки/висоту для розрахунку LOS.';
+
+  @override
+  String get losRenameCustomPoint => 'Перейменуйте спеціальну точку';
+
+  @override
+  String get losPointName => 'Назва точки';
+
+  @override
+  String get losShowPanelTooltip => 'Показати панель LOS';
+
+  @override
+  String get losHidePanelTooltip => 'Приховати панель LOS';
+
+  @override
+  String get losElevationAttribution =>
+      'Дані про висоту: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get contacts_pathTrace => 'Трасування шляхів';
 
   @override
@@ -2907,4 +3040,10 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get settings_gpxExportShareSubject =>
       'експорт даних карти meshcore-open у форматі GPX';
+
+  @override
+  String get snrIndicator_nearByRepeaters => 'Ближні ретранслятори';
+
+  @override
+  String get snrIndicator_lastSeen => 'Останній раз бачили';
 }

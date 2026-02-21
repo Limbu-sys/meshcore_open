@@ -119,7 +119,7 @@ class Contact {
     final pathBytes = _pathBytesForDisplay;
     Uint8List? traceBytes;
 
-    if (pathLength <= 0) {
+    if (pathBytes.isEmpty) {
       traceBytes = Uint8List(1);
       traceBytes[0] = publicKey[0];
       return traceBytes;
@@ -160,43 +160,47 @@ class Contact {
   }
 
   static Contact? fromFrame(Uint8List data) {
-    if (data.length < contactFrameSize) return null;
+    if (data.isEmpty) return null;
     if (data[0] != respCodeContact) return null;
+    try {
+      final pubKey = Uint8List.fromList(
+        data.sublist(contactPubKeyOffset, contactPubKeyOffset + pubKeySize),
+      );
+      final type = data[contactTypeOffset];
+      final pathLen = data[contactPathLenOffset].toSigned(8);
+      final safePathLen = pathLen > 0
+          ? (pathLen > maxPathSize ? maxPathSize : pathLen)
+          : 0;
+      final pathBytes = safePathLen > 0
+          ? Uint8List.fromList(
+              data.sublist(contactPathOffset, contactPathOffset + safePathLen),
+            )
+          : Uint8List(0);
+      final name = readCString(data, contactNameOffset, maxNameSize);
+      final lastmod = readUint32LE(data, contactLastmodOffset);
 
-    final pubKey = Uint8List.fromList(
-      data.sublist(contactPubKeyOffset, contactPubKeyOffset + pubKeySize),
-    );
-    final type = data[contactTypeOffset];
-    final pathLen = data[contactPathLenOffset].toSigned(8);
-    final safePathLen = pathLen > 0
-        ? (pathLen > maxPathSize ? maxPathSize : pathLen)
-        : 0;
-    final pathBytes = safePathLen > 0
-        ? Uint8List.fromList(
-            data.sublist(contactPathOffset, contactPathOffset + safePathLen),
-          )
-        : Uint8List(0);
-    final name = readCString(data, contactNameOffset, maxNameSize);
-    final lastmod = readUint32LE(data, contactLastmodOffset);
+      double? lat, lon;
+      final latRaw = readInt32LE(data, contactLatOffset);
+      final lonRaw = readInt32LE(data, contactLonOffset);
+      if (latRaw != 0 || lonRaw != 0) {
+        lat = latRaw / 1e6;
+        lon = lonRaw / 1e6;
+      }
 
-    double? lat, lon;
-    final latRaw = readInt32LE(data, contactLatOffset);
-    final lonRaw = readInt32LE(data, contactLonOffset);
-    if (latRaw != 0 || lonRaw != 0) {
-      lat = latRaw / 1e6;
-      lon = lonRaw / 1e6;
+      return Contact(
+        publicKey: pubKey,
+        name: name.isEmpty ? 'Unknown' : name,
+        type: type,
+        pathLength: pathLen,
+        path: pathBytes,
+        latitude: lat,
+        longitude: lon,
+        lastSeen: DateTime.fromMillisecondsSinceEpoch(lastmod * 1000),
+      );
+    } catch (e) {
+      // If parsing fails, return null
+      return null;
     }
-
-    return Contact(
-      publicKey: pubKey,
-      name: name.isEmpty ? 'Unknown' : name,
-      type: type,
-      pathLength: pathLen,
-      path: pathBytes,
-      latitude: lat,
-      longitude: lon,
-      lastSeen: DateTime.fromMillisecondsSinceEpoch(lastmod * 1000),
-    );
   }
 
   @override

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../l10n/l10n.dart';
 import '../models/contact.dart';
 import '../models/path_selection.dart';
+import '../models/app_settings.dart';
 import '../connector/meshcore_connector.dart';
 import '../connector/meshcore_protocol.dart';
 import '../services/app_settings_service.dart';
@@ -183,6 +184,8 @@ class _TelemetryScreenState extends State<TelemetryScreen> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final connector = context.watch<MeshCoreConnector>();
+    final settings = context.watch<AppSettingsService>().settings;
+    final isImperialUnits = settings.unitSystem == UnitSystem.imperial;
     final repeater = _resolveRepeater(connector);
     final isFloodMode = repeater.pathOverride == -1;
 
@@ -309,6 +312,7 @@ class _TelemetryScreenState extends State<TelemetryScreen> {
                     entry['values'],
                     l10n.telemetry_channelTitle(entry['channel']),
                     entry['channel'],
+                    isImperialUnits,
                   ),
             ],
           ),
@@ -321,6 +325,7 @@ class _TelemetryScreenState extends State<TelemetryScreen> {
     Map<String, dynamic> channelData,
     String title,
     int channel,
+    bool isImperialUnits,
   ) {
     final l10n = context.l10n;
     return Card(
@@ -360,12 +365,12 @@ class _TelemetryScreenState extends State<TelemetryScreen> {
               else if (entry.key == 'temperature' && channel == 1)
                 _buildInfoRow(
                   l10n.telemetry_mcuTemperatureLabel,
-                  _temperatureText(entry.value),
+                  _temperatureText(entry.value, isImperialUnits),
                 )
               else if (entry.key == 'temperature')
                 _buildInfoRow(
                   l10n.telemetry_temperatureLabel,
-                  _temperatureText(entry.value),
+                  _temperatureText(entry.value, isImperialUnits),
                 )
               else if (entry.key == 'current' && channel == 1)
                 _buildInfoRow(
@@ -423,13 +428,13 @@ class _TelemetryScreenState extends State<TelemetryScreen> {
     );
   }
 
-  String _temperatureText(double? tempC) {
+  String _temperatureText(double? tempC, bool isImperialUnits) {
     final l10n = context.l10n;
     if (tempC == null) return l10n.common_notAvailable;
     final tempF = (tempC * 9 / 5) + 32;
-    return l10n.telemetry_temperatureValue(
-      tempC.toStringAsFixed(1),
-      tempF.toStringAsFixed(1),
-    );
+    if (isImperialUnits) {
+      return '${tempF.toStringAsFixed(1)}°F';
+    }
+    return '${tempC.toStringAsFixed(1)}°C';
   }
 }

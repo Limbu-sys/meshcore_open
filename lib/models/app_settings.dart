@@ -1,3 +1,16 @@
+enum UnitSystem { metric, imperial }
+
+extension UnitSystemValue on UnitSystem {
+  String get value {
+    switch (this) {
+      case UnitSystem.imperial:
+        return 'imperial';
+      case UnitSystem.metric:
+        return 'metric';
+    }
+  }
+}
+
 class AppSettings {
   static const Object _unset = Object();
 
@@ -22,6 +35,7 @@ class AppSettings {
   final bool appDebugLogEnabled;
   final Map<String, String> batteryChemistryByDeviceId;
   final Map<String, String> batteryChemistryByRepeaterId;
+  final UnitSystem unitSystem;
 
   AppSettings({
     this.clearPathOnMaxRetry = false,
@@ -47,6 +61,7 @@ class AppSettings {
     Map<String, String>? batteryChemistryByRepeaterId,
   }) : batteryChemistryByDeviceId = batteryChemistryByDeviceId ?? {},
        batteryChemistryByRepeaterId = batteryChemistryByRepeaterId ?? {};
+    this.unitSystem = UnitSystem.metric,
 
   Map<String, dynamic> toJson() {
     return {
@@ -71,10 +86,18 @@ class AppSettings {
       'app_debug_log_enabled': appDebugLogEnabled,
       'battery_chemistry_by_device_id': batteryChemistryByDeviceId,
       'battery_chemistry_by_repeater_id': batteryChemistryByRepeaterId,
+      'unit_system': unitSystem.value,
     };
   }
 
   factory AppSettings.fromJson(Map<String, dynamic> json) {
+    UnitSystem parseUnitSystem(dynamic value) {
+      if (value is String && value.toLowerCase() == 'imperial') {
+        return UnitSystem.imperial;
+      }
+      return UnitSystem.metric;
+    }
+
     return AppSettings(
       clearPathOnMaxRetry: json['clear_path_on_max_retry'] as bool? ?? false,
       mapShowRepeaters: json['map_show_repeaters'] as bool? ?? true,
@@ -110,6 +133,9 @@ class AppSettings {
             (key, value) => MapEntry(key.toString(), value.toString()),
           ) ??
           {},
+      unitSystem: parseUnitSystem(
+        json['unit_system'] ?? json['los_unit_system'],
+      ),
     );
   }
 
@@ -135,6 +161,7 @@ class AppSettings {
     bool? appDebugLogEnabled,
     Map<String, String>? batteryChemistryByDeviceId,
     Map<String, String>? batteryChemistryByRepeaterId,
+    UnitSystem? unitSystem,
   }) {
     return AppSettings(
       clearPathOnMaxRetry: clearPathOnMaxRetry ?? this.clearPathOnMaxRetry,
@@ -166,6 +193,7 @@ class AppSettings {
           batteryChemistryByDeviceId ?? this.batteryChemistryByDeviceId,
       batteryChemistryByRepeaterId:
           batteryChemistryByRepeaterId ?? this.batteryChemistryByRepeaterId,
+      unitSystem: unitSystem ?? this.unitSystem,
     );
   }
 }

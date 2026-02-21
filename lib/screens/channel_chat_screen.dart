@@ -901,7 +901,8 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ChannelMessagePathScreen(message: message),
+        builder: (context) =>
+            ChannelMessagePathScreen(message: message, channelMessage: true),
       ),
     );
   }

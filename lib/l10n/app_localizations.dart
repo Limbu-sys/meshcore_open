@@ -700,6 +700,12 @@ abstract class AppLocalizations {
   /// **'An open-source Flutter client for MeshCore LoRa mesh networking devices.'**
   String get settings_aboutDescription;
 
+  /// No description provided for @settings_aboutOpenMeteoAttribution.
+  ///
+  /// In en, this message translates to:
+  /// **'LOS elevation data: Open-Meteo (CC BY 4.0)'**
+  String get settings_aboutOpenMeteoAttribution;
+
   /// No description provided for @settings_infoName.
   ///
   /// In en, this message translates to:
@@ -1239,6 +1245,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Offline Map Cache'**
   String get appSettings_offlineMapCache;
+
+  /// No description provided for @appSettings_unitsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Units'**
+  String get appSettings_unitsTitle;
+
+  /// No description provided for @appSettings_unitsMetric.
+  ///
+  /// In en, this message translates to:
+  /// **'Metric (m / km)'**
+  String get appSettings_unitsMetric;
+
+  /// No description provided for @appSettings_unitsImperial.
+  ///
+  /// In en, this message translates to:
+  /// **'Imperial (ft / mi)'**
+  String get appSettings_unitsImperial;
 
   /// No description provided for @appSettings_noAreaSelected.
   ///
@@ -2032,6 +2056,12 @@ abstract class AppLocalizations {
   /// **'Path Management'**
   String get chat_pathManagement;
 
+  /// No description provided for @chat_ShowAllPaths.
+  ///
+  /// In en, this message translates to:
+  /// **'Show all paths'**
+  String get chat_ShowAllPaths;
+
   /// No description provided for @chat_routingMode.
   ///
   /// In en, this message translates to:
@@ -2283,6 +2313,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Node Map'**
   String get map_title;
+
+  /// No description provided for @map_lineOfSight.
+  ///
+  /// In en, this message translates to:
+  /// **'Line of Sight'**
+  String get map_lineOfSight;
+
+  /// No description provided for @map_losScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Line of Sight'**
+  String get map_losScreenTitle;
 
   /// No description provided for @map_noNodesWithLocation.
   ///
@@ -3027,17 +3069,17 @@ abstract class AppLocalizations {
   /// **'Send commands to the repeater'**
   String get repeater_cliSubtitle;
 
-  /// No description provided for @repeater_neighbours.
+  /// No description provided for @repeater_neighbors.
   ///
   /// In en, this message translates to:
   /// **'Neighbors'**
-  String get repeater_neighbours;
+  String get repeater_neighbors;
 
-  /// No description provided for @repeater_neighboursSubtitle.
+  /// No description provided for @repeater_neighborsSubtitle.
   ///
   /// In en, this message translates to:
   /// **'View zero hop neighbors.'**
-  String get repeater_neighboursSubtitle;
+  String get repeater_neighborsSubtitle;
 
   /// No description provided for @repeater_settings.
   ///
@@ -4181,13 +4223,13 @@ abstract class AppLocalizations {
   /// No description provided for @neighbors_receivedData.
   ///
   /// In en, this message translates to:
-  /// **'Received Neighbours Data'**
+  /// **'Received Neighbors Data'**
   String get neighbors_receivedData;
 
   /// No description provided for @neighbors_requestTimedOut.
   ///
   /// In en, this message translates to:
-  /// **'Neighbours request timed out.'**
+  /// **'Neighbors request timed out.'**
   String get neighbors_requestTimedOut;
 
   /// No description provided for @neighbors_errorLoading.
@@ -4196,16 +4238,16 @@ abstract class AppLocalizations {
   /// **'Error loading neighbors: {error}'**
   String neighbors_errorLoading(String error);
 
-  /// No description provided for @neighbors_repeatersNeighbours.
+  /// No description provided for @neighbors_repeatersNeighbors.
   ///
   /// In en, this message translates to:
-  /// **'Repeaters Neighbours'**
-  String get neighbors_repeatersNeighbours;
+  /// **'Repeaters Neighbors'**
+  String get neighbors_repeatersNeighbors;
 
   /// No description provided for @neighbors_noData.
   ///
   /// In en, this message translates to:
-  /// **'No neighbours data available.'**
+  /// **'No neighbors data available.'**
   String get neighbors_noData;
 
   /// No description provided for @neighbors_unknownContact.
@@ -4766,6 +4808,178 @@ abstract class AppLocalizations {
   /// **'Clear path.'**
   String get pathTrace_clearTooltip;
 
+  /// No description provided for @losSelectStartEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'Select start and end nodes for LOS.'**
+  String get losSelectStartEnd;
+
+  /// No description provided for @losRunFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Line-of-sight check failed: {error}'**
+  String losRunFailed(String error);
+
+  /// No description provided for @losClearAllPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear all points'**
+  String get losClearAllPoints;
+
+  /// No description provided for @losRunToViewElevationProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Run LOS to view elevation profile'**
+  String get losRunToViewElevationProfile;
+
+  /// No description provided for @losMenuTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'LOS Menu'**
+  String get losMenuTitle;
+
+  /// No description provided for @losMenuSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap nodes or long-press map for custom points'**
+  String get losMenuSubtitle;
+
+  /// No description provided for @losShowDisplayNodes.
+  ///
+  /// In en, this message translates to:
+  /// **'Show display nodes'**
+  String get losShowDisplayNodes;
+
+  /// No description provided for @losCustomPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom points'**
+  String get losCustomPoints;
+
+  /// No description provided for @losCustomPointLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom {index}'**
+  String losCustomPointLabel(int index);
+
+  /// No description provided for @losPointA.
+  ///
+  /// In en, this message translates to:
+  /// **'Point A'**
+  String get losPointA;
+
+  /// No description provided for @losPointB.
+  ///
+  /// In en, this message translates to:
+  /// **'Point B'**
+  String get losPointB;
+
+  /// No description provided for @losAntennaA.
+  ///
+  /// In en, this message translates to:
+  /// **'Antenna A: {value} {unit}'**
+  String losAntennaA(String value, String unit);
+
+  /// No description provided for @losAntennaB.
+  ///
+  /// In en, this message translates to:
+  /// **'Antenna B: {value} {unit}'**
+  String losAntennaB(String value, String unit);
+
+  /// No description provided for @losRun.
+  ///
+  /// In en, this message translates to:
+  /// **'Run LOS'**
+  String get losRun;
+
+  /// No description provided for @losNoElevationData.
+  ///
+  /// In en, this message translates to:
+  /// **'No elevation data'**
+  String get losNoElevationData;
+
+  /// No description provided for @losProfileClear.
+  ///
+  /// In en, this message translates to:
+  /// **'{distance} {distanceUnit}, clear LOS, min clearance {clearance} {heightUnit}'**
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  );
+
+  /// No description provided for @losProfileBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'{distance} {distanceUnit}, blocked by {obstruction} {heightUnit}'**
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  );
+
+  /// No description provided for @losStatusChecking.
+  ///
+  /// In en, this message translates to:
+  /// **'LOS: checking...'**
+  String get losStatusChecking;
+
+  /// No description provided for @losStatusNoData.
+  ///
+  /// In en, this message translates to:
+  /// **'LOS: no data'**
+  String get losStatusNoData;
+
+  /// No description provided for @losStatusSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'LOS: {clear}/{total} clear, {blocked} blocked, {unknown} unknown'**
+  String losStatusSummary(int clear, int total, int blocked, int unknown);
+
+  /// No description provided for @losErrorElevationUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Elevation data unavailable for one or more samples.'**
+  String get losErrorElevationUnavailable;
+
+  /// No description provided for @losErrorInvalidInput.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid points/elevation data for LOS calculation.'**
+  String get losErrorInvalidInput;
+
+  /// No description provided for @losRenameCustomPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Rename custom point'**
+  String get losRenameCustomPoint;
+
+  /// No description provided for @losPointName.
+  ///
+  /// In en, this message translates to:
+  /// **'Point name'**
+  String get losPointName;
+
+  /// No description provided for @losShowPanelTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Show LOS panel'**
+  String get losShowPanelTooltip;
+
+  /// No description provided for @losHidePanelTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide LOS panel'**
+  String get losHidePanelTooltip;
+
+  /// No description provided for @losElevationAttribution.
+  ///
+  /// In en, this message translates to:
+  /// **'Elevation data: Open-Meteo (CC BY 4.0)'**
+  String get losElevationAttribution;
+
   /// No description provided for @contacts_pathTrace.
   ///
   /// In en, this message translates to:
@@ -5023,6 +5237,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'meshcore-open GPX map data export'**
   String get settings_gpxExportShareSubject;
+
+  /// No description provided for @snrIndicator_nearByRepeaters.
+  ///
+  /// In en, this message translates to:
+  /// **'Nearby Repeaters'**
+  String get snrIndicator_nearByRepeaters;
+
+  /// No description provided for @snrIndicator_lastSeen.
+  ///
+  /// In en, this message translates to:
+  /// **'Last seen'**
+  String get snrIndicator_lastSeen;
 }
 
 class _AppLocalizationsDelegate

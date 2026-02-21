@@ -1351,12 +1351,12 @@
       }
     }
   },
-  "repeater_neighbours": "Vicini",
-  "repeater_neighboursSubtitle": "Visualizza vicini di salto pari a zero.",
+  "repeater_neighbors": "Vicini",
+  "repeater_neighborsSubtitle": "Visualizza vicini di salto pari a zero.",
   "neighbors_receivedData": "Ricevute dati vicini",
   "neighbors_requestTimedOut": "I vicini richiedono un timeout.",
   "neighbors_errorLoading": "Errore nel caricamento dei vicini: {error}",
-  "neighbors_repeatersNeighbours": "Ripetitori Vicini",
+  "neighbors_repeatersNeighbors": "Ripetitori Vicini",
   "neighbors_noData": "Nessun dato sugli vicini disponibile.",
   "channels_createPrivateChannel": "Crea un Canale Privato",
   "channels_createPrivateChannelDesc": "Protetta con una chiave segreta.",
@@ -1594,7 +1594,125 @@
   "scanner_bluetoothOff": "Il Bluetooth è disattivato.",
   "scanner_bluetoothOffMessage": "Si prega di attivare il Bluetooth per effettuare la scansione dei dispositivi.",
   "scanner_enableBluetooth": "Abilita il Bluetooth",
+  "snrIndicator_nearByRepeaters": "Ripetitori vicini",
+  "snrIndicator_lastSeen": "Ultimo accesso",
+  "chat_ShowAllPaths": "Mostra tutti i percorsi",
   "settings_clientRepeat": "Ripetizione \"fuori dalla rete\"",
   "settings_clientRepeatFreqWarning": "Per la comunicazione fuori rete, è necessario utilizzare frequenze di 433, 869 o 918 MHz.",
-  "settings_clientRepeatSubtitle": "Permetti a questo dispositivo di ripetere i pacchetti di rete per gli altri."
+  "settings_clientRepeatSubtitle": "Permetti a questo dispositivo di ripetere i pacchetti di rete per gli altri.",
+  "settings_aboutOpenMeteoAttribution": "Dati di elevazione LOS: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Unità",
+  "appSettings_unitsMetric": "Metrico (m/km)",
+  "appSettings_unitsImperial": "Imperiale (ft / mi)",
+  "map_lineOfSight": "Linea di vista",
+  "map_losScreenTitle": "Linea di vista",
+  "losSelectStartEnd": "Seleziona i nodi iniziali e finali per la LOS.",
+  "losRunFailed": "Controllo della linea di vista fallito: {error}",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "losClearAllPoints": "Cancella tutti i punti",
+  "losRunToViewElevationProfile": "Eseguire LOS per visualizzare il profilo altimetrico",
+  "losMenuTitle": "Menù LOS",
+  "losMenuSubtitle": "Tocca i nodi o premi a lungo la mappa per punti personalizzati",
+  "losShowDisplayNodes": "Mostra i nodi di visualizzazione",
+  "losCustomPoints": "Punti personalizzati",
+  "losCustomPointLabel": "Personalizzato {index}",
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "losPointA": "Punto A",
+  "losPointB": "Punto B",
+  "losAntennaA": "Antenna A: {value} {unit}",
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losAntennaB": "Antenna B: {value} {unit}",
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losRun": "Esegui LOS",
+  "losNoElevationData": "Nessun dato di elevazione",
+  "losProfileClear": "{distance} {distanceUnit}, libera LOS, distanza minima {clearance} {heightUnit}",
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losProfileBlocked": "{distance} {distanceUnit}, bloccato da {obstruction} {heightUnit}",
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losStatusChecking": "LOS: controllo...",
+  "losStatusNoData": "LOS: nessun dato",
+  "losStatusSummary": "LOS: {clear}/{total} libera, {blocked} bloccato, {unknown} sconosciuto",
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "losErrorElevationUnavailable": "Dati di elevazione non disponibili per uno o più campioni.",
+  "losErrorInvalidInput": "Dati punti/elevazione non validi per il calcolo della LOS.",
+  "losRenameCustomPoint": "Rinomina punto personalizzato",
+  "losPointName": "Nome del punto",
+  "losShowPanelTooltip": "Mostra il pannello LOS",
+  "losHidePanelTooltip": "Nascondi il pannello LOS",
+  "losElevationAttribution": "Dati di elevazione: Open-Meteo (CC BY 4.0)"
 }

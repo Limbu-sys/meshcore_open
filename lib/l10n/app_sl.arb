@@ -1351,12 +1351,12 @@
       }
     }
   },
-  "repeater_neighboursSubtitle": "Pogledati nič sosednjih hopjev.",
-  "repeater_neighbours": "Sosedi",
+  "repeater_neighborsSubtitle": "Pogledati nič sosednjih hopjev.",
+  "repeater_neighbors": "Sosedi",
   "neighbors_receivedData": "Prejeto podatke o sosedih",
   "neighbors_requestTimedOut": "Sosedi zahtevajo izklop po dogovoru.",
   "neighbors_errorLoading": "Napaka pri obnašanju sosedov: {error}",
-  "neighbors_repeatersNeighbours": "Ponovitve Sosedi",
+  "neighbors_repeatersNeighbors": "Ponovitve Sosedi",
   "neighbors_noData": "Niso na voljo podatki o sosedih.",
   "channels_joinPrivateChannel": "Pridružite se zasebni skupini",
   "channels_createPrivateChannelDesc": "Varno zaklenjeno s skrivnim ključem.",
@@ -1594,7 +1594,125 @@
   "scanner_enableBluetooth": "Omogočite Bluetooth",
   "scanner_bluetoothOffMessage": "Prosimo, vklopite Bluetooth, da lahko poiščete naprave.",
   "scanner_bluetoothOff": "Bluetooth je izklopljen",
+  "snrIndicator_lastSeen": "Zadnjič videno",
+  "snrIndicator_nearByRepeaters": "Bližnji ponovitelji",
+  "chat_ShowAllPaths": "Prikaži vse poti",
   "settings_clientRepeatFreqWarning": "Za ponovni prenos na brezžični način so potrebne frekvence 433, 869 ali 918 MHz.",
   "settings_clientRepeatSubtitle": "Omogočite temu naprave, da ponavlja paketne sporočila za druge.",
-  "settings_clientRepeat": "Neovadno ponavljanje"
+  "settings_clientRepeat": "Neovadno ponavljanje",
+  "settings_aboutOpenMeteoAttribution": "Podatki o višini LOS: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Enote",
+  "appSettings_unitsMetric": "Metrična (m/km)",
+  "appSettings_unitsImperial": "Imperialno (ft / mi)",
+  "map_lineOfSight": "Linija vida",
+  "map_losScreenTitle": "Linija vida",
+  "losSelectStartEnd": "Izberite začetno in končno vozlišče za LOS.",
+  "losRunFailed": "Preverjanje vidnega polja ni uspelo: {error}",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "losClearAllPoints": "Počisti vse točke",
+  "losRunToViewElevationProfile": "Zaženite LOS za ogled višinskega profila",
+  "losMenuTitle": "LOS meni",
+  "losMenuSubtitle": "Tapnite vozlišča ali dolgo pritisnite na zemljevid za točke po meri",
+  "losShowDisplayNodes": "Pokaži prikazna vozlišča",
+  "losCustomPoints": "Točke po meri",
+  "losCustomPointLabel": "Po meri {index}",
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "losPointA": "Točka A",
+  "losPointB": "Točka B",
+  "losAntennaA": "Antena A: {value} {unit}",
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losAntennaB": "Antena B: {value} {unit}",
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losRun": "Zaženi LOS",
+  "losNoElevationData": "Ni podatkov o višini",
+  "losProfileClear": "{distance} {distanceUnit}, čisti LOS, najmanjša razdalja {clearance} {heightUnit}",
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losProfileBlocked": "{distance} {distanceUnit}, blokiral {obstruction} {heightUnit}",
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losStatusChecking": "LOS: preverjam ...",
+  "losStatusNoData": "LOS: ni podatkov",
+  "losStatusSummary": "LOS: {clear}/{total} jasno, {blocked} blokirano, {unknown} neznano",
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "losErrorElevationUnavailable": "Podatki o nadmorski višini niso na voljo za enega ali več vzorcev.",
+  "losErrorInvalidInput": "Neveljavni podatki o točkah/višini za izračun LOS.",
+  "losRenameCustomPoint": "Preimenujte točko po meri",
+  "losPointName": "Ime točke",
+  "losShowPanelTooltip": "Pokaži ploščo LOS",
+  "losHidePanelTooltip": "Skrij ploščo LOS",
+  "losElevationAttribution": "Podatki o višini: Open-Meteo (CC BY 4.0)"
 }

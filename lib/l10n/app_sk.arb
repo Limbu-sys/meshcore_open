@@ -1351,12 +1351,12 @@
       }
     }
   },
-  "repeater_neighboursSubtitle": "Zobraziť susedné body bez skokov.",
+  "repeater_neighborsSubtitle": "Zobraziť susedné body bez skokov.",
   "neighbors_requestTimedOut": "Súďia žiadajú o časové ukončenie.",
   "neighbors_receivedData": "Obdielo dáta suseda",
-  "repeater_neighbours": "Súsezný",
+  "repeater_neighbors": "Súsezný",
   "neighbors_errorLoading": "Chyba pri načítaní susedov: {error}",
-  "neighbors_repeatersNeighbours": "Opakovadlá Súsezná",
+  "neighbors_repeatersNeighbors": "Opakovadlá Súsezná",
   "neighbors_noData": "Nie je dostupná žiadna informácia o susedoch.",
   "channels_createPrivateChannel": "Vytvorte súkromný kanál",
   "channels_joinPrivateChannel": "Pripojiť sa k súkromnému kanálu",
@@ -1594,7 +1594,125 @@
   "scanner_bluetoothOffMessage": "Prosím, zapnite Bluetooth, aby ste mohli skenovať pre zariadenia.",
   "scanner_bluetoothOff": "Bluetooth je vypnutý",
   "scanner_enableBluetooth": "Povolte Bluetooth",
+  "snrIndicator_lastSeen": "Naposledy videný",
+  "snrIndicator_nearByRepeaters": "Miestne opakovače",
+  "chat_ShowAllPaths": "Zobraziť všetky cesty",
   "settings_clientRepeat": "Opätovné použitie bez elektrickej siete",
   "settings_clientRepeatFreqWarning": "Použitie off-grid systému vyžaduje frekvencie 433, 869 alebo 918 MHz.",
-  "settings_clientRepeatSubtitle": "Umožnite, aby toto zariadenie opakovávalo siete pre ostatných."
+  "settings_clientRepeatSubtitle": "Umožnite, aby toto zariadenie opakovávalo siete pre ostatných.",
+  "settings_aboutOpenMeteoAttribution": "Údaje o nadmorskej výške LOS: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Jednotky",
+  "appSettings_unitsMetric": "Metrické (m / km)",
+  "appSettings_unitsImperial": "Imperiálne (ft / mi)",
+  "map_lineOfSight": "Line of Sight",
+  "map_losScreenTitle": "Line of Sight",
+  "losSelectStartEnd": "Vyberte počiatočný a koncový uzol pre LOS.",
+  "losRunFailed": "Kontrola priamej viditeľnosti zlyhala: {error}",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "losClearAllPoints": "Vymazať všetky body",
+  "losRunToViewElevationProfile": "Ak chcete zobraziť výškový profil, spustite LOS",
+  "losMenuTitle": "Menu LOS",
+  "losMenuSubtitle": "Klepnutím na uzly alebo dlhým stlačením mapy získate vlastné body",
+  "losShowDisplayNodes": "Zobraziť uzly zobrazenia",
+  "losCustomPoints": "Vlastné body",
+  "losCustomPointLabel": "Vlastné {index}",
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "losPointA": "Bod A",
+  "losPointB": "Bod B",
+  "losAntennaA": "Anténa A: {value} {unit}",
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losAntennaB": "Anténa B: {value} {unit}",
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losRun": "Spustite LOS",
+  "losNoElevationData": "Žiadne údaje o nadmorskej výške",
+  "losProfileClear": "{distance} {distanceUnit}, vymazať LOS, min. vôľa {clearance} {heightUnit}",
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losProfileBlocked": "{distance} {distanceUnit}, blokovaný {obstruction} {heightUnit}",
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losStatusChecking": "LOS: kontrolujem...",
+  "losStatusNoData": "LOS: žiadne údaje",
+  "losStatusSummary": "LOS: {clear}/{total} vymazané, {blocked} blokované, {unknown} neznáme",
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "losErrorElevationUnavailable": "Údaje o nadmorskej výške nie sú k dispozícii pre jednu alebo viacero vzoriek.",
+  "losErrorInvalidInput": "Neplatné body/údaje o nadmorskej výške pre výpočet LOS.",
+  "losRenameCustomPoint": "Premenovať vlastný bod",
+  "losPointName": "Názov bodu",
+  "losShowPanelTooltip": "Zobraziť panel LOS",
+  "losHidePanelTooltip": "Skryť panel LOS",
+  "losElevationAttribution": "Údaje o nadmorskej výške: Open-Meteo (CC BY 4.0)"
 }
