@@ -143,6 +143,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get scanner_scan => 'Сканирование';
 
   @override
+  String get scanner_bluetoothOff => 'Bluetooth выключен';
+
+  @override
+  String get scanner_bluetoothOffMessage =>
+      'Пожалуйста, включите Bluetooth, чтобы найти устройства.';
+
+  @override
+  String get scanner_enableBluetooth => 'Включите Bluetooth';
+
+  @override
   String get device_quickSwitch => 'Быстрое переключение';
 
   @override
@@ -312,6 +322,10 @@ class AppLocalizationsRu extends AppLocalizations {
       'Открытое клиентское приложение на Flutter для устройств MeshCore с LoRa-сетями.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'Данные о высоте LOS: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Имя';
 
   @override
@@ -334,15 +348,6 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get settings_presets => 'Пресеты';
-
-  @override
-  String get settings_preset915Mhz => '915 МГц';
-
-  @override
-  String get settings_preset868Mhz => '868 МГц';
-
-  @override
-  String get settings_preset433Mhz => '433 МГц';
 
   @override
   String get settings_frequency => 'Частота (МГц)';
@@ -373,10 +378,15 @@ class AppLocalizationsRu extends AppLocalizations {
       'Недопустимая мощность передачи (0–22 дБм)';
 
   @override
-  String get settings_longRange => 'Дальний радиус';
+  String get settings_clientRepeat => 'Повторение \"вне сети\"';
 
   @override
-  String get settings_fastSpeed => 'Высокая скорость';
+  String get settings_clientRepeatSubtitle =>
+      'Позвольте этому устройству повторять пакеты данных для других устройств.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'Для работы в режиме \"без подключения к сети\" требуется частота 433, 869 или 918 МГц.';
 
   @override
   String settings_error(String message) {
@@ -613,6 +623,15 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get appSettings_offlineMapCache => 'Кэш офлайн-карты';
+
+  @override
+  String get appSettings_unitsTitle => 'Единицы';
+
+  @override
+  String get appSettings_unitsMetric => 'Метрическая (м/км)';
+
+  @override
+  String get appSettings_unitsImperial => 'Имперская (ft / mi)';
 
   @override
   String get appSettings_noAreaSelected => 'Область не выбрана';
@@ -1072,6 +1091,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get chat_pathManagement => 'Управление маршрутами';
 
   @override
+  String get chat_ShowAllPaths => 'Показать все пути';
+
+  @override
   String get chat_routingMode => 'Режим маршрутизации';
 
   @override
@@ -1234,6 +1256,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get map_title => 'Карта нод';
 
   @override
+  String get map_lineOfSight => 'Линия видимости';
+
+  @override
+  String get map_losScreenTitle => 'Линия видимости';
+
+  @override
   String get map_noNodesWithLocation => 'Нет нод с данными о местоположении';
 
   @override
@@ -1361,6 +1389,18 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get map_manageRepeater => 'Управление репитером';
+
+  @override
+  String get map_tapToAdd => 'Нажимайте на узлы, чтобы добавить их в путь.';
+
+  @override
+  String get map_runTrace => 'Запустить трассировку пути';
+
+  @override
+  String get map_removeLast => 'Удалить последний';
+
+  @override
+  String get map_pathTraceCancelled => 'Отмена трассировки пути';
 
   @override
   String get mapCache_title => 'Кэш офлайн-карты';
@@ -1658,10 +1698,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get repeater_cliSubtitle => 'Отправка команд репитеру';
 
   @override
-  String get repeater_neighbours => 'Соседи';
+  String get repeater_neighbors => 'Соседи';
 
   @override
-  String get repeater_neighboursSubtitle => 'Просмотр соседей на нулевом хопе.';
+  String get repeater_neighborsSubtitle => 'Просмотр соседей на нулевом хопе.';
 
   @override
   String get repeater_settings => 'Настройки';
@@ -2361,7 +2401,7 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Соседи репитеров';
+  String get neighbors_repeatersNeighbors => 'Соседи репитеров';
 
   @override
   String get neighbors_noData => 'Данные о соседях недоступны.';
@@ -2703,6 +2743,119 @@ class AppLocalizationsRu extends AppLocalizations {
       'Одному или нескольким хмелям не указано местоположение!';
 
   @override
+  String get pathTrace_clearTooltip => 'Очистить путь';
+
+  @override
+  String get losSelectStartEnd => 'Выберите начальный и конечный узлы для LOS.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Проверка прямой видимости не удалась: $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Очистить все точки';
+
+  @override
+  String get losRunToViewElevationProfile =>
+      'Запустите LOS, чтобы просмотреть профиль высот.';
+
+  @override
+  String get losMenuTitle => 'ЛОС Меню';
+
+  @override
+  String get losMenuSubtitle =>
+      'Коснитесь узлов или нажмите и удерживайте карту для выбора пользовательских точек.';
+
+  @override
+  String get losShowDisplayNodes => 'Показать узлы отображения';
+
+  @override
+  String get losCustomPoints => 'Пользовательские точки';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Пользовательский $index';
+  }
+
+  @override
+  String get losPointA => 'Точка А';
+
+  @override
+  String get losPointB => 'Точка Б';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Антенна А: $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Антенна Б: $value $unit';
+  }
+
+  @override
+  String get losRun => 'Запустить ЛОС';
+
+  @override
+  String get losNoElevationData => 'Нет данных о высоте';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, свободная зона видимости, минимальный зазор $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, заблокирован $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'ЛОС: проверяю...';
+
+  @override
+  String get losStatusNoData => 'ЛОС: нет данных';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS: $clear/$total очищено, $blocked заблокировано, $unknown неизвестно.';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Данные о высоте недоступны для одного или нескольких образцов.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Неверные данные о точках/высоте для расчета LOS.';
+
+  @override
+  String get losRenameCustomPoint => 'Переименовать пользовательскую точку';
+
+  @override
+  String get losPointName => 'Имя точки';
+
+  @override
+  String get losShowPanelTooltip => 'Показать панель LOS';
+
+  @override
+  String get losHidePanelTooltip => 'Скрыть панель LOS';
+
+  @override
+  String get losElevationAttribution =>
+      'Данные о высоте: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get contacts_pathTrace => 'Трассировка пути';
 
   @override
@@ -2880,4 +3033,10 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get settings_gpxExportShareSubject =>
       'meshcore-open экспорт данных карты GPX';
+
+  @override
+  String get snrIndicator_nearByRepeaters => 'Ближайшие ретрансляторы';
+
+  @override
+  String get snrIndicator_lastSeen => 'Последний раз видели';
 }

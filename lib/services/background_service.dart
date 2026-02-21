@@ -1,4 +1,3 @@
-import 'dart:isolate';
 import 'dart:io';
 
 import 'package:flutter_foreground_task/flutter_foreground_task.dart';
@@ -15,18 +14,13 @@ class BackgroundService {
         channelDescription: 'Keeps MeshCore running in the background.',
         channelImportance: NotificationChannelImportance.LOW,
         priority: NotificationPriority.LOW,
-        iconData: const NotificationIconData(
-          resType: ResourceType.mipmap,
-          resPrefix: ResourcePrefix.ic,
-          name: 'launcher',
-        ),
       ),
       iosNotificationOptions: const IOSNotificationOptions(
         showNotification: false,
         playSound: false,
       ),
-      foregroundTaskOptions: const ForegroundTaskOptions(
-        interval: 5000,
+      foregroundTaskOptions: ForegroundTaskOptions(
+        eventAction: ForegroundTaskEventAction.repeat(5000),
         autoRunOnBoot: false,
         allowWifiLock: false,
       ),
@@ -63,13 +57,13 @@ void startCallback() {
 
 class _MeshCoreTaskHandler extends TaskHandler {
   @override
-  void onStart(DateTime timestamp, SendPort? sendPort) {}
+  Future<void> onStart(DateTime timestamp, TaskStarter starter) async {}
 
   @override
-  void onRepeatEvent(DateTime timestamp, SendPort? sendPort) {}
+  void onRepeatEvent(DateTime timestamp) {}
 
   @override
-  void onDestroy(DateTime timestamp, SendPort? sendPort) {}
+  Future<void> onDestroy(DateTime timestamp, bool isTimeout) async {}
 
   @override
   void onNotificationButtonPressed(String id) {}

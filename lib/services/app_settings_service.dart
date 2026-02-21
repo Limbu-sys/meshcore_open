@@ -158,4 +158,14 @@ class AppSettingsService extends ChangeNotifier {
   Future<void> setRoomSyncStaleMinutes(int minutes) async {
     await updateSettings(_settings.copyWith(roomSyncStaleMinutes: minutes));
   }
+
+  Future<void> setUnitSystem(UnitSystem value) async {
+    await updateSettings(_settings.copyWith(unitSystem: value));
+  }
+
+  Future<void> setLosUnitSystem(String value) async {
+    await setUnitSystem(
+      value == 'imperial' ? UnitSystem.imperial : UnitSystem.metric,
+    );
+  }
 }

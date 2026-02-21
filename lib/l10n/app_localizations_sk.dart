@@ -144,6 +144,16 @@ class AppLocalizationsSk extends AppLocalizations {
   String get scanner_scan => 'Skončiť';
 
   @override
+  String get scanner_bluetoothOff => 'Bluetooth je vypnutý';
+
+  @override
+  String get scanner_bluetoothOffMessage =>
+      'Prosím, zapnite Bluetooth, aby ste mohli skenovať pre zariadenia.';
+
+  @override
+  String get scanner_enableBluetooth => 'Povolte Bluetooth';
+
+  @override
   String get device_quickSwitch => 'Rýchle prepínač';
 
   @override
@@ -311,6 +321,10 @@ class AppLocalizationsSk extends AppLocalizations {
       'Otvorený zdrojový Flutter klient pre MeshCore LoRa sieťové zariadenia.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'Údaje o nadmorskej výške LOS: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Meno';
 
   @override
@@ -333,15 +347,6 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get settings_presets => 'Prednastavenia';
-
-  @override
-  String get settings_preset915Mhz => '915 MHz';
-
-  @override
-  String get settings_preset868Mhz => '868 MHz';
-
-  @override
-  String get settings_preset433Mhz => '433 MHz';
 
   @override
   String get settings_frequency => 'Frekvencia (MHz)';
@@ -371,10 +376,15 @@ class AppLocalizationsSk extends AppLocalizations {
   String get settings_txPowerInvalid => 'Neplatná hodnota výkonu TX (0-22 dBm)';
 
   @override
-  String get settings_longRange => 'Dlhý dosah';
+  String get settings_clientRepeat => 'Opätovné použitie bez elektrickej siete';
 
   @override
-  String get settings_fastSpeed => 'Rýchla rýchlosť';
+  String get settings_clientRepeatSubtitle =>
+      'Umožnite, aby toto zariadenie opakovávalo siete pre ostatných.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'Použitie off-grid systému vyžaduje frekvencie 433, 869 alebo 918 MHz.';
 
   @override
   String settings_error(String message) {
@@ -607,6 +617,15 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get appSettings_offlineMapCache => 'Offline Mapa Pamäť';
+
+  @override
+  String get appSettings_unitsTitle => 'Jednotky';
+
+  @override
+  String get appSettings_unitsMetric => 'Metrické (m / km)';
+
+  @override
+  String get appSettings_unitsImperial => 'Imperiálne (ft / mi)';
 
   @override
   String get appSettings_noAreaSelected => 'Neoznačila sa žiadna oblasť';
@@ -1069,6 +1088,9 @@ class AppLocalizationsSk extends AppLocalizations {
   String get chat_pathManagement => 'Správa ciest';
 
   @override
+  String get chat_ShowAllPaths => 'Zobraziť všetky cesty';
+
+  @override
   String get chat_routingMode => 'Režim trasy';
 
   @override
@@ -1228,6 +1250,12 @@ class AppLocalizationsSk extends AppLocalizations {
   String get map_title => 'Mapa uzlov';
 
   @override
+  String get map_lineOfSight => 'Line of Sight';
+
+  @override
+  String get map_losScreenTitle => 'Line of Sight';
+
+  @override
   String get map_noNodesWithLocation => 'Žiadne uzly s údajmi o polohe';
 
   @override
@@ -1355,6 +1383,18 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get map_manageRepeater => 'Spravovať Opakovanie';
+
+  @override
+  String get map_tapToAdd => 'Kliknite na uzly, aby ste ich pridali k ceste.';
+
+  @override
+  String get map_runTrace => 'Spustiť trasovaním cesty';
+
+  @override
+  String get map_removeLast => 'Odstrániť posledný';
+
+  @override
+  String get map_pathTraceCancelled => 'Zrušenie stopáže cesty bolo zrušené.';
 
   @override
   String get mapCache_title => 'Offline Mapa Pamäť';
@@ -1651,10 +1691,10 @@ class AppLocalizationsSk extends AppLocalizations {
   String get repeater_cliSubtitle => 'Pošlite príkazy opakovaču';
 
   @override
-  String get repeater_neighbours => 'Súsezný';
+  String get repeater_neighbors => 'Súsezný';
 
   @override
-  String get repeater_neighboursSubtitle => 'Zobraziť susedné body bez skokov.';
+  String get repeater_neighborsSubtitle => 'Zobraziť susedné body bez skokov.';
 
   @override
   String get repeater_settings => 'Nastavenia';
@@ -2345,7 +2385,7 @@ class AppLocalizationsSk extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Opakovadlá Súsezná';
+  String get neighbors_repeatersNeighbors => 'Opakovadlá Súsezná';
 
   @override
   String get neighbors_noData =>
@@ -2686,6 +2726,119 @@ class AppLocalizationsSk extends AppLocalizations {
       'Jedna alebo viac chmeľov chýba lokalita!';
 
   @override
+  String get pathTrace_clearTooltip => 'Zmazať cestu';
+
+  @override
+  String get losSelectStartEnd => 'Vyberte počiatočný a koncový uzol pre LOS.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Kontrola priamej viditeľnosti zlyhala: $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Vymazať všetky body';
+
+  @override
+  String get losRunToViewElevationProfile =>
+      'Ak chcete zobraziť výškový profil, spustite LOS';
+
+  @override
+  String get losMenuTitle => 'Menu LOS';
+
+  @override
+  String get losMenuSubtitle =>
+      'Klepnutím na uzly alebo dlhým stlačením mapy získate vlastné body';
+
+  @override
+  String get losShowDisplayNodes => 'Zobraziť uzly zobrazenia';
+
+  @override
+  String get losCustomPoints => 'Vlastné body';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Vlastné $index';
+  }
+
+  @override
+  String get losPointA => 'Bod A';
+
+  @override
+  String get losPointB => 'Bod B';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Anténa A: $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Anténa B: $value $unit';
+  }
+
+  @override
+  String get losRun => 'Spustite LOS';
+
+  @override
+  String get losNoElevationData => 'Žiadne údaje o nadmorskej výške';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, vymazať LOS, min. vôľa $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, blokovaný $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'LOS: kontrolujem...';
+
+  @override
+  String get losStatusNoData => 'LOS: žiadne údaje';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS: $clear/$total vymazané, $blocked blokované, $unknown neznáme';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Údaje o nadmorskej výške nie sú k dispozícii pre jednu alebo viacero vzoriek.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Neplatné body/údaje o nadmorskej výške pre výpočet LOS.';
+
+  @override
+  String get losRenameCustomPoint => 'Premenovať vlastný bod';
+
+  @override
+  String get losPointName => 'Názov bodu';
+
+  @override
+  String get losShowPanelTooltip => 'Zobraziť panel LOS';
+
+  @override
+  String get losHidePanelTooltip => 'Skryť panel LOS';
+
+  @override
+  String get losElevationAttribution =>
+      'Údaje o nadmorskej výške: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get contacts_pathTrace => 'Sledovanie lúčov';
 
   @override
@@ -2856,4 +3009,10 @@ class AppLocalizationsSk extends AppLocalizations {
   @override
   String get settings_gpxExportShareSubject =>
       'meshcore-open export dát GPX mapových údajov';
+
+  @override
+  String get snrIndicator_nearByRepeaters => 'Miestne opakovače';
+
+  @override
+  String get snrIndicator_lastSeen => 'Naposledy videný';
 }
