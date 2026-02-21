@@ -149,13 +149,10 @@ class AppSettingsService extends ChangeNotifier {
     updated[repeaterPubKeyHex] = chemistry;
     await updateSettings(
       _settings.copyWith(batteryChemistryByRepeaterId: updated),
-  Future<void> setUnitSystem(UnitSystem value) async {
-    await updateSettings(_settings.copyWith(unitSystem: value));
+    );
   }
 
-  Future<void> setLosUnitSystem(String value) async {
-    await setUnitSystem(
-      value == 'imperial' ? UnitSystem.imperial : UnitSystem.metric,
-    );
+  Future<void> setUnitSystem(UnitSystem value) async {
+    await updateSettings(_settings.copyWith(unitSystem: value));
   }
 }

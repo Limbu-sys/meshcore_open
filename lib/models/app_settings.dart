@@ -59,9 +59,9 @@ class AppSettings {
     this.appDebugLogEnabled = false,
     Map<String, String>? batteryChemistryByDeviceId,
     Map<String, String>? batteryChemistryByRepeaterId,
+    this.unitSystem = UnitSystem.metric,
   }) : batteryChemistryByDeviceId = batteryChemistryByDeviceId ?? {},
        batteryChemistryByRepeaterId = batteryChemistryByRepeaterId ?? {};
-    this.unitSystem = UnitSystem.metric,
 
   Map<String, dynamic> toJson() {
     return {
@@ -133,9 +133,7 @@ class AppSettings {
             (key, value) => MapEntry(key.toString(), value.toString()),
           ) ??
           {},
-      unitSystem: parseUnitSystem(
-        json['unit_system'] ?? json['los_unit_system'],
-      ),
+      unitSystem: parseUnitSystem(json['unit_system']),
     );
   }
 
