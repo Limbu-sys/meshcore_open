@@ -24,7 +24,6 @@ import '../widgets/quick_switch_bar.dart';
 import '../widgets/repeater_login_dialog.dart';
 import '../widgets/room_login_dialog.dart';
 import '../widgets/unread_badge.dart';
-import '../widgets/adaptive_app_bar_title.dart';
 import 'channels_screen.dart';
 import 'chat_screen.dart';
 import 'map_screen.dart';
