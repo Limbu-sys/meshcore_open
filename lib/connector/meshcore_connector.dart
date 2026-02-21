@@ -66,7 +66,9 @@ class MeshCoreConnector extends ChangeNotifier {
   final Map<String, List<Message>> _conversations = {};
   final Map<int, List<ChannelMessage>> _channelMessages = {};
   final List<String> _pendingChannelSentQueue = [];
-  final List<String> _pendingChannelCommandAckQueue = [];
+  final List<_PendingCommandAck> _pendingGenericAckQueue = [];
+  static const String _reactionSendQueuePrefix = '__reaction_send__';
+  int _reactionSendQueueSequence = 0;
   final Set<String> _loadedConversationKeys = {};
   final Map<int, Set<String>> _processedChannelReactions =
       {}; // channelIndex -> Set of "targetHash_emoji"
@@ -936,6 +938,9 @@ class MeshCoreConnector extends ChangeNotifier {
     _isSyncingChannels = false;
     _channelSyncInFlight = false;
     _hasLoadedChannels = false;
+    _pendingChannelSentQueue.clear();
+    _pendingGenericAckQueue.clear();
+    _reactionSendQueueSequence = 0;
 
     _setState(MeshCoreConnectionState.disconnected);
     if (!manual) {
@@ -943,7 +948,11 @@ class MeshCoreConnector extends ChangeNotifier {
     }
   }
 
-  Future<void> sendFrame(Uint8List data) async {
+  Future<void> sendFrame(
+    Uint8List data, {
+    String? channelSendQueueId,
+    bool expectsGenericAck = false,
+  }) async {
     if (!isConnected || _rxCharacteristic == null) {
       throw Exception("Not connected to a MeshCore device");
     }
@@ -961,6 +970,11 @@ class MeshCoreConnector extends ChangeNotifier {
     await _rxCharacteristic!.write(
       data.toList(),
       withoutResponse: canWriteWithoutResponse,
+    );
+    _trackPendingGenericAck(
+      data,
+      channelSendQueueId: channelSendQueueId,
+      expectsGenericAck: expectsGenericAck,
     );
   }
 
@@ -1317,7 +1331,13 @@ class MeshCoreConnector extends ChangeNotifier {
       notifyListeners();
 
       // Send the reaction to the device (don't add as a visible message)
-      await sendFrame(buildSendChannelTextMsgFrame(channel.index, text));
+      final reactionQueueId = _nextReactionSendQueueId();
+      _pendingChannelSentQueue.add(reactionQueueId);
+      await sendFrame(
+        buildSendChannelTextMsgFrame(channel.index, text),
+        channelSendQueueId: reactionQueueId,
+        expectsGenericAck: true,
+      );
       return;
     }
 
@@ -1328,7 +1348,6 @@ class MeshCoreConnector extends ChangeNotifier {
     );
     _addChannelMessage(channel.index, message);
     _pendingChannelSentQueue.add(message.messageId);
-    _pendingChannelCommandAckQueue.add(message.messageId);
     notifyListeners();
 
     final trimmed = text.trim();
@@ -1338,7 +1357,11 @@ class MeshCoreConnector extends ChangeNotifier {
         (isChannelSmazEnabled(channel.index) && !isStructuredPayload)
         ? Smaz.encodeIfSmaller(text)
         : text;
-    await sendFrame(buildSendChannelTextMsgFrame(channel.index, outboundText));
+    await sendFrame(
+      buildSendChannelTextMsgFrame(channel.index, outboundText),
+      channelSendQueueId: message.messageId,
+      expectsGenericAck: true,
+    );
   }
 
   Future<void> removeContact(Contact contact) async {
@@ -1776,6 +1799,17 @@ class MeshCoreConnector extends ChangeNotifier {
       'Firmware responded with error code: $errCode',
       tag: 'Protocol',
     );
+
+    if (_pendingGenericAckQueue.isEmpty) {
+      return;
+    }
+
+    final failedAck = _pendingGenericAckQueue.removeAt(0);
+    if (failedAck.commandCode != cmdSendChannelTxtMsg ||
+        failedAck.channelSendQueueId == null) {
+      return;
+    }
+    _pendingChannelSentQueue.remove(failedAck.channelSendQueueId);
   }
 
   void _handlePathUpdated(Uint8List frame) {
@@ -2519,6 +2553,9 @@ class MeshCoreConnector extends ChangeNotifier {
   bool _markNextPendingChannelMessageSent() {
     while (_pendingChannelSentQueue.isNotEmpty) {
       final queuedMessageId = _pendingChannelSentQueue.removeAt(0);
+      if (_isReactionSendQueueId(queuedMessageId)) {
+        return true;
+      }
       if (_markPendingChannelMessageSentById(queuedMessageId)) {
         return true;
       }
@@ -2542,7 +2579,6 @@ class MeshCoreConnector extends ChangeNotifier {
           status: ChannelMessageStatus.sent,
         );
         _pendingChannelSentQueue.remove(messageId);
-        _pendingChannelCommandAckQueue.remove(messageId);
         unawaited(
           _channelMessageStore.saveChannelMessages(entry.key, channelMessages),
         );
@@ -2554,12 +2590,22 @@ class MeshCoreConnector extends ChangeNotifier {
   }
 
   void _handleOk() {
-    if (_pendingChannelCommandAckQueue.isEmpty) {
+    if (_pendingGenericAckQueue.isEmpty) {
       return;
     }
 
-    final queuedMessageId = _pendingChannelCommandAckQueue.removeAt(0);
-    _markPendingChannelMessageSentById(queuedMessageId);
+    final pendingAck = _pendingGenericAckQueue.removeAt(0);
+    if (pendingAck.commandCode != cmdSendChannelTxtMsg ||
+        pendingAck.channelSendQueueId == null) {
+      return;
+    }
+
+    final queueId = pendingAck.channelSendQueueId!;
+    _pendingChannelSentQueue.remove(queueId);
+    if (_isReactionSendQueueId(queueId)) {
+      return;
+    }
+    _markPendingChannelMessageSentById(queueId);
   }
 
   void _handleSendConfirmed(Uint8List frame) {
@@ -3155,7 +3201,6 @@ class MeshCoreConnector extends ChangeNotifier {
       );
       if (promotedFromPending) {
         _pendingChannelSentQueue.remove(existing.messageId);
-        _pendingChannelCommandAckQueue.remove(existing.messageId);
       }
     } else {
       messages.add(processedMessage);
@@ -3329,9 +3374,35 @@ class MeshCoreConnector extends ChangeNotifier {
     _queuedMessageSyncInFlight = false;
     _isSyncingChannels = false;
     _channelSyncInFlight = false;
+    _pendingChannelSentQueue.clear();
+    _pendingGenericAckQueue.clear();
+    _reactionSendQueueSequence = 0;
 
     _setState(MeshCoreConnectionState.disconnected);
     _scheduleReconnect();
+  }
+
+  void _trackPendingGenericAck(
+    Uint8List data, {
+    String? channelSendQueueId,
+    required bool expectsGenericAck,
+  }) {
+    if (!expectsGenericAck || data.isEmpty) return;
+    _pendingGenericAckQueue.add(
+      _PendingCommandAck(
+        commandCode: data[0],
+        channelSendQueueId: channelSendQueueId,
+      ),
+    );
+  }
+
+  String _nextReactionSendQueueId() {
+    _reactionSendQueueSequence++;
+    return '$_reactionSendQueuePrefix$_reactionSendQueueSequence';
+  }
+
+  bool _isReactionSendQueueId(String queueId) {
+    return queueId.startsWith(_reactionSendQueuePrefix);
   }
 
   Map<String, String> _parseKeyValueString(String input) {
@@ -3439,4 +3510,11 @@ class _RepeaterAckContext {
     required this.pathLength,
     required this.messageBytes,
   });
+}
+
+class _PendingCommandAck {
+  final int commandCode;
+  final String? channelSendQueueId;
+
+  _PendingCommandAck({required this.commandCode, this.channelSendQueueId});
 }
