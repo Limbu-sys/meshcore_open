@@ -51,10 +51,10 @@ class AppSettings {
     Map<String, String>? batteryChemistryByDeviceId,
     this.roomSyncEnabled = true,
     this.roomSyncAutoLoginEnabled = true,
-    this.roomSyncIntervalSeconds = 90,
-    this.roomSyncMaxIntervalSeconds = 600,
-    this.roomSyncTimeoutSeconds = 15,
-    this.roomSyncStaleMinutes = 15,
+    this.roomSyncIntervalSeconds = 300,
+    this.roomSyncMaxIntervalSeconds = 3600,
+    this.roomSyncTimeoutSeconds = 20,
+    this.roomSyncStaleMinutes = 45,
   }) : batteryChemistryByDeviceId = batteryChemistryByDeviceId ?? {};
 
   Map<String, dynamic> toJson() {
@@ -122,11 +122,12 @@ class AppSettings {
       roomSyncEnabled: json['room_sync_enabled'] as bool? ?? true,
       roomSyncAutoLoginEnabled:
           json['room_sync_auto_login_enabled'] as bool? ?? true,
-      roomSyncIntervalSeconds: json['room_sync_interval_seconds'] as int? ?? 90,
+      roomSyncIntervalSeconds:
+          json['room_sync_interval_seconds'] as int? ?? 300,
       roomSyncMaxIntervalSeconds:
-          json['room_sync_max_interval_seconds'] as int? ?? 600,
-      roomSyncTimeoutSeconds: json['room_sync_timeout_seconds'] as int? ?? 15,
-      roomSyncStaleMinutes: json['room_sync_stale_minutes'] as int? ?? 15,
+          json['room_sync_max_interval_seconds'] as int? ?? 3600,
+      roomSyncTimeoutSeconds: json['room_sync_timeout_seconds'] as int? ?? 20,
+      roomSyncStaleMinutes: json['room_sync_stale_minutes'] as int? ?? 45,
     );
   }
 

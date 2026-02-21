@@ -8,6 +8,9 @@ class RoomSyncStateRecord {
   final int? lastLoginAttemptAtMs;
   final int? lastLoginSuccessAtMs;
   final int? lastSuccessfulSyncAtMs;
+  final int? lastLoginServerTimestamp;
+  final int? lastAclPermissions;
+  final int? lastLoginFirmwareLevel;
   final int? lastFailureAtMs;
   final int consecutiveFailures;
 
@@ -17,6 +20,9 @@ class RoomSyncStateRecord {
     this.lastLoginAttemptAtMs,
     this.lastLoginSuccessAtMs,
     this.lastSuccessfulSyncAtMs,
+    this.lastLoginServerTimestamp,
+    this.lastAclPermissions,
+    this.lastLoginFirmwareLevel,
     this.lastFailureAtMs,
     this.consecutiveFailures = 0,
   });
@@ -26,6 +32,9 @@ class RoomSyncStateRecord {
     int? lastLoginAttemptAtMs,
     int? lastLoginSuccessAtMs,
     int? lastSuccessfulSyncAtMs,
+    int? lastLoginServerTimestamp,
+    int? lastAclPermissions,
+    int? lastLoginFirmwareLevel,
     int? lastFailureAtMs,
     int? consecutiveFailures,
   }) {
@@ -36,6 +45,11 @@ class RoomSyncStateRecord {
       lastLoginSuccessAtMs: lastLoginSuccessAtMs ?? this.lastLoginSuccessAtMs,
       lastSuccessfulSyncAtMs:
           lastSuccessfulSyncAtMs ?? this.lastSuccessfulSyncAtMs,
+      lastLoginServerTimestamp:
+          lastLoginServerTimestamp ?? this.lastLoginServerTimestamp,
+      lastAclPermissions: lastAclPermissions ?? this.lastAclPermissions,
+      lastLoginFirmwareLevel:
+          lastLoginFirmwareLevel ?? this.lastLoginFirmwareLevel,
       lastFailureAtMs: lastFailureAtMs ?? this.lastFailureAtMs,
       consecutiveFailures: consecutiveFailures ?? this.consecutiveFailures,
     );
@@ -48,6 +62,9 @@ class RoomSyncStateRecord {
       'lastLoginAttemptAtMs': lastLoginAttemptAtMs,
       'lastLoginSuccessAtMs': lastLoginSuccessAtMs,
       'lastSuccessfulSyncAtMs': lastSuccessfulSyncAtMs,
+      'lastLoginServerTimestamp': lastLoginServerTimestamp,
+      'lastAclPermissions': lastAclPermissions,
+      'lastLoginFirmwareLevel': lastLoginFirmwareLevel,
       'lastFailureAtMs': lastFailureAtMs,
       'consecutiveFailures': consecutiveFailures,
     };
@@ -60,6 +77,9 @@ class RoomSyncStateRecord {
       lastLoginAttemptAtMs: json['lastLoginAttemptAtMs'] as int?,
       lastLoginSuccessAtMs: json['lastLoginSuccessAtMs'] as int?,
       lastSuccessfulSyncAtMs: json['lastSuccessfulSyncAtMs'] as int?,
+      lastLoginServerTimestamp: json['lastLoginServerTimestamp'] as int?,
+      lastAclPermissions: json['lastAclPermissions'] as int?,
+      lastLoginFirmwareLevel: json['lastLoginFirmwareLevel'] as int?,
       lastFailureAtMs: json['lastFailureAtMs'] as int?,
       consecutiveFailures: json['consecutiveFailures'] as int? ?? 0,
     );

@@ -7,8 +7,8 @@ This document describes the room server auto-sync feature and the minimum valida
 Room sync adds app-side reliability for room server catch-up:
 
 - Optional auto-login to room servers with saved passwords
-- Periodic queued message sync with timeout and exponential backoff
-- Per-room auto-sync control (enable one room, disable others)
+- Push-priority queued message sync with timeout and exponential backoff fallback
+- Per-room auto-sync control (rooms are opt-in by default)
 - Room sync status indicators in contacts and room chat header
 - Global room sync tuning in app settings
 
@@ -25,13 +25,24 @@ App settings include:
 - Sync timeout (seconds)
 - Stale threshold (minutes)
 
+Default tuning is conservative for low traffic:
+
+- Base interval: `300s`
+- Max backoff: `3600s`
+- Sync timeout: `20s`
+- Stale threshold: `45m`
+
+When firmware emits `PUSH_CODE_MSG_WAITING`, room sync schedules an immediate catch-up (throttled) for enabled active rooms.
+
 ### Per-room control
 
 From Contacts, long-press a room server and use:
 
 - `Auto-sync this room` switch
 
-When disabled, that room is excluded from auto-login and periodic sync.
+Auto-sync is disabled by default for newly discovered rooms. When disabled, that room is excluded from auto-login and periodic sync.
+
+Saving and using a successful manual room login will automatically opt that room into auto-sync unless it was explicitly disabled.
 
 ## Status Meanings
 

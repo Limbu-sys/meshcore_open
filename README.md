@@ -65,10 +65,10 @@ MeshCore Open is a cross-platform mobile application for communicating with Mesh
 
 ### Room Server Catch-Up
 
-- **Auto Login + Catch-Up Sync**: Optional automatic login and periodic backlog sync for room servers with saved credentials
-- **Per-Room Sync Control**: Enable or disable auto-sync per room server from the room options sheet
+- **Auto Login + Catch-Up Sync**: Optional automatic login with push-priority backlog sync and periodic fallback for room servers with saved credentials
+- **Per-Room Sync Control**: Auto-sync is opt-in per room server from the room options sheet
 - **Sync Health Indicators**: Room status in contacts/chat (`synced`, `syncing`, `stale`, `not logged in`, `sync disabled`)
-- **Tunable Sync Parameters**: Configure base interval, max backoff, timeout, and stale threshold in app settings
+- **Tunable Sync Parameters**: Configure base interval, max backoff, timeout, and stale threshold in app settings (conservative defaults)
 
 ## Technical Details
 
@@ -200,7 +200,7 @@ Messages are transmitted as binary frames using a custom protocol optimized for 
 - **Notifications**: Configurable for messages, channels, and node advertisements
 - **Battery Chemistry**: Support for NMC, LiFePO4, and LiPo battery types
 - **Message Retry**: Automatic retry with configurable path clearing
-- **Room Sync**: Global enable or disable, auto-login toggle, interval/backoff/timeout/stale thresholds
+- **Room Sync**: Global enable or disable, auto-login toggle, per-room opt-in, interval/backoff/timeout/stale thresholds
 
 ### Room Sync Guide
 

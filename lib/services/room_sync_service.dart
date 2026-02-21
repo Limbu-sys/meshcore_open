@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 
@@ -20,9 +21,24 @@ enum RoomSyncStatusKind {
   notLoggedIn,
 }
 
+class _PendingRoomLogin {
+  final String roomPubKeyHex;
+  final Completer<bool?> completer;
+
+  const _PendingRoomLogin({
+    required this.roomPubKeyHex,
+    required this.completer,
+  });
+}
+
 class RoomSyncService extends ChangeNotifier {
   static const Duration _loginTimeoutFallback = Duration(seconds: 12);
   static const int _maxAutoLoginAttempts = 3;
+  static const int _autoLoginBurstSize = 2;
+  static const Duration _autoLoginBurstPause = Duration(seconds: 4);
+  static const int _autoLoginJitterMinMs = 350;
+  static const int _autoLoginJitterMaxMs = 1250;
+  static const Duration _pushSyncThrottle = Duration(seconds: 20);
 
   final RoomSyncStore _roomSyncStore;
   final StorageService _storageService;
@@ -34,15 +50,17 @@ class RoomSyncService extends ChangeNotifier {
   Timer? _nextSyncTimer;
   Timer? _syncTimeoutTimer;
 
-  final Map<String, Completer<bool>> _pendingLoginByPrefix = {};
+  final Map<String, _PendingRoomLogin> _pendingLoginByPrefix = {};
   final Set<String> _activeRoomSessions = {};
   final Map<String, RoomSyncStateRecord> _states = {};
+  final Random _random = Random();
 
   MeshCoreConnectionState? _lastConnectionState;
   Duration _currentInterval = Duration.zero;
   bool _started = false;
   bool _syncInFlight = false;
   bool _autoLoginInProgress = false;
+  DateTime? _lastPushTriggeredSyncAt;
 
   RoomSyncService({
     required RoomSyncStore roomSyncStore,
@@ -53,7 +71,15 @@ class RoomSyncService extends ChangeNotifier {
   Map<String, RoomSyncStateRecord> get states => Map.unmodifiable(_states);
 
   bool isRoomAutoSyncEnabled(String roomPubKeyHex) {
-    return _states[roomPubKeyHex]?.autoSyncEnabled ?? true;
+    return _states[roomPubKeyHex]?.autoSyncEnabled ?? false;
+  }
+
+  int? roomAclPermissions(String roomPubKeyHex) {
+    return _states[roomPubKeyHex]?.lastAclPermissions;
+  }
+
+  int? roomFirmwareLevel(String roomPubKeyHex) {
+    return _states[roomPubKeyHex]?.lastLoginFirmwareLevel;
   }
 
   Future<void> setRoomAutoSyncEnabled(
@@ -168,7 +194,27 @@ class RoomSyncService extends ChangeNotifier {
           .toList();
       if (roomContacts.isEmpty) return;
 
+      roomContacts.sort((a, b) {
+        final aState = _states[a.publicKeyHex];
+        final bState = _states[b.publicKeyHex];
+        final aScore =
+            aState?.lastSuccessfulSyncAtMs ?? aState?.lastLoginSuccessAtMs ?? 0;
+        final bScore =
+            bState?.lastSuccessfulSyncAtMs ?? bState?.lastLoginSuccessAtMs ?? 0;
+        return bScore.compareTo(aScore);
+      });
+
+      int processed = 0;
       for (final room in roomContacts) {
+        final delay = _nextAutoLoginDelay(processed);
+        if (delay > Duration.zero) {
+          await Future.delayed(delay);
+        }
+        if (!connector.isConnected ||
+            !_roomSyncEnabled ||
+            !_roomSyncAutoLoginEnabled) {
+          break;
+        }
         final password = savedPasswords[room.publicKeyHex];
         if (password == null || password.isEmpty) continue;
         final success = await _loginRoomWithRetries(room, password);
@@ -178,6 +224,7 @@ class RoomSyncService extends ChangeNotifier {
         } else {
           _recordFailure(room.publicKeyHex);
         }
+        processed++;
       }
     } finally {
       _autoLoginInProgress = false;
@@ -189,15 +236,18 @@ class RoomSyncService extends ChangeNotifier {
   Future<bool> _loginRoomWithRetries(Contact room, String password) async {
     if (!isRoomAutoSyncEnabled(room.publicKeyHex)) return false;
     for (int attempt = 0; attempt < _maxAutoLoginAttempts; attempt++) {
-      if (!await _loginRoom(room, password)) continue;
-      return true;
+      final result = await _loginRoom(room, password);
+      if (result == true) return true;
+      if (result == false) return false;
+      // null indicates timeout/transport failure, so retry.
+      continue;
     }
     return false;
   }
 
-  Future<bool> _loginRoom(Contact room, String password) async {
+  Future<bool?> _loginRoom(Contact room, String password) async {
     final connector = _connector;
-    if (connector == null || !connector.isConnected) return false;
+    if (connector == null || !connector.isConnected) return null;
     if (!isRoomAutoSyncEnabled(room.publicKeyHex)) return false;
     _recordLoginAttempt(room.publicKeyHex);
 
@@ -213,26 +263,37 @@ class RoomSyncService extends ChangeNotifier {
         : _loginTimeoutFallback;
 
     final prefix = _prefixHex(room.publicKey.sublist(0, 6));
-    final completer = Completer<bool>();
-    _pendingLoginByPrefix[prefix] = completer;
+    final completer = Completer<bool?>();
+    _pendingLoginByPrefix[prefix] = _PendingRoomLogin(
+      roomPubKeyHex: room.publicKeyHex,
+      completer: completer,
+    );
 
     try {
       await connector.sendFrame(frame);
       final result = await completer.future.timeout(
         timeout,
-        onTimeout: () => false,
+        onTimeout: () => null,
       );
       return result;
     } catch (_) {
-      return false;
+      return null;
     } finally {
-      _pendingLoginByPrefix.remove(prefix);
+      final currentPending = _pendingLoginByPrefix[prefix];
+      if (currentPending != null &&
+          identical(currentPending.completer, completer)) {
+        _pendingLoginByPrefix.remove(prefix);
+      }
     }
   }
 
   void _handleFrame(Uint8List frame) {
     if (frame.isEmpty) return;
     final code = frame[0];
+
+    if (code == pushCodeMsgWaiting) {
+      _handleQueuedMessagesHint();
+    }
 
     if (code == pushCodeLoginSuccess || code == pushCodeLoginFail) {
       _handleLoginResponseFrame(frame, code == pushCodeLoginSuccess);
@@ -250,12 +311,48 @@ class RoomSyncService extends ChangeNotifier {
     _markSyncSuccess();
   }
 
+  void _handleQueuedMessagesHint() {
+    final connector = _connector;
+    if (connector == null || !connector.isConnected) return;
+    if (!_roomSyncEnabled) return;
+    if (_syncInFlight) return;
+
+    final hasEnabledActiveRooms = _activeRoomSessions.any(
+      isRoomAutoSyncEnabled,
+    );
+    if (!hasEnabledActiveRooms) return;
+
+    final lastTrigger = _lastPushTriggeredSyncAt;
+    final now = DateTime.now();
+    if (lastTrigger != null &&
+        now.difference(lastTrigger) < _pushSyncThrottle) {
+      return;
+    }
+
+    _lastPushTriggeredSyncAt = now;
+    _scheduleNextSync(Duration.zero);
+  }
+
   void _handleLoginResponseFrame(Uint8List frame, bool success) {
     if (frame.length < 8) return;
     final prefix = _prefixHex(frame.sublist(2, 8));
     final pending = _pendingLoginByPrefix[prefix];
-    if (pending != null && !pending.isCompleted) {
-      pending.complete(success);
+    if (pending != null && !pending.completer.isCompleted) {
+      if (success) {
+        _recordLoginMetadataFromFrame(pending.roomPubKeyHex, frame);
+      }
+      pending.completer.complete(success);
+      return;
+    }
+    if (!success) return;
+
+    // Manual room logins are handled outside RoomSyncService; in that path we can
+    // still capture metadata if the prefix resolves uniquely to a room contact.
+    final roomPubKeyHex = _resolveRoomPubKeyHexByPrefix(prefix);
+    if (roomPubKeyHex != null) {
+      _recordLoginMetadataFromFrame(roomPubKeyHex, frame);
+      unawaited(_persistStates());
+      notifyListeners();
     }
   }
 
@@ -356,7 +453,15 @@ class RoomSyncService extends ChangeNotifier {
   }
 
   Future<void> registerManualRoomLogin(String roomPubKeyHex) async {
-    if (!isRoomAutoSyncEnabled(roomPubKeyHex)) return;
+    final existing = _states[roomPubKeyHex];
+    if (existing == null) {
+      _states[roomPubKeyHex] = RoomSyncStateRecord(
+        roomPubKeyHex: roomPubKeyHex,
+        autoSyncEnabled: true,
+      );
+    } else if (!existing.autoSyncEnabled) {
+      return;
+    }
     _activeRoomSessions.add(roomPubKeyHex);
     _recordLoginSuccess(roomPubKeyHex);
     await _persistStates();
@@ -404,6 +509,20 @@ class RoomSyncService extends ChangeNotifier {
     );
   }
 
+  void _recordLoginMetadataFromFrame(String roomPubKeyHex, Uint8List frame) {
+    final existing =
+        _states[roomPubKeyHex] ??
+        RoomSyncStateRecord(roomPubKeyHex: roomPubKeyHex);
+    final serverTimestamp = frame.length >= 12 ? readUint32LE(frame, 8) : null;
+    final aclPermissions = frame.length >= 13 ? frame[12] : null;
+    final firmwareLevel = frame.length >= 14 ? frame[13] : null;
+    _states[roomPubKeyHex] = existing.copyWith(
+      lastLoginServerTimestamp: serverTimestamp,
+      lastAclPermissions: aclPermissions,
+      lastLoginFirmwareLevel: firmwareLevel,
+    );
+  }
+
   void _recordFailure(String roomPubKeyHex) {
     final existing =
         _states[roomPubKeyHex] ??
@@ -419,12 +538,40 @@ class RoomSyncService extends ChangeNotifier {
     );
   }
 
+  Duration _nextAutoLoginDelay(int processedCount) {
+    if (processedCount <= 0) return Duration.zero;
+    if (processedCount % _autoLoginBurstSize == 0) {
+      return _autoLoginBurstPause;
+    }
+    final range = _autoLoginJitterMaxMs - _autoLoginJitterMinMs;
+    final jitterMs = range <= 0
+        ? _autoLoginJitterMinMs
+        : _autoLoginJitterMinMs + _random.nextInt(range + 1);
+    return Duration(milliseconds: jitterMs);
+  }
+
   Future<void> _persistStates() async {
     await _roomSyncStore.save(_states);
   }
 
   String _prefixHex(Uint8List bytes) {
     return bytes.map((b) => b.toRadixString(16).padLeft(2, '0')).join();
+  }
+
+  String? _resolveRoomPubKeyHexByPrefix(String prefixHex) {
+    final connector = _connector;
+    if (connector == null) return null;
+    final matches = connector.contacts
+        .where((contact) {
+          if (contact.type != advTypeRoom) return false;
+          if (contact.publicKey.length < 6) return false;
+          return _prefixHex(contact.publicKey.sublist(0, 6)) == prefixHex;
+        })
+        .map((contact) => contact.publicKeyHex)
+        .toSet()
+        .toList();
+    if (matches.length != 1) return null;
+    return matches.first;
   }
 
   Future<void> _tryLoginRoomByPubKey(String roomPubKeyHex) async {
