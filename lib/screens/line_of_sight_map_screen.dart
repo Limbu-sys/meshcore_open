@@ -14,7 +14,7 @@ import '../services/app_settings_service.dart';
 import '../services/line_of_sight_service.dart';
 import '../services/map_tile_cache_service.dart';
 import '../utils/route_transitions.dart';
-import '../widgets/adaptive_app_bar_title.dart';
+import '../widgets/app_bar.dart';
 import '../widgets/quick_switch_bar.dart';
 
 class LineOfSightEndpoint {
@@ -309,7 +309,7 @@ class _LineOfSightMapScreenState extends State<LineOfSightMapScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: AdaptiveAppBarTitle(widget.title),
+        title: AppBarTitle(widget.title),
         centerTitle: true,
         actions: [
           IconButton(

@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import '../connector/meshcore_connector.dart';
 import '../l10n/l10n.dart';
 import '../connector/meshcore_protocol.dart';
+import '../models/app_settings.dart';
 import '../models/channel.dart';
 import '../models/app_settings.dart';
 import '../models/contact.dart';

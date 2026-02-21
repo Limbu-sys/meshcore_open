@@ -8,8 +8,8 @@ import 'package:latlong2/latlong.dart';
 import 'package:meshcore_open/connector/meshcore_connector.dart';
 import 'package:meshcore_open/connector/meshcore_protocol.dart';
 import 'package:meshcore_open/l10n/l10n.dart';
-import 'package:meshcore_open/models/contact.dart';
 import 'package:meshcore_open/models/app_settings.dart';
+import 'package:meshcore_open/models/contact.dart';
 import 'package:meshcore_open/services/app_settings_service.dart';
 import 'package:meshcore_open/services/map_tile_cache_service.dart';
 import 'package:meshcore_open/widgets/snr_indicator.dart';
@@ -328,8 +328,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
                       ),
                     ),
                   ),
-                if (_hasData)
-                  _buildLegendCard(context, _traceData!, isImperial),
+                if (_hasData) _buildLegendCard(context, _traceData!, isImperial),
               ],
             ),
           ),
