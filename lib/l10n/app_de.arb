@@ -334,6 +334,8 @@
   "channels_publicChannel": "Öffentlicher Kanal",
   "channels_privateChannel": "Privater Kanal",
   "channels_editChannel": "Kanal bearbeiten",
+  "channels_muteChannel": "Kanal stummschalten",
+  "channels_unmuteChannel": "Kanal Stummschaltung aufheben",
   "channels_deleteChannel": "Lösche den Kanal",
   "channels_deleteChannelConfirm": "Löschen von \"{name}\"? Dies kann nicht rückgängig gemacht werden.",
   "@channels_deleteChannelConfirm": {

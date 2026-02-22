@@ -796,6 +796,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get channels_editChannel => 'Изменить канал';
 
   @override
+  String get channels_muteChannel => 'Отключить уведомления канала';
+
+  @override
+  String get channels_unmuteChannel => 'Включить уведомления канала';
+
+  @override
   String get channels_deleteChannel => 'Удалить канал';
 
   @override

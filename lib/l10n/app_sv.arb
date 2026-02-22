@@ -334,6 +334,8 @@
   "channels_publicChannel": "Allmänt kanal",
   "channels_privateChannel": "Privat kanal",
   "channels_editChannel": "Redigera kanal",
+  "channels_muteChannel": "Tysta kanal",
+  "channels_unmuteChannel": "Slå på ljud för kanal",
   "channels_deleteChannel": "Ta bort kanal",
   "channels_deleteChannelConfirm": "Radera \"{name}\"? Detta kan inte ångras.",
   "@channels_deleteChannelConfirm": {

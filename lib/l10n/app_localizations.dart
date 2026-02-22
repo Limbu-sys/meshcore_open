@@ -1546,6 +1546,18 @@ abstract class AppLocalizations {
   /// **'Edit channel'**
   String get channels_editChannel;
 
+  /// No description provided for @channels_muteChannel.
+  ///
+  /// In en, this message translates to:
+  /// **'Mute channel'**
+  String get channels_muteChannel;
+
+  /// No description provided for @channels_unmuteChannel.
+  ///
+  /// In en, this message translates to:
+  /// **'Unmute channel'**
+  String get channels_unmuteChannel;
+
   /// No description provided for @channels_deleteChannel.
   ///
   /// In en, this message translates to:

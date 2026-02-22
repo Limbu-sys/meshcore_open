@@ -787,6 +787,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String get channels_editChannel => 'Redigera kanal';
 
   @override
+  String get channels_muteChannel => 'Tysta kanal';
+
+  @override
+  String get channels_unmuteChannel => 'Slå på ljud för kanal';
+
+  @override
   String get channels_deleteChannel => 'Ta bort kanal';
 
   @override

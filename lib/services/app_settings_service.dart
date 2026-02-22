@@ -155,4 +155,19 @@ class AppSettingsService extends ChangeNotifier {
   Future<void> setUnitSystem(UnitSystem value) async {
     await updateSettings(_settings.copyWith(unitSystem: value));
   }
+
+  bool isChannelMuted(String channelName) {
+    return _settings.mutedChannels.contains(channelName);
+  }
+
+  Future<void> muteChannel(String channelName) async {
+    final updated = Set<String>.from(_settings.mutedChannels)..add(channelName);
+    await updateSettings(_settings.copyWith(mutedChannels: updated));
+  }
+
+  Future<void> unmuteChannel(String channelName) async {
+    final updated = Set<String>.from(_settings.mutedChannels)
+      ..remove(channelName);
+    await updateSettings(_settings.copyWith(mutedChannels: updated));
+  }
 }

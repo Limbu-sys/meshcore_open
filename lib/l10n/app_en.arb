@@ -352,6 +352,8 @@
   "channels_publicChannel": "Public channel",
   "channels_privateChannel": "Private channel",
   "channels_editChannel": "Edit channel",
+  "channels_muteChannel": "Mute channel",
+  "channels_unmuteChannel": "Unmute channel",
   "channels_deleteChannel": "Delete channel",
   "channels_deleteChannelConfirm": "Delete \"{name}\"? This cannot be undone.",
   "@channels_deleteChannelConfirm": {

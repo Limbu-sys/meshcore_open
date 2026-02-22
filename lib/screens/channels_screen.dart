@@ -9,6 +9,7 @@ import 'package:uuid/uuid.dart';
 
 import '../connector/meshcore_connector.dart';
 import '../l10n/l10n.dart';
+import '../services/app_settings_service.dart';
 import '../models/channel.dart';
 import '../models/community.dart';
 import '../storage/community_store.dart';
@@ -477,6 +478,9 @@ class _ChannelsScreenState extends State<ChannelsScreen>
     MeshCoreConnector connector,
     Channel channel,
   ) {
+    final settingsService = context.read<AppSettingsService>();
+    final isMuted = settingsService.isChannelMuted(channel.name);
+
     showModalBottomSheet(
       context: context,
       builder: (context) => SafeArea(
@@ -491,6 +495,26 @@ class _ChannelsScreenState extends State<ChannelsScreen>
                 await Future.delayed(const Duration(milliseconds: 100));
                 if (context.mounted) {
                   _showEditChannelDialog(context, connector, channel);
+                }
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                isMuted
+                    ? Icons.notifications_outlined
+                    : Icons.notifications_off_outlined,
+              ),
+              title: Text(
+                isMuted
+                    ? context.l10n.channels_unmuteChannel
+                    : context.l10n.channels_muteChannel,
+              ),
+              onTap: () async {
+                Navigator.pop(context);
+                if (isMuted) {
+                  await settingsService.unmuteChannel(channel.name);
+                } else {
+                  await settingsService.muteChannel(channel.name);
                 }
               },
             ),

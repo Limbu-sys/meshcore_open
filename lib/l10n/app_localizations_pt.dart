@@ -798,6 +798,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get channels_editChannel => 'Editar canal';
 
   @override
+  String get channels_muteChannel => 'Silenciar canal';
+
+  @override
+  String get channels_unmuteChannel => 'Ativar canal';
+
+  @override
   String get channels_deleteChannel => 'Excluir canal';
 
   @override

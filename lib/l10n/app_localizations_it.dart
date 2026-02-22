@@ -795,6 +795,12 @@ class AppLocalizationsIt extends AppLocalizations {
   String get channels_editChannel => 'Modifica canale';
 
   @override
+  String get channels_muteChannel => 'Silenzia canale';
+
+  @override
+  String get channels_unmuteChannel => 'Attiva notifiche canale';
+
+  @override
   String get channels_deleteChannel => 'Elimina canale';
 
   @override

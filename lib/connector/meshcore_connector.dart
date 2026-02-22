@@ -2529,6 +2529,8 @@ class MeshCoreConnector extends ChangeNotifier {
     }
 
     final label = channelName ?? _channelDisplayName(channelIndex);
+    if (_appSettingsService!.isChannelMuted(label)) return;
+
     _notificationService.showChannelMessageNotification(
       channelName: label,
       message: message.text,

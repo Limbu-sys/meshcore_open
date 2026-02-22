@@ -334,6 +334,8 @@
   "channels_publicChannel": "Canal public",
   "channels_privateChannel": "Canal privé",
   "channels_editChannel": "Modifier le canal",
+  "channels_muteChannel": "Désactiver les notifications du canal",
+  "channels_unmuteChannel": "Réactiver les notifications du canal",
   "channels_deleteChannel": "Supprimer le canal",
   "channels_deleteChannelConfirm": "Supprimer {name}? Cela ne peut pas être annulé.",
   "@channels_deleteChannelConfirm": {

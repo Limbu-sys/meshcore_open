@@ -335,6 +335,8 @@
   "channels_publicChannel": "Публічний канал",
   "channels_privateChannel": "Приватний канал",
   "channels_editChannel": "Редагувати канал",
+  "channels_muteChannel": "Вимкнути сповіщення каналу",
+  "channels_unmuteChannel": "Увімкнути сповіщення каналу",
   "channels_deleteChannel": "Видалити канал",
   "channels_deleteChannelConfirm": "Видалити {name}? Це не можна скасувати.",
   "@channels_deleteChannelConfirm": {

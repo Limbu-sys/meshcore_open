@@ -796,6 +796,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get channels_editChannel => 'Kanal bearbeiten';
 
   @override
+  String get channels_muteChannel => 'Kanal stummschalten';
+
+  @override
+  String get channels_unmuteChannel => 'Kanal Stummschaltung aufheben';
+
+  @override
   String get channels_deleteChannel => 'Lösche den Kanal';
 
   @override

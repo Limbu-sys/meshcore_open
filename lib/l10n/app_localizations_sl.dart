@@ -791,6 +791,12 @@ class AppLocalizationsSl extends AppLocalizations {
   String get channels_editChannel => 'Uredi kanal';
 
   @override
+  String get channels_muteChannel => 'Utišaj kanal';
+
+  @override
+  String get channels_unmuteChannel => 'Vklopi obvestila kanala';
+
+  @override
   String get channels_deleteChannel => 'Pošlji kanal';
 
   @override

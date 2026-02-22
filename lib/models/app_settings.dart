@@ -36,6 +36,7 @@ class AppSettings {
   final Map<String, String> batteryChemistryByDeviceId;
   final Map<String, String> batteryChemistryByRepeaterId;
   final UnitSystem unitSystem;
+  final Set<String> mutedChannels;
 
   AppSettings({
     this.clearPathOnMaxRetry = false,
@@ -60,8 +61,10 @@ class AppSettings {
     Map<String, String>? batteryChemistryByDeviceId,
     Map<String, String>? batteryChemistryByRepeaterId,
     this.unitSystem = UnitSystem.metric,
+    Set<String>? mutedChannels,
   }) : batteryChemistryByDeviceId = batteryChemistryByDeviceId ?? {},
-       batteryChemistryByRepeaterId = batteryChemistryByRepeaterId ?? {};
+       batteryChemistryByRepeaterId = batteryChemistryByRepeaterId ?? {},
+       mutedChannels = mutedChannels ?? {};
 
   Map<String, dynamic> toJson() {
     return {
@@ -87,6 +90,7 @@ class AppSettings {
       'battery_chemistry_by_device_id': batteryChemistryByDeviceId,
       'battery_chemistry_by_repeater_id': batteryChemistryByRepeaterId,
       'unit_system': unitSystem.value,
+      'muted_channels': mutedChannels.toList(),
     };
   }
 
@@ -134,6 +138,11 @@ class AppSettings {
           ) ??
           {},
       unitSystem: parseUnitSystem(json['unit_system']),
+      mutedChannels:
+          ((json['muted_channels'] as List?)
+              ?.map((e) => e.toString())
+              .toSet()) ??
+          {},
     );
   }
 
@@ -160,6 +169,7 @@ class AppSettings {
     Map<String, String>? batteryChemistryByDeviceId,
     Map<String, String>? batteryChemistryByRepeaterId,
     UnitSystem? unitSystem,
+    Set<String>? mutedChannels,
   }) {
     return AppSettings(
       clearPathOnMaxRetry: clearPathOnMaxRetry ?? this.clearPathOnMaxRetry,
@@ -192,6 +202,7 @@ class AppSettings {
       batteryChemistryByRepeaterId:
           batteryChemistryByRepeaterId ?? this.batteryChemistryByRepeaterId,
       unitSystem: unitSystem ?? this.unitSystem,
+      mutedChannels: mutedChannels ?? this.mutedChannels,
     );
   }
 }

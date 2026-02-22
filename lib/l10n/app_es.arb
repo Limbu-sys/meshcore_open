@@ -334,6 +334,8 @@
   "channels_publicChannel": "Canal público",
   "channels_privateChannel": "Canal privado",
   "channels_editChannel": "Editar canal",
+  "channels_muteChannel": "Silenciar canal",
+  "channels_unmuteChannel": "Activar canal",
   "channels_deleteChannel": "Eliminar canal",
   "channels_deleteChannelConfirm": "Eliminar \"{name}\"? Esto no se puede deshacer.",
   "@channels_deleteChannelConfirm": {

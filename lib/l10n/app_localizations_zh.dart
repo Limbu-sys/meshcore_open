@@ -756,6 +756,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get channels_editChannel => '编辑频道';
 
   @override
+  String get channels_muteChannel => '静音频道';
+
+  @override
+  String get channels_unmuteChannel => '取消静音频道';
+
+  @override
   String get channels_deleteChannel => '删除频道';
 
   @override

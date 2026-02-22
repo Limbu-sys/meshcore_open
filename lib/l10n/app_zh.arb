@@ -342,6 +342,8 @@
   "channels_publicChannel": "公共频道",
   "channels_privateChannel": "私密频道",
   "channels_editChannel": "编辑频道",
+  "channels_muteChannel": "静音频道",
+  "channels_unmuteChannel": "取消静音频道",
   "channels_deleteChannel": "删除频道",
   "channels_deleteChannelConfirm": "Delete \"{name}\"? This cannot be undone.",
   "@channels_deleteChannelConfirm": {

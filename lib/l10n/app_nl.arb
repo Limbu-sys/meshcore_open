@@ -334,6 +334,8 @@
   "channels_publicChannel": "Open kanaal",
   "channels_privateChannel": "Private kanaal",
   "channels_editChannel": "Kanaal bewerken",
+  "channels_muteChannel": "Kanaal dempen",
+  "channels_unmuteChannel": "Kanaal dempen opheffen",
   "channels_deleteChannel": "Kanaal verwijderen",
   "channels_deleteChannelConfirm": "Verwijderen \"{name}\"? Dit kan niet worden teruggedraaid.",
   "@channels_deleteChannelConfirm": {

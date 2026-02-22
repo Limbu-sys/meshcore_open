@@ -334,6 +334,8 @@
   "channels_publicChannel": "Veľké verejne kanály",
   "channels_privateChannel": "Osobné kanál",
   "channels_editChannel": "Upraviť kanál",
+  "channels_muteChannel": "Stlmiť kanál",
+  "channels_unmuteChannel": "Zrušiť stlmenie kanála",
   "channels_deleteChannel": "Odstrániť kanál",
   "channels_deleteChannelConfirm": "Odstrániť \"{name}\"? To sa nedá zrušiť.",
   "@channels_deleteChannelConfirm": {
