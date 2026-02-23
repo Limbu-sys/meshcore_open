@@ -275,7 +275,9 @@ class _MapScreenState extends State<MapScreen> {
                 if (!_isBuildingPathTrace)
                   IconButton(
                     icon: const Icon(Icons.radar),
-                    onPressed: () => _startPath(),
+                    onPressed: () => _startPath(
+                      LatLng(connector.selfLatitude!, connector.selfLongitude!),
+                    ),
                     tooltip: context.l10n.contacts_pathTrace,
                   ),
                 if (!_isBuildingPathTrace)
@@ -511,31 +513,67 @@ class _MapScreenState extends State<MapScreen> {
     );
   }
 
+  List<Contact> _filterContactsBySettings(
+    List<Contact> contacts,
+    dynamic settings,
+  ) {
+    List<Contact> filtered = [];
+    bool addContact = false;
+    for (final contact in contacts) {
+      addContact = false;
+      if (!contact.hasLocation) continue;
+
+      // Apply node type filters
+      if (contact.type == advTypeRepeater &&
+          (settings.mapShowRepeaters ||
+              _isBuildingPathTrace ||
+              settings.mapShowOverlaps)) {
+        addContact = true;
+      }
+      if (contact.type == advTypeChat &&
+          (settings.mapShowChatNodes || _isBuildingPathTrace)) {
+        addContact = true;
+      }
+      if (contact.type != advTypeChat &&
+          contact.type != advTypeRepeater &&
+          (settings.mapShowOtherNodes ||
+              _isBuildingPathTrace ||
+              settings.mapShowOverlaps)) {
+        addContact = true;
+      }
+
+      final hasOverlap = contacts
+          .where(
+            (c) =>
+                c.publicKeyHex != contact.publicKeyHex &&
+                c.publicKey.first == contact.publicKey.first &&
+                (c.type == advTypeRepeater || c.type == advTypeRoom) &&
+                (contact.type == advTypeRepeater ||
+                    contact.type == advTypeRoom),
+          )
+          .firstOrNull;
+
+      if (hasOverlap == null &&
+          settings.mapShowOverlaps &&
+          !_isBuildingPathTrace) {
+        addContact = false;
+      }
+
+      if (addContact) {
+        filtered.add(contact);
+      }
+    }
+    return filtered;
+  }
+
   List<Marker> _buildMarkers(
     List<Contact> contacts,
     settings, {
     required bool showLabels,
   }) {
     final markers = <Marker>[];
-
-    for (final contact in contacts) {
-      if (!contact.hasLocation) continue;
-
-      // Apply node type filters
-      if (contact.type == advTypeRepeater &&
-          (!settings.mapShowRepeaters && !_isBuildingPathTrace)) {
-        continue;
-      }
-      if (contact.type == advTypeChat &&
-          !(settings.mapShowChatNodes && !_isBuildingPathTrace)) {
-        continue;
-      }
-      if (contact.type != advTypeChat &&
-          contact.type != advTypeRepeater &&
-          (!settings.mapShowOtherNodes && !_isBuildingPathTrace)) {
-        continue;
-      }
-
+    final filteredContacts = _filterContactsBySettings(contacts, settings);
+    for (final contact in filteredContacts) {
       final marker = Marker(
         point: LatLng(contact.latitude!, contact.longitude!),
         width: 35,
@@ -551,7 +589,9 @@ class _MapScreenState extends State<MapScreen> {
               Container(
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
-                  color: _getNodeColor(contact.type),
+                  color: settings.mapShowOverlaps && !_isBuildingPathTrace
+                      ? Colors.red
+                      : _getNodeColor(contact.type),
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.white, width: 2),
                   boxShadow: [
@@ -578,7 +618,9 @@ class _MapScreenState extends State<MapScreen> {
         markers.add(
           _buildNodeLabelMarker(
             point: LatLng(contact.latitude!, contact.longitude!),
-            label: contact.name,
+            label: settings.mapShowOverlaps && !_isBuildingPathTrace
+                ? "${contact.publicKeyHex.substring(0, 2)}:${contact.name}"
+                : contact.name,
           ),
         );
       }
@@ -657,20 +699,12 @@ class _MapScreenState extends State<MapScreen> {
     settings,
     int markerCount,
   ) {
-    int nodeCount = 0;
-    for (final contact in contactsWithLocation) {
-      // Apply node type filters
-      if (contact.type == advTypeRepeater && !settings.mapShowRepeaters) {
-        continue;
-      }
-      if (contact.type == advTypeChat && !settings.mapShowChatNodes) continue;
-      if (contact.type != advTypeChat &&
-          contact.type != advTypeRepeater &&
-          !settings.mapShowOtherNodes) {
-        continue;
-      }
-      nodeCount++;
-    }
+    final filteredContacts = _filterContactsBySettings(
+      contactsWithLocation,
+      settings,
+    );
+
+    final nodeCount = filteredContacts.length;
 
     return Positioned(
       top: 16,
@@ -1479,6 +1513,14 @@ class _MapScreenState extends State<MapScreen> {
                     },
                     contentPadding: EdgeInsets.zero,
                   ),
+                  CheckboxListTile(
+                    title: Text(context.l10n.map_showOverlaps),
+                    value: settings.mapShowOverlaps,
+                    onChanged: (value) {
+                      service.setMapShowOverlaps(value ?? true);
+                    },
+                    contentPadding: EdgeInsets.zero,
+                  ),
                   const SizedBox(height: 16),
                   Text(
                     context.l10n.map_keyPrefix,
@@ -1637,12 +1679,13 @@ class _MapScreenState extends State<MapScreen> {
     });
   }
 
-  void _startPath() {
+  void _startPath(LatLng position) {
     setState(() {
       _isBuildingPathTrace = true;
       _pathTrace.clear();
       _points.clear();
       _polylines.clear();
+      _points.add(position);
     });
   }
 
@@ -1688,14 +1731,14 @@ class _MapScreenState extends State<MapScreen> {
                     .join(','),
                 style: TextStyle(fontSize: 18),
               ),
-              const SizedBox(height: 6),
+              // const SizedBox(height: 6),
               Wrap(
                 alignment: WrapAlignment.center,
-                spacing: 8,
-                runSpacing: 8,
+                spacing: 1,
+                runSpacing: 1,
                 children: [
                   if (_pathTrace.isNotEmpty)
-                    ElevatedButton(
+                    IconButton(
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -1710,15 +1753,37 @@ class _MapScreenState extends State<MapScreen> {
                           _isBuildingPathTrace = false;
                         });
                       },
-                      child: Text(l10n.map_runTrace),
+                      tooltip: "Path Trace",
+                      icon: const Icon(Icons.arrow_forward_outlined),
                     ),
                   if (_pathTrace.isNotEmpty)
-                    ElevatedButton(
+                    IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PathTraceMapScreen(
+                              title: l10n.contacts_pathTrace,
+                              path: Uint8List.fromList(_pathTrace),
+                              flipPathRound: true,
+                            ),
+                          ),
+                        );
+                        setState(() {
+                          _isBuildingPathTrace = false;
+                        });
+                      },
+                      tooltip: "Build Return Path",
+                      icon: const Icon(Icons.replay),
+                    ),
+                  if (_pathTrace.isNotEmpty)
+                    IconButton(
                       onPressed: _removePath,
-                      child: Text(l10n.map_removeLast),
+                      tooltip: "Remove Last Point",
+                      icon: const Icon(Icons.delete),
                     ),
                   if (_pathTrace.isEmpty)
-                    ElevatedButton(
+                    IconButton(
                       onPressed: () {
                         setState(() {
                           _isBuildingPathTrace = false;
@@ -1730,7 +1795,7 @@ class _MapScreenState extends State<MapScreen> {
                           SnackBar(content: Text(l10n.map_pathTraceCancelled)),
                         );
                       },
-                      child: Text(l10n.common_cancel),
+                      icon: const Icon(Icons.close),
                     ),
                 ],
               ),

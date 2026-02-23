@@ -956,5 +956,6 @@
   "losPointName": "Имя точки",
   "losShowPanelTooltip": "Показать панель LOS",
   "losHidePanelTooltip": "Скрыть панель LOS",
-  "losElevationAttribution": "Данные о высоте: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Данные о высоте: Open-Meteo (CC BY 4.0)",
+  "map_showOverlaps": "Перекрытия ключа повтора"
 }

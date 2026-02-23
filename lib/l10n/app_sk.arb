@@ -1716,5 +1716,6 @@
   "losPointName": "Názov bodu",
   "losShowPanelTooltip": "Zobraziť panel LOS",
   "losHidePanelTooltip": "Skryť panel LOS",
-  "losElevationAttribution": "Údaje o nadmorskej výške: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Údaje o nadmorskej výške: Open-Meteo (CC BY 4.0)",
+  "map_showOverlaps": "Prekrývanie opakovača kľúča"
 }

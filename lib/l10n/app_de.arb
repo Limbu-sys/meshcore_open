@@ -1744,5 +1744,6 @@
   "losPointName": "Punktname",
   "losShowPanelTooltip": "LOS-Panel anzeigen",
   "losHidePanelTooltip": "LOS-Panel ausblenden",
-  "losElevationAttribution": "Höhendaten: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Höhendaten: Open-Meteo (CC BY 4.0)",
+  "map_showOverlaps": "Überlappungen der Repeater-Taste"
 }

@@ -1716,5 +1716,6 @@
   "losPointName": "Puntnaam",
   "losShowPanelTooltip": "Toon LOS-paneel",
   "losHidePanelTooltip": "LOS-paneel verbergen",
-  "losElevationAttribution": "Hoogtegegevens: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Hoogtegegevens: Open-Meteo (CC BY 4.0)",
+  "map_showOverlaps": "Herhalingssleutel overlapt"
 }
