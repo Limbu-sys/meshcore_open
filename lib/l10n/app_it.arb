@@ -1716,5 +1716,6 @@
   "losPointName": "Nome del punto",
   "losShowPanelTooltip": "Mostra il pannello LOS",
   "losHidePanelTooltip": "Nascondi il pannello LOS",
-  "losElevationAttribution": "Dati di elevazione: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Dati di elevazione: Open-Meteo (CC BY 4.0)",
+  "map_showOverlaps": "Sovrapposizioni della chiave ripetitore"
 }

@@ -1716,5 +1716,6 @@
   "losPointName": "Ime točke",
   "losShowPanelTooltip": "Pokaži ploščo LOS",
   "losHidePanelTooltip": "Skrij ploščo LOS",
-  "losElevationAttribution": "Podatki o višini: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Podatki o višini: Open-Meteo (CC BY 4.0)",
+  "map_showOverlaps": "Prekrivanje ključa ponovnega predvajanja"
 }

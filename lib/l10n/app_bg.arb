@@ -1716,5 +1716,6 @@
   "losPointName": "Име на точката",
   "losShowPanelTooltip": "Показване на LOS панел",
   "losHidePanelTooltip": "Скриване на LOS панела",
-  "losElevationAttribution": "Данни за надморска височина: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Данни за надморска височина: Open-Meteo (CC BY 4.0)",
+  "map_showOverlaps": "Покриване на ключа на повтаряча"
 }
