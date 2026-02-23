@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 6.0.0+1
+version: 6.0.0+7
 
 environment:
   sdk: ^3.9.2
@@ -41,19 +41,19 @@ dependencies:
   provider: ^6.1.5+1
   shared_preferences: ^2.2.2
   uuid: ^4.3.3
-  flutter_map: ^7.0.2
+  flutter_map: ^8.2.2
   latlong2: ^0.9.1
-  flutter_local_notifications: ^18.0.1
+  flutter_local_notifications: ^20.1.0
   crypto: ^3.0.3
-  pointycastle: ^3.7.4
+  pointycastle: ^4.0.0
   http: ^1.2.0
   cached_network_image: ^3.4.1
   flutter_cache_manager: ^3.4.1
-  flutter_foreground_task: ^6.1.2
-  wakelock_plus: ^1.2.8
+  flutter_foreground_task: ^9.2.0
+  wakelock_plus: ^1.4.0
   characters: ^1.4.0
-  package_info_plus: ^8.0.0
-  mobile_scanner: ^6.0.0  # QR/barcode scanning
+  package_info_plus: ^9.0.0
+  mobile_scanner: ^7.1.4  # QR/barcode scanning
   qr_flutter: ^4.1.0      # QR code generation
   url_launcher: ^6.3.0    # Launch URLs in system browser
   flutter_linkify: ^6.0.0 # Auto-detect and linkify URLs in text
@@ -70,8 +70,8 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^5.0.0
-  flutter_launcher_icons: ^0.13.1
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

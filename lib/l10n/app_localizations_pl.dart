@@ -144,6 +144,16 @@ class AppLocalizationsPl extends AppLocalizations {
   String get scanner_scan => 'Przeskanuj';
 
   @override
+  String get scanner_bluetoothOff => 'Bluetooth jest wyłączony';
+
+  @override
+  String get scanner_bluetoothOffMessage =>
+      'Prosimy włączyć Bluetooth, aby przeskanować urządzenia.';
+
+  @override
+  String get scanner_enableBluetooth => 'Włącz Bluetooth';
+
+  @override
   String get device_quickSwitch => 'Szybka zmiana';
 
   @override
@@ -314,6 +324,10 @@ class AppLocalizationsPl extends AppLocalizations {
       'Otwarty kod źródłowy klient Flutter dla urządzeń do sieci mesh LoRa MeshCore.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'Dane wysokościowe LOS: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Imię';
 
   @override
@@ -336,15 +350,6 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get settings_presets => 'Preset';
-
-  @override
-  String get settings_preset915Mhz => '915 MHz';
-
-  @override
-  String get settings_preset868Mhz => '868 MHz';
-
-  @override
-  String get settings_preset433Mhz => '433 MHz';
 
   @override
   String get settings_frequency => 'Częstotliwość (MHz)';
@@ -375,10 +380,15 @@ class AppLocalizationsPl extends AppLocalizations {
   String get settings_txPowerInvalid => 'Nieprawidłowa moc TX (0-22 dBm)';
 
   @override
-  String get settings_longRange => 'Długi zasięg';
+  String get settings_clientRepeat => 'Powtórzenie: Niezależne od sieci';
 
   @override
-  String get settings_fastSpeed => 'Szybka prędkość';
+  String get settings_clientRepeatSubtitle =>
+      'Pozwól temu urządzeniu powtarzać pakiety danych dla innych urządzeń.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'Powtórka poza siecią wymaga częstotliwości 433, 869 lub 918 MHz.';
 
   @override
   String settings_error(String message) {
@@ -616,6 +626,15 @@ class AppLocalizationsPl extends AppLocalizations {
   String get appSettings_offlineMapCache => 'Bufor Map Offline';
 
   @override
+  String get appSettings_unitsTitle => 'Jednostki';
+
+  @override
+  String get appSettings_unitsMetric => 'Metryczne (m / km)';
+
+  @override
+  String get appSettings_unitsImperial => 'Imperialne (ft / mi)';
+
+  @override
   String get appSettings_noAreaSelected => 'Nie zaznaczono żadnej powierzchni.';
 
   @override
@@ -777,6 +796,12 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get channels_editChannel => 'Edytuj kanał';
+
+  @override
+  String get channels_muteChannel => 'Wycisz kanał';
+
+  @override
+  String get channels_unmuteChannel => 'Wyłącz wyciszenie kanału';
 
   @override
   String get channels_deleteChannel => 'Usuń kanał';
@@ -1074,6 +1099,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get chat_pathManagement => 'Zarządzanie ścieżkami';
 
   @override
+  String get chat_ShowAllPaths => 'Pokaż wszystkie ścieżki';
+
+  @override
   String get chat_routingMode => 'Tryb routingu';
 
   @override
@@ -1233,6 +1261,12 @@ class AppLocalizationsPl extends AppLocalizations {
   String get map_title => 'Mapa węzłów';
 
   @override
+  String get map_lineOfSight => 'Linia wzroku';
+
+  @override
+  String get map_losScreenTitle => 'Linia wzroku';
+
+  @override
   String get map_noNodesWithLocation => 'Brak węzłów z danymi lokalizacyjnymi';
 
   @override
@@ -1360,6 +1394,18 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get map_manageRepeater => 'Zarządzaj Powtórzami';
+
+  @override
+  String get map_tapToAdd => 'Kliknij na węzły, aby dodać je do ścieżki.';
+
+  @override
+  String get map_runTrace => 'Uruchom ślad ścieżki';
+
+  @override
+  String get map_removeLast => 'Usuń ostatni';
+
+  @override
+  String get map_pathTraceCancelled => 'Śledzenie ścieżki anulowano.';
 
   @override
   String get mapCache_title => 'Bufor Map Offline';
@@ -1658,10 +1704,10 @@ class AppLocalizationsPl extends AppLocalizations {
   String get repeater_cliSubtitle => 'Wyślij polecenia do powielacza';
 
   @override
-  String get repeater_neighbours => 'Sąsiedzi';
+  String get repeater_neighbors => 'Sąsiedzi';
 
   @override
-  String get repeater_neighboursSubtitle =>
+  String get repeater_neighborsSubtitle =>
       'Wyświetl sąsiedztwo zerowych hopów.';
 
   @override
@@ -2357,7 +2403,7 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Powtarzacze Sąsiedzi';
+  String get neighbors_repeatersNeighbors => 'Powtarzacze Sąsiedzi';
 
   @override
   String get neighbors_noData => 'Brak danych dotyczących sąsiadów.';
@@ -2701,6 +2747,119 @@ class AppLocalizationsPl extends AppLocalizations {
       'Jeden lub więcej z chmieli nie ma określonej lokalizacji!';
 
   @override
+  String get pathTrace_clearTooltip => 'Wyczyść ścieżkę';
+
+  @override
+  String get losSelectStartEnd => 'Wybierz węzły początkowe i końcowe dla LOS.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Sprawdzenie pola widzenia nie powiodło się: $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Wyczyść wszystkie punkty';
+
+  @override
+  String get losRunToViewElevationProfile =>
+      'Uruchom LOS, aby wyświetlić profil wysokości';
+
+  @override
+  String get losMenuTitle => 'Menu LOS';
+
+  @override
+  String get losMenuSubtitle =>
+      'Stuknij węzły lub naciśnij i przytrzymaj mapę, aby uzyskać niestandardowe punkty';
+
+  @override
+  String get losShowDisplayNodes => 'Pokaż węzły wyświetlające';
+
+  @override
+  String get losCustomPoints => 'Punkty niestandardowe';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Niestandardowe $index';
+  }
+
+  @override
+  String get losPointA => 'Punkt A';
+
+  @override
+  String get losPointB => 'Punkt B';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Antena A: $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Antena B: $value $unit';
+  }
+
+  @override
+  String get losRun => 'Uruchom LOS-a';
+
+  @override
+  String get losNoElevationData => 'Brak danych o wysokości';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, czysty LOS, minimalny prześwit $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, zablokowane przez $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'LOS: sprawdzam...';
+
+  @override
+  String get losStatusNoData => 'LOS: brak danych';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS: $clear/$total jasne, $blocked zablokowane, $unknown nieznane';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Dane dotyczące wysokości są niedostępne dla jednej lub większej liczby próbek.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Nieprawidłowe dane punktów/wysokości do obliczenia LOS.';
+
+  @override
+  String get losRenameCustomPoint => 'Zmień nazwę punktu niestandardowego';
+
+  @override
+  String get losPointName => 'Nazwa punktu';
+
+  @override
+  String get losShowPanelTooltip => 'Pokaż panel LOS';
+
+  @override
+  String get losHidePanelTooltip => 'Ukryj panel LOS';
+
+  @override
+  String get losElevationAttribution =>
+      'Dane dotyczące wysokości: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get contacts_pathTrace => 'Śledzenie Ścieżek';
 
   @override
@@ -2877,4 +3036,10 @@ class AppLocalizationsPl extends AppLocalizations {
   @override
   String get settings_gpxExportShareSubject =>
       'Eksport danych mapy GPX meshcore-open';
+
+  @override
+  String get snrIndicator_nearByRepeaters => 'Nadajniki w pobliżu';
+
+  @override
+  String get snrIndicator_lastSeen => 'Ostatnio widziany';
 }

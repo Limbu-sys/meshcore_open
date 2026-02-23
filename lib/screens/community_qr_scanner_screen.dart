@@ -6,6 +6,7 @@ import '../connector/meshcore_connector.dart';
 import '../l10n/l10n.dart';
 import '../models/community.dart';
 import '../storage/community_store.dart';
+import '../widgets/adaptive_app_bar_title.dart';
 import '../widgets/qr_scanner_widget.dart';
 
 /// Screen for scanning community QR codes to join communities.
@@ -29,7 +30,7 @@ class _CommunityQrScannerScreenState extends State<CommunityQrScannerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.l10n.community_scanQr),
+        title: AdaptiveAppBarTitle(context.l10n.community_scanQr),
         centerTitle: true,
       ),
       body: _isProcessing

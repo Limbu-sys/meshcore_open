@@ -131,9 +131,6 @@
   "settings_infoContactsCount": "Número de Contatos",
   "settings_infoChannelCount": "Número do Canal",
   "settings_presets": "Presets",
-  "settings_preset915Mhz": "915 MHz",
-  "settings_preset868Mhz": "868 MHz",
-  "settings_preset433Mhz": "433 MHz",
   "settings_frequency": "Frequência (MHz)",
   "settings_frequencyHelper": "300,0 - 2500,0",
   "settings_frequencyInvalid": "Frequência inválida (300-2500 MHz)",
@@ -143,8 +140,6 @@
   "settings_txPower": "TX Potência (dBm)",
   "settings_txPowerHelper": "0 - 22",
   "settings_txPowerInvalid": "Potência de TX inválida (0-22 dBm)",
-  "settings_longRange": "Alcance Longo",
-  "settings_fastSpeed": "Velocidade Rápida",
   "settings_error": "Erro: {message}",
   "@settings_error": {
     "placeholders": {
@@ -339,6 +334,8 @@
   "channels_publicChannel": "Canal público",
   "channels_privateChannel": "Canal privado",
   "channels_editChannel": "Editar canal",
+  "channels_muteChannel": "Silenciar canal",
+  "channels_unmuteChannel": "Ativar canal",
   "channels_deleteChannel": "Excluir canal",
   "channels_deleteChannelConfirm": "Excluir \"{name}\"? Não pode ser desfeito.",
   "@channels_deleteChannelConfirm": {
@@ -1356,12 +1353,12 @@
       }
     }
   },
-  "repeater_neighbours": "Vizinhos",
+  "repeater_neighbors": "Vizinhos",
   "neighbors_receivedData": "Dados dos Vizinhos Recebidos",
-  "repeater_neighboursSubtitle": "Visualizar vizinhos de salto zero.",
+  "repeater_neighborsSubtitle": "Visualizar vizinhos de salto zero.",
   "neighbors_requestTimedOut": "Vizinhos solicitam tempo limite esgotado.",
   "neighbors_errorLoading": "Erro ao carregar vizinhos: {error}",
-  "neighbors_repeatersNeighbours": "Repetidores Vizinhos",
+  "neighbors_repeatersNeighbors": "Repetidores Vizinhos",
   "neighbors_noData": "Não estão disponíveis dados de vizinhos.",
   "channels_createPrivateChannelDesc": "Protegido com uma chave secreta.",
   "channels_joinPrivateChannelDesc": "Inserir uma chave secreta manualmente.",
@@ -1575,7 +1572,6 @@
   "notification_newNodesCount": "{count} {count, plural, =1{novo nó} other{novos nós}}",
   "notification_newTypeDiscovered": "Novo {contactType} descoberto",
   "notification_receivedNewMessage": "Nova mensagem recebida",
-  "contacts_zeroHopContactAdvertFailed": "Falha ao enviar contato.",
   "settings_gpxExportRepeaters": "Exportar repetidores / servidor de sala para GPX",
   "settings_gpxExportRepeatersSubtitle": "Exporta repetidores / roomserver com localização para arquivo GPX.",
   "settings_gpxExportSuccess": "Arquivo GPX exportado com sucesso.",
@@ -1591,6 +1587,134 @@
   "settings_gpxExportAllContacts": "Todos os locais de contatos",
   "settings_gpxExportShareText": "Dados do mapa exportados do meshcore-open",
   "settings_gpxExportShareSubject": "meshcore-open exportação de dados de mapa GPX",
-  "pathTrace_someHopsNoLocation": "Um ou mais dos lúpulos estão sem localização!"
-
+  "pathTrace_someHopsNoLocation": "Um ou mais dos lúpulos estão sem localização!",
+  "map_runTrace": "Executar Traçado de Caminho",
+  "map_pathTraceCancelled": "Rastreamento de caminho cancelado.",
+  "pathTrace_clearTooltip": "Limpar caminho",
+  "map_removeLast": "Remover Último",
+  "map_tapToAdd": "Toque nos nós para adicioná-los ao caminho.",
+  "scanner_enableBluetooth": "Ative o Bluetooth",
+  "scanner_bluetoothOff": "Bluetooth está desativado",
+  "scanner_bluetoothOffMessage": "Por favor, ative o Bluetooth para escanear por dispositivos.",
+  "snrIndicator_nearByRepeaters": "Repetidores Próximos",
+  "snrIndicator_lastSeen": "Visto pela última vez",
+  "chat_ShowAllPaths": "Mostrar todos os caminhos",
+  "settings_clientRepeatFreqWarning": "A repetição fora da rede requer frequências de 433, 869 ou 918 MHz.",
+  "settings_clientRepeat": "Repetição sem rede",
+  "settings_clientRepeatSubtitle": "Permita que este dispositivo repita pacotes de rede para outros dispositivos.",
+  "settings_aboutOpenMeteoAttribution": "Dados de elevação LOS: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Unidades",
+  "appSettings_unitsMetric": "Métrico (m/km)",
+  "appSettings_unitsImperial": "Imperial (ft/mi)",
+  "map_lineOfSight": "Linha de visão",
+  "map_losScreenTitle": "Linha de visão",
+  "losSelectStartEnd": "Selecione nós iniciais e finais para LOS.",
+  "losRunFailed": "Falha na verificação da linha de visão: {error}",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "losClearAllPoints": "Limpe todos os pontos",
+  "losRunToViewElevationProfile": "Execute o LOS para visualizar o perfil de elevação",
+  "losMenuTitle": "Menu LOS",
+  "losMenuSubtitle": "Toque nos nós ou mantenha pressionado o mapa para obter pontos personalizados",
+  "losShowDisplayNodes": "Mostrar nós de exibição",
+  "losCustomPoints": "Pontos personalizados",
+  "losCustomPointLabel": "{index} personalizado",
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "losPointA": "Ponto A",
+  "losPointB": "Ponto B",
+  "losAntennaA": "Antena A: {value} {unit}",
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losAntennaB": "Antena B: {value} {unit}",
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losRun": "Executar LOS",
+  "losNoElevationData": "Sem dados de elevação",
+  "losProfileClear": "{distance} {distanceUnit}, limpar LOS, liberação mínima {clearance} {heightUnit}",
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losProfileBlocked": "{distance} {distanceUnit}, bloqueado por {obstruction} {heightUnit}",
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losStatusChecking": "LOS: verificando...",
+  "losStatusNoData": "LOS: sem dados",
+  "losStatusSummary": "LOS: {clear}/{total} limpo, {blocked} bloqueado, {unknown} desconhecido",
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "losErrorElevationUnavailable": "Dados de elevação indisponíveis para uma ou mais amostras.",
+  "losErrorInvalidInput": "Dados de pontos/elevação inválidos para cálculo de LOS.",
+  "losRenameCustomPoint": "Renomear ponto personalizado",
+  "losPointName": "Nome do ponto",
+  "losShowPanelTooltip": "Mostrar painel LOS",
+  "losHidePanelTooltip": "Ocultar painel LOS",
+  "losElevationAttribution": "Dados de elevação: Open-Meteo (CC BY 4.0)"
 }

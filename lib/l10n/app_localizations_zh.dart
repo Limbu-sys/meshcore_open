@@ -143,6 +143,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get scanner_scan => '扫描';
 
   @override
+  String get scanner_bluetoothOff => '蓝牙已关闭';
+
+  @override
+  String get scanner_bluetoothOffMessage => '请打开蓝牙功能，以便搜索设备。';
+
+  @override
+  String get scanner_enableBluetooth => '启用蓝牙';
+
+  @override
   String get device_quickSwitch => '快速切换';
 
   @override
@@ -299,6 +308,10 @@ class AppLocalizationsZh extends AppLocalizations {
       '一个开源的 Flutter 客户端，用于 MeshCore LoRa 无线网络设备。';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'LOS 高程数据:Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => '姓名';
 
   @override
@@ -321,15 +334,6 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get settings_presets => '预设';
-
-  @override
-  String get settings_preset915Mhz => '915 兆赫';
-
-  @override
-  String get settings_preset868Mhz => '868 兆赫';
-
-  @override
-  String get settings_preset433Mhz => '433 兆赫';
 
   @override
   String get settings_frequency => '频率 (MHz)';
@@ -359,10 +363,14 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settings_txPowerInvalid => '无效的发射功率（0-22 dBm）';
 
   @override
-  String get settings_longRange => '远距离';
+  String get settings_clientRepeat => '离网重复';
 
   @override
-  String get settings_fastSpeed => '高速';
+  String get settings_clientRepeatSubtitle => '允许此设备重复发送网状数据包给其他设备';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      '离网重复通信需要使用 433、869 或 918 兆赫兹的频率。';
 
   @override
   String settings_error(String message) {
@@ -582,6 +590,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get appSettings_offlineMapCache => '离线地图缓存';
 
   @override
+  String get appSettings_unitsTitle => '单位';
+
+  @override
+  String get appSettings_unitsMetric => '公制（米/公里）';
+
+  @override
+  String get appSettings_unitsImperial => '英制 (ft / mi)';
+
+  @override
   String get appSettings_noAreaSelected => '未选择任何区域';
 
   @override
@@ -737,6 +754,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get channels_editChannel => '编辑频道';
+
+  @override
+  String get channels_muteChannel => '静音频道';
+
+  @override
+  String get channels_unmuteChannel => '取消静音频道';
 
   @override
   String get channels_deleteChannel => '删除频道';
@@ -1028,6 +1051,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get chat_pathManagement => '路径管理';
 
   @override
+  String get chat_ShowAllPaths => '显示所有路径';
+
+  @override
   String get chat_routingMode => '路由模式';
 
   @override
@@ -1176,6 +1202,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get map_title => '节点图';
 
   @override
+  String get map_lineOfSight => '视线';
+
+  @override
+  String get map_losScreenTitle => '视线';
+
+  @override
   String get map_noNodesWithLocation => '没有包含位置信息的节点';
 
   @override
@@ -1300,6 +1332,18 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get map_manageRepeater => '管理重复器';
+
+  @override
+  String get map_tapToAdd => '点击节点将其添加到路径中';
+
+  @override
+  String get map_runTrace => '运行路径跟踪';
+
+  @override
+  String get map_removeLast => '删除最后一个';
+
+  @override
+  String get map_pathTraceCancelled => '路径跟踪已取消';
 
   @override
   String get mapCache_title => '离线地图缓存';
@@ -1580,10 +1624,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get repeater_cliSubtitle => '向复用器发送指令';
 
   @override
-  String get repeater_neighbours => '邻居';
+  String get repeater_neighbors => '邻居';
 
   @override
-  String get repeater_neighboursSubtitle => '查看邻居节点（无需中间节点）。';
+  String get repeater_neighborsSubtitle => '查看邻居节点（无需中间节点）。';
 
   @override
   String get repeater_settings => '设置';
@@ -2230,7 +2274,7 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => '重复使用的邻居';
+  String get neighbors_repeatersNeighbors => '重复使用的邻居';
 
   @override
   String get neighbors_noData => '没有可用的邻居信息。';
@@ -2561,6 +2605,114 @@ class AppLocalizationsZh extends AppLocalizations {
   String get pathTrace_someHopsNoLocation => '其中一个或多个啤酒花缺少位置！';
 
   @override
+  String get pathTrace_clearTooltip => '清除路径';
+
+  @override
+  String get losSelectStartEnd => '选择 LOS 的起始节点和结束节点。';
+
+  @override
+  String losRunFailed(String error) {
+    return '视线检查失败：$error';
+  }
+
+  @override
+  String get losClearAllPoints => '清除所有点';
+
+  @override
+  String get losRunToViewElevationProfile => '运行 LOS 查看高程剖面';
+
+  @override
+  String get losMenuTitle => '服务水平菜单';
+
+  @override
+  String get losMenuSubtitle => '点击节点或长按地图以获取自定义点';
+
+  @override
+  String get losShowDisplayNodes => '显示显示节点';
+
+  @override
+  String get losCustomPoints => '自定义积分';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return '自定义 $index';
+  }
+
+  @override
+  String get losPointA => 'A点';
+
+  @override
+  String get losPointB => 'B点';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return '天线 A： $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return '天线 B：$value $unit';
+  }
+
+  @override
+  String get losRun => '运行视距';
+
+  @override
+  String get losNoElevationData => '无海拔数据';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit，清除 LOS，最小间隙 $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit，被 $obstruction $heightUnit 阻止';
+  }
+
+  @override
+  String get losStatusChecking => '洛斯：正在检查...';
+
+  @override
+  String get losStatusNoData => 'LOS：无数据';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS：$clear/$total 清除，$blocked 阻塞，$unknown 未知';
+  }
+
+  @override
+  String get losErrorElevationUnavailable => '一个或多个样本的海拔数据不可用。';
+
+  @override
+  String get losErrorInvalidInput => '用于 LOS 计算的点/高程数据无效。';
+
+  @override
+  String get losRenameCustomPoint => '重命名自定义点';
+
+  @override
+  String get losPointName => '点名称';
+
+  @override
+  String get losShowPanelTooltip => '显示 LOS 面板';
+
+  @override
+  String get losHidePanelTooltip => '隐藏 LOS 面板';
+
+  @override
+  String get losElevationAttribution => '高程数据：Open-Meteo (CC BY 4.0)';
+
+  @override
   String get contacts_pathTrace => '路径追踪';
 
   @override
@@ -2698,4 +2850,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get settings_gpxExportShareSubject => 'meshcore-open GPX 地图数据导出';
+
+  @override
+  String get snrIndicator_nearByRepeaters => '附近的重复器';
+
+  @override
+  String get snrIndicator_lastSeen => '最近访问';
 }

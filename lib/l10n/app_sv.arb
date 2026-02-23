@@ -131,9 +131,6 @@
   "settings_infoContactsCount": "Kontakterantal",
   "settings_infoChannelCount": "Kanalantal",
   "settings_presets": "Fördefinierade inställningar",
-  "settings_preset915Mhz": "915 MHz",
-  "settings_preset868Mhz": "868 MHz",
-  "settings_preset433Mhz": "433 MHz",
   "settings_frequency": "Frekvens (MHz)",
   "settings_frequencyHelper": "300,0 - 2500,0",
   "settings_frequencyInvalid": "Ogiltig frekvens (300-2500 MHz)",
@@ -143,8 +140,6 @@
   "settings_txPower": "TX-effekt (dBm)",
   "settings_txPowerHelper": "0 - 22",
   "settings_txPowerInvalid": "Ogiltig TX-effekt (0-22 dBm)",
-  "settings_longRange": "Lång räckvidd",
-  "settings_fastSpeed": "Snabb hastighet",
   "settings_error": "Fel: {message}",
   "@settings_error": {
     "placeholders": {
@@ -339,6 +334,8 @@
   "channels_publicChannel": "Allmänt kanal",
   "channels_privateChannel": "Privat kanal",
   "channels_editChannel": "Redigera kanal",
+  "channels_muteChannel": "Tysta kanal",
+  "channels_unmuteChannel": "Slå på ljud för kanal",
   "channels_deleteChannel": "Ta bort kanal",
   "channels_deleteChannelConfirm": "Radera \"{name}\"? Detta kan inte ångras.",
   "@channels_deleteChannelConfirm": {
@@ -1356,12 +1353,12 @@
       }
     }
   },
-  "repeater_neighbours": "Grannar",
-  "repeater_neighboursSubtitle": "Visa noll hoppgrannar.",
+  "repeater_neighbors": "Grannar",
+  "repeater_neighborsSubtitle": "Visa noll hoppgrannar.",
   "neighbors_receivedData": "Mottagna grannars data",
   "neighbors_requestTimedOut": "Grannar begär tidsinställd utskick.",
   "neighbors_errorLoading": "Fel vid inläsning av grannar: {error}",
-  "neighbors_repeatersNeighbours": "Upprepar grannar",
+  "neighbors_repeatersNeighbors": "Upprepar grannar",
   "neighbors_noData": "Inga grannuppgifter finns tillgängliga.",
   "channels_createPrivateChannel": "Skapa en privat kanal",
   "channels_joinPrivateChannel": "Gå med i en Privat Kanal",
@@ -1575,7 +1572,6 @@
   "notification_newNodesCount": "{count} {count, plural, =1{ny nod} other{nya noder}}",
   "notification_newTypeDiscovered": "Ny {contactType} upptäckt",
   "notification_receivedNewMessage": "Nytt meddelande mottaget",
-  "contacts_ShareContactZeroHop": "Dela kontakt via annons",
   "settings_gpxExportAll": "Exportera alla kontakter till GPX",
   "settings_gpxExportRepeatersSubtitle": "Exporterar repeater / roomserver med plats till GPX-fil.",
   "settings_gpxExportSuccess": "Har exporterat GPX-fil med framgång",
@@ -1591,6 +1587,134 @@
   "settings_gpxExportAllContacts": "Alla kontakters platser",
   "settings_gpxExportShareSubject": "meshcore-open export av GPX-kartdata",
   "settings_gpxExportShareText": "Kartdata exporterad från meshcore-open",
-  "pathTrace_someHopsNoLocation": "En eller flera av humlen saknar en plats!"
-
+  "pathTrace_someHopsNoLocation": "En eller flera av humlen saknar en plats!",
+  "pathTrace_clearTooltip": "Rensa väg",
+  "map_pathTraceCancelled": "Sökvägsspårning avbruten.",
+  "map_runTrace": "Kör spårsökning",
+  "map_tapToAdd": "Tryck på noder för att lägga till dem i banan.",
+  "map_removeLast": "Ta bort sista",
+  "scanner_enableBluetooth": "Aktivera Bluetooth",
+  "scanner_bluetoothOffMessage": "Vänligen aktivera Bluetooth för att söka efter enheter.",
+  "scanner_bluetoothOff": "Bluetooth är avstängt",
+  "snrIndicator_lastSeen": "Senast sedd",
+  "snrIndicator_nearByRepeaters": "Närliggande uppreparstationer",
+  "chat_ShowAllPaths": "Visa alla vägar",
+  "settings_clientRepeatSubtitle": "Låt enheten repetera nätpaket för andra användare.",
+  "settings_clientRepeat": "Upprepa utan elnät",
+  "settings_clientRepeatFreqWarning": "För att kunna kommunicera utanför elnätet krävs frekvenserna 433, 869 eller 918 MHz.",
+  "settings_aboutOpenMeteoAttribution": "LOS-höjddata: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Enheter",
+  "appSettings_unitsMetric": "Metriskt (m/km)",
+  "appSettings_unitsImperial": "Imperialt (ft / mi)",
+  "map_lineOfSight": "Synlinje",
+  "map_losScreenTitle": "Synlinje",
+  "losSelectStartEnd": "Välj start- och slutnoder för LOS.",
+  "losRunFailed": "Synlinjekontroll misslyckades: {error}",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "losClearAllPoints": "Rensa alla punkter",
+  "losRunToViewElevationProfile": "Kör LOS för att se höjdprofil",
+  "losMenuTitle": "LOS-menyn",
+  "losMenuSubtitle": "Tryck på noder eller tryck länge på kartan för anpassade punkter",
+  "losShowDisplayNodes": "Visa displaynoder",
+  "losCustomPoints": "Anpassade poäng",
+  "losCustomPointLabel": "Anpassad {index}",
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "losPointA": "Punkt A",
+  "losPointB": "Punkt B",
+  "losAntennaA": "Antenn A: {value} {unit}",
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losAntennaB": "Antenn B: {value} {unit}",
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losRun": "Kör LOS",
+  "losNoElevationData": "Inga höjddata",
+  "losProfileClear": "{distance} {distanceUnit}, rensa LOS, min clearance {clearance} {heightUnit}",
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losProfileBlocked": "{distance} {distanceUnit}, blockerad av {obstruction} {heightUnit}",
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losStatusChecking": "LOS: kollar...",
+  "losStatusNoData": "LOS: inga data",
+  "losStatusSummary": "LOS: {clear}/{total} rensa, {blocked} blockerad, {unknown} okänd",
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "losErrorElevationUnavailable": "Höjddata är inte tillgänglig för ett eller flera prover.",
+  "losErrorInvalidInput": "Ogiltiga poäng/höjddata för LOS-beräkning.",
+  "losRenameCustomPoint": "Byt namn på anpassad punkt",
+  "losPointName": "Punktnamn",
+  "losShowPanelTooltip": "Visa LOS-panelen",
+  "losHidePanelTooltip": "Dölj LOS-panelen",
+  "losElevationAttribution": "Höjddata: Open-Meteo (CC BY 4.0)"
 }

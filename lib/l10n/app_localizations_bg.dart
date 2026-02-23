@@ -144,6 +144,16 @@ class AppLocalizationsBg extends AppLocalizations {
   String get scanner_scan => 'Сканирай';
 
   @override
+  String get scanner_bluetoothOff => 'Bluetooth е изключен.';
+
+  @override
+  String get scanner_bluetoothOffMessage =>
+      'Моля, активирайте Bluetooth, за да сканирате за устройства.';
+
+  @override
+  String get scanner_enableBluetooth => 'Активирайте Bluetooth';
+
+  @override
   String get device_quickSwitch => 'Бързо превключване';
 
   @override
@@ -317,6 +327,10 @@ class AppLocalizationsBg extends AppLocalizations {
       'Отворен софтуер за Flutter клиент за MeshCore LoRa мрежови устройства.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'Данни за надморска височина на LOS: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Име';
 
   @override
@@ -339,15 +353,6 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get settings_presets => 'Предварителни настройки';
-
-  @override
-  String get settings_preset915Mhz => '915 MHz';
-
-  @override
-  String get settings_preset868Mhz => '868 MHz';
-
-  @override
-  String get settings_preset433Mhz => '433 MHz';
 
   @override
   String get settings_frequency => 'Честота (MHz)';
@@ -377,10 +382,15 @@ class AppLocalizationsBg extends AppLocalizations {
   String get settings_txPowerInvalid => 'Невалидна мощност на TX (0-22 dBm)';
 
   @override
-  String get settings_longRange => 'Дълъг обхват';
+  String get settings_clientRepeat => 'Без електричество – повторение';
 
   @override
-  String get settings_fastSpeed => 'Бърза скорост';
+  String get settings_clientRepeatSubtitle =>
+      'Позволете на това устройство да предава пакети към мрежата за други устройства.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'За повторение извън мрежата са необходими честоти от 433, 869 или 918 MHz.';
 
   @override
   String settings_error(String message) {
@@ -617,6 +627,15 @@ class AppLocalizationsBg extends AppLocalizations {
   String get appSettings_offlineMapCache => 'Кеш на офлайн карти';
 
   @override
+  String get appSettings_unitsTitle => 'единици';
+
+  @override
+  String get appSettings_unitsMetric => 'Метрика (m / km)';
+
+  @override
+  String get appSettings_unitsImperial => 'Имперска (ft / mi)';
+
+  @override
   String get appSettings_noAreaSelected => 'Няма избрана област';
 
   @override
@@ -778,6 +797,12 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get channels_editChannel => 'Редактирай канал';
+
+  @override
+  String get channels_muteChannel => 'Заглуши канала';
+
+  @override
+  String get channels_unmuteChannel => 'Включи известията на канала';
 
   @override
   String get channels_deleteChannel => 'Изтрий канала';
@@ -1075,6 +1100,9 @@ class AppLocalizationsBg extends AppLocalizations {
   String get chat_pathManagement => 'Управление на пътища';
 
   @override
+  String get chat_ShowAllPaths => 'Покажи всички пътища';
+
+  @override
   String get chat_routingMode => 'Режим на маршрутизиране';
 
   @override
@@ -1235,6 +1263,12 @@ class AppLocalizationsBg extends AppLocalizations {
   String get map_title => 'Карта на възлите';
 
   @override
+  String get map_lineOfSight => 'Линия на видимост';
+
+  @override
+  String get map_losScreenTitle => 'Линия на видимост';
+
+  @override
   String get map_noNodesWithLocation => 'Няма възли с данни за местоположение.';
 
   @override
@@ -1362,6 +1396,19 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get map_manageRepeater => 'Управление на Повтарящ се Елемент';
+
+  @override
+  String get map_tapToAdd =>
+      'Натиснете върху възлите, за да ги добавите към пътя.';
+
+  @override
+  String get map_runTrace => 'Изпълни Път на Следване';
+
+  @override
+  String get map_removeLast => 'Премахни Последно';
+
+  @override
+  String get map_pathTraceCancelled => 'Отменен е следването на пътя.';
 
   @override
   String get mapCache_title => 'Кеш на офлайн карти';
@@ -1658,10 +1705,10 @@ class AppLocalizationsBg extends AppLocalizations {
   String get repeater_cliSubtitle => 'Изпрати команди към ретранслатора';
 
   @override
-  String get repeater_neighbours => 'Съседи';
+  String get repeater_neighbors => 'Съседи';
 
   @override
-  String get repeater_neighboursSubtitle =>
+  String get repeater_neighborsSubtitle =>
       'Преглед на съседни възли с нулев скок.';
 
   @override
@@ -2361,7 +2408,7 @@ class AppLocalizationsBg extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Повторители Съседи';
+  String get neighbors_repeatersNeighbors => 'Повторители Съседи';
 
   @override
   String get neighbors_noData => 'Няма налични данни за съседи.';
@@ -2703,6 +2750,119 @@ class AppLocalizationsBg extends AppLocalizations {
       'Един или повече от хмелите липсва местоположение!';
 
   @override
+  String get pathTrace_clearTooltip => 'Изчисти пътя';
+
+  @override
+  String get losSelectStartEnd => 'Изберете начални и крайни възли за LOS.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Проверката на пряката видимост е неуспешна: $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Изчистете всички точки';
+
+  @override
+  String get losRunToViewElevationProfile =>
+      'Стартирайте LOS, за да видите профила на надморската височина';
+
+  @override
+  String get losMenuTitle => 'LOS меню';
+
+  @override
+  String get losMenuSubtitle =>
+      'Докоснете възли или натиснете продължително карта за персонализирани точки';
+
+  @override
+  String get losShowDisplayNodes => 'Показване на възли на дисплея';
+
+  @override
+  String get losCustomPoints => 'Персонализирани точки';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Персонализирано $index';
+  }
+
+  @override
+  String get losPointA => 'Точка А';
+
+  @override
+  String get losPointB => 'Точка Б';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Антена A: $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Антена B: $value $unit';
+  }
+
+  @override
+  String get losRun => 'Стартирайте LOS';
+
+  @override
+  String get losNoElevationData => 'Няма данни за надморска височина';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, чист LOS, минимално разстояние $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, блокиран от $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'LOS: проверка...';
+
+  @override
+  String get losStatusNoData => 'LOS: няма данни';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS: $clear/$total ясно, $blocked блокирано, $unknown неизвестно';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Няма налични данни за надморска височина за една или повече проби.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Невалидни данни за точки/надморска височина за изчисляване на LOS.';
+
+  @override
+  String get losRenameCustomPoint => 'Преименувайте персонализирана точка';
+
+  @override
+  String get losPointName => 'Име на точката';
+
+  @override
+  String get losShowPanelTooltip => 'Показване на LOS панел';
+
+  @override
+  String get losHidePanelTooltip => 'Скриване на LOS панела';
+
+  @override
+  String get losElevationAttribution =>
+      'Данни за надморска височина: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get contacts_pathTrace => 'Пътен проследяване';
 
   @override
@@ -2871,4 +3031,10 @@ class AppLocalizationsBg extends AppLocalizations {
   @override
   String get settings_gpxExportShareSubject =>
       'meshcore-open износ на данни за карта в формат GPX';
+
+  @override
+  String get snrIndicator_nearByRepeaters => 'Близки повтарящи се устройства';
+
+  @override
+  String get snrIndicator_lastSeen => 'Последно видян';
 }

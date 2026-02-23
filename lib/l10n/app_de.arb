@@ -131,9 +131,6 @@
   "settings_infoContactsCount": "Anzahl Kontakte",
   "settings_infoChannelCount": "Anzahl Kanäle",
   "settings_presets": "Voreinstellungen",
-  "settings_preset915Mhz": "915 MHz",
-  "settings_preset868Mhz": "868 MHz",
-  "settings_preset433Mhz": "433 MHz",
   "settings_frequency": "Frequenz (MHz)",
   "settings_frequencyHelper": "300,00 - 2.500,00",
   "settings_frequencyInvalid": "Ungültige Frequenz (300-2500 MHz)",
@@ -143,8 +140,6 @@
   "settings_txPower": "TX-Leistung (dBm)",
   "settings_txPowerHelper": "0 - 22",
   "settings_txPowerInvalid": "Ungültige TX-Leistung (0-22 dBm)",
-  "settings_longRange": "Grosse Reichweite",
-  "settings_fastSpeed": "Schnelle Geschwindigkeit",
   "settings_error": "Fehler: {message}",
   "@settings_error": {
     "placeholders": {
@@ -339,6 +334,8 @@
   "channels_publicChannel": "Öffentlicher Kanal",
   "channels_privateChannel": "Privater Kanal",
   "channels_editChannel": "Kanal bearbeiten",
+  "channels_muteChannel": "Kanal stummschalten",
+  "channels_unmuteChannel": "Kanal Stummschaltung aufheben",
   "channels_deleteChannel": "Lösche den Kanal",
   "channels_deleteChannelConfirm": "Löschen von \"{name}\"? Dies kann nicht rückgängig gemacht werden.",
   "@channels_deleteChannelConfirm": {
@@ -1356,12 +1353,12 @@
       }
     }
   },
-  "repeater_neighbours": "Nachbarn",
-  "repeater_neighboursSubtitle": "Anzahl der Hop-Nachbarn anzeigen.",
+  "repeater_neighbors": "Nachbarn",
+  "repeater_neighborsSubtitle": "Anzahl der Hop-Nachbarn anzeigen.",
   "neighbors_receivedData": "Empfangene Nachbarsdaten",
   "neighbors_requestTimedOut": "Anfrage durch Timeout fehlgeschlagen.",
   "neighbors_errorLoading": "Fehler beim Laden der Nachbarn: {error}",
-  "neighbors_repeatersNeighbours": "Nachbarn",
+  "neighbors_repeatersNeighbors": "Nachbarn",
   "neighbors_noData": "Keine Nachbarsdaten verfügbar.",
   "channels_joinPrivateChannel": "Treten Sie einem privaten Kanal bei",
   "channels_joinPrivateChannelDesc": "Manuelle Eingabe eines geheimen Schlüssels.",
@@ -1569,34 +1566,40 @@
   "contacts_zeroHopContactAdvertSent": "Kontakt über Anzeige gesendet",
   "contacts_contactAdvertCopied": "Anzeige in die Zwischenablage kopiert.",
   "contacts_contactAdvertCopyFailed": "Kopieren der Ankündigung in die Zwischenablage fehlgeschlagen.",
-
   "notification_activityTitle": "MeshCore Aktivität",
   "notification_messagesCount": "{count} {count, plural, =1{Nachricht} other{Nachrichten}}",
   "@notification_messagesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "notification_channelMessagesCount": "{count} {count, plural, =1{Kanalnachricht} other{Kanalnachrichten}}",
   "@notification_channelMessagesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "notification_newNodesCount": "{count} {count, plural, =1{neuer Knoten} other{neue Knoten}}",
   "@notification_newNodesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "notification_newTypeDiscovered": "Neuer {contactType} entdeckt",
   "@notification_newTypeDiscovered": {
     "placeholders": {
-      "contactType": {"type": "String"}
+      "contactType": {
+        "type": "String"
+      }
     }
   },
   "notification_receivedNewMessage": "Neue Nachricht empfangen",
-  "contacts_contactAdvertCopyFailed": "Kopieren der Ankündigung in die Zwischenablage fehlgeschlagen.",
   "settings_gpxExportAll": "Alle Knoten als GPX exportieren",
   "settings_gpxExportAllSubtitle": "Exportiert alle Knoten mit einem Standort in eine GPX-Datei.",
   "settings_gpxExportRepeaters": "Repeater und Raumserver als GPX exportieren",
@@ -1612,6 +1615,134 @@
   "settings_gpxExportAllContacts": "Alle Kontaktstandorte",
   "settings_gpxExportShareSubject": "GPX-Kartendaten aus meshcore-open exportieren",
   "settings_gpxExportShareText": "GPX-Kartendaten aus meshcore-open exportiert",
-  "pathTrace_someHopsNoLocation": "Bei einer oder mehreren Knoten fehlt der Standort!"
-
+  "pathTrace_someHopsNoLocation": "Bei einer oder mehreren Knoten fehlt der Standort!",
+  "map_removeLast": "Letztes Entfernen",
+  "map_tapToAdd": "Tippen Sie auf Knoten, um sie zum Pfad hinzuzufügen.",
+  "map_runTrace": "Pfadverlauf ausführen",
+  "pathTrace_clearTooltip": "Pfad löschen",
+  "map_pathTraceCancelled": "Pfadverfolgung abgebrochen.",
+  "scanner_bluetoothOffMessage": "Bitte aktivieren Sie Bluetooth, um nach Geräten zu suchen.",
+  "scanner_bluetoothOff": "Bluetooth ist deaktiviert.",
+  "scanner_enableBluetooth": "Bluetooth aktivieren",
+  "snrIndicator_lastSeen": "Zuletzt gesehen",
+  "snrIndicator_nearByRepeaters": "In der Nähe befindliche Repeater",
+  "chat_ShowAllPaths": "Alle Pfade anzeigen",
+  "settings_clientRepeat": "Wiederholung, ohne Stromanschluss",
+  "settings_clientRepeatFreqWarning": "Die Kommunikation ohne Stromversorgung erfordert Frequenzen von 433, 869 oder 918 MHz.",
+  "settings_clientRepeatSubtitle": "Ermöglichen Sie diesem Gerät, Mesh-Pakete für andere zu wiederholen.",
+  "settings_aboutOpenMeteoAttribution": "LOS-Höhendaten: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Einheiten",
+  "appSettings_unitsMetric": "Metrisch (m/km)",
+  "appSettings_unitsImperial": "Imperial (ft/mi)",
+  "map_lineOfSight": "Sichtlinie",
+  "map_losScreenTitle": "Sichtlinie",
+  "losSelectStartEnd": "Wählen Sie Start- und Endknoten für LOS aus.",
+  "losRunFailed": "Sichtlinienprüfung fehlgeschlagen: {error}",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "losClearAllPoints": "Löschen Sie alle Punkte",
+  "losRunToViewElevationProfile": "Führen Sie LOS aus, um das Höhenprofil anzuzeigen",
+  "losMenuTitle": "LOS-Menü",
+  "losMenuSubtitle": "Tippen Sie auf Knoten oder drücken Sie lange auf die Karte, um benutzerdefinierte Punkte anzuzeigen",
+  "losShowDisplayNodes": "Anzeigeknoten anzeigen",
+  "losCustomPoints": "Benutzerdefinierte Punkte",
+  "losCustomPointLabel": "Benutzerdefiniert {index}",
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "losPointA": "Punkt A",
+  "losPointB": "Punkt B",
+  "losAntennaA": "Antenne A: {value} {unit}",
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losAntennaB": "Antenne B: {value} {unit}",
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losRun": "Führen Sie LOS aus",
+  "losNoElevationData": "Keine Höhendaten",
+  "losProfileClear": "{distance} {distanceUnit}, freie Sichtlinie, Mindestabstand {clearance} {heightUnit}",
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losProfileBlocked": "{distance} {distanceUnit}, blockiert durch {obstruction} {heightUnit}",
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losStatusChecking": "LOS: Überprüfen...",
+  "losStatusNoData": "LOS: keine Daten",
+  "losStatusSummary": "Sichtlinie: {clear}/{total} frei, {blocked} blockiert, {unknown} unbekannt",
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "losErrorElevationUnavailable": "Für eine oder mehrere Proben sind keine Höhendaten verfügbar.",
+  "losErrorInvalidInput": "Ungültige Punkte/Höhendaten für die LOS-Berechnung.",
+  "losRenameCustomPoint": "Benennen Sie den benutzerdefinierten Punkt um",
+  "losPointName": "Punktname",
+  "losShowPanelTooltip": "LOS-Panel anzeigen",
+  "losHidePanelTooltip": "LOS-Panel ausblenden",
+  "losElevationAttribution": "Höhendaten: Open-Meteo (CC BY 4.0)"
 }

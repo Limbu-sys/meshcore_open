@@ -17,6 +17,12 @@ class AppSettingsService extends ChangeNotifier {
     return stored ?? 'nmc';
   }
 
+  String batteryChemistryForRepeater(String repeaterPubKeyHex) {
+    final stored = _settings.batteryChemistryByRepeaterId[repeaterPubKeyHex];
+    if (stored == 'liion') return 'nmc';
+    return stored ?? 'nmc';
+  }
+
   Future<void> loadSettings() async {
     final prefs = PrefsManager.instance;
     final jsonStr = prefs.getString(_settingsKey);
@@ -131,6 +137,38 @@ class AppSettingsService extends ChangeNotifier {
     await updateSettings(
       _settings.copyWith(batteryChemistryByDeviceId: updated),
     );
+  }
+
+  Future<void> setBatteryChemistryForRepeater(
+    String repeaterPubKeyHex,
+    String chemistry,
+  ) async {
+    final updated = Map<String, String>.from(
+      _settings.batteryChemistryByRepeaterId,
+    );
+    updated[repeaterPubKeyHex] = chemistry;
+    await updateSettings(
+      _settings.copyWith(batteryChemistryByRepeaterId: updated),
+    );
+  }
+
+  Future<void> setUnitSystem(UnitSystem value) async {
+    await updateSettings(_settings.copyWith(unitSystem: value));
+  }
+
+  bool isChannelMuted(String channelName) {
+    return _settings.mutedChannels.contains(channelName);
+  }
+
+  Future<void> muteChannel(String channelName) async {
+    final updated = Set<String>.from(_settings.mutedChannels)..add(channelName);
+    await updateSettings(_settings.copyWith(mutedChannels: updated));
+  }
+  
+  Future<void> unmuteChannel(String channelName) async {
+    final updated = Set<String>.from(_settings.mutedChannels)
+      ..remove(channelName);
+    await updateSettings(_settings.copyWith(mutedChannels: updated));
   }
 
   Future<void> setRoomSyncEnabled(bool value) async {

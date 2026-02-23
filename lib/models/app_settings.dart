@@ -1,3 +1,16 @@
+enum UnitSystem { metric, imperial }
+
+extension UnitSystemValue on UnitSystem {
+  String get value {
+    switch (this) {
+      case UnitSystem.imperial:
+        return 'imperial';
+      case UnitSystem.metric:
+        return 'metric';
+    }
+  }
+}
+
 class AppSettings {
   static const Object _unset = Object();
 
@@ -21,6 +34,9 @@ class AppSettings {
   final String? languageOverride; // null = system default
   final bool appDebugLogEnabled;
   final Map<String, String> batteryChemistryByDeviceId;
+  final Map<String, String> batteryChemistryByRepeaterId;
+  final UnitSystem unitSystem;
+  final Set<String> mutedChannels;
   final bool roomSyncEnabled;
   final bool roomSyncAutoLoginEnabled;
   final int roomSyncIntervalSeconds;
@@ -49,13 +65,18 @@ class AppSettings {
     this.languageOverride,
     this.appDebugLogEnabled = false,
     Map<String, String>? batteryChemistryByDeviceId,
+    Map<String, String>? batteryChemistryByRepeaterId,
+    this.unitSystem = UnitSystem.metric,
+    Set<String>? mutedChannels,
     this.roomSyncEnabled = true,
     this.roomSyncAutoLoginEnabled = true,
     this.roomSyncIntervalSeconds = 90,
     this.roomSyncMaxIntervalSeconds = 600,
     this.roomSyncTimeoutSeconds = 15,
     this.roomSyncStaleMinutes = 15,
-  }) : batteryChemistryByDeviceId = batteryChemistryByDeviceId ?? {};
+  }) : batteryChemistryByDeviceId = batteryChemistryByDeviceId ?? {},
+       batteryChemistryByRepeaterId = batteryChemistryByRepeaterId ?? {},
+       mutedChannels = mutedChannels ?? {};
 
   Map<String, dynamic> toJson() {
     return {
@@ -79,6 +100,9 @@ class AppSettings {
       'language_override': languageOverride,
       'app_debug_log_enabled': appDebugLogEnabled,
       'battery_chemistry_by_device_id': batteryChemistryByDeviceId,
+      'battery_chemistry_by_repeater_id': batteryChemistryByRepeaterId,
+      'unit_system': unitSystem.value,
+      'muted_channels': mutedChannels.toList(),
       'room_sync_enabled': roomSyncEnabled,
       'room_sync_auto_login_enabled': roomSyncAutoLoginEnabled,
       'room_sync_interval_seconds': roomSyncIntervalSeconds,
@@ -89,6 +113,13 @@ class AppSettings {
   }
 
   factory AppSettings.fromJson(Map<String, dynamic> json) {
+    UnitSystem parseUnitSystem(dynamic value) {
+      if (value is String && value.toLowerCase() == 'imperial') {
+        return UnitSystem.imperial;
+      }
+      return UnitSystem.metric;
+    }
+
     return AppSettings(
       clearPathOnMaxRetry: json['clear_path_on_max_retry'] as bool? ?? false,
       mapShowRepeaters: json['map_show_repeaters'] as bool? ?? true,
@@ -118,6 +149,17 @@ class AppSettings {
           (json['battery_chemistry_by_device_id'] as Map?)?.map(
             (key, value) => MapEntry(key.toString(), value.toString()),
           ) ??
+          {},
+      batteryChemistryByRepeaterId:
+          (json['battery_chemistry_by_repeater_id'] as Map?)?.map(
+            (key, value) => MapEntry(key.toString(), value.toString()),
+          ) ??
+          {},
+      unitSystem: parseUnitSystem(json['unit_system']),
+      mutedChannels:
+          ((json['muted_channels'] as List?)
+              ?.map((e) => e.toString())
+              .toSet()) ??
           {},
       roomSyncEnabled: json['room_sync_enabled'] as bool? ?? true,
       roomSyncAutoLoginEnabled:
@@ -151,6 +193,9 @@ class AppSettings {
     Object? languageOverride = _unset,
     bool? appDebugLogEnabled,
     Map<String, String>? batteryChemistryByDeviceId,
+    Map<String, String>? batteryChemistryByRepeaterId,
+    UnitSystem? unitSystem,
+    Set<String>? mutedChannels,
     bool? roomSyncEnabled,
     bool? roomSyncAutoLoginEnabled,
     int? roomSyncIntervalSeconds,
@@ -186,6 +231,10 @@ class AppSettings {
       appDebugLogEnabled: appDebugLogEnabled ?? this.appDebugLogEnabled,
       batteryChemistryByDeviceId:
           batteryChemistryByDeviceId ?? this.batteryChemistryByDeviceId,
+      batteryChemistryByRepeaterId:
+          batteryChemistryByRepeaterId ?? this.batteryChemistryByRepeaterId,
+      unitSystem: unitSystem ?? this.unitSystem,
+      mutedChannels: mutedChannels ?? this.mutedChannels,
       roomSyncEnabled: roomSyncEnabled ?? this.roomSyncEnabled,
       roomSyncAutoLoginEnabled:
           roomSyncAutoLoginEnabled ?? this.roomSyncAutoLoginEnabled,

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -271,193 +272,243 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
               ? message.pathVariants.first
               : Uint8List(0));
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-      child: Column(
-        crossAxisAlignment: isOutgoing
-            ? CrossAxisAlignment.end
-            : CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: isOutgoing
-                ? MainAxisAlignment.end
-                : MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (!isOutgoing) ...[
-                _buildAvatar(message.senderName),
-                const SizedBox(width: 8),
-              ],
-              Flexible(
-                child: GestureDetector(
-                  onTap: () => _showMessagePathInfo(message),
-                  onLongPress: () => _showMessageActions(message),
-                  child: Container(
-                    padding: gifId != null
-                        ? const EdgeInsets.all(4)
-                        : const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 8,
-                          ),
-                    constraints: BoxConstraints(
-                      maxWidth: MediaQuery.of(context).size.width * 0.65,
-                    ),
-                    decoration: BoxDecoration(
-                      color: isOutgoing
-                          ? Theme.of(context).colorScheme.primaryContainer
-                          : Theme.of(
-                              context,
-                            ).colorScheme.surfaceContainerHighest,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (!isOutgoing) ...[
-                          Padding(
-                            padding: gifId != null
-                                ? const EdgeInsets.only(
-                                    left: 8,
-                                    top: 4,
-                                    bottom: 4,
-                                  )
-                                : EdgeInsets.zero,
-                            child: Text(
-                              message.senderName,
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
+    const maxSwipeOffset = 64.0;
+    const replySwipeThreshold = 64.0;
+    final messageBody = Column(
+      crossAxisAlignment: isOutgoing
+          ? CrossAxisAlignment.end
+          : CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: isOutgoing
+              ? MainAxisAlignment.end
+              : MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (!isOutgoing) ...[
+              _buildAvatar(message.senderName),
+              const SizedBox(width: 8),
+            ],
+            Flexible(
+              child: GestureDetector(
+                onTap: () => _showMessagePathInfo(message),
+                onLongPress: () => _showMessageActions(message),
+                child: Container(
+                  padding: gifId != null
+                      ? const EdgeInsets.all(4)
+                      : const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width * 0.65,
+                  ),
+                  decoration: BoxDecoration(
+                    color: isOutgoing
+                        ? Theme.of(context).colorScheme.primaryContainer
+                        : Theme.of(context).colorScheme.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (!isOutgoing) ...[
+                        Padding(
+                          padding: gifId != null
+                              ? const EdgeInsets.only(
+                                  left: 8,
+                                  top: 4,
+                                  bottom: 4,
+                                )
+                              : EdgeInsets.zero,
+                          child: Text(
+                            message.senderName,
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.primary,
                             ),
                           ),
-                          if (gifId == null) const SizedBox(height: 4),
-                        ],
-                        if (message.replyToMessageId != null) ...[
-                          _buildReplyPreview(message),
-                          const SizedBox(height: 8),
-                        ],
-                        if (poi != null)
-                          _buildPoiMessage(context, poi, isOutgoing)
-                        else if (gifId != null)
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: GifMessage(
-                              url:
-                                  'https://media.giphy.com/media/$gifId/giphy.gif',
-                              backgroundColor: Colors.transparent,
-                              fallbackTextColor: isOutgoing
-                                  ? Theme.of(context)
-                                        .colorScheme
-                                        .onPrimaryContainer
-                                        .withValues(alpha: 0.7)
-                                  : Theme.of(context).colorScheme.onSurface
-                                        .withValues(alpha: 0.6),
-                            ),
-                          )
-                        else
-                          Linkify(
-                            text: message.text,
-                            style: const TextStyle(fontSize: 14),
-                            linkStyle: const TextStyle(
-                              fontSize: 14,
-                              color: Colors.green,
-                              decoration: TextDecoration.underline,
-                            ),
-                            options: const LinkifyOptions(
-                              humanize: false,
-                              defaultToHttps: false,
-                            ),
-                            linkifiers: const [UrlLinkifier()],
-                            onOpen: (link) =>
-                                LinkHandler.handleLinkTap(context, link.url),
+                        ),
+                        if (gifId == null) const SizedBox(height: 4),
+                      ],
+                      if (message.replyToMessageId != null) ...[
+                        _buildReplyPreview(message),
+                        const SizedBox(height: 8),
+                      ],
+                      if (poi != null)
+                        _buildPoiMessage(context, poi, isOutgoing)
+                      else if (gifId != null)
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: GifMessage(
+                            url:
+                                'https://media.giphy.com/media/$gifId/giphy.gif',
+                            backgroundColor: Colors.transparent,
+                            fallbackTextColor: isOutgoing
+                                ? Theme.of(context)
+                                      .colorScheme
+                                      .onPrimaryContainer
+                                      .withValues(alpha: 0.7)
+                                : Theme.of(context).colorScheme.onSurface
+                                      .withValues(alpha: 0.6),
                           ),
-                        if (displayPath.isNotEmpty) ...[
-                          const SizedBox(height: 4),
-                          Padding(
-                            padding: gifId != null
-                                ? const EdgeInsets.symmetric(horizontal: 8)
-                                : EdgeInsets.zero,
-                            child: Text(
-                              'via ${_formatPathPrefixes(displayPath)}',
+                        )
+                      else
+                        Linkify(
+                          text: message.text,
+                          style: const TextStyle(fontSize: 14),
+                          linkStyle: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.green,
+                            decoration: TextDecoration.underline,
+                          ),
+                          options: const LinkifyOptions(
+                            humanize: false,
+                            defaultToHttps: false,
+                          ),
+                          linkifiers: const [UrlLinkifier()],
+                          onOpen: (link) =>
+                              LinkHandler.handleLinkTap(context, link.url),
+                        ),
+                      if (displayPath.isNotEmpty) ...[
+                        const SizedBox(height: 4),
+                        Padding(
+                          padding: gifId != null
+                              ? const EdgeInsets.symmetric(horizontal: 8)
+                              : EdgeInsets.zero,
+                          child: Text(
+                            'via ${_formatPathPrefixes(displayPath)}',
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                        ),
+                      ],
+                      const SizedBox(height: 4),
+                      Padding(
+                        padding: gifId != null
+                            ? const EdgeInsets.only(
+                                left: 8,
+                                right: 8,
+                                bottom: 4,
+                              )
+                            : EdgeInsets.zero,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              _formatTime(message.timestamp),
                               style: TextStyle(
                                 fontSize: 11,
                                 color: Colors.grey[600],
                               ),
                             ),
-                          ),
-                        ],
-                        const SizedBox(height: 4),
-                        Padding(
-                          padding: gifId != null
-                              ? const EdgeInsets.only(
-                                  left: 8,
-                                  right: 8,
-                                  bottom: 4,
-                                )
-                              : EdgeInsets.zero,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
+                            if (message.repeatCount > 0) ...[
+                              const SizedBox(width: 6),
+                              Icon(
+                                Icons.repeat,
+                                size: 12,
+                                color: Colors.grey[600],
+                              ),
+                              const SizedBox(width: 2),
                               Text(
-                                _formatTime(message.timestamp),
+                                '${message.repeatCount}',
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: Colors.grey[600],
                                 ),
                               ),
-                              if (message.repeatCount > 0) ...[
-                                const SizedBox(width: 6),
-                                Icon(
-                                  Icons.repeat,
-                                  size: 12,
-                                  color: Colors.grey[600],
-                                ),
-                                const SizedBox(width: 2),
-                                Text(
-                                  '${message.repeatCount}',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: Colors.grey[600],
-                                  ),
-                                ),
-                              ],
-                              if (isOutgoing) ...[
-                                const SizedBox(width: 4),
-                                Icon(
-                                  message.status == ChannelMessageStatus.sent
-                                      ? Icons.check
-                                      : message.status ==
-                                            ChannelMessageStatus.pending
-                                      ? Icons.schedule
-                                      : Icons.error_outline,
-                                  size: 14,
-                                  color:
-                                      message.status ==
-                                          ChannelMessageStatus.failed
-                                      ? Colors.red
-                                      : Colors.grey[600],
-                                ),
-                              ],
                             ],
-                          ),
+                            if (isOutgoing) ...[
+                              const SizedBox(width: 4),
+                              Icon(
+                                message.status == ChannelMessageStatus.sent
+                                    ? Icons.check
+                                    : message.status ==
+                                          ChannelMessageStatus.pending
+                                    ? Icons.schedule
+                                    : Icons.error_outline,
+                                size: 14,
+                                color:
+                                    message.status ==
+                                        ChannelMessageStatus.failed
+                                    ? Colors.red
+                                    : Colors.grey[600],
+                              ),
+                            ],
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ],
-          ),
-          if (message.reactions.isNotEmpty) ...[
-            const SizedBox(height: 4),
-            Padding(
-              padding: EdgeInsets.only(left: isOutgoing ? 0 : 48),
-              child: _buildReactionsDisplay(message),
             ),
           ],
+        ),
+        if (message.reactions.isNotEmpty) ...[
+          const SizedBox(height: 4),
+          Padding(
+            padding: EdgeInsets.only(left: isOutgoing ? 0 : 48),
+            child: _buildReactionsDisplay(message),
+          ),
         ],
-      ),
+      ],
+    );
+
+    if (!isOutgoing) {
+      return _SwipeReplyBubble(
+        maxSwipeOffset: maxSwipeOffset,
+        replySwipeThreshold: replySwipeThreshold,
+        onReplyTriggered: () => _setReplyingTo(message),
+        hintBuilder: ({required isStart}) =>
+            _buildReplySwipeHint(isStart: isStart),
+        child: messageBody,
+      );
+    } else {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 4),
+        child: messageBody,
+      );
+    }
+  }
+
+  Widget _buildReplySwipeHint({required bool isStart}) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final content = Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(Icons.reply, color: colorScheme.primary),
+        const SizedBox(width: 6),
+        Text(
+          context.l10n.chat_reply,
+          style: TextStyle(
+            color: colorScheme.primary,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
+    );
+
+    return Container(
+      alignment: isStart ? Alignment.centerLeft : Alignment.centerRight,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      color: colorScheme.primary.withValues(alpha: 0.08),
+      child: isStart
+          ? content
+          : Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  context.l10n.chat_reply,
+                  style: TextStyle(
+                    color: colorScheme.primary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(width: 6),
+                Icon(Icons.reply, color: colorScheme.primary),
+              ],
+            ),
     );
   }
 
@@ -901,7 +952,8 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ChannelMessagePathScreen(message: message),
+        builder: (context) =>
+            ChannelMessagePathScreen(message: message, channelMessage: true),
       ),
     );
   }
@@ -1003,6 +1055,157 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
     return pathBytes
         .map((b) => b.toRadixString(16).padLeft(2, '0').toUpperCase())
         .join(',');
+  }
+}
+
+class _SwipeReplyBubble extends StatefulWidget {
+  final double maxSwipeOffset;
+  final double replySwipeThreshold;
+  final VoidCallback onReplyTriggered;
+  final Widget Function({required bool isStart}) hintBuilder;
+  final Widget child;
+
+  const _SwipeReplyBubble({
+    required this.maxSwipeOffset,
+    required this.replySwipeThreshold,
+    required this.onReplyTriggered,
+    required this.hintBuilder,
+    required this.child,
+  });
+
+  @override
+  State<_SwipeReplyBubble> createState() => _SwipeReplyBubbleState();
+}
+
+class _SwipeReplyBubbleState extends State<_SwipeReplyBubble> {
+  Offset? _swipeStartPosition;
+  double _swipeOffset = 0;
+  double _maxSwipeDistance = 0;
+  int? _swipePointerId;
+  bool _swipeLockedToHorizontal = false;
+
+  void _handleSwipeStart(Offset position) {
+    _swipeStartPosition = position;
+    _maxSwipeDistance = 0;
+    if (_swipeOffset != 0) {
+      setState(() => _swipeOffset = 0);
+    }
+  }
+
+  void _handleSwipePointerDown(PointerDownEvent event) {
+    _swipePointerId = event.pointer;
+    _swipeLockedToHorizontal = false;
+    _handleSwipeStart(event.position);
+  }
+
+  void _handleSwipePointerMove(PointerMoveEvent event) {
+    if (_swipePointerId != event.pointer || _swipeStartPosition == null) {
+      return;
+    }
+
+    final dx = event.position.dx - _swipeStartPosition!.dx;
+
+    const axisLockThreshold = 12.0;
+    if (!_swipeLockedToHorizontal) {
+      if (-dx < axisLockThreshold) {
+        return;
+      }
+      _swipeLockedToHorizontal = true;
+    }
+
+    _handleSwipeUpdate(event.position);
+  }
+
+  void _handleSwipeUpdate(Offset position) {
+    if (_swipeStartPosition == null) return;
+
+    final dx = position.dx - _swipeStartPosition!.dx;
+    if (dx >= 0) return;
+
+    if (-dx < 6) return;
+
+    if (-dx > _maxSwipeDistance) {
+      _maxSwipeDistance = -dx;
+    }
+
+    final double clamped = dx.clamp(-widget.maxSwipeOffset, 0.0).toDouble();
+    final adjusted = _applySwipeResistance(clamped, widget.maxSwipeOffset);
+    if (adjusted != _swipeOffset) {
+      setState(() => _swipeOffset = adjusted);
+    }
+  }
+
+  void _handleSwipePointerUp(Offset position) {
+    if (_swipeLockedToHorizontal && _swipeStartPosition != null) {
+      final dx = position.dx - _swipeStartPosition!.dx;
+      final peak = math.max(
+        _maxSwipeDistance,
+        (-dx).clamp(0.0, double.infinity),
+      );
+      if (peak >= widget.replySwipeThreshold) {
+        widget.onReplyTriggered();
+        HapticFeedback.selectionClick();
+      }
+    }
+    _resetSwipe();
+  }
+
+  void _resetSwipe() {
+    if (_swipeOffset != 0) {
+      setState(() => _swipeOffset = 0);
+    }
+    _swipeStartPosition = null;
+    _maxSwipeDistance = 0;
+    _swipePointerId = null;
+    _swipeLockedToHorizontal = false;
+  }
+
+  double _applySwipeResistance(double rawOffset, double maxOffset) {
+    final abs = rawOffset.abs();
+    if (abs <= 0) return 0;
+    final norm = (abs / maxOffset).clamp(0.0, 1.0);
+    const deadZone = 0.18;
+    if (norm <= deadZone) {
+      return rawOffset.sign * maxOffset * (norm * 0.08);
+    }
+    final t = ((norm - deadZone) / (1 - deadZone)).clamp(0.0, 1.0);
+    final curved = t < 0.5
+        ? 16 * math.pow(t, 5)
+        : 1 - math.pow(-2 * t + 2, 5) / 2;
+    const deadZoneEnd = 0.0144;
+    return rawOffset.sign *
+        maxOffset *
+        (deadZoneEnd + curved * (1 - deadZoneEnd));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Listener(
+      onPointerDown: _handleSwipePointerDown,
+      onPointerMove: _handleSwipePointerMove,
+      onPointerUp: (event) => _handleSwipePointerUp(event.position),
+      onPointerCancel: (_) => _resetSwipe(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Positioned.fill(
+              child: Opacity(
+                opacity: _swipeOffset.abs() / widget.maxSwipeOffset,
+                child: widget.hintBuilder(isStart: false),
+              ),
+            ),
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 150),
+              transform: Matrix4.translationValues(_swipeOffset, 0, 0),
+              curve: Curves.easeOut,
+              child: widget.child,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
