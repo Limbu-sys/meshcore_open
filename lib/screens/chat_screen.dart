@@ -34,6 +34,7 @@ import '../widgets/gif_message.dart';
 import '../widgets/jump_to_bottom_button.dart';
 import '../widgets/gif_picker.dart';
 import '../widgets/path_selection_dialog.dart';
+import '../widgets/unread_marker_divider.dart';
 import '../utils/app_logger.dart';
 import '../l10n/l10n.dart';
 
@@ -263,6 +264,14 @@ class _ChatScreenState extends State<ChatScreen> {
     List<Message> messages,
     MeshCoreConnector connector,
   ) {
+    final firstUnreadIndex = connector.firstUnreadContactIndex(
+      widget.contact.publicKeyHex,
+      messages,
+    );
+    final unreadMarkerReversedIndex = firstUnreadIndex == null
+        ? null
+        : (messages.length - 1 - firstUnreadIndex);
+
     // Reverse messages so newest appear at bottom with reverse: true
     final reversedMessages = messages.reversed.toList();
     final itemCount = reversedMessages.length + (_isLoadingOlder ? 1 : 0);
@@ -309,12 +318,16 @@ class _ChatScreenState extends State<ChatScreen> {
                 .toUpperCase();
           }
 
+          final showUnreadMarker =
+              unreadMarkerReversedIndex != null &&
+              messageIndex == unreadMarkerReversedIndex;
+
           return Builder(
             builder: (context) {
               final textScale = context.select<ChatTextScaleService, double>(
                 (service) => service.scale,
               );
-              return _MessageBubble(
+              final bubble = _MessageBubble(
                 message: message,
                 senderName: widget.contact.type == advTypeRoom
                     ? "${contact.name} [$fourByteHex]"
@@ -323,6 +336,14 @@ class _ChatScreenState extends State<ChatScreen> {
                 textScale: textScale,
                 onTap: () => _openMessagePath(message, contact),
                 onLongPress: () => _showMessageActions(message, contact),
+              );
+              if (!showUnreadMarker) return bubble;
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  UnreadMarkerDivider(timestamp: message.timestamp),
+                  bubble,
+                ],
               );
             },
           );
