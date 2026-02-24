@@ -14,8 +14,10 @@ import '../services/app_settings_service.dart';
 import '../services/line_of_sight_service.dart';
 import '../services/map_tile_cache_service.dart';
 import '../utils/route_transitions.dart';
+import '../connector/meshcore_connector.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/quick_switch_bar.dart';
+import '../icons/los_icon.dart';
 
 class LineOfSightEndpoint {
   final String label;
@@ -71,6 +73,7 @@ class _LineOfSightMapScreenState extends State<LineOfSightMapScreen> {
   bool _showMarkerLabels = true;
   bool _didReceivePositionUpdate = false;
   int _losRequestNonce = 0;
+  bool _initialLosScheduled = false;
 
   @override
   void initState() {
@@ -81,7 +84,16 @@ class _LineOfSightMapScreenState extends State<LineOfSightMapScreen> {
         _end = widget.candidates[1];
       }
     }
-    _runLos();
+    _scheduleInitialRun();
+  }
+
+  void _scheduleInitialRun() {
+    if (_initialLosScheduled) return;
+    _initialLosScheduled = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _runLos();
+    });
   }
 
   @override
@@ -110,10 +122,13 @@ class _LineOfSightMapScreenState extends State<LineOfSightMapScreen> {
     });
 
     try {
+      final connector = context.read<MeshCoreConnector>();
+      final frequencyMHz = _normalizeFrequencyMHz(connector.currentFreqHz);
       final result = await _lineOfSightService.analyzePath(
         [start.point, end.point],
         startAntennaHeightMeters: startAntenna,
         endAntennaHeightMeters: endAntenna,
+        frequencyMHz: frequencyMHz,
       );
       if (!mounted) return;
       if (!_isRunRequestCurrent(
@@ -424,6 +439,12 @@ class _LineOfSightMapScreenState extends State<LineOfSightMapScreen> {
   Widget _buildControlPanel(bool isImperial) {
     _sanitizeSelection();
     final segment = _primarySegmentResult();
+    final connector = context.read<MeshCoreConnector>();
+    final reportedFrequencyMHz = _normalizeFrequencyMHz(
+      connector.currentFreqHz,
+    );
+    final displayFrequencyMHz = segment?.frequencyMHz ?? reportedFrequencyMHz;
+    final kFactorUsed = segment?.usedKFactor;
     final endpoints = _visibleEndpoints();
     final distanceUnit = isImperial ? 'mi' : 'km';
     final heightUnit = isImperial ? 'ft' : 'm';
@@ -461,6 +482,9 @@ class _LineOfSightMapScreenState extends State<LineOfSightMapScreen> {
                             fontSize: 10,
                             fontWeight: FontWeight.w600,
                           ),
+                      terrainLabel: context.l10n.losLegendTerrain,
+                      losBeamLabel: context.l10n.losLegendLosBeam,
+                      radioHorizonLabel: context.l10n.losLegendRadioHorizon,
                     ),
                   ),
                 )
@@ -474,6 +498,14 @@ class _LineOfSightMapScreenState extends State<LineOfSightMapScreen> {
                     ),
                   ),
                 ),
+              if (segment != null) ...[
+                const SizedBox(height: 8),
+                _LosLegend(
+                  terrainLabel: context.l10n.losLegendTerrain,
+                  losBeamLabel: context.l10n.losLegendLosBeam,
+                  radioHorizonLabel: context.l10n.losLegendRadioHorizon,
+                ),
+              ],
               const SizedBox(height: 8),
               Text(
                 segment != null
@@ -488,6 +520,52 @@ class _LineOfSightMapScreenState extends State<LineOfSightMapScreen> {
                 ),
               ),
               const SizedBox(height: 4),
+              if (displayFrequencyMHz != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 2, bottom: 4),
+                  child: Row(
+                    children: [
+                      Text(
+                        context.l10n.losFrequencyLabel,
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: Colors.grey[700],
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        '${displayFrequencyMHz.toStringAsFixed(3)} MHz',
+                        style: TextStyle(fontSize: 11, color: Colors.grey[700]),
+                      ),
+                      if (kFactorUsed != null) ...[
+                        const SizedBox(width: 8),
+                        Text(
+                          'k=${kFactorUsed.toStringAsFixed(3)}',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.grey[700],
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        IconButton(
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(),
+                          icon: const Icon(Icons.info_outline, size: 16),
+                          color: Colors.grey[600],
+                          tooltip: context.l10n.losFrequencyInfoTooltip,
+                          onPressed: () {
+                            _showFrequencyInfoDialog(
+                              context,
+                              displayFrequencyMHz,
+                              kFactorUsed,
+                            );
+                          },
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
               Text(
                 context.l10n.losElevationAttribution,
                 style: TextStyle(fontSize: 10, color: Colors.grey[700]),
@@ -642,7 +720,7 @@ class _LineOfSightMapScreenState extends State<LineOfSightMapScreen> {
                     alignment: Alignment.centerRight,
                     child: ElevatedButton.icon(
                       onPressed: _loading ? null : _runLos,
-                      icon: const Icon(Icons.visibility),
+                      icon: const LosIcon(),
                       label: Text(context.l10n.losRun),
                     ),
                   ),
@@ -896,6 +974,40 @@ class _LineOfSightMapScreenState extends State<LineOfSightMapScreen> {
         break;
     }
   }
+
+  void _showFrequencyInfoDialog(
+    BuildContext context,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    final baselineFreq = LineOfSightService.baselineFrequencyMHz;
+    final baselineK = LineOfSightService.baselineKFactor;
+    showDialog<void>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(context.l10n.losFrequencyDialogTitle),
+        content: Text(
+          context.l10n.losFrequencyDialogDescription(
+            baselineK,
+            baselineFreq,
+            frequencyMHz,
+            kFactor,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext),
+            child: Text(context.l10n.common_ok),
+          ),
+        ],
+      ),
+    );
+  }
+
+  double? _normalizeFrequencyMHz(int? frequencyKHz) {
+    if (frequencyKHz == null || frequencyKHz <= 0) return null;
+    return frequencyKHz / 1000.0;
+  }
 }
 
 class _LosProfilePainter extends CustomPainter {
@@ -903,12 +1015,18 @@ class _LosProfilePainter extends CustomPainter {
   final String distanceUnit;
   final String heightUnit;
   final TextStyle badgeTextStyle;
+  final String terrainLabel;
+  final String losBeamLabel;
+  final String radioHorizonLabel;
 
   const _LosProfilePainter({
     required this.samples,
     required this.distanceUnit,
     required this.heightUnit,
     required this.badgeTextStyle,
+    required this.terrainLabel,
+    required this.losBeamLabel,
+    required this.radioHorizonLabel,
   });
 
   @override
@@ -920,44 +1038,108 @@ class _LosProfilePainter extends CustomPainter {
     if (samples.length < 2) return;
 
     final minY = samples
-        .map((s) => math.min(s.terrainMeters, s.lineHeightMeters))
+        .map(
+          (s) => math.min(
+            math.min(s.terrainMeters, s.lineHeightMeters),
+            s.refractedHeightMeters,
+          ),
+        )
         .reduce(math.min);
     final maxY = samples
-        .map((s) => math.max(s.terrainMeters, s.lineHeightMeters))
+        .map(
+          (s) => math.max(
+            math.max(s.terrainMeters, s.lineHeightMeters),
+            s.refractedHeightMeters,
+          ),
+        )
         .reduce(math.max);
     final ySpan = math.max(1.0, maxY - minY);
     final maxDist = math.max(1.0, samples.last.distanceMeters);
+    const horizontalPadding = 12.0;
+    const verticalPadding = 12.0;
+    final chartWidth = math.max(1.0, size.width - horizontalPadding * 2);
+    final chartHeight = math.max(1.0, size.height - verticalPadding * 2);
 
     Offset mapPoint(double x, double y) {
-      final px = (x / maxDist) * size.width;
-      final py = size.height - ((y - minY) / ySpan) * size.height;
+      final px = horizontalPadding + (x / maxDist) * chartWidth;
+      final py =
+          size.height - verticalPadding - ((y - minY) / ySpan) * chartHeight;
       return Offset(px, py);
     }
 
-    final terrainPath = ui.Path();
-    terrainPath.moveTo(0, size.height);
-    for (final s in samples) {
-      final p = mapPoint(s.distanceMeters, s.terrainMeters);
+    final firstTerrainPoint = mapPoint(
+      samples.first.distanceMeters,
+      samples.first.terrainMeters,
+    );
+    final lastTerrainPoint = mapPoint(
+      samples.last.distanceMeters,
+      samples.last.terrainMeters,
+    );
+
+    double distanceForCanvasX(double x) {
+      final normalized = ((x - horizontalPadding) / chartWidth).clamp(0.0, 1.0);
+      return normalized * maxDist;
+    }
+
+    double elevationToPixel(double elevation) {
+      final normalized = ((elevation - minY) / ySpan).clamp(0.0, 1.0);
+      return size.height - verticalPadding - normalized * chartHeight;
+    }
+
+    double extrapolateTerrain(double distance, bool isLeft) {
+      final samplesForSlope = isLeft
+          ? samples.sublist(0, math.min(2, samples.length))
+          : samples.sublist(samples.length - math.min(2, samples.length));
+      if (samplesForSlope.length < 2) {
+        return samplesForSlope.first.terrainMeters;
+      }
+      final a = samplesForSlope.first;
+      final b = samplesForSlope.last;
+      final dx = b.distanceMeters - a.distanceMeters;
+      if (dx.abs() < 1e-6) return a.terrainMeters;
+      final slope = (b.terrainMeters - a.terrainMeters) / dx;
+      return a.terrainMeters + slope * (distance - a.distanceMeters);
+    }
+
+    final leftDistance = distanceForCanvasX(0.0);
+    final rightDistance = distanceForCanvasX(size.width);
+    final leftEdgeTerrain = extrapolateTerrain(leftDistance, true);
+    final rightEdgeTerrain = extrapolateTerrain(rightDistance, false);
+    final leftEdgePoint = Offset(0.0, elevationToPixel(leftEdgeTerrain));
+    final rightEdgePoint = Offset(
+      size.width,
+      elevationToPixel(rightEdgeTerrain),
+    );
+
+    final terrainPath = ui.Path()
+      ..moveTo(0, size.height)
+      ..lineTo(leftEdgePoint.dx, leftEdgePoint.dy)
+      ..lineTo(firstTerrainPoint.dx, firstTerrainPoint.dy);
+    for (final sample in samples) {
+      final p = mapPoint(sample.distanceMeters, sample.terrainMeters);
       terrainPath.lineTo(p.dx, p.dy);
     }
-    terrainPath.lineTo(size.width, size.height);
-    terrainPath.close();
+    terrainPath
+      ..lineTo(lastTerrainPoint.dx, lastTerrainPoint.dy)
+      ..lineTo(rightEdgePoint.dx, rightEdgePoint.dy)
+      ..lineTo(size.width, size.height)
+      ..close();
 
-    canvas.drawPath(terrainPath, Paint()..color = const Color(0xCC7C6F5D));
+    const terrainFillColor = Color(0xCC7C6F5D);
+    const terrainLineColor = Color(0xFF9FE870);
+    const losLineColor = Color(0xFFE0E7FF);
+    canvas.drawPath(terrainPath, Paint()..color = terrainFillColor);
 
-    final terrainLine = ui.Path();
-    for (int i = 0; i < samples.length; i++) {
-      final p = mapPoint(samples[i].distanceMeters, samples[i].terrainMeters);
-      if (i == 0) {
-        terrainLine.moveTo(p.dx, p.dy);
-      } else {
-        terrainLine.lineTo(p.dx, p.dy);
-      }
+    final terrainLine = ui.Path()..moveTo(leftEdgePoint.dx, leftEdgePoint.dy);
+    for (final sample in samples) {
+      final p = mapPoint(sample.distanceMeters, sample.terrainMeters);
+      terrainLine.lineTo(p.dx, p.dy);
     }
+    terrainLine.lineTo(rightEdgePoint.dx, rightEdgePoint.dy);
     canvas.drawPath(
       terrainLine,
       Paint()
-        ..color = const Color(0xFF9FE870)
+        ..color = terrainLineColor
         ..style = PaintingStyle.stroke
         ..strokeWidth = 2,
     );
@@ -977,9 +1159,58 @@ class _LosProfilePainter extends CustomPainter {
     canvas.drawPath(
       losLine,
       Paint()
-        ..color = const Color(0xFFE0E7FF)
+        ..color = losLineColor
         ..style = PaintingStyle.stroke
         ..strokeWidth = 2,
+    );
+
+    const refractedLineColor = Color(0xFFFFD57F);
+    final refractedLine = ui.Path();
+    for (int i = 0; i < samples.length; i++) {
+      final p = mapPoint(
+        samples[i].distanceMeters,
+        samples[i].refractedHeightMeters,
+      );
+      if (i == 0) {
+        refractedLine.moveTo(p.dx, p.dy);
+      } else {
+        refractedLine.lineTo(p.dx, p.dy);
+      }
+    }
+    canvas.drawPath(
+      refractedLine,
+      Paint()
+        ..color = refractedLineColor
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1.5,
+    );
+
+    final capPath = ui.Path();
+    for (int i = 0; i < samples.length; i++) {
+      final p = mapPoint(
+        samples[i].distanceMeters,
+        samples[i].refractedHeightMeters,
+      );
+      if (i == 0) {
+        capPath.moveTo(p.dx, p.dy);
+      } else {
+        capPath.lineTo(p.dx, p.dy);
+      }
+    }
+    for (int i = samples.length - 1; i >= 0; i--) {
+      final p = mapPoint(
+        samples[i].distanceMeters,
+        samples[i].lineHeightMeters,
+      );
+      capPath.lineTo(p.dx, p.dy);
+    }
+    capPath.close();
+    const horizonFillColor = Color(0x40FFD57F);
+    canvas.drawPath(
+      capPath,
+      Paint()
+        ..color = horizonFillColor
+        ..style = PaintingStyle.fill,
     );
   }
 
@@ -988,7 +1219,10 @@ class _LosProfilePainter extends CustomPainter {
     return oldDelegate.samples != samples ||
         oldDelegate.distanceUnit != distanceUnit ||
         oldDelegate.heightUnit != heightUnit ||
-        oldDelegate.badgeTextStyle != badgeTextStyle;
+        oldDelegate.badgeTextStyle != badgeTextStyle ||
+        oldDelegate.terrainLabel != terrainLabel ||
+        oldDelegate.losBeamLabel != losBeamLabel ||
+        oldDelegate.radioHorizonLabel != radioHorizonLabel;
   }
 
   void _drawUnitBadge(Canvas canvas, Size size) {
@@ -1000,4 +1234,74 @@ class _LosProfilePainter extends CustomPainter {
       ..layout();
     painter.paint(canvas, Offset(size.width - painter.width - 8, 8));
   }
+}
+
+class _LosLegend extends StatelessWidget {
+  static const _terrainColor = Color(0xFF9FE870);
+  static const _losColor = Color(0xFFE0E7FF);
+  static const _radioColor = Color(0xFFFFD57F);
+
+  final String terrainLabel;
+  final String losBeamLabel;
+  final String radioHorizonLabel;
+
+  const _LosLegend({
+    required this.terrainLabel,
+    required this.losBeamLabel,
+    required this.radioHorizonLabel,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textStyle =
+        Theme.of(context).textTheme.labelSmall?.copyWith(
+          color: Colors.white70,
+          fontSize: 11,
+          fontWeight: FontWeight.w500,
+        ) ??
+        const TextStyle(
+          color: Colors.white70,
+          fontSize: 11,
+          fontWeight: FontWeight.w500,
+        );
+
+    final entries = [
+      _LegendEntry(terrainLabel, _terrainColor),
+      _LegendEntry(losBeamLabel, _losColor),
+      _LegendEntry(radioHorizonLabel, _radioColor),
+    ];
+
+    const swatchSize = 10.0;
+
+    return Wrap(
+      spacing: 16,
+      runSpacing: 6,
+      children: entries
+          .map(
+            (entry) => Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: swatchSize,
+                  height: swatchSize,
+                  decoration: BoxDecoration(
+                    color: entry.color,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                const SizedBox(width: 6),
+                Text(entry.label, style: textStyle),
+              ],
+            ),
+          )
+          .toList(),
+    );
+  }
+}
+
+class _LegendEntry {
+  final String label;
+  final Color color;
+
+  const _LegendEntry(this.label, this.color);
 }

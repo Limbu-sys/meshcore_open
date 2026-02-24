@@ -1,4 +1,6 @@
 {
+  "channels_channelDeleteFailed": "Не удалось удалить канал {name}.",
+  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
   "@@locale": "ru",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Контакты",
@@ -958,5 +960,29 @@
   "losPointName": "Имя точки",
   "losShowPanelTooltip": "Показать панель LOS",
   "losHidePanelTooltip": "Скрыть панель LOS",
-  "losElevationAttribution": "Данные о высоте: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Данные о высоте: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Радиогоризонт",
+  "losLegendLosBeam": "Линия прямой видимости",
+  "losLegendTerrain": "Рельеф",
+  "losFrequencyLabel": "Частота",
+  "losFrequencyInfoTooltip": "Просмотреть детали расчёта",
+  "losFrequencyDialogTitle": "Расчёт радиогоризонта",
+  "losFrequencyDialogDescription": "Начиная с k={baselineK} на частоте {baselineFreq} МГц, расчет корректирует коэффициент k для текущего диапазона {frequencyMHz} МГц, который определяет изогнутую границу радиогоризонта.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  }
 }

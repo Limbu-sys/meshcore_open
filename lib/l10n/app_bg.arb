@@ -1,4 +1,6 @@
 {
+  "channels_channelDeleteFailed": "Неуспешно изтриване на канала \"{name}\"",
+  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
   "@@locale": "bg",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Контакти",
@@ -1718,5 +1720,29 @@
   "losPointName": "Име на точката",
   "losShowPanelTooltip": "Показване на LOS панел",
   "losHidePanelTooltip": "Скриване на LOS панела",
-  "losElevationAttribution": "Данни за надморска височина: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Данни за надморска височина: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Радиохоризонт",
+  "losLegendLosBeam": "Линия на видимост",
+  "losLegendTerrain": "Терен",
+  "losFrequencyLabel": "Честота",
+  "losFrequencyInfoTooltip": "Преглед на детайли за изчислението",
+  "losFrequencyDialogTitle": "Изчисляване на радиохоризонта",
+  "losFrequencyDialogDescription": "Започвайки от k={baselineK} при {baselineFreq} MHz, изчислението коригира k-фактора за текущата {frequencyMHz} MHz лента, която определя границата на извития радиохоризонт.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  }
 }

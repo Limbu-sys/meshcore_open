@@ -1,4 +1,6 @@
 {
+  "channels_channelDeleteFailed": "Det gick inte att ta bort kanalen \"{name}\"",
+  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
   "@@locale": "sv",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Kontakter",
@@ -1718,5 +1720,29 @@
   "losPointName": "Punktnamn",
   "losShowPanelTooltip": "Visa LOS-panelen",
   "losHidePanelTooltip": "Dölj LOS-panelen",
-  "losElevationAttribution": "Höjddata: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Höjddata: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Radiohorisont",
+  "losLegendLosBeam": "Siktlinje",
+  "losLegendTerrain": "Terräng",
+  "losFrequencyLabel": "Frekvens",
+  "losFrequencyInfoTooltip": "Visa detaljer om beräkningen",
+  "losFrequencyDialogTitle": "Beräkning av radiohorisonten",
+  "losFrequencyDialogDescription": "Med start från k={baselineK} vid {baselineFreq} MHz, justerar beräkningen k-faktorn för det aktuella {frequencyMHz} MHz-bandet, som definierar den böjda radiohorisonten.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  }
 }
