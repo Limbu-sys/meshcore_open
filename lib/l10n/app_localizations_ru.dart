@@ -463,6 +463,14 @@ class AppLocalizationsRu extends AppLocalizations {
   String get appSettings_languageUk => 'Українська';
 
   @override
+  String get appSettings_enableMessageTracing =>
+      'Включить трассировку сообщений';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Показывать подробные метаданные о маршрутизации и времени для сообщений';
+
+  @override
   String get appSettings_notifications => 'Уведомления';
 
   @override

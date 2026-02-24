@@ -1557,6 +1557,8 @@
   "contacts_floodAdvert": "Overstromingsadvertentie",
   "contacts_copyAdvertToClipboard": "Advert naar klembord kopiëren",
   "appSettings_languageRu": "Russisch",
+  "appSettings_enableMessageTracing": "Berichttracking inschakelen",
+  "appSettings_enableMessageTracingSubtitle": "Gedetailleerde routerings- en timing-metadata voor berichten weergeven",
   "contacts_clipboardEmpty": "Knipbord is leeg.",
   "contacts_addContactFromClipboard": "Contact uit klembord toevoegen",
   "contacts_contactImported": "Contact is geïmporteerd.",

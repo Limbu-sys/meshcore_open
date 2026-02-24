@@ -1553,6 +1553,8 @@
   "contacts_invalidAdvertFormat": "Données de contact non valides",
   "appSettings_languageUk": "Ukrainien",
   "appSettings_languageRu": "Russe",
+  "appSettings_enableMessageTracing": "Activer le traçage des messages",
+  "appSettings_enableMessageTracingSubtitle": "Afficher les métadonnées détaillées de routage et de synchronisation des messages",
   "contacts_clipboardEmpty": "Le presse-papiers est vide.",
   "contacts_contactImported": "Le contact a été importé.",
   "contacts_floodAdvert": "Annonce à tout le réseau",

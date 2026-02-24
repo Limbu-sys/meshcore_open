@@ -467,6 +467,14 @@ class AppLocalizationsBg extends AppLocalizations {
   String get appSettings_languageUk => 'Украински';
 
   @override
+  String get appSettings_enableMessageTracing =>
+      'Разрешаване на проследяване на съобщения';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Показване на подробни метаданни за маршрутизация и синхронизация за съобщения';
+
+  @override
   String get appSettings_notifications => 'Уведомления';
 
   @override

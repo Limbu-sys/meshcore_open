@@ -17,11 +17,13 @@ import '../helpers/utf8_length_limiter.dart';
 import '../l10n/l10n.dart';
 import '../models/channel.dart';
 import '../models/channel_message.dart';
+import '../services/app_settings_service.dart';
 import '../utils/emoji_utils.dart';
 import '../widgets/emoji_picker.dart';
 import '../widgets/gif_message.dart';
 import '../widgets/jump_to_bottom_button.dart';
 import '../widgets/gif_picker.dart';
+import '../widgets/message_status_icon.dart';
 import 'channel_message_path_screen.dart';
 import 'map_screen.dart';
 
@@ -263,6 +265,8 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
   }
 
   Widget _buildMessageBubble(ChannelMessage message) {
+    final settingsService = context.watch<AppSettingsService>();
+    final enableTracing = settingsService.settings.enableMessageTracing;
     final isOutgoing = message.isOutgoing;
     final gifId = _parseGifId(message.text);
     final poi = _parsePoiMessage(message.text);
@@ -334,110 +338,189 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                         const SizedBox(height: 8),
                       ],
                       if (poi != null)
-                        _buildPoiMessage(context, poi, isOutgoing)
+                        _buildPoiMessage(
+                          context,
+                          poi,
+                          isOutgoing,
+                          trailing: (!enableTracing && isOutgoing)
+                              ? Padding(
+                                  padding: const EdgeInsets.only(bottom: 2),
+                                  child: MessageStatusIcon(
+                                    isAcked:
+                                        message.status ==
+                                            ChannelMessageStatus.sent &&
+                                        displayPath.isNotEmpty,
+                                    isFailed:
+                                        message.status ==
+                                        ChannelMessageStatus.failed,
+                                  ),
+                                )
+                              : null,
+                        )
                       else if (gifId != null)
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: GifMessage(
-                            url:
-                                'https://media.giphy.com/media/$gifId/giphy.gif',
-                            backgroundColor: Colors.transparent,
-                            fallbackTextColor: isOutgoing
-                                ? Theme.of(context)
-                                      .colorScheme
-                                      .onPrimaryContainer
-                                      .withValues(alpha: 0.7)
-                                : Theme.of(context).colorScheme.onSurface
-                                      .withValues(alpha: 0.6),
-                          ),
+                        Stack(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: GifMessage(
+                                url:
+                                    'https://media.giphy.com/media/$gifId/giphy.gif',
+                                backgroundColor: Colors.transparent,
+                                fallbackTextColor: isOutgoing
+                                    ? Theme.of(context)
+                                          .colorScheme
+                                          .onPrimaryContainer
+                                          .withValues(alpha: 0.7)
+                                    : Theme.of(context).colorScheme.onSurface
+                                          .withValues(alpha: 0.6),
+                              ),
+                            ),
+                            if (!enableTracing && isOutgoing)
+                              Positioned(
+                                top: 0,
+                                right: 0,
+                                child: Container(
+                                  padding: const EdgeInsets.all(3),
+                                  decoration: BoxDecoration(
+                                    color: isOutgoing
+                                        ? Theme.of(
+                                            context,
+                                          ).colorScheme.primaryContainer
+                                        : Theme.of(
+                                            context,
+                                          ).colorScheme.surfaceContainerHighest,
+                                    borderRadius: const BorderRadius.only(
+                                      bottomLeft: Radius.circular(10),
+                                      topRight: Radius.circular(8),
+                                    ),
+                                  ),
+                                  child: MessageStatusIcon(
+                                    isAcked:
+                                        message.status ==
+                                            ChannelMessageStatus.sent &&
+                                        displayPath.isNotEmpty,
+                                    isFailed:
+                                        message.status ==
+                                        ChannelMessageStatus.failed,
+                                  ),
+                                ),
+                              ),
+                          ],
                         )
                       else
-                        Linkify(
-                          text: message.text,
-                          style: const TextStyle(fontSize: 14),
-                          linkStyle: const TextStyle(
-                            fontSize: 14,
-                            color: Colors.green,
-                            decoration: TextDecoration.underline,
-                          ),
-                          options: const LinkifyOptions(
-                            humanize: false,
-                            defaultToHttps: false,
-                          ),
-                          linkifiers: const [UrlLinkifier()],
-                          onOpen: (link) =>
-                              LinkHandler.handleLinkTap(context, link.url),
-                        ),
-                      if (displayPath.isNotEmpty) ...[
-                        const SizedBox(height: 4),
-                        Padding(
-                          padding: gifId != null
-                              ? const EdgeInsets.symmetric(horizontal: 8)
-                              : EdgeInsets.zero,
-                          child: Text(
-                            'via ${_formatPathPrefixes(displayPath)}',
-                            style: TextStyle(
-                              fontSize: 11,
-                              color: Colors.grey[600],
-                            ),
-                          ),
-                        ),
-                      ],
-                      const SizedBox(height: 4),
-                      Padding(
-                        padding: gifId != null
-                            ? const EdgeInsets.only(
-                                left: 8,
-                                right: 8,
-                                bottom: 4,
-                              )
-                            : EdgeInsets.zero,
-                        child: Row(
+                        Row(
                           mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text(
-                              _formatTime(message.timestamp),
+                            Flexible(
+                              child: Linkify(
+                                text: message.text,
+                                style: const TextStyle(fontSize: 14),
+                                linkStyle: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.green,
+                                  decoration: TextDecoration.underline,
+                                ),
+                                options: const LinkifyOptions(
+                                  humanize: false,
+                                  defaultToHttps: false,
+                                ),
+                                linkifiers: const [UrlLinkifier()],
+                                onOpen: (link) => LinkHandler.handleLinkTap(
+                                  context,
+                                  link.url,
+                                ),
+                              ),
+                            ),
+                            if (!enableTracing && isOutgoing) ...[
+                              const SizedBox(width: 4),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 2),
+                                child: MessageStatusIcon(
+                                  isAcked:
+                                      message.status ==
+                                          ChannelMessageStatus.sent &&
+                                      displayPath.isNotEmpty,
+                                  isFailed:
+                                      message.status ==
+                                      ChannelMessageStatus.failed,
+                                ),
+                              ),
+                            ],
+                          ],
+                        ),
+                      if (enableTracing) ...[
+                        if (displayPath.isNotEmpty) ...[
+                          const SizedBox(height: 4),
+                          Padding(
+                            padding: gifId != null
+                                ? const EdgeInsets.symmetric(horizontal: 8)
+                                : EdgeInsets.zero,
+                            child: Text(
+                              'via ${_formatPathPrefixes(displayPath)}',
                               style: TextStyle(
                                 fontSize: 11,
                                 color: Colors.grey[600],
                               ),
                             ),
-                            if (message.repeatCount > 0) ...[
-                              const SizedBox(width: 6),
-                              Icon(
-                                Icons.repeat,
-                                size: 12,
-                                color: Colors.grey[600],
-                              ),
-                              const SizedBox(width: 2),
+                          ),
+                        ],
+                        const SizedBox(height: 4),
+                        Padding(
+                          padding: gifId != null
+                              ? const EdgeInsets.only(
+                                  left: 8,
+                                  right: 8,
+                                  bottom: 4,
+                                )
+                              : EdgeInsets.zero,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
                               Text(
-                                '${message.repeatCount}',
+                                _formatTime(message.timestamp),
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: Colors.grey[600],
                                 ),
                               ),
+                              if (message.repeatCount > 0) ...[
+                                const SizedBox(width: 6),
+                                Icon(
+                                  Icons.repeat,
+                                  size: 12,
+                                  color: Colors.grey[600],
+                                ),
+                                const SizedBox(width: 2),
+                                Text(
+                                  '${message.repeatCount}',
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    color: Colors.grey[600],
+                                  ),
+                                ),
+                              ],
+                              if (isOutgoing) ...[
+                                const SizedBox(width: 4),
+                                Icon(
+                                  message.status == ChannelMessageStatus.sent
+                                      ? Icons.check
+                                      : message.status ==
+                                            ChannelMessageStatus.pending
+                                      ? Icons.schedule
+                                      : Icons.error_outline,
+                                  size: 14,
+                                  color:
+                                      message.status ==
+                                          ChannelMessageStatus.failed
+                                      ? Colors.red
+                                      : Colors.grey[600],
+                                ),
+                              ],
                             ],
-                            if (isOutgoing) ...[
-                              const SizedBox(width: 4),
-                              Icon(
-                                message.status == ChannelMessageStatus.sent
-                                    ? Icons.check
-                                    : message.status ==
-                                          ChannelMessageStatus.pending
-                                    ? Icons.schedule
-                                    : Icons.error_outline,
-                                size: 14,
-                                color:
-                                    message.status ==
-                                        ChannelMessageStatus.failed
-                                    ? Colors.red
-                                    : Colors.grey[600],
-                              ),
-                            ],
-                          ],
+                          ),
                         ),
-                      ),
+                      ],
                     ],
                   ),
                 ),
@@ -650,7 +733,12 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
     return _PoiInfo(lat: lat, lon: lon, label: label);
   }
 
-  Widget _buildPoiMessage(BuildContext context, _PoiInfo poi, bool isOutgoing) {
+  Widget _buildPoiMessage(
+    BuildContext context,
+    _PoiInfo poi,
+    bool isOutgoing, {
+    Widget? trailing,
+  }) {
     final colorScheme = Theme.of(context).colorScheme;
     final textColor = isOutgoing
         ? colorScheme.onPrimaryContainer
@@ -696,6 +784,7 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
             ],
           ),
         ),
+        if (trailing != null) ...[const SizedBox(width: 4), trailing],
       ],
     );
   }

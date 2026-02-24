@@ -461,6 +461,13 @@ class AppLocalizationsSk extends AppLocalizations {
   String get appSettings_languageUk => 'Ukrajinská';
 
   @override
+  String get appSettings_enableMessageTracing => 'Povoliť sledovanie správ';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Zobraziť podrobné metadáta o smerovaní a časovaní správ';
+
+  @override
   String get appSettings_notifications => 'Upozornenia';
 
   @override

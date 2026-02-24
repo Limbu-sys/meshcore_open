@@ -183,6 +183,8 @@
   "appSettings_languageBg": "Български",
   "appSettings_languageRu": "Русский",
   "appSettings_languageUk": "Українська",
+  "appSettings_enableMessageTracing": "Enable Message Tracing",
+  "appSettings_enableMessageTracingSubtitle": "Show detailed routing and timing metadata for messages",
   "appSettings_notifications": "Notifications",
   "appSettings_enableNotifications": "Enable Notifications",
   "appSettings_enableNotificationsSubtitle": "Receive notifications for messages and adverts",

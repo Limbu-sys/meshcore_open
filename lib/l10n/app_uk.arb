@@ -1559,6 +1559,8 @@
   "contacts_copyAdvertToClipboard": "Копіювати оголошення в буфер обміну",
   "contacts_clipboardEmpty": "Буфер обміну порожній",
   "appSettings_languageRu": "Російська",
+  "appSettings_enableMessageTracing": "Увімкнути відстеження повідомлень",
+  "appSettings_enableMessageTracingSubtitle": "Показувати детальні метадані про маршрутизацію та час для повідомлень",
   "contacts_ShareContact": "Копіювати контакт у буфер обміну",
   "contacts_zeroHopContactAdvertFailed": "Не вдалося надіслати контакт.",
   "contacts_contactAdvertCopied": "Рекламу скопійовано до буфера обміну.",

@@ -1552,6 +1552,8 @@
   "contacts_chatTraceRoute": "Śledź trasę promienia",
   "appSettings_languageRu": "Rosyjski",
   "appSettings_languageUk": "Ukraińska",
+  "appSettings_enableMessageTracing": "Włącz śledzenie wiadomości",
+  "appSettings_enableMessageTracingSubtitle": "Pokaż szczegółowe metadane trasowania i czasu dla wiadomości",
   "contacts_contactImportFailed": "Kontakt nie został zaimportowany.",
   "contacts_zeroHopAdvert": "Reklama Zero Hop",
   "contacts_floodAdvert": "Reklama powodziowa",

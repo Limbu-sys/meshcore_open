@@ -970,6 +970,18 @@ abstract class AppLocalizations {
   /// **'Українська'**
   String get appSettings_languageUk;
 
+  /// No description provided for @appSettings_enableMessageTracing.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Message Tracing'**
+  String get appSettings_enableMessageTracing;
+
+  /// No description provided for @appSettings_enableMessageTracingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Show detailed routing and timing metadata for messages'**
+  String get appSettings_enableMessageTracingSubtitle;
+
   /// No description provided for @appSettings_notifications.
   ///
   /// In en, this message translates to:

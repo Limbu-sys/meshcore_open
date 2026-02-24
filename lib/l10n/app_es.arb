@@ -1553,6 +1553,8 @@
   "appSettings_languageUk": "Ucraniano",
   "contacts_clipboardEmpty": "El portapapeles está vacío.",
   "appSettings_languageRu": "Ruso",
+  "appSettings_enableMessageTracing": "Habilitar seguimiento de mensajes",
+  "appSettings_enableMessageTracingSubtitle": "Mostrar metadatos detallados de enrutamiento y tiempo para los mensajes",
   "contacts_invalidAdvertFormat": "Datos de contacto no válidos",
   "contacts_floodAdvert": "Anuncio de inundación",
   "contacts_contactImported": "El contacto ha sido importado.",

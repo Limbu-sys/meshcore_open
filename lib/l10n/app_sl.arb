@@ -1552,6 +1552,8 @@
   "contacts_pathTraceTo": "Trace route to {name}",
   "appSettings_languageRu": "Ruščina",
   "appSettings_languageUk": "Ukrajinsko",
+  "appSettings_enableMessageTracing": "Omogoči sledenje sporočilom",
+  "appSettings_enableMessageTracingSubtitle": "Prikaži podrobne metapodatke o usmerjanju in časovnem usklajevanju sporočil",
   "contacts_contactImported": "Kontakt je bil uvožen.",
   "contacts_contactImportFailed": "Kontakt ni bil uspešno uvožen.",
   "contacts_zeroHopAdvert": "Reklama brez posrednikov",

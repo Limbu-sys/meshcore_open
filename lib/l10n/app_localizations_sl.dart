@@ -460,6 +460,13 @@ class AppLocalizationsSl extends AppLocalizations {
   String get appSettings_languageUk => 'Ukrajinsko';
 
   @override
+  String get appSettings_enableMessageTracing => 'Omogoči sledenje sporočilom';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Prikaži podrobne metapodatke o usmerjanju in časovnem usklajevanju sporočil';
+
+  @override
   String get appSettings_notifications => 'Obvestila';
 
   @override

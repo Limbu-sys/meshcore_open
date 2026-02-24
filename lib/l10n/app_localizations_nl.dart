@@ -461,6 +461,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get appSettings_languageUk => 'Oekraïens';
 
   @override
+  String get appSettings_enableMessageTracing => 'Berichttracking inschakelen';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Gedetailleerde routerings- en timing-metadata voor berichten weergeven';
+
+  @override
   String get appSettings_notifications => 'Notificaties';
 
   @override

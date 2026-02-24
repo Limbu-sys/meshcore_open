@@ -1554,6 +1554,8 @@
   "contacts_clipboardEmpty": "Клипборда е празна.",
   "contacts_invalidAdvertFormat": "Невалидни данни за контакт",
   "appSettings_languageRu": "Руски",
+  "appSettings_enableMessageTracing": "Разрешаване на проследяване на съобщения",
+  "appSettings_enableMessageTracingSubtitle": "Показване на подробни метаданни за маршрутизация и синхронизация за съобщения",
   "contacts_contactImported": "Контактът е импортиран.",
   "contacts_zeroHopAdvert": "Реклама без скок",
   "contacts_contactImportFailed": "Контактът не е успешно импортиран.",

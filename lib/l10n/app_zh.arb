@@ -176,6 +176,8 @@
   "appSettings_languageBg": "保加利亚",
   "appSettings_languageRu": "俄语",
   "appSettings_languageUk": "乌克兰",
+  "appSettings_enableMessageTracing": "启用消息追踪",
+  "appSettings_enableMessageTracingSubtitle": "显示消息的详细路由和时间元数据",
   "appSettings_notifications": "通知",
   "appSettings_enableNotifications": "启用通知",
   "appSettings_enableNotificationsSubtitle": "接收消息和广告的通知",

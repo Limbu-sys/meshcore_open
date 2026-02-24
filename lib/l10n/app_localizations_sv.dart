@@ -458,6 +458,13 @@ class AppLocalizationsSv extends AppLocalizations {
   String get appSettings_languageUk => 'Ukrainska';
 
   @override
+  String get appSettings_enableMessageTracing => 'Aktivera meddelandespårning';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Visa detaljerade metadata om dirigering och tidsinställningar för meddelanden';
+
+  @override
   String get appSettings_notifications => 'Meddelanden';
 
   @override

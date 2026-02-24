@@ -1558,6 +1558,8 @@
   "contacts_copyAdvertToClipboard": "Copiar Anúncio para Área de Transferência",
   "contacts_addContactFromClipboard": "Adicionar Contato da Área de Transferência",
   "appSettings_languageRu": "Russo",
+  "appSettings_enableMessageTracing": "Ativar rastreamento de mensagens",
+  "appSettings_enableMessageTracingSubtitle": "Mostrar metadados detalhados de roteamento e tempo para as mensagens",
   "contacts_ShareContact": "Copiar contato para Área de Transferência",
   "contacts_contactImportFailed": "Contato falhou ao ser importado.",
   "contacts_zeroHopContactAdvertSent": "Enviou contato por anúncio.",

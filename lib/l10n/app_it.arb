@@ -1553,6 +1553,8 @@
   "appSettings_languageRu": "Russo",
   "contacts_invalidAdvertFormat": "Dati di contatto non validi",
   "appSettings_languageUk": "Ucraino",
+  "appSettings_enableMessageTracing": "Abilita tracciamento messaggi",
+  "appSettings_enableMessageTracingSubtitle": "Mostra metadati dettagliati su instradamento e tempi per i messaggi",
   "contacts_zeroHopAdvert": "Annuncio Zero Hop",
   "contacts_floodAdvert": "Annuncio alluvionale",
   "contacts_copyAdvertToClipboard": "Copia Annuncio negli Appunti",

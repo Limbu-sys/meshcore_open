@@ -84,6 +84,18 @@ class AppSettingsScreen extends StatelessWidget {
             trailing: const Icon(Icons.chevron_right),
             onTap: () => _showLanguageDialog(context, settingsService),
           ),
+          const Divider(height: 1),
+          SwitchListTile(
+            secondary: const Icon(Icons.location_searching),
+            title: Text(context.l10n.appSettings_enableMessageTracing),
+            subtitle: Text(
+              context.l10n.appSettings_enableMessageTracingSubtitle,
+            ),
+            value: settingsService.settings.enableMessageTracing,
+            onChanged: (value) {
+              settingsService.setEnableMessageTracing(value);
+            },
+          ),
         ],
       ),
     );

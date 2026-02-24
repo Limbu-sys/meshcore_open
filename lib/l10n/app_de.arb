@@ -1554,6 +1554,8 @@
   "contacts_invalidAdvertFormat": "Ungültige Kontaktdaten",
   "contacts_clipboardEmpty": "Die Zwischenablage ist leer.",
   "appSettings_languageUk": "Ukrainisch",
+  "appSettings_enableMessageTracing": "Nachrichtenverfolgung aktivieren",
+  "appSettings_enableMessageTracingSubtitle": "Detaillierte Routing- und Timing-Metadaten für Nachrichten anzeigen",
   "contacts_contactImported": "Kontakt wurde importiert.",
   "contacts_contactImportFailed": "Kontakt konnte nicht importiert werden",
   "contacts_zeroHopAdvert": "Zero-Hop-Ankündigung",

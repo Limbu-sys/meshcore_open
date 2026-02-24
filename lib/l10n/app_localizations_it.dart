@@ -463,6 +463,14 @@ class AppLocalizationsIt extends AppLocalizations {
   String get appSettings_languageUk => 'Ucraino';
 
   @override
+  String get appSettings_enableMessageTracing =>
+      'Abilita tracciamento messaggi';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Mostra metadati dettagliati su instradamento e tempi per i messaggi';
+
+  @override
   String get appSettings_notifications => 'Notifiche';
 
   @override

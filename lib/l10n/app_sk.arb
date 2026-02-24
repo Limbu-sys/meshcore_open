@@ -1558,6 +1558,8 @@
   "contacts_copyAdvertToClipboard": "Kopírovať reklamu do schránky",
   "contacts_invalidAdvertFormat": "Neplatné kontaktné údaje",
   "appSettings_languageRu": "Ruština",
+  "appSettings_enableMessageTracing": "Povoliť sledovanie správ",
+  "appSettings_enableMessageTracingSubtitle": "Zobraziť podrobné metadáta o smerovaní a časovaní správ",
   "contacts_addContactFromClipboard": "Pridať kontakt z schránky",
   "contacts_contactImported": "Kontakt bol importovaný.",
   "contacts_zeroHopContactAdvertSent": "Poslal kontakt cez inzerát.",

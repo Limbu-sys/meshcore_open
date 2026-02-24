@@ -1558,6 +1558,8 @@
   "contacts_copyAdvertToClipboard": "Kopiera annons till urklipp",
   "contacts_invalidAdvertFormat": "Ogiltiga kontaktuppgifter",
   "appSettings_languageUk": "Ukrainska",
+  "appSettings_enableMessageTracing": "Aktivera meddelandespårning",
+  "appSettings_enableMessageTracingSubtitle": "Visa detaljerade metadata om dirigering och tidsinställningar för meddelanden",
   "contacts_addContactFromClipboard": "Lägg till kontakt från urklipp",
   "contacts_contactImported": "Kontakt har importerats.",
   "contacts_zeroHopContactAdvertSent": "Skickat kontakt via annons.",

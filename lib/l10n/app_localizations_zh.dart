@@ -447,6 +447,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get appSettings_languageUk => '乌克兰';
 
   @override
+  String get appSettings_enableMessageTracing => '启用消息追踪';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle => '显示消息的详细路由和时间元数据';
+
+  @override
   String get appSettings_notifications => '通知';
 
   @override
