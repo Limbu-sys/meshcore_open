@@ -413,16 +413,15 @@ class MeshCoreConnector extends ChangeNotifier {
   ) {
     if (orderedMessages.isEmpty) return null;
 
+    final unreadCount = getUnreadCountForContactKey(contactKeyHex);
     final marker = _contactLastReadTs[contactKeyHex];
     if (marker != null) {
       final markerIndex = orderedMessages.indexWhere(
         (m) => m.timestamp.millisecondsSinceEpoch > marker,
       );
       if (markerIndex >= 0) return markerIndex;
-      return null;
     }
 
-    final unreadCount = getUnreadCountForContactKey(contactKeyHex);
     if (unreadCount <= 0) return null;
     if (unreadCount >= orderedMessages.length) return 0;
     return orderedMessages.length - unreadCount;
@@ -434,16 +433,15 @@ class MeshCoreConnector extends ChangeNotifier {
   ) {
     if (orderedMessages.isEmpty) return null;
 
+    final unreadCount = getUnreadCountForChannelIndex(channelIndex);
     final marker = _channelLastReadTs[channelIndex];
     if (marker != null) {
       final markerIndex = orderedMessages.indexWhere(
         (m) => m.timestamp.millisecondsSinceEpoch > marker,
       );
       if (markerIndex >= 0) return markerIndex;
-      return null;
     }
 
-    final unreadCount = getUnreadCountForChannelIndex(channelIndex);
     if (unreadCount <= 0) return null;
     if (unreadCount >= orderedMessages.length) return 0;
     return orderedMessages.length - unreadCount;
