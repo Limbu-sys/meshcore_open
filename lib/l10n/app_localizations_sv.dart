@@ -808,6 +808,11 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Det gick inte att ta bort kanalen \"$name\"';
+  }
+
+  @override
   String channels_channelDeleted(String name) {
     return 'Kanalen \"$name\" raderad';
   }
@@ -2836,6 +2841,34 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get losElevationAttribution => 'Höjddata: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Radiohorisont';
+
+  @override
+  String get losLegendLosBeam => 'Siktlinje';
+
+  @override
+  String get losLegendTerrain => 'Terräng';
+
+  @override
+  String get losFrequencyLabel => 'Frekvens';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Visa detaljer om beräkningen';
+
+  @override
+  String get losFrequencyDialogTitle => 'Beräkning av radiohorisonten';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Med start från k=$baselineK vid $baselineFreq MHz, justerar beräkningen k-faktorn för det aktuella $frequencyMHz MHz-bandet, som definierar den böjda radiohorisonten.';
+  }
 
   @override
   String get contacts_pathTrace => 'Path Trace';

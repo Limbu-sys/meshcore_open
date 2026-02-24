@@ -12,12 +12,14 @@ class LineOfSightSample {
   final double distanceMeters;
   final double terrainMeters;
   final double lineHeightMeters;
+  final double refractedHeightMeters;
   final double clearanceMeters;
 
   const LineOfSightSample({
     required this.distanceMeters,
     required this.terrainMeters,
     required this.lineHeightMeters,
+    required this.refractedHeightMeters,
     required this.clearanceMeters,
   });
 }
@@ -30,6 +32,8 @@ class LineOfSightResult {
   final double? firstObstructionDistanceMeters;
   final List<LineOfSightSample> samples;
   final String? errorMessage;
+  final double usedKFactor;
+  final double? frequencyMHz;
 
   const LineOfSightResult({
     required this.hasData,
@@ -38,12 +42,16 @@ class LineOfSightResult {
     required this.maxObstructionMeters,
     required this.firstObstructionDistanceMeters,
     required this.samples,
+    required this.usedKFactor,
+    this.frequencyMHz,
     this.errorMessage,
   });
 
   const LineOfSightResult.error({
     required this.totalDistanceMeters,
     required this.errorMessage,
+    this.usedKFactor = 4.0 / 3.0,
+    this.frequencyMHz,
   }) : hasData = false,
        isClear = false,
        maxObstructionMeters = 0,
@@ -89,6 +97,11 @@ class LineOfSightService {
   static const Duration _cacheTtl = Duration(hours: 24);
   static const int _maxFetchAttempts = 4; // initial try + 3 retries
   static const Duration _initialBackoff = Duration(milliseconds: 300);
+  static const double _baselineFrequencyMHz = 915.0;
+  static const double _baselineKFactor = 4.0 / 3.0;
+
+  static double get baselineFrequencyMHz => _baselineFrequencyMHz;
+  static double get baselineKFactor => _baselineKFactor;
 
   final http.Client _httpClient;
   final bool _ownsHttpClient;
@@ -106,7 +119,7 @@ class LineOfSightService {
     List<LatLng> points, {
     double startAntennaHeightMeters = 1.5,
     double endAntennaHeightMeters = 1.5,
-    double kFactor = 4.0 / 3.0,
+    double? frequencyMHz,
     double obstructionToleranceMeters = 0.0,
   }) async {
     if (points.length < 2) {
@@ -123,6 +136,7 @@ class LineOfSightService {
     var blockedSegments = 0;
     var unknownSegments = 0;
 
+    final kFactor = _kFactorForFrequency(frequencyMHz);
     for (int i = 0; i < points.length - 1; i++) {
       final result = await analyzeLink(
         points[i],
@@ -130,6 +144,7 @@ class LineOfSightService {
         startAntennaHeightMeters: startAntennaHeightMeters,
         endAntennaHeightMeters: endAntennaHeightMeters,
         kFactor: kFactor,
+        frequencyMHz: frequencyMHz,
         obstructionToleranceMeters: obstructionToleranceMeters,
       );
       segments.add(
@@ -163,7 +178,8 @@ class LineOfSightService {
     LatLng end, {
     double startAntennaHeightMeters = 1.5,
     double endAntennaHeightMeters = 1.5,
-    double kFactor = 4.0 / 3.0,
+    required double kFactor,
+    double? frequencyMHz,
     double obstructionToleranceMeters = 0.0,
   }) async {
     final totalDistanceMeters = _distance.as(LengthUnit.Meter, start, end);
@@ -175,6 +191,8 @@ class LineOfSightService {
         maxObstructionMeters: 0,
         firstObstructionDistanceMeters: null,
         samples: const [],
+        usedKFactor: kFactor,
+        frequencyMHz: frequencyMHz,
       );
     }
 
@@ -185,6 +203,8 @@ class LineOfSightService {
       return LineOfSightResult.error(
         totalDistanceMeters: totalDistanceMeters,
         errorMessage: errorElevationUnavailable,
+        usedKFactor: kFactor,
+        frequencyMHz: frequencyMHz,
       );
     }
 
@@ -194,6 +214,7 @@ class LineOfSightService {
       startAntennaHeightMeters: startAntennaHeightMeters,
       endAntennaHeightMeters: endAntennaHeightMeters,
       kFactor: kFactor,
+      frequencyMHz: frequencyMHz,
       obstructionToleranceMeters: obstructionToleranceMeters,
     );
   }
@@ -203,13 +224,16 @@ class LineOfSightService {
     required List<double> elevations,
     double startAntennaHeightMeters = 1.5,
     double endAntennaHeightMeters = 1.5,
-    double kFactor = 4.0 / 3.0,
+    required double kFactor,
+    double? frequencyMHz,
     double obstructionToleranceMeters = 0.0,
   }) {
     if (points.length < 2 || elevations.length != points.length) {
-      return const LineOfSightResult.error(
+      return LineOfSightResult.error(
         totalDistanceMeters: 0,
         errorMessage: errorInvalidInput,
+        usedKFactor: kFactor,
+        frequencyMHz: frequencyMHz,
       );
     }
 
@@ -238,6 +262,10 @@ class LineOfSightService {
           (2 * effectiveEarthRadius);
       final terrainHeight = elevations[i] + earthBulge;
       final clearance = lineHeight - terrainHeight;
+      final unrefBulge =
+          (distanceFromStart * (totalDistanceMeters - distanceFromStart)) /
+          (2 * _earthRadiusMeters);
+      final refractedHeight = lineHeight + (unrefBulge - earthBulge);
 
       if (clearance < -obstructionToleranceMeters) {
         isClear = false;
@@ -253,6 +281,7 @@ class LineOfSightService {
           distanceMeters: distanceFromStart,
           terrainMeters: terrainHeight,
           lineHeightMeters: lineHeight,
+          refractedHeightMeters: refractedHeight,
           clearanceMeters: clearance,
         ),
       );
@@ -265,7 +294,18 @@ class LineOfSightService {
       maxObstructionMeters: maxObstructionMeters,
       firstObstructionDistanceMeters: firstObstructionDistanceMeters,
       samples: samples,
+      usedKFactor: kFactor,
+      frequencyMHz: frequencyMHz,
     );
+  }
+
+  static double _kFactorForFrequency(double? frequencyMHz) {
+    if (frequencyMHz == null) return _baselineKFactor;
+    final delta =
+        (frequencyMHz - _baselineFrequencyMHz) / _baselineFrequencyMHz;
+    final adjustment = delta * 0.15;
+    final scaled = _baselineKFactor * (1 + adjustment);
+    return scaled.clamp(1.1, 1.6).toDouble();
   }
 
   List<LatLng> _buildSamplePoints(

@@ -809,6 +809,11 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Failed to delete channel \"$name\"';
+  }
+
+  @override
   String channels_channelDeleted(String name) {
     return 'Channel \"$name\" deleted';
   }
@@ -2823,6 +2828,34 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get losElevationAttribution =>
       'Elevation data: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Radio horizon';
+
+  @override
+  String get losLegendLosBeam => 'LOS beam';
+
+  @override
+  String get losLegendTerrain => 'Terrain';
+
+  @override
+  String get losFrequencyLabel => 'Frequency';
+
+  @override
+  String get losFrequencyInfoTooltip => 'View calculation details';
+
+  @override
+  String get losFrequencyDialogTitle => 'Radio horizon calculation';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Starting from k=$baselineK at $baselineFreq MHz, the calculation adjusts the k-factor for the current $frequencyMHz MHz band, which defines the curved radio horizon cap.';
+  }
 
   @override
   String get contacts_pathTrace => 'Path Trace';

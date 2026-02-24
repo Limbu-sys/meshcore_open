@@ -15,6 +15,7 @@ import 'services/ble_debug_log_service.dart';
 import 'services/app_debug_log_service.dart';
 import 'services/background_service.dart';
 import 'services/map_tile_cache_service.dart';
+import 'services/chat_text_scale_service.dart';
 import 'storage/prefs_manager.dart';
 import 'utils/app_logger.dart';
 
@@ -34,6 +35,7 @@ void main() async {
   final appDebugLogService = AppDebugLogService();
   final backgroundService = BackgroundService();
   final mapTileCacheService = MapTileCacheService();
+  final chatTextScaleService = ChatTextScaleService();
 
   // Load settings
   await appSettingsService.loadSettings();
@@ -49,6 +51,8 @@ void main() async {
   await notificationService.initialize();
   await backgroundService.initialize();
   _registerThirdPartyLicenses();
+
+  await chatTextScaleService.initialize();
 
   // Wire up connector with services
   connector.initialize(
@@ -78,6 +82,7 @@ void main() async {
       bleDebugLogService: bleDebugLogService,
       appDebugLogService: appDebugLogService,
       mapTileCacheService: mapTileCacheService,
+      chatTextScaleService: chatTextScaleService,
     ),
   );
 }
@@ -112,6 +117,7 @@ class MeshCoreApp extends StatelessWidget {
   final BleDebugLogService bleDebugLogService;
   final AppDebugLogService appDebugLogService;
   final MapTileCacheService mapTileCacheService;
+  final ChatTextScaleService chatTextScaleService;
 
   const MeshCoreApp({
     super.key,
@@ -123,6 +129,7 @@ class MeshCoreApp extends StatelessWidget {
     required this.bleDebugLogService,
     required this.appDebugLogService,
     required this.mapTileCacheService,
+    required this.chatTextScaleService,
   });
 
   @override
@@ -135,6 +142,7 @@ class MeshCoreApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: appSettingsService),
         ChangeNotifierProvider.value(value: bleDebugLogService),
         ChangeNotifierProvider.value(value: appDebugLogService),
+        ChangeNotifierProvider.value(value: chatTextScaleService),
         Provider.value(value: storage),
         Provider.value(value: mapTileCacheService),
       ],

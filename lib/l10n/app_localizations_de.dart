@@ -818,6 +818,11 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Kanal $name konnte nicht gelöscht werden';
+  }
+
+  @override
   String channels_channelDeleted(String name) {
     return 'Kanal \"$name\" gelöscht';
   }
@@ -2872,6 +2877,34 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get losElevationAttribution => 'Höhendaten: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Funkhorizont';
+
+  @override
+  String get losLegendLosBeam => 'Sichtlinie';
+
+  @override
+  String get losLegendTerrain => 'Gelände';
+
+  @override
+  String get losFrequencyLabel => 'Frequenz';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Details zur Berechnung anzeigen';
+
+  @override
+  String get losFrequencyDialogTitle => 'Berechnung des Funkhorizonts';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Ausgehend von k=$baselineK bei $baselineFreq MHz passt die Berechnung den k-Faktor für das aktuelle $frequencyMHz MHz-Band an, das die gekrümmte Funkhorizontobergrenze definiert.';
+  }
 
   @override
   String get contacts_pathTrace => 'Pfadverfolgung';

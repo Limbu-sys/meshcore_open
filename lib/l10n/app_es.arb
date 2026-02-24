@@ -1,4 +1,6 @@
 {
+  "channels_channelDeleteFailed": "No se pudo eliminar el canal \"{name}\"",
+  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
   "@@locale": "es",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Contactos",
@@ -1746,5 +1748,29 @@
   "losPointName": "Nombre del punto",
   "losShowPanelTooltip": "Mostrar panel LOS",
   "losHidePanelTooltip": "Ocultar panel LOS",
-  "losElevationAttribution": "Datos de elevación: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Datos de elevación: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Horizonte radioeléctrico",
+  "losLegendLosBeam": "Línea de visión",
+  "losLegendTerrain": "Terreno",
+  "losFrequencyLabel": "Frecuencia",
+  "losFrequencyInfoTooltip": "Ver detalles del cálculo",
+  "losFrequencyDialogTitle": "Cálculo del horizonte radioeléctrico",
+  "losFrequencyDialogDescription": "A partir de k={baselineK} en {baselineFreq} MHz, el cálculo ajusta el factor k para la banda actual de {frequencyMHz} MHz, que define el límite curvo del horizonte de radio.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  }
 }

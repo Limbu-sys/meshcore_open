@@ -821,6 +821,11 @@ class AppLocalizationsBg extends AppLocalizations {
   }
 
   @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Неуспешно изтриване на канала \"$name\"';
+  }
+
+  @override
   String channels_channelDeleted(String name) {
     return 'Каналът \"$name\" е изтрит';
   }
@@ -2866,6 +2871,34 @@ class AppLocalizationsBg extends AppLocalizations {
   @override
   String get losElevationAttribution =>
       'Данни за надморска височина: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Радиохоризонт';
+
+  @override
+  String get losLegendLosBeam => 'Линия на видимост';
+
+  @override
+  String get losLegendTerrain => 'Терен';
+
+  @override
+  String get losFrequencyLabel => 'Честота';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Преглед на детайли за изчислението';
+
+  @override
+  String get losFrequencyDialogTitle => 'Изчисляване на радиохоризонта';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Започвайки от k=$baselineK при $baselineFreq MHz, изчислението коригира k-фактора за текущата $frequencyMHz MHz лента, която определя границата на извития радиохоризонт.';
+  }
 
   @override
   String get contacts_pathTrace => 'Пътен проследяване';

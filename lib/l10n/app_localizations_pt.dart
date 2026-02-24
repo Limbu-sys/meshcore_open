@@ -820,6 +820,11 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Falha ao excluir o canal \"$name\"';
+  }
+
+  @override
   String channels_channelDeleted(String name) {
     return 'Canal \"$name\" excluído';
   }
@@ -2865,6 +2870,34 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get losElevationAttribution =>
       'Dados de elevação: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Horizonte de rádio';
+
+  @override
+  String get losLegendLosBeam => 'Linha de visada';
+
+  @override
+  String get losLegendTerrain => 'Terreno';
+
+  @override
+  String get losFrequencyLabel => 'Frequência';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Ver detalhes do cálculo';
+
+  @override
+  String get losFrequencyDialogTitle => 'Cálculo do horizonte de rádio';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Começando em k=$baselineK em $baselineFreq MHz, o cálculo ajusta o fator k para a banda atual de $frequencyMHz MHz, que define o limite do horizonte de rádio curvo.';
+  }
 
   @override
   String get contacts_pathTrace => 'Traçado de Caminho';

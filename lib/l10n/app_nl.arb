@@ -1,4 +1,6 @@
 {
+  "channels_channelDeleteFailed": "Kan kanaal {name} niet verwijderen",
+  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
   "@@locale": "nl",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Contacten",
@@ -1718,5 +1720,29 @@
   "losPointName": "Puntnaam",
   "losShowPanelTooltip": "Toon LOS-paneel",
   "losHidePanelTooltip": "LOS-paneel verbergen",
-  "losElevationAttribution": "Hoogtegegevens: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Hoogtegegevens: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Radiohorizon",
+  "losLegendLosBeam": "Zichtlijn",
+  "losLegendTerrain": "Terrein",
+  "losFrequencyLabel": "Frequentie",
+  "losFrequencyInfoTooltip": "Bekijk details van de berekening",
+  "losFrequencyDialogTitle": "Berekening van de radiohorizon",
+  "losFrequencyDialogDescription": "Beginnend met k={baselineK} bij {baselineFreq} MHz, wordt bij de berekening de k-factor aangepast voor de huidige {frequencyMHz} MHz-band, die de gebogen radiohorizonkap definieert.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  }
 }

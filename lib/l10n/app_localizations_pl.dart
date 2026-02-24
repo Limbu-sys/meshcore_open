@@ -819,6 +819,11 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Nie udało się usunąć kanału \"$name\"';
+  }
+
+  @override
   String channels_channelDeleted(String name) {
     return 'Kanał \"$name\" usunięto';
   }
@@ -2862,6 +2867,34 @@ class AppLocalizationsPl extends AppLocalizations {
   @override
   String get losElevationAttribution =>
       'Dane dotyczące wysokości: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Horyzont radiowy';
+
+  @override
+  String get losLegendLosBeam => 'Linia widoczności';
+
+  @override
+  String get losLegendTerrain => 'Teren';
+
+  @override
+  String get losFrequencyLabel => 'Częstotliwość';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Zobacz szczegóły obliczenia';
+
+  @override
+  String get losFrequencyDialogTitle => 'Obliczanie horyzontu radiowego';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Zaczynając od k=$baselineK przy $baselineFreq MHz, obliczenia korygują współczynnik k dla bieżącego pasma $frequencyMHz MHz, które definiuje zakrzywiony limit horyzontu radiowego.';
+  }
 
   @override
   String get contacts_pathTrace => 'Śledzenie Ścieżek';

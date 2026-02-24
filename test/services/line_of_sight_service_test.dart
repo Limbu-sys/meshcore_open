@@ -16,6 +16,7 @@ void main() {
       elevations: elevations,
       startAntennaHeightMeters: 2,
       endAntennaHeightMeters: 2,
+      kFactor: 4.0 / 3.0,
     );
 
     expect(result.hasData, isTrue);
@@ -36,6 +37,7 @@ void main() {
         elevations: elevations,
         startAntennaHeightMeters: 1.5,
         endAntennaHeightMeters: 1.5,
+        kFactor: 4.0 / 3.0,
       );
 
       expect(result.hasData, isTrue);

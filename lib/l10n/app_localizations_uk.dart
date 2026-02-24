@@ -816,6 +816,11 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Не вдалося видалити канал \"$name\"';
+  }
+
+  @override
   String channels_channelDeleted(String name) {
     return 'Канал «$name» видалено';
   }
@@ -2876,6 +2881,34 @@ class AppLocalizationsUk extends AppLocalizations {
   @override
   String get losElevationAttribution =>
       'Дані про висоту: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Радіогоризонт';
+
+  @override
+  String get losLegendLosBeam => 'Лінія прямої видимості';
+
+  @override
+  String get losLegendTerrain => 'Рельєф';
+
+  @override
+  String get losFrequencyLabel => 'Частота';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Переглянути деталі розрахунку';
+
+  @override
+  String get losFrequencyDialogTitle => 'Розрахунок радіогоризонту';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Починаючи з k=$baselineK на $baselineFreq МГц, обчислення коригує k-фактор для поточного діапазону $frequencyMHz МГц, який визначає викривлену межу радіогоризонту.';
+  }
 
   @override
   String get contacts_pathTrace => 'Трасування шляхів';

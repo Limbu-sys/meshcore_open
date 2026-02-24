@@ -1,4 +1,6 @@
 {
+  "channels_channelDeleteFailed": "无法删除频道 \"{name}\"",
+  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
   "@@locale": "zh",
   "appTitle": "MeshCore Open",
   "nav_contacts": "联系方式",
@@ -1718,5 +1720,29 @@
   "losPointName": "点名称",
   "losShowPanelTooltip": "显示 LOS 面板",
   "losHidePanelTooltip": "隐藏 LOS 面板",
-  "losElevationAttribution": "高程数据：Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "高程数据：Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "无线电地平线",
+  "losLegendLosBeam": "视距波束",
+  "losLegendTerrain": "地形",
+  "losFrequencyLabel": "频率",
+  "losFrequencyInfoTooltip": "查看计算详情",
+  "losFrequencyDialogTitle": "无线电地平线计算",
+  "losFrequencyDialogDescription": "从 {baselineFreq} MHz 处的 k={baselineK} 开始，计算调整当前 {frequencyMHz} MHz 频段的 k 因子，该因子定义了弯曲的无线电范围上限。",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  }
 }

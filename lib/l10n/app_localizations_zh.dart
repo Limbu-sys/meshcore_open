@@ -776,6 +776,11 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String channels_channelDeleteFailed(String name) {
+    return '无法删除频道 \"$name\"';
+  }
+
+  @override
   String channels_channelDeleted(String name) {
     return '删除频道 \"$name\"';
   }
@@ -2714,6 +2719,34 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get losElevationAttribution => '高程数据：Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => '无线电地平线';
+
+  @override
+  String get losLegendLosBeam => '视距波束';
+
+  @override
+  String get losLegendTerrain => '地形';
+
+  @override
+  String get losFrequencyLabel => '频率';
+
+  @override
+  String get losFrequencyInfoTooltip => '查看计算详情';
+
+  @override
+  String get losFrequencyDialogTitle => '无线电地平线计算';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return '从 $baselineFreq MHz 处的 k=$baselineK 开始，计算调整当前 $frequencyMHz MHz 频段的 k 因子，该因子定义了弯曲的无线电范围上限。';
+  }
 
   @override
   String get contacts_pathTrace => '路径追踪';

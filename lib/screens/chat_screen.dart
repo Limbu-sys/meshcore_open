@@ -22,7 +22,9 @@ import '../models/contact.dart';
 import '../models/message.dart';
 import '../models/path_history.dart';
 import '../services/app_settings_service.dart';
+import '../services/chat_text_scale_service.dart';
 import '../services/path_history_service.dart';
+import '../widgets/chat_zoom_wrapper.dart';
 import '../widgets/elements_ui.dart';
 import 'channel_message_path_screen.dart';
 import 'map_screen.dart';
@@ -270,52 +272,62 @@ class _ChatScreenState extends State<ChatScreen> {
       _scrollController.scrollToBottomIfAtBottom();
     });
 
-    return ListView.builder(
-      reverse: true, // List grows from bottom up
-      controller: _scrollController,
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-      itemCount: itemCount,
-      itemBuilder: (context, index) {
-        // Loading indicator now appears at end (bottom) of reversed list
-        if (_isLoadingOlder && index == itemCount - 1) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(vertical: 16),
-            child: Center(
-              child: SizedBox(
-                width: 20,
-                height: 20,
-                child: CircularProgressIndicator(strokeWidth: 2),
+    return ChatZoomWrapper(
+      child: ListView.builder(
+        reverse: true, // List grows from bottom up
+        controller: _scrollController,
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+        itemCount: itemCount,
+        itemBuilder: (context, index) {
+          // Loading indicator now appears at end (bottom) of reversed list
+          if (_isLoadingOlder && index == itemCount - 1) {
+            return const Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: Center(
+                child: SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                ),
               ),
-            ),
-          );
-        }
-        final messageIndex = index;
-        Contact contact = widget.contact;
-        final message = reversedMessages[messageIndex];
-        String fourByteHex = '';
-        if (widget.contact.type == advTypeRoom) {
-          contact = _resolveContactFrom4Bytes(
-            connector,
-            message.fourByteRoomContactKey.isEmpty
-                ? Uint8List.fromList([0, 0, 0, 0])
-                : message.fourByteRoomContactKey,
-          );
-          fourByteHex = message.fourByteRoomContactKey
-              .map((b) => b.toRadixString(16).padLeft(2, '0'))
-              .join()
-              .toUpperCase();
-        }
+            );
+          }
+          final messageIndex = index;
+          Contact contact = widget.contact;
+          final message = reversedMessages[messageIndex];
+          String fourByteHex = '';
+          if (widget.contact.type == advTypeRoom) {
+            contact = _resolveContactFrom4Bytes(
+              connector,
+              message.fourByteRoomContactKey.isEmpty
+                  ? Uint8List.fromList([0, 0, 0, 0])
+                  : message.fourByteRoomContactKey,
+            );
+            fourByteHex = message.fourByteRoomContactKey
+                .map((b) => b.toRadixString(16).padLeft(2, '0'))
+                .join()
+                .toUpperCase();
+          }
 
-        return _MessageBubble(
-          message: message,
-          senderName: widget.contact.type == advTypeRoom
-              ? "${contact.name} [$fourByteHex]"
-              : contact.name,
-          isRoomServer: widget.contact.type == advTypeRoom,
-          onTap: () => _openMessagePath(message, contact),
-          onLongPress: () => _showMessageActions(message, contact),
-        );
-      },
+          return Builder(
+            builder: (context) {
+              final textScale = context.select<ChatTextScaleService, double>(
+                (service) => service.scale,
+              );
+              return _MessageBubble(
+                message: message,
+                senderName: widget.contact.type == advTypeRoom
+                    ? "${contact.name} [$fourByteHex]"
+                    : contact.name,
+                isRoomServer: widget.contact.type == advTypeRoom,
+                textScale: textScale,
+                onTap: () => _openMessagePath(message, contact),
+                onLongPress: () => _showMessageActions(message, contact),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 
@@ -1163,11 +1175,13 @@ class _MessageBubble extends StatelessWidget {
   final bool isRoomServer;
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
+  final double textScale;
 
   const _MessageBubble({
     required this.message,
     required this.senderName,
     required this.isRoomServer,
+    required this.textScale,
     this.onTap,
     this.onLongPress,
   });
@@ -1190,6 +1204,7 @@ class _MessageBubble extends StatelessWidget {
         ? colorScheme.onErrorContainer
         : (isOutgoing ? colorScheme.onPrimary : colorScheme.onSurface);
     final metaColor = textColor.withValues(alpha: 0.7);
+    const bodyFontSize = 14.0;
     String messageText = message.text;
     if (isRoomServer && !isOutgoing) {
       messageText = message.text.substring(4.clamp(0, message.text.length));
@@ -1258,6 +1273,7 @@ class _MessageBubble extends StatelessWidget {
                             poi,
                             textColor,
                             metaColor,
+                            textScale,
                             trailing: (!enableTracing && isOutgoing)
                                 ? Padding(
                                     padding: const EdgeInsets.only(bottom: 2),
@@ -1321,10 +1337,14 @@ class _MessageBubble extends StatelessWidget {
                               Flexible(
                                 child: Linkify(
                                   text: messageText,
-                                  style: TextStyle(color: textColor),
-                                  linkStyle: const TextStyle(
+                                  style: TextStyle(
+                                    color: textColor,
+                                    fontSize: bodyFontSize * textScale,
+                                  ),
+                                  linkStyle: TextStyle(
                                     color: Colors.green,
                                     decoration: TextDecoration.underline,
+                                    fontSize: bodyFontSize * textScale,
                                   ),
                                   options: const LinkifyOptions(
                                     humanize: false,
@@ -1464,7 +1484,8 @@ class _MessageBubble extends StatelessWidget {
     BuildContext context,
     _PoiInfo poi,
     Color textColor,
-    Color metaColor, {
+    Color metaColor,
+    double textScale, {
     Widget? trailing,
   }) {
     return Row(
@@ -1493,12 +1514,16 @@ class _MessageBubble extends StatelessWidget {
             children: [
               Text(
                 context.l10n.chat_poiShared,
-                style: TextStyle(color: textColor, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  color: textColor,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14 * textScale,
+                ),
               ),
               if (poi.label.isNotEmpty)
                 Text(
                   poi.label,
-                  style: TextStyle(color: metaColor, fontSize: 12),
+                  style: TextStyle(color: metaColor, fontSize: 12 * textScale),
                 ),
             ],
           ),
