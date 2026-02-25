@@ -3,13 +3,12 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
-import 'package:provider/provider.dart';
-
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../l10n/l10n.dart';
 import '../widgets/adaptive_app_bar_title.dart';
 import '../widgets/device_tile.dart';
 import 'contacts_screen.dart';
+import 'usb_screen.dart';
 
 /// Screen for scanning and connecting to MeshCore devices
 class ScannerScreen extends StatefulWidget {
@@ -22,47 +21,38 @@ class ScannerScreen extends StatefulWidget {
 class _ScannerScreenState extends State<ScannerScreen> {
   bool _changedNavigation = false;
   late final VoidCallback _connectionListener;
+  MeshCoreConnector? _activeConnector;
   BluetoothAdapterState _bluetoothState = BluetoothAdapterState.unknown;
   late StreamSubscription<BluetoothAdapterState> _bluetoothStateSubscription;
 
   @override
   void initState() {
     super.initState();
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
-
-    _connectionListener = () {
-      if (connector.state == MeshCoreConnectionState.disconnected) {
-        _changedNavigation = false;
-      } else if (connector.state == MeshCoreConnectionState.connected &&
-          !_changedNavigation) {
-        _changedNavigation = true;
-        if (mounted) {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const ContactsScreen()),
-          );
-        }
-      }
-    };
-
-    connector.addListener(_connectionListener);
+    _connectionListener = _onConnectorStateChanged;
+    _setConnector(ConnectorScope.of(context, listen: false));
 
     _bluetoothStateSubscription = FlutterBluePlus.adapterState.listen((state) {
-      if (mounted) {
-        setState(() {
-          _bluetoothState = state;
-        });
-        // Cancel scan if Bluetooth turns off while scanning
-        if (state != BluetoothAdapterState.on) {
-          unawaited(connector.stopScan());
-        }
+      if (!mounted) return;
+      setState(() {
+        _bluetoothState = state;
+      });
+      // Cancel scan if Bluetooth turns off while scanning
+      if (state != BluetoothAdapterState.on) {
+        final connector = ConnectorScope.of(context, listen: false);
+        unawaited(connector.stopScan());
       }
     });
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _setConnector(ConnectorScope.of(context, listen: false));
+  }
+
+  @override
   void dispose() {
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
-    connector.removeListener(_connectionListener);
+    _activeConnector?.removeListener(_connectionListener);
     unawaited(_bluetoothStateSubscription.cancel());
     super.dispose();
   }
@@ -74,34 +64,45 @@ class _ScannerScreenState extends State<ScannerScreen> {
         title: AdaptiveAppBarTitle(context.l10n.scanner_title),
         centerTitle: true,
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.usb),
+            tooltip: 'USB mode',
+            onPressed: () {
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (_) => const UsbScreen()));
+            },
+          ),
+        ],
       ),
       body: SafeArea(
         top: false,
-        child: Consumer<MeshCoreConnector>(
-          builder: (context, connector, child) {
-            return Column(
-              children: [
-                // Bluetooth off warning
-                if (_bluetoothState == BluetoothAdapterState.off)
-                  _bluetoothOffWarning(context),
+        child: Column(
+          children: [
+            // Bluetooth off warning
+            if (_bluetoothState == BluetoothAdapterState.off)
+              _bluetoothOffWarning(context),
 
-                // Status bar
-                _buildStatusBar(context, connector),
+            // Status bar
+            _buildStatusBar(context, ConnectorScope.of(context)),
 
-                // Device list
-                Expanded(child: _buildDeviceList(context, connector)),
-              ],
-            );
-          },
+            // Device list
+            Expanded(
+              child: _buildDeviceList(context, ConnectorScope.of(context)),
+            ),
+          ],
         ),
       ),
-      floatingActionButton: Consumer<MeshCoreConnector>(
-        builder: (context, connector, child) {
+      floatingActionButton: Builder(
+        builder: (context) {
+          final connector = ConnectorScope.of(context);
           final isScanning =
               connector.state == MeshCoreConnectionState.scanning;
           final isBluetoothOff = _bluetoothState == BluetoothAdapterState.off;
 
           return FloatingActionButton.extended(
+            heroTag: 'scanner-fab-scan',
             onPressed: isBluetoothOff
                 ? null
                 : () {
@@ -228,6 +229,30 @@ class _ScannerScreenState extends State<ScannerScreen> {
             backgroundColor: Colors.red,
           ),
         );
+      }
+    }
+  }
+
+  void _setConnector(MeshCoreConnector connector) {
+    if (_activeConnector == connector) return;
+    _activeConnector?.removeListener(_connectionListener);
+    _activeConnector = connector;
+    _changedNavigation = false;
+    connector.addListener(_connectionListener);
+  }
+
+  void _onConnectorStateChanged() {
+    final connector = _activeConnector;
+    if (connector == null) return;
+    if (connector.state == MeshCoreConnectionState.disconnected) {
+      _changedNavigation = false;
+    } else if (connector.state == MeshCoreConnectionState.connected &&
+        !_changedNavigation) {
+      _changedNavigation = true;
+      if (mounted) {
+        Navigator.of(
+          context,
+        ).push(MaterialPageRoute(builder: (context) => const ContactsScreen()));
       }
     }
   }
