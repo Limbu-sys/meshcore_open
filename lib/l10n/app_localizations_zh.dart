@@ -1343,6 +1343,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get map_runTrace => '运行路径跟踪';
 
   @override
+  String get map_runTraceWithReturnPath => '沿着相同的路径返回';
+
+  @override
   String get map_removeLast => '删除最后一个';
 
   @override

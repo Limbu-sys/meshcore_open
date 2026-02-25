@@ -1717,5 +1717,6 @@
   "losShowPanelTooltip": "Zobraziť panel LOS",
   "losHidePanelTooltip": "Skryť panel LOS",
   "losElevationAttribution": "Údaje o nadmorskej výške: Open-Meteo (CC BY 4.0)",
-  "map_showOverlaps": "Prekrývanie opakovača kľúča"
+  "map_showOverlaps": "Prekrývanie opakovača kľúča",
+  "map_runTraceWithReturnPath": "Vráťte sa späť po tej istej ceste."
 }

@@ -1400,6 +1400,9 @@ class AppLocalizationsSk extends AppLocalizations {
   String get map_runTrace => 'Spustiť trasovaním cesty';
 
   @override
+  String get map_runTraceWithReturnPath => 'Vráťte sa späť po tej istej ceste.';
+
+  @override
   String get map_removeLast => 'Odstrániť posledný';
 
   @override

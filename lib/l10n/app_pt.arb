@@ -1717,5 +1717,6 @@
   "losShowPanelTooltip": "Mostrar painel LOS",
   "losHidePanelTooltip": "Ocultar painel LOS",
   "losElevationAttribution": "Dados de elevação: Open-Meteo (CC BY 4.0)",
-  "map_showOverlaps": "Sobreposições da Chave Repeater"
+  "map_showOverlaps": "Sobreposições da Chave Repeater",
+  "map_runTraceWithReturnPath": "Retornar ao mesmo caminho."
 }

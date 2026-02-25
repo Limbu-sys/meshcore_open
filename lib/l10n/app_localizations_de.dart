@@ -1407,6 +1407,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get map_runTrace => 'Pfadverlauf ausführen';
 
   @override
+  String get map_runTraceWithReturnPath =>
+      'Auf dem gleichen Pfad zurückkehren.';
+
+  @override
   String get map_removeLast => 'Letztes Entfernen';
 
   @override
