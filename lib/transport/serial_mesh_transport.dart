@@ -1,29 +1,28 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:usb_serial/usb_serial.dart';
+import 'package:libserialport_plus/libserialport_plus.dart';
 import 'package:meshcore_open/connector/meshcore_protocol.dart';
 
-import '../utils/app_logger.dart';
-
 import 'mesh_transport.dart';
+import '../utils/app_logger.dart';
 
 const int _usbFrameMarker = 0x3c; // '<'
 const Duration _writePacing = Duration(milliseconds: 3);
 
 /// USB serial transport for MeshCore devices sporting explicit framing.
 class SerialMeshTransport implements MeshTransport {
-  SerialMeshTransport({required this.device}) {
-    _stateController.add(TransportState.disconnected);
-  }
+  SerialMeshTransport({required this.portName, this.baudRate = 115200});
 
-  final UsbDevice device;
-  UsbPort? _port;
-  final StreamController<Uint8List> _dataController =
-      StreamController<Uint8List>.broadcast();
-  final StreamController<TransportState> _stateController =
-      StreamController<TransportState>.broadcast();
-  StreamSubscription<Uint8List>? _inputSubscription;
+  final String portName;
+  final int baudRate;
+
+  SerialPort? _port;
+  SerialPortReader? _reader;
+  StreamSubscription<Uint8List>? _readerSubscription;
+
+  final _dataController = StreamController<Uint8List>.broadcast();
+  final _stateController = StreamController<TransportState>.broadcast();
 
   bool _isConnected = false;
   bool _isConnecting = false;
@@ -39,37 +38,41 @@ class SerialMeshTransport implements MeshTransport {
   @override
   bool get supportsBle => false;
 
-  void _transition(TransportState state) {
+  void _notifyTransition(TransportState state) {
     _stateController.add(state);
   }
 
   Future<void> _notifyConnected() async {
     _isConnected = true;
     appLogger.info('SerialMeshTransport: connected');
-    _transition(TransportState.connected);
+    _notifyTransition(TransportState.connected);
   }
 
   Future<void> _emitDisconnected() async {
-    appLogger.info('SerialMeshTransport: emitting disconnected');
     if (_isConnected) {
       _isConnected = false;
-      _transition(TransportState.disconnected);
+      _notifyTransition(TransportState.disconnected);
     }
-    await _inputSubscription?.cancel();
-    _inputSubscription = null;
-    _inboundBuffer.clear();
+    await _readerSubscription?.cancel();
+    await _reader?.close();
+    _reader = null;
+    _readerSubscription = null;
+
     await _waitForPendingWrites();
+
     await _closePort();
+    _inboundBuffer.clear();
   }
 
   Future<void> _closePort() async {
     final port = _port;
     if (port == null) return;
     try {
-      await port.close();
+      port.close();
     } catch (_) {
       // ignore
     } finally {
+      port.dispose();
       _port = null;
     }
   }
@@ -89,55 +92,29 @@ class SerialMeshTransport implements MeshTransport {
   Future<void> connect() async {
     if (_isConnected || _isConnecting) return;
     _isConnecting = true;
-
+    _notifyTransition(TransportState.connecting);
     try {
-      debugPrint('USB: ensuring permission for ${device.deviceName}');
-      final permissionPort = await UsbSerial.createFromDeviceId(
-        device.deviceId ?? -1,
+      final port = SerialPort(portName);
+      final config = SerialPortConfig(
+        baudRate: baudRate,
+        bits: 8,
+        stopBits: 1,
+        parity: SerialPortParity.none,
+        xonXoff: SerialPortXonXoff.disabled,
       );
-      if (permissionPort == null) {
-        throw Exception('USB permission denied for ${device.deviceName}');
-      }
-      await permissionPort.close();
-
-      debugPrint('USB: creating port for ${device.deviceName}');
-      final port = await device.create();
-      if (port == null) {
-        throw Exception('Unable to open USB device ${device.deviceName}');
-      }
-
-      final opened = await port.open();
-      if (!opened) {
-        throw Exception('Unable to open USB device ${device.deviceName}');
-      }
-
-      await port.setPortParameters(
-        115200,
-        UsbPort.DATABITS_8,
-        UsbPort.STOPBITS_1,
-        UsbPort.PARITY_NONE,
-      );
-      await port.setFlowControl(UsbPort.FLOW_CONTROL_OFF);
-      await port.setDTR(false);
-      await Future.delayed(const Duration(milliseconds: 50));
-      await port.setDTR(true);
-      await Future.delayed(const Duration(milliseconds: 500));
-      await port.setRTS(true);
+      port.setConfig(config);
+      port.open(SerialPortMode.readWrite);
 
       _port = port;
-      _notifyConnected();
-
-      _inputSubscription = port.inputStream?.listen(
+      _reader = SerialPortReader(port);
+      _readerSubscription = _reader!.stream.listen(
         _handleIncomingChunk,
-        onError: (error) {
-          debugPrint('USB serial input error: $error');
-          _emitDisconnected();
-        },
-        onDone: () {
-          _emitDisconnected();
-        },
+        onDone: _emitDisconnected,
+        onError: (_) => _emitDisconnected(),
+        cancelOnError: true,
       );
 
+      await _notifyConnected();
       await _writeRaw(_wrapOutboundFrame(buildAppStartFrame()));
     } catch (error, stack) {
       debugPrint('SerialMeshTransport connect failed: $error');
@@ -178,20 +155,19 @@ class SerialMeshTransport implements MeshTransport {
     final port = _port;
     if (!_isConnected || port == null) return;
     await Future.delayed(_writePacing);
-    final writeFuture = port.write(data);
+    final writeFuture = Future(() => port.write(data));
     _lastWrite = writeFuture;
     await writeFuture;
   }
 
   @override
-  Future<void> disconnect() async {
-    if (!_isConnected && _port == null) return;
-    await _emitDisconnected();
+  Future<void> send(Uint8List data) async {
+    await _writeRaw(_wrapOutboundFrame(data));
   }
 
   @override
-  Future<void> send(Uint8List data) async {
-    await _writeRaw(_wrapOutboundFrame(data));
+  Future<void> disconnect() async {
+    await _emitDisconnected();
   }
 
   @override

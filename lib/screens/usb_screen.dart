@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:usb_serial/usb_serial.dart';
+import 'package:libserialport_plus/libserialport_plus.dart';
 
 import '../connector/connector_builder.dart';
 import '../connector/connector_scope.dart';
@@ -25,7 +25,7 @@ class UsbScreen extends StatefulWidget {
 }
 
 class _UsbScreenState extends State<UsbScreen> {
-  final List<UsbDevice> _devices = [];
+  final List<String> _ports = [];
   bool _isLoading = false;
   bool _isConnecting = false;
   String? _statusMessage;
@@ -45,12 +45,12 @@ class _UsbScreenState extends State<UsbScreen> {
       _statusMessage = null;
     });
     try {
-      final devices = await UsbSerial.listDevices();
+      final ports = SerialPort.getAvailablePorts();
       if (mounted) {
         setState(() {
-          _devices
+          _ports
             ..clear()
-            ..addAll(devices);
+            ..addAll(ports);
         });
       }
     } catch (error) {
@@ -68,17 +68,15 @@ class _UsbScreenState extends State<UsbScreen> {
     }
   }
 
-  Future<void> _connectToDevice(UsbDevice device) async {
+  Future<void> _connectToDevice(String portName) async {
     if (_isConnecting) return;
     setState(() {
       _isConnecting = true;
       _statusMessage = 'Preparing serial transport...';
     });
 
-    final transport = SerialMeshTransport(device: device);
-    final displayName = device.deviceName.isNotEmpty
-        ? device.deviceName
-        : 'device';
+    final transport = SerialMeshTransport(portName: portName);
+    final displayName = portName;
     MeshCoreConnector? connector;
     final messenger = ScaffoldMessenger.of(context);
 
@@ -215,33 +213,22 @@ class _UsbScreenState extends State<UsbScreen> {
   }
 
   Widget _buildDeviceList() {
-    if (_isLoading && _devices.isEmpty) {
+    if (_isLoading && _ports.isEmpty) {
       return const Center(child: CircularProgressIndicator());
     }
-    if (_devices.isEmpty) {
+    if (_ports.isEmpty) {
       return const Center(child: Text('No USB devices detected.'));
     }
     return ListView.separated(
-      itemCount: _devices.length,
+      itemCount: _ports.length,
       separatorBuilder: (context, index) => const Divider(height: 1),
       itemBuilder: (context, index) {
-        final device = _devices[index];
-        final name = device.deviceName.isNotEmpty
-            ? device.deviceName
-            : 'USB device';
-        final vendorProduct = 'VID ${device.vid ?? 0}, PID ${device.pid ?? 0}';
-        final details = <String>[
-          if (device.manufacturerName != null) device.manufacturerName!.trim(),
-          if (device.productName != null && device.productName!.isNotEmpty)
-            device.productName!.trim(),
-        ].where((segment) => segment.isNotEmpty).join(' • ');
+        final portName = _ports[index];
         return ListTile(
-          title: Text(name),
-          subtitle: Text(
-            details.isEmpty ? vendorProduct : '$vendorProduct • $details',
-          ),
+          title: Text(portName),
+          subtitle: const Text('Serial port'),
           trailing: ElevatedButton(
-            onPressed: _isConnecting ? null : () => _connectToDevice(device),
+            onPressed: _isConnecting ? null : () => _connectToDevice(portName),
             child: const Text('Connect'),
           ),
         );
