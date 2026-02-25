@@ -59,6 +59,8 @@ class _RepeaterSettingsScreenState extends State<RepeaterSettingsScreen> {
     text: '4',
   );
   bool _multiAcksEnabled = false;
+  bool _multiAcksHydrated = false;
+  bool _multiAcksTouched = false;
 
   // Radio settings
   final TextEditingController _freqController = TextEditingController();
@@ -307,6 +309,8 @@ class _RepeaterSettingsScreenState extends State<RepeaterSettingsScreen> {
       if (_fetchedSettings.containsKey('multi.acks')) {
         final value = _fetchedSettings['multi.acks']!.trim().toLowerCase();
         _multiAcksEnabled = value == '1' || value == 'on' || value == 'true';
+        _multiAcksHydrated = true;
+        _multiAcksTouched = false;
       }
     });
   }
@@ -660,6 +664,8 @@ class _RepeaterSettingsScreenState extends State<RepeaterSettingsScreen> {
         _latController.text = widget.repeater.latitude?.toString() ?? '';
         _lonController.text = widget.repeater.longitude?.toString() ?? '';
       }
+      _multiAcksHydrated = false;
+      _multiAcksTouched = false;
     });
   }
 
@@ -737,7 +743,11 @@ class _RepeaterSettingsScreenState extends State<RepeaterSettingsScreen> {
       if (floodMax != null) {
         commands.add('set flood.max $floodMax');
       }
-      commands.add('set multi.acks ${_multiAcksEnabled ? 1 : 0}');
+      // Only write multi.acks when we've fetched the current value or the user
+      // explicitly changed the switch in this session.
+      if (_multiAcksHydrated || _multiAcksTouched) {
+        commands.add('set multi.acks ${_multiAcksEnabled ? 1 : 0}');
+      }
 
       // Send all commands
       for (final command in commands) {
@@ -1524,6 +1534,7 @@ class _RepeaterSettingsScreenState extends State<RepeaterSettingsScreen> {
                     onChanged: (value) {
                       setState(() {
                         _multiAcksEnabled = value;
+                        _multiAcksTouched = true;
                       });
                       _markChanged();
                     },
