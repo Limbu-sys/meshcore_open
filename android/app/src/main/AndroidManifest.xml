@@ -19,6 +19,8 @@
     <!-- Camera permission for QR code scanning -->
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <!-- USB host will be used for serial permission requests -->
+    <uses-feature android:name="android.hardware.usb.host" android:required="false"/>
 
     <application
         android:label="meshcore_open"

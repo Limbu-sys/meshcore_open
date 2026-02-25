@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
 import 'package:libserialport_plus/libserialport_plus.dart';
+import 'package:provider/provider.dart';
 
 import '../connector/connector_builder.dart';
 import '../connector/connector_scope.dart';
@@ -17,6 +18,36 @@ import '../transport/mesh_transport.dart';
 import '../transport/serial_mesh_transport.dart';
 import '../utils/app_logger.dart';
 
+class _UsbPortEntry {
+  final String portName;
+  final SerialPortInfo? info;
+
+  _UsbPortEntry({required this.portName, this.info});
+
+  bool get isUsb => info?.transport == SerialPortTransport.usb;
+  int? get vendorId => info?.usbVid;
+  int? get productId => info?.usbPid;
+
+  String get vendorProduct {
+    if (vendorId == null && productId == null) {
+      return 'Unknown USB device';
+    }
+    return 'VID ${vendorId ?? '--'} · PID ${productId ?? '--'}';
+  }
+
+  String get description {
+    if (info == null) return vendorProduct;
+    if (info!.usbManufacturer != null || info!.usbProduct != null) {
+      final segments = [
+        if (info!.usbManufacturer != null) info!.usbManufacturer!,
+        if (info!.usbProduct != null) info!.usbProduct!,
+      ];
+      if (segments.isNotEmpty) return segments.join(' · ');
+    }
+    return vendorProduct;
+  }
+}
+
 class UsbScreen extends StatefulWidget {
   const UsbScreen({super.key});
 
@@ -25,7 +56,8 @@ class UsbScreen extends StatefulWidget {
 }
 
 class _UsbScreenState extends State<UsbScreen> {
-  final List<String> _ports = [];
+  static const _usbMethodChannel = MethodChannel('meshcore_open/usb');
+  final List<_UsbPortEntry> _ports = [];
   bool _isLoading = false;
   bool _isConnecting = false;
   String? _statusMessage;
@@ -45,12 +77,16 @@ class _UsbScreenState extends State<UsbScreen> {
       _statusMessage = null;
     });
     try {
-      final ports = SerialPort.getAvailablePorts();
+      final portNames = SerialPort.getAvailablePorts();
+      final entries = <_UsbPortEntry>[];
+      for (final portName in portNames) {
+        entries.add(await _buildEntry(portName));
+      }
       if (mounted) {
         setState(() {
           _ports
             ..clear()
-            ..addAll(ports);
+            ..addAll(entries);
         });
       }
     } catch (error) {
@@ -68,19 +104,44 @@ class _UsbScreenState extends State<UsbScreen> {
     }
   }
 
-  Future<void> _connectToDevice(String portName) async {
+  Future<_UsbPortEntry> _buildEntry(String portName) async {
+    SerialPort? port;
+    SerialPortInfo? info;
+    try {
+      port = SerialPort(portName);
+      info = port.getInfo();
+    } catch (_) {
+      // ignore metadata failures
+    } finally {
+      port?.dispose();
+    }
+    return _UsbPortEntry(portName: portName, info: info);
+  }
+
+  Future<void> _connectToDevice(_UsbPortEntry entry) async {
     if (_isConnecting) return;
     setState(() {
       _isConnecting = true;
       _statusMessage = 'Preparing serial transport...';
     });
-
-    final transport = SerialMeshTransport(portName: portName);
-    final displayName = portName;
-    MeshCoreConnector? connector;
     final messenger = ScaffoldMessenger.of(context);
 
+    if (!await _ensureUsbPermission(entry)) {
+      if (mounted) {
+        setState(() {
+          _isConnecting = false;
+          _statusMessage =
+              'USB permission denied for ${entry.portName}. Please grant access and retry.';
+        });
+      }
+      return;
+    }
+
+    final transport = SerialMeshTransport(portName: entry.portName);
+    MeshCoreConnector? connector;
+
     try {
+      if (!mounted) return;
       final activeConnector = ConnectorScope.of(context, listen: false);
       if (activeConnector.state != MeshCoreConnectionState.disconnected) {
         setState(() {
@@ -113,17 +174,17 @@ class _UsbScreenState extends State<UsbScreen> {
       }
       await ConnectorScope.replaceConnector(context, connector);
       setState(() {
-        _statusMessage = 'Connected via USB to $displayName.';
+        _statusMessage = 'Connected via USB to ${entry.portName}.';
       });
       messenger.showSnackBar(
-        SnackBar(content: Text('Connected via USB to $displayName')),
+        SnackBar(content: Text('Connected via USB to ${entry.portName}')),
       );
       if (!mounted) return;
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => const ContactsScreen()),
       );
-    } catch (error, stack) {
-      debugPrint('USB connection failed: $error\n$stack');
+    } catch (error) {
+      debugPrint('USB connection failed: $error');
       if (mounted) {
         setState(() {
           _statusMessage = 'USB connection failed: $error';
@@ -142,6 +203,24 @@ class _UsbScreenState extends State<UsbScreen> {
           _isConnecting = false;
         });
       }
+    }
+  }
+
+  Future<bool> _ensureUsbPermission(_UsbPortEntry entry) async {
+    if (entry.vendorId == null || entry.productId == null) return true;
+    try {
+      final granted = await _usbMethodChannel.invokeMethod<bool>(
+        'requestUsbPermission',
+        {'vendorId': entry.vendorId, 'productId': entry.productId},
+      );
+      return granted ?? false;
+    } on PlatformException catch (error) {
+      if (mounted) {
+        setState(() {
+          _statusMessage = 'USB permission error: ${error.message}';
+        });
+      }
+      return false;
     }
   }
 
@@ -223,12 +302,12 @@ class _UsbScreenState extends State<UsbScreen> {
       itemCount: _ports.length,
       separatorBuilder: (context, index) => const Divider(height: 1),
       itemBuilder: (context, index) {
-        final portName = _ports[index];
+        final entry = _ports[index];
         return ListTile(
-          title: Text(portName),
-          subtitle: const Text('Serial port'),
+          title: Text(entry.portName),
+          subtitle: Text(entry.description),
           trailing: ElevatedButton(
-            onPressed: _isConnecting ? null : () => _connectToDevice(portName),
+            onPressed: _isConnecting ? null : () => _connectToDevice(entry),
             child: const Text('Connect'),
           ),
         );
