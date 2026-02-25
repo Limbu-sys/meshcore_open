@@ -6,7 +6,7 @@ import 'package:meshcore_open/screens/path_trace_map.dart';
 import 'package:meshcore_open/widgets/elements_ui.dart';
 import 'package:provider/provider.dart';
 
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../l10n/l10n.dart';
 import '../models/contact.dart';
 import '../services/path_history_service.dart';
@@ -138,8 +138,9 @@ class _PathManagementDialogState extends State<_PathManagementDialog> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return Consumer2<MeshCoreConnector, PathHistoryService>(
-      builder: (context, connector, pathService, _) {
+    final connector = ConnectorScope.of(context);
+    return Consumer<PathHistoryService>(
+      builder: (context, pathService, _) {
         final currentContact = _resolveContact(connector);
         final paths = pathService.getRecentPaths(currentContact.publicKeyHex);
 

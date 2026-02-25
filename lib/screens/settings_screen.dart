@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:meshcore_open/utils/gpx_export.dart';
 import 'package:meshcore_open/widgets/elements_ui.dart';
-import 'package:provider/provider.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../connector/meshcore_protocol.dart';
 import '../l10n/l10n.dart';
 import '../models/radio_settings.dart';
@@ -40,6 +39,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final connector = ConnectorScope.of(context);
     final l10n = context.l10n;
     return Scaffold(
       appBar: AppBar(
@@ -48,27 +48,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       body: SafeArea(
         top: false,
-        child: Consumer<MeshCoreConnector>(
-          builder: (context, connector, child) {
-            return ListView(
-              padding: const EdgeInsets.all(16),
-              children: [
-                _buildDeviceInfoCard(context, connector),
-                const SizedBox(height: 16),
-                _buildAppSettingsCard(context),
-                const SizedBox(height: 16),
-                _buildNodeSettingsCard(context, connector),
-                const SizedBox(height: 16),
-                _buildActionsCard(context, connector),
-                const SizedBox(height: 16),
-                _buildDebugCard(context),
-                const SizedBox(height: 16),
-                _buildExportCard(connector),
-                const SizedBox(height: 16),
-                _buildAboutCard(context),
-              ],
-            );
-          },
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            _buildDeviceInfoCard(context, connector),
+            const SizedBox(height: 16),
+            _buildAppSettingsCard(context),
+            const SizedBox(height: 16),
+            _buildNodeSettingsCard(context, connector),
+            const SizedBox(height: 16),
+            _buildActionsCard(context, connector),
+            const SizedBox(height: 16),
+            _buildDebugCard(context),
+            const SizedBox(height: 16),
+            _buildExportCard(connector),
+            const SizedBox(height: 16),
+            _buildAboutCard(context),
+          ],
         ),
       ),
     );

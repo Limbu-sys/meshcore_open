@@ -16,6 +16,7 @@ class JumpToBottomButton extends StatelessWidget {
           right: 16,
           bottom: 16,
           child: FloatingActionButton.small(
+            heroTag: 'chat-jump-bottom',
             onPressed: scrollController.jumpToBottom,
             child: const Icon(Icons.keyboard_arrow_down),
           ),

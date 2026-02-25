@@ -70,6 +70,7 @@ MeshCore Open is a cross-platform mobile application for communicating with Mesh
 - **Framework**: Flutter 3.38.5 / Dart 3.10.4
 - **State Management**: Provider pattern with ChangeNotifier
 - **BLE Protocol**: Nordic UART Service (NUS) over Bluetooth Low Energy
+- **USB/Serial Protocol**: 
 - **Storage**: Local SQLite database for messages and contact data
 - **Encryption**: End-to-end encryption for private messages using the MeshCore protocol
 
@@ -79,6 +80,7 @@ MeshCore Open is a cross-platform mobile application for communicating with Mesh
 - ✅ **iOS**: Full support (iOS 12+)
 - 🚧 **Desktop**: Limited support (macOS/Linux/Windows)
 - 🚧 **Web**: Under construction (Chrome)
+- 
 
 ### Dependencies
 

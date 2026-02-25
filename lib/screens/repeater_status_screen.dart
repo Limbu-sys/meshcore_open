@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../l10n/l10n.dart';
 import '../models/contact.dart';
 import '../models/path_selection.dart';
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../connector/meshcore_protocol.dart';
 import '../services/app_settings_service.dart';
 import '../services/repeater_command_service.dart';
@@ -60,7 +60,7 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
   @override
   void initState() {
     super.initState();
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
     _commandService = RepeaterCommandService(connector);
     _setupMessageListener();
     _loadStatus();
@@ -75,7 +75,7 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
   }
 
   void _setupMessageListener() {
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
 
     // Listen for incoming text messages from the repeater
     _frameSubscription = connector.receivedFrames.listen((frame) {
@@ -181,7 +181,7 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
       _dupDirect = directDups;
       _dupFlood = floodDups;
     });
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
     connector.updateRepeaterBatterySnapshot(
       widget.repeater.publicKeyHex,
       batteryMv,
@@ -211,10 +211,7 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
           _debugFlags = _asInt(data['errors']);
           final batteryMv = _batteryMv;
           if (batteryMv != null) {
-            final connector = Provider.of<MeshCoreConnector>(
-              context,
-              listen: false,
-            );
+            final connector = ConnectorScope.of(context, listen: false);
             connector.updateRepeaterBatterySnapshot(
               widget.repeater.publicKeyHex,
               batteryMv,
@@ -274,7 +271,7 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
     });
 
     try {
-      final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+      final connector = ConnectorScope.of(context, listen: false);
       final repeater = _resolveRepeater(connector);
       final selection = await connector.preparePathForContactSend(repeater);
       _pendingStatusSelection = selection;
@@ -328,7 +325,7 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
   void _recordStatusResult(bool success) {
     final selection = _pendingStatusSelection;
     if (selection == null) return;
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
     final repeater = _resolveRepeater(connector);
     connector.recordRepeaterPathResult(repeater, selection, success, null);
     _pendingStatusSelection = null;
@@ -337,7 +334,7 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final connector = context.watch<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context);
     final repeater = _resolveRepeater(connector);
     final isFloodMode = repeater.pathOverride == -1;
 
@@ -610,7 +607,7 @@ class _RepeaterStatusScreenState extends State<RepeaterStatusScreen> {
   }
 
   String _batteryText() {
-    final connector = context.watch<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context);
     final batteryMv =
         connector.getRepeaterBatteryMillivolts(widget.repeater.publicKeyHex) ??
         _batteryMv;

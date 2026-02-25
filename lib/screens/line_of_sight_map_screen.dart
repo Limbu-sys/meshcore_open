@@ -14,7 +14,7 @@ import '../services/app_settings_service.dart';
 import '../services/line_of_sight_service.dart';
 import '../services/map_tile_cache_service.dart';
 import '../utils/route_transitions.dart';
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/quick_switch_bar.dart';
 import '../icons/los_icon.dart';
@@ -122,7 +122,7 @@ class _LineOfSightMapScreenState extends State<LineOfSightMapScreen> {
     });
 
     try {
-      final connector = context.read<MeshCoreConnector>();
+      final connector = ConnectorScope.of(context, listen: false);
       final frequencyMHz = _normalizeFrequencyMHz(connector.currentFreqHz);
       final result = await _lineOfSightService.analyzePath(
         [start.point, end.point],
@@ -416,6 +416,7 @@ class _LineOfSightMapScreenState extends State<LineOfSightMapScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'los-fab-toggle',
         onPressed: () {
           setState(() {
             _showHud = !_showHud;
@@ -439,7 +440,7 @@ class _LineOfSightMapScreenState extends State<LineOfSightMapScreen> {
   Widget _buildControlPanel(bool isImperial) {
     _sanitizeSelection();
     final segment = _primarySegmentResult();
-    final connector = context.read<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context, listen: false);
     final reportedFrequencyMHz = _normalizeFrequencyMHz(
       connector.currentFreqHz,
     );

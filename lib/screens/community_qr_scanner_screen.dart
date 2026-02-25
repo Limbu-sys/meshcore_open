@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../l10n/l10n.dart';
 import '../models/community.dart';
 import '../storage/community_store.dart';
@@ -213,7 +212,7 @@ class _CommunityQrScannerScreenState extends State<CommunityQrScannerScreen> {
 
     // Optionally add the community public channel to the device
     if (addPublicChannel && context.mounted) {
-      final connector = context.read<MeshCoreConnector>();
+      final connector = ConnectorScope.of(context, listen: false);
       final nextIndex = _findNextAvailableChannelIndex(connector);
 
       if (nextIndex != null) {

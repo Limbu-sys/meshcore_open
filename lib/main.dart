@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-import 'connector/meshcore_connector.dart';
+import 'connector/connector_scope.dart';
 import 'screens/scanner_screen.dart';
 import 'services/storage_service.dart';
 import 'services/message_retry_service.dart';
@@ -18,6 +18,7 @@ import 'services/map_tile_cache_service.dart';
 import 'services/chat_text_scale_service.dart';
 import 'storage/prefs_manager.dart';
 import 'utils/app_logger.dart';
+import 'transport/ble_mesh_transport.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +28,8 @@ void main() async {
 
   // Initialize services
   final storage = StorageService();
-  final connector = MeshCoreConnector();
+  final bleTransport = BleMeshTransport();
+  final connector = MeshCoreConnector(transport: bleTransport);
   final pathHistoryService = PathHistoryService(storage);
   final retryService = MessageRetryService();
   final appSettingsService = AppSettingsService();
@@ -73,16 +75,19 @@ void main() async {
   await connector.loadUnreadState();
 
   runApp(
-    MeshCoreApp(
-      connector: connector,
-      retryService: retryService,
-      pathHistoryService: pathHistoryService,
-      storage: storage,
-      appSettingsService: appSettingsService,
-      bleDebugLogService: bleDebugLogService,
-      appDebugLogService: appDebugLogService,
-      mapTileCacheService: mapTileCacheService,
-      chatTextScaleService: chatTextScaleService,
+    ConnectorScope(
+      initialConnector: connector,
+      child: MeshCoreApp(
+        retryService: retryService,
+        pathHistoryService: pathHistoryService,
+        storage: storage,
+        appSettingsService: appSettingsService,
+        bleDebugLogService: bleDebugLogService,
+        appDebugLogService: appDebugLogService,
+        mapTileCacheService: mapTileCacheService,
+        chatTextScaleService: chatTextScaleService,
+        backgroundService: backgroundService,
+      ),
     ),
   );
 }
@@ -109,7 +114,6 @@ https://creativecommons.org/licenses/by/4.0/
 }
 
 class MeshCoreApp extends StatelessWidget {
-  final MeshCoreConnector connector;
   final MessageRetryService retryService;
   final PathHistoryService pathHistoryService;
   final StorageService storage;
@@ -118,10 +122,10 @@ class MeshCoreApp extends StatelessWidget {
   final AppDebugLogService appDebugLogService;
   final MapTileCacheService mapTileCacheService;
   final ChatTextScaleService chatTextScaleService;
+  final BackgroundService backgroundService;
 
   const MeshCoreApp({
     super.key,
-    required this.connector,
     required this.retryService,
     required this.pathHistoryService,
     required this.storage,
@@ -130,13 +134,13 @@ class MeshCoreApp extends StatelessWidget {
     required this.appDebugLogService,
     required this.mapTileCacheService,
     required this.chatTextScaleService,
+    required this.backgroundService,
   });
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: connector),
         ChangeNotifierProvider.value(value: retryService),
         ChangeNotifierProvider.value(value: pathHistoryService),
         ChangeNotifierProvider.value(value: appSettingsService),
@@ -145,6 +149,7 @@ class MeshCoreApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: chatTextScaleService),
         Provider.value(value: storage),
         Provider.value(value: mapTileCacheService),
+        Provider.value(value: backgroundService),
       ],
       child: Consumer<AppSettingsService>(
         builder: (context, settingsService, child) {

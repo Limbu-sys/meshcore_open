@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:meshcore_open/connector/meshcore_connector.dart';
+import 'package:meshcore_open/connector/connector_scope.dart';
 import 'package:meshcore_open/connector/meshcore_protocol.dart';
 import 'package:meshcore_open/l10n/l10n.dart';
 import 'package:meshcore_open/models/app_settings.dart';
@@ -140,7 +140,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
       path = pathTmp;
     }
 
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
     final frame = buildTraceReq(
       DateTime.now().millisecondsSinceEpoch ~/ 1000,
       0, //flags
@@ -151,7 +151,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
   }
 
   void _setupFrameListener() {
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
     Uint8List tagData = Uint8List(4);
     // Listen for incoming text messages from the repeater
     _frameSubscription = connector.receivedFrames.listen((frame) {
@@ -213,7 +213,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
   }
 
   Future<void> _handleTraceResponse(Uint8List frame) async {
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
 
     final buffer = BufferReader(frame);
     try {
@@ -297,81 +297,68 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MeshCoreConnector>(
-      builder: (context, connector, _) {
-        final settings = context.watch<AppSettingsService>().settings;
-        final isImperial = settings.unitSystem == UnitSystem.imperial;
-        final tileCache = context.read<MapTileCacheService>();
+    final settings = context.watch<AppSettingsService>().settings;
+    final isImperial = settings.unitSystem == UnitSystem.imperial;
+    final tileCache = context.read<MapTileCacheService>();
 
-        return Scaffold(
-          appBar: AppBar(
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    widget.title,
-                    style: const TextStyle(fontSize: 24),
+    return Scaffold(
+      appBar: AppBar(
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(widget.title, style: const TextStyle(fontSize: 24)),
+            ),
+          ],
+        ),
+        centerTitle: false,
+        actions: [
+          IconButton(
+            icon: _isLoading
+                ? const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
+                : const Icon(Icons.refresh),
+            onPressed: _isLoading ? null : _doPathTrace,
+            tooltip: context.l10n.pathTrace_refreshTooltip,
+          ),
+        ],
+      ),
+      body: SafeArea(
+        top: false,
+        child: Stack(
+          children: [
+            if (!_hasData)
+              Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (_isLoading) const CircularProgressIndicator(),
+                    const SizedBox(height: 16),
+                    if (!_isLoading && _failed2Loaded)
+                      Text(context.l10n.pathTrace_notAvailable),
+                  ],
+                ),
+              ),
+            if (_hasData) _buildMapPathTrace(context, tileCache),
+            if (_points.isEmpty && !_hasData && !_isLoading && !_failed2Loaded)
+              Center(
+                child: Card(
+                  color: Colors.white.withValues(alpha: 0.9),
+                  child: Padding(
+                    padding: EdgeInsets.all(12),
+                    child: Text(context.l10n.channelPath_noRepeaterLocations),
                   ),
                 ),
-              ],
-            ),
-            centerTitle: false,
-            actions: [
-              IconButton(
-                icon: _isLoading
-                    ? const SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: CircularProgressIndicator(strokeWidth: 2),
-                      )
-                    : const Icon(Icons.refresh),
-                onPressed: _isLoading ? null : _doPathTrace,
-                tooltip: context.l10n.pathTrace_refreshTooltip,
               ),
-            ],
-          ),
-          body: SafeArea(
-            top: false,
-            child: Stack(
-              children: [
-                if (!_hasData)
-                  Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (_isLoading) const CircularProgressIndicator(),
-                        const SizedBox(height: 16),
-                        if (!_isLoading && _failed2Loaded)
-                          Text(context.l10n.pathTrace_notAvailable),
-                      ],
-                    ),
-                  ),
-                if (_hasData) _buildMapPathTrace(context, tileCache),
-                if (_points.isEmpty &&
-                    !_hasData &&
-                    !_isLoading &&
-                    !_failed2Loaded)
-                  Center(
-                    child: Card(
-                      color: Colors.white.withValues(alpha: 0.9),
-                      child: Padding(
-                        padding: EdgeInsets.all(12),
-                        child: Text(
-                          context.l10n.channelPath_noRepeaterLocations,
-                        ),
-                      ),
-                    ),
-                  ),
-                if (_hasData)
-                  _buildLegendCard(context, _traceData!, isImperial),
-              ],
-            ),
-          ),
-        );
-      },
+            if (_hasData) _buildLegendCard(context, _traceData!, isImperial),
+          ],
+        ),
+      ),
     );
   }
 
@@ -423,8 +410,8 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
       }
     }
 
-    final selfLat = context.read<MeshCoreConnector>().selfLatitude;
-    final selfLon = context.read<MeshCoreConnector>().selfLongitude;
+    final selfLat = ConnectorScope.of(context, listen: false).selfLatitude;
+    final selfLon = ConnectorScope.of(context, listen: false).selfLongitude;
     if (selfLat != null && selfLon != null) {
       final selfPoint = LatLng(selfLat, selfLon);
       markers.add(
@@ -654,7 +641,10 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
                               index < pathTraceData.snrData.length
                                   ? pathTraceData.snrData[index]
                                   : null,
-                              context.read<MeshCoreConnector>().currentSf,
+                              ConnectorScope.of(
+                                context,
+                                listen: false,
+                              ).currentSf,
                             );
                             return Column(
                               children: [

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 
 /// Mixin that automatically navigates back to scanner when disconnected.
 /// Use in State classes for screens that require active connection.

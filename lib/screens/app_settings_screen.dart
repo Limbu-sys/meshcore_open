@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../l10n/l10n.dart';
 import '../models/app_settings.dart';
 import '../services/app_settings_service.dart';
@@ -21,8 +21,9 @@ class AppSettingsScreen extends StatelessWidget {
       ),
       body: SafeArea(
         top: false,
-        child: Consumer2<AppSettingsService, MeshCoreConnector>(
-          builder: (context, settingsService, connector, child) {
+        child: Consumer<AppSettingsService>(
+          builder: (context, settingsService, child) {
+            final connector = ConnectorScope.of(context);
             return ListView(
               padding: const EdgeInsets.all(16),
               children: [

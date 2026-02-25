@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 
 class BatteryUi {
   final IconData icon;

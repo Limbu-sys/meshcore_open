@@ -7,7 +7,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:meshcore_open/screens/path_trace_map.dart';
 import 'package:provider/provider.dart';
 
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../services/map_tile_cache_service.dart';
 import '../services/app_settings_service.dart';
 import '../connector/meshcore_protocol.dart';
@@ -29,89 +29,86 @@ class ChannelMessagePathScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MeshCoreConnector>(
-      builder: (context, connector, _) {
-        final l10n = context.l10n;
-        final primaryPathTmp = _selectPrimaryPath(
-          message.pathBytes,
-          message.pathVariants,
-        );
+    final connector = ConnectorScope.of(context);
+    final l10n = context.l10n;
+    final primaryPathTmp = _selectPrimaryPath(
+      message.pathBytes,
+      message.pathVariants,
+    );
 
-        final primaryPath = !channelMessage && !message.isOutgoing
-            ? Uint8List.fromList(primaryPathTmp.reversed.toList())
-            : primaryPathTmp;
+    final primaryPath = !channelMessage && !message.isOutgoing
+        ? Uint8List.fromList(primaryPathTmp.reversed.toList())
+        : primaryPathTmp;
 
-        final hops = _buildPathHops(primaryPath, connector.contacts, l10n);
-        final hasHopDetails = primaryPath.isNotEmpty;
-        final observedLabel = _formatObservedHops(
-          primaryPath.length,
-          message.pathLength,
-          l10n,
-        );
-        final extraPaths = _otherPaths(primaryPath, message.pathVariants);
-        return Scaffold(
-          appBar: AppBar(
-            title: AdaptiveAppBarTitle(l10n.channelPath_title),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.radar_outlined),
-                tooltip: l10n.channelPath_viewMap,
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PathTraceMapScreen(
-                      title: context.l10n.contacts_repeaterPathTrace,
-                      path: primaryPath,
-                      flipPathRound: true,
-                      reversePathRound: !message.isOutgoing && !channelMessage,
-                    ),
-                  ),
+    final hops = _buildPathHops(primaryPath, connector.contacts, l10n);
+    final hasHopDetails = primaryPath.isNotEmpty;
+    final observedLabel = _formatObservedHops(
+      primaryPath.length,
+      message.pathLength,
+      l10n,
+    );
+    final extraPaths = _otherPaths(primaryPath, message.pathVariants);
+    return Scaffold(
+      appBar: AppBar(
+        title: AdaptiveAppBarTitle(l10n.channelPath_title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.radar_outlined),
+            tooltip: l10n.channelPath_viewMap,
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PathTraceMapScreen(
+                  title: context.l10n.contacts_repeaterPathTrace,
+                  path: primaryPath,
+                  flipPathRound: true,
+                  reversePathRound: !message.isOutgoing && !channelMessage,
                 ),
               ),
-              IconButton(
-                icon: const Icon(Icons.map_outlined),
-                tooltip: l10n.channelPath_viewMap,
-                onPressed: hasHopDetails
-                    ? () {
-                        _openPathMap(context, channelMessage: channelMessage);
-                      }
-                    : null,
-              ),
-            ],
-          ),
-          body: SafeArea(
-            top: false,
-            child: ListView(
-              padding: const EdgeInsets.all(16),
-              children: [
-                _buildSummaryCard(context, observedLabel: observedLabel),
-                const SizedBox(height: 16),
-                if (extraPaths.isNotEmpty) ...[
-                  Text(
-                    l10n.channelPath_otherObservedPaths,
-                    style: Theme.of(context).textTheme.titleSmall,
-                  ),
-                  const SizedBox(height: 8),
-                  _buildPathVariants(context, extraPaths),
-                  const SizedBox(height: 16),
-                ],
-                Text(
-                  l10n.channelPath_repeaterHops,
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-                const SizedBox(height: 8),
-                if (!hasHopDetails)
-                  Text(
-                    l10n.channelPath_noHopDetails,
-                    style: const TextStyle(color: Colors.grey),
-                  )
-                else
-                  ..._buildHopTiles(context, hops),
-              ],
             ),
           ),
-        );
-      },
+          IconButton(
+            icon: const Icon(Icons.map_outlined),
+            tooltip: l10n.channelPath_viewMap,
+            onPressed: hasHopDetails
+                ? () {
+                    _openPathMap(context, channelMessage: channelMessage);
+                  }
+                : null,
+          ),
+        ],
+      ),
+      body: SafeArea(
+        top: false,
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            _buildSummaryCard(context, observedLabel: observedLabel),
+            const SizedBox(height: 16),
+            if (extraPaths.isNotEmpty) ...[
+              Text(
+                l10n.channelPath_otherObservedPaths,
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+              const SizedBox(height: 8),
+              _buildPathVariants(context, extraPaths),
+              const SizedBox(height: 16),
+            ],
+            Text(
+              l10n.channelPath_repeaterHops,
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
+            const SizedBox(height: 8),
+            if (!hasHopDetails)
+              Text(
+                l10n.channelPath_noHopDetails,
+                style: const TextStyle(color: Colors.grey),
+              )
+            else
+              ..._buildHopTiles(context, hops),
+          ],
+        ),
+      ),
     );
   }
 
@@ -338,162 +335,139 @@ class _ChannelMessagePathMapScreenState
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MeshCoreConnector>(
-      builder: (context, connector, _) {
-        final settings = context.watch<AppSettingsService>().settings;
-        final isImperial = settings.unitSystem == UnitSystem.imperial;
-        final tileCache = context.read<MapTileCacheService>();
-        final primaryPath = _selectPrimaryPath(
-          widget.message.pathBytes,
-          widget.message.pathVariants,
-        );
-        final observedPaths = _buildObservedPaths(
-          primaryPath,
-          widget.message.pathVariants,
-        );
-        final selectedPathTmp = _resolveSelectedPath(
-          _selectedPath,
-          observedPaths,
-          primaryPath,
-        );
+    final connector = ConnectorScope.of(context);
+    final settings = context.watch<AppSettingsService>().settings;
+    final isImperial = settings.unitSystem == UnitSystem.imperial;
+    final tileCache = context.read<MapTileCacheService>();
+    final primaryPath = _selectPrimaryPath(
+      widget.message.pathBytes,
+      widget.message.pathVariants,
+    );
+    final observedPaths = _buildObservedPaths(
+      primaryPath,
+      widget.message.pathVariants,
+    );
+    final selectedPathTmp = _resolveSelectedPath(
+      _selectedPath,
+      observedPaths,
+      primaryPath,
+    );
 
-        final selectedPath =
-            ((!widget.message.isOutgoing && !widget.channelMessage) ||
-                (widget.message.isOutgoing && widget.channelMessage))
-            ? Uint8List.fromList(selectedPathTmp.reversed.toList())
-            : selectedPathTmp;
+    final selectedPath =
+        ((!widget.message.isOutgoing && !widget.channelMessage) ||
+            (widget.message.isOutgoing && widget.channelMessage))
+        ? Uint8List.fromList(selectedPathTmp.reversed.toList())
+        : selectedPathTmp;
 
-        final selectedIndex = _indexForPath(selectedPath, observedPaths);
-        final hops = _buildPathHops(
-          selectedPath,
-          connector.contacts,
-          context.l10n,
-        );
+    final selectedIndex = _indexForPath(selectedPath, observedPaths);
+    final hops = _buildPathHops(selectedPath, connector.contacts, context.l10n);
 
-        final points = <LatLng>[];
+    final points = <LatLng>[];
 
-        if ((widget.message.isOutgoing && !widget.channelMessage) ||
-            (widget.message.isOutgoing && widget.channelMessage)) {
-          points.add(LatLng(connector.selfLatitude!, connector.selfLongitude!));
-        }
+    if ((widget.message.isOutgoing && !widget.channelMessage) ||
+        (widget.message.isOutgoing && widget.channelMessage)) {
+      points.add(LatLng(connector.selfLatitude!, connector.selfLongitude!));
+    }
 
-        for (final hop in hops) {
-          if (hop.hasLocation) {
-            points.add(hop.position!);
-          }
-        }
+    for (final hop in hops) {
+      if (hop.hasLocation) {
+        points.add(hop.position!);
+      }
+    }
 
-        if ((!widget.message.isOutgoing && !widget.channelMessage) ||
-            (!widget.message.isOutgoing && widget.channelMessage)) {
-          points.add(LatLng(connector.selfLatitude!, connector.selfLongitude!));
-        }
+    if ((!widget.message.isOutgoing && !widget.channelMessage) ||
+        (!widget.message.isOutgoing && widget.channelMessage)) {
+      points.add(LatLng(connector.selfLatitude!, connector.selfLongitude!));
+    }
 
-        final polylines = points.length > 1
-            ? [
-                Polyline(
-                  points: points,
-                  strokeWidth: 4,
-                  color: Colors.blueAccent,
-                ),
-              ]
-            : <Polyline>[];
+    final polylines = points.length > 1
+        ? [Polyline(points: points, strokeWidth: 4, color: Colors.blueAccent)]
+        : <Polyline>[];
 
-        final initialCenter = points.isNotEmpty
-            ? points.first
-            : const LatLng(0, 0);
-        final initialZoom = points.isNotEmpty ? 13.0 : 2.0;
-        if (!_didReceivePositionUpdate) {
-          _showNodeLabels = initialZoom >= _labelZoomThreshold;
-        }
-        final bounds = points.length > 1
-            ? LatLngBounds.fromPoints(points)
-            : null;
-        final mapKey = ValueKey(
-          '${_formatPathPrefixes(selectedPath)},${context.l10n.pathTrace_you}',
-        );
-        _pathDistance = _getPathDistance(points);
+    final initialCenter = points.isNotEmpty ? points.first : const LatLng(0, 0);
+    final initialZoom = points.isNotEmpty ? 13.0 : 2.0;
+    if (!_didReceivePositionUpdate) {
+      _showNodeLabels = initialZoom >= _labelZoomThreshold;
+    }
+    final bounds = points.length > 1 ? LatLngBounds.fromPoints(points) : null;
+    final mapKey = ValueKey(
+      '${_formatPathPrefixes(selectedPath)},${context.l10n.pathTrace_you}',
+    );
+    _pathDistance = _getPathDistance(points);
 
-        return Scaffold(
-          appBar: AppBar(
-            title: AdaptiveAppBarTitle(context.l10n.channelPath_mapTitle),
-          ),
-          body: SafeArea(
-            top: false,
-            child: Stack(
-              children: [
-                FlutterMap(
-                  key: mapKey,
-                  options: MapOptions(
-                    initialCenter: initialCenter,
-                    initialZoom: initialZoom,
-                    initialCameraFit: bounds == null
-                        ? null
-                        : CameraFit.bounds(
-                            bounds: bounds,
-                            padding: const EdgeInsets.all(64),
-                            maxZoom: 16,
-                          ),
-                    minZoom: 2.0,
-                    maxZoom: 18.0,
-                    interactionOptions: InteractionOptions(
-                      flags: ~InteractiveFlag.rotate,
-                    ),
-                    onPositionChanged: (camera, hasGesture) {
-                      final shouldShow = camera.zoom >= _labelZoomThreshold;
-                      if (!_didReceivePositionUpdate ||
-                          shouldShow != _showNodeLabels) {
-                        if (!mounted) return;
-                        setState(() {
-                          _didReceivePositionUpdate = true;
-                          _showNodeLabels = shouldShow;
-                        });
-                      }
-                    },
-                  ),
-                  children: [
-                    TileLayer(
-                      urlTemplate: kMapTileUrlTemplate,
-                      tileProvider: tileCache.tileProvider,
-                      userAgentPackageName:
-                          MapTileCacheService.userAgentPackageName,
-                      maxZoom: 19,
-                    ),
-                    if (polylines.isNotEmpty)
-                      PolylineLayer(polylines: polylines),
-                    MarkerLayer(
-                      markers: _buildHopMarkers(
-                        hops,
-                        showLabels: _showNodeLabels,
+    return Scaffold(
+      appBar: AppBar(
+        title: AdaptiveAppBarTitle(context.l10n.channelPath_mapTitle),
+      ),
+      body: SafeArea(
+        top: false,
+        child: Stack(
+          children: [
+            FlutterMap(
+              key: mapKey,
+              options: MapOptions(
+                initialCenter: initialCenter,
+                initialZoom: initialZoom,
+                initialCameraFit: bounds == null
+                    ? null
+                    : CameraFit.bounds(
+                        bounds: bounds,
+                        padding: const EdgeInsets.all(64),
+                        maxZoom: 16,
                       ),
-                    ),
-                  ],
+                minZoom: 2.0,
+                maxZoom: 18.0,
+                interactionOptions: InteractionOptions(
+                  flags: ~InteractiveFlag.rotate,
                 ),
-                if (observedPaths.length > 1)
-                  _buildPathSelector(context, observedPaths, selectedIndex, (
-                    index,
-                  ) {
+                onPositionChanged: (camera, hasGesture) {
+                  final shouldShow = camera.zoom >= _labelZoomThreshold;
+                  if (!_didReceivePositionUpdate ||
+                      shouldShow != _showNodeLabels) {
+                    if (!mounted) return;
                     setState(() {
-                      _selectedPath = observedPaths[index].pathBytes;
+                      _didReceivePositionUpdate = true;
+                      _showNodeLabels = shouldShow;
                     });
-                  }),
-                if (points.isEmpty)
-                  Center(
-                    child: Card(
-                      color: Colors.white.withValues(alpha: 0.9),
-                      child: Padding(
-                        padding: EdgeInsets.all(12),
-                        child: Text(
-                          context.l10n.channelPath_noRepeaterLocations,
-                        ),
-                      ),
-                    ),
-                  ),
-                _buildLegendCard(context, hops, isImperial),
+                  }
+                },
+              ),
+              children: [
+                TileLayer(
+                  urlTemplate: kMapTileUrlTemplate,
+                  tileProvider: tileCache.tileProvider,
+                  userAgentPackageName:
+                      MapTileCacheService.userAgentPackageName,
+                  maxZoom: 19,
+                ),
+                if (polylines.isNotEmpty) PolylineLayer(polylines: polylines),
+                MarkerLayer(
+                  markers: _buildHopMarkers(hops, showLabels: _showNodeLabels),
+                ),
               ],
             ),
-          ),
-        );
-      },
+            if (observedPaths.length > 1)
+              _buildPathSelector(context, observedPaths, selectedIndex, (
+                index,
+              ) {
+                setState(() {
+                  _selectedPath = observedPaths[index].pathBytes;
+                });
+              }),
+            if (points.isEmpty)
+              Center(
+                child: Card(
+                  color: Colors.white.withValues(alpha: 0.9),
+                  child: Padding(
+                    padding: EdgeInsets.all(12),
+                    child: Text(context.l10n.channelPath_noRepeaterLocations),
+                  ),
+                ),
+              ),
+            _buildLegendCard(context, hops, isImperial),
+          ],
+        ),
+      ),
     );
   }
 
@@ -608,8 +582,8 @@ class _ChannelMessagePathMapScreenState
       }
     }
 
-    final selfLat = context.read<MeshCoreConnector>().selfLatitude;
-    final selfLon = context.read<MeshCoreConnector>().selfLongitude;
+    final selfLat = ConnectorScope.of(context, listen: false).selfLatitude;
+    final selfLon = ConnectorScope.of(context, listen: false).selfLongitude;
     if (selfLat != null && selfLon != null) {
       final selfPoint = LatLng(selfLat, selfLon);
       markers.add(

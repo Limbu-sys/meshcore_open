@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../l10n/l10n.dart';
 import '../utils/dialog_utils.dart';
 import '../utils/disconnect_navigation_mixin.dart';
@@ -27,57 +25,52 @@ class _DeviceScreenState extends State<DeviceScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MeshCoreConnector>(
-      builder: (context, connector, child) {
-        // Auto-navigate back to scanner if disconnected
-        if (!checkConnectionAndNavigate(connector)) {
-          return const SizedBox.shrink();
-        }
+    final connector = ConnectorScope.of(context);
+    // Auto-navigate back to scanner if disconnected
+    if (!checkConnectionAndNavigate(connector)) {
+      return const SizedBox.shrink();
+    }
 
-        final theme = Theme.of(context);
+    final theme = Theme.of(context);
 
-        return PopScope(
-          canPop: false,
-          child: Scaffold(
-            appBar: AppBar(
-              leading: _buildBatteryIndicator(connector, context),
-              titleSpacing: 16,
-              centerTitle: false,
-              title: _buildAppBarTitle(connector, theme),
-              automaticallyImplyLeading: false,
-              actions: [
-                IconButton(
-                  icon: const Icon(Icons.bluetooth_disabled),
-                  tooltip: context.l10n.common_disconnect,
-                  onPressed: () => _disconnect(context, connector),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.tune),
-                  tooltip: context.l10n.common_settings,
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SettingsScreen(),
-                    ),
-                  ),
-                ),
-              ],
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: _buildBatteryIndicator(connector, context),
+          titleSpacing: 16,
+          centerTitle: false,
+          title: _buildAppBarTitle(connector, theme),
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.bluetooth_disabled),
+              tooltip: context.l10n.common_disconnect,
+              onPressed: () => _disconnect(context, connector),
             ),
-            body: SafeArea(
-              child: ListView(
-                padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
-                children: [
-                  _buildConnectionCard(connector, context),
-                  const SizedBox(height: 16),
-                  _buildSectionLabel(theme, context.l10n.device_quickSwitch),
-                  const SizedBox(height: 12),
-                  _buildQuickSwitchBar(context),
-                ],
+            IconButton(
+              icon: const Icon(Icons.tune),
+              tooltip: context.l10n.common_settings,
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsScreen()),
               ),
             ),
+          ],
+        ),
+        body: SafeArea(
+          child: ListView(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+            children: [
+              _buildConnectionCard(connector, context),
+              const SizedBox(height: 16),
+              _buildSectionLabel(theme, context.l10n.device_quickSwitch),
+              const SizedBox(height: 12),
+              _buildQuickSwitchBar(context),
+            ],
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 

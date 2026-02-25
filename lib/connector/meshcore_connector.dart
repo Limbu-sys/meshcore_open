@@ -31,12 +31,8 @@ import '../storage/unread_store.dart';
 import '../utils/app_logger.dart';
 import '../utils/battery_utils.dart';
 import 'meshcore_protocol.dart';
-
-class MeshCoreUuids {
-  static const String service = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
-  static const String rxCharacteristic = "6e400002-b5a3-f393-e0a9-e50e24dcca9e";
-  static const String txCharacteristic = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
-}
+import '../transport/ble_mesh_transport.dart';
+import '../transport/mesh_transport.dart';
 
 class DirectRepeater {
   static const int maxAgeMinutes = 30; // Max age for direct repeater info
@@ -98,10 +94,22 @@ class MeshCoreConnector extends ChangeNotifier {
   // Message windowing to limit memory usage
   static const int _messageWindowSize = 200;
 
+  final MeshTransport? transport;
+
+  MeshCoreConnector({this.transport}) {
+    if (transport != null) {
+      _transportDataSub = transport!.onData.listen(_handleFrame);
+      _transportStateSub = transport!.connectionState.listen((state) {
+        debugPrint('Transport state: $state');
+        if (state == TransportState.disconnected && isConnected) {
+          _handleDisconnection();
+        }
+      });
+    }
+  }
+
   MeshCoreConnectionState _state = MeshCoreConnectionState.disconnected;
   BluetoothDevice? _device;
-  BluetoothCharacteristic? _rxCharacteristic;
-  BluetoothCharacteristic? _txCharacteristic;
   String? _deviceDisplayName;
   String? _deviceId;
   BluetoothDevice? _lastDevice;
@@ -126,7 +134,8 @@ class MeshCoreConnector extends ChangeNotifier {
 
   StreamSubscription<List<ScanResult>>? _scanSubscription;
   StreamSubscription<BluetoothConnectionState>? _connectionSubscription;
-  StreamSubscription<List<int>>? _notifySubscription;
+  StreamSubscription<Uint8List>? _transportDataSub;
+  StreamSubscription<TransportState>? _transportStateSub;
   Timer? _selfInfoRetryTimer;
   Timer? _reconnectTimer;
   Timer? _batteryPollTimer;
@@ -770,11 +779,14 @@ class MeshCoreConnector extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _connectionSubscription = device.connectionState.listen((state) {
-        if (state == BluetoothConnectionState.disconnected && isConnected) {
-          _handleDisconnection();
-        }
-      });
+      final currentTransport = transport;
+      if (currentTransport == null) {
+        throw StateError("Transport must be provided for BLE connection");
+      }
+      if (currentTransport is! BleMeshTransport) {
+        throw StateError("Transport does not support BLE connection");
+      }
+      currentTransport.attachConnectionStateStream(device.connectionState);
 
       await device.connect(
         timeout: const Duration(seconds: 15),
@@ -782,81 +794,35 @@ class MeshCoreConnector extends ChangeNotifier {
         license: License.free,
       );
 
-      // Request larger MTU for sending larger frames
-      try {
-        final mtu = await device.requestMtu(185);
-        debugPrint('MTU set to: $mtu');
-      } catch (e) {
-        debugPrint('MTU request failed: $e, using default');
-      }
+      await currentTransport.initializeAfterConnect(device);
 
-      List<BluetoothService> services = await device.discoverServices();
-
-      BluetoothService? uartService;
-      for (var service in services) {
-        if (service.uuid.toString().toLowerCase() == MeshCoreUuids.service) {
-          uartService = service;
-          break;
-        }
-      }
-
-      if (uartService == null) {
-        throw Exception("MeshCore UART service not found");
-      }
-
-      for (var characteristic in uartService.characteristics) {
-        String uuid = characteristic.uuid.toString().toLowerCase();
-        if (uuid == MeshCoreUuids.rxCharacteristic) {
-          _rxCharacteristic = characteristic;
-        } else if (uuid == MeshCoreUuids.txCharacteristic) {
-          _txCharacteristic = characteristic;
-        }
-      }
-
-      if (_rxCharacteristic == null || _txCharacteristic == null) {
-        throw Exception("MeshCore characteristics not found");
-      }
-
-      // Retry setNotifyValue with increasing delays
-      bool notifySet = false;
-      for (int attempt = 0; attempt < 3 && !notifySet; attempt++) {
-        try {
-          if (attempt > 0) {
-            await Future.delayed(Duration(milliseconds: 500 * attempt));
-          }
-          await _txCharacteristic!.setNotifyValue(true);
-          notifySet = true;
-        } catch (e) {
-          debugPrint('setNotifyValue attempt ${attempt + 1}/3 failed: $e');
-          if (attempt == 2) rethrow;
-        }
-      }
-      _notifySubscription = _txCharacteristic!.onValueReceived.listen(
-        _handleFrame,
-      );
-
-      _setState(MeshCoreConnectionState.connected);
-
-      await _requestDeviceInfo();
-      _startBatteryPolling();
-      final gotSelfInfo = await _waitForSelfInfo(
-        timeout: const Duration(seconds: 3),
-      );
-      if (!gotSelfInfo) {
-        await refreshDeviceInfo();
-        await _waitForSelfInfo(timeout: const Duration(seconds: 3));
-      }
-
-      // Keep device clock aligned on every connection.
-      await syncTime();
-
-      // Fetch channels so we can track unread counts for incoming messages
-      unawaited(getChannels());
+      await _completeConnection();
     } catch (e) {
       debugPrint("Connection error: $e");
       await disconnect(manual: false);
       rethrow;
     }
+  }
+
+  Future<void> handleTransportConnected() async => _completeConnection();
+
+  Future<void> _completeConnection() async {
+    if (_state == MeshCoreConnectionState.connected) return;
+
+    _setState(MeshCoreConnectionState.connected);
+
+    await _requestDeviceInfo();
+    _startBatteryPolling();
+    final gotSelfInfo = await _waitForSelfInfo(
+      timeout: const Duration(seconds: 3),
+    );
+    if (!gotSelfInfo) {
+      await refreshDeviceInfo();
+      await _waitForSelfInfo(timeout: const Duration(seconds: 3));
+    }
+
+    await syncTime();
+    unawaited(getChannels());
   }
 
   Future<bool> _waitForSelfInfo({required Duration timeout}) async {
@@ -945,9 +911,6 @@ class MeshCoreConnector extends ChangeNotifier {
     _setState(MeshCoreConnectionState.disconnecting);
     _stopBatteryPolling();
 
-    await _notifySubscription?.cancel();
-    _notifySubscription = null;
-
     await _connectionSubscription?.cancel();
     _connectionSubscription = null;
     _selfInfoRetryTimer?.cancel();
@@ -967,8 +930,6 @@ class MeshCoreConnector extends ChangeNotifier {
     }
 
     _device = null;
-    _rxCharacteristic = null;
-    _txCharacteristic = null;
     _deviceDisplayName = null;
     _deviceId = null;
     _contacts.clear();
@@ -997,6 +958,7 @@ class MeshCoreConnector extends ChangeNotifier {
     _pendingGenericAckQueue.clear();
     _reactionSendQueueSequence = 0;
 
+    await transport?.disconnect();
     _setState(MeshCoreConnectionState.disconnected);
     if (!manual) {
       _scheduleReconnect();
@@ -1008,24 +970,17 @@ class MeshCoreConnector extends ChangeNotifier {
     String? channelSendQueueId,
     bool expectsGenericAck = false,
   }) async {
-    if (!isConnected || _rxCharacteristic == null) {
+    if (!isConnected) {
       throw Exception("Not connected to a MeshCore device");
     }
 
     _bleDebugLogService?.logFrame(data, outgoing: true);
 
-    // Prefer write without response when supported; fall back to write with response.
-    final properties = _rxCharacteristic!.properties;
-    final canWriteWithoutResponse = properties.writeWithoutResponse;
-    final canWriteWithResponse = properties.write;
-    if (!canWriteWithoutResponse && !canWriteWithResponse) {
-      throw Exception("MeshCore RX characteristic does not support write");
+    if (transport == null) {
+      throw StateError("No transport available to send data");
     }
+    await transport!.send(data);
 
-    await _rxCharacteristic!.write(
-      data.toList(),
-      withoutResponse: canWriteWithoutResponse,
-    );
     _trackPendingGenericAck(
       data,
       channelSendQueueId: channelSendQueueId,
@@ -3562,14 +3517,10 @@ class MeshCoreConnector extends ChangeNotifier {
     }
     _pendingRepeaterAcks.clear();
 
-    _notifySubscription?.cancel();
-    _notifySubscription = null;
     _connectionSubscription?.cancel();
     _connectionSubscription = null;
 
     _device = null;
-    _rxCharacteristic = null;
-    _txCharacteristic = null;
     // Preserve deviceId and displayName for UI display during reconnection
     // They're only cleared on manual disconnect via disconnect() method
     _maxContacts = _defaultMaxContacts;
@@ -3652,7 +3603,9 @@ class MeshCoreConnector extends ChangeNotifier {
   void dispose() {
     _scanSubscription?.cancel();
     _connectionSubscription?.cancel();
-    _notifySubscription?.cancel();
+    unawaited(_transportDataSub?.cancel());
+    unawaited(_transportStateSub?.cancel());
+    unawaited(transport?.dispose());
     _reconnectTimer?.cancel();
     _batteryPollTimer?.cancel();
     _receivedFramesController.close();

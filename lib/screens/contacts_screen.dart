@@ -5,9 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:meshcore_open/screens/path_trace_map.dart';
 import 'package:meshcore_open/utils/app_logger.dart';
 import 'package:meshcore_open/widgets/app_bar.dart';
-import 'package:provider/provider.dart';
-
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../l10n/l10n.dart';
 import '../connector/meshcore_protocol.dart';
 import '../models/contact.dart';
@@ -86,7 +84,7 @@ class _ContactsScreenState extends State<ContactsScreen>
   }
 
   void _setupFrameListener() {
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
     // Listen for incoming text messages from the repeater
     _frameSubscription = connector.receivedFrames.listen((frame) {
       if (frame.isEmpty) return;
@@ -180,14 +178,14 @@ class _ContactsScreenState extends State<ContactsScreen>
   }
 
   Future<void> _contactExport(Uint8List pubKey) async {
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
     final exportContactFrame = buildExportContactFrame(pubKey);
     _pendingOperations.add(ContactOperationType.export);
     await connector.sendFrame(exportContactFrame, expectsGenericAck: true);
   }
 
   Future<void> _contactZeroHop(Uint8List pubKey) async {
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
     final exportContactZeroHopFrame = buildZeroHopContact(pubKey);
     _pendingOperations.add(ContactOperationType.zeroHopShare);
     await connector.sendFrame(
@@ -197,7 +195,7 @@ class _ContactsScreenState extends State<ContactsScreen>
   }
 
   Future<void> _contactImport() async {
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
     final clipboardData = await Clipboard.getData('text/plain');
     if (clipboardData == null || clipboardData.text == null) {
       if (mounted) {
@@ -232,7 +230,7 @@ class _ContactsScreenState extends State<ContactsScreen>
 
   @override
   Widget build(BuildContext context) {
-    final connector = context.watch<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context);
 
     // Auto-navigate back to scanner if disconnected
     if (!checkConnectionAndNavigate(connector)) {
@@ -670,7 +668,10 @@ class _ContactsScreenState extends State<ContactsScreen>
     } else if (contact.type == advTypeRoom) {
       _showRoomLogin(context, contact, RoomLoginDestination.chat);
     } else {
-      context.read<MeshCoreConnector>().markContactRead(contact.publicKeyHex);
+      ConnectorScope.of(
+        context,
+        listen: false,
+      ).markContactRead(contact.publicKeyHex);
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => ChatScreen(contact: contact)),
@@ -725,7 +726,10 @@ class _ContactsScreenState extends State<ContactsScreen>
       builder: (context) => RoomLoginDialog(
         room: room,
         onLogin: (password) {
-          context.read<MeshCoreConnector>().markContactRead(room.publicKeyHex);
+          ConnectorScope.of(
+            context,
+            listen: false,
+          ).markContactRead(room.publicKeyHex);
           Navigator.push(
             context,
             MaterialPageRoute(

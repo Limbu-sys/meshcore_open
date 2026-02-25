@@ -8,7 +8,7 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
 
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../helpers/chat_scroll_controller.dart';
 import '../connector/meshcore_protocol.dart';
 import '../helpers/link_handler.dart';
@@ -55,7 +55,7 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
     _scrollController.onScrollNearTop = _loadOlderMessages;
     SchedulerBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      _connector = context.read<MeshCoreConnector>();
+      _connector = ConnectorScope.of(context, listen: false);
       _connector?.setActiveChannel(widget.channel.index);
     });
   }
@@ -70,12 +70,93 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
     if (_isLoadingOlder) return;
     setState(() => _isLoadingOlder = true);
 
-    final connector = context.read<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context, listen: false);
     await connector.loadOlderChannelMessages(widget.channel.index);
 
     if (mounted) {
       setState(() => _isLoadingOlder = false);
     }
+  }
+
+  Widget _buildMessageList(BuildContext context, MeshCoreConnector connector) {
+    final messages = connector.getChannelMessages(widget.channel);
+
+    if (messages.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              widget.channel.isPublicChannel ? Icons.public : Icons.tag,
+              size: 64,
+              color: Colors.grey[400],
+            ),
+            const SizedBox(height: 16),
+            Text(
+              context.l10n.chat_noMessages,
+              style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              context.l10n.chat_sendMessageToStart,
+              style: TextStyle(fontSize: 14, color: Colors.grey[500]),
+            ),
+          ],
+        ),
+      );
+    }
+
+    final reversedMessages = messages.reversed.toList();
+    final itemCount = reversedMessages.length + (_isLoadingOlder ? 1 : 0);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollController.scrollToBottomIfAtBottom();
+    });
+
+    return Stack(
+      children: [
+        ChatZoomWrapper(
+          child: ListView.builder(
+            reverse: true,
+            controller: _scrollController,
+            padding: const EdgeInsets.all(8),
+            itemCount: itemCount,
+            itemBuilder: (context, index) {
+              if (_isLoadingOlder && index == itemCount - 1) {
+                return const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  child: Center(
+                    child: SizedBox(
+                      width: 20,
+                      height: 20,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
+                  ),
+                );
+              }
+              final messageIndex = index;
+              final message = reversedMessages[messageIndex];
+              if (!_messageKeys.containsKey(message.messageId)) {
+                _messageKeys[message.messageId] = GlobalKey();
+              }
+              return Container(
+                key: _messageKeys[message.messageId]!,
+                child: Builder(
+                  builder: (context) {
+                    final textScale = context
+                        .select<ChatTextScaleService, double>(
+                          (service) => service.scale,
+                        );
+                    return _buildMessageBubble(message, textScale);
+                  },
+                ),
+              );
+            },
+          ),
+        ),
+        JumpToBottomButton(scrollController: _scrollController),
+      ],
+    );
   }
 
   @override
@@ -125,6 +206,7 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final connector = ConnectorScope.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -146,19 +228,11 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                         : widget.channel.name,
                     style: const TextStyle(fontSize: 16),
                   ),
-                  Consumer<MeshCoreConnector>(
-                    builder: (context, connector, _) {
-                      final unreadCount = connector
-                          .getUnreadCountForChannelIndex(widget.channel.index);
-                      final privacy = widget.channel.isPublicChannel
-                          ? context.l10n.channels_public
-                          : context.l10n.channels_private;
-                      return Text(
-                        '$privacy • ${context.l10n.chat_unread(unreadCount)}',
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontSize: 12),
-                      );
-                    },
+                  Text(
+                    '${widget.channel.isPublicChannel ? context.l10n.channels_public : context.l10n.channels_private} '
+                    '• ${context.l10n.chat_unread(connector.getUnreadCountForChannelIndex(widget.channel.index))}',
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 12),
                   ),
                 ],
               ),
@@ -171,107 +245,7 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
         top: false,
         child: Column(
           children: [
-            Expanded(
-              child: Consumer<MeshCoreConnector>(
-                builder: (context, connector, child) {
-                  final messages = connector.getChannelMessages(widget.channel);
-
-                  if (messages.isEmpty) {
-                    return Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            widget.channel.isPublicChannel
-                                ? Icons.public
-                                : Icons.tag,
-                            size: 64,
-                            color: Colors.grey[400],
-                          ),
-                          const SizedBox(height: 16),
-                          Text(
-                            context.l10n.chat_noMessages,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey[600],
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            context.l10n.chat_sendMessageToStart,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey[500],
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-
-                  // Reverse messages so newest appear at bottom with reverse: true
-                  final reversedMessages = messages.reversed.toList();
-                  final itemCount =
-                      reversedMessages.length + (_isLoadingOlder ? 1 : 0);
-
-                  // Auto-scroll to bottom if user is already at bottom
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    _scrollController.scrollToBottomIfAtBottom();
-                  });
-
-                  return Stack(
-                    children: [
-                      ChatZoomWrapper(
-                        child: ListView.builder(
-                          reverse: true, // List grows from bottom up
-                          controller: _scrollController,
-                          padding: const EdgeInsets.all(8),
-                          itemCount: itemCount,
-                          itemBuilder: (context, index) {
-                            // Loading indicator now appears at end (bottom) of reversed list
-                            if (_isLoadingOlder && index == itemCount - 1) {
-                              return const Padding(
-                                padding: EdgeInsets.symmetric(vertical: 16),
-                                child: Center(
-                                  child: SizedBox(
-                                    width: 20,
-                                    height: 20,
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }
-                            final messageIndex = index;
-                            final message = reversedMessages[messageIndex];
-                            if (!_messageKeys.containsKey(message.messageId)) {
-                              _messageKeys[message.messageId] = GlobalKey();
-                            }
-                            return Container(
-                              key: _messageKeys[message.messageId]!,
-                              child: Builder(
-                                builder: (context) {
-                                  final textScale = context
-                                      .select<ChatTextScaleService, double>(
-                                        (service) => service.scale,
-                                      );
-                                  return _buildMessageBubble(
-                                    message,
-                                    textScale,
-                                  );
-                                },
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      JumpToBottomButton(scrollController: _scrollController),
-                    ],
-                  );
-                },
-              ),
-            ),
+            Expanded(child: _buildMessageList(context, connector)),
             _buildMessageComposer(),
           ],
         ),
@@ -615,7 +589,7 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
   }
 
   Widget _buildReplyPreview(ChannelMessage message, double textScale) {
-    final connector = context.read<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context, listen: false);
     final isOwnNode = message.replyToSenderName == connector.selfName;
     final replyText = message.replyToText ?? '';
     final colorScheme = Theme.of(context).colorScheme;
@@ -931,7 +905,7 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
   }
 
   Widget _buildMessageComposer() {
-    final connector = context.watch<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context);
     final maxBytes = maxChannelMessageBytes(connector.selfName);
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -1055,7 +1029,7 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
     final text = _textController.text.trim();
     if (text.isEmpty) return;
 
-    final connector = context.read<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context, listen: false);
 
     String messageText = text;
     if (_replyingToMessage != null) {
@@ -1162,7 +1136,7 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
   }
 
   void _sendReaction(ChannelMessage message, String emoji) {
-    final connector = context.read<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context, listen: false);
     final emojiIndex = ReactionHelper.emojiToIndex(emoji);
     if (emojiIndex == null) return; // Unknown emoji, skip
     final timestampSecs = message.timestamp.millisecondsSinceEpoch ~/ 1000;
@@ -1183,7 +1157,10 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
   }
 
   Future<void> _deleteMessage(ChannelMessage message) async {
-    await context.read<MeshCoreConnector>().deleteChannelMessage(message);
+    await ConnectorScope.of(
+      context,
+      listen: false,
+    ).deleteChannelMessage(message);
     if (!mounted) return;
     ScaffoldMessenger.of(
       context,

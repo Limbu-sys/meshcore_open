@@ -10,7 +10,7 @@ import 'package:meshcore_open/screens/path_trace_map.dart';
 import 'package:provider/provider.dart';
 import 'package:latlong2/latlong.dart';
 
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../connector/meshcore_protocol.dart';
 import '../helpers/reaction_helper.dart';
 import '../widgets/message_status_icon.dart';
@@ -60,7 +60,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _scrollController.onScrollNearTop = _loadOlderMessages;
     SchedulerBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
-      _connector = context.read<MeshCoreConnector>();
+      _connector = ConnectorScope.of(context, listen: false);
       _connector?.setActiveContact(widget.contact.publicKeyHex);
     });
   }
@@ -75,7 +75,7 @@ class _ChatScreenState extends State<ChatScreen> {
     if (_isLoadingOlder) return;
     setState(() => _isLoadingOlder = true);
 
-    final connector = context.read<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context, listen: false);
     await connector.loadOlderMessages(widget.contact.publicKeyHex);
 
     if (mounted) {
@@ -95,114 +95,102 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final connector = ConnectorScope.of(context);
+    final contact = _resolveContact(connector);
+    final unreadCount = connector.getUnreadCountForContactKey(
+      widget.contact.publicKeyHex,
+    );
+    final unreadLabel = context.l10n.chat_unread(unreadCount);
+    final pathLabel = _currentPathLabel(contact);
+    final hasPathData =
+        contact.path.isNotEmpty || contact.pathOverrideBytes != null;
+    final effectivePath = contact.pathOverrideBytes ?? contact.path;
+    final messages = connector.getMessages(widget.contact);
     return Scaffold(
       appBar: AppBar(
-        title: Consumer2<PathHistoryService, MeshCoreConnector>(
-          builder: (context, pathService, connector, _) {
-            final contact = _resolveContact(connector);
-            final unreadCount = connector.getUnreadCountForContactKey(
-              widget.contact.publicKeyHex,
-            );
-            final unreadLabel = context.l10n.chat_unread(unreadCount);
-            final pathLabel = _currentPathLabel(contact);
-
-            // Show path details if we have path data (from device or override)
-            final hasPathData =
-                contact.path.isNotEmpty || contact.pathOverrideBytes != null;
-            final effectivePath = contact.pathOverrideBytes ?? contact.path;
-
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(contact.name),
-                GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: hasPathData
-                      ? () => _showFullPathDialog(context, effectivePath)
-                      : null,
-                  child: Text(
-                    '$pathLabel • $unreadLabel',
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.normal,
-                      decoration: hasPathData ? TextDecoration.underline : null,
-                      decorationStyle: TextDecorationStyle.dotted,
-                    ),
-                  ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(contact.name),
+            GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: hasPathData
+                  ? () => _showFullPathDialog(context, effectivePath)
+                  : null,
+              child: Text(
+                '$pathLabel • $unreadLabel',
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.normal,
+                  decoration: hasPathData ? TextDecoration.underline : null,
+                  decorationStyle: TextDecorationStyle.dotted,
                 ),
-              ],
-            );
-          },
+              ),
+            ),
+          ],
         ),
         centerTitle: false,
         actions: [
-          Consumer<MeshCoreConnector>(
-            builder: (context, connector, _) {
-              final contact = _resolveContact(connector);
-              final isFloodMode = contact.pathOverride == -1;
-
-              return PopupMenuButton<String>(
-                icon: Icon(isFloodMode ? Icons.waves : Icons.route),
-                tooltip: context.l10n.chat_routingMode,
-                onSelected: (mode) async {
-                  if (mode == 'flood') {
-                    await connector.setPathOverride(contact, pathLen: -1);
-                  } else {
-                    await connector.setPathOverride(contact, pathLen: null);
-                  }
-                },
-                itemBuilder: (context) => [
-                  PopupMenuItem(
-                    value: 'auto',
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.auto_mode,
-                          size: 20,
-                          color: !isFloodMode
-                              ? Theme.of(context).primaryColor
-                              : null,
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          context.l10n.chat_autoUseSavedPath,
-                          style: TextStyle(
-                            fontWeight: !isFloodMode
-                                ? FontWeight.bold
-                                : FontWeight.normal,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: 'flood',
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.waves,
-                          size: 20,
-                          color: isFloodMode
-                              ? Theme.of(context).primaryColor
-                              : null,
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          context.l10n.chat_forceFloodMode,
-                          style: TextStyle(
-                            fontWeight: isFloodMode
-                                ? FontWeight.bold
-                                : FontWeight.normal,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              );
+          PopupMenuButton<String>(
+            icon: Icon(contact.pathOverride == -1 ? Icons.waves : Icons.route),
+            tooltip: context.l10n.chat_routingMode,
+            onSelected: (mode) async {
+              if (mode == 'flood') {
+                await connector.setPathOverride(contact, pathLen: -1);
+              } else {
+                await connector.setPathOverride(contact, pathLen: null);
+              }
             },
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                value: 'auto',
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.auto_mode,
+                      size: 20,
+                      color: contact.pathOverride != -1
+                          ? Theme.of(context).primaryColor
+                          : null,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      context.l10n.chat_autoUseSavedPath,
+                      style: TextStyle(
+                        fontWeight: contact.pathOverride != -1
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: 'flood',
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.waves,
+                      size: 20,
+                      color: contact.pathOverride == -1
+                          ? Theme.of(context).primaryColor
+                          : null,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      context.l10n.chat_forceFloodMode,
+                      style: TextStyle(
+                        fontWeight: contact.pathOverride == -1
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
           IconButton(
             icon: const Icon(Icons.timeline),
@@ -215,25 +203,20 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ],
       ),
-      body: Consumer<MeshCoreConnector>(
-        builder: (context, connector, child) {
-          final messages = connector.getMessages(widget.contact);
-          return Column(
-            children: [
-              Expanded(
-                child: Stack(
-                  children: [
-                    messages.isEmpty
-                        ? _buildEmptyState()
-                        : _buildMessageList(messages, connector),
-                    JumpToBottomButton(scrollController: _scrollController),
-                  ],
-                ),
-              ),
-              _buildInputBar(connector),
-            ],
-          );
-        },
+      body: Column(
+        children: [
+          Expanded(
+            child: Stack(
+              children: [
+                messages.isEmpty
+                    ? _buildEmptyState()
+                    : _buildMessageList(messages, connector),
+                JumpToBottomButton(scrollController: _scrollController),
+              ],
+            ),
+          ),
+          _buildInputBar(connector),
+        ],
       ),
     );
   }
@@ -463,7 +446,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _showPathHistory(BuildContext context) {
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
     bool showAllPaths = false;
     showDialog(
       context: context,
@@ -888,61 +871,60 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _showContactInfo(BuildContext context) {
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
     connector.ensureContactSmazSettingLoaded(widget.contact.publicKeyHex);
 
     showDialog(
       context: context,
-      builder: (context) => Consumer<MeshCoreConnector>(
-        builder: (context, connector, _) {
-          final contact = _resolveContact(connector);
-          final smazEnabled = connector.isContactSmazEnabled(
-            contact.publicKeyHex,
-          );
+      builder: (context) {
+        final dialogConnector = ConnectorScope.of(context);
+        final contact = _resolveContact(dialogConnector);
+        final smazEnabled = dialogConnector.isContactSmazEnabled(
+          contact.publicKeyHex,
+        );
 
-          return AlertDialog(
-            title: Text(contact.name),
-            content: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildInfoRow(context.l10n.chat_type, contact.typeLabel),
-                  _buildInfoRow(context.l10n.chat_path, contact.pathLabel),
-                  if (contact.hasLocation)
-                    _buildInfoRow(
-                      context.l10n.chat_location,
-                      '${contact.latitude?.toStringAsFixed(4)}, ${contact.longitude?.toStringAsFixed(4)}',
-                    ),
+        return AlertDialog(
+          title: Text(contact.name),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildInfoRow(context.l10n.chat_type, contact.typeLabel),
+                _buildInfoRow(context.l10n.chat_path, contact.pathLabel),
+                if (contact.hasLocation)
                   _buildInfoRow(
-                    context.l10n.chat_publicKey,
-                    '${contact.publicKeyHex.substring(0, 16)}...',
+                    context.l10n.chat_location,
+                    '${contact.latitude?.toStringAsFixed(4)}, ${contact.longitude?.toStringAsFixed(4)}',
                   ),
-                  const Divider(),
-                  SwitchListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(context.l10n.channels_smazCompression),
-                    subtitle: Text(context.l10n.chat_compressOutgoingMessages),
-                    value: smazEnabled,
-                    onChanged: (value) {
-                      connector.setContactSmazEnabled(
-                        contact.publicKeyHex,
-                        value,
-                      );
-                    },
-                  ),
-                ],
-              ),
+                _buildInfoRow(
+                  context.l10n.chat_publicKey,
+                  '${contact.publicKeyHex.substring(0, 16)}...',
+                ),
+                const Divider(),
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(context.l10n.channels_smazCompression),
+                  subtitle: Text(context.l10n.chat_compressOutgoingMessages),
+                  value: smazEnabled,
+                  onChanged: (value) {
+                    dialogConnector.setContactSmazEnabled(
+                      contact.publicKeyHex,
+                      value,
+                    );
+                  },
+                ),
+              ],
             ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(context.l10n.common_close),
-              ),
-            ],
-          );
-        },
-      ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(context.l10n.common_close),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -964,7 +946,10 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void _openChat(BuildContext context, Contact contact) {
     // Check if this is a repeater
-    context.read<MeshCoreConnector>().markContactRead(contact.publicKeyHex);
+    ConnectorScope.of(
+      context,
+      listen: false,
+    ).markContactRead(contact.publicKeyHex);
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ChatScreen(contact: contact)),
@@ -972,7 +957,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<void> _showCustomPathDialog(BuildContext context) async {
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
 
     final currentContact = _resolveContact(connector);
     if (currentContact.pathLength > 0 &&
@@ -1035,7 +1020,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _openMessagePath(Message message, Contact contact) {
-    final connector = context.read<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context, listen: false);
     final fourByteHex = message.fourByteRoomContactKey
         .map((b) => b.toRadixString(16).padLeft(2, '0'))
         .join()
@@ -1137,7 +1122,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<void> _deleteMessage(Message message) async {
-    await context.read<MeshCoreConnector>().deleteMessage(message);
+    await ConnectorScope.of(context, listen: false).deleteMessage(message);
     if (!mounted) return;
     ScaffoldMessenger.of(
       context,
@@ -1145,7 +1130,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _retryMessage(Message message) {
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
     // Retry using the contact's current path override setting
     connector.sendMessage(widget.contact, message.text);
     ScaffoldMessenger.of(
@@ -1166,7 +1151,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _sendReaction(Message message, Contact senderContact, String emoji) {
-    final connector = context.read<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context, listen: false);
     final emojiIndex = ReactionHelper.emojiToIndex(emoji);
     if (emojiIndex == null) return; // Unknown emoji, skip
     final timestampSecs = message.timestamp.millisecondsSinceEpoch ~/ 1000;

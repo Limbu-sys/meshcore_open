@@ -8,7 +8,7 @@ import 'package:meshcore_open/screens/path_trace_map.dart';
 import 'package:meshcore_open/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
 
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../l10n/l10n.dart';
 import '../connector/meshcore_protocol.dart';
 import '../models/app_settings.dart';
@@ -18,6 +18,7 @@ import '../services/app_settings_service.dart';
 import '../services/map_marker_service.dart';
 import '../services/map_tile_cache_service.dart';
 import '../utils/contact_search.dart';
+import '../utils/dialog_utils.dart';
 import '../utils/route_transitions.dart';
 import '../widgets/quick_switch_bar.dart';
 import '../icons/los_icon.dart';
@@ -71,7 +72,7 @@ class _MapScreenState extends State<MapScreen> {
     _loadRemovedMarkers();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
-        context.read<MeshCoreConnector>().getChannels();
+        ConnectorScope.of(context, listen: false).getChannels();
         if (widget.highlightPosition != null) {
           _mapController.move(widget.highlightPosition!, widget.highlightZoom);
         }
@@ -119,8 +120,9 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<MeshCoreConnector, AppSettingsService>(
-      builder: (context, connector, settingsService, child) {
+    final connector = ConnectorScope.of(context);
+    return Consumer<AppSettingsService>(
+      builder: (context, settingsService, child) {
         final tileCache = context.read<MapTileCacheService>();
         final settings = settingsService.settings;
         final contacts = connector.contacts;
@@ -502,6 +504,7 @@ class _MapScreenState extends State<MapScreen> {
               ),
             ),
             floatingActionButton: FloatingActionButton(
+              heroTag: 'map-fab-filter',
               onPressed: () => _showFilterDialog(context, settingsService),
               tooltip: context.l10n.map_filterNodes,
               child: const Icon(Icons.filter_list),
@@ -942,7 +945,10 @@ class _MapScreenState extends State<MapScreen> {
         room: room,
         onLogin: (password) {
           // Navigate to chat screen after successful login
-          context.read<MeshCoreConnector>().markContactRead(room.publicKeyHex);
+          ConnectorScope.of(
+            context,
+            listen: false,
+          ).markContactRead(room.publicKeyHex);
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => ChatScreen(contact: room)),
@@ -1045,27 +1051,11 @@ class _MapScreenState extends State<MapScreen> {
     BuildContext context,
     MeshCoreConnector connector,
   ) async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (dialogContext) => AlertDialog(
-        title: Text(context.l10n.common_disconnect),
-        content: Text(context.l10n.map_disconnectConfirm),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(dialogContext, false),
-            child: Text(context.l10n.common_cancel),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(dialogContext, true),
-            child: Text(context.l10n.common_disconnect),
-          ),
-        ],
-      ),
+    await showDisconnectDialog(
+      context,
+      connector,
+      confirmMessage: context.l10n.map_disconnectConfirm,
     );
-
-    if (confirmed == true) {
-      await connector.disconnect();
-    }
   }
 
   void _showMarkerInfo(_SharedMarker marker) {
@@ -1275,8 +1265,9 @@ class _MapScreenState extends State<MapScreen> {
       context: context,
       builder: (sheetContext) => StatefulBuilder(
         builder: (sheetContext, setSheetState) {
-          return Consumer<MeshCoreConnector>(
-            builder: (consumerContext, liveConnector, child) {
+          return Builder(
+            builder: (consumerContext) {
+              final liveConnector = ConnectorScope.of(consumerContext);
               final allContacts = liveConnector.contacts
                   .where(
                     (contact) =>

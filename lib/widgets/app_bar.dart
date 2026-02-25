@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meshcore_open/connector/meshcore_connector.dart';
+import 'package:meshcore_open/connector/connector_scope.dart';
 import 'package:meshcore_open/widgets/battery_indicator.dart';
-import 'package:provider/provider.dart';
-
 import 'snr_indicator.dart';
 
 class AppBarTitle extends StatelessWidget {
@@ -13,7 +11,7 @@ class AppBarTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final connector = context.watch<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context);
     final selfName = connector.selfName;
 
     return LayoutBuilder(

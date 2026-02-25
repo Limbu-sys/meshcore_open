@@ -8,7 +8,7 @@ import 'package:meshcore_open/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../l10n/l10n.dart';
 import '../services/app_settings_service.dart';
 import '../models/channel.dart';
@@ -55,7 +55,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<MeshCoreConnector>().getChannels();
+      ConnectorScope.of(context, listen: false).getChannels();
       _loadCommunities();
     });
   }
@@ -105,7 +105,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
 
   @override
   Widget build(BuildContext context) {
-    final connector = context.watch<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context);
     final channelMessageStore = ChannelMessageStore();
 
     // Auto-navigate back to scanner if disconnected
@@ -168,7 +168,10 @@ class _ChannelsScreenState extends State<ChannelsScreen>
         ),
         body: RefreshIndicator(
           onRefresh: () async {
-            await context.read<MeshCoreConnector>().getChannels(force: true);
+            await ConnectorScope.of(
+              context,
+              listen: false,
+            ).getChannels(force: true);
           },
           child: () {
             if (connector.isLoadingChannels) {
@@ -288,6 +291,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
                           ),
                           buildDefaultDragHandles: false,
                           itemCount: filteredChannels.length,
+                          // ignore: deprecated_member_use
                           onReorder: (oldIndex, newIndex) {
                             if (newIndex > oldIndex) newIndex -= 1;
                             final reordered = List<Channel>.from(
@@ -337,6 +341,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
           }(),
         ),
         floatingActionButton: FloatingActionButton(
+          heroTag: 'channels-fab-add-channel',
           onPressed: () => _showAddChannelDialog(context),
           tooltip: context.l10n.channels_addChannel,
           child: const Icon(Icons.add),
@@ -574,7 +579,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   }
 
   Future<void> _disconnect(BuildContext context) async {
-    final connector = context.read<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context, listen: false);
     await showDisconnectDialog(context, connector);
   }
 
@@ -698,7 +703,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   }
 
   void _showAddChannelDialog(BuildContext context) {
-    final connector = context.read<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context, listen: false);
     final nextIndex = _findNextAvailableIndex(
       connector.channels,
       connector.maxChannels,
@@ -1722,7 +1727,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   }
 
   void _confirmLeaveCommunity(BuildContext context, Community community) {
-    final connector = context.read<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context, listen: false);
 
     // Find all channels that belong to this community
     List<Channel> communityChannels = [];

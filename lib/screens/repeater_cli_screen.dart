@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../l10n/l10n.dart';
 import '../models/contact.dart';
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../connector/meshcore_protocol.dart';
 import '../widgets/debug_frame_viewer.dart';
 import '../services/repeater_command_service.dart';
@@ -47,7 +46,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
   @override
   void initState() {
     super.initState();
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
     _commandService = RepeaterCommandService(connector);
     _setupMessageListener();
   }
@@ -63,7 +62,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
   }
 
   void _setupMessageListener() {
-    final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    final connector = ConnectorScope.of(context, listen: false);
 
     // Listen for incoming text messages from the repeater
     _frameSubscription = connector.receivedFrames.listen((frame) {
@@ -133,10 +132,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
     // Send CLI command to repeater with retry
     try {
       if (_commandService != null) {
-        final connector = Provider.of<MeshCoreConnector>(
-          context,
-          listen: false,
-        );
+        final connector = ConnectorScope.of(context, listen: false);
         final repeater = _resolveRepeater(connector);
         final response = await _commandService!.sendCommand(
           repeater,
@@ -228,7 +224,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final connector = context.watch<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context);
     final repeater = _resolveRepeater(connector);
     final isFloodMode = repeater.pathOverride == -1;
 

@@ -2,11 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:provider/provider.dart';
 import '../l10n/l10n.dart';
 import '../models/contact.dart';
 import '../services/storage_service.dart';
-import '../connector/meshcore_connector.dart';
+import '../connector/connector_scope.dart';
 import '../connector/meshcore_protocol.dart';
 import '../utils/app_logger.dart';
 import 'path_management_dialog.dart';
@@ -34,7 +33,7 @@ class _RoomLoginDialogState extends State<RoomLoginDialog> {
   @override
   void initState() {
     super.initState();
-    _connector = Provider.of<MeshCoreConnector>(context, listen: false);
+    _connector = ConnectorScope.of(context, listen: false);
     _loadSavedPassword();
   }
 
@@ -208,7 +207,7 @@ class _RoomLoginDialogState extends State<RoomLoginDialog> {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final connector = context.watch<MeshCoreConnector>();
+    final connector = ConnectorScope.of(context);
     final repeater = _resolveRepeater(connector);
     final isFloodMode = repeater.pathOverride == -1;
     return AlertDialog(
