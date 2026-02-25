@@ -306,8 +306,7 @@ class _RepeaterSettingsScreenState extends State<RepeaterSettingsScreen> {
       }
       if (_fetchedSettings.containsKey('multi.acks')) {
         final value = _fetchedSettings['multi.acks']!.trim().toLowerCase();
-        _multiAcksEnabled =
-            value == '1' || value == 'on' || value == 'true';
+        _multiAcksEnabled = value == '1' || value == 'on' || value == 'true';
       }
     });
   }
@@ -728,8 +727,9 @@ class _RepeaterSettingsScreenState extends State<RepeaterSettingsScreen> {
       if (intThresh != null) {
         commands.add('set int.thresh $intThresh');
       }
-      final agcResetSeconds =
-          int.tryParse(_agcResetIntervalController.text.trim());
+      final agcResetSeconds = int.tryParse(
+        _agcResetIntervalController.text.trim(),
+      );
       if (agcResetSeconds != null) {
         commands.add('set agc.reset.interval $agcResetSeconds');
       }
