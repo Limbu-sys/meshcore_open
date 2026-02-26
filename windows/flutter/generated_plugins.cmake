@@ -4,13 +4,13 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   flutter_blue_plus_winrt
+  flutter_libserialport
   share_plus
   url_launcher_windows
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST
   flutter_local_notifications_windows
-  libserialport_plus
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)

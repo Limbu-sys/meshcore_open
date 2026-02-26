@@ -10,7 +10,6 @@ import android.hardware.usb.UsbManager
 import android.os.Build
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.android.FlutterActivity
-import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : FlutterActivity() {
@@ -24,8 +23,8 @@ class MainActivity : FlutterActivity() {
   private val usbPermissionReceiver = object : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
       if (intent?.action != usbPermissionAction) return
-      val device = intent.getParcelableExtra<UsbDevice>(UsbManager.EXTRA_DEVICE)
-      val deviceId = device?.deviceId ?: intent.getIntExtra(UsbManager.EXTRA_DEVICE_ID, -1)
+      val device = intent?.getParcelableExtra<UsbDevice>(UsbManager.EXTRA_DEVICE)
+      val deviceId = device?.deviceId ?: -1
       val granted = intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)
       if (pendingDeviceId == deviceId && pendingResult != null) {
         pendingResult?.success(granted)
@@ -50,7 +49,11 @@ class MainActivity : FlutterActivity() {
         else -> result.notImplemented()
       }
     }
-    registerReceiver(usbPermissionReceiver, IntentFilter(usbPermissionAction))
+    registerReceiver(
+      usbPermissionReceiver,
+      IntentFilter(usbPermissionAction),
+      Context.RECEIVER_NOT_EXPORTED,
+    )
   }
 
   override fun onDestroy() {
@@ -99,14 +102,13 @@ class MainActivity : FlutterActivity() {
   }
 
   private fun findUsbDevice(vendorId: Int?, productId: Int?, deviceId: Int?): UsbDevice? {
-    return if (deviceId != null) {
-      usbManager.deviceList[deviceId]
-    } else {
-      usbManager.deviceList.values.firstOrNull { device ->
-        val vidMatch = vendorId == null || device.vendorId == vendorId
-        val pidMatch = productId == null || device.productId == productId
-        vidMatch && pidMatch
-      }
+    if (deviceId != null) {
+      return usbManager.deviceList.values.firstOrNull { it.deviceId == deviceId }
+    }
+    return usbManager.deviceList.values.firstOrNull { device ->
+      val vidMatch = vendorId == null || device.vendorId == vendorId
+      val pidMatch = productId == null || device.productId == productId
+      vidMatch && pidMatch
     }
   }
 
