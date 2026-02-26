@@ -106,6 +106,57 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get usb_screen_title => 'USB / Seriell';
+
+  @override
+  String get usb_screen_refresh => 'Återställ USB-enheter';
+
+  @override
+  String get usb_screen_no_devices => 'Inga USB-enheter har upptäckts.';
+
+  @override
+  String get usb_status_no_devices =>
+      'Inga USB-enheter har upptäckts. Se till att enheten är ansluten.';
+
+  @override
+  String usb_status_list_error(String error) {
+    return 'Kan inte lista USB-enheter: $error';
+  }
+
+  @override
+  String get usb_status_preparing_transport => 'Förbereder serieöverföring...';
+
+  @override
+  String get usb_status_disconnecting_bluetooth => 'Koppla bort Bluetooth...';
+
+  @override
+  String get usb_status_opening_usb_connection => 'Starta USB-anslutning...';
+
+  @override
+  String usb_status_connected(String displayName) {
+    return 'Ansluten via USB till $displayName.';
+  }
+
+  @override
+  String usb_status_connection_failed(String error) {
+    return 'Fel vid USB-anslutning: $error';
+  }
+
+  @override
+  String get usb_device_generic_title => 'USB-enhet';
+
+  @override
+  String get usb_android_device_subtitle => 'Android-enhet via USB';
+
+  @override
+  String get usb_serial_port => 'Seriell port';
+
+  @override
+  String usb_serial_port_open_error(String portName) {
+    return 'Kan inte öppna seriell port $portName. Vänligen koppla ur/anslut enheten igen och försök igen.';
+  }
+
+  @override
   String get scanner_title => 'MeshCore Open';
 
   @override

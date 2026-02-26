@@ -106,6 +106,56 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get usb_screen_title => 'USB/串行接口';
+
+  @override
+  String get usb_screen_refresh => '刷新 USB 设备';
+
+  @override
+  String get usb_screen_no_devices => '未检测到任何 USB 设备。';
+
+  @override
+  String get usb_status_no_devices => '未检测到任何 USB 设备。请确保设备已正确连接。';
+
+  @override
+  String usb_status_list_error(String error) {
+    return '无法列出 USB 设备：$error';
+  }
+
+  @override
+  String get usb_status_preparing_transport => '准备进行串行传输...';
+
+  @override
+  String get usb_status_disconnecting_bluetooth => '断开蓝牙连接...';
+
+  @override
+  String get usb_status_opening_usb_connection => '开始连接USB...';
+
+  @override
+  String usb_status_connected(String displayName) {
+    return '通过 USB 与 $displayName 连接。';
+  }
+
+  @override
+  String usb_status_connection_failed(String error) {
+    return 'USB 连接失败：$error';
+  }
+
+  @override
+  String get usb_device_generic_title => 'USB 设备';
+
+  @override
+  String get usb_android_device_subtitle => '安卓 USB 设备';
+
+  @override
+  String get usb_serial_port => '串行端口';
+
+  @override
+  String usb_serial_port_open_error(String portName) {
+    return '无法打开 $portName 串口。请先拔下/重新连接设备，然后再次尝试。';
+  }
+
+  @override
   String get scanner_title => '连接设备';
 
   @override

@@ -106,6 +106,60 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String get usb_screen_title => 'USB / Серийный интерфейс';
+
+  @override
+  String get usb_screen_refresh => 'Обновить устройства USB';
+
+  @override
+  String get usb_screen_no_devices => 'Не обнаружено никаких устройств USB.';
+
+  @override
+  String get usb_status_no_devices =>
+      'Не обнаружено никаких устройств USB. Убедитесь, что устройство правильно подключено.';
+
+  @override
+  String usb_status_list_error(String error) {
+    return 'Невозможно перечислить USB-устройства: $error';
+  }
+
+  @override
+  String get usb_status_preparing_transport =>
+      'Подготовка к серии перевозок...';
+
+  @override
+  String get usb_status_disconnecting_bluetooth => 'Отключение Bluetooth...';
+
+  @override
+  String get usb_status_opening_usb_connection =>
+      'Установлено соединение через USB...';
+
+  @override
+  String usb_status_connected(String displayName) {
+    return 'Подключено через USB к $displayName.';
+  }
+
+  @override
+  String usb_status_connection_failed(String error) {
+    return 'Не удалось установить соединение через USB: $error';
+  }
+
+  @override
+  String get usb_device_generic_title => 'Устройство USB';
+
+  @override
+  String get usb_android_device_subtitle =>
+      'Устройство Android, подключаемое через USB';
+
+  @override
+  String get usb_serial_port => 'Последовательный порт';
+
+  @override
+  String usb_serial_port_open_error(String portName) {
+    return 'Невозможно открыть последовательный порт $portName. Пожалуйста, отключите и снова подключите устройство, и попробуйте еще раз.';
+  }
+
+  @override
   String get scanner_title => 'MeshCore Open';
 
   @override

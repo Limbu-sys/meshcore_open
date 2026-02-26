@@ -1753,5 +1753,89 @@
   },
   "listFilter_addToFavorites": "Adicionar aos favoritos",
   "listFilter_removeFromFavorites": "Remover da lista de favoritos",
-  "listFilter_favorites": "Favoritos"
+  "listFilter_favorites": "Favoritos",
+  "@usb_screen_title": {
+    "description": "Title of the USB / Serial connection screen."
+  },
+  "@usb_screen_refresh": {
+    "description": "Tooltip for the button that refreshes the USB device list."
+  },
+  "@usb_screen_no_devices": {
+    "description": "Message shown in the device list when no USB devices were found."
+  },
+  "@usb_status_no_devices": {
+    "description": "Status message shown in the USB screen when the refresh found no devices."
+  },
+  "@usb_status_list_error": {
+    "description": "Status message shown when querying the OS for USB ports fails.",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@usb_status_preparing_transport": {
+    "description": "Status text shown while initializing the serial transport."
+  },
+  "@usb_status_disconnecting_bluetooth": {
+    "description": "Status text shown when tearing down an existing Bluetooth connection."
+  },
+  "@usb_status_opening_usb_connection": {
+    "description": "Status text shown while opening the USB/serial connection."
+  },
+  "@usb_status_connected": {
+    "description": "Status/snackbar shown after a successful USB connection.",
+    "placeholders": {
+      "displayName": {
+        "type": "String"
+      }
+    }
+  },
+  "@usb_status_connection_failed": {
+    "description": "Status/snackbar shown when the USB connection attempt throws.",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@usb_device_generic_title": {
+    "description": "Fallback title used when a USB device has no name."
+  },
+  "@usb_android_device_subtitle": {
+    "description": "Subtitle shown for Android USB devices when metadata is missing."
+  },
+  "@usb_serial_port": {
+    "description": "Label used when a serial port cannot be described with other metadata."
+  },
+  "@usb_serial_port_open_error": {
+    "description": "Friendly instruction shown when opening the serial port fails.",
+    "placeholders": {
+      "portName": {
+        "type": "String"
+      }
+    }
+  },
+  "usb_screen_title": "USB / Serial",
+  "usb_screen_refresh": "Reinicie os dispositivos USB",
+  "usb_screen_no_devices": "Nenhum dispositivo USB detectado.",
+  "usb_status_no_devices": "Nenhum dispositivo USB detectado. Verifique se o dispositivo está corretamente conectado.",
+  "usb_status_list_error": "Impossibilidade de listar dispositivos USB: {error}",
+  "usb_status_preparing_transport": "Preparando transporte em série...",
+  "usb_status_disconnecting_bluetooth": "Desconectando o Bluetooth...",
+  "usb_status_opening_usb_connection": "Conectando a porta USB...",
+  "usb_status_connected": "Conectado via USB a {displayName}.",
+  "usb_status_connection_failed": "Falha na conexão USB: {error}",
+  "usb_device_generic_title": "Dispositivo USB",
+  "usb_android_device_subtitle": "Dispositivo USB para Android",
+  "usb_serial_port": "Porta serial",
+  "usb_serial_port_open_error": "Não foi possível abrir a porta serial {portName}. Por favor, desconecte/conecte o dispositivo novamente e tente novamente.",
+  "@gifMessage_networkUnavailable": {
+    "description": "Displayed inside a GIF message when the preview cannot be fetched due to network issues."
+  },
+  "@gifMessage_tapToLoad": {
+    "description": "Instruction shown inside a GIF preview placeholder before the GIF has loaded."
+  },
+  "gifMessage_tapToLoad": "Toque para carregar o GIF",
+  "gifMessage_networkUnavailable": "Não consigo carregar GIFs no momento. Por favor, verifique sua conexão com a internet."
 }

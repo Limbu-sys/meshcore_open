@@ -106,6 +106,59 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String get usb_screen_title => 'USB / Série';
+
+  @override
+  String get usb_screen_refresh => 'Réinitialiser les périphériques USB';
+
+  @override
+  String get usb_screen_no_devices => 'Aucun périphérique USB détecté.';
+
+  @override
+  String get usb_status_no_devices =>
+      'Aucun périphérique USB détecté. Veuillez vous assurer que l\'appareil est correctement branché.';
+
+  @override
+  String usb_status_list_error(String error) {
+    return 'Impossible de lister les périphériques USB : $error';
+  }
+
+  @override
+  String get usb_status_preparing_transport =>
+      'Préparation du transport en série...';
+
+  @override
+  String get usb_status_disconnecting_bluetooth =>
+      'Déconnexion du Bluetooth...';
+
+  @override
+  String get usb_status_opening_usb_connection => 'Connexion USB établie...';
+
+  @override
+  String usb_status_connected(String displayName) {
+    return 'Connecté via USB à $displayName.';
+  }
+
+  @override
+  String usb_status_connection_failed(String error) {
+    return 'Échec de la connexion USB : $error';
+  }
+
+  @override
+  String get usb_device_generic_title => 'Dispositif USB';
+
+  @override
+  String get usb_android_device_subtitle => 'Dispositif Android via USB';
+
+  @override
+  String get usb_serial_port => 'Port série';
+
+  @override
+  String usb_serial_port_open_error(String portName) {
+    return 'Impossible d\'ouvrir le port série $portName. Veuillez débrancher/rebrancher l\'appareil et réessayer.';
+  }
+
+  @override
   String get scanner_title => 'MeshCore Open';
 
   @override

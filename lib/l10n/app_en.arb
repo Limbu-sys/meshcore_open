@@ -38,6 +38,82 @@
     }
   },
   "common_percentValue": "{percent}%",
+  "usb_screen_title": "USB / Serial",
+  "@usb_screen_title": {
+    "description": "Title of the USB / Serial connection screen."
+  },
+  "usb_screen_refresh": "Refresh USB devices",
+  "@usb_screen_refresh": {
+    "description": "Tooltip for the button that refreshes the USB device list."
+  },
+  "usb_screen_no_devices": "No USB devices detected.",
+  "@usb_screen_no_devices": {
+    "description": "Message shown in the device list when no USB devices were found."
+  },
+  "usb_status_no_devices": "No USB devices detected. Make sure the device is plugged in.",
+  "@usb_status_no_devices": {
+    "description": "Status message shown in the USB screen when the refresh found no devices."
+  },
+  "usb_status_list_error": "Unable to list USB devices: {error}",
+  "@usb_status_list_error": {
+    "description": "Status message shown when querying the OS for USB ports fails.",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "usb_status_preparing_transport": "Preparing serial transport...",
+  "@usb_status_preparing_transport": {
+    "description": "Status text shown while initializing the serial transport."
+  },
+  "usb_status_disconnecting_bluetooth": "Disconnecting Bluetooth...",
+  "@usb_status_disconnecting_bluetooth": {
+    "description": "Status text shown when tearing down an existing Bluetooth connection."
+  },
+  "usb_status_opening_usb_connection": "Opening USB connection...",
+  "@usb_status_opening_usb_connection": {
+    "description": "Status text shown while opening the USB/serial connection."
+  },
+  "usb_status_connected": "Connected via USB to {displayName}.",
+  "@usb_status_connected": {
+    "description": "Status/snackbar shown after a successful USB connection.",
+    "placeholders": {
+      "displayName": {
+        "type": "String"
+      }
+    }
+  },
+  "usb_status_connection_failed": "USB connection failed: {error}",
+  "@usb_status_connection_failed": {
+    "description": "Status/snackbar shown when the USB connection attempt throws.",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "usb_device_generic_title": "USB device",
+  "@usb_device_generic_title": {
+    "description": "Fallback title used when a USB device has no name."
+  },
+  "usb_android_device_subtitle": "Android USB device",
+  "@usb_android_device_subtitle": {
+    "description": "Subtitle shown for Android USB devices when metadata is missing."
+  },
+  "usb_serial_port": "Serial port",
+  "@usb_serial_port": {
+    "description": "Label used when a serial port cannot be described with other metadata."
+  },
+  "usb_serial_port_open_error": "Unable to open serial port {portName}. Please unplug/replug the device and try again.",
+  "@usb_serial_port_open_error": {
+    "description": "Friendly instruction shown when opening the serial port fails.",
+    "placeholders": {
+      "portName": {
+        "type": "String"
+      }
+    }
+  },
   "@common_percentValue": {
     "placeholders": {
       "percent": {

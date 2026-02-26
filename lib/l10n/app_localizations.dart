@@ -310,6 +310,90 @@ abstract class AppLocalizations {
   /// **'{percent}%'**
   String common_percentValue(int percent);
 
+  /// Title of the USB / Serial connection screen.
+  ///
+  /// In en, this message translates to:
+  /// **'USB / Serial'**
+  String get usb_screen_title;
+
+  /// Tooltip for the button that refreshes the USB device list.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh USB devices'**
+  String get usb_screen_refresh;
+
+  /// Message shown in the device list when no USB devices were found.
+  ///
+  /// In en, this message translates to:
+  /// **'No USB devices detected.'**
+  String get usb_screen_no_devices;
+
+  /// Status message shown in the USB screen when the refresh found no devices.
+  ///
+  /// In en, this message translates to:
+  /// **'No USB devices detected. Make sure the device is plugged in.'**
+  String get usb_status_no_devices;
+
+  /// Status message shown when querying the OS for USB ports fails.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to list USB devices: {error}'**
+  String usb_status_list_error(String error);
+
+  /// Status text shown while initializing the serial transport.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparing serial transport...'**
+  String get usb_status_preparing_transport;
+
+  /// Status text shown when tearing down an existing Bluetooth connection.
+  ///
+  /// In en, this message translates to:
+  /// **'Disconnecting Bluetooth...'**
+  String get usb_status_disconnecting_bluetooth;
+
+  /// Status text shown while opening the USB/serial connection.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening USB connection...'**
+  String get usb_status_opening_usb_connection;
+
+  /// Status/snackbar shown after a successful USB connection.
+  ///
+  /// In en, this message translates to:
+  /// **'Connected via USB to {displayName}.'**
+  String usb_status_connected(String displayName);
+
+  /// Status/snackbar shown when the USB connection attempt throws.
+  ///
+  /// In en, this message translates to:
+  /// **'USB connection failed: {error}'**
+  String usb_status_connection_failed(String error);
+
+  /// Fallback title used when a USB device has no name.
+  ///
+  /// In en, this message translates to:
+  /// **'USB device'**
+  String get usb_device_generic_title;
+
+  /// Subtitle shown for Android USB devices when metadata is missing.
+  ///
+  /// In en, this message translates to:
+  /// **'Android USB device'**
+  String get usb_android_device_subtitle;
+
+  /// Label used when a serial port cannot be described with other metadata.
+  ///
+  /// In en, this message translates to:
+  /// **'Serial port'**
+  String get usb_serial_port;
+
+  /// Friendly instruction shown when opening the serial port fails.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to open serial port {portName}. Please unplug/replug the device and try again.'**
+  String usb_serial_port_open_error(String portName);
+
   /// No description provided for @scanner_title.
   ///
   /// In en, this message translates to:

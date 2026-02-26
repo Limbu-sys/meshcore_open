@@ -106,6 +106,59 @@ class AppLocalizationsUk extends AppLocalizations {
   }
 
   @override
+  String get usb_screen_title => 'USB / Серіальний';
+
+  @override
+  String get usb_screen_refresh => 'Оновити пристрої USB';
+
+  @override
+  String get usb_screen_no_devices => 'Не виявлено жодних пристроїв USB.';
+
+  @override
+  String get usb_status_no_devices =>
+      'Не виявлено жодних пристроїв USB. Переконайтеся, що пристрій підключено.';
+
+  @override
+  String usb_status_list_error(String error) {
+    return 'Не вдається перелічити USB-пристрої: $error';
+  }
+
+  @override
+  String get usb_status_preparing_transport =>
+      'Підготовка серійного транспорту...';
+
+  @override
+  String get usb_status_disconnecting_bluetooth => 'Відключення Bluetooth...';
+
+  @override
+  String get usb_status_opening_usb_connection => 'Відкриття з\'єднання USB...';
+
+  @override
+  String usb_status_connected(String displayName) {
+    return 'Підключено через USB до $displayName.';
+  }
+
+  @override
+  String usb_status_connection_failed(String error) {
+    return 'Не вдалося встановити з\'єднання через USB: $error';
+  }
+
+  @override
+  String get usb_device_generic_title => 'USB-пристрій';
+
+  @override
+  String get usb_android_device_subtitle =>
+      'Пристрій Android з USB-інтерфейсом';
+
+  @override
+  String get usb_serial_port => 'Серійна порт';
+
+  @override
+  String usb_serial_port_open_error(String portName) {
+    return 'Не вдається відкрити послідовний порт $portName. Будь ласка, від\'єднайте/під\'єднайте пристрій та спробуйте ще раз.';
+  }
+
+  @override
   String get scanner_title => 'MeshCore Open';
 
   @override

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:libserialport_plus/libserialport_plus.dart';
+import 'package:flutter_libserialport/flutter_libserialport.dart';
 import 'package:meshcore_open/connector/meshcore_protocol.dart';
 
 import 'mesh_transport.dart';
@@ -10,7 +10,6 @@ import '../utils/app_logger.dart';
 const int _usbFrameMarker = 0x3c; // '<'
 const Duration _writePacing = Duration(milliseconds: 3);
 
-/// USB serial transport for MeshCore devices sporting explicit framing.
 class SerialMeshTransport implements MeshTransport {
   SerialMeshTransport({required this.portName, this.baudRate = 115200});
 
@@ -28,6 +27,7 @@ class SerialMeshTransport implements MeshTransport {
   bool _isConnecting = false;
   Future<void>? _lastWrite;
   final List<int> _inboundBuffer = [];
+  bool _failedToOpenPort = false;
 
   @override
   Stream<Uint8List> get onData => _dataController.stream;
@@ -53,20 +53,22 @@ class SerialMeshTransport implements MeshTransport {
       _isConnected = false;
       _notifyTransition(TransportState.disconnected);
     }
+
     await _readerSubscription?.cancel();
-    await _reader?.close();
+    _reader?.close();
     _reader = null;
     _readerSubscription = null;
 
     await _waitForPendingWrites();
-
     await _closePort();
+
     _inboundBuffer.clear();
   }
 
   Future<void> _closePort() async {
     final port = _port;
     if (port == null) return;
+
     try {
       port.close();
     } catch (_) {
@@ -88,24 +90,54 @@ class SerialMeshTransport implements MeshTransport {
     }
   }
 
+  bool get failedToOpenPort => _failedToOpenPort;
+
   @override
   Future<void> connect() async {
     if (_isConnected || _isConnecting) return;
+
+    _failedToOpenPort = false;
     _isConnecting = true;
     _notifyTransition(TransportState.connecting);
+
     try {
       final port = SerialPort(portName);
-      final config = SerialPortConfig(
-        baudRate: baudRate,
-        bits: 8,
-        stopBits: 1,
-        parity: SerialPortParity.none,
-        xonXoff: SerialPortXonXoff.disabled,
-      );
-      port.setConfig(config);
-      port.open(SerialPortMode.readWrite);
+
+      if (!port.openReadWrite()) {
+        port.dispose();
+        final message =
+            'Unable to open serial port $portName. Please unplug/replug the device and try again.';
+        _failedToOpenPort = true;
+        appLogger.warn(message);
+        await _emitDisconnected();
+        return;
+      }
+
+      final config = SerialPortConfig()
+        ..baudRate = baudRate
+        ..bits = 8
+        ..stopBits = 1
+        ..parity = SerialPortParity.none
+        ..xonXoff = SerialPortXonXoff.disabled
+        ..dtr = SerialPortDtr.off
+        ..rts = SerialPortRts.off;
+
+      port.config = config;
+
+      // DTR reset sequence
+      config.dtr = SerialPortDtr.off;
+      port.config = config;
+      await Future.delayed(const Duration(milliseconds: 50));
+
+      config.dtr = SerialPortDtr.on;
+      port.config = config;
+      await Future.delayed(const Duration(milliseconds: 500));
+
+      config.rts = SerialPortRts.on;
+      port.config = config;
 
       _port = port;
+
       _reader = SerialPortReader(port);
       _readerSubscription = _reader!.stream.listen(
         _handleIncomingChunk,
@@ -115,12 +147,16 @@ class SerialMeshTransport implements MeshTransport {
       );
 
       await _notifyConnected();
+
+      appLogger.info(
+        'SerialMeshTransport: sending buildAppStart frame on $portName.',
+      );
+
       await _writeRaw(_wrapOutboundFrame(buildAppStartFrame()));
     } catch (error, stack) {
       debugPrint('SerialMeshTransport connect failed: $error');
       debugPrint('$stack');
       await _emitDisconnected();
-      rethrow;
     } finally {
       _isConnecting = false;
     }
@@ -128,15 +164,22 @@ class SerialMeshTransport implements MeshTransport {
 
   void _handleIncomingChunk(Uint8List chunk) {
     if (chunk.isEmpty) return;
+
     _inboundBuffer.addAll(chunk);
+
     while (_inboundBuffer.length >= 3) {
       final payloadLength = _inboundBuffer[1] | (_inboundBuffer[2] << 8);
+
       final frameSize = 3 + payloadLength;
+
       if (_inboundBuffer.length < frameSize) {
         break;
       }
+
       final payload = _inboundBuffer.sublist(3, frameSize);
+
       _dataController.add(Uint8List.fromList(payload));
+
       _inboundBuffer.removeRange(0, frameSize);
     }
   }
@@ -144,17 +187,21 @@ class SerialMeshTransport implements MeshTransport {
   Uint8List _wrapOutboundFrame(List<int> payload) {
     final length = payload.length;
     final frame = Uint8List(3 + length);
+
     frame[0] = _usbFrameMarker;
     frame[1] = length & 0xff;
     frame[2] = (length >> 8) & 0xff;
     frame.setRange(3, 3 + length, payload);
+
     return frame;
   }
 
   Future<void> _writeRaw(Uint8List data) async {
     final port = _port;
     if (!_isConnected || port == null) return;
+
     await Future.delayed(_writePacing);
+
     final writeFuture = Future(() => port.write(data));
     _lastWrite = writeFuture;
     await writeFuture;

@@ -106,6 +106,59 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get usb_screen_title => 'USB / Serie';
+
+  @override
+  String get usb_screen_refresh => 'Reiniciar dispositivos USB';
+
+  @override
+  String get usb_screen_no_devices => 'No se detectan dispositivos USB.';
+
+  @override
+  String get usb_status_no_devices =>
+      'No se detectan dispositivos USB. Asegúrese de que el dispositivo esté conectado.';
+
+  @override
+  String usb_status_list_error(String error) {
+    return 'Imposible listar los dispositivos USB: $error';
+  }
+
+  @override
+  String get usb_status_preparing_transport =>
+      'Preparando el transporte en serie...';
+
+  @override
+  String get usb_status_disconnecting_bluetooth => 'Desconectando Bluetooth...';
+
+  @override
+  String get usb_status_opening_usb_connection =>
+      'Estableciendo conexión USB...';
+
+  @override
+  String usb_status_connected(String displayName) {
+    return 'Conectado mediante USB a $displayName.';
+  }
+
+  @override
+  String usb_status_connection_failed(String error) {
+    return 'Error al conectar mediante USB: $error';
+  }
+
+  @override
+  String get usb_device_generic_title => 'Dispositivo USB';
+
+  @override
+  String get usb_android_device_subtitle => 'Dispositivo USB para Android';
+
+  @override
+  String get usb_serial_port => 'Puerto serie';
+
+  @override
+  String usb_serial_port_open_error(String portName) {
+    return 'No se puede abrir el puerto serie $portName. Por favor, desconecte/conecte el dispositivo y vuelva a intentarlo.';
+  }
+
+  @override
   String get scanner_title => 'MeshCore Open';
 
   @override

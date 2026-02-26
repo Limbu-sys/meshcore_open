@@ -63,7 +63,9 @@ dependencies:
   material_symbols_icons: ^4.2906.0
   web: ^1.1.1
   flutter_svg: ^2.0.10+1
-  libserialport_plus: ^0.0.12
+  flutter_libserialport: ^0.6.0
+  libserialport: ^0.3.0+1
+  usb_serial: ^0.5.2
 
 dev_dependencies:
   flutter_test:

@@ -106,6 +106,57 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get usb_screen_title => 'USB / Serial';
+
+  @override
+  String get usb_screen_refresh => 'Refresh USB devices';
+
+  @override
+  String get usb_screen_no_devices => 'No USB devices detected.';
+
+  @override
+  String get usb_status_no_devices =>
+      'No USB devices detected. Make sure the device is plugged in.';
+
+  @override
+  String usb_status_list_error(String error) {
+    return 'Unable to list USB devices: $error';
+  }
+
+  @override
+  String get usb_status_preparing_transport => 'Preparing serial transport...';
+
+  @override
+  String get usb_status_disconnecting_bluetooth => 'Disconnecting Bluetooth...';
+
+  @override
+  String get usb_status_opening_usb_connection => 'Opening USB connection...';
+
+  @override
+  String usb_status_connected(String displayName) {
+    return 'Connected via USB to $displayName.';
+  }
+
+  @override
+  String usb_status_connection_failed(String error) {
+    return 'USB connection failed: $error';
+  }
+
+  @override
+  String get usb_device_generic_title => 'USB device';
+
+  @override
+  String get usb_android_device_subtitle => 'Android USB device';
+
+  @override
+  String get usb_serial_port => 'Serial port';
+
+  @override
+  String usb_serial_port_open_error(String portName) {
+    return 'Unable to open serial port $portName. Please unplug/replug the device and try again.';
+  }
+
+  @override
   String get scanner_title => 'MeshCore Open';
 
   @override

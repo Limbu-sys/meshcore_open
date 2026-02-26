@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
@@ -45,26 +47,31 @@ class BleMeshTransport implements MeshTransport {
   }
 
   TransportState? _mapConnectionState(BluetoothConnectionState state) {
-    switch (state) {
-      case BluetoothConnectionState.disconnected:
-        return TransportState.disconnected;
-      // ignore: deprecated_member_use
-      case BluetoothConnectionState.connecting:
-        return TransportState.connecting;
-      case BluetoothConnectionState.connected:
-        return TransportState.connected;
-      // ignore: deprecated_member_use
-      case BluetoothConnectionState.disconnecting:
-        return TransportState.disconnected;
+    if (state == BluetoothConnectionState.disconnected) {
+      return TransportState.disconnected;
     }
+    // ignore: deprecated_member_use
+    if (state == BluetoothConnectionState.disconnecting) {
+      return TransportState.disconnected;
+    }
+    // ignore: deprecated_member_use
+    if (state == BluetoothConnectionState.connecting) {
+      return TransportState.connecting;
+    }
+    if (state == BluetoothConnectionState.connected) {
+      return TransportState.connected;
+    }
+    return null;
   }
 
   Future<void> initializeAfterConnect(BluetoothDevice device) async {
-    try {
-      final mtu = await device.requestMtu(185);
-      debugPrint('MTU set to: $mtu');
-    } catch (e) {
-      debugPrint('MTU request failed: $e, using default');
+    if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
+      try {
+        final mtu = await device.requestMtu(185);
+        debugPrint('MTU set to: $mtu');
+      } catch (e) {
+        debugPrint('MTU request failed: $e, using default');
+      }
     }
 
     final services = await device.discoverServices();

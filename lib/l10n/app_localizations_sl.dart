@@ -106,6 +106,60 @@ class AppLocalizationsSl extends AppLocalizations {
   }
 
   @override
+  String get usb_screen_title => 'USB / Serijska';
+
+  @override
+  String get usb_screen_refresh => 'Ponovno pripravite USB naprave';
+
+  @override
+  String get usb_screen_no_devices => 'Niti en USB naprave niso zaznane.';
+
+  @override
+  String get usb_status_no_devices =>
+      'Niso zaznati nobenih USB naprav. Prosimo, da se prepričate, da je naprava pravilno priključena.';
+
+  @override
+  String usb_status_list_error(String error) {
+    return 'Nezmožnost izpostavitja USB naprav: $error';
+  }
+
+  @override
+  String get usb_status_preparing_transport =>
+      'Priprava serijske prevoznine...';
+
+  @override
+  String get usb_status_disconnecting_bluetooth => 'Odklopitev Bluetootha...';
+
+  @override
+  String get usb_status_opening_usb_connection =>
+      'Uporabljanje USB povezave...';
+
+  @override
+  String usb_status_connected(String displayName) {
+    return 'Povezan preko USB s $displayName.';
+  }
+
+  @override
+  String usb_status_connection_failed(String error) {
+    return 'Napaka pri povezavi preko USB: $error';
+  }
+
+  @override
+  String get usb_device_generic_title => 'Naprave USB';
+
+  @override
+  String get usb_android_device_subtitle =>
+      'Naprave za USB povezavo za Android';
+
+  @override
+  String get usb_serial_port => 'Serijska vrata';
+
+  @override
+  String usb_serial_port_open_error(String portName) {
+    return 'Nezmogljivo je odkrit serialni port $portName. Prosim, izključite/znova priključite naprave in poskusite še enkrat.';
+  }
+
+  @override
   String get scanner_title => 'MeshCore Open';
 
   @override

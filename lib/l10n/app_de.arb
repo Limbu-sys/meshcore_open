@@ -1,6 +1,12 @@
 {
   "channels_channelDeleteFailed": "Kanal {name} konnte nicht gelöscht werden",
-  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "de",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Kontakte",
@@ -1775,5 +1781,89 @@
         "type": "double"
       }
     }
-  }
+  },
+  "@usb_screen_title": {
+    "description": "Title of the USB / Serial connection screen."
+  },
+  "@usb_screen_refresh": {
+    "description": "Tooltip for the button that refreshes the USB device list."
+  },
+  "@usb_screen_no_devices": {
+    "description": "Message shown in the device list when no USB devices were found."
+  },
+  "@usb_status_no_devices": {
+    "description": "Status message shown in the USB screen when the refresh found no devices."
+  },
+  "@usb_status_list_error": {
+    "description": "Status message shown when querying the OS for USB ports fails.",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@usb_status_preparing_transport": {
+    "description": "Status text shown while initializing the serial transport."
+  },
+  "@usb_status_disconnecting_bluetooth": {
+    "description": "Status text shown when tearing down an existing Bluetooth connection."
+  },
+  "@usb_status_opening_usb_connection": {
+    "description": "Status text shown while opening the USB/serial connection."
+  },
+  "@usb_status_connected": {
+    "description": "Status/snackbar shown after a successful USB connection.",
+    "placeholders": {
+      "displayName": {
+        "type": "String"
+      }
+    }
+  },
+  "@usb_status_connection_failed": {
+    "description": "Status/snackbar shown when the USB connection attempt throws.",
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "@usb_device_generic_title": {
+    "description": "Fallback title used when a USB device has no name."
+  },
+  "@usb_android_device_subtitle": {
+    "description": "Subtitle shown for Android USB devices when metadata is missing."
+  },
+  "@usb_serial_port": {
+    "description": "Label used when a serial port cannot be described with other metadata."
+  },
+  "@usb_serial_port_open_error": {
+    "description": "Friendly instruction shown when opening the serial port fails.",
+    "placeholders": {
+      "portName": {
+        "type": "String"
+      }
+    }
+  },
+  "usb_screen_title": "USB / Seriell",
+  "usb_status_no_devices": "Keine USB-Geräte erkannt. Bitte stellen Sie sicher, dass das Gerät korrekt angeschlossen ist.",
+  "usb_screen_no_devices": "Keine USB-Geräte erkannt.",
+  "usb_screen_refresh": "USB-Geräte neu starten/aktualisieren",
+  "usb_status_list_error": "Nicht in der Lage, USB-Geräte aufzulisten: {error}",
+  "usb_status_preparing_transport": "Vorbereitung der Reihe von Transporten...",
+  "usb_status_disconnecting_bluetooth": "Bluetooth-Verbindung trennen...",
+  "usb_status_opening_usb_connection": "USB-Verbindung wird hergestellt...",
+  "usb_status_connected": "Verbunden über USB mit {displayName}.",
+  "usb_status_connection_failed": "Fehler beim USB-Verbindungsaufbau: {error}",
+  "usb_device_generic_title": "USB-Gerät",
+  "usb_android_device_subtitle": "Android-USB-Gerät",
+  "usb_serial_port": "Serielle Schnittstelle",
+  "usb_serial_port_open_error": "Es konnte keine Verbindung zum seriellen Port {portName} hergestellt werden. Bitte das Gerät trennen und wieder anschließen, und versuchen Sie es erneut.",
+  "@gifMessage_networkUnavailable": {
+    "description": "Displayed inside a GIF message when the preview cannot be fetched due to network issues."
+  },
+  "@gifMessage_tapToLoad": {
+    "description": "Instruction shown inside a GIF preview placeholder before the GIF has loaded."
+  },
+  "gifMessage_tapToLoad": "Tippen Sie, um das GIF zu laden.",
+  "gifMessage_networkUnavailable": "Aktuell können keine GIFs geladen werden. Bitte überprüfen Sie Ihre Internetverbindung."
 }

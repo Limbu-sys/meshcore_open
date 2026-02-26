@@ -106,6 +106,58 @@ class AppLocalizationsSk extends AppLocalizations {
   }
 
   @override
+  String get usb_screen_title => 'USB / sériový rozhranie';
+
+  @override
+  String get usb_screen_refresh => 'Obnovte USB zariadenia';
+
+  @override
+  String get usb_screen_no_devices => 'Nezistené žiadne USB zariadenia.';
+
+  @override
+  String get usb_status_no_devices =>
+      'Nezistili sme žiadne USB zariadenia. Uistite sa, že je zariadenie správne zapojené.';
+
+  @override
+  String usb_status_list_error(String error) {
+    return 'Nemožnosť zobraziť USB zariadenia: $error';
+  }
+
+  @override
+  String get usb_status_preparing_transport => 'Príprava sériovej dopravy...';
+
+  @override
+  String get usb_status_disconnecting_bluetooth => 'Odpojenie Bluetooth...';
+
+  @override
+  String get usb_status_opening_usb_connection =>
+      'Úspešné vytvorenie USB pripojenia...';
+
+  @override
+  String usb_status_connected(String displayName) {
+    return 'Pripojené cez USB k $displayName.';
+  }
+
+  @override
+  String usb_status_connection_failed(String error) {
+    return 'Neúspešné pripojenie cez USB: $error';
+  }
+
+  @override
+  String get usb_device_generic_title => 'USB zariadenie';
+
+  @override
+  String get usb_android_device_subtitle => 'Androidové USB zariadenie';
+
+  @override
+  String get usb_serial_port => 'Sériová rozhranie';
+
+  @override
+  String usb_serial_port_open_error(String portName) {
+    return 'Nemožno otvoriť sériový port $portName. Prosím, odpojte/opäť zapojte zariadenie a skúste to znova.';
+  }
+
+  @override
   String get scanner_title => 'MeshCore Open';
 
   @override

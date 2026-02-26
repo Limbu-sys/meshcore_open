@@ -106,6 +106,60 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
+  String get usb_screen_title => 'USB / Seriële aansluiting';
+
+  @override
+  String get usb_screen_refresh => 'Herstel USB-apparaten';
+
+  @override
+  String get usb_screen_no_devices => 'Geen USB-apparaten zijn gedetecteerd.';
+
+  @override
+  String get usb_status_no_devices =>
+      'Geen USB-apparaten zijn gedetecteerd. Zorg ervoor dat het apparaat is aangesloten.';
+
+  @override
+  String usb_status_list_error(String error) {
+    return 'Kan USB-apparaten niet weergeven: $error';
+  }
+
+  @override
+  String get usb_status_preparing_transport =>
+      'Voorbereiding van een reeks transporten...';
+
+  @override
+  String get usb_status_disconnecting_bluetooth =>
+      'Bluetooth-verbinding verbreken...';
+
+  @override
+  String get usb_status_opening_usb_connection =>
+      'USB-verbinding wordt geopend...';
+
+  @override
+  String usb_status_connected(String displayName) {
+    return 'Verbonden via USB met $displayName.';
+  }
+
+  @override
+  String usb_status_connection_failed(String error) {
+    return 'Fout bij de USB-verbinding: $error';
+  }
+
+  @override
+  String get usb_device_generic_title => 'USB-apparaat';
+
+  @override
+  String get usb_android_device_subtitle => 'Android USB-apparaat';
+
+  @override
+  String get usb_serial_port => 'Seriële poort';
+
+  @override
+  String usb_serial_port_open_error(String portName) {
+    return 'Het is niet mogelijk om de seriële poort $portName te openen. Haal het apparaat uit en steek het opnieuw in, en probeer het opnieuw.';
+  }
+
+  @override
   String get scanner_title => 'MeshCore Open';
 
   @override

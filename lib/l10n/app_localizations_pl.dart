@@ -106,6 +106,59 @@ class AppLocalizationsPl extends AppLocalizations {
   }
 
   @override
+  String get usb_screen_title => 'USB / Serial';
+
+  @override
+  String get usb_screen_refresh => 'Zresetuj urządzenia USB';
+
+  @override
+  String get usb_screen_no_devices => 'Nie wykryto żadnych urządzeń USB.';
+
+  @override
+  String get usb_status_no_devices =>
+      'Nie wykryto żadnych urządzeń USB. Upewnij się, że urządzenie jest podłączone.';
+
+  @override
+  String usb_status_list_error(String error) {
+    return 'Nie można wyświetlić urządzeń USB: $error';
+  }
+
+  @override
+  String get usb_status_preparing_transport =>
+      'Przygotowanie serii transportów...';
+
+  @override
+  String get usb_status_disconnecting_bluetooth => 'Wyłączanie Bluetooth...';
+
+  @override
+  String get usb_status_opening_usb_connection =>
+      'Uruchamianie połączenia USB...';
+
+  @override
+  String usb_status_connected(String displayName) {
+    return 'Połączone przez USB z urządzeniem $displayName.';
+  }
+
+  @override
+  String usb_status_connection_failed(String error) {
+    return 'Błąd połączenia USB: $error';
+  }
+
+  @override
+  String get usb_device_generic_title => 'Urządzenie USB';
+
+  @override
+  String get usb_android_device_subtitle => 'Urządzenie USB dla Androida';
+
+  @override
+  String get usb_serial_port => 'Port szeregowy';
+
+  @override
+  String usb_serial_port_open_error(String portName) {
+    return 'Nie udało się otworzyć portu szeregowego $portName. Prosimy o odłączenie/podłączenie urządzenia i ponowne próby.';
+  }
+
+  @override
   String get scanner_title => 'MeshCore Open';
 
   @override

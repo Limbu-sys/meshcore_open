@@ -106,6 +106,60 @@ class AppLocalizationsDe extends AppLocalizations {
   }
 
   @override
+  String get usb_screen_title => 'USB / Seriell';
+
+  @override
+  String get usb_screen_refresh => 'USB-Geräte neu starten/aktualisieren';
+
+  @override
+  String get usb_screen_no_devices => 'Keine USB-Geräte erkannt.';
+
+  @override
+  String get usb_status_no_devices =>
+      'Keine USB-Geräte erkannt. Bitte stellen Sie sicher, dass das Gerät korrekt angeschlossen ist.';
+
+  @override
+  String usb_status_list_error(String error) {
+    return 'Nicht in der Lage, USB-Geräte aufzulisten: $error';
+  }
+
+  @override
+  String get usb_status_preparing_transport =>
+      'Vorbereitung der Reihe von Transporten...';
+
+  @override
+  String get usb_status_disconnecting_bluetooth =>
+      'Bluetooth-Verbindung trennen...';
+
+  @override
+  String get usb_status_opening_usb_connection =>
+      'USB-Verbindung wird hergestellt...';
+
+  @override
+  String usb_status_connected(String displayName) {
+    return 'Verbunden über USB mit $displayName.';
+  }
+
+  @override
+  String usb_status_connection_failed(String error) {
+    return 'Fehler beim USB-Verbindungsaufbau: $error';
+  }
+
+  @override
+  String get usb_device_generic_title => 'USB-Gerät';
+
+  @override
+  String get usb_android_device_subtitle => 'Android-USB-Gerät';
+
+  @override
+  String get usb_serial_port => 'Serielle Schnittstelle';
+
+  @override
+  String usb_serial_port_open_error(String portName) {
+    return 'Es konnte keine Verbindung zum seriellen Port $portName hergestellt werden. Bitte das Gerät trennen und wieder anschließen, und versuchen Sie es erneut.';
+  }
+
+  @override
   String get scanner_title => 'MeshCore Open';
 
   @override
