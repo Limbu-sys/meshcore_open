@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import '../l10n/l10n.dart';
+import 'unread_badge.dart';
 
 class QuickSwitchBar extends StatelessWidget {
   final int selectedIndex;
@@ -104,12 +105,16 @@ class QuickSwitchBar extends StatelessWidget {
   Widget _buildIconWithBadge(Icon icon, int count) {
     if (count <= 0) return icon;
 
-    return Badge(
-      label: Text(
-        count > 99 ? '99+' : count.toString(),
-        style: const TextStyle(fontSize: 10),
-      ),
-      child: icon,
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        icon,
+        Positioned(
+          right: -6,
+          top: -4,
+          child: UnreadBadge(count: count),
+        ),
+      ],
     );
   }
 }
