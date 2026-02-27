@@ -2750,7 +2750,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get listFilter_az => 'A-Z';
 
   @override
-  String get listFilter_usersFirst => 'Users first';
+  String get listFilter_usersFirst => 'Utilizadores primeiro';
 
   @override
   String get listFilter_filters => 'Filtros';

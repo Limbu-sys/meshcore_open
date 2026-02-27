@@ -1352,6 +1352,7 @@
   "listFilter_users": "Użytkownicy",
   "listFilter_repeaters": "Powtarzacze",
   "listFilter_roomServers": "Serwery pokoju",
+  "listFilter_usersFirst": "Najpierw użytkownicy",
   "listFilter_unreadOnly": "Tylko nieprzeczytane",
   "listFilter_newGroup": "Nowa grupa",
   "@neighbors_errorLoading": {

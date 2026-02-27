@@ -2753,7 +2753,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get listFilter_az => 'По алфавиту';
 
   @override
-  String get listFilter_usersFirst => 'Users first';
+  String get listFilter_usersFirst => 'Сначала пользователи';
 
   @override
   String get listFilter_filters => 'Фильтры';
