@@ -3,18 +3,20 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:meshcore_open/storage/channel_message_store.dart';
+import 'package:meshcore_open/widgets/app_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 import '../connector/meshcore_connector.dart';
 import '../l10n/l10n.dart';
+import '../services/app_settings_service.dart';
 import '../models/channel.dart';
 import '../models/community.dart';
 import '../storage/community_store.dart';
 import '../utils/dialog_utils.dart';
 import '../utils/disconnect_navigation_mixin.dart';
 import '../utils/route_transitions.dart';
-import '../widgets/battery_indicator.dart';
 import '../widgets/list_filter_widget.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/qr_code_display.dart';
@@ -104,6 +106,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   @override
   Widget build(BuildContext context) {
     final connector = context.watch<MeshCoreConnector>();
+    final channelMessageStore = ChannelMessageStore();
 
     // Auto-navigate back to scanner if disconnected
     if (!checkConnectionAndNavigate(connector)) {
@@ -116,8 +119,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
       canPop: allowBack,
       child: Scaffold(
         appBar: AppBar(
-          leading: BatteryIndicator(connector: connector),
-          title: Text(context.l10n.channels_title),
+          title: AppBarTitle(context.l10n.channels_title),
           centerTitle: true,
           automaticallyImplyLeading: false,
           actions: [
@@ -304,6 +306,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
                             return _buildChannelTile(
                               context,
                               connector,
+                              channelMessageStore,
                               channel,
                               showDragHandle: true,
                               dragIndex: index,
@@ -323,6 +326,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
                             return _buildChannelTile(
                               context,
                               connector,
+                              channelMessageStore,
                               channel,
                             );
                           },
@@ -354,6 +358,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   Widget _buildChannelTile(
     BuildContext context,
     MeshCoreConnector connector,
+    ChannelMessageStore channelMessageStore,
     Channel channel, {
     bool showDragHandle = false,
     int? dragIndex,
@@ -470,7 +475,12 @@ class _ChannelsScreenState extends State<ChannelsScreen>
             );
           }
         },
-        onLongPress: () => _showChannelActions(context, connector, channel),
+        onLongPress: () => _showChannelActions(
+          context,
+          connector,
+          channelMessageStore,
+          channel,
+        ),
       ),
     );
   }
@@ -478,11 +488,16 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   void _showChannelActions(
     BuildContext context,
     MeshCoreConnector connector,
+    ChannelMessageStore channelMessageStore,
     Channel channel,
   ) {
+    final parentContext = context;
+    final settingsService = context.read<AppSettingsService>();
+    final isMuted = settingsService.isChannelMuted(channel.name);
+
     showModalBottomSheet(
-      context: context,
-      builder: (context) => SafeArea(
+      context: parentContext,
+      builder: (sheetContext) => SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -490,10 +505,30 @@ class _ChannelsScreenState extends State<ChannelsScreen>
               leading: const Icon(Icons.edit_outlined),
               title: Text(context.l10n.channels_editChannel),
               onTap: () async {
-                Navigator.pop(context);
+                Navigator.pop(sheetContext);
                 await Future.delayed(const Duration(milliseconds: 100));
-                if (context.mounted) {
-                  _showEditChannelDialog(context, connector, channel);
+                if (parentContext.mounted) {
+                  _showEditChannelDialog(parentContext, connector, channel);
+                }
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                isMuted
+                    ? Icons.notifications_outlined
+                    : Icons.notifications_off_outlined,
+              ),
+              title: Text(
+                isMuted
+                    ? context.l10n.channels_unmuteChannel
+                    : context.l10n.channels_muteChannel,
+              ),
+              onTap: () async {
+                Navigator.pop(sheetContext);
+                if (isMuted) {
+                  await settingsService.unmuteChannel(channel.name);
+                } else {
+                  await settingsService.muteChannel(channel.name);
                 }
               },
             ),
@@ -504,10 +539,15 @@ class _ChannelsScreenState extends State<ChannelsScreen>
                 style: const TextStyle(color: Colors.red),
               ),
               onTap: () async {
-                Navigator.pop(context);
+                Navigator.pop(sheetContext);
                 await Future.delayed(const Duration(milliseconds: 100));
-                if (context.mounted) {
-                  _confirmDeleteChannel(context, connector, channel);
+                if (parentContext.mounted) {
+                  _confirmDeleteChannel(
+                    context,
+                    connector,
+                    channelMessageStore,
+                    channel,
+                  );
                 }
               },
             ),
@@ -1417,7 +1457,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
               child: Text(dialogContext.l10n.common_cancel),
             ),
             FilledButton(
-              onPressed: () {
+              onPressed: () async {
                 final name = nameController.text.trim();
                 final pskHex = pskController.text.trim();
 
@@ -1434,13 +1474,25 @@ class _ChannelsScreenState extends State<ChannelsScreen>
                 }
 
                 Navigator.pop(dialogContext);
-                connector.setChannel(channel.index, name, psk);
-                connector.setChannelSmazEnabled(channel.index, smazEnabled);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(context.l10n.channels_channelUpdated(name)),
-                  ),
-                );
+                try {
+                  await connector.setChannel(channel.index, name, psk);
+                  await connector.setChannelSmazEnabled(
+                    channel.index,
+                    smazEnabled,
+                  );
+                  if (!context.mounted) return;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(context.l10n.channels_channelUpdated(name)),
+                    ),
+                  );
+                } catch (e, st) {
+                  debugPrint(st.toString());
+                  if (!context.mounted) return;
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Failed to update channel: $e')),
+                  );
+                }
               },
               child: Text(dialogContext.l10n.common_save),
             ),
@@ -1453,6 +1505,7 @@ class _ChannelsScreenState extends State<ChannelsScreen>
   void _confirmDeleteChannel(
     BuildContext context,
     MeshCoreConnector connector,
+    ChannelMessageStore channelMessageStore,
     Channel channel,
   ) {
     showDialog(
@@ -1468,16 +1521,36 @@ class _ChannelsScreenState extends State<ChannelsScreen>
             child: Text(dialogContext.l10n.common_cancel),
           ),
           TextButton(
-            onPressed: () {
+            onPressed: () async {
               Navigator.pop(dialogContext);
-              connector.deleteChannel(channel.index);
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    context.l10n.channels_channelDeleted(channel.name),
+              try {
+                await connector.deleteChannel(channel.index);
+
+                channelMessageStore.clearChannelMessages(channel.index);
+
+                if (!context.mounted) return;
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      context.l10n.channels_channelDeleted(channel.name),
+                    ),
                   ),
-                ),
-              );
+                );
+              } catch (e, st) {
+                if (!context.mounted) return;
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      context.l10n.channels_channelDeleteFailed(channel.name),
+                    ),
+                  ),
+                );
+
+                // Preserve existing logging (if it was there)
+                debugPrint('Failed to delete channel: $e\n$st');
+              }
             },
             child: Text(
               dialogContext.l10n.common_delete,

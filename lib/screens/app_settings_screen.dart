@@ -3,8 +3,10 @@ import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
 import '../l10n/l10n.dart';
+import '../models/app_settings.dart';
 import '../services/app_settings_service.dart';
 import '../services/notification_service.dart';
+import '../widgets/adaptive_app_bar_title.dart';
 import 'map_cache_screen.dart';
 
 class AppSettingsScreen extends StatelessWidget {
@@ -14,7 +16,7 @@ class AppSettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.l10n.appSettings_title),
+        title: AdaptiveAppBarTitle(context.l10n.appSettings_title),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -79,6 +81,18 @@ class AppSettingsScreen extends StatelessWidget {
             ),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => _showLanguageDialog(context, settingsService),
+          ),
+          const Divider(height: 1),
+          SwitchListTile(
+            secondary: const Icon(Icons.location_searching),
+            title: Text(context.l10n.appSettings_enableMessageTracing),
+            subtitle: Text(
+              context.l10n.appSettings_enableMessageTracingSubtitle,
+            ),
+            value: settingsService.settings.enableMessageTracing,
+            onChanged: (value) {
+              settingsService.setEnableMessageTracing(value);
+            },
           ),
         ],
       ),
@@ -361,6 +375,18 @@ class AppSettingsScreen extends StatelessWidget {
           ),
           const Divider(height: 1),
           ListTile(
+            leading: const Icon(Icons.straighten),
+            title: Text(context.l10n.appSettings_unitsTitle),
+            subtitle: Text(
+              settingsService.settings.unitSystem == UnitSystem.imperial
+                  ? context.l10n.appSettings_unitsImperial
+                  : context.l10n.appSettings_unitsMetric,
+            ),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => _showUnitsDialog(context, settingsService),
+          ),
+          const Divider(height: 1),
+          ListTile(
             leading: const Icon(Icons.download_outlined),
             title: Text(context.l10n.appSettings_offlineMapCache),
             subtitle: Text(
@@ -384,6 +410,7 @@ class AppSettingsScreen extends StatelessWidget {
     );
   }
 
+  // Fixed rendering issues
   Widget _buildBatteryCard(
     BuildContext context,
     AppSettingsService settingsService,
@@ -399,6 +426,7 @@ class AppSettingsScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(height: 4),
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
             child: Text(
@@ -406,6 +434,8 @@ class AppSettingsScreen extends StatelessWidget {
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
+
+          // Main tile (icon + text only)
           ListTile(
             leading: const Icon(Icons.battery_full),
             title: Text(context.l10n.appSettings_batteryChemistry),
@@ -416,8 +446,19 @@ class AppSettingsScreen extends StatelessWidget {
                     )
                   : context.l10n.appSettings_batteryChemistryConnectFirst,
             ),
-            trailing: DropdownButton<String>(
-              value: selection,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+          ),
+
+          // Dropdown (separate full-width row)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            child: DropdownButtonFormField<String>(
+              initialValue: selection,
+              isExpanded: true,
+              decoration: const InputDecoration(
+                border: UnderlineInputBorder(),
+                isDense: true,
+              ),
               onChanged: isConnected
                   ? (value) {
                       if (value != null) {
@@ -677,6 +718,46 @@ class AppSettingsScreen extends StatelessWidget {
               ListTile(
                 title: Text(context.l10n.appSettings_lastWeek),
                 leading: Radio<double>(value: 168),
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(context.l10n.common_close),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showUnitsDialog(
+    BuildContext context,
+    AppSettingsService settingsService,
+  ) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(context.l10n.appSettings_unitsTitle),
+        content: RadioGroup<UnitSystem>(
+          groupValue: settingsService.settings.unitSystem,
+          onChanged: (value) {
+            if (value != null) {
+              settingsService.setUnitSystem(value);
+              Navigator.pop(context);
+            }
+          },
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                title: Text(context.l10n.appSettings_unitsMetric),
+                leading: const Radio<UnitSystem>(value: UnitSystem.metric),
+              ),
+              ListTile(
+                title: Text(context.l10n.appSettings_unitsImperial),
+                leading: const Radio<UnitSystem>(value: UnitSystem.imperial),
               ),
             ],
           ),

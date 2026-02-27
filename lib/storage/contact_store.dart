@@ -33,6 +33,7 @@ class ContactStore {
       'publicKey': base64Encode(contact.publicKey),
       'name': contact.name,
       'type': contact.type,
+      'flags': contact.flags,
       'pathLength': contact.pathLength,
       'path': base64Encode(contact.path),
       'pathOverride': contact.pathOverride,
@@ -53,6 +54,7 @@ class ContactStore {
       publicKey: Uint8List.fromList(base64Decode(json['publicKey'] as String)),
       name: json['name'] as String? ?? 'Unknown',
       type: json['type'] as int? ?? 0,
+      flags: json['flags'] as int? ?? 0,
       pathLength: json['pathLength'] as int? ?? -1,
       path: json['path'] != null
           ? Uint8List.fromList(base64Decode(json['path'] as String))

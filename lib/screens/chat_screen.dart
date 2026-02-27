@@ -13,13 +13,19 @@ import 'package:latlong2/latlong.dart';
 import '../connector/meshcore_connector.dart';
 import '../connector/meshcore_protocol.dart';
 import '../helpers/reaction_helper.dart';
+import '../widgets/message_status_icon.dart';
 import '../helpers/chat_scroll_controller.dart';
 import '../helpers/link_handler.dart';
 import '../helpers/utf8_length_limiter.dart';
 import '../models/channel_message.dart';
 import '../models/contact.dart';
 import '../models/message.dart';
+import '../models/path_history.dart';
+import '../services/app_settings_service.dart';
+import '../services/chat_text_scale_service.dart';
 import '../services/path_history_service.dart';
+import '../widgets/chat_zoom_wrapper.dart';
+import '../widgets/elements_ui.dart';
 import 'channel_message_path_screen.dart';
 import 'map_screen.dart';
 import '../utils/emoji_utils.dart';
@@ -266,52 +272,62 @@ class _ChatScreenState extends State<ChatScreen> {
       _scrollController.scrollToBottomIfAtBottom();
     });
 
-    return ListView.builder(
-      reverse: true, // List grows from bottom up
-      controller: _scrollController,
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-      itemCount: itemCount,
-      itemBuilder: (context, index) {
-        // Loading indicator now appears at end (bottom) of reversed list
-        if (_isLoadingOlder && index == itemCount - 1) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(vertical: 16),
-            child: Center(
-              child: SizedBox(
-                width: 20,
-                height: 20,
-                child: CircularProgressIndicator(strokeWidth: 2),
+    return ChatZoomWrapper(
+      child: ListView.builder(
+        reverse: true, // List grows from bottom up
+        controller: _scrollController,
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+        itemCount: itemCount,
+        itemBuilder: (context, index) {
+          // Loading indicator now appears at end (bottom) of reversed list
+          if (_isLoadingOlder && index == itemCount - 1) {
+            return const Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: Center(
+                child: SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                ),
               ),
-            ),
-          );
-        }
-        final messageIndex = index;
-        Contact contact = widget.contact;
-        final message = reversedMessages[messageIndex];
-        String fourByteHex = '';
-        if (widget.contact.type == advTypeRoom) {
-          contact = _resolveContactFrom4Bytes(
-            connector,
-            message.fourByteRoomContactKey.isEmpty
-                ? Uint8List.fromList([0, 0, 0, 0])
-                : message.fourByteRoomContactKey,
-          );
-          fourByteHex = message.fourByteRoomContactKey
-              .map((b) => b.toRadixString(16).padLeft(2, '0'))
-              .join()
-              .toUpperCase();
-        }
+            );
+          }
+          final messageIndex = index;
+          Contact contact = widget.contact;
+          final message = reversedMessages[messageIndex];
+          String fourByteHex = '';
+          if (widget.contact.type == advTypeRoom) {
+            contact = _resolveContactFrom4Bytes(
+              connector,
+              message.fourByteRoomContactKey.isEmpty
+                  ? Uint8List.fromList([0, 0, 0, 0])
+                  : message.fourByteRoomContactKey,
+            );
+            fourByteHex = message.fourByteRoomContactKey
+                .map((b) => b.toRadixString(16).padLeft(2, '0'))
+                .join()
+                .toUpperCase();
+          }
 
-        return _MessageBubble(
-          message: message,
-          senderName: widget.contact.type == advTypeRoom
-              ? "${contact.name} [$fourByteHex]"
-              : contact.name,
-          isRoomServer: widget.contact.type == advTypeRoom,
-          onTap: () => _openMessagePath(message, contact),
-          onLongPress: () => _showMessageActions(message, contact),
-        );
-      },
+          return Builder(
+            builder: (context) {
+              final textScale = context.select<ChatTextScaleService, double>(
+                (service) => service.scale,
+              );
+              return _MessageBubble(
+                message: message,
+                senderName: widget.contact.type == advTypeRoom
+                    ? "${contact.name} [$fourByteHex]"
+                    : contact.name,
+                isRoomServer: widget.contact.type == advTypeRoom,
+                textScale: textScale,
+                onTap: () => _openMessagePath(message, contact),
+                onLongPress: () => _showMessageActions(message, contact),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 
@@ -338,28 +354,44 @@ class _ChatScreenState extends State<ChatScreen> {
                 builder: (context, value, child) {
                   final gifId = _parseGifId(value.text);
                   if (gifId != null) {
-                    return Row(
-                      children: [
-                        Expanded(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: GifMessage(
-                              url:
-                                  'https://media.giphy.com/media/$gifId/giphy.gif',
-                              backgroundColor:
-                                  colorScheme.surfaceContainerHighest,
-                              fallbackTextColor: colorScheme.onSurface
-                                  .withValues(alpha: 0.6),
-                              maxSize: 160,
+                    return Focus(
+                      autofocus: true,
+                      onKeyEvent: (node, event) {
+                        if (event is KeyDownEvent &&
+                            (event.logicalKey == LogicalKeyboardKey.enter ||
+                                event.logicalKey ==
+                                    LogicalKeyboardKey.numpadEnter)) {
+                          _sendMessage(connector);
+                          return KeyEventResult.handled;
+                        }
+                        return KeyEventResult.ignored;
+                      },
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: GifMessage(
+                                url:
+                                    'https://media.giphy.com/media/$gifId/giphy.gif',
+                                backgroundColor:
+                                    colorScheme.surfaceContainerHighest,
+                                fallbackTextColor: colorScheme.onSurface
+                                    .withValues(alpha: 0.6),
+                                maxSize: 160,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 8),
-                        IconButton(
-                          icon: const Icon(Icons.close),
-                          onPressed: () => _textController.clear(),
-                        ),
-                      ],
+                          const SizedBox(width: 8),
+                          IconButton(
+                            icon: const Icon(Icons.close),
+                            onPressed: () {
+                              _textController.clear();
+                              _textFieldFocusNode.requestFocus();
+                            },
+                          ),
+                        ],
+                      ),
                     );
                   }
 
@@ -427,246 +459,322 @@ class _ChatScreenState extends State<ChatScreen> {
 
     connector.sendMessage(widget.contact, text);
     _textController.clear();
+    _textFieldFocusNode.requestFocus();
   }
 
   void _showPathHistory(BuildContext context) {
     final connector = Provider.of<MeshCoreConnector>(context, listen: false);
-
+    bool showAllPaths = false;
     showDialog(
       context: context,
-      builder: (context) => Consumer<PathHistoryService>(
-        builder: (context, pathService, _) {
-          final paths = pathService.getRecentPaths(widget.contact.publicKeyHex);
-          return AlertDialog(
-            title: Row(
-              children: [
-                const Icon(Icons.timeline),
-                const SizedBox(width: 8),
-                Text(context.l10n.chat_pathManagement),
-              ],
-            ),
-            content: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setDialogState) => Consumer<PathHistoryService>(
+          builder: (context, pathService, _) {
+            final paths = pathService.getRecentPaths(
+              widget.contact.publicKeyHex,
+            );
+
+            final repeatersList = List.of(connector.directRepeaters)
+              ..sort((a, b) => b.ranking.compareTo(a.ranking));
+
+            if (repeatersList.isEmpty) {
+              showAllPaths = true;
+            }
+
+            final directRepeater = repeatersList.isEmpty
+                ? null
+                : repeatersList.first;
+            final secondDirectRepeater = repeatersList.length < 2
+                ? null
+                : repeatersList.elementAt(1);
+            final thirdDirectRepeater = repeatersList.length < 3
+                ? null
+                : repeatersList.elementAt(2);
+
+            List<MapEntry<int, MapEntry<Color, PathRecord>>>
+            pathsWithRepeaters = paths.map((path) {
+              final isDirectRepeater =
+                  directRepeater != null &&
+                  path.pathBytes.isNotEmpty &&
+                  directRepeater.pubkeyFirstByte == path.pathBytes.first;
+              final isSecondDirectRepeater =
+                  secondDirectRepeater != null &&
+                  path.pathBytes.isNotEmpty &&
+                  secondDirectRepeater.pubkeyFirstByte == path.pathBytes.first;
+              final isThirdDirectRepeater =
+                  thirdDirectRepeater != null &&
+                  path.pathBytes.isNotEmpty &&
+                  thirdDirectRepeater.pubkeyFirstByte == path.pathBytes.first;
+
+              int ranking = -1;
+              Color color = Colors.grey;
+              if (isDirectRepeater) {
+                color = Colors.green;
+                ranking = 3;
+              } else if (isSecondDirectRepeater) {
+                color = Colors.yellow;
+                ranking = 2;
+              } else if (isThirdDirectRepeater) {
+                color = Colors.red;
+                ranking = 1;
+              } else if (path.wasFloodDiscovery) {
+                color = Colors.blue;
+                ranking = 0;
+              }
+
+              return MapEntry(ranking, MapEntry(color, path));
+            }).toList();
+
+            pathsWithRepeaters.sort((a, b) => b.key.compareTo(a.key));
+
+            return AlertDialog(
+              title: Row(
                 children: [
-                  if (paths.isNotEmpty) ...[
+                  const Icon(Icons.timeline),
+                  const SizedBox(width: 8),
+                  Text(context.l10n.chat_pathManagement),
+                ],
+              ),
+              content: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (pathsWithRepeaters.isNotEmpty) ...[
+                      if (repeatersList.isNotEmpty)
+                        FeatureToggleRow(
+                          title: context.l10n.chat_ShowAllPaths,
+                          subtitle: "",
+                          value: showAllPaths,
+                          onChanged: (val) {
+                            setDialogState(() {
+                              showAllPaths = val;
+                            });
+                          },
+                        ),
+                      Text(
+                        context.l10n.chat_recentAckPaths,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                        ),
+                      ),
+                      if (pathsWithRepeaters.length >= 100) ...[
+                        const SizedBox(height: 8),
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.amber[100],
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Text(
+                            context.l10n.chat_pathHistoryFull,
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                        ),
+                      ],
+                      const SizedBox(height: 8),
+                      ...pathsWithRepeaters.map((entry) {
+                        final path = entry.value.value;
+                        final color = entry.value.key;
+                        if (!showAllPaths && entry.key < 1) {
+                          return const SizedBox.shrink();
+                        } else {
+                          return Card(
+                            margin: const EdgeInsets.symmetric(vertical: 4),
+                            child: ListTile(
+                              dense: true,
+                              leading: CircleAvatar(
+                                radius: 16,
+                                backgroundColor: color,
+                                child: Text(
+                                  '${path.hopCount}',
+                                  style: const TextStyle(fontSize: 12),
+                                ),
+                              ),
+                              title: Text(
+                                '${path.hopCount} ${path.hopCount == 1 ? context.l10n.chat_hopSingular : context.l10n.chat_hopPlural}',
+                                style: const TextStyle(fontSize: 14),
+                              ),
+                              subtitle: Text(
+                                '${(path.tripTimeMs / 1000).toStringAsFixed(2)}s • ${_formatRelativeTime(path.timestamp)} • ${path.successCount} ${context.l10n.chat_successes}',
+                                style: const TextStyle(fontSize: 11),
+                              ),
+                              trailing: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  IconButton(
+                                    icon: const Icon(Icons.close, size: 16),
+                                    tooltip: context.l10n.chat_removePath,
+                                    onPressed: () async {
+                                      await pathService.removePathRecord(
+                                        widget.contact.publicKeyHex,
+                                        path.pathBytes,
+                                      );
+                                    },
+                                  ),
+                                  path.wasFloodDiscovery
+                                      ? const Icon(
+                                          Icons.waves,
+                                          size: 16,
+                                          color: Colors.grey,
+                                        )
+                                      : const Icon(
+                                          Icons.route,
+                                          size: 16,
+                                          color: Colors.grey,
+                                        ),
+                                ],
+                              ),
+                              onLongPress: () =>
+                                  _showFullPathDialog(context, path.pathBytes),
+                              onTap: () async {
+                                if (path.pathBytes.isEmpty) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        context
+                                            .l10n
+                                            .chat_pathDetailsNotAvailable,
+                                      ),
+                                      duration: const Duration(seconds: 2),
+                                    ),
+                                  );
+                                  return;
+                                }
+
+                                final pathBytes = Uint8List.fromList(
+                                  path.pathBytes,
+                                );
+                                final pathLength = path.pathBytes.length;
+
+                                // Set the path override to persist user's choice
+                                await connector.setPathOverride(
+                                  widget.contact,
+                                  pathLen: pathLength,
+                                  pathBytes: pathBytes,
+                                );
+
+                                if (!context.mounted) return;
+                                Navigator.pop(context);
+                                await _notifyPathSet(
+                                  connector,
+                                  widget.contact,
+                                  pathBytes,
+                                  path.hopCount,
+                                );
+                              },
+                            ),
+                          );
+                        }
+                      }),
+                      const Divider(),
+                    ] else ...[
+                      Text(context.l10n.chat_noPathHistoryYet),
+                      const Divider(),
+                    ],
+                    const SizedBox(height: 8),
                     Text(
-                      context.l10n.chat_recentAckPaths,
+                      context.l10n.chat_pathActions,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 12,
                       ),
                     ),
-                    if (paths.length >= 100) ...[
-                      const SizedBox(height: 8),
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.amber[100],
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Text(
-                          context.l10n.chat_pathHistoryFull,
-                          style: const TextStyle(fontSize: 12),
-                        ),
-                      ),
-                    ],
                     const SizedBox(height: 8),
-                    ...paths.map((path) {
-                      return Card(
-                        margin: const EdgeInsets.symmetric(vertical: 4),
-                        child: ListTile(
-                          dense: true,
-                          leading: CircleAvatar(
-                            radius: 16,
-                            backgroundColor: path.wasFloodDiscovery
-                                ? Colors.blue
-                                : Colors.green,
-                            child: Text(
-                              '${path.hopCount}',
-                              style: const TextStyle(fontSize: 12),
-                            ),
+                    ListTile(
+                      dense: true,
+                      leading: const CircleAvatar(
+                        radius: 16,
+                        backgroundColor: Colors.purple,
+                        child: Icon(Icons.edit_road, size: 16),
+                      ),
+                      title: Text(
+                        context.l10n.chat_setCustomPath,
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                      subtitle: Text(
+                        context.l10n.chat_setCustomPathSubtitle,
+                        style: const TextStyle(fontSize: 11),
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                        _showCustomPathDialog(context);
+                      },
+                    ),
+                    ListTile(
+                      dense: true,
+                      leading: const CircleAvatar(
+                        radius: 16,
+                        backgroundColor: Colors.orange,
+                        child: Icon(Icons.clear_all, size: 16),
+                      ),
+                      title: Text(
+                        context.l10n.chat_clearPath,
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                      subtitle: Text(
+                        context.l10n.chat_clearPathSubtitle,
+                        style: const TextStyle(fontSize: 11),
+                      ),
+                      onTap: () async {
+                        await connector.clearContactPath(widget.contact);
+                        if (!context.mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(context.l10n.chat_pathCleared),
+                            duration: const Duration(seconds: 2),
                           ),
-                          title: Text(
-                            '${path.hopCount} ${path.hopCount == 1 ? context.l10n.chat_hopSingular : context.l10n.chat_hopPlural}',
-                            style: const TextStyle(fontSize: 14),
+                        );
+                        Navigator.pop(context);
+                      },
+                    ),
+                    ListTile(
+                      dense: true,
+                      leading: const CircleAvatar(
+                        radius: 16,
+                        backgroundColor: Colors.blue,
+                        child: Icon(Icons.waves, size: 16),
+                      ),
+                      title: Text(
+                        context.l10n.chat_forceFloodMode,
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                      subtitle: Text(
+                        context.l10n.chat_floodModeSubtitle,
+                        style: const TextStyle(fontSize: 11),
+                      ),
+                      onTap: () async {
+                        await connector.setPathOverride(
+                          widget.contact,
+                          pathLen: -1,
+                        );
+                        if (!context.mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(context.l10n.chat_floodModeEnabled),
+                            duration: const Duration(seconds: 2),
                           ),
-                          subtitle: Text(
-                            '${(path.tripTimeMs / 1000).toStringAsFixed(2)}s • ${_formatRelativeTime(path.timestamp)} • ${path.successCount} ${context.l10n.chat_successes}',
-                            style: const TextStyle(fontSize: 11),
-                          ),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                icon: const Icon(Icons.close, size: 16),
-                                tooltip: context.l10n.chat_removePath,
-                                onPressed: () async {
-                                  await pathService.removePathRecord(
-                                    widget.contact.publicKeyHex,
-                                    path.pathBytes,
-                                  );
-                                },
-                              ),
-                              path.wasFloodDiscovery
-                                  ? const Icon(
-                                      Icons.waves,
-                                      size: 16,
-                                      color: Colors.grey,
-                                    )
-                                  : const Icon(
-                                      Icons.route,
-                                      size: 16,
-                                      color: Colors.grey,
-                                    ),
-                            ],
-                          ),
-                          onLongPress: () =>
-                              _showFullPathDialog(context, path.pathBytes),
-                          onTap: () async {
-                            if (path.pathBytes.isEmpty) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    context.l10n.chat_pathDetailsNotAvailable,
-                                  ),
-                                  duration: const Duration(seconds: 2),
-                                ),
-                              );
-                              return;
-                            }
-
-                            final pathBytes = Uint8List.fromList(
-                              path.pathBytes,
-                            );
-                            final pathLength = path.pathBytes.length;
-
-                            // Set the path override to persist user's choice
-                            await connector.setPathOverride(
-                              widget.contact,
-                              pathLen: pathLength,
-                              pathBytes: pathBytes,
-                            );
-
-                            if (!context.mounted) return;
-                            Navigator.pop(context);
-                            await _notifyPathSet(
-                              connector,
-                              widget.contact,
-                              pathBytes,
-                              path.hopCount,
-                            );
-                          },
-                        ),
-                      );
-                    }),
-                    const Divider(),
-                  ] else ...[
-                    Text(context.l10n.chat_noPathHistoryYet),
-                    const Divider(),
+                        );
+                        Navigator.pop(context);
+                      },
+                    ),
                   ],
-                  const SizedBox(height: 8),
-                  Text(
-                    context.l10n.chat_pathActions,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  ListTile(
-                    dense: true,
-                    leading: const CircleAvatar(
-                      radius: 16,
-                      backgroundColor: Colors.purple,
-                      child: Icon(Icons.edit_road, size: 16),
-                    ),
-                    title: Text(
-                      context.l10n.chat_setCustomPath,
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                    subtitle: Text(
-                      context.l10n.chat_setCustomPathSubtitle,
-                      style: const TextStyle(fontSize: 11),
-                    ),
-                    onTap: () {
-                      Navigator.pop(context);
-                      _showCustomPathDialog(context);
-                    },
-                  ),
-                  ListTile(
-                    dense: true,
-                    leading: const CircleAvatar(
-                      radius: 16,
-                      backgroundColor: Colors.orange,
-                      child: Icon(Icons.clear_all, size: 16),
-                    ),
-                    title: Text(
-                      context.l10n.chat_clearPath,
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                    subtitle: Text(
-                      context.l10n.chat_clearPathSubtitle,
-                      style: const TextStyle(fontSize: 11),
-                    ),
-                    onTap: () async {
-                      await connector.clearContactPath(widget.contact);
-                      if (!context.mounted) return;
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(context.l10n.chat_pathCleared),
-                          duration: const Duration(seconds: 2),
-                        ),
-                      );
-                      Navigator.pop(context);
-                    },
-                  ),
-                  ListTile(
-                    dense: true,
-                    leading: const CircleAvatar(
-                      radius: 16,
-                      backgroundColor: Colors.blue,
-                      child: Icon(Icons.waves, size: 16),
-                    ),
-                    title: Text(
-                      context.l10n.chat_forceFloodMode,
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                    subtitle: Text(
-                      context.l10n.chat_floodModeSubtitle,
-                      style: const TextStyle(fontSize: 11),
-                    ),
-                    onTap: () async {
-                      await connector.setPathOverride(
-                        widget.contact,
-                        pathLen: -1,
-                      );
-                      if (!context.mounted) return;
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(context.l10n.chat_floodModeEnabled),
-                          duration: const Duration(seconds: 2),
-                        ),
-                      );
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
+                ),
               ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text(context.l10n.common_close),
-              ),
-            ],
-          );
-        },
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text(context.l10n.common_close),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -1084,17 +1192,21 @@ class _MessageBubble extends StatelessWidget {
   final bool isRoomServer;
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
+  final double textScale;
 
   const _MessageBubble({
     required this.message,
     required this.senderName,
     required this.isRoomServer,
+    required this.textScale,
     this.onTap,
     this.onLongPress,
   });
 
   @override
   Widget build(BuildContext context) {
+    final settingsService = context.watch<AppSettingsService>();
+    final enableTracing = settingsService.settings.enableMessageTracing;
     final isOutgoing = message.isOutgoing;
     final colorScheme = Theme.of(context).colorScheme;
     final gifId = _parseGifId(message.text);
@@ -1109,6 +1221,7 @@ class _MessageBubble extends StatelessWidget {
         ? colorScheme.onErrorContainer
         : (isOutgoing ? colorScheme.onPrimary : colorScheme.onSurface);
     final metaColor = textColor.withValues(alpha: 0.7);
+    const bodyFontSize = 14.0;
     String messageText = message.text;
     if (isRoomServer && !isOutgoing) {
       messageText = message.text.substring(4.clamp(0, message.text.length));
@@ -1172,102 +1285,180 @@ class _MessageBubble extends StatelessWidget {
                           if (gifId == null) const SizedBox(height: 4),
                         ],
                         if (poi != null)
-                          _buildPoiMessage(context, poi, textColor, metaColor)
+                          _buildPoiMessage(
+                            context,
+                            poi,
+                            textColor,
+                            metaColor,
+                            textScale,
+                            trailing: (!enableTracing && isOutgoing)
+                                ? Padding(
+                                    padding: const EdgeInsets.only(bottom: 2),
+                                    child: MessageStatusIcon(
+                                      isAcked:
+                                          message.status ==
+                                              MessageStatus.delivered &&
+                                          message.pathBytes.isNotEmpty,
+                                      isFailed:
+                                          message.status ==
+                                          MessageStatus.failed,
+                                    ),
+                                  )
+                                : null,
+                          )
                         else if (gifId != null)
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: GifMessage(
-                              url:
-                                  'https://media.giphy.com/media/$gifId/giphy.gif',
-                              backgroundColor: Colors.transparent,
-                              fallbackTextColor: textColor.withValues(
-                                alpha: 0.7,
+                          Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: GifMessage(
+                                  url:
+                                      'https://media.giphy.com/media/$gifId/giphy.gif',
+                                  backgroundColor: Colors.transparent,
+                                  fallbackTextColor: textColor.withValues(
+                                    alpha: 0.7,
+                                  ),
+                                ),
                               ),
-                            ),
+                              if (!enableTracing && isOutgoing)
+                                Positioned(
+                                  top: 0,
+                                  right: 0,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(3),
+                                    decoration: BoxDecoration(
+                                      color: bubbleColor,
+                                      borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(10),
+                                        topRight: Radius.circular(12),
+                                      ),
+                                    ),
+                                    child: MessageStatusIcon(
+                                      isAcked:
+                                          message.status ==
+                                              MessageStatus.delivered &&
+                                          message.pathBytes.isNotEmpty,
+                                      isFailed:
+                                          message.status ==
+                                          MessageStatus.failed,
+                                    ),
+                                  ),
+                                ),
+                            ],
                           )
                         else
-                          Linkify(
-                            text: messageText,
-                            style: TextStyle(color: textColor),
-                            linkStyle: const TextStyle(
-                              color: Colors.green,
-                              decoration: TextDecoration.underline,
-                            ),
-                            options: const LinkifyOptions(
-                              humanize: false,
-                              defaultToHttps: false,
-                            ),
-                            linkifiers: const [UrlLinkifier()],
-                            onOpen: (link) =>
-                                LinkHandler.handleLinkTap(context, link.url),
-                          ),
-                        if (isOutgoing && message.retryCount > 0) ...[
-                          const SizedBox(height: 4),
-                          Padding(
-                            padding: gifId != null
-                                ? const EdgeInsets.symmetric(horizontal: 8)
-                                : EdgeInsets.zero,
-                            child: Text(
-                              context.l10n.chat_retryCount(
-                                message.retryCount,
-                                4,
-                              ),
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: metaColor,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ],
-                        const SizedBox(height: 4),
-                        Padding(
-                          padding: gifId != null
-                              ? const EdgeInsets.only(
-                                  left: 8,
-                                  right: 8,
-                                  bottom: 4,
-                                )
-                              : EdgeInsets.zero,
-                          child: Wrap(
-                            spacing: 4,
-                            crossAxisAlignment: WrapCrossAlignment.center,
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text(
-                                _formatTime(message.timestamp),
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: metaColor,
+                              Flexible(
+                                child: Linkify(
+                                  text: messageText,
+                                  style: TextStyle(
+                                    color: textColor,
+                                    fontSize: bodyFontSize * textScale,
+                                  ),
+                                  linkStyle: TextStyle(
+                                    color: Colors.green,
+                                    decoration: TextDecoration.underline,
+                                    fontSize: bodyFontSize * textScale,
+                                  ),
+                                  options: const LinkifyOptions(
+                                    humanize: false,
+                                    defaultToHttps: false,
+                                  ),
+                                  linkifiers: const [UrlLinkifier()],
+                                  onOpen: (link) => LinkHandler.handleLinkTap(
+                                    context,
+                                    link.url,
+                                  ),
                                 ),
                               ),
-                              if (isOutgoing) ...[
+                              if (!enableTracing && isOutgoing) ...[
                                 const SizedBox(width: 4),
-                                _buildStatusIcon(metaColor),
-                              ],
-                              if (message.tripTimeMs != null &&
-                                  message.status ==
-                                      MessageStatus.delivered) ...[
-                                const SizedBox(width: 4),
-                                Icon(
-                                  Icons.speed,
-                                  size: 10,
-                                  color: isOutgoing
-                                      ? metaColor
-                                      : Colors.green[700],
-                                ),
-                                Text(
-                                  '${(message.tripTimeMs! / 1000).toStringAsFixed(1)}s',
-                                  style: TextStyle(
-                                    fontSize: 9,
-                                    color: isOutgoing
-                                        ? metaColor
-                                        : Colors.green[700],
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 2),
+                                  child: MessageStatusIcon(
+                                    isAcked:
+                                        message.status ==
+                                            MessageStatus.delivered &&
+                                        message.pathBytes.isNotEmpty,
+                                    isFailed:
+                                        message.status == MessageStatus.failed,
                                   ),
                                 ),
                               ],
                             ],
                           ),
-                        ),
+                        if (enableTracing) ...[
+                          if (isOutgoing && message.retryCount > 0) ...[
+                            const SizedBox(height: 4),
+                            Padding(
+                              padding: gifId != null
+                                  ? const EdgeInsets.symmetric(horizontal: 8)
+                                  : EdgeInsets.zero,
+                              child: Text(
+                                context.l10n.chat_retryCount(
+                                  message.retryCount,
+                                  4,
+                                ),
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: metaColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ],
+                          const SizedBox(height: 4),
+                          Padding(
+                            padding: gifId != null
+                                ? const EdgeInsets.only(
+                                    left: 8,
+                                    right: 8,
+                                    bottom: 4,
+                                  )
+                                : EdgeInsets.zero,
+                            child: Wrap(
+                              spacing: 4,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              children: [
+                                Text(
+                                  _formatTime(message.timestamp),
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: metaColor,
+                                  ),
+                                ),
+                                if (isOutgoing) ...[
+                                  const SizedBox(width: 4),
+                                  _buildStatusIcon(metaColor),
+                                ],
+                                if (message.tripTimeMs != null &&
+                                    message.status ==
+                                        MessageStatus.delivered) ...[
+                                  const SizedBox(width: 4),
+                                  Icon(
+                                    Icons.speed,
+                                    size: 10,
+                                    color: isOutgoing
+                                        ? metaColor
+                                        : Colors.green[700],
+                                  ),
+                                  Text(
+                                    '${(message.tripTimeMs! / 1000).toStringAsFixed(1)}s',
+                                    style: TextStyle(
+                                      fontSize: 9,
+                                      color: isOutgoing
+                                          ? metaColor
+                                          : Colors.green[700],
+                                    ),
+                                  ),
+                                ],
+                              ],
+                            ),
+                          ),
+                        ],
                       ],
                     ),
                   ),
@@ -1311,7 +1502,9 @@ class _MessageBubble extends StatelessWidget {
     _PoiInfo poi,
     Color textColor,
     Color metaColor,
-  ) {
+    double textScale, {
+    Widget? trailing,
+  }) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -1338,16 +1531,21 @@ class _MessageBubble extends StatelessWidget {
             children: [
               Text(
                 context.l10n.chat_poiShared,
-                style: TextStyle(color: textColor, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  color: textColor,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14 * textScale,
+                ),
               ),
               if (poi.label.isNotEmpty)
                 Text(
                   poi.label,
-                  style: TextStyle(color: metaColor, fontSize: 12),
+                  style: TextStyle(color: metaColor, fontSize: 12 * textScale),
                 ),
             ],
           ),
         ),
+        if (trailing != null) ...[const SizedBox(width: 4), trailing],
       ],
     );
   }

@@ -143,6 +143,16 @@ class AppLocalizationsSv extends AppLocalizations {
   String get scanner_scan => 'Skanna';
 
   @override
+  String get scanner_bluetoothOff => 'Bluetooth är avstängt';
+
+  @override
+  String get scanner_bluetoothOffMessage =>
+      'Vänligen aktivera Bluetooth för att söka efter enheter.';
+
+  @override
+  String get scanner_enableBluetooth => 'Aktivera Bluetooth';
+
+  @override
   String get device_quickSwitch => 'Snabb växling';
 
   @override
@@ -308,6 +318,10 @@ class AppLocalizationsSv extends AppLocalizations {
       'En öppen källkods Flutter-klient för MeshCore LoRa meshnätverksenheter.';
 
   @override
+  String get settings_aboutOpenMeteoAttribution =>
+      'LOS-höjddata: Open-Meteo (CC BY 4.0)';
+
+  @override
   String get settings_infoName => 'Namn';
 
   @override
@@ -330,15 +344,6 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get settings_presets => 'Fördefinierade inställningar';
-
-  @override
-  String get settings_preset915Mhz => '915 MHz';
-
-  @override
-  String get settings_preset868Mhz => '868 MHz';
-
-  @override
-  String get settings_preset433Mhz => '433 MHz';
 
   @override
   String get settings_frequency => 'Frekvens (MHz)';
@@ -368,10 +373,15 @@ class AppLocalizationsSv extends AppLocalizations {
   String get settings_txPowerInvalid => 'Ogiltig TX-effekt (0-22 dBm)';
 
   @override
-  String get settings_longRange => 'Lång räckvidd';
+  String get settings_clientRepeat => 'Upprepa utan elnät';
 
   @override
-  String get settings_fastSpeed => 'Snabb hastighet';
+  String get settings_clientRepeatSubtitle =>
+      'Låt enheten repetera nätpaket för andra användare.';
+
+  @override
+  String get settings_clientRepeatFreqWarning =>
+      'För att kunna kommunicera utanför elnätet krävs frekvenserna 433, 869 eller 918 MHz.';
 
   @override
   String settings_error(String message) {
@@ -446,6 +456,13 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get appSettings_languageUk => 'Ukrainska';
+
+  @override
+  String get appSettings_enableMessageTracing => 'Aktivera meddelandespårning';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Visa detaljerade metadata om dirigering och tidsinställningar för meddelanden';
 
   @override
   String get appSettings_notifications => 'Meddelanden';
@@ -605,6 +622,15 @@ class AppLocalizationsSv extends AppLocalizations {
   String get appSettings_offlineMapCache => 'Offline Kartcache';
 
   @override
+  String get appSettings_unitsTitle => 'Enheter';
+
+  @override
+  String get appSettings_unitsMetric => 'Metriskt (m/km)';
+
+  @override
+  String get appSettings_unitsImperial => 'Imperialt (ft / mi)';
+
+  @override
   String get appSettings_noAreaSelected => 'Ingen area markerad';
 
   @override
@@ -641,7 +667,35 @@ class AppLocalizationsSv extends AppLocalizations {
       'Kontakter kommer att visas när enheter annonserar.';
 
   @override
-  String get contacts_searchContacts => 'Sök kontakter...';
+  String get contacts_unread => 'Oläst';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Sök kontakter...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Sök kontakter...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Sök $number$str Favoriter...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Sök $number$str användare...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Sök $number$str upprepningsenheter...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Sök $number$str Room-servrar...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Inga oinlästa kontakter';
@@ -768,11 +822,22 @@ class AppLocalizationsSv extends AppLocalizations {
   String get channels_editChannel => 'Redigera kanal';
 
   @override
+  String get channels_muteChannel => 'Tysta kanal';
+
+  @override
+  String get channels_unmuteChannel => 'Slå på ljud för kanal';
+
+  @override
   String get channels_deleteChannel => 'Ta bort kanal';
 
   @override
   String channels_deleteChannelConfirm(String name) {
     return 'Radera \"$name\"? Detta kan inte ångras.';
+  }
+
+  @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Det gick inte att ta bort kanalen \"$name\"';
   }
 
   @override
@@ -1064,6 +1129,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get chat_pathManagement => 'Stigarhantering';
 
   @override
+  String get chat_ShowAllPaths => 'Visa alla vägar';
+
+  @override
   String get chat_routingMode => 'Ruttläge';
 
   @override
@@ -1220,6 +1288,12 @@ class AppLocalizationsSv extends AppLocalizations {
   String get map_title => 'Nodkarta';
 
   @override
+  String get map_lineOfSight => 'Synlinje';
+
+  @override
+  String get map_losScreenTitle => 'Synlinje';
+
+  @override
   String get map_noNodesWithLocation => 'Inga noder med platsinformation';
 
   @override
@@ -1347,6 +1421,18 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get map_manageRepeater => 'Hantera Upprepare';
+
+  @override
+  String get map_tapToAdd => 'Tryck på noder för att lägga till dem i banan.';
+
+  @override
+  String get map_runTrace => 'Kör spårsökning';
+
+  @override
+  String get map_removeLast => 'Ta bort sista';
+
+  @override
+  String get map_pathTraceCancelled => 'Sökvägsspårning avbruten.';
 
   @override
   String get mapCache_title => 'Offline Kartcache';
@@ -1640,10 +1726,10 @@ class AppLocalizationsSv extends AppLocalizations {
   String get repeater_cliSubtitle => 'Skicka kommandon till repetitorn';
 
   @override
-  String get repeater_neighbours => 'Grannar';
+  String get repeater_neighbors => 'Grannar';
 
   @override
-  String get repeater_neighboursSubtitle => 'Visa noll hoppgrannar.';
+  String get repeater_neighborsSubtitle => 'Visa noll hoppgrannar.';
 
   @override
   String get repeater_settings => 'Inställningar';
@@ -2334,7 +2420,7 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
-  String get neighbors_repeatersNeighbours => 'Upprepar grannar';
+  String get neighbors_repeatersNeighbors => 'Upprepar grannar';
 
   @override
   String get neighbors_noData => 'Inga grannuppgifter finns tillgängliga.';
@@ -2646,6 +2732,15 @@ class AppLocalizationsSv extends AppLocalizations {
   String get listFilter_all => 'Alla';
 
   @override
+  String get listFilter_favorites => 'Favoriter';
+
+  @override
+  String get listFilter_addToFavorites => 'Lägg till i favoriter';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Ta bort från favoriter';
+
+  @override
   String get listFilter_users => 'Användare';
 
   @override
@@ -2675,6 +2770,145 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get pathTrace_someHopsNoLocation =>
       'En eller flera av humlen saknar en plats!';
+
+  @override
+  String get pathTrace_clearTooltip => 'Rensa väg';
+
+  @override
+  String get losSelectStartEnd => 'Välj start- och slutnoder för LOS.';
+
+  @override
+  String losRunFailed(String error) {
+    return 'Synlinjekontroll misslyckades: $error';
+  }
+
+  @override
+  String get losClearAllPoints => 'Rensa alla punkter';
+
+  @override
+  String get losRunToViewElevationProfile => 'Kör LOS för att se höjdprofil';
+
+  @override
+  String get losMenuTitle => 'LOS-menyn';
+
+  @override
+  String get losMenuSubtitle =>
+      'Tryck på noder eller tryck länge på kartan för anpassade punkter';
+
+  @override
+  String get losShowDisplayNodes => 'Visa displaynoder';
+
+  @override
+  String get losCustomPoints => 'Anpassade poäng';
+
+  @override
+  String losCustomPointLabel(int index) {
+    return 'Anpassad $index';
+  }
+
+  @override
+  String get losPointA => 'Punkt A';
+
+  @override
+  String get losPointB => 'Punkt B';
+
+  @override
+  String losAntennaA(String value, String unit) {
+    return 'Antenn A: $value $unit';
+  }
+
+  @override
+  String losAntennaB(String value, String unit) {
+    return 'Antenn B: $value $unit';
+  }
+
+  @override
+  String get losRun => 'Kör LOS';
+
+  @override
+  String get losNoElevationData => 'Inga höjddata';
+
+  @override
+  String losProfileClear(
+    String distance,
+    String distanceUnit,
+    String clearance,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, rensa LOS, min clearance $clearance $heightUnit';
+  }
+
+  @override
+  String losProfileBlocked(
+    String distance,
+    String distanceUnit,
+    String obstruction,
+    String heightUnit,
+  ) {
+    return '$distance $distanceUnit, blockerad av $obstruction $heightUnit';
+  }
+
+  @override
+  String get losStatusChecking => 'LOS: kollar...';
+
+  @override
+  String get losStatusNoData => 'LOS: inga data';
+
+  @override
+  String losStatusSummary(int clear, int total, int blocked, int unknown) {
+    return 'LOS: $clear/$total rensa, $blocked blockerad, $unknown okänd';
+  }
+
+  @override
+  String get losErrorElevationUnavailable =>
+      'Höjddata är inte tillgänglig för ett eller flera prover.';
+
+  @override
+  String get losErrorInvalidInput =>
+      'Ogiltiga poäng/höjddata för LOS-beräkning.';
+
+  @override
+  String get losRenameCustomPoint => 'Byt namn på anpassad punkt';
+
+  @override
+  String get losPointName => 'Punktnamn';
+
+  @override
+  String get losShowPanelTooltip => 'Visa LOS-panelen';
+
+  @override
+  String get losHidePanelTooltip => 'Dölj LOS-panelen';
+
+  @override
+  String get losElevationAttribution => 'Höjddata: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Radiohorisont';
+
+  @override
+  String get losLegendLosBeam => 'Siktlinje';
+
+  @override
+  String get losLegendTerrain => 'Terräng';
+
+  @override
+  String get losFrequencyLabel => 'Frekvens';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Visa detaljer om beräkningen';
+
+  @override
+  String get losFrequencyDialogTitle => 'Beräkning av radiohorisonten';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Med start från k=$baselineK vid $baselineFreq MHz, justerar beräkningen k-faktorn för det aktuella $frequencyMHz MHz-bandet, som definierar den böjda radiohorisonten.';
+  }
 
   @override
   String get contacts_pathTrace => 'Path Trace';
@@ -2844,4 +3078,10 @@ class AppLocalizationsSv extends AppLocalizations {
   @override
   String get settings_gpxExportShareSubject =>
       'meshcore-open export av GPX-kartdata';
+
+  @override
+  String get snrIndicator_nearByRepeaters => 'Närliggande uppreparstationer';
+
+  @override
+  String get snrIndicator_lastSeen => 'Senast sedd';
 }

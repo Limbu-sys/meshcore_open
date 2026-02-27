@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "No se pudo eliminar el canal \"{name}\"",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "es",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Contactos",
@@ -131,9 +139,6 @@
   "settings_infoContactsCount": "Número de contactos",
   "settings_infoChannelCount": "Número de canales",
   "settings_presets": "Preajustes",
-  "settings_preset915Mhz": "915 MHz",
-  "settings_preset868Mhz": "868 MHz",
-  "settings_preset433Mhz": "433 MHz",
   "settings_frequency": "Frecuencia (MHz)",
   "settings_frequencyHelper": "300,0 - 2500,0",
   "settings_frequencyInvalid": "Frecuencia inválida (300-2500 MHz)",
@@ -143,8 +148,6 @@
   "settings_txPower": "TX Potencia (dBm)",
   "settings_txPowerHelper": "0 - 22",
   "settings_txPowerInvalid": "Potencia de TX inválida (0-22 dBm)",
-  "settings_longRange": "Largo Alcance",
-  "settings_fastSpeed": "Velocidad Rápida",
   "settings_error": "Error: {message}",
   "@settings_error": {
     "placeholders": {
@@ -339,6 +342,8 @@
   "channels_publicChannel": "Canal público",
   "channels_privateChannel": "Canal privado",
   "channels_editChannel": "Editar canal",
+  "channels_muteChannel": "Silenciar canal",
+  "channels_unmuteChannel": "Activar canal",
   "channels_deleteChannel": "Eliminar canal",
   "channels_deleteChannelConfirm": "Eliminar \"{name}\"? Esto no se puede deshacer.",
   "@channels_deleteChannelConfirm": {
@@ -1356,12 +1361,12 @@
       }
     }
   },
-  "repeater_neighbours": "Vecinos",
-  "repeater_neighboursSubtitle": "Ver vecinos de salto cero.",
+  "repeater_neighbors": "Vecinos",
+  "repeater_neighborsSubtitle": "Ver vecinos de salto cero.",
   "neighbors_receivedData": "Recibidas Datos de Vecinos",
   "neighbors_requestTimedOut": "Los vecinos solicitan que se desconecte.",
   "neighbors_errorLoading": "Error al cargar vecinos: {error}",
-  "neighbors_repeatersNeighbours": "Repetidores Vecinos",
+  "neighbors_repeatersNeighbors": "Repetidores Vecinos",
   "neighbors_noData": "No hay datos de vecinos disponibles.",
   "channels_joinPrivateChannel": "Únete a un Canal Privado",
   "channels_createPrivateChannel": "Crear un Canal Privado",
@@ -1556,6 +1561,8 @@
   "appSettings_languageUk": "Ucraniano",
   "contacts_clipboardEmpty": "El portapapeles está vacío.",
   "appSettings_languageRu": "Ruso",
+  "appSettings_enableMessageTracing": "Habilitar seguimiento de mensajes",
+  "appSettings_enableMessageTracingSubtitle": "Mostrar metadatos detallados de enrutamiento y tiempo para los mensajes",
   "contacts_invalidAdvertFormat": "Datos de contacto no válidos",
   "contacts_floodAdvert": "Anuncio de inundación",
   "contacts_contactImported": "El contacto ha sido importado.",
@@ -1569,34 +1576,40 @@
   "contacts_zeroHopContactAdvertSent": "Envió contacto por anuncio.",
   "contacts_contactAdvertCopied": "Anuncio copiado al Portapapeles.",
   "contacts_contactAdvertCopyFailed": "Copiar anuncio al Portapapeles ha fallado.",
-
   "notification_activityTitle": "Actividad de MeshCore",
   "notification_messagesCount": "{count} {count, plural, =1{mensaje} other{mensajes}}",
   "@notification_messagesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "notification_channelMessagesCount": "{count} {count, plural, =1{mensaje de canal} other{mensajes de canal}}",
   "@notification_channelMessagesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "notification_newNodesCount": "{count} {count, plural, =1{nuevo nodo} other{nuevos nodos}}",
   "@notification_newNodesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "notification_newTypeDiscovered": "Nuevo {contactType} descubierto",
   "@notification_newTypeDiscovered": {
     "placeholders": {
-      "contactType": {"type": "String"}
+      "contactType": {
+        "type": "String"
+      }
     }
   },
   "notification_receivedNewMessage": "Nuevo mensaje recibido",
-  "contacts_contactAdvertCopyFailed": "Copiar anuncio al Portapapeles ha fallado.",
   "settings_gpxExportContactsSubtitle": "Exporta compañeros con una ubicación a archivo GPX.",
   "settings_gpxExportRepeaters": "Exportar repetidores / servidor de sala a GPX",
   "settings_gpxExportSuccess": "Archivo GPX exportado con éxito.",
@@ -1612,6 +1625,207 @@
   "settings_gpxExportAllContacts": "Todas las ubicaciones de contactos",
   "settings_gpxExportShareText": "Datos del mapa exportados desde meshcore-open",
   "settings_gpxExportShareSubject": "meshcore-open exportación de datos de mapa GPX",
-  "pathTrace_someHopsNoLocation": "Uno o más de los lúpulos carecen de una ubicación"
-
+  "pathTrace_someHopsNoLocation": "Uno o más de los lúpulos carecen de una ubicación",
+  "pathTrace_clearTooltip": "Borrar ruta",
+  "map_runTrace": "Ejecutar Rastreo de Ruta",
+  "map_tapToAdd": "Pulse en los nodos para agregarlos al camino.",
+  "map_removeLast": "Eliminar último",
+  "map_pathTraceCancelled": "Rastreo de ruta cancelado.",
+  "scanner_bluetoothOffMessage": "Por favor, active el Bluetooth para escanear dispositivos.",
+  "scanner_bluetoothOff": "Bluetooth está desactivado.",
+  "scanner_enableBluetooth": "Habilitar Bluetooth",
+  "snrIndicator_nearByRepeaters": "Repetidores cercanos",
+  "snrIndicator_lastSeen": "Visto por última vez",
+  "chat_ShowAllPaths": "Mostrar todos los caminos",
+  "settings_clientRepeatFreqWarning": "Para la comunicación fuera de la red, se requiere una frecuencia de 433, 869 o 918 MHz.",
+  "settings_clientRepeat": "Repetir sin conexión",
+  "settings_clientRepeatSubtitle": "Permita que este dispositivo repita los paquetes de red para otros usuarios.",
+  "settings_aboutOpenMeteoAttribution": "Datos de elevación LOS: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Unidades",
+  "appSettings_unitsMetric": "Métrico (m/km)",
+  "appSettings_unitsImperial": "Imperial (pies/millas)",
+  "map_lineOfSight": "Línea de visión",
+  "map_losScreenTitle": "Línea de visión",
+  "losSelectStartEnd": "Seleccione los nodos de inicio y fin para LOS.",
+  "losRunFailed": "Error en la comprobación de la línea de visión: {error}",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "losClearAllPoints": "Borrar todos los puntos",
+  "losRunToViewElevationProfile": "Ejecute LOS para ver el perfil de elevación",
+  "losMenuTitle": "Menú LOS",
+  "losMenuSubtitle": "Toque nodos o mantenga presionado el mapa para puntos personalizados",
+  "losShowDisplayNodes": "Mostrar nodos de visualización",
+  "losCustomPoints": "Puntos personalizados",
+  "losCustomPointLabel": "Personalizado {index}",
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "losPointA": "Punto A",
+  "losPointB": "Punto B",
+  "losAntennaA": "Antena A: {value} {unit}",
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losAntennaB": "Antena B: {value} {unit}",
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losRun": "Ejecutar LOS",
+  "losNoElevationData": "Sin datos de elevación",
+  "losProfileClear": "{distance} {distanceUnit}, despejar LOS, autorización mínima {clearance} {heightUnit}",
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losProfileBlocked": "{distance} {distanceUnit}, bloqueado por {obstruction} {heightUnit}",
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losStatusChecking": "LOS: comprobando...",
+  "losStatusNoData": "LOS: sin datos",
+  "losStatusSummary": "LOS: {clear}/{total} claro, {blocked} bloqueado, {unknown} desconocido",
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "losErrorElevationUnavailable": "Datos de elevación no disponibles para una o más muestras.",
+  "losErrorInvalidInput": "Datos de puntos/elevación no válidos para el cálculo de LOS.",
+  "losRenameCustomPoint": "Cambiar el nombre del punto personalizado",
+  "losPointName": "Nombre del punto",
+  "losShowPanelTooltip": "Mostrar panel LOS",
+  "losHidePanelTooltip": "Ocultar panel LOS",
+  "losElevationAttribution": "Datos de elevación: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Horizonte radioeléctrico",
+  "losLegendLosBeam": "Línea de visión",
+  "losLegendTerrain": "Terreno",
+  "losFrequencyLabel": "Frecuencia",
+  "losFrequencyInfoTooltip": "Ver detalles del cálculo",
+  "losFrequencyDialogTitle": "Cálculo del horizonte radioeléctrico",
+  "losFrequencyDialogDescription": "A partir de k={baselineK} en {baselineFreq} MHz, el cálculo ajusta el factor k para la banda actual de {frequencyMHz} MHz, que define el límite curvo del horizonte de radio.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "listFilter_favorites": "Favoritos",
+  "listFilter_removeFromFavorites": "Eliminar de las favoritas",
+  "listFilter_addToFavorites": "Añadir a favoritos",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchContactsNoNumber": "Buscar contactos...",
+  "contacts_unread": "No leído",
+  "contacts_searchFavorites": "Buscar {number}{str} Favoritos...",
+  "contacts_searchUsers": "Buscar {number}{str} Usuarios...",
+  "contacts_searchRepeaters": "Buscar {number}{str} Repetidores...",
+  "contacts_searchRoomServers": "Buscar {number}{str} servidores de sala..."
 }

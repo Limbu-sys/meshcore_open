@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "Kanala {name} ni bilo mogoče izbrisati",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "sl",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Stiki",
@@ -131,9 +139,6 @@
   "settings_infoContactsCount": "Število stikov",
   "settings_infoChannelCount": "Število kanalov",
   "settings_presets": "Prednastavitve",
-  "settings_preset915Mhz": "915 MHz",
-  "settings_preset868Mhz": "868 MHz",
-  "settings_preset433Mhz": "433 MHz",
   "settings_frequency": "Frekvenca (MHz)",
   "settings_frequencyHelper": "300,00 - 2500,00",
   "settings_frequencyInvalid": "Neveljavna frekvenca (300-2500 MHz)",
@@ -143,8 +148,6 @@
   "settings_txPower": "TX Moč (dBm)",
   "settings_txPowerHelper": "0 - 22",
   "settings_txPowerInvalid": "Neveljavna TX moč (0-22 dBm)",
-  "settings_longRange": "DDolg doseg",
-  "settings_fastSpeed": "Visoka hitrost",
   "settings_error": "Napaka: {message}",
   "@settings_error": {
     "placeholders": {
@@ -339,6 +342,8 @@
   "channels_publicChannel": "Javni kanal",
   "channels_privateChannel": "Zasebni kanal",
   "channels_editChannel": "Uredi kanal",
+  "channels_muteChannel": "Utišaj kanal",
+  "channels_unmuteChannel": "Vklopi obvestila kanala",
   "channels_deleteChannel": "Pošlji kanal",
   "channels_deleteChannelConfirm": "Izbrišem \"{name}\"? To se ne da povrniti.",
   "@channels_deleteChannelConfirm": {
@@ -1356,12 +1361,12 @@
       }
     }
   },
-  "repeater_neighboursSubtitle": "Pogledati nič sosednjih hopjev.",
-  "repeater_neighbours": "Sosedi",
+  "repeater_neighborsSubtitle": "Pogledati nič sosednjih hopjev.",
+  "repeater_neighbors": "Sosedi",
   "neighbors_receivedData": "Prejeto podatke o sosedih",
   "neighbors_requestTimedOut": "Sosedi zahtevajo izklop po dogovoru.",
   "neighbors_errorLoading": "Napaka pri obnašanju sosedov: {error}",
-  "neighbors_repeatersNeighbours": "Ponovitve Sosedi",
+  "neighbors_repeatersNeighbors": "Ponovitve Sosedi",
   "neighbors_noData": "Niso na voljo podatki o sosedih.",
   "channels_joinPrivateChannel": "Pridružite se zasebni skupini",
   "channels_createPrivateChannelDesc": "Varno zaklenjeno s skrivnim ključem.",
@@ -1555,6 +1560,8 @@
   "contacts_pathTraceTo": "Trace route to {name}",
   "appSettings_languageRu": "Ruščina",
   "appSettings_languageUk": "Ukrajinsko",
+  "appSettings_enableMessageTracing": "Omogoči sledenje sporočilom",
+  "appSettings_enableMessageTracingSubtitle": "Prikaži podrobne metapodatke o usmerjanju in časovnem usklajevanju sporočil",
   "contacts_contactImported": "Kontakt je bil uvožen.",
   "contacts_contactImportFailed": "Kontakt ni bil uspešno uvožen.",
   "contacts_zeroHopAdvert": "Reklama brez posrednikov",
@@ -1575,7 +1582,6 @@
   "notification_newNodesCount": "{count} {count, plural, =1{novo vozlišče} =2{novi vozlišči} few{nova vozlišča} other{novih vozlišč}}",
   "notification_newTypeDiscovered": "Odkrito novo {contactType}",
   "notification_receivedNewMessage": "Prejeto novo sporočilo",
-  "contacts_ShareContact": "Kopiraj stik v Odložišče",
   "settings_gpxExportAll": "Izvozi vse kontakte v GPX",
   "settings_gpxExportContacts": "Izvoz spremljevalcev v GPX",
   "settings_gpxExportRepeatersSubtitle": "Izvozi ponovljene oddajnike / strežnik sobe z lokacijo v datoteko GPX.",
@@ -1591,6 +1597,207 @@
   "settings_gpxExportNoContacts": "Ni stikov za izvoz.",
   "settings_gpxExportNotAvailable": "Ni podprto na vašem napravi/operacijskem sistemu",
   "settings_gpxExportShareSubject": "meshcore-open izvoz podatkov GPX karte",
-  "pathTrace_someHopsNoLocation": "Ena ali več hmelju manjka lokacija!"
-
+  "pathTrace_someHopsNoLocation": "Ena ali več hmelju manjka lokacija!",
+  "map_tapToAdd": "Pritisnite na vozlišča, da jih dodate poti.",
+  "map_removeLast": "Odstrani Zadnji",
+  "map_runTrace": "Zaženi sledenje poti",
+  "pathTrace_clearTooltip": "Počisti pot",
+  "map_pathTraceCancelled": "Spremljanje poti je prekinjeno.",
+  "scanner_enableBluetooth": "Omogočite Bluetooth",
+  "scanner_bluetoothOffMessage": "Prosimo, vklopite Bluetooth, da lahko poiščete naprave.",
+  "scanner_bluetoothOff": "Bluetooth je izklopljen",
+  "snrIndicator_lastSeen": "Zadnjič videno",
+  "snrIndicator_nearByRepeaters": "Bližnji ponovitelji",
+  "chat_ShowAllPaths": "Prikaži vse poti",
+  "settings_clientRepeatFreqWarning": "Za ponovni prenos na brezžični način so potrebne frekvence 433, 869 ali 918 MHz.",
+  "settings_clientRepeatSubtitle": "Omogočite temu naprave, da ponavlja paketne sporočila za druge.",
+  "settings_clientRepeat": "Neovadno ponavljanje",
+  "settings_aboutOpenMeteoAttribution": "Podatki o višini LOS: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Enote",
+  "appSettings_unitsMetric": "Metrična (m/km)",
+  "appSettings_unitsImperial": "Imperialno (ft / mi)",
+  "map_lineOfSight": "Linija vida",
+  "map_losScreenTitle": "Linija vida",
+  "losSelectStartEnd": "Izberite začetno in končno vozlišče za LOS.",
+  "losRunFailed": "Preverjanje vidnega polja ni uspelo: {error}",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "losClearAllPoints": "Počisti vse točke",
+  "losRunToViewElevationProfile": "Zaženite LOS za ogled višinskega profila",
+  "losMenuTitle": "LOS meni",
+  "losMenuSubtitle": "Tapnite vozlišča ali dolgo pritisnite na zemljevid za točke po meri",
+  "losShowDisplayNodes": "Pokaži prikazna vozlišča",
+  "losCustomPoints": "Točke po meri",
+  "losCustomPointLabel": "Po meri {index}",
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "losPointA": "Točka A",
+  "losPointB": "Točka B",
+  "losAntennaA": "Antena A: {value} {unit}",
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losAntennaB": "Antena B: {value} {unit}",
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losRun": "Zaženi LOS",
+  "losNoElevationData": "Ni podatkov o višini",
+  "losProfileClear": "{distance} {distanceUnit}, čisti LOS, najmanjša razdalja {clearance} {heightUnit}",
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losProfileBlocked": "{distance} {distanceUnit}, blokiral {obstruction} {heightUnit}",
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losStatusChecking": "LOS: preverjam ...",
+  "losStatusNoData": "LOS: ni podatkov",
+  "losStatusSummary": "LOS: {clear}/{total} jasno, {blocked} blokirano, {unknown} neznano",
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "losErrorElevationUnavailable": "Podatki o nadmorski višini niso na voljo za enega ali več vzorcev.",
+  "losErrorInvalidInput": "Neveljavni podatki o točkah/višini za izračun LOS.",
+  "losRenameCustomPoint": "Preimenujte točko po meri",
+  "losPointName": "Ime točke",
+  "losShowPanelTooltip": "Pokaži ploščo LOS",
+  "losHidePanelTooltip": "Skrij ploščo LOS",
+  "losElevationAttribution": "Podatki o višini: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Radijski horizont",
+  "losLegendLosBeam": "Linija vidnosti",
+  "losLegendTerrain": "Teren",
+  "losFrequencyLabel": "Frekvenca",
+  "losFrequencyInfoTooltip": "Prikaži podrobnosti izračuna",
+  "losFrequencyDialogTitle": "Izračun radijskega horizonta",
+  "losFrequencyDialogDescription": "Začenši od k={baselineK} pri {baselineFreq} MHz, izračun prilagodi k-faktor za trenutni pas {frequencyMHz} MHz, ki določa ukrivljeno zgornjo mejo radijskega horizonta.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "listFilter_favorites": "Priljubljene",
+  "listFilter_removeFromFavorites": "Odstrani iz priljubljenih",
+  "listFilter_addToFavorites": "Dodaj v priljubljene",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Neprebrano",
+  "contacts_searchFavorites": "Iskanje {number}{str} priljubljenih...",
+  "contacts_searchRoomServers": "Išči {number}{str} strežnikov sob...",
+  "contacts_searchContactsNoNumber": "Iskanje stikov...",
+  "contacts_searchRepeaters": "Išči {number}{str} ponavljalnike...",
+  "contacts_searchUsers": "Išči {number}{str} uporabnikov..."
 }

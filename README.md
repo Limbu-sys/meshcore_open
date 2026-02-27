@@ -78,6 +78,7 @@ MeshCore Open is a cross-platform mobile application for communicating with Mesh
 - ✅ **Android**: Full support (API 21+)
 - ✅ **iOS**: Full support (iOS 12+)
 - 🚧 **Desktop**: Limited support (macOS/Linux/Windows)
+- 🚧 **Web**: Under construction (Chrome)
 
 ### Dependencies
 

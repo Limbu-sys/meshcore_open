@@ -168,6 +168,7 @@ class _RepeaterCliScreenState extends State<RepeaterCliScreen> {
 
     _commandController.clear();
     _historyIndex = -1;
+    _commandFocusNode.requestFocus();
 
     // Auto-scroll to bottom
     Future.delayed(const Duration(milliseconds: 100), () {

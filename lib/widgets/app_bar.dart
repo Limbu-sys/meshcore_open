@@ -1,0 +1,67 @@
+import 'package:flutter/material.dart';
+import 'package:meshcore_open/connector/meshcore_connector.dart';
+import 'package:meshcore_open/widgets/battery_indicator.dart';
+import 'package:provider/provider.dart';
+
+import 'snr_indicator.dart';
+
+class AppBarTitle extends StatelessWidget {
+  final String title;
+  final Widget? leading;
+  final Widget? trailing;
+  const AppBarTitle(this.title, {this.leading, this.trailing, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final connector = context.watch<MeshCoreConnector>();
+    final selfName = connector.selfName;
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final availableWidth = constraints.hasBoundedWidth
+            ? constraints.maxWidth
+            : MediaQuery.sizeOf(context).width;
+        final compact = availableWidth < 240;
+        final showSubtitle =
+            !compact && connector.isConnected && selfName != null;
+        final showBattery = availableWidth >= 60;
+        final showSnr = availableWidth >= 110;
+        final showIndicators = showBattery || showSnr;
+
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            leading ?? const SizedBox.shrink(),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(title, maxLines: 1, overflow: TextOverflow.ellipsis),
+                  if (showSubtitle)
+                    Text(
+                      '($selfName)',
+                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                ],
+              ),
+            ),
+            if (showIndicators) const SizedBox(width: 6),
+            if (showIndicators)
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (showBattery) BatteryIndicator(connector: connector),
+                  if (showSnr) SNRIndicator(connector: connector),
+                ],
+              ),
+            trailing ?? const SizedBox.shrink(),
+          ],
+        );
+      },
+    );
+  }
+}

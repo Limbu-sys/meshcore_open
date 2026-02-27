@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "Échec de la suppression de la chaîne \"{name}\"",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "fr",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Contacts",
@@ -131,9 +139,6 @@
   "settings_infoContactsCount": "Nombre de contacts",
   "settings_infoChannelCount": "Nombre de canaux",
   "settings_presets": "Préréglages",
-  "settings_preset915Mhz": "915 MHz",
-  "settings_preset868Mhz": "868 MHz",
-  "settings_preset433Mhz": "433 MHz",
   "settings_frequency": "Fréquence (MHz)",
   "settings_frequencyHelper": "300,0 - 2 500,0",
   "settings_frequencyInvalid": "Fréquence invalide (300-2500 MHz)",
@@ -143,8 +148,6 @@
   "settings_txPower": "TX Puissance (dBm)",
   "settings_txPowerHelper": "0 - 22",
   "settings_txPowerInvalid": "Puissance TX invalide (0-22 dBm)",
-  "settings_longRange": "Portée Longue",
-  "settings_fastSpeed": "Vitesse Rapide",
   "settings_error": "Erreur : {message}",
   "@settings_error": {
     "placeholders": {
@@ -210,8 +213,8 @@
   "appSettings_batteryLifepo4": "LiFePO4 (2,6-3,65V)",
   "appSettings_batteryLipo": "LiPo (3,0-4,2V)",
   "appSettings_mapDisplay": "Affichage de la carte",
-  "appSettings_showRepeaters": "Afficher les répétiteurs",
-  "appSettings_showRepeatersSubtitle": "Afficher les nœuds répétiteurs sur la carte",
+  "appSettings_showRepeaters": "Afficher les répéteurs",
+  "appSettings_showRepeatersSubtitle": "Afficher les nœuds répéteurs sur la carte",
   "appSettings_showChatNodes": "Afficher les nœuds de discussion",
   "appSettings_showChatNodesSubtitle": "Afficher les nœuds de chat sur la carte",
   "appSettings_showOtherNodes": "Afficher d'autres nœuds",
@@ -266,8 +269,8 @@
       }
     }
   },
-  "contacts_manageRepeater": "Gérer le répétiteur",
-  "contacts_roomLogin": "Connexion Salle",
+  "contacts_manageRepeater": "Gérer le répéteur",
+  "contacts_roomLogin": "Connexion Room Server",
   "contacts_openChat": "Ouverture du Chat",
   "contacts_editGroup": "Modifier le groupe",
   "contacts_deleteGroup": "Supprimer le groupe",
@@ -339,6 +342,8 @@
   "channels_publicChannel": "Canal public",
   "channels_privateChannel": "Canal privé",
   "channels_editChannel": "Modifier le canal",
+  "channels_muteChannel": "Désactiver les notifications du canal",
+  "channels_unmuteChannel": "Réactiver les notifications du canal",
   "channels_deleteChannel": "Supprimer le canal",
   "channels_deleteChannelConfirm": "Supprimer {name}? Cela ne peut pas être annulé.",
   "@channels_deleteChannelConfirm": {
@@ -542,9 +547,9 @@
   "chat_forceFloodMode": "Mode tout le réseau forcé",
   "chat_recentAckPaths": "Chemins ACK récents (touchez pour utiliser) :",
   "chat_pathHistoryFull": "L'historique du chemin est plein. Supprimez les entrées pour en ajouter de nouvelles.",
-  "chat_hopSingular": "Sautez",
-  "chat_hopPlural": "sautez",
-  "chat_hopsCount": "{count} {count, plural, =1{hop} other{hops}}",
+  "chat_hopSingular": "saut",
+  "chat_hopPlural": "sauts",
+  "chat_hopsCount": "{count} {count, plural, =1{saut} other{sauts}}",
   "@chat_hopsCount": {
     "placeholders": {
       "count": {
@@ -636,7 +641,7 @@
     }
   },
   "map_chat": "Chat",
-  "map_repeater": "Répétiteur",
+  "map_repeater": "Répéteur",
   "map_room": "Salle",
   "map_sensor": "Capteur",
   "map_pinDm": "Clé (DM)",
@@ -677,7 +682,7 @@
   "map_lastSeenTime": "Dernière fois vu",
   "map_sharedPin": "Clé partagée",
   "map_joinRoom": "Rejoindre la salle",
-  "map_manageRepeater": "Gérer le répétiteur",
+  "map_manageRepeater": "Gérer le répéteur",
   "mapCache_title": "Cache de Carte Hors Ligne",
   "mapCache_selectAreaFirst": "Sélectionner une zone pour la mise en cache en premier",
   "mapCache_noTilesToDownload": "Aucun tuilage à télécharger pour cette zone.",
@@ -800,13 +805,13 @@
   "time_allTime": "Tout le temps",
   "dialog_disconnect": "Déconnecter",
   "dialog_disconnectConfirm": "Êtes-vous sûr de vouloir vous déconnecter de cet appareil ?",
-  "login_repeaterLogin": "Connexion au répétiteur",
-  "login_roomLogin": "Connexion Salle",
+  "login_repeaterLogin": "Connexion au répéteur",
+  "login_roomLogin": "Connexion Room Server",
   "login_password": "Mot de passe",
   "login_enterPassword": "Entrez votre mot de passe",
   "login_savePassword": "Sauvegarder le mot de passe",
   "login_savePasswordSubtitle": "Le mot de passe sera stocké en toute sécurité sur cet appareil.",
-  "login_repeaterDescription": "Entrez le mot de passe du répétiteur pour accéder aux paramètres et à l'état.",
+  "login_repeaterDescription": "Entrez le mot de passe du répéteur pour accéder aux paramètres et à l'état.",
   "login_roomDescription": "Entrez le mot de passe de la pièce pour accéder aux paramètres et à l'état.",
   "login_routing": "Redirection",
   "login_routingMode": "Mode de routage",
@@ -871,17 +876,17 @@
   },
   "path_tooLong": "Le chemin est trop long. Maximum 64 sauts autorisés.",
   "path_setPath": "Définir le chemin",
-  "repeater_management": "Gestion des répétiteurs",
+  "repeater_management": "Gestion des répéteurs",
   "repeater_managementTools": "Outils de Gestion",
   "repeater_status": "État",
-  "repeater_statusSubtitle": "Afficher l'état, les statistiques et les voisins du répétiteur",
+  "repeater_statusSubtitle": "Afficher l'état, les statistiques et les voisins du répéteur",
   "repeater_telemetry": "Télémetrie",
   "repeater_telemetrySubtitle": "Afficher la télémétrie des capteurs et les statistiques du système",
   "repeater_cli": "CLI",
-  "repeater_cliSubtitle": "Envoyer des commandes au répétiteur",
+  "repeater_cliSubtitle": "Envoyer des commandes au répéteur",
   "repeater_settings": "Paramètres",
-  "repeater_settingsSubtitle": "Configurer les paramètres du répétiteur",
-  "repeater_statusTitle": "État du répétiteur",
+  "repeater_settingsSubtitle": "Configurer les paramètres du répéteur",
+  "repeater_statusTitle": "État du répéteur",
   "repeater_routingMode": "Mode de routage",
   "repeater_autoUseSavedPath": "Auto (utiliser le chemin sauvegardé)",
   "repeater_forceFloodMode": "Mode tout le réseau forcé",
@@ -976,10 +981,10 @@
       }
     }
   },
-  "repeater_settingsTitle": "Paramètres du répétiteur",
+  "repeater_settingsTitle": "Paramètres du répéteur",
   "repeater_basicSettings": "Paramètres de base",
-  "repeater_repeaterName": "Nom du répétiteur",
-  "repeater_repeaterNameHelper": "Afficher le nom de ce répétiteur",
+  "repeater_repeaterName": "Nom du répéteur",
+  "repeater_repeaterNameHelper": "Afficher le nom de ce répéteur",
   "repeater_adminPassword": "Mot de passe Administrateur",
   "repeater_adminPasswordHelper": "Mot de passe d'accès complet",
   "repeater_guestPassword": "Mot de passe invité",
@@ -999,7 +1004,7 @@
   "repeater_longitudeHelper": "Degrés décimaux (par exemple, -122,4194)",
   "repeater_features": "Fonctionnalités",
   "repeater_packetForwarding": "Transfert de paquets",
-  "repeater_packetForwardingSubtitle": "Activer le répétiteur pour transmettre des paquets",
+  "repeater_packetForwardingSubtitle": "Activer le répéteur pour transmettre des paquets",
   "repeater_guestAccess": "Accès Invité",
   "repeater_guestAccessSubtitle": "Autoriser l'accès invité en lecture seule",
   "repeater_privacyMode": "Mode de confidentialité",
@@ -1026,14 +1031,14 @@
   "repeater_encryptedAdvertInterval": "Intervalle d'annonces cryptées",
   "repeater_dangerZone": "Zone dangereuse",
   "repeater_rebootRepeater": "Redémarrer Répéteur",
-  "repeater_rebootRepeaterSubtitle": "Réinitialiser l'appareil répétiteur",
-  "repeater_rebootRepeaterConfirm": "Êtes-vous sûr de vouloir redémarrer ce répétiteur ?",
+  "repeater_rebootRepeaterSubtitle": "Réinitialiser l'appareil répéteur",
+  "repeater_rebootRepeaterConfirm": "Êtes-vous sûr de vouloir redémarrer ce répéteur ?",
   "repeater_regenerateIdentityKey": "Ré générer la clé d'identité",
   "repeater_regenerateIdentityKeySubtitle": "Générer une nouvelle paire de clés publique/privée",
-  "repeater_regenerateIdentityKeyConfirm": "Cela générera une nouvelle identité pour le répétiteur. Continuer ?",
+  "repeater_regenerateIdentityKeyConfirm": "Cela générera une nouvelle identité pour le répéteur. Continuer ?",
   "repeater_eraseFileSystem": "Supprimer le système de fichiers",
-  "repeater_eraseFileSystemSubtitle": "Formater le système de fichiers du répétiteur",
-  "repeater_eraseFileSystemConfirm": "AVERTISSEMENT : Cela effacera toutes les données du répétiteur. Cela ne peut pas être annulé !",
+  "repeater_eraseFileSystemSubtitle": "Formater le système de fichiers du répéteur",
+  "repeater_eraseFileSystemConfirm": "AVERTISSEMENT : Cela effacera toutes les données du répéteur. Cela ne peut pas être annulé !",
   "repeater_eraseSerialOnly": "Erase n'est disponible que via la console série.",
   "repeater_commandSent": "Commande envoyée : {command}",
   "@repeater_commandSent": {
@@ -1085,7 +1090,7 @@
       }
     }
   },
-  "repeater_cliTitle": "Répétiteur CLI",
+  "repeater_cliTitle": "Répéteur CLI",
   "repeater_debugNextCommand": "Déboguer Prochaine Commande",
   "repeater_commandHelp": "Aide",
   "repeater_clearHistory": "Effacer l'historique",
@@ -1119,13 +1124,13 @@
   "repeater_cliHelpClearStats": "Réinitialise divers compteurs de statistiques à zéro.",
   "repeater_cliHelpSetAf": "Définit le facteur de temps d'air.",
   "repeater_cliHelpSetTx": "Définit la puissance de transmission LoRa en dBm (réinitialisation requise pour appliquer).",
-  "repeater_cliHelpSetRepeat": "Active ou désactive le rôle du répétiteur pour ce nœud.",
+  "repeater_cliHelpSetRepeat": "Active ou désactive le rôle du répéteur pour ce nœud.",
   "repeater_cliHelpSetAllowReadOnly": "(Room server) Si \"activé\", alors un mot de passe vide permettra la connexion, mais ne permettra pas de publier dans la pièce. (lecture seule uniquement)",
   "repeater_cliHelpSetFloodMax": "Définit le nombre maximal de sauts pour les paquets de balayage entrants (si >= max, le paquet n'est pas acheminé).",
   "repeater_cliHelpSetIntThresh": "Définit le seuil d'interférence (en dB). La valeur par défaut est de 14. Définir sur 0 désactive la détection des interférences de canal.",
   "repeater_cliHelpSetAgcResetInterval": "Définit l'intervalle pour réinitialiser le contrôleur de gain automatique. Mettez à 0 pour désactiver.",
   "repeater_cliHelpSetMultiAcks": "Active ou désactive la fonctionnalité « double ACKs ».",
-  "repeater_cliHelpSetAdvertInterval": "Définit l'intervalle du minuteur pour envoyer un paquet d'annonce local (sans relais). Définir sur 0 pour désactiver.",
+  "repeater_cliHelpSetAdvertInterval": "Définit l'intervalle entre chaque émission d'une annonce locale (sans relais). Définir sur 0 pour désactiver.",
   "repeater_cliHelpSetFloodAdvertInterval": "Définit l'intervalle du minuteur en heures pour envoyer un paquet d'annonce massive. Définir sur 0 pour désactiver.",
   "repeater_cliHelpSetGuestPassword": "Définit/met à jour le mot de passe de l'invité. (pour les répéteurs, les connexions d'invités peuvent envoyer la requête \"Get Stats\")",
   "repeater_cliHelpSetName": "Définit le nom de l'annonce.",
@@ -1147,7 +1152,7 @@
   "repeater_cliHelpLogStart": "Démarre l'enregistrement des paquets dans le système de fichiers.",
   "repeater_cliHelpLogStop": "Arrêter de journaliser les paquets vers le système de fichiers.",
   "repeater_cliHelpLogErase": "Supprime les journaux de paquets du système de fichiers.",
-  "repeater_cliHelpNeighbors": "Affiche une liste d'autres nœuds répétiteurs entendus via des annonces sans relais. Chaque ligne est id-préfixe-hexadécimal:timestamp:snr-fois-4",
+  "repeater_cliHelpNeighbors": "Affiche une liste d'autres nœuds répéteurs entendus via des annonces sans relais. Chaque ligne est id-préfixe-hexadécimal:timestamp:snr-fois-4",
   "repeater_cliHelpNeighborRemove": "Supprime la première entrée correspondante (par préfixe de clé publique (hexadécimal)) de la liste des voisins.",
   "repeater_cliHelpRegion": "(série uniquement) Liste toutes les régions définies et les autorisations actuelles d'annonces sur tout le réseau (flood).",
   "repeater_cliHelpRegionLoad": "REMARQUE : il s'agit d'une invocation multi-commande spéciale. Chaque commande subséquente est un nom de région (indenté avec des espaces pour indiquer la hiérarchie parent, avec un minimum d'un espace). Terminé par l'envoi d'une ligne vide/commande.",
@@ -1171,8 +1176,8 @@
   "repeater_settingsCategory": "Paramètres",
   "repeater_bridge": "Pont",
   "repeater_logging": "Journalisation",
-  "repeater_neighborsRepeaterOnly": "Voisins (Uniquement répétiteur)",
-  "repeater_regionManagementRepeaterOnly": "Gestion des régions (uniquement pour le répétiteur)",
+  "repeater_neighborsRepeaterOnly": "Voisins (Uniquement répéteur)",
+  "repeater_regionManagementRepeaterOnly": "Gestion des régions (uniquement pour le répéteur)",
   "repeater_regionNote": "Les commandes de région ont été introduites pour gérer les définitions et les autorisations des régions.",
   "repeater_gpsManagement": "Gestion GPS",
   "repeater_gpsNote": "La commande GPS a été introduite pour gérer les sujets liés à la localisation.",
@@ -1241,7 +1246,7 @@
   "channelPath_title": "Chemin de paquet",
   "channelPath_viewMap": "Afficher la carte",
   "channelPath_otherObservedPaths": "Autres chemins observés",
-  "channelPath_repeaterHops": "Sauts du répétiteur",
+  "channelPath_repeaterHops": "Sauts du répéteur",
   "channelPath_noHopDetails": "Les détails de l'envoi ne sont pas fournis pour ce paquet.",
   "channelPath_messageDetails": "Détails du message",
   "channelPath_senderLabel": "Expéditeur",
@@ -1306,7 +1311,7 @@
     }
   },
   "channelPath_mapTitle": "Carte du chemin",
-  "channelPath_noRepeaterLocations": "Aucune position de répétiteur disponible pour ce chemin.",
+  "channelPath_noRepeaterLocations": "Aucune position de répéteur disponible pour ce chemin.",
   "channelPath_primaryPath": "Chemin {index} (Principal)",
   "@channelPath_primaryPath": {
     "placeholders": {
@@ -1356,12 +1361,12 @@
       }
     }
   },
-  "repeater_neighbours": "Voisins",
-  "repeater_neighboursSubtitle": "Afficher les voisins de saut nuls.",
+  "repeater_neighbors": "Voisins",
+  "repeater_neighborsSubtitle": "Afficher les voisins de saut nuls.",
   "neighbors_receivedData": "Données des voisins reçues",
   "neighbors_requestTimedOut": "Les voisins demandent un délai.",
   "neighbors_errorLoading": "Erreur lors du chargement des voisins : {error}",
-  "neighbors_repeatersNeighbours": "Répéteurs Voisins",
+  "neighbors_repeatersNeighbors": "Répéteurs Voisins",
   "neighbors_noData": "Aucune donnée concernant les voisins disponible.",
   "channels_createPrivateChannelDesc": "Sécurisé avec une clé secrète.",
   "channels_joinPrivateChannel": "Rejoindre un Canal Privé",
@@ -1396,7 +1401,7 @@
   "settings_locationIntervalSec": "Intervalle de mise-à-jour du GPS (Secondes)",
   "settings_locationIntervalInvalid": "L'intervalle doit être compris entre 60 et 86400 secondes.",
   "contacts_manageRoom": "Gérer le Room Server",
-  "room_management": "Administración del Servidor de Habitación",
+  "room_management": "Administrattion Room Server",
   "@community_joinConfirmation": {
     "placeholders": {
       "name": {
@@ -1556,11 +1561,13 @@
   "contacts_invalidAdvertFormat": "Données de contact non valides",
   "appSettings_languageUk": "Ukrainien",
   "appSettings_languageRu": "Russe",
+  "appSettings_enableMessageTracing": "Activer le traçage des messages",
+  "appSettings_enableMessageTracingSubtitle": "Afficher les métadonnées détaillées de routage et de synchronisation des messages",
   "contacts_clipboardEmpty": "Le presse-papiers est vide.",
   "contacts_contactImported": "Le contact a été importé.",
-  "contacts_floodAdvert": "Annonce de crue",
+  "contacts_floodAdvert": "Annonce à tout le réseau",
   "contacts_contactImportFailed": "Échec de l'importation du contact.",
-  "contacts_zeroHopAdvert": "Annonce Zero Hop",
+  "contacts_zeroHopAdvert": "Annonce Zero saut",
   "contacts_copyAdvertToClipboard": "Copier l'annonce dans le presse-papiers",
   "contacts_addContactFromClipboard": "Ajouter un contact depuis le presse-papiers",
   "contacts_ShareContact": "Copier le contact dans le presse-papiers",
@@ -1575,7 +1582,6 @@
   "notification_newNodesCount": "{count} {count, plural, =1{nouveau nœud} other{nouveaux nœuds}}",
   "notification_newTypeDiscovered": "Nouveau {contactType} découvert",
   "notification_receivedNewMessage": "Nouveau message reçu",
-  "contacts_zeroHopContactAdvertFailed": "Échec de l'envoi du contact.",
   "settings_gpxExportRepeaters": "Exporter les répéteurs / serveur de salle au format GPX",
   "settings_gpxExportRepeatersSubtitle": "Exporte les répéteurs / roomserver avec une localisation vers un fichier GPX.",
   "settings_gpxExportNoContacts": "Aucun contact à exporter.",
@@ -1591,6 +1597,207 @@
   "settings_gpxExportAllContacts": "Tous les emplacements des contacts",
   "settings_gpxExportShareText": "Données de carte exportées à partir de meshcore-open",
   "settings_gpxExportShareSubject": "meshcore-open exporter les données de carte GPX",
-  "pathTrace_someHopsNoLocation": "Une ou plusieurs des houblons manquent d'une localisation !"
-
+  "pathTrace_someHopsNoLocation": "Un ou plusieurs des sauts manquent d'une localisation !",
+  "map_tapToAdd": "Appuyez sur les nœuds pour les ajouter au chemin.",
+  "pathTrace_clearTooltip": "Effacer le chemin",
+  "map_pathTraceCancelled": "Traçage de chemin annulé",
+  "map_removeLast": "Supprimer le dernier",
+  "map_runTrace": "Exécuter la traçage de chemin",
+  "scanner_bluetoothOffMessage": "Veuillez activer le Bluetooth pour rechercher des appareils.",
+  "scanner_bluetoothOff": "Le Bluetooth est désactivé.",
+  "scanner_enableBluetooth": "Activer le Bluetooth",
+  "snrIndicator_lastSeen": "Dernière fois vu",
+  "snrIndicator_nearByRepeaters": "Répéteurs à proximité",
+  "chat_ShowAllPaths": "Afficher tous les chemins",
+  "settings_clientRepeatFreqWarning": "Pour les transmissions hors réseau, il est nécessaire d'utiliser les fréquences de 433, 869 ou 918 MHz.",
+  "settings_clientRepeatSubtitle": "Permettez à cet appareil de répéter les paquets de données pour les autres.",
+  "settings_clientRepeat": "Répétition hors réseau",
+  "settings_aboutOpenMeteoAttribution": "Données d'élévation LOS : Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Unités",
+  "appSettings_unitsMetric": "Métrique (m/km)",
+  "appSettings_unitsImperial": "Impérial (ft / mi)",
+  "map_lineOfSight": "Ligne de vue",
+  "map_losScreenTitle": "Ligne de vue",
+  "losSelectStartEnd": "Sélectionnez les nœuds de début et de fin pour LOS.",
+  "losRunFailed": "Échec de la vérification de la ligne de vue : {error}",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "losClearAllPoints": "Effacer tous les points",
+  "losRunToViewElevationProfile": "Exécutez LOS pour afficher le profil d'altitude",
+  "losMenuTitle": "Menu LOS",
+  "losMenuSubtitle": "Appuyez sur les nœuds ou appuyez longuement sur la carte pour des points personnalisés",
+  "losShowDisplayNodes": "Afficher les nœuds d'affichage",
+  "losCustomPoints": "Points personnalisés",
+  "losCustomPointLabel": "Personnalisé {index}",
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "losPointA": "Point A",
+  "losPointB": "Point B",
+  "losAntennaA": "Antenne A : {value} {unit}",
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losAntennaB": "Antenne B : {value} {unit}",
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losRun": "Exécuter la LOS",
+  "losNoElevationData": "Aucune donnée d'altitude",
+  "losProfileClear": "{distance} {distanceUnit}, LOS clair, clairance minimale {clearance} {heightUnit}",
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losProfileBlocked": "{distance} {distanceUnit}, bloqué par {obstruction} {heightUnit}",
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losStatusChecking": "LOS : vérification...",
+  "losStatusNoData": "LOS : aucune donnée",
+  "losStatusSummary": "LOS : {clear}/{total} clair, {blocked} bloqué, {unknown} inconnu",
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "losErrorElevationUnavailable": "Données d'altitude indisponibles pour un ou plusieurs échantillons.",
+  "losErrorInvalidInput": "Données de points/d'altitude non valides pour le calcul de la LOS.",
+  "losRenameCustomPoint": "Renommer le point personnalisé",
+  "losPointName": "Nom du point",
+  "losShowPanelTooltip": "Afficher le panneau LOS",
+  "losHidePanelTooltip": "Masquer le panneau LOS",
+  "losElevationAttribution": "Données d’altitude : Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Horizon radio",
+  "losLegendLosBeam": "Ligne de visée",
+  "losLegendTerrain": "Terrain",
+  "losFrequencyLabel": "Fréquence",
+  "losFrequencyInfoTooltip": "Voir les détails du calcul",
+  "losFrequencyDialogTitle": "Calcul de l’horizon radio",
+  "losFrequencyDialogDescription": "À partir de k={baselineK} à {baselineFreq} MHz, le calcul ajuste le facteur k pour la bande actuelle de {frequencyMHz} MHz, ce qui définit la limite incurvée de l'horizon radio.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "listFilter_addToFavorites": "Ajouter à mes favoris",
+  "listFilter_removeFromFavorites": "Supprimer des favoris",
+  "listFilter_favorites": "Préférences",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Non lu",
+  "contacts_searchFavorites": "Rechercher {number}{str} Favoris...",
+  "contacts_searchUsers": "Rechercher {number}{str} utilisateurs...",
+  "contacts_searchRoomServers": "Rechercher {number}{str} serveurs de salle...",
+  "contacts_searchRepeaters": "Rechercher {number}{str} Répéteurs...",
+  "contacts_searchContactsNoNumber": "Rechercher des contacts..."
 }

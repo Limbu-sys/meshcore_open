@@ -234,7 +234,11 @@ class MessageRetryService extends ChangeNotifier {
     }
   }
 
-  void updateMessageFromSent(Uint8List ackHash, int timeoutMs) {
+  bool updateMessageFromSent(
+    Uint8List ackHash,
+    int timeoutMs, {
+    bool allowQueueFallback = true,
+  }) {
     final ackHashHex = ackHash
         .map((b) => b.toRadixString(16).padLeft(2, '0'))
         .join();
@@ -277,7 +281,7 @@ class MessageRetryService extends ChangeNotifier {
     }
 
     // FALLBACK: Old queue-based matching (for messages sent before hash computation was added)
-    if (messageId == null) {
+    if (messageId == null && allowQueueFallback) {
       _debugLogService?.warn(
         'RESP_CODE_SENT: ACK hash $ackHashHex not found in hash table, falling back to queue',
         tag: 'AckHash',
@@ -320,7 +324,7 @@ class MessageRetryService extends ChangeNotifier {
 
     if (messageId == null || contact == null) {
       debugPrint('No pending message found for ACK hash: $ackHashHex');
-      return;
+      return false;
     }
 
     // Store the mapping for future lookups (e.g., when ACK arrives)
@@ -339,7 +343,7 @@ class MessageRetryService extends ChangeNotifier {
         'Message $messageId no longer pending for ACK hash: $ackHashHex',
       );
       _ackHashToMessageId.remove(ackHashHex);
-      return;
+      return false;
     }
 
     // Add this ACK hash to the list of expected ACKs for this message (for history)
@@ -389,7 +393,10 @@ class MessageRetryService extends ChangeNotifier {
 
     _startTimeoutTimer(messageId, actualTimeout);
     debugPrint('Updated message $messageId with ACK hash: $ackHashHex');
+    return true;
   }
+
+  bool get hasPendingMessages => _pendingMessages.isNotEmpty;
 
   void _startTimeoutTimer(String messageId, int timeoutMs) {
     _timeoutTimers[messageId]?.cancel();

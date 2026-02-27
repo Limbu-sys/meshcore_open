@@ -5,6 +5,7 @@ class Contact {
   final Uint8List publicKey;
   final String name;
   final int type;
+  final int flags;
   final int pathLength; // -1 = flood, 0+ = direct hops (from device)
   final Uint8List path; // Path bytes from device
   final int?
@@ -19,6 +20,7 @@ class Contact {
     required this.publicKey,
     required this.name,
     required this.type,
+    this.flags = 0,
     required this.pathLength,
     required this.path,
     this.pathOverride,
@@ -58,11 +60,13 @@ class Contact {
   }
 
   bool get hasLocation => latitude != null && longitude != null;
+  bool get isFavorite => (flags & contactFlagFavorite) != 0;
 
   Contact copyWith({
     Uint8List? publicKey,
     String? name,
     int? type,
+    int? flags,
     int? pathLength,
     Uint8List? path,
     int? pathOverride,
@@ -77,6 +81,7 @@ class Contact {
       publicKey: publicKey ?? this.publicKey,
       name: name ?? this.name,
       type: type ?? this.type,
+      flags: flags ?? this.flags,
       pathLength: pathLength ?? this.pathLength,
       path: path ?? this.path,
       pathOverride: clearPathOverride
@@ -119,7 +124,7 @@ class Contact {
     final pathBytes = _pathBytesForDisplay;
     Uint8List? traceBytes;
 
-    if (pathLength <= 0) {
+    if (pathBytes.isEmpty) {
       traceBytes = Uint8List(1);
       traceBytes[0] = publicKey[0];
       return traceBytes;
@@ -160,43 +165,49 @@ class Contact {
   }
 
   static Contact? fromFrame(Uint8List data) {
-    if (data.length < contactFrameSize) return null;
+    if (data.isEmpty) return null;
     if (data[0] != respCodeContact) return null;
+    try {
+      final pubKey = Uint8List.fromList(
+        data.sublist(contactPubKeyOffset, contactPubKeyOffset + pubKeySize),
+      );
+      final type = data[contactTypeOffset];
+      final flags = data[contactFlagsOffset];
+      final pathLen = data[contactPathLenOffset].toSigned(8);
+      final safePathLen = pathLen > 0
+          ? (pathLen > maxPathSize ? maxPathSize : pathLen)
+          : 0;
+      final pathBytes = safePathLen > 0
+          ? Uint8List.fromList(
+              data.sublist(contactPathOffset, contactPathOffset + safePathLen),
+            )
+          : Uint8List(0);
+      final name = readCString(data, contactNameOffset, maxNameSize);
+      final lastmod = readUint32LE(data, contactLastmodOffset);
 
-    final pubKey = Uint8List.fromList(
-      data.sublist(contactPubKeyOffset, contactPubKeyOffset + pubKeySize),
-    );
-    final type = data[contactTypeOffset];
-    final pathLen = data[contactPathLenOffset].toSigned(8);
-    final safePathLen = pathLen > 0
-        ? (pathLen > maxPathSize ? maxPathSize : pathLen)
-        : 0;
-    final pathBytes = safePathLen > 0
-        ? Uint8List.fromList(
-            data.sublist(contactPathOffset, contactPathOffset + safePathLen),
-          )
-        : Uint8List(0);
-    final name = readCString(data, contactNameOffset, maxNameSize);
-    final lastmod = readUint32LE(data, contactLastmodOffset);
+      double? lat, lon;
+      final latRaw = readInt32LE(data, contactLatOffset);
+      final lonRaw = readInt32LE(data, contactLonOffset);
+      if (latRaw != 0 || lonRaw != 0) {
+        lat = latRaw / 1e6;
+        lon = lonRaw / 1e6;
+      }
 
-    double? lat, lon;
-    final latRaw = readInt32LE(data, contactLatOffset);
-    final lonRaw = readInt32LE(data, contactLonOffset);
-    if (latRaw != 0 || lonRaw != 0) {
-      lat = latRaw / 1e6;
-      lon = lonRaw / 1e6;
+      return Contact(
+        publicKey: pubKey,
+        name: name.isEmpty ? 'Unknown' : name,
+        type: type,
+        flags: flags,
+        pathLength: pathLen,
+        path: pathBytes,
+        latitude: lat,
+        longitude: lon,
+        lastSeen: DateTime.fromMillisecondsSinceEpoch(lastmod * 1000),
+      );
+    } catch (e) {
+      // If parsing fails, return null
+      return null;
     }
-
-    return Contact(
-      publicKey: pubKey,
-      name: name.isEmpty ? 'Unknown' : name,
-      type: type,
-      pathLength: pathLen,
-      path: pathBytes,
-      latitude: lat,
-      longitude: lon,
-      lastSeen: DateTime.fromMillisecondsSinceEpoch(lastmod * 1000),
-    );
   }
 
   @override

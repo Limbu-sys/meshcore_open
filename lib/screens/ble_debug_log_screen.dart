@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import '../l10n/l10n.dart';
 import '../services/ble_debug_log_service.dart';
 import '../connector/meshcore_protocol.dart';
+import '../widgets/adaptive_app_bar_title.dart';
 
 enum _BleLogView { frames, rawLogRx }
 
@@ -29,7 +30,7 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
             : rawEntries.isNotEmpty;
         return Scaffold(
           appBar: AppBar(
-            title: Text(context.l10n.debugLog_bleTitle),
+            title: AdaptiveAppBarTitle(context.l10n.debugLog_bleTitle),
             actions: [
               IconButton(
                 tooltip: context.l10n.debugLog_copyLog,
@@ -100,7 +101,7 @@ class _BleDebugLogScreenState extends State<BleDebugLogScreen> {
                           itemCount: showingFrames
                               ? entries.length
                               : rawEntries.length,
-                          separatorBuilder: (_, __) => const Divider(height: 1),
+                          separatorBuilder: (_, _) => const Divider(height: 1),
                           itemBuilder: (context, index) {
                             if (showingFrames) {
                               final entry = entries[index];

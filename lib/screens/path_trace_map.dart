@@ -8,14 +8,37 @@ import 'package:latlong2/latlong.dart';
 import 'package:meshcore_open/connector/meshcore_connector.dart';
 import 'package:meshcore_open/connector/meshcore_protocol.dart';
 import 'package:meshcore_open/l10n/l10n.dart';
+import 'package:meshcore_open/models/app_settings.dart';
 import 'package:meshcore_open/models/contact.dart';
+import 'package:meshcore_open/services/app_settings_service.dart';
 import 'package:meshcore_open/services/map_tile_cache_service.dart';
+import 'package:meshcore_open/utils/app_logger.dart';
 import 'package:meshcore_open/widgets/snr_indicator.dart';
 import 'package:provider/provider.dart';
 
+double getPathDistanceMeters(List<LatLng> points) {
+  if (points.length <= 1) return 0.0;
+
+  double distanceMeters = 0.0;
+  final distanceCalculator = Distance();
+
+  for (int i = 0; i < points.length - 1; i++) {
+    distanceMeters += distanceCalculator(points[i], points[i + 1]);
+  }
+
+  return distanceMeters;
+}
+
+String formatDistance(double distanceMeters, {required bool isImperial}) {
+  if (isImperial) {
+    return '(${(distanceMeters / 1609.34).toStringAsFixed(2)} mi)';
+  }
+  return '(${(distanceMeters / 1000).toStringAsFixed(2)} km)';
+}
+
 class PathTraceData {
   final Uint8List pathData;
-  final Uint8List snrData;
+  final List<double> snrData;
   final Map<int, Contact> pathContacts;
 
   PathTraceData({
@@ -28,6 +51,7 @@ class PathTraceData {
 class PathTraceMapScreen extends StatefulWidget {
   final String title;
   final Uint8List path;
+  final int? repeaterId;
   final bool flipPathRound;
   final bool reversePathRound;
 
@@ -35,6 +59,7 @@ class PathTraceMapScreen extends StatefulWidget {
     super.key,
     required this.title,
     required this.path,
+    this.repeaterId,
     this.flipPathRound = false,
     this.reversePathRound = false,
   });
@@ -44,13 +69,14 @@ class PathTraceMapScreen extends StatefulWidget {
 }
 
 class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
+  static const double _labelZoomThreshold = 8.5;
+
   StreamSubscription<Uint8List>? _frameSubscription;
   Timer? _timeoutTimer;
 
   bool _isLoading = false;
   bool _failed2Loaded = false;
   bool _hasData = false;
-  bool _noLocationErr = false;
   PathTraceData? _traceData;
   List<LatLng> _points = <LatLng>[];
   List<Polyline> _polylines = [];
@@ -58,7 +84,8 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
   double _initialZoom = 2.0;
   LatLngBounds? _bounds;
   ValueKey<String> _mapKey = const ValueKey('initial');
-  double _pathDistance = 0.0;
+  double _pathDistanceMeters = 0.0;
+  bool _showNodeLabels = true;
 
   String _formatPathPrefixes(Uint8List pathBytes) {
     return pathBytes
@@ -80,7 +107,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
     super.dispose();
   }
 
-  Uint8List addReturnpath(Uint8List pathBytes) {
+  Uint8List addReturnPath(Uint8List pathBytes) {
     Uint8List? traceBytes;
     final len = (pathBytes.length + pathBytes.length - 1);
     traceBytes = Uint8List(len);
@@ -93,23 +120,11 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
     return traceBytes;
   }
 
-  double getPathDistance() {
-    double totalDistance = 0.0;
-    final distanceCalculator = Distance();
-
-    for (int i = 0; i < _points.length - 1; i++) {
-      totalDistance += distanceCalculator(_points[i], _points[i + 1]);
-    }
-
-    return totalDistance;
-  }
-
   Future<void> _doPathTrace() async {
     if (mounted) {
       setState(() {
         _isLoading = true;
         _failed2Loaded = false;
-        _noLocationErr = false;
       });
     }
 
@@ -120,7 +135,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
         : widget.path;
 
     if (widget.flipPathRound) {
-      path = addReturnpath(pathTmp);
+      path = addReturnPath(pathTmp);
     } else {
       path = pathTmp;
     }
@@ -142,34 +157,57 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
     _frameSubscription = connector.receivedFrames.listen((frame) {
       if (frame.isEmpty) return;
       final frameBuffer = BufferReader(frame);
-      final code = frameBuffer.readUInt8();
+      try {
+        final code = frameBuffer.readUInt8();
 
-      if (code == respCodeSent) {
-        frameBuffer.skipBytes(1); //reserved
-        tagData = frameBuffer.readBytes(4);
-        final timeoutSeconds = frameBuffer.readUInt32LE();
+        if (code == respCodeSent) {
+          frameBuffer.skipBytes(1); //reserved
+          tagData = frameBuffer.readBytes(4);
+          final timeoutMilliseconds = frameBuffer.readUInt32LE();
 
-        // Start timeout timer for trace response
-        _timeoutTimer?.cancel();
-        _timeoutTimer = Timer(Duration(milliseconds: timeoutSeconds), () {
+          // Start timeout timer for trace response
+          _timeoutTimer?.cancel();
+          _timeoutTimer = Timer(
+            Duration(milliseconds: timeoutMilliseconds),
+            () {
+              if (!mounted) return;
+              setState(() {
+                _isLoading = false;
+                _failed2Loaded = true;
+              });
+            },
+          );
+        }
+
+        if (code == respCodeErr) {
+          _timeoutTimer?.cancel();
           if (!mounted) return;
           setState(() {
             _isLoading = false;
             _failed2Loaded = true;
           });
-        });
-      }
+        }
 
-      // Check if it's a binary response
-      if (frame.length > 8 &&
-          code == pushCodeTraceData &&
-          listEquals(frame.sublist(4, 8), tagData)) {
+        // Check if it's a binary response
+        if (frame.length > 8 &&
+            code == pushCodeTraceData &&
+            listEquals(frame.sublist(4, 8), tagData)) {
+          _timeoutTimer?.cancel();
+          if (!mounted) return;
+          frameBuffer.skipBytes(3); //reserved + path length + flag
+          if (listEquals(frameBuffer.readBytes(4), tagData)) {
+            _handleTraceResponse(frame);
+          }
+        }
+      } catch (e) {
         _timeoutTimer?.cancel();
         if (!mounted) return;
-        frameBuffer.skipBytes(3); //reserved + path length + flag
-        if (listEquals(frameBuffer.readBytes(4), tagData)) {
-          _handleTraceResponse(frame);
-        }
+        setState(() {
+          _isLoading = false;
+          _failed2Loaded = true;
+        });
+        // Handle any parsing errors gracefully
+        appLogger.error('Error parsing frame: $e', tag: 'PathTraceMapScreen');
       }
     });
   }
@@ -178,71 +216,91 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
     final connector = Provider.of<MeshCoreConnector>(context, listen: false);
 
     final buffer = BufferReader(frame);
-    buffer.skipBytes(2); // Skip push code and reserved byte
-    int pathLength = buffer.readUInt8();
-    buffer.skipBytes(5); // Skip Flag byte and tag data
-    buffer.skipBytes(4); // Skip auth code
-    Uint8List pathData = buffer.readBytes(pathLength);
-    Uint8List snrData = buffer.readRemainingBytes();
+    try {
+      buffer.skipBytes(2); // Skip push code and reserved byte
+      int pathLength = buffer.readUInt8();
+      buffer.skipBytes(5); // Skip Flag byte and tag data
+      buffer.skipBytes(4); // Skip auth code
+      Uint8List pathData = buffer.readBytes(pathLength);
+      List<double> snrData = buffer
+          .readRemainingBytes()
+          .map((snr) => snr.toSigned(8).toDouble() / 4)
+          .toList();
 
-    Map<int, Contact> pathContacts = {};
+      Map<int, Contact> pathContacts = {};
 
-    connector.contacts.where((c) => c.type != advTypeChat).forEach((repeater) {
-      for (var repeaterData in pathData) {
-        if (listEquals(
-          repeater.publicKey.sublist(0, 1),
-          Uint8List.fromList([repeaterData]),
-        )) {
-          pathContacts[repeaterData] = repeater;
+      connector.contacts.where((c) => c.type != advTypeChat).forEach((
+        repeater,
+      ) {
+        for (var repeaterData in pathData) {
+          if (listEquals(
+            repeater.publicKey.sublist(0, 1),
+            Uint8List.fromList([repeaterData]),
+          )) {
+            pathContacts[repeaterData] = repeater;
+          }
         }
-      }
-    });
+      });
 
-    setState(() {
-      _isLoading = false;
-      _hasData = true;
-      _traceData = PathTraceData(
-        pathData: pathData,
-        snrData: snrData,
-        pathContacts: pathContacts,
-      );
-      _points = <LatLng>[];
-      _points.add(LatLng(connector.selfLatitude!, connector.selfLongitude!));
-      for (final hop in _traceData!.pathData) {
-        final contact = _traceData!.pathContacts[hop];
-        if (contact != null &&
-            contact.hasLocation &&
-            contact.latitude != null &&
-            contact.longitude != null) {
-          _points.add(LatLng(contact.latitude!, contact.longitude!));
-        } else {
-          _noLocationErr = true;
+      setState(() {
+        _isLoading = false;
+        _hasData = true;
+        _traceData = PathTraceData(
+          pathData: pathData,
+          snrData: snrData,
+          pathContacts: pathContacts,
+        );
+        _points = <LatLng>[];
+        _points.add(LatLng(connector.selfLatitude!, connector.selfLongitude!));
+        for (final hop in _traceData!.pathData) {
+          final contact = _traceData!.pathContacts[hop];
+          if (contact != null &&
+              contact.hasLocation &&
+              contact.latitude != null &&
+              contact.longitude != null) {
+            _points.add(LatLng(contact.latitude!, contact.longitude!));
+          }
         }
-      }
-      _polylines = _points.length > 1
-          ? [
-              Polyline(
-                points: _points,
-                strokeWidth: 4,
-                color: Colors.blueAccent,
-              ),
-            ]
-          : <Polyline>[];
+        _polylines = _points.length > 1
+            ? [
+                Polyline(
+                  points: _points,
+                  strokeWidth: 4,
+                  color: Colors.blueAccent,
+                ),
+              ]
+            : <Polyline>[];
 
-      _initialCenter = _points.isNotEmpty ? _points.first : const LatLng(0, 0);
-      _initialZoom = _points.isNotEmpty ? 13.0 : 2.0;
-      _bounds = _points.length > 1 ? LatLngBounds.fromPoints(_points) : null;
-      _mapKey = ValueKey(
-        '${context.l10n.pathTrace_you},${_formatPathPrefixes(_traceData!.pathData)}',
+        _initialCenter = _points.isNotEmpty
+            ? _points.first
+            : const LatLng(0, 0);
+        _initialZoom = _points.isNotEmpty ? 13.0 : 2.0;
+        _bounds = _points.length > 1 ? LatLngBounds.fromPoints(_points) : null;
+        _mapKey = ValueKey(
+          '${context.l10n.pathTrace_you},${_formatPathPrefixes(_traceData!.pathData)}',
+        );
+        _pathDistanceMeters = getPathDistanceMeters(_points);
+      });
+    } catch (e) {
+      appLogger.error(
+        'Error handling trace response: $e',
+        tag: 'PathTraceMapScreen',
       );
-      _pathDistance = getPathDistance();
-    });
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+          _failed2Loaded = true;
+        });
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<MeshCoreConnector>(
       builder: (context, connector, _) {
+        final settings = context.watch<AppSettingsService>().settings;
+        final isImperial = settings.unitSystem == UnitSystem.imperial;
         final tileCache = context.read<MapTileCacheService>();
 
         return Scaffold(
@@ -279,20 +337,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
             top: false,
             child: Stack(
               children: [
-                if (_noLocationErr)
-                  Center(
-                    child: Card(
-                      color: Colors.red,
-                      child: Padding(
-                        padding: EdgeInsets.all(12),
-                        child: Text(
-                          context.l10n.pathTrace_someHopsNoLocation,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                if (!_hasData && !_noLocationErr)
+                if (!_hasData)
                   Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -304,43 +349,11 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
                       ],
                     ),
                   ),
-                if (_hasData && !_noLocationErr)
-                  FlutterMap(
-                    key: _mapKey,
-                    options: MapOptions(
-                      initialCenter: _initialCenter!,
-                      initialZoom: _initialZoom,
-                      initialCameraFit: _bounds == null
-                          ? null
-                          : CameraFit.bounds(
-                              bounds: _bounds!,
-                              padding: const EdgeInsets.all(64),
-                              maxZoom: 16,
-                            ),
-                      minZoom: 2.0,
-                      maxZoom: 18.0,
-                    ),
-                    children: [
-                      TileLayer(
-                        urlTemplate: kMapTileUrlTemplate,
-                        tileProvider: tileCache.tileProvider,
-                        userAgentPackageName:
-                            MapTileCacheService.userAgentPackageName,
-                        maxZoom: 19,
-                      ),
-                      if (_polylines.isNotEmpty)
-                        PolylineLayer(polylines: _polylines),
-                      if (_traceData!.pathData.isNotEmpty)
-                        MarkerLayer(
-                          markers: _buildHopMarkers(_traceData!.pathData),
-                        ),
-                    ],
-                  ),
+                if (_hasData) _buildMapPathTrace(context, tileCache),
                 if (_points.isEmpty &&
                     !_hasData &&
                     !_isLoading &&
-                    !_failed2Loaded &&
-                    !_noLocationErr)
+                    !_failed2Loaded)
                   Center(
                     child: Card(
                       color: Colors.white.withValues(alpha: 0.9),
@@ -352,8 +365,8 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
                       ),
                     ),
                   ),
-                if (_hasData && !_noLocationErr)
-                  _buildLegendCard(context, _traceData!),
+                if (_hasData)
+                  _buildLegendCard(context, _traceData!, isImperial),
               ],
             ),
           ),
@@ -362,54 +375,61 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
     );
   }
 
-  List<Marker> _buildHopMarkers(List<int> pathData) {
-    return [
-      for (final hop in pathData)
-        if (_traceData!.pathContacts[hop]!.hasLocation)
-          Marker(
-            point: LatLng(
-              _traceData!.pathContacts[hop]!.latitude!,
-              _traceData!.pathContacts[hop]!.longitude!,
-            ),
-            width: 35,
-            height: 35,
-            child: Container(
-              padding: const EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                color: Colors.green,
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.white, width: 2),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.3),
-                    blurRadius: 4,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              alignment: Alignment.center,
-              child: Text(
-                _traceData!.pathContacts[hop]!.publicKey
-                    .sublist(0, 1)
-                    .map(
-                      (b) => b.toRadixString(16).padLeft(2, '0').toUpperCase(),
-                    )
-                    .join(),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                ),
-              ),
-            ),
-          ),
-      if (context.read<MeshCoreConnector>().selfLatitude != null &&
-          context.read<MeshCoreConnector>().selfLongitude != null)
+  List<Marker> _buildHopMarkers(
+    List<int> pathData, {
+    required bool showLabels,
+  }) {
+    final markers = <Marker>[];
+    for (final hop in pathData) {
+      final contact = _traceData!.pathContacts[hop];
+      if (contact == null || !contact.hasLocation) continue;
+      final point = LatLng(contact.latitude!, contact.longitude!);
+      markers.add(
         Marker(
-          point: LatLng(
-            context.read<MeshCoreConnector>().selfLatitude!,
-            context.read<MeshCoreConnector>().selfLongitude!,
+          point: point,
+          width: 35,
+          height: 35,
+          child: Container(
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              color: Colors.green,
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.white, width: 2),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.3),
+                  blurRadius: 4,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              contact.publicKey
+                  .sublist(0, 1)
+                  .map((b) => b.toRadixString(16).padLeft(2, '0').toUpperCase())
+                  .join(),
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 12,
+              ),
+            ),
           ),
+        ),
+      );
+      if (showLabels) {
+        markers.add(_buildNodeLabelMarker(point: point, label: contact.name));
+      }
+    }
+
+    final selfLat = context.read<MeshCoreConnector>().selfLatitude;
+    final selfLon = context.read<MeshCoreConnector>().selfLongitude;
+    if (selfLat != null && selfLon != null) {
+      final selfPoint = LatLng(selfLat, selfLon);
+      markers.add(
+        Marker(
+          point: selfPoint,
           width: 35,
           height: 35,
           child: Container(
@@ -437,7 +457,53 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
             ),
           ),
         ),
-    ];
+      );
+      if (showLabels) {
+        markers.add(
+          _buildNodeLabelMarker(
+            point: selfPoint,
+            label: context.l10n.pathTrace_you,
+          ),
+        );
+      }
+    }
+
+    return markers;
+  }
+
+  Marker _buildNodeLabelMarker({required LatLng point, required String label}) {
+    return Marker(
+      point: point,
+      width: 120,
+      height: 24,
+      alignment: Alignment.topCenter,
+      child: IgnorePointer(
+        child: Transform.translate(
+          offset: const Offset(0, -20),
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+              decoration: BoxDecoration(
+                color: Colors.black54,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   String formatDirectionText(PathTraceData pathTraceData, int index) {
@@ -453,7 +519,9 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
             .toRadixString(16)
             .padLeft(2, '0')
             .toUpperCase();
-        return contactName != null ? "$hex: $contactName" : hex;
+        return contactName != null
+            ? "$hex: $contactName"
+            : "$hex: ${context.l10n.channelPath_unknownRepeater}";
       }
     } else {
       final contactName =
@@ -462,7 +530,9 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
           .toRadixString(16)
           .padLeft(2, '0')
           .toUpperCase();
-      return contactName != null ? "$hex: $contactName" : hex;
+      return contactName != null
+          ? "$hex: $contactName"
+          : "$hex: ${context.l10n.channelPath_unknownRepeater}";
     }
   }
 
@@ -475,7 +545,9 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
             .toRadixString(16)
             .padLeft(2, '0')
             .toUpperCase();
-        return contactName != null ? "$hex: $contactName" : hex;
+        return contactName != null
+            ? "$hex: $contactName"
+            : "$hex: ${context.l10n.channelPath_unknownRepeater}";
       } else {
         return context.l10n.pathTrace_you;
       }
@@ -486,11 +558,64 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
           .toRadixString(16)
           .padLeft(2, '0')
           .toUpperCase();
-      return contactName != null ? "$hex: $contactName" : hex;
+      return contactName != null
+          ? "$hex: $contactName"
+          : "$hex: ${context.l10n.channelPath_unknownRepeater}";
     }
   }
 
-  Widget _buildLegendCard(BuildContext context, PathTraceData pathTraceData) {
+  Widget _buildMapPathTrace(
+    BuildContext context,
+    MapTileCacheService tileCache,
+  ) {
+    return FlutterMap(
+      key: _mapKey,
+      options: MapOptions(
+        interactionOptions: InteractionOptions(flags: ~InteractiveFlag.rotate),
+        initialCenter: _initialCenter!,
+        initialZoom: _initialZoom,
+        initialCameraFit: _bounds == null
+            ? null
+            : CameraFit.bounds(
+                bounds: _bounds!,
+                padding: const EdgeInsets.all(64),
+                maxZoom: 16,
+              ),
+        minZoom: 2.0,
+        maxZoom: 18.0,
+        onPositionChanged: (camera, hasGesture) {
+          final shouldShow = camera.zoom >= _labelZoomThreshold;
+          if (shouldShow != _showNodeLabels && mounted) {
+            setState(() {
+              _showNodeLabels = shouldShow;
+            });
+          }
+        },
+      ),
+      children: [
+        TileLayer(
+          urlTemplate: kMapTileUrlTemplate,
+          tileProvider: tileCache.tileProvider,
+          userAgentPackageName: MapTileCacheService.userAgentPackageName,
+          maxZoom: 19,
+        ),
+        if (_polylines.isNotEmpty) PolylineLayer(polylines: _polylines),
+        if (_traceData!.pathData.isNotEmpty)
+          MarkerLayer(
+            markers: _buildHopMarkers(
+              _traceData!.pathData,
+              showLabels: _showNodeLabels,
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _buildLegendCard(
+    BuildContext context,
+    PathTraceData pathTraceData,
+    bool isImperial,
+  ) {
     final l10n = context.l10n;
     final maxHeight = MediaQuery.of(context).size.height * 0.35;
     final estimatedHeight = 72.0 + (pathTraceData.pathData.length * 56.0);
@@ -509,7 +634,7 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
               Padding(
                 padding: const EdgeInsets.all(12),
                 child: Text(
-                  '${l10n.channelPath_repeaterHops} (${(_pathDistance / 1609.34).toStringAsFixed(2)} Miles / ${(_pathDistance / 1000).toStringAsFixed(2)} Km)',
+                  '${l10n.channelPath_repeaterHops} ${formatDistance(_pathDistanceMeters, isImperial: isImperial)}',
                   style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
               ),
@@ -523,8 +648,14 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
                         child: ListView.separated(
                           padding: const EdgeInsets.symmetric(vertical: 4),
                           itemCount: pathTraceData.pathData.length + 1,
-                          separatorBuilder: (_, __) => const Divider(height: 1),
+                          separatorBuilder: (_, _) => const Divider(height: 1),
                           itemBuilder: (context, index) {
+                            final snrUi = snrUiFromSNR(
+                              index < pathTraceData.snrData.length
+                                  ? pathTraceData.snrData[index]
+                                  : null,
+                              context.read<MeshCoreConnector>().currentSf,
+                            );
                             return Column(
                               children: [
                                 ListTile(
@@ -543,12 +674,22 @@ class _PathTraceMapScreenState extends State<PathTraceMapScreen> {
                                     ),
                                     style: const TextStyle(fontSize: 14),
                                   ),
-                                  trailing: SNRIcon(
-                                    snr:
-                                        pathTraceData.snrData[index].toSigned(
-                                          8,
-                                        ) /
-                                        4.0,
+                                  trailing: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        snrUi.icon,
+                                        color: snrUi.color,
+                                        size: 18.0,
+                                      ),
+                                      Text(
+                                        snrUi.text,
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          color: snrUi.color,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                   onTap: () {
                                     // Handle item tap

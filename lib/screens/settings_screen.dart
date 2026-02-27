@@ -8,6 +8,7 @@ import '../connector/meshcore_connector.dart';
 import '../connector/meshcore_protocol.dart';
 import '../l10n/l10n.dart';
 import '../models/radio_settings.dart';
+import '../widgets/adaptive_app_bar_title.dart';
 import 'app_settings_screen.dart';
 import 'app_debug_log_screen.dart';
 import 'ble_debug_log_screen.dart';
@@ -21,6 +22,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool _showBatteryVoltage = false;
+  bool _deviceInfoExpanded = false;
   String _appVersion = '';
 
   @override
@@ -40,7 +42,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.settings_title), centerTitle: true),
+      appBar: AppBar(
+        title: AdaptiveAppBarTitle(l10n.settings_title),
+        centerTitle: true,
+      ),
       body: SafeArea(
         top: false,
         child: Consumer<MeshCoreConnector>(
@@ -74,43 +79,84 @@ class _SettingsScreenState extends State<SettingsScreen> {
     MeshCoreConnector connector,
   ) {
     final l10n = context.l10n;
+
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              l10n.settings_deviceInfo,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            _buildInfoRow(l10n.settings_infoName, connector.deviceDisplayName),
-            _buildInfoRow(l10n.settings_infoId, connector.deviceIdLabel),
-            _buildInfoRow(
-              l10n.settings_infoStatus,
-              connector.isConnected
-                  ? l10n.common_connected
-                  : l10n.common_disconnected,
-            ),
-            _buildBatteryInfoRow(context, connector),
-            if (connector.selfName != null)
-              _buildInfoRow(l10n.settings_nodeName, connector.selfName!),
-            if (connector.selfPublicKey != null)
-              _buildInfoRow(
-                l10n.settings_infoPublicKey,
-                '${pubKeyToHex(connector.selfPublicKey!).substring(0, 16)}...',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          InkWell(
+            borderRadius: BorderRadius.circular(12),
+            onTap: () {
+              setState(() {
+                _deviceInfoExpanded = !_deviceInfoExpanded;
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      l10n.settings_deviceInfo,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  AnimatedRotation(
+                    turns: _deviceInfoExpanded ? 0.5 : 0,
+                    duration: const Duration(milliseconds: 200),
+                    child: const Icon(Icons.expand_more),
+                  ),
+                ],
               ),
-            _buildInfoRow(
-              l10n.settings_infoContactsCount,
-              '${connector.contacts.length}',
             ),
-            _buildInfoRow(
-              l10n.settings_infoChannelCount,
-              '${connector.channels.length}',
+          ),
+
+          AnimatedCrossFade(
+            firstChild: const SizedBox.shrink(),
+            secondChild: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildInfoRow(
+                    l10n.settings_infoName,
+                    connector.deviceDisplayName,
+                  ),
+                  _buildInfoRow(l10n.settings_infoId, connector.deviceIdLabel),
+                  _buildInfoRow(
+                    l10n.settings_infoStatus,
+                    connector.isConnected
+                        ? l10n.common_connected
+                        : l10n.common_disconnected,
+                  ),
+                  _buildBatteryInfoRow(context, connector),
+                  if (connector.selfName != null)
+                    _buildInfoRow(l10n.settings_nodeName, connector.selfName!),
+                  if (connector.selfPublicKey != null)
+                    _buildInfoRow(
+                      l10n.settings_infoPublicKey,
+                      '${pubKeyToHex(connector.selfPublicKey!).substring(0, 16)}...',
+                    ),
+                  _buildInfoRow(
+                    l10n.settings_infoContactsCount,
+                    '${connector.contacts.length}',
+                  ),
+                  _buildInfoRow(
+                    l10n.settings_infoChannelCount,
+                    '${connector.channels.length}',
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+            crossFadeState: _deviceInfoExpanded
+                ? CrossFadeState.showSecond
+                : CrossFadeState.showFirst,
+            duration: const Duration(milliseconds: 200),
+          ),
+        ],
       ),
     );
   }
@@ -355,22 +401,33 @@ class _SettingsScreenState extends State<SettingsScreen> {
     Color? valueColor,
     VoidCallback? onTap,
   }) {
+    final theme = Theme.of(context);
+
     final row = Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               if (leading != null) ...[leading, const SizedBox(width: 8)],
-              Text(label, style: TextStyle(color: Colors.grey[600])),
+              Expanded(
+                child: Text(
+                  label,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
             ],
           ),
-          Flexible(
-            child: Text(
-              value,
-              style: TextStyle(fontWeight: FontWeight.w500, color: valueColor),
-              overflow: TextOverflow.ellipsis,
+          const SizedBox(height: 4),
+          Text(
+            value,
+            style: theme.textTheme.bodyLarge?.copyWith(
+              color: valueColor,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ],
@@ -379,11 +436,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     if (onTap != null) {
       return InkWell(
+        borderRadius: BorderRadius.circular(6),
         onTap: onTap,
-        borderRadius: BorderRadius.circular(4),
         child: row,
       );
     }
+
     return row;
   }
 
@@ -688,7 +746,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  _gpxExport(
+  Future<void> _gpxExport(
     GpxExport exporter,
     String name,
     String description,
@@ -728,7 +786,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
-  _buildExportCard(MeshCoreConnector connector) {
+  Widget _buildExportCard(MeshCoreConnector connector) {
     final l10n = context.l10n;
     return Card(
       child: Column(
@@ -808,6 +866,7 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
   LoRaSpreadingFactor _spreadingFactor = LoRaSpreadingFactor.sf7;
   LoRaCodingRate _codingRate = LoRaCodingRate.cr4_5;
   final _txPowerController = TextEditingController(text: '20');
+  bool _clientRepeat = false;
 
   @override
   void initState() {
@@ -857,6 +916,8 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
     if (widget.connector.currentTxPower != null) {
       _txPowerController.text = widget.connector.currentTxPower.toString();
     }
+
+    _clientRepeat = widget.connector.clientRepeat ?? false;
   }
 
   @override
@@ -906,9 +967,29 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
       widget.connector.currentCr,
     );
 
+    // if the client repeat isnt null then we know its supported
+    //otherwise we leave it out of the frame to avoid accidentally enabling
+    final knownRepeat = widget.connector.clientRepeat != null;
+
+    if (knownRepeat) {
+      const validRepeatFreqsKHz = {433000, 869000, 918000};
+      if (_clientRepeat && !validRepeatFreqsKHz.contains(freqHz)) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(l10n.settings_clientRepeatFreqWarning)),
+        );
+        return;
+      }
+    }
+
     try {
       await widget.connector.sendFrame(
-        buildSetRadioParamsFrame(freqHz, bwHz, sf, cr),
+        buildSetRadioParamsFrame(
+          freqHz,
+          bwHz,
+          sf,
+          cr,
+          clientRepeat: knownRepeat ? _clientRepeat : null,
+        ),
       );
       await widget.connector.sendFrame(buildSetRadioTxPowerFrame(txPower));
       await widget.connector.refreshDeviceInfo();
@@ -947,37 +1028,25 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              l10n.settings_presets,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            Wrap(
-              spacing: 8,
-              children: [
-                _PresetChip(
-                  label: l10n.settings_preset915Mhz,
-                  onTap: () => _applyPreset(RadioSettings.preset915MHz),
-                ),
-                _PresetChip(
-                  label: l10n.settings_preset868Mhz,
-                  onTap: () => _applyPreset(RadioSettings.preset868MHz),
-                ),
-                _PresetChip(
-                  label: l10n.settings_preset433Mhz,
-                  onTap: () => _applyPreset(RadioSettings.preset433MHz),
-                ),
-                _PresetChip(
-                  label: l10n.settings_longRange,
-                  onTap: () => _applyPreset(RadioSettings.presetLongRange),
-                ),
-                _PresetChip(
-                  label: l10n.settings_fastSpeed,
-                  onTap: () => _applyPreset(RadioSettings.presetFastSpeed),
-                ),
+            DropdownButtonFormField<int>(
+              decoration: InputDecoration(
+                labelText: l10n.settings_presets,
+                border: const OutlineInputBorder(),
+              ),
+              items: [
+                for (var i = 0; i < RadioSettings.presets.length; i++)
+                  DropdownMenuItem(
+                    value: i,
+                    child: Text(RadioSettings.presets[i].$1),
+                  ),
               ],
+              onChanged: (index) {
+                if (index != null) {
+                  _applyPreset(RadioSettings.presets[index].$2);
+                }
+              },
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 16),
             TextField(
               controller: _frequencyController,
               decoration: InputDecoration(
@@ -1049,6 +1118,16 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
               ),
               keyboardType: TextInputType.number,
             ),
+            if (widget.connector.clientRepeat != null) ...[
+              const SizedBox(height: 16),
+              SwitchListTile(
+                title: Text(l10n.settings_clientRepeat),
+                subtitle: Text(l10n.settings_clientRepeatSubtitle),
+                value: _clientRepeat,
+                onChanged: (value) => setState(() => _clientRepeat = value),
+                contentPadding: EdgeInsets.zero,
+              ),
+            ],
           ],
         ),
       ),
@@ -1060,17 +1139,5 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
         FilledButton(onPressed: _saveSettings, child: Text(l10n.common_save)),
       ],
     );
-  }
-}
-
-class _PresetChip extends StatelessWidget {
-  final String label;
-  final VoidCallback onTap;
-
-  const _PresetChip({required this.label, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return ActionChip(label: Text(label), onPressed: onTap);
   }
 }

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../l10n/l10n.dart';
 import '../services/app_debug_log_service.dart';
+import '../widgets/adaptive_app_bar_title.dart';
 
 class AppDebugLogScreen extends StatelessWidget {
   const AppDebugLogScreen({super.key});
@@ -17,7 +18,7 @@ class AppDebugLogScreen extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
-            title: Text(context.l10n.debugLog_appTitle),
+            title: AdaptiveAppBarTitle(context.l10n.debugLog_appTitle),
             centerTitle: true,
             actions: [
               IconButton(
@@ -55,7 +56,7 @@ class AppDebugLogScreen extends StatelessWidget {
             child: hasEntries
                 ? ListView.separated(
                     itemCount: entries.length,
-                    separatorBuilder: (_, __) => const Divider(height: 1),
+                    separatorBuilder: (_, _) => const Divider(height: 1),
                     itemBuilder: (context, index) {
                       final entry = entries[index];
                       return ListTile(

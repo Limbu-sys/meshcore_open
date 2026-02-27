@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "Kanal {name} konnte nicht gelöscht werden",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "de",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Kontakte",
@@ -96,14 +104,14 @@
   "settings_privacyModeEnabled": "Datenschutzmodus aktiviert",
   "settings_privacyModeDisabled": "Datenschutzmodus deaktiviert",
   "settings_actions": "Aktionen",
-  "settings_sendAdvertisement": "Sende eine Ankündigung",
-  "settings_sendAdvertisementSubtitle": "Sende Ankündigung",
+  "settings_sendAdvertisement": "Sende Ankündigung",
+  "settings_sendAdvertisementSubtitle": "Sende eine Ankündigung",
   "settings_advertisementSent": "Ankündigung gesendet",
   "settings_syncTime": "Zeitsynchronisierung",
   "settings_syncTimeSubtitle": "Stelle die Gerätezeit auf die Uhrzeit des Telefons ein",
   "settings_timeSynchronized": "Zeit synchronisiert",
   "settings_refreshContacts": "Kontakte aktualisieren",
-  "settings_refreshContactsSubtitle": "Kontakte-Liste vom Gerät neu laden",
+  "settings_refreshContactsSubtitle": "Kontakt-Liste vom Gerät neu laden",
   "settings_rebootDevice": "Gerät neu starten",
   "settings_rebootDeviceSubtitle": "MeshCore-Gerät neu starten",
   "settings_rebootDeviceConfirm": "Sind Sie sicher, dass Sie das Gerät neu starten möchten? Sie werden getrennt.",
@@ -131,9 +139,6 @@
   "settings_infoContactsCount": "Anzahl Kontakte",
   "settings_infoChannelCount": "Anzahl Kanäle",
   "settings_presets": "Voreinstellungen",
-  "settings_preset915Mhz": "915 MHz",
-  "settings_preset868Mhz": "868 MHz",
-  "settings_preset433Mhz": "433 MHz",
   "settings_frequency": "Frequenz (MHz)",
   "settings_frequencyHelper": "300,00 - 2.500,00",
   "settings_frequencyInvalid": "Ungültige Frequenz (300-2500 MHz)",
@@ -143,8 +148,6 @@
   "settings_txPower": "TX-Leistung (dBm)",
   "settings_txPowerHelper": "0 - 22",
   "settings_txPowerInvalid": "Ungültige TX-Leistung (0-22 dBm)",
-  "settings_longRange": "Grosse Reichweite",
-  "settings_fastSpeed": "Schnelle Geschwindigkeit",
   "settings_error": "Fehler: {message}",
   "@settings_error": {
     "placeholders": {
@@ -339,6 +342,8 @@
   "channels_publicChannel": "Öffentlicher Kanal",
   "channels_privateChannel": "Privater Kanal",
   "channels_editChannel": "Kanal bearbeiten",
+  "channels_muteChannel": "Kanal stummschalten",
+  "channels_unmuteChannel": "Kanal Stummschaltung aufheben",
   "channels_deleteChannel": "Lösche den Kanal",
   "channels_deleteChannelConfirm": "Löschen von \"{name}\"? Dies kann nicht rückgängig gemacht werden.",
   "@channels_deleteChannelConfirm": {
@@ -540,7 +545,7 @@
   "chat_routingMode": "Routenmodus",
   "chat_autoUseSavedPath": "Automatisch (gespeicherten Pfad verwenden)",
   "chat_forceFloodMode": "Flut-Modus erzwingen",
-  "chat_recentAckPaths": "Aktuelle ACK-Pfade (tasten, um zu verwenden):",
+  "chat_recentAckPaths": "Aktuelle ACK-Pfade (antippen, um zu verwenden):",
   "chat_pathHistoryFull": "Die Pfadhistorie ist voll. Entferne Einträge, um neue hinzuzufügen.",
   "chat_hopSingular": "Sprung",
   "chat_hopPlural": "Sprünge",
@@ -554,7 +559,7 @@
   },
   "chat_successes": "Erfolgreich",
   "chat_removePath": "Pfad entfernen",
-  "chat_noPathHistoryYet": "Keine eine Pfadhistorie vorhanden.\nSende eine Nachricht, um Pfade zu entdecken.",
+  "chat_noPathHistoryYet": "Keine Pfadhistorie vorhanden.\nSende eine Nachricht, um Pfade zu entdecken.",
   "chat_pathActions": "Pfadaktionen:",
   "chat_setCustomPath": "Lege benutzerdefinierten Pfad fest",
   "chat_setCustomPathSubtitle": "Manuellen Routenpfad festlegen",
@@ -717,7 +722,7 @@
   "mapCache_cacheArea": "Zwischenspeicherbereich",
   "mapCache_useCurrentView": "Aktuelle Ansicht verwenden",
   "mapCache_zoomRange": "Zoom Bereich",
-  "mapCache_estimatedTiles": "Geschätzte Fliesen: {count}",
+  "mapCache_estimatedTiles": "Geschätzte Kacheln: {count}",
   "@mapCache_estimatedTiles": {
     "placeholders": {
       "count": {
@@ -854,7 +859,7 @@
   },
   "path_enterCustomPath": "Gebe Pfad ein",
   "path_currentPathLabel": "Aktueller Pfad",
-  "path_hexPrefixInstructions": "Gebe für jeden Hopfen 2-stellige Hex-Präfixe ein, getrennt durch Kommas.",
+  "path_hexPrefixInstructions": "Gebe für jeden Zwischen-Hop das 2-stellige Hex-Präfix ein, getrennt durch Kommas.",
   "path_hexPrefixExample": "Beispiel: A1,F2,3C (jeder Knoten verwendet den ersten Byte seines öffentlichen Schlüssels)",
   "path_labelHexPrefixes": "Pfad (Hex-Präfixe)",
   "path_helperMaxHops": "Max 64 Sprünge. Jede Präfixe ist 2 Hexadezimalzeichen (1 Byte)",
@@ -887,7 +892,7 @@
   "repeater_forceFloodMode": "Flut-Modus erzwingen",
   "repeater_pathManagement": "Pfadverwaltung",
   "repeater_refresh": "Aktualisieren",
-  "repeater_statusRequestTimeout": "Statusanfrage zeitweise fehlgeschlagen.",
+  "repeater_statusRequestTimeout": "Statusanfrage durch Timeout fehlgeschlagen.",
   "repeater_errorLoadingStatus": "Fehler beim Laden des Status: {error}",
   "@repeater_errorLoadingStatus": {
     "placeholders": {
@@ -957,7 +962,7 @@
       }
     }
   },
-  "repeater_duplicatesFloodDirect": "Überflut: {flood}, Direkt: {direct}",
+  "repeater_duplicatesFloodDirect": "Flut: {flood}, Direkt: {direct}",
   "@repeater_duplicatesFloodDirect": {
     "placeholders": {
       "flood": {
@@ -983,7 +988,7 @@
   "repeater_adminPassword": "Admin-Passwort",
   "repeater_adminPasswordHelper": "Vollzugriffspasswort",
   "repeater_guestPassword": "Gast-Passwort",
-  "repeater_guestPasswordHelper": "Schreibgeschützter Zugriffspasswort",
+  "repeater_guestPasswordHelper": "Schreibgeschütztes Zugriffspasswort",
   "repeater_radioSettings": "Funk Einstellungen",
   "repeater_frequencyMhz": "Frequenz (MHz)",
   "repeater_frequencyHelper": "300-2500 MHz",
@@ -1086,11 +1091,11 @@
     }
   },
   "repeater_cliTitle": "Repeater CLI",
-  "repeater_debugNextCommand": "Fehlersuche Nächster Befehl",
+  "repeater_debugNextCommand": "Fehlersuche des nächsten Befehls",
   "repeater_commandHelp": "Hilfe",
   "repeater_clearHistory": "Löschen der Historie",
   "repeater_noCommandsSent": "Noch keine Befehle gesendet.",
-  "repeater_typeCommandOrUseQuick": "Geben Sie einen Befehl unten ein oder verwenden Sie Schnellbefehle",
+  "repeater_typeCommandOrUseQuick": "Geben Sie unten einen Befehl ein oder verwenden Sie die Schnellbefehle",
   "repeater_enterCommandHint": "Geben Sie den Befehl ein...",
   "repeater_previousCommand": "Vorhergehende Aktion",
   "repeater_nextCommand": "Nächste Aktion",
@@ -1132,7 +1137,7 @@
   "repeater_cliHelpSetLat": "Legt die Breitengrad der Ankündigung fest. (dezimale Grad)",
   "repeater_cliHelpSetLon": "Legt die Längengrade der Ankündigung fest. (dezimale Grad)",
   "repeater_cliHelpSetRadio": "Legt komplett neue Radio-Parameter fest und speichert diese als Präferenzen. Benötigt einen \"Reboot\"-Befehl, um sie anzuwenden.",
-  "repeater_cliHelpSetRxDelay": "Sets (experimentell) als Basis (muss > 1 sein für den Effekt) zur Anwendung einer leichten Verzögerung bei empfangenen Paketen, basierend auf Signalstärke/Punktzahl. Auf 0 setzen, um die Funktion zu deaktivieren.",
+  "repeater_cliHelpSetRxDelay": "Fügt eine leichte Verzögerung bei empfangenen Paketen hinzu, basierend auf Signalstärke/Punktzahl. Auf 0 setzen, um die Funktion zu deaktivieren.",
   "repeater_cliHelpSetTxDelay": "Legt einen Faktor fest, der mit der Zeit bei voller Zuluft für ein Flood-Mode-Paket und mit einem zufälligen Slot-System multipliziert wird, um dessen Weiterleitung zu verzögern (um Kollisionen zu vermeiden).",
   "repeater_cliHelpSetDirectTxDelay": "Ähnlich wie txdelay, aber zum Anwenden einer zufälligen Verzögerung bei der Weiterleitung von Direktmodus-Paketen.",
   "repeater_cliHelpSetBridgeEnabled": "Brücke aktivieren/deaktivieren.",
@@ -1143,14 +1148,14 @@
   "repeater_cliHelpSetAdcMultiplier": "Legt einen benutzerdefinierten Faktor zur Anpassung der gemeldeten Batteriewirkspannung fest (nur auf ausgewählten Boards unterstützt).",
   "repeater_cliHelpTempRadio": "Legt vorübergehende Funkparameter für die angegebene Anzahl von Minuten fest und kehrt anschließend zu den ursprünglichen Funkparametern zurück (wird nicht in den Einstellungen gespeichert).",
   "repeater_cliHelpSetPerm": "Ändert die ACL. Entfernt das passende Eintragen (durch Pubkey-Präfix), wenn \"permissions\" auf 0 steht. Fügt ein neues Eintragen hinzu, wenn die Pubkey-Hex-Länge vollständig ist und nicht bereits in der ACL vorhanden ist. Aktualisiert das Eintragen anhand des übereinstimmenden Pubkey-Präfix. Berechtigungsbits variieren je nach Firmware-Rolle, aber die unteren 2 Bits sind: 0 (Gast), 1 (Nur Lesen), 2 (Lesen/Schreiben), 3 (Admin)",
-  "repeater_cliHelpGetBridgeType": "Ruft Brückentyp none, rs232, espnow ab.",
+  "repeater_cliHelpGetBridgeType": "Ruft Brückentyp: none, rs232, espnow ab.",
   "repeater_cliHelpLogStart": "Beginnt die Paketprotokollierung in das Dateisystem.",
   "repeater_cliHelpLogStop": "Stoppt das Paketprotokollieren in das Dateisystem.",
   "repeater_cliHelpLogErase": "Löscht die Paketprotokolle aus dem Dateisystem.",
   "repeater_cliHelpNeighbors": "Zeigt eine Liste anderer Repeater-Knoten an, die über Zero-Hop-Ankündigung gehört wurden. Jede Zeile ist id-prefix-hex:timestamp:snr-times-4",
   "repeater_cliHelpNeighborRemove": "Entfernt das erste übereinstimmende Element (über Pubkey-Präfix (hex)) aus der Liste der Nachbarn.",
   "repeater_cliHelpRegion": "Listet alle definierten Regionen auf.",
-  "repeater_cliHelpRegionLoad": "Hinweis: Dies ist ein spezieller Mehrbefehl-Aufruf. Jeder nachfolgende Befehl ist ein Regionsname (eingedruckt mit Leerzeichen zur Angabe der übergeordneten Hierarchie, mit mindestens einem Leerzeichen). Beendet durch das Senden einer Leerzeile/des Befehls.",
+  "repeater_cliHelpRegionLoad": "Hinweis: Dies ist ein spezieller Mehrbefehl-Aufruf. Jeder nachfolgende Befehl ist ein Regionsname (eingerückt mit Leerzeichen zur Angabe der übergeordneten Hierarchie, mit mindestens einem Leerzeichen). Beendet durch das Senden einer Leerzeile.",
   "repeater_cliHelpRegionGet": "Sucht die Region mit dem gegebenen Namenspräfix (oder \"\\\" für den globalen Scope) und antwortet mit \"-> region-name (parent-name) 'F'\".",
   "repeater_cliHelpRegionPut": "Fügt eine Region-Definition mit dem angegebenen Namen hinzu oder aktualisiert diese.",
   "repeater_cliHelpRegionRemove": "Löscht eine Regiondefinition mit dem angegebenen Namen. (muss genau übereinstimmen und keine Kindregionen haben)",
@@ -1243,7 +1248,7 @@
   "channelPath_otherObservedPaths": "Sonstige beobachtete Pfade",
   "channelPath_repeaterHops": "Repeater-Sprünge",
   "channelPath_noHopDetails": "Die Detailangaben für dieses Paket sind nicht verfügbar.",
-  "channelPath_messageDetails": "Nachrichtsdetails",
+  "channelPath_messageDetails": "Nachrichtendetails",
   "channelPath_senderLabel": "Sender",
   "channelPath_timeLabel": "Zeit",
   "channelPath_repeatsLabel": "Wiederholungen",
@@ -1344,10 +1349,13 @@
   "listFilter_az": "A-Z",
   "listFilter_filters": "Filtere",
   "listFilter_all": "Alle",
+  "listFilter_favorites": "Favoriten",
+  "listFilter_addToFavorites": "Zu Favoriten hinzufügen",
+  "listFilter_removeFromFavorites": "Aus Favoriten entfernen",
   "listFilter_users": "Benutzer",
   "listFilter_repeaters": "Repeater",
   "listFilter_roomServers": "Raumserver",
-  "listFilter_unreadOnly": "Nur nicht gelesen",
+  "listFilter_unreadOnly": "Nicht gelesen",
   "listFilter_newGroup": "Neue Gruppe",
   "@neighbors_errorLoading": {
     "placeholders": {
@@ -1356,13 +1364,13 @@
       }
     }
   },
-  "repeater_neighbours": "Nachbarn",
-  "repeater_neighboursSubtitle": "Anzahl der Hop-Nachbarn anzeigen.",
-  "neighbors_receivedData": "Empfangene Nachbarendaten",
-  "neighbors_requestTimedOut": "Nachbarn melden zeitweise Ausfall.",
+  "repeater_neighbors": "Nachbarn",
+  "repeater_neighborsSubtitle": "Anzahl der Hop-Nachbarn anzeigen.",
+  "neighbors_receivedData": "Empfangene Nachbarsdaten",
+  "neighbors_requestTimedOut": "Anfrage durch Timeout fehlgeschlagen.",
   "neighbors_errorLoading": "Fehler beim Laden der Nachbarn: {error}",
-  "neighbors_repeatersNeighbours": "Nachbarn",
-  "neighbors_noData": "Keine Nachbardaten verfügbar.",
+  "neighbors_repeatersNeighbors": "Nachbarn",
+  "neighbors_noData": "Keine Nachbarsdaten verfügbar.",
   "channels_joinPrivateChannel": "Treten Sie einem privaten Kanal bei",
   "channels_joinPrivateChannelDesc": "Manuelle Eingabe eines geheimen Schlüssels.",
   "channels_createPrivateChannel": "Erstelle einen privaten Kanal",
@@ -1389,8 +1397,8 @@
       }
     }
   },
-  "neighbors_heardAgo": "Hörte: {time} vor her.",
-  "neighbors_unknownContact": "Unbekannte {pubkey}",
+  "neighbors_heardAgo": "Gehört vor: {time}",
+  "neighbors_unknownContact": "Unbekannt {pubkey}",
   "settings_locationGPSEnable": "GPS aktivieren",
   "settings_locationGPSEnableSubtitle": "Aktiviert GPS zur automatischen Aktualisierung des Standorts.",
   "settings_locationIntervalSec": "Intervall für GPS (Sekunden)",
@@ -1493,9 +1501,9 @@
   "community_deleted": "Community \"{name}\" verlassen",
   "community_addHashtagChannel": "Füge einen Community-Hashtag hinzu",
   "community_addHashtagChannelDesc": "Füge einen Hashtag-Kanal für diese Community hinzu",
-  "community_selectCommunity": "Wählen Sie Community",
+  "community_selectCommunity": "Wählen Sie eine Community",
   "community_regularHashtag": "Regulärer Hashtag",
-  "community_regularHashtagDesc": "Öffentliches Hashtag (jeder kann teilnehmen)",
+  "community_regularHashtagDesc": "Öffentlicher Hashtag (jeder kann teilnehmen)",
   "community_communityHashtagDesc": "Nur für Mitglieder der Community",
   "community_forCommunity": "Für {name}",
   "community_communityHashtag": "Community Hashtag",
@@ -1557,61 +1565,267 @@
   "contacts_invalidAdvertFormat": "Ungültige Kontaktdaten",
   "contacts_clipboardEmpty": "Die Zwischenablage ist leer.",
   "appSettings_languageUk": "Ukrainisch",
+  "appSettings_enableMessageTracing": "Nachrichtenverfolgung aktivieren",
+  "appSettings_enableMessageTracingSubtitle": "Detaillierte Routing- und Timing-Metadaten für Nachrichten anzeigen",
   "contacts_contactImported": "Kontakt wurde importiert.",
   "contacts_contactImportFailed": "Kontakt konnte nicht importiert werden",
-  "contacts_zeroHopAdvert": "Zero-Hop-Anzeige",
-  "contacts_floodAdvert": "Überflutungsanzeige",
+  "contacts_zeroHopAdvert": "Zero-Hop-Ankündigung",
+  "contacts_floodAdvert": "Flut-Ankündigung",
   "contacts_addContactFromClipboard": "Kontakt aus Zwischenablage hinzufügen",
   "contacts_ShareContactZeroHop": "Kontakt über Anzeige teilen",
-  "contacts_copyAdvertToClipboard": "Werbung in die Zwischenablage kopieren",
+  "contacts_copyAdvertToClipboard": "Ankündigung in die Zwischenablage kopieren",
   "contacts_ShareContact": "Kontakt in die Zwischenablage kopieren",
   "contacts_zeroHopContactAdvertFailed": "Kontakt konnte nicht gesendet werden.",
   "contacts_zeroHopContactAdvertSent": "Kontakt über Anzeige gesendet",
   "contacts_contactAdvertCopied": "Anzeige in die Zwischenablage kopiert.",
-  "contacts_contactAdvertCopyFailed": "Kopieren des Werbeinhalts in die Zwischenablage fehlgeschlagen.",
-
+  "contacts_contactAdvertCopyFailed": "Kopieren der Ankündigung in die Zwischenablage fehlgeschlagen.",
   "notification_activityTitle": "MeshCore Aktivität",
   "notification_messagesCount": "{count} {count, plural, =1{Nachricht} other{Nachrichten}}",
   "@notification_messagesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "notification_channelMessagesCount": "{count} {count, plural, =1{Kanalnachricht} other{Kanalnachrichten}}",
   "@notification_channelMessagesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "notification_newNodesCount": "{count} {count, plural, =1{neuer Knoten} other{neue Knoten}}",
   "@notification_newNodesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "notification_newTypeDiscovered": "Neuer {contactType} entdeckt",
   "@notification_newTypeDiscovered": {
     "placeholders": {
-      "contactType": {"type": "String"}
+      "contactType": {
+        "type": "String"
+      }
     }
   },
   "notification_receivedNewMessage": "Neue Nachricht empfangen",
-  "contacts_contactAdvertCopyFailed": "Kopieren des Werbeinhalts in die Zwischenablage fehlgeschlagen.",
-  "settings_gpxExportAll": "Alle Kontakte nach GPX exportieren",
-  "settings_gpxExportAllSubtitle": "Exportiert alle Kontakte mit einem Standort in eine GPX-Datei.",
-  "settings_gpxExportRepeaters": "Repeater und Raumserver nach GPX exportieren",
-  "settings_gpxExportContacts": "Begleiter nach GPX exportieren",
+  "settings_gpxExportAll": "Alle Knoten als GPX exportieren",
+  "settings_gpxExportAllSubtitle": "Exportiert alle Knoten mit einem Standort in eine GPX-Datei.",
+  "settings_gpxExportRepeaters": "Repeater und Raumserver als GPX exportieren",
+  "settings_gpxExportContacts": "Kontakte als GPX exportieren",
   "settings_gpxExportRepeatersSubtitle": "Exportiert Repeater und Raumserver mit einem Standort in eine GPX-Datei.",
-  "settings_gpxExportContactsSubtitle": "Exportiert Begleiter mit einem Ort in eine GPX-Datei.",
+  "settings_gpxExportContactsSubtitle": "Exportiert Kontakte mit einem Ort in eine GPX-Datei.",
   "settings_gpxExportRepeatersRoom": "Repeater- und Raumserver-Standorte",
-  "settings_gpxExportChat": "Begleiterstandorte",
+  "settings_gpxExportChat": "Kontaktstandorte",
   "settings_gpxExportNoContacts": "Keine Kontakte zum Exportieren.",
   "settings_gpxExportError": "Beim Export ist ein Fehler aufgetreten.",
   "settings_gpxExportNotAvailable": "Nicht auf Ihrem Gerät/Betriebssystem unterstützt",
-  "settings_gpxExportSuccess": "Erfolgreich GPX-Datei exportiert.",
+  "settings_gpxExportSuccess": "GPX-Datei erfolgreich exportiert.",
   "settings_gpxExportAllContacts": "Alle Kontaktstandorte",
-  "settings_gpxExportShareSubject": "meshcore-open GPX-Kartendaten exportieren",
-  "settings_gpxExportShareText": "Kartendaten aus meshcore-open exportiert",
-  "pathTrace_someHopsNoLocation": "Eine oder mehrere der Hopfen fehlen einen Standort!"
-
+  "settings_gpxExportShareSubject": "GPX-Kartendaten aus meshcore-open exportieren",
+  "settings_gpxExportShareText": "GPX-Kartendaten aus meshcore-open exportiert",
+  "pathTrace_someHopsNoLocation": "Bei einer oder mehreren Knoten fehlt der Standort!",
+  "map_removeLast": "Letztes Entfernen",
+  "map_tapToAdd": "Tippen Sie auf Knoten, um sie zum Pfad hinzuzufügen.",
+  "map_runTrace": "Pfadverlauf ausführen",
+  "pathTrace_clearTooltip": "Pfad löschen",
+  "map_pathTraceCancelled": "Pfadverfolgung abgebrochen.",
+  "scanner_bluetoothOffMessage": "Bitte aktivieren Sie Bluetooth, um nach Geräten zu suchen.",
+  "scanner_bluetoothOff": "Bluetooth ist deaktiviert.",
+  "scanner_enableBluetooth": "Bluetooth aktivieren",
+  "snrIndicator_lastSeen": "Zuletzt gesehen",
+  "snrIndicator_nearByRepeaters": "In der Nähe befindliche Repeater",
+  "chat_ShowAllPaths": "Alle Pfade anzeigen",
+  "settings_clientRepeat": "Wiederholung, ohne Stromanschluss",
+  "settings_clientRepeatFreqWarning": "Die Kommunikation ohne Stromversorgung erfordert Frequenzen von 433, 869 oder 918 MHz.",
+  "settings_clientRepeatSubtitle": "Ermöglichen Sie diesem Gerät, Mesh-Pakete für andere zu wiederholen.",
+  "settings_aboutOpenMeteoAttribution": "LOS-Höhendaten: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Einheiten",
+  "appSettings_unitsMetric": "Metrisch (m/km)",
+  "appSettings_unitsImperial": "Imperial (ft/mi)",
+  "map_lineOfSight": "Sichtlinie",
+  "map_losScreenTitle": "Sichtlinie",
+  "losSelectStartEnd": "Wählen Sie Start- und Endknoten für LOS aus.",
+  "losRunFailed": "Sichtlinienprüfung fehlgeschlagen: {error}",
+  "@losRunFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "losClearAllPoints": "Löschen Sie alle Punkte",
+  "losRunToViewElevationProfile": "Führen Sie LOS aus, um das Höhenprofil anzuzeigen",
+  "losMenuTitle": "LOS-Menü",
+  "losMenuSubtitle": "Tippen Sie auf Knoten oder drücken Sie lange auf die Karte, um benutzerdefinierte Punkte anzuzeigen",
+  "losShowDisplayNodes": "Anzeigeknoten anzeigen",
+  "losCustomPoints": "Benutzerdefinierte Punkte",
+  "losCustomPointLabel": "Benutzerdefiniert {index}",
+  "@losCustomPointLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "losPointA": "Punkt A",
+  "losPointB": "Punkt B",
+  "losAntennaA": "Antenne A: {value} {unit}",
+  "@losAntennaA": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losAntennaB": "Antenne B: {value} {unit}",
+  "@losAntennaB": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "losRun": "Führen Sie LOS aus",
+  "losNoElevationData": "Keine Höhendaten",
+  "losProfileClear": "{distance} {distanceUnit}, freie Sichtlinie, Mindestabstand {clearance} {heightUnit}",
+  "@losProfileClear": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "clearance": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losProfileBlocked": "{distance} {distanceUnit}, blockiert durch {obstruction} {heightUnit}",
+  "@losProfileBlocked": {
+    "placeholders": {
+      "distance": {
+        "type": "String"
+      },
+      "distanceUnit": {
+        "type": "String"
+      },
+      "obstruction": {
+        "type": "String"
+      },
+      "heightUnit": {
+        "type": "String"
+      }
+    }
+  },
+  "losStatusChecking": "LOS: Überprüfen...",
+  "losStatusNoData": "LOS: keine Daten",
+  "losStatusSummary": "Sichtlinie: {clear}/{total} frei, {blocked} blockiert, {unknown} unbekannt",
+  "@losStatusSummary": {
+    "placeholders": {
+      "clear": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "blocked": {
+        "type": "int"
+      },
+      "unknown": {
+        "type": "int"
+      }
+    }
+  },
+  "losErrorElevationUnavailable": "Für eine oder mehrere Proben sind keine Höhendaten verfügbar.",
+  "losErrorInvalidInput": "Ungültige Punkte/Höhendaten für die LOS-Berechnung.",
+  "losRenameCustomPoint": "Benennen Sie den benutzerdefinierten Punkt um",
+  "losPointName": "Punktname",
+  "losShowPanelTooltip": "LOS-Panel anzeigen",
+  "losHidePanelTooltip": "LOS-Panel ausblenden",
+  "losElevationAttribution": "Höhendaten: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Funkhorizont",
+  "losLegendLosBeam": "Sichtlinie",
+  "losLegendTerrain": "Gelände",
+  "losFrequencyLabel": "Frequenz",
+  "losFrequencyInfoTooltip": "Details zur Berechnung anzeigen",
+  "losFrequencyDialogTitle": "Berechnung des Funkhorizonts",
+  "losFrequencyDialogDescription": "Ausgehend von k={baselineK} bei {baselineFreq} MHz passt die Berechnung den k-Faktor für das aktuelle {frequencyMHz} MHz-Band an, das die gekrümmte Funkhorizontobergrenze definiert.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Ungelesen",
+  "contacts_searchContactsNoNumber": "Kontakte suchen...",
+  "contacts_searchRepeaters": "Suche {number}{str} Repeater...",
+  "contacts_searchFavorites": "Suche {number}{str} Favoriten...",
+  "contacts_searchUsers": "Suche {number}{str} Benutzer...",
+  "contacts_searchRoomServers": "Suche {number}{str} Raumserver..."
 }

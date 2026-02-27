@@ -1,7 +1,9 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:meshcore_open/models/path_history.dart';
 import 'package:meshcore_open/screens/path_trace_map.dart';
+import 'package:meshcore_open/widgets/elements_ui.dart';
 import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
@@ -19,15 +21,22 @@ class PathManagementDialog {
   }
 }
 
-class _PathManagementDialog extends StatelessWidget {
+class _PathManagementDialog extends StatefulWidget {
   final Contact contact;
 
   const _PathManagementDialog({required this.contact});
 
+  @override
+  State<_PathManagementDialog> createState() => _PathManagementDialogState();
+}
+
+class _PathManagementDialogState extends State<_PathManagementDialog> {
+  bool _showAllPaths = false;
+
   Contact _resolveContact(MeshCoreConnector connector) {
     return connector.contacts.firstWhere(
-      (c) => c.publicKeyHex == contact.publicKeyHex,
-      orElse: () => contact,
+      (c) => c.publicKeyHex == widget.contact.publicKeyHex,
+      orElse: () => widget.contact,
     );
   }
 
@@ -134,6 +143,59 @@ class _PathManagementDialog extends StatelessWidget {
         final currentContact = _resolveContact(connector);
         final paths = pathService.getRecentPaths(currentContact.publicKeyHex);
 
+        final repeatersList = List.of(connector.directRepeaters)
+          ..sort((a, b) => b.ranking.compareTo(a.ranking));
+
+        if (repeatersList.isEmpty) {
+          _showAllPaths = true;
+        }
+
+        final directRepeater = repeatersList.isEmpty
+            ? null
+            : repeatersList.first;
+        final secondDirectRepeater = repeatersList.length < 2
+            ? null
+            : repeatersList.elementAt(1);
+        final thirdDirectRepeater = repeatersList.length < 3
+            ? null
+            : repeatersList.elementAt(2);
+
+        List<MapEntry<int, MapEntry<Color, PathRecord>>> pathsWithRepeaters =
+            paths.map((path) {
+              final isDirectRepeater =
+                  directRepeater != null &&
+                  path.pathBytes.isNotEmpty &&
+                  directRepeater.pubkeyFirstByte == path.pathBytes.first;
+              final isSecondDirectRepeater =
+                  secondDirectRepeater != null &&
+                  path.pathBytes.isNotEmpty &&
+                  secondDirectRepeater.pubkeyFirstByte == path.pathBytes.first;
+              final isThirdDirectRepeater =
+                  thirdDirectRepeater != null &&
+                  path.pathBytes.isNotEmpty &&
+                  thirdDirectRepeater.pubkeyFirstByte == path.pathBytes.first;
+
+              int ranking = -1;
+              Color color = Colors.grey;
+              if (isDirectRepeater) {
+                color = Colors.green;
+                ranking = 3;
+              } else if (isSecondDirectRepeater) {
+                color = Colors.yellow;
+                ranking = 2;
+              } else if (isThirdDirectRepeater) {
+                color = Colors.red;
+                ranking = 1;
+              } else if (path.wasFloodDiscovery) {
+                color = Colors.blue;
+                ranking = 0;
+              }
+
+              return MapEntry(ranking, MapEntry(color, path));
+            }).toList();
+
+        pathsWithRepeaters.sort((a, b) => b.key.compareTo(a.key));
+
         return AlertDialog(
           title: Text(l10n.chat_pathManagement),
           content: SingleChildScrollView(
@@ -147,6 +209,17 @@ class _PathManagementDialog extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 if (paths.isNotEmpty) ...[
+                  if (repeatersList.isNotEmpty)
+                    FeatureToggleRow(
+                      title: l10n.chat_ShowAllPaths,
+                      subtitle: "",
+                      value: _showAllPaths,
+                      onChanged: (val) {
+                        setState(() {
+                          _showAllPaths = val;
+                        });
+                      },
+                    ),
                   Text(
                     l10n.chat_recentAckPaths,
                     style: const TextStyle(
@@ -154,7 +227,7 @@ class _PathManagementDialog extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
-                  if (paths.length >= 100) ...[
+                  if (pathsWithRepeaters.length >= 100) ...[
                     const SizedBox(height: 8),
                     Container(
                       width: double.infinity,
@@ -173,92 +246,99 @@ class _PathManagementDialog extends StatelessWidget {
                     ),
                   ],
                   const SizedBox(height: 8),
-                  ...paths.map((path) {
-                    return Card(
-                      margin: const EdgeInsets.symmetric(vertical: 4),
-                      child: ListTile(
-                        dense: true,
-                        leading: CircleAvatar(
-                          radius: 16,
-                          backgroundColor: path.wasFloodDiscovery
-                              ? Colors.blue
-                              : Colors.green,
-                          child: Text(
-                            '${path.hopCount}',
-                            style: const TextStyle(fontSize: 12),
-                          ),
-                        ),
-                        title: Text(
-                          l10n.chat_hopsCount(path.hopCount),
-                          style: const TextStyle(fontSize: 14),
-                        ),
-                        subtitle: Text(
-                          '${(path.tripTimeMs / 1000).toStringAsFixed(2)}s • ${_formatRelativeTime(context, path.timestamp)} • ${path.successCount} ${l10n.chat_successes}',
-                          style: const TextStyle(fontSize: 11),
-                        ),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.close, size: 16),
-                              tooltip: l10n.chat_removePath,
-                              onPressed: () async {
-                                await pathService.removePathRecord(
-                                  currentContact.publicKeyHex,
-                                  path.pathBytes,
-                                );
-                              },
+                  ...pathsWithRepeaters.map((entry) {
+                    final path = entry.value.value;
+                    final color = entry.value.key;
+
+                    if (!_showAllPaths && entry.key < 1) {
+                      return const SizedBox.shrink();
+                    } else {
+                      return Card(
+                        margin: const EdgeInsets.symmetric(vertical: 4),
+                        child: ListTile(
+                          dense: true,
+                          leading: CircleAvatar(
+                            radius: 16,
+                            backgroundColor: color,
+                            child: Text(
+                              '${path.hopCount}',
+                              style: const TextStyle(fontSize: 12),
                             ),
-                            path.wasFloodDiscovery
-                                ? const Icon(
-                                    Icons.waves,
-                                    size: 16,
-                                    color: Colors.grey,
-                                  )
-                                : const Icon(
-                                    Icons.route,
-                                    size: 16,
-                                    color: Colors.grey,
+                          ),
+                          title: Text(
+                            l10n.chat_hopsCount(path.hopCount),
+                            style: const TextStyle(fontSize: 14),
+                          ),
+                          subtitle: Text(
+                            '${(path.tripTimeMs / 1000).toStringAsFixed(2)}s • ${_formatRelativeTime(context, path.timestamp)} • ${path.successCount} ${l10n.chat_successes}',
+                            style: const TextStyle(fontSize: 11),
+                          ),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.close, size: 16),
+                                tooltip: l10n.chat_removePath,
+                                onPressed: () async {
+                                  await pathService.removePathRecord(
+                                    currentContact.publicKeyHex,
+                                    path.pathBytes,
+                                  );
+                                },
+                              ),
+                              path.wasFloodDiscovery
+                                  ? const Icon(
+                                      Icons.waves,
+                                      size: 16,
+                                      color: Colors.grey,
+                                    )
+                                  : const Icon(
+                                      Icons.route,
+                                      size: 16,
+                                      color: Colors.grey,
+                                    ),
+                            ],
+                          ),
+                          onLongPress: () =>
+                              _showFullPathDialog(context, path.pathBytes),
+                          onTap: () async {
+                            if (path.pathBytes.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    l10n.chat_pathDetailsNotAvailable,
                                   ),
-                          ],
-                        ),
-                        onLongPress: () =>
-                            _showFullPathDialog(context, path.pathBytes),
-                        onTap: () async {
-                          if (path.pathBytes.isEmpty) {
+                                  duration: const Duration(seconds: 2),
+                                ),
+                              );
+                              return;
+                            }
+
+                            final pathBytes = Uint8List.fromList(
+                              path.pathBytes,
+                            );
+                            final pathLength = path.pathBytes.length;
+
+                            await connector.setPathOverride(
+                              currentContact,
+                              pathLen: pathLength,
+                              pathBytes: pathBytes,
+                            );
+
+                            if (!context.mounted) return;
+                            Navigator.pop(context);
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  l10n.chat_pathDetailsNotAvailable,
+                                  l10n.path_usingHopsPath(path.hopCount),
                                 ),
                                 duration: const Duration(seconds: 2),
                               ),
                             );
-                            return;
-                          }
-
-                          final pathBytes = Uint8List.fromList(path.pathBytes);
-                          final pathLength = path.pathBytes.length;
-
-                          await connector.setPathOverride(
-                            currentContact,
-                            pathLen: pathLength,
-                            pathBytes: pathBytes,
-                          );
-
-                          if (!context.mounted) return;
-                          Navigator.pop(context);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                l10n.path_usingHopsPath(path.hopCount),
-                              ),
-                              duration: const Duration(seconds: 2),
-                            ),
-                          );
-                        },
-                      ),
-                    );
+                          },
+                        ),
+                      );
+                    }
                   }),
                   const Divider(),
                 ] else ...[
