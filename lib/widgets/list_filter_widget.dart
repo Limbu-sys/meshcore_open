@@ -100,7 +100,7 @@ const int _actionFilterRepeaters = 7;
 const int _actionFilterRooms = 8;
 const int _actionToggleUnreadOnly = 9;
 const int _actionNewGroup = 10;
-const int _actionTogglePrioritizeUsers = 10;
+const int _actionTogglePrioritizeUsers = 11;
 
 class ContactsFilterMenu extends StatelessWidget {
   final ContactSortOption sortOption;
