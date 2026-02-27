@@ -1753,5 +1753,51 @@
   },
   "listFilter_removeFromFavorites": "Odstrániť z označení",
   "listFilter_addToFavorites": "Pridaj do obľúbených",
-  "listFilter_favorites": "Obľúbené"
+  "listFilter_favorites": "Obľúbené",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchRoomServers": "Hľadaj {number}{str} serverov miestností...",
+  "contacts_searchFavorites": "Hľadať {number}{str} obľúbené...",
+  "contacts_searchRepeaters": "Hľadať {number}{str} opakovače...",
+  "contacts_searchUsers": "Hľadať {number}{str} používateľov...",
+  "contacts_searchContactsNoNumber": "Hľadať kontakty...",
+  "contacts_unread": "Neprečítané"
 }

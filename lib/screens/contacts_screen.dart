@@ -402,6 +402,41 @@ class _ContactsScreenState extends State<ContactsScreen>
         ? const <ContactGroup>[]
         : _filterAndSortGroups(_groups, contacts);
 
+    String hintText = "";
+
+    switch (_typeFilter) {
+      case ContactTypeFilter.all:
+        hintText = context.l10n.contacts_searchContacts(
+          filteredAndSorted.length,
+          _showUnreadOnly ? " ${context.l10n.contacts_unread}" : "",
+        );
+        break;
+      case ContactTypeFilter.users:
+        hintText = context.l10n.contacts_searchUsers(
+          filteredAndSorted.length,
+          _showUnreadOnly ? " ${context.l10n.contacts_unread}" : "",
+        );
+        break;
+      case ContactTypeFilter.repeaters:
+        hintText = context.l10n.contacts_searchRepeaters(
+          filteredAndSorted.length,
+          _showUnreadOnly ? " ${context.l10n.contacts_unread}" : "",
+        );
+        break;
+      case ContactTypeFilter.rooms:
+        hintText = context.l10n.contacts_searchRoomServers(
+          filteredAndSorted.length,
+          _showUnreadOnly ? " ${context.l10n.contacts_unread}" : "",
+        );
+        break;
+      case ContactTypeFilter.favorites:
+        hintText = context.l10n.contacts_searchFavorites(
+          filteredAndSorted.length,
+          _showUnreadOnly ? " ${context.l10n.contacts_unread}" : "",
+        );
+        break;
+    }
+
     return Column(
       children: [
         Padding(
@@ -409,7 +444,7 @@ class _ContactsScreenState extends State<ContactsScreen>
           child: TextField(
             controller: _searchController,
             decoration: InputDecoration(
-              hintText: context.l10n.contacts_searchContacts,
+              hintText: hintText,
               prefixIcon: const Icon(Icons.search),
               suffixIcon: Row(
                 mainAxisSize: MainAxisSize.min,

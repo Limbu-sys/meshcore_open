@@ -676,7 +676,35 @@ class AppLocalizationsUk extends AppLocalizations {
       'Контакти з\'являться, коли пристрої надішлють оголошення.';
 
   @override
-  String get contacts_searchContacts => 'Пошук контактів...';
+  String get contacts_unread => 'Непрочитане';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Пошук контактів...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Пошук контактів...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Пошук $number$str улюблених...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Пошук $number$str користувачів...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Пошук $number$str ретрансляторів...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Пошук $number$str серверів кімнат...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Немає непрочитаних контактів';

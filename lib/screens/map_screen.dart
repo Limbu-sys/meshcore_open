@@ -1301,7 +1301,8 @@ class _MapScreenState extends State<MapScreen> {
                         padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: context.l10n.contacts_searchContacts,
+                            hintText:
+                                context.l10n.contacts_searchContactsNoNumber,
                             prefixIcon: const Icon(Icons.search),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),

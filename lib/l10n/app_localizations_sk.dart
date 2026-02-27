@@ -671,7 +671,35 @@ class AppLocalizationsSk extends AppLocalizations {
       'Kontakty sa zobrazia, keď zariadenia spúšťajú reklamu.';
 
   @override
-  String get contacts_searchContacts => 'Vyhľadávajte kontakty...';
+  String get contacts_unread => 'Neprečítané';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Hľadať kontakty...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Vyhľadávajte kontakty...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Hľadať $number$str obľúbené...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Hľadať $number$str používateľov...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Hľadať $number$str opakovače...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Hľadaj $number$str serverov miestností...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Žiadne neprečítané kontakty';

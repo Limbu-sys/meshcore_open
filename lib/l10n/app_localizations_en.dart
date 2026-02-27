@@ -670,7 +670,35 @@ class AppLocalizationsEn extends AppLocalizations {
       'Contacts will appear when devices advertise';
 
   @override
-  String get contacts_searchContacts => 'Search contacts...';
+  String get contacts_unread => 'Unread';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Search Contacts...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Search $number$str Contacts...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Search $number$str Favorites...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Search $number$str Users...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Search $number$str Repeaters...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Search $number$str Room servers...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'No unread contacts';

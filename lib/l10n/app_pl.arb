@@ -1753,5 +1753,51 @@
   },
   "listFilter_removeFromFavorites": "Usuń z ulubionych",
   "listFilter_addToFavorites": "Dodaj do ulubionych",
-  "listFilter_favorites": "Ulubione"
+  "listFilter_favorites": "Ulubione",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Nieprzeczytane",
+  "contacts_searchContactsNoNumber": "Wyszukaj kontakty...",
+  "contacts_searchFavorites": "Wyszukaj {number}{str} ulubione...",
+  "contacts_searchRoomServers": "Wyszukaj {number}{str} serwerów Room...",
+  "contacts_searchUsers": "Wyszukaj {number}{str} Użytkowników...",
+  "contacts_searchRepeaters": "Wyszukaj {number}{str} powtórników..."
 }

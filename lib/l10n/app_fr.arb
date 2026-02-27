@@ -1753,5 +1753,51 @@
   },
   "listFilter_addToFavorites": "Ajouter à mes favoris",
   "listFilter_removeFromFavorites": "Supprimer des favoris",
-  "listFilter_favorites": "Préférences"
+  "listFilter_favorites": "Préférences",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Non lu",
+  "contacts_searchFavorites": "Rechercher {number}{str} Favoris...",
+  "contacts_searchUsers": "Rechercher {number}{str} utilisateurs...",
+  "contacts_searchRoomServers": "Rechercher {number}{str} serveurs de salle...",
+  "contacts_searchRepeaters": "Rechercher {number}{str} Répéteurs...",
+  "contacts_searchContactsNoNumber": "Rechercher des contacts..."
 }

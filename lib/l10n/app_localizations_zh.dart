@@ -636,7 +636,35 @@ class AppLocalizationsZh extends AppLocalizations {
   String get contacts_contactsWillAppear => '当设备发送广播时，联系人将显示。';
 
   @override
-  String get contacts_searchContacts => '搜索联系人...';
+  String get contacts_unread => '未读';
+
+  @override
+  String get contacts_searchContactsNoNumber => '搜索联系人...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return '搜索联系人...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return '搜索 $number$str 收藏...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return '搜索 $number$str 位用户...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return '搜索 $number$str 重复器...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return '搜索 $number$str 房间服务器...';
+  }
 
   @override
   String get contacts_noUnreadContacts => '没有未读内容';

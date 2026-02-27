@@ -679,7 +679,35 @@ class AppLocalizationsPt extends AppLocalizations {
       'Os contatos serão exibidos quando os dispositivos anunciarem.';
 
   @override
-  String get contacts_searchContacts => 'Pesquisar contatos...';
+  String get contacts_unread => 'Não lido';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Pesquisar Contatos...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Pesquisar contatos...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Pesquisar $number$str Favoritos...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Pesquisar $number$str Usuários...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Pesquisar $number$str Repetidores...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Pesquisar $number$str servidores de sala...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Sem contatos não lidos.';

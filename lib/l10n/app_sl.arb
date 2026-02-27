@@ -1753,5 +1753,51 @@
   },
   "listFilter_favorites": "Priljubljene",
   "listFilter_removeFromFavorites": "Odstrani iz priljubljenih",
-  "listFilter_addToFavorites": "Dodaj v priljubljene"
+  "listFilter_addToFavorites": "Dodaj v priljubljene",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Neprebrano",
+  "contacts_searchFavorites": "Iskanje {number}{str} priljubljenih...",
+  "contacts_searchRoomServers": "Išči {number}{str} strežnikov sob...",
+  "contacts_searchContactsNoNumber": "Iskanje stikov...",
+  "contacts_searchRepeaters": "Išči {number}{str} ponavljalnike...",
+  "contacts_searchUsers": "Išči {number}{str} uporabnikov..."
 }

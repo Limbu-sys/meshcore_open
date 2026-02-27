@@ -1753,5 +1753,51 @@
   },
   "listFilter_removeFromFavorites": "Verwijderen uit favorieten",
   "listFilter_favorites": "Favorieten",
-  "listFilter_addToFavorites": "Toevoegen aan favorieten"
+  "listFilter_addToFavorites": "Toevoegen aan favorieten",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Ongelezen",
+  "contacts_searchRepeaters": "Zoek {number}{str} Repeaters...",
+  "contacts_searchContactsNoNumber": "Zoek contacten...",
+  "contacts_searchUsers": "Zoek {number}{str} gebruikers...",
+  "contacts_searchFavorites": "Zoek {number}{str} favorieten...",
+  "contacts_searchRoomServers": "Zoek {number}{str} Room servers..."
 }

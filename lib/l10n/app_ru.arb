@@ -993,5 +993,51 @@
   },
   "listFilter_addToFavorites": "Добавить в избранное",
   "listFilter_favorites": "Избранное",
-  "listFilter_removeFromFavorites": "Удалить из избранного"
+  "listFilter_removeFromFavorites": "Удалить из избранного",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchRepeaters": "Поиск {number}{str} ретрансляторов...",
+  "contacts_searchContactsNoNumber": "Поиск контактов...",
+  "contacts_unread": "Непрочитанное",
+  "contacts_searchRoomServers": "Поиск {number}{str} серверов комнат...",
+  "contacts_searchFavorites": "Поиск {number}{str} избранного...",
+  "contacts_searchUsers": "Поиск {number}{str} пользователей..."
 }

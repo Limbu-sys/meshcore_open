@@ -1753,5 +1753,51 @@
   },
   "listFilter_removeFromFavorites": "Премахване от списъка с любими",
   "listFilter_addToFavorites": "Добави към любими",
-  "listFilter_favorites": "Любими"
+  "listFilter_favorites": "Любими",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchFavorites": "Търсене на {number}{str} любими...",
+  "contacts_searchRoomServers": "Търсене на {number}{str} сървъри в стаята...",
+  "contacts_unread": "Непрочетено",
+  "contacts_searchRepeaters": "Търсене на {number}{str} повтарящи се...",
+  "contacts_searchContactsNoNumber": "Търси контакти...",
+  "contacts_searchUsers": "Търсене на {number}{str} потребители..."
 }

@@ -674,7 +674,35 @@ class AppLocalizationsNl extends AppLocalizations {
       'Contacten verschijnen wanneer apparaten zich aanbieden.';
 
   @override
-  String get contacts_searchContacts => 'Zoek contacten...';
+  String get contacts_unread => 'Ongelezen';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Zoek contacten...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Zoek contacten...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Zoek $number$str favorieten...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Zoek $number$str gebruikers...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Zoek $number$str Repeaters...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Zoek $number$str Room servers...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Geen ongelezen contacten';
