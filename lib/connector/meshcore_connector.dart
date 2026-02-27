@@ -360,7 +360,13 @@ class MeshCoreConnector extends ChangeNotifier {
   }
 
   void _recalculateCachedContactsUnreadTotal() {
-    _cachedContactsUnreadTotal = _contactUnreadCount.values.fold(0, (a, b) => a + b);
+    int total = 0;
+    _contactUnreadCount.forEach((contactKeyHex, count) {
+      if (_shouldTrackUnreadForContactKey(contactKeyHex)) {
+        total += count;
+      }
+    });
+    _cachedContactsUnreadTotal = total;
   }
 
   void _recalculateCachedChannelsUnreadTotal() {
