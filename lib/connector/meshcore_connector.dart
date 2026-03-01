@@ -163,6 +163,12 @@ class MeshCoreConnector extends ChangeNotifier {
   bool _autoAddRoomServers = false;
   bool _autoAddSensors = false;
   bool _overwriteOldest = false;
+  bool _manualAddContacts = false;
+  int _telemetryModeBase = 0;
+  int _telemetryModeLoc = 0;
+  int _telemetryModeEnv = 0;
+  int _advertLocPolicy = 0;
+  int _multiAcks = 0;
 
   static const int _defaultMaxContacts = 32;
   static const int _defaultMaxChannels = 8;
@@ -1095,6 +1101,7 @@ class MeshCoreConnector extends ChangeNotifier {
     await requestBatteryStatus(force: true);
     await sendFrame(buildGetCustomVarsFrame());
     await sendFrame(buildGetAutoAddFlagsFrame());
+
     _scheduleSelfInfoRetry();
   }
 
@@ -1980,6 +1987,7 @@ class MeshCoreConnector extends ChangeNotifier {
         break;
       case respCodeAutoAddConfig:
         _handleAutoAddConfig(frame);
+        _checkManualAddContacts();
         break;
       case respCodeBattAndStorage:
         _handleBatteryAndStorage(frame);
@@ -2052,28 +2060,35 @@ class MeshCoreConnector extends ChangeNotifier {
     // [56] = sf
     // [57] = cr
     // [58+] = node_name
-    if (frame.length < 4 + pubKeySize) return;
+    final reader = BufferReader(frame);
+    try {
+      reader.skipBytes(2);
+      _currentTxPower = reader.readByte();
+      _maxTxPower = reader.readByte();
+      _selfPublicKey = reader.readBytes(pubKeySize);
+      _selfLatitude = reader.readInt32LE() / 1000000.0;
+      _selfLongitude = reader.readInt32LE() / 1000000.0;
+      _multiAcks = reader.readByte();
+      _advertLocPolicy = reader.readByte();
 
-    _currentTxPower = frame[2];
-    _maxTxPower = frame[3];
-    _selfPublicKey = Uint8List.fromList(frame.sublist(4, 4 + pubKeySize));
-    _selfLatitude = readInt32LE(frame, 36) / 1000000.0;
-    _selfLongitude = readInt32LE(frame, 40) / 1000000.0;
+      final telemetryFlag = reader.readByte();
+      _telemetryModeBase = telemetryFlag & 0x03;
+      _telemetryModeEnv = telemetryFlag >> 2 & 0x03;
+      _telemetryModeLoc = telemetryFlag >> 4 & 0x03;
 
-    if (frame.length >= 48 && frame[47] == 0x00) {
-      sendFrame(buildSetOtherParamsFrame(0, 0, 0));
-    }
+      _manualAddContacts = reader.readByte() & 0x01 == 0x00;
 
-    // Radio settings (if frame is long enough)
-    if (frame.length >= 58) {
-      _currentFreqHz = readUint32LE(frame, 48);
-      _currentBwHz = readUint32LE(frame, 52);
-      _currentSf = frame[56];
-      _currentCr = frame[57];
-    }
-    // Node name starts at offset 58 if frame is long enough
-    if (frame.length > 58) {
-      _selfName = readCString(frame, 58, frame.length - 58);
+      _currentFreqHz = reader.readUInt32LE();
+      _currentBwHz = reader.readUInt32LE();
+      _currentSf = reader.readByte();
+      _currentCr = reader.readByte();
+
+      _selfName = reader.readString();
+    } catch (e) {
+      _appDebugLogService?.error(
+        'Error parsing SELF_INFO frame: $e',
+        tag: 'Connector',
+      );
     }
     _awaitingSelfInfo = false;
     _selfInfoRetryTimer?.cancel();
@@ -2148,6 +2163,32 @@ class MeshCoreConnector extends ChangeNotifier {
         tag: 'Battery',
       );
       notifyListeners();
+    }
+  }
+
+  void _checkManualAddContacts() async {
+    // If manual add contacts is enabled, set auto add config and other params.
+    // and disable it after
+    if (_manualAddContacts) {
+      await sendFrame(
+        buildSetAutoAddConfigFrame(
+          autoAddChat: true,
+          autoAddRepeater: true,
+          autoAddRoomServer: true,
+          autoAddSensor: true,
+          overwriteOldest: _overwriteOldest,
+        ),
+      );
+      await sendFrame(
+        buildSetOtherParamsFrame(
+          (_telemetryModeEnv << 4) |
+              (_telemetryModeLoc << 2) |
+              (_telemetryModeBase),
+          _advertLocPolicy,
+          _multiAcks,
+        ),
+      );
+      _manualAddContacts = false;
     }
   }
 
