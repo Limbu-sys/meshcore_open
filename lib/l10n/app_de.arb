@@ -1,6 +1,12 @@
 {
   "channels_channelDeleteFailed": "Kanal {name} konnte nicht gelöscht werden",
-  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "de",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Kontakte",
@@ -1822,5 +1828,51 @@
       }
     }
   },
-  "appSettings_noSecrets": "No environment variables found"
+  "appSettings_noSecrets": "No environment variables found",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Ungelesen",
+  "contacts_searchContactsNoNumber": "Kontakte suchen...",
+  "contacts_searchRepeaters": "Suche {number}{str} Repeater...",
+  "contacts_searchFavorites": "Suche {number}{str} Favoriten...",
+  "contacts_searchUsers": "Suche {number}{str} Benutzer...",
+  "contacts_searchRoomServers": "Suche {number}{str} Raumserver..."
 }

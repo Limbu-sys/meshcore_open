@@ -40,7 +40,7 @@ class AppBarTitle extends StatelessWidget {
                   Text(title, maxLines: 1, overflow: TextOverflow.ellipsis),
                   if (showSubtitle)
                     Text(
-                      '($selfName)',
+                      selfName,
                       style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,

@@ -1810,5 +1810,51 @@
       }
     }
   },
-  "appSettings_noSecrets": "No environment variables found"
+  "appSettings_noSecrets": "No environment variables found",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchUsers": "搜索 {number}{str} 位用户...",
+  "contacts_unread": "未读",
+  "contacts_searchRepeaters": "搜索 {number}{str} 重复器...",
+  "contacts_searchContactsNoNumber": "搜索联系人...",
+  "contacts_searchRoomServers": "搜索 {number}{str} 房间服务器...",
+  "contacts_searchFavorites": "搜索 {number}{str} 收藏..."
 }

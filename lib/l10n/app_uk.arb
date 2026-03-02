@@ -1800,5 +1800,51 @@
       }
     }
   },
-  "appSettings_noSecrets": "No environment variables found"
+  "appSettings_noSecrets": "No environment variables found",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchRoomServers": "Пошук {number}{str} серверів кімнат...",
+  "contacts_searchUsers": "Пошук {number}{str} користувачів...",
+  "contacts_searchFavorites": "Пошук {number}{str} улюблених...",
+  "contacts_searchContactsNoNumber": "Пошук контактів...",
+  "contacts_searchRepeaters": "Пошук {number}{str} ретрансляторів...",
+  "contacts_unread": "Непрочитане"
 }

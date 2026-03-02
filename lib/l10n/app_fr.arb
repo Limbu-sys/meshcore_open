@@ -1728,7 +1728,7 @@
   "losPointName": "Nom du point",
   "losShowPanelTooltip": "Afficher le panneau LOS",
   "losHidePanelTooltip": "Masquer le panneau LOS",
-  "losElevationAttribution": "Données d’altitude : Open-Meteo (CC BY 4.0)",
+  "losElevationAttribution": "Données d'altitude : Open-Meteo (CC BY 4.0)",
   "losLegendRadioHorizon": "Horizon radio",
   "losLegendLosBeam": "Ligne de visée",
   "losLegendTerrain": "Terrain",
@@ -1756,7 +1756,6 @@
   "listFilter_addToFavorites": "Ajouter à mes favoris",
   "listFilter_removeFromFavorites": "Supprimer des favoris",
   "listFilter_favorites": "Préférences",
-  "losElevationAttribution": "Données d'altitude : Open-Meteo (CC BY 4.0)",
   "appSettings_developerCard": "Développeur",
   "appSettings_ide": "IDE",
   "appSettings_ideSubtitle": "Environnement de développement intégré",
@@ -1801,5 +1800,51 @@
       }
     }
   },
-  "appSettings_noSecrets": "No environment variables found"
+  "appSettings_noSecrets": "No environment variables found",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Non lu",
+  "contacts_searchFavorites": "Rechercher {number}{str} Favoris...",
+  "contacts_searchUsers": "Rechercher {number}{str} utilisateurs...",
+  "contacts_searchRoomServers": "Rechercher {number}{str} serveurs de salle...",
+  "contacts_searchRepeaters": "Rechercher {number}{str} Répéteurs...",
+  "contacts_searchContactsNoNumber": "Rechercher des contacts..."
 }

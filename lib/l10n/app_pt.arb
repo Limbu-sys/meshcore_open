@@ -1800,5 +1800,51 @@
       }
     }
   },
-  "appSettings_noSecrets": "No environment variables found"
+  "appSettings_noSecrets": "No environment variables found",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchRepeaters": "Pesquisar {number}{str} Repetidores...",
+  "contacts_searchFavorites": "Pesquisar {number}{str} Favoritos...",
+  "contacts_searchUsers": "Pesquisar {number}{str} Usuários...",
+  "contacts_searchContactsNoNumber": "Pesquisar Contatos...",
+  "contacts_unread": "Não lido",
+  "contacts_searchRoomServers": "Pesquisar {number}{str} servidores de sala..."
 }
