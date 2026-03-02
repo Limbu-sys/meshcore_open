@@ -1196,7 +1196,7 @@ class MeshCoreConnector extends ChangeNotifier {
       await _usbSerialService.write(data);
     } else {
       if (_rxCharacteristic == null) {
-        throw Exception("MeshCore RX characteristic does not support write");
+        throw Exception("MeshCore RX characteristic not available");
       }
       // Prefer write without response when supported; fall back to write with response.
       final properties = _rxCharacteristic!.properties;
