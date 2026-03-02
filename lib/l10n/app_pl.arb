@@ -1,6 +1,12 @@
 {
   "channels_channelDeleteFailed": "Nie udało się usunąć kanału \"{name}\"",
-  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "pl",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Kontakty",
@@ -1754,5 +1760,54 @@
   "chat_failedToLoadImage": "Nie udało się załadować obrazu",
   "chat_cantLoadGifTapToRetry": "Nie można заładować GIF-a\nDotknij, aby ponowić",
   "chat_tapToLoadGif": "Dotknij, aby заładować GIF",
-  "common_done": "Gotowe"
+  "common_done": "Gotowe",
+  "listFilter_removeFromFavorites": "Usuń z ulubionych",
+  "listFilter_addToFavorites": "Dodaj do ulubionych",
+  "listFilter_favorites": "Ulubione",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Nieprzeczytane",
+  "contacts_searchContactsNoNumber": "Wyszukaj kontakty...",
+  "contacts_searchFavorites": "Wyszukaj {number}{str} ulubione...",
+  "contacts_searchRoomServers": "Wyszukaj {number}{str} serwerów Room...",
+  "contacts_searchUsers": "Wyszukaj {number}{str} Użytkowników...",
+  "contacts_searchRepeaters": "Wyszukaj {number}{str} powtórników..."
 }

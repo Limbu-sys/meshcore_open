@@ -1,6 +1,12 @@
 {
   "channels_channelDeleteFailed": "Det gick inte att ta bort kanalen \"{name}\"",
-  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "sv",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Kontakter",
@@ -1755,4 +1761,53 @@
   "chat_cantLoadGifTapToRetry": "Kan inte ladda GIF\nTryck för att försöka igen",
   "chat_tapToLoadGif": "Tryck för att ladda GIF",
   "common_done": "Klar"
+  "listFilter_removeFromFavorites": "Ta bort från favoriter",
+  "listFilter_addToFavorites": "Lägg till i favoriter",
+  "listFilter_favorites": "Favoriter",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Oläst",
+  "contacts_searchContactsNoNumber": "Sök kontakter...",
+  "contacts_searchRepeaters": "Sök {number}{str} upprepningsenheter...",
+  "contacts_searchFavorites": "Sök {number}{str} Favoriter...",
+  "contacts_searchUsers": "Sök {number}{str} användare...",
+  "contacts_searchRoomServers": "Sök {number}{str} Room-servrar..."
 }

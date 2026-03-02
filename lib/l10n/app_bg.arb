@@ -1,6 +1,12 @@
 {
   "channels_channelDeleteFailed": "Неуспешно изтриване на канала \"{name}\"",
-  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "bg",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Контакти",
@@ -1755,4 +1761,53 @@
   "chat_cantLoadGifTapToRetry": "GIF не може да се зареди\nДокоснете за повторен опит",
   "chat_tapToLoadGif": "Докоснете за зареждане на GIF",
   "common_done": "Готово"
+  "listFilter_removeFromFavorites": "Премахване от списъка с любими",
+  "listFilter_addToFavorites": "Добави към любими",
+  "listFilter_favorites": "Любими",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchFavorites": "Търсене на {number}{str} любими...",
+  "contacts_searchRoomServers": "Търсене на {number}{str} сървъри в стаята...",
+  "contacts_unread": "Непрочетено",
+  "contacts_searchRepeaters": "Търсене на {number}{str} повтарящи се...",
+  "contacts_searchContactsNoNumber": "Търси контакти...",
+  "contacts_searchUsers": "Търсене на {number}{str} потребители..."
 }

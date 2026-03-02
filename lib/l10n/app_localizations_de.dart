@@ -687,7 +687,35 @@ class AppLocalizationsDe extends AppLocalizations {
       'Kontakte werden angezeigt, wenn Geräte eine Ankündigung machen.';
 
   @override
-  String get contacts_searchContacts => 'Suche Kontakte...';
+  String get contacts_unread => 'Ungelesen';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Kontakte suchen...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Suche Kontakte...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Suche $number$str Favoriten...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Suche $number$str Benutzer...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Suche $number$str Repeater...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Suche $number$str Raumserver...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Keine ungesehene Kontakte';
@@ -2766,6 +2794,15 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get listFilter_all => 'Alle';
+
+  @override
+  String get listFilter_favorites => 'Favoriten';
+
+  @override
+  String get listFilter_addToFavorites => 'Zu Favoriten hinzufügen';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Aus Favoriten entfernen';
 
   @override
   String get listFilter_users => 'Benutzer';

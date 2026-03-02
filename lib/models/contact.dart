@@ -5,6 +5,7 @@ class Contact {
   final Uint8List publicKey;
   final String name;
   final int type;
+  final int flags;
   final int pathLength; // -1 = flood, 0+ = direct hops (from device)
   final Uint8List path; // Path bytes from device
   final int?
@@ -19,6 +20,7 @@ class Contact {
     required this.publicKey,
     required this.name,
     required this.type,
+    this.flags = 0,
     required this.pathLength,
     required this.path,
     this.pathOverride,
@@ -58,11 +60,13 @@ class Contact {
   }
 
   bool get hasLocation => latitude != null && longitude != null;
+  bool get isFavorite => (flags & contactFlagFavorite) != 0;
 
   Contact copyWith({
     Uint8List? publicKey,
     String? name,
     int? type,
+    int? flags,
     int? pathLength,
     Uint8List? path,
     int? pathOverride,
@@ -77,6 +81,7 @@ class Contact {
       publicKey: publicKey ?? this.publicKey,
       name: name ?? this.name,
       type: type ?? this.type,
+      flags: flags ?? this.flags,
       pathLength: pathLength ?? this.pathLength,
       path: path ?? this.path,
       pathOverride: clearPathOverride
@@ -167,6 +172,7 @@ class Contact {
         data.sublist(contactPubKeyOffset, contactPubKeyOffset + pubKeySize),
       );
       final type = data[contactTypeOffset];
+      final flags = data[contactFlagsOffset];
       final pathLen = data[contactPathLenOffset].toSigned(8);
       final safePathLen = pathLen > 0
           ? (pathLen > maxPathSize ? maxPathSize : pathLen)
@@ -191,6 +197,7 @@ class Contact {
         publicKey: pubKey,
         name: name.isEmpty ? 'Unknown' : name,
         type: type,
+        flags: flags,
         pathLength: pathLen,
         path: pathBytes,
         latitude: lat,

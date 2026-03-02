@@ -1,6 +1,12 @@
 {
   "channels_channelDeleteFailed": "Kan kanaal {name} niet verwijderen",
-  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "nl",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Contacten",
@@ -1755,4 +1761,53 @@
   "chat_cantLoadGifTapToRetry": "Kan GIF niet laden\nTik om opnieuw te proberen",
   "chat_tapToLoadGif": "Tik om GIF te laden",
   "common_done": "Klaar"
+  "listFilter_removeFromFavorites": "Verwijderen uit favorieten",
+  "listFilter_favorites": "Favorieten",
+  "listFilter_addToFavorites": "Toevoegen aan favorieten",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Ongelezen",
+  "contacts_searchRepeaters": "Zoek {number}{str} Repeaters...",
+  "contacts_searchContactsNoNumber": "Zoek contacten...",
+  "contacts_searchUsers": "Zoek {number}{str} gebruikers...",
+  "contacts_searchFavorites": "Zoek {number}{str} favorieten...",
+  "contacts_searchRoomServers": "Zoek {number}{str} Room servers..."
 }

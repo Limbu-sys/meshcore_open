@@ -688,7 +688,35 @@ class AppLocalizationsRu extends AppLocalizations {
       'Контакты появятся, когда устройства начнут рассылать оповещения';
 
   @override
-  String get contacts_searchContacts => 'Поиск контактов...';
+  String get contacts_unread => 'Непрочитанное';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Поиск контактов...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Поиск контактов...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Поиск $number$str избранного...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Поиск $number$str пользователей...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Поиск $number$str ретрансляторов...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Поиск $number$str серверов комнат...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Нет непрочитанных контактов';
@@ -2763,6 +2791,15 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get listFilter_all => 'Все';
+
+  @override
+  String get listFilter_favorites => 'Избранное';
+
+  @override
+  String get listFilter_addToFavorites => 'Добавить в избранное';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Удалить из избранного';
 
   @override
   String get listFilter_users => 'Пользователи';

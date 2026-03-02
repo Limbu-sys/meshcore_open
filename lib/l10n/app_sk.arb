@@ -1,6 +1,12 @@
 {
   "channels_channelDeleteFailed": "Kanál \"{name}\" sa nepodarilo odstrániť",
-  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "sk",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Kontakty",
@@ -1754,5 +1760,54 @@
   "chat_failedToLoadImage": "Nepodarilo sa начитать obrázok",
   "chat_cantLoadGifTapToRetry": "Nemožno начитать GIF\nKlepnite pre opakovanie",
   "chat_tapToLoadGif": "Klepnite pre начитанние GIF",
-  "common_done": "Hotovo"
+  "common_done": "Hotovo",
+  "listFilter_removeFromFavorites": "Odstrániť z označení",
+  "listFilter_addToFavorites": "Pridaj do obľúbených",
+  "listFilter_favorites": "Obľúbené",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchRoomServers": "Hľadaj {number}{str} serverov miestností...",
+  "contacts_searchFavorites": "Hľadať {number}{str} obľúbené...",
+  "contacts_searchRepeaters": "Hľadať {number}{str} opakovače...",
+  "contacts_searchUsers": "Hľadať {number}{str} používateľov...",
+  "contacts_searchContactsNoNumber": "Hľadať kontakty...",
+  "contacts_unread": "Neprečítané"
 }

@@ -3,7 +3,7 @@ import '../l10n/l10n.dart';
 
 enum ContactSortOption { lastSeen, recentMessages, name }
 
-enum ContactTypeFilter { all, users, repeaters, rooms }
+enum ContactTypeFilter { all, favorites, users, repeaters, rooms }
 
 class SortFilterMenuOption {
   final int value;
@@ -94,11 +94,12 @@ const int _actionSortRecentMessages = 1;
 const int _actionSortName = 2;
 const int _actionSortLastSeen = 3;
 const int _actionFilterAll = 4;
-const int _actionFilterUsers = 5;
-const int _actionFilterRepeaters = 6;
-const int _actionFilterRooms = 7;
-const int _actionToggleUnreadOnly = 8;
-const int _actionNewGroup = 9;
+const int _actionFilterFavorites = 5;
+const int _actionFilterUsers = 6;
+const int _actionFilterRepeaters = 7;
+const int _actionFilterRooms = 8;
+const int _actionToggleUnreadOnly = 9;
+const int _actionNewGroup = 10;
 
 class ContactsFilterMenu extends StatelessWidget {
   final ContactSortOption sortOption;
@@ -155,6 +156,11 @@ class ContactsFilterMenu extends StatelessWidget {
               checked: typeFilter == ContactTypeFilter.all,
             ),
             SortFilterMenuOption(
+              value: _actionFilterFavorites,
+              label: l10n.listFilter_favorites,
+              checked: typeFilter == ContactTypeFilter.favorites,
+            ),
+            SortFilterMenuOption(
               value: _actionFilterUsers,
               label: l10n.listFilter_users,
               checked: typeFilter == ContactTypeFilter.users,
@@ -197,6 +203,9 @@ class ContactsFilterMenu extends StatelessWidget {
             break;
           case _actionFilterUsers:
             onTypeFilterChanged(ContactTypeFilter.users);
+            break;
+          case _actionFilterFavorites:
+            onTypeFilterChanged(ContactTypeFilter.favorites);
             break;
           case _actionFilterRepeaters:
             onTypeFilterChanged(ContactTypeFilter.repeaters);

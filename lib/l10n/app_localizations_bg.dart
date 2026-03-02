@@ -691,7 +691,35 @@ class AppLocalizationsBg extends AppLocalizations {
       'Контактите ще се появят, когато устройствата рекламират.';
 
   @override
-  String get contacts_searchContacts => 'Търсене на контакти...';
+  String get contacts_unread => 'Непрочетено';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Търси контакти...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Търсене на контакти...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Търсене на $number$str любими...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Търсене на $number$str потребители...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Търсене на $number$str повтарящи се...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Търсене на $number$str сървъри в стаята...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Няма непрочетени контакти';
@@ -2761,6 +2789,15 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get listFilter_all => 'Всички';
+
+  @override
+  String get listFilter_favorites => 'Любими';
+
+  @override
+  String get listFilter_addToFavorites => 'Добави към любими';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Премахване от списъка с любими';
 
   @override
   String get listFilter_users => 'Потребители';

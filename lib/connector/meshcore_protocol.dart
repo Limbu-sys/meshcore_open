@@ -290,6 +290,7 @@ int _minPositive(int a, int b) {
 const int contactPubKeyOffset = 1;
 const int contactTypeOffset = 33;
 const int contactFlagsOffset = 34;
+const int contactFlagFavorite = 0x01;
 const int contactPathLenOffset = 35;
 const int contactPathOffset = 36;
 const int contactNameOffset = 100;

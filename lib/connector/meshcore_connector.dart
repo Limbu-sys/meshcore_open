@@ -33,7 +33,6 @@ import '../storage/message_store.dart';
 import '../storage/unread_store.dart';
 import '../utils/app_logger.dart';
 import '../utils/battery_utils.dart';
-import '../utils/platform_info.dart';
 import 'meshcore_protocol.dart';
 
 class MeshCoreUuids {
@@ -723,6 +722,7 @@ class MeshCoreConnector extends ChangeNotifier {
       publicKey: contact.publicKey,
       name: contact.name,
       type: contact.type,
+      flags: contact.flags,
       pathLength: selection.hopCount >= 0
           ? selection.hopCount
           : contact.pathLength,
@@ -739,111 +739,59 @@ class MeshCoreConnector extends ChangeNotifier {
   }) async {
     if (_state == MeshCoreConnectionState.scanning) return;
 
-    try {
-      _scanResults.clear();
-      _setState(MeshCoreConnectionState.scanning);
+    _scanResults.clear();
+    _setState(MeshCoreConnectionState.scanning);
 
-      // Ensure any previous scan is fully stopped
-      try {
-        await FlutterBluePlus.stopScan();
-      } catch (_) {}
+    // Ensure any previous scan is fully stopped
+    await FlutterBluePlus.stopScan();
+    await _scanSubscription?.cancel();
 
-      try {
-        await _scanSubscription?.cancel();
-      } catch (_) {}
-      _scanSubscription = null;
-
-      // On iOS/macOS, wait for Bluetooth to be powered on before scanning
-      if (PlatformInfo.isIOS || PlatformInfo.isMacOS) {
-        // Wait for adapter state to be powered on
-        final adapterState = await FlutterBluePlus.adapterState.first;
-        if (adapterState != BluetoothAdapterState.on) {
-          // Wait for the adapter to turn on, with timeout
-          await FlutterBluePlus.adapterState
-              .firstWhere((state) => state == BluetoothAdapterState.on)
-              .timeout(
-                const Duration(seconds: 5),
-                onTimeout: () {
-                  _setState(MeshCoreConnectionState.disconnected);
-                  throw Exception('Bluetooth adapter not available');
-                },
-              );
-        }
-
-        // Add a small delay to allow BLE stack to fully initialize
-        await Future.delayed(const Duration(milliseconds: 300));
+    // On iOS/macOS, wait for Bluetooth to be powered on before scanning
+    if (defaultTargetPlatform == TargetPlatform.iOS ||
+        defaultTargetPlatform == TargetPlatform.macOS) {
+      // Wait for adapter state to be powered on
+      final adapterState = await FlutterBluePlus.adapterState.first;
+      if (adapterState != BluetoothAdapterState.on) {
+        // Wait for the adapter to turn on, with timeout
+        await FlutterBluePlus.adapterState
+            .firstWhere((state) => state == BluetoothAdapterState.on)
+            .timeout(
+              const Duration(seconds: 5),
+              onTimeout: () {
+                _setState(MeshCoreConnectionState.disconnected);
+                throw Exception('Bluetooth adapter not available');
+              },
+            );
       }
 
-      _scanSubscription = FlutterBluePlus.scanResults.listen(
-        (results) {
-          _scanResults.clear();
-          for (var result in results) {
-            if (result.device.platformName.startsWith("MeshCore-") ||
-                result.advertisementData.advName.startsWith("MeshCore-") ||
-                result.advertisementData.advName.startsWith("Whisper-")) {
-              _scanResults.add(result);
-            }
-          }
-          notifyListeners();
-        },
-        onError: (Object e) {
-          debugPrint("scanResults stream error: $e");
-          stopScan();
-        },
-      );
-
-      if (PlatformInfo.isWeb) {
-        await FlutterBluePlus.startScan(
-          withServices: [Guid(MeshCoreUuids.service)],
-        );
-        // On web, the chooser returns once a device is picked, but the scanResults
-        // stream might take a moment to emit the last result. Wait briefly so the
-        // device appears in the UI before stopScan() clears the list.
-        await Future.delayed(const Duration(milliseconds: 500));
-      } else {
-        await FlutterBluePlus.startScan(
-          withServices: [Guid(MeshCoreUuids.service)],
-          timeout: timeout,
-          androidScanMode: AndroidScanMode.lowLatency,
-        );
-
-        await Future.delayed(timeout);
-      }
-    } catch (e) {
-      debugPrint("Scan error: $e");
-      // On web, suppress common cancellation and chooser errors
-      if (kIsWeb) return;
-
-      if (!PlatformInfo.isWeb) {
-        rethrow;
-      }
-    } finally {
-      await stopScan();
+      // Add a small delay to allow BLE stack to fully initialize
+      await Future.delayed(const Duration(milliseconds: 300));
     }
+
+    _scanSubscription = FlutterBluePlus.scanResults.listen((results) {
+      _scanResults.clear();
+      _scanResults.addAll(results);
+      notifyListeners();
+    });
+
+    await FlutterBluePlus.startScan(
+      withKeywords: ["MeshCore-", "Whisper-"],
+      webOptionalServices: [Guid(MeshCoreUuids.service)],
+      timeout: timeout,
+      androidScanMode: AndroidScanMode.lowLatency,
+    );
+
+    await Future.delayed(timeout);
+    await stopScan();
   }
 
   Future<void> stopScan() async {
-    if (_state == MeshCoreConnectionState.scanning) {
-      _setState(MeshCoreConnectionState.disconnected);
-    }
-
-    try {
-      await FlutterBluePlus.stopScan();
-    } catch (e) {
-      debugPrint("stopScan error: $e");
-    }
-
-    try {
-      if (_scanSubscription != null) {
-        await _scanSubscription!.cancel();
-      }
-    } catch (_) {}
+    await FlutterBluePlus.stopScan();
+    await _scanSubscription?.cancel();
     _scanSubscription = null;
 
-    // On web, don't clear results immediately so the picked device remains visible
-    if (!PlatformInfo.isWeb) {
-      _scanResults.clear();
-      notifyListeners();
+    if (_state == MeshCoreConnectionState.scanning) {
+      _setState(MeshCoreConnectionState.disconnected);
     }
   }
 
@@ -871,17 +819,11 @@ class MeshCoreConnector extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _connectionSubscription = device.connectionState.listen(
-        (state) {
-          if (state == BluetoothConnectionState.disconnected && isConnected) {
-            _handleDisconnection();
-          }
-        },
-        onError: (Object e) {
-          debugPrint("connectionState stream error: $e");
-          if (isConnected) _handleDisconnection();
-        },
-      );
+      _connectionSubscription = device.connectionState.listen((state) {
+        if (state == BluetoothConnectionState.disconnected && isConnected) {
+          _handleDisconnection();
+        }
+      });
 
       await device.connect(
         timeout: const Duration(seconds: 15),
@@ -890,17 +832,11 @@ class MeshCoreConnector extends ChangeNotifier {
       );
 
       // Request larger MTU for sending larger frames
-      if (!PlatformInfo.isWeb) {
-        try {
-          final mtu = await device.requestMtu(185);
-          debugPrint('MTU set to: $mtu');
-        } catch (e) {
-          debugPrint('MTU request failed: $e, using default');
-        }
-      } else {
-        // On Chrome Web Bluetooth, give the GATT connection a moment to settle
-        // before discovering services, which is a common quirk to avoid timeouts.
-        await Future.delayed(const Duration(milliseconds: 500));
+      try {
+        final mtu = await device.requestMtu(185);
+        debugPrint('MTU set to: $mtu');
+      } catch (e) {
+        debugPrint('MTU request failed: $e, using default');
       }
 
       List<BluetoothService> services = await device.discoverServices();
@@ -930,44 +866,23 @@ class MeshCoreConnector extends ChangeNotifier {
         throw Exception("MeshCore characteristics not found");
       }
 
-      // Setup listener BEFORE enabling notifications so we don't miss anything
-      _notifySubscription = _txCharacteristic!.onValueReceived.listen(
-        _handleFrame,
-        onError: (Object e) {
-          debugPrint("onValueReceived stream error: $e");
-        },
-      );
-
-      debugPrint('Starting setNotifyValue(true)');
-      if (PlatformInfo.isWeb) {
-        // On Web, setNotifyValue often hangs indefinitely on the Promise resolution.
-        // We trigger it but don't await its completion to avoid blocking the connection flow.
-        debugPrint('Web: Calling setNotifyValue(true) without awaiting');
-        // ignore: unawaited_futures
-        _txCharacteristic!.setNotifyValue(true, timeout: 2).catchError((e) {
-          debugPrint('Web setNotifyValue error (ignoring): $e');
-          return false; // catchError must return a bool to match Future<bool>
-        });
-        // Give the browser a moment to process the underlying startNotifications call
-        await Future.delayed(const Duration(milliseconds: 500));
-      } else {
-        // Native platforms handle setNotifyValue blockingly with CCCD descriptors
-        bool notifySet = false;
-        for (int attempt = 0; attempt < 3 && !notifySet; attempt++) {
-          try {
-            if (attempt > 0) {
-              await Future.delayed(Duration(milliseconds: 500 * attempt));
-            }
-            debugPrint('Calling setNotifyValue(true), attempt ${attempt + 1}');
-            await _txCharacteristic!.setNotifyValue(true);
-            notifySet = true;
-          } catch (e) {
-            debugPrint('setNotifyValue attempt ${attempt + 1}/3 failed: $e');
-            if (attempt == 2) rethrow;
+      // Retry setNotifyValue with increasing delays
+      bool notifySet = false;
+      for (int attempt = 0; attempt < 3 && !notifySet; attempt++) {
+        try {
+          if (attempt > 0) {
+            await Future.delayed(Duration(milliseconds: 500 * attempt));
           }
+          await _txCharacteristic!.setNotifyValue(true);
+          notifySet = true;
+        } catch (e) {
+          debugPrint('setNotifyValue attempt ${attempt + 1}/3 failed: $e');
+          if (attempt == 2) rethrow;
         }
       }
-      debugPrint('setNotifyValue(true) configuration completed');
+      _notifySubscription = _txCharacteristic!.onValueReceived.listen(
+        _handleFrame,
+      );
 
       _setState(MeshCoreConnectionState.connected);
 
@@ -1325,9 +1240,76 @@ class MeshCoreConnector extends ChangeNotifier {
         customPath,
         pathLen,
         type: contact.type,
+        flags: contact.flags,
         name: contact.name,
       ),
     );
+  }
+
+  Future<void> setContactFavorite(Contact contact, bool isFavorite) async {
+    if (!isConnected) return;
+    final latestContact =
+        await _fetchContactSnapshotFromDevice(contact.publicKey) ?? contact;
+    final updatedFlags = isFavorite
+        ? (latestContact.flags | contactFlagFavorite)
+        : (latestContact.flags & ~contactFlagFavorite);
+
+    await sendFrame(
+      buildUpdateContactPathFrame(
+        latestContact.publicKey,
+        latestContact.path,
+        latestContact.pathLength,
+        type: latestContact.type,
+        flags: updatedFlags,
+        name: latestContact.name,
+      ),
+    );
+
+    final index = _contacts.indexWhere(
+      (c) => c.publicKeyHex == contact.publicKeyHex,
+    );
+    if (index >= 0) {
+      _contacts[index] = _contacts[index].copyWith(
+        type: latestContact.type,
+        name: latestContact.name,
+        pathLength: latestContact.pathLength,
+        path: latestContact.path,
+        flags: updatedFlags,
+      );
+      notifyListeners();
+      unawaited(_persistContacts());
+    }
+  }
+
+  Future<Contact?> _fetchContactSnapshotFromDevice(
+    Uint8List pubKey, {
+    Duration timeout = const Duration(seconds: 3),
+  }) async {
+    if (!isConnected) return null;
+    final expectedKeyHex = pubKeyToHex(pubKey);
+    final completer = Completer<Contact?>();
+
+    void finish(Contact? result) {
+      if (!completer.isCompleted) {
+        completer.complete(result);
+      }
+    }
+
+    final subscription = receivedFrames.listen((frame) {
+      if (frame.isEmpty || frame[0] != respCodeContact) return;
+      final parsed = Contact.fromFrame(frame);
+      if (parsed == null || parsed.publicKeyHex != expectedKeyHex) return;
+      finish(parsed);
+    });
+
+    final timer = Timer(timeout, () => finish(null));
+    try {
+      await getContactByKey(pubKey);
+      return await completer.future;
+    } finally {
+      timer.cancel();
+      await subscription.cancel();
+    }
   }
 
   /// Set path override for a contact (persists across contact refreshes)

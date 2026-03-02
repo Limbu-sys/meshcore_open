@@ -682,7 +682,35 @@ class AppLocalizationsSl extends AppLocalizations {
       'Stiki se bodo prikazali, ko se naprave oglasijo.';
 
   @override
-  String get contacts_searchContacts => 'Iskanje stikov...';
+  String get contacts_unread => 'Neprebrano';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Iskanje stikov...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Iskanje stikov...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Iskanje $number$str priljubljenih...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Išči $number$str uporabnikov...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Išči $number$str ponavljalnike...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Išči $number$str strežnikov sob...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Ne prebrani stiki.';
@@ -2748,6 +2776,15 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get listFilter_all => 'Vse';
+
+  @override
+  String get listFilter_favorites => 'Priljubljene';
+
+  @override
+  String get listFilter_addToFavorites => 'Dodaj v priljubljene';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Odstrani iz priljubljenih';
 
   @override
   String get listFilter_users => 'Uporabniki';

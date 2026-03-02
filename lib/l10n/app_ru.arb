@@ -1,6 +1,12 @@
 {
   "channels_channelDeleteFailed": "Не удалось удалить канал {name}.",
-  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "ru",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Контакты",
@@ -995,4 +1001,53 @@
   "chat_cantLoadGifTapToRetry": "Не удалось загрузить GIF\nНажмите, чтобы повторить",
   "chat_tapToLoadGif": "Нажмите, чтобы загрузить GIF",
   "common_done": "Готово"
+  "listFilter_addToFavorites": "Добавить в избранное",
+  "listFilter_favorites": "Избранное",
+  "listFilter_removeFromFavorites": "Удалить из избранного",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchRepeaters": "Поиск {number}{str} ретрансляторов...",
+  "contacts_searchContactsNoNumber": "Поиск контактов...",
+  "contacts_unread": "Непрочитанное",
+  "contacts_searchRoomServers": "Поиск {number}{str} серверов комнат...",
+  "contacts_searchFavorites": "Поиск {number}{str} избранного...",
+  "contacts_searchUsers": "Поиск {number}{str} пользователей..."
 }

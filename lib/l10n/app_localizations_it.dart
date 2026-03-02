@@ -687,7 +687,35 @@ class AppLocalizationsIt extends AppLocalizations {
       'I contatti appariranno quando i dispositivi pubblicizzano.';
 
   @override
-  String get contacts_searchContacts => 'Cerca contatti...';
+  String get contacts_unread => 'Non letti';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Cerca Contatti...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Cerca contatti...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Cerca $number$str Preferiti...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Cerca $number$str Utenti...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Cerca $number$str Ripetitori...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Cerca $number$str server Room...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Nessun contatto non letto';
@@ -2759,6 +2787,15 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get listFilter_all => 'Tutti';
+
+  @override
+  String get listFilter_favorites => 'Preferiti';
+
+  @override
+  String get listFilter_addToFavorites => 'Aggiungi ai preferiti';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Rimuovi dai preferiti';
 
   @override
   String get listFilter_users => 'Utenti';

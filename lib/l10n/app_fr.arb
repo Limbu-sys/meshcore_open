@@ -1,6 +1,12 @@
 {
   "channels_channelDeleteFailed": "Échec de la suppression de la chaîne \"{name}\"",
-  "@channels_channelDeleteFailed": { "placeholders": { "name": { "type": "String" } } },
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "fr",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Contacts",
@@ -1747,7 +1753,6 @@
       }
     }
   },
-  "losElevationAttribution": "Données d'altitude : Open-Meteo (CC BY 4.0)",
   "chat_dropImageToUpload": "Déposer l'image pour la télécharger",
   "chat_sendImage": "Envoyer l'image",
   "chat_image": "Image",
@@ -1755,5 +1760,54 @@
   "chat_failedToLoadImage": "Échec du chargement de l'image",
   "chat_cantLoadGifTapToRetry": "Impossible de charger le GIF\nAppuyez pour réessayer",
   "chat_tapToLoadGif": "Appuyez pour charger le GIF",
-  "common_done": "Terminé"
+  "common_done": "Terminé",
+  "listFilter_addToFavorites": "Ajouter à mes favoris",
+  "listFilter_removeFromFavorites": "Supprimer des favoris",
+  "listFilter_favorites": "Préférences",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Non lu",
+  "contacts_searchFavorites": "Rechercher {number}{str} Favoris...",
+  "contacts_searchUsers": "Rechercher {number}{str} utilisateurs...",
+  "contacts_searchRoomServers": "Rechercher {number}{str} serveurs de salle...",
+  "contacts_searchRepeaters": "Rechercher {number}{str} Répéteurs...",
+  "contacts_searchContactsNoNumber": "Rechercher des contacts..."
 }

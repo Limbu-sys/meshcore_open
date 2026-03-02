@@ -677,7 +677,35 @@ class AppLocalizationsSv extends AppLocalizations {
       'Kontakter kommer att visas när enheter annonserar.';
 
   @override
-  String get contacts_searchContacts => 'Sök kontakter...';
+  String get contacts_unread => 'Oläst';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Sök kontakter...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Sök kontakter...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Sök $number$str Favoriter...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Sök $number$str användare...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Sök $number$str upprepningsenheter...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Sök $number$str Room-servrar...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Inga oinlästa kontakter';
@@ -2733,6 +2761,15 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get listFilter_all => 'Alla';
+
+  @override
+  String get listFilter_favorites => 'Favoriter';
+
+  @override
+  String get listFilter_addToFavorites => 'Lägg till i favoriter';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Ta bort från favoriter';
 
   @override
   String get listFilter_users => 'Användare';

@@ -1354,11 +1354,47 @@ abstract class AppLocalizations {
   /// **'Contacts will appear when devices advertise'**
   String get contacts_contactsWillAppear;
 
+  /// No description provided for @contacts_unread.
+  ///
+  /// In en, this message translates to:
+  /// **'Unread'**
+  String get contacts_unread;
+
+  /// No description provided for @contacts_searchContactsNoNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Contacts...'**
+  String get contacts_searchContactsNoNumber;
+
   /// No description provided for @contacts_searchContacts.
   ///
   /// In en, this message translates to:
-  /// **'Search contacts...'**
-  String get contacts_searchContacts;
+  /// **'Search {number}{str} Contacts...'**
+  String contacts_searchContacts(int number, String str);
+
+  /// No description provided for @contacts_searchFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Search {number}{str} Favorites...'**
+  String contacts_searchFavorites(int number, String str);
+
+  /// No description provided for @contacts_searchUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Search {number}{str} Users...'**
+  String contacts_searchUsers(int number, String str);
+
+  /// No description provided for @contacts_searchRepeaters.
+  ///
+  /// In en, this message translates to:
+  /// **'Search {number}{str} Repeaters...'**
+  String contacts_searchRepeaters(int number, String str);
+
+  /// No description provided for @contacts_searchRoomServers.
+  ///
+  /// In en, this message translates to:
+  /// **'Search {number}{str} Room servers...'**
+  String contacts_searchRoomServers(int number, String str);
 
   /// No description provided for @contacts_noUnreadContacts.
   ///
@@ -4831,6 +4867,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'All'**
   String get listFilter_all;
+
+  /// No description provided for @listFilter_favorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get listFilter_favorites;
+
+  /// No description provided for @listFilter_addToFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to favorites'**
+  String get listFilter_addToFavorites;
+
+  /// No description provided for @listFilter_removeFromFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from favorites'**
+  String get listFilter_removeFromFavorites;
 
   /// No description provided for @listFilter_users.
   ///
