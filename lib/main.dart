@@ -4,6 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
+import 'screens/chrome_required_screen.dart';
+import 'utils/platform_info.dart';
+
 import 'connector/meshcore_connector.dart';
 import 'screens/scanner_screen.dart';
 import 'services/storage_service.dart';
@@ -15,6 +18,7 @@ import 'services/ble_debug_log_service.dart';
 import 'services/app_debug_log_service.dart';
 import 'services/background_service.dart';
 import 'services/map_tile_cache_service.dart';
+import 'services/chat_text_scale_service.dart';
 import 'services/room_sync_service.dart';
 import 'storage/room_sync_store.dart';
 import 'storage/prefs_manager.dart';
@@ -36,6 +40,7 @@ void main() async {
   final appDebugLogService = AppDebugLogService();
   final backgroundService = BackgroundService();
   final mapTileCacheService = MapTileCacheService();
+  final chatTextScaleService = ChatTextScaleService();
   final roomSyncService = RoomSyncService(
     roomSyncStore: RoomSyncStore(),
     storageService: storage,
@@ -55,6 +60,8 @@ void main() async {
   await notificationService.initialize();
   await backgroundService.initialize();
   _registerThirdPartyLicenses();
+
+  await chatTextScaleService.initialize();
 
   // Wire up connector with services
   connector.initialize(
@@ -89,6 +96,7 @@ void main() async {
       bleDebugLogService: bleDebugLogService,
       appDebugLogService: appDebugLogService,
       mapTileCacheService: mapTileCacheService,
+      chatTextScaleService: chatTextScaleService,
       roomSyncService: roomSyncService,
     ),
   );
@@ -124,6 +132,7 @@ class MeshCoreApp extends StatelessWidget {
   final BleDebugLogService bleDebugLogService;
   final AppDebugLogService appDebugLogService;
   final MapTileCacheService mapTileCacheService;
+  final ChatTextScaleService chatTextScaleService;
   final RoomSyncService roomSyncService;
 
   const MeshCoreApp({
@@ -136,6 +145,7 @@ class MeshCoreApp extends StatelessWidget {
     required this.bleDebugLogService,
     required this.appDebugLogService,
     required this.mapTileCacheService,
+    required this.chatTextScaleService,
     required this.roomSyncService,
   });
 
@@ -149,6 +159,7 @@ class MeshCoreApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: appSettingsService),
         ChangeNotifierProvider.value(value: bleDebugLogService),
         ChangeNotifierProvider.value(value: appDebugLogService),
+        ChangeNotifierProvider.value(value: chatTextScaleService),
         ChangeNotifierProvider.value(value: roomSyncService),
         Provider.value(value: storage),
         Provider.value(value: mapTileCacheService),
@@ -194,7 +205,9 @@ class MeshCoreApp extends StatelessWidget {
               NotificationService().setLocale(locale);
               return child ?? const SizedBox.shrink();
             },
-            home: const ScannerScreen(),
+            home: (PlatformInfo.isWeb && !PlatformInfo.isChrome)
+                ? const ChromeRequiredScreen()
+                : const ScannerScreen(),
           );
         },
       ),

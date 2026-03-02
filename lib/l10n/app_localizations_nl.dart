@@ -150,6 +150,13 @@ class AppLocalizationsNl extends AppLocalizations {
       'Zorg ervoor dat Bluetooth is ingeschakeld om naar apparaten te zoeken.';
 
   @override
+  String get scanner_chromeRequired => 'Chrome-browser vereist';
+
+  @override
+  String get scanner_chromeRequiredMessage =>
+      'Deze webapplicatie vereist Google Chrome of een op Chromium gebaseerde browser voor Bluetooth-ondersteuning.';
+
+  @override
   String get scanner_enableBluetooth => 'Activeer Bluetooth';
 
   @override
@@ -461,6 +468,13 @@ class AppLocalizationsNl extends AppLocalizations {
   String get appSettings_languageUk => 'Oekraïens';
 
   @override
+  String get appSettings_enableMessageTracing => 'Berichttracking inschakelen';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Gedetailleerde routerings- en timing-metadata voor berichten weergeven';
+
+  @override
   String get appSettings_notifications => 'Notificaties';
 
   @override
@@ -667,7 +681,35 @@ class AppLocalizationsNl extends AppLocalizations {
       'Contacten verschijnen wanneer apparaten zich aanbieden.';
 
   @override
-  String get contacts_searchContacts => 'Zoek contacten...';
+  String get contacts_unread => 'Ongelezen';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Zoek contacten...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Zoek contacten...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Zoek $number$str favorieten...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Zoek $number$str gebruikers...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Zoek $number$str Repeaters...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Zoek $number$str Room servers...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Geen ongelezen contacten';
@@ -793,11 +835,22 @@ class AppLocalizationsNl extends AppLocalizations {
   String get channels_editChannel => 'Kanaal bewerken';
 
   @override
+  String get channels_muteChannel => 'Kanaal dempen';
+
+  @override
+  String get channels_unmuteChannel => 'Kanaal dempen opheffen';
+
+  @override
   String get channels_deleteChannel => 'Kanaal verwijderen';
 
   @override
   String channels_deleteChannelConfirm(String name) {
     return 'Verwijderen \"$name\"? Dit kan niet worden teruggedraaid.';
+  }
+
+  @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Kan kanaal $name niet verwijderen';
   }
 
   @override
@@ -2700,6 +2753,15 @@ class AppLocalizationsNl extends AppLocalizations {
   String get listFilter_all => 'Alles';
 
   @override
+  String get listFilter_favorites => 'Favorieten';
+
+  @override
+  String get listFilter_addToFavorites => 'Toevoegen aan favorieten';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Verwijderen uit favorieten';
+
+  @override
   String get listFilter_users => 'Gebruikers';
 
   @override
@@ -2843,6 +2905,34 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get losElevationAttribution =>
       'Hoogtegegevens: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Radiohorizon';
+
+  @override
+  String get losLegendLosBeam => 'Zichtlijn';
+
+  @override
+  String get losLegendTerrain => 'Terrein';
+
+  @override
+  String get losFrequencyLabel => 'Frequentie';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Bekijk details van de berekening';
+
+  @override
+  String get losFrequencyDialogTitle => 'Berekening van de radiohorizon';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Beginnend met k=$baselineK bij $baselineFreq MHz, wordt bij de berekening de k-factor aangepast voor de huidige $frequencyMHz MHz-band, die de gebogen radiohorizonkap definieert.';
+  }
 
   @override
   String get contacts_pathTrace => 'Pad Traceren';

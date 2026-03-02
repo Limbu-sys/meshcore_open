@@ -14,35 +14,54 @@ class AppBarTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final connector = context.watch<MeshCoreConnector>();
+    final selfName = connector.selfName;
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        leading ?? const SizedBox.shrink(),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final availableWidth = constraints.hasBoundedWidth
+            ? constraints.maxWidth
+            : MediaQuery.sizeOf(context).width;
+        final compact = availableWidth < 240;
+        final showSubtitle =
+            !compact && connector.isConnected && selfName != null;
+        final showBattery = availableWidth >= 60;
+        final showSnr = availableWidth >= 110;
+        final showIndicators = showBattery || showSnr;
+
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(title, overflow: TextOverflow.ellipsis),
-            if (connector.isConnected && connector.selfName != null)
-              Text(
-                '(${connector.selfName})',
-                style: TextStyle(fontSize: 14, color: Colors.grey[600]),
-                overflow: TextOverflow.ellipsis,
+            leading ?? const SizedBox.shrink(),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(title, maxLines: 1, overflow: TextOverflow.ellipsis),
+                  if (showSubtitle)
+                    Text(
+                      selfName,
+                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                ],
               ),
+            ),
+            if (showIndicators) const SizedBox(width: 6),
+            if (showIndicators)
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (showBattery) BatteryIndicator(connector: connector),
+                  if (showSnr) SNRIndicator(connector: connector),
+                ],
+              ),
+            trailing ?? const SizedBox.shrink(),
           ],
-        ),
-        const SizedBox(width: 8),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            BatteryIndicator(connector: connector),
-            SNRIndicator(connector: connector),
-          ],
-        ),
-        trailing ?? const SizedBox.shrink(),
-      ],
+        );
+      },
     );
   }
 }

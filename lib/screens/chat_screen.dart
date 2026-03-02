@@ -13,6 +13,7 @@ import 'package:latlong2/latlong.dart';
 import '../connector/meshcore_connector.dart';
 import '../connector/meshcore_protocol.dart';
 import '../helpers/reaction_helper.dart';
+import '../widgets/message_status_icon.dart';
 import '../helpers/chat_scroll_controller.dart';
 import '../helpers/link_handler.dart';
 import '../helpers/utf8_length_limiter.dart';
@@ -20,8 +21,11 @@ import '../models/channel_message.dart';
 import '../models/contact.dart';
 import '../models/message.dart';
 import '../models/path_history.dart';
+import '../services/app_settings_service.dart';
+import '../services/chat_text_scale_service.dart';
 import '../services/path_history_service.dart';
 import '../services/room_sync_service.dart';
+import '../widgets/chat_zoom_wrapper.dart';
 import '../widgets/elements_ui.dart';
 import 'channel_message_path_screen.dart';
 import 'map_screen.dart';
@@ -274,52 +278,62 @@ class _ChatScreenState extends State<ChatScreen> {
       _scrollController.scrollToBottomIfAtBottom();
     });
 
-    return ListView.builder(
-      reverse: true, // List grows from bottom up
-      controller: _scrollController,
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-      itemCount: itemCount,
-      itemBuilder: (context, index) {
-        // Loading indicator now appears at end (bottom) of reversed list
-        if (_isLoadingOlder && index == itemCount - 1) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(vertical: 16),
-            child: Center(
-              child: SizedBox(
-                width: 20,
-                height: 20,
-                child: CircularProgressIndicator(strokeWidth: 2),
+    return ChatZoomWrapper(
+      child: ListView.builder(
+        reverse: true, // List grows from bottom up
+        controller: _scrollController,
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+        itemCount: itemCount,
+        itemBuilder: (context, index) {
+          // Loading indicator now appears at end (bottom) of reversed list
+          if (_isLoadingOlder && index == itemCount - 1) {
+            return const Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: Center(
+                child: SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                ),
               ),
-            ),
-          );
-        }
-        final messageIndex = index;
-        Contact contact = widget.contact;
-        final message = reversedMessages[messageIndex];
-        String fourByteHex = '';
-        if (widget.contact.type == advTypeRoom) {
-          contact = _resolveContactFrom4Bytes(
-            connector,
-            message.fourByteRoomContactKey.isEmpty
-                ? Uint8List.fromList([0, 0, 0, 0])
-                : message.fourByteRoomContactKey,
-          );
-          fourByteHex = message.fourByteRoomContactKey
-              .map((b) => b.toRadixString(16).padLeft(2, '0'))
-              .join()
-              .toUpperCase();
-        }
+            );
+          }
+          final messageIndex = index;
+          Contact contact = widget.contact;
+          final message = reversedMessages[messageIndex];
+          String fourByteHex = '';
+          if (widget.contact.type == advTypeRoom) {
+            contact = _resolveContactFrom4Bytes(
+              connector,
+              message.fourByteRoomContactKey.isEmpty
+                  ? Uint8List.fromList([0, 0, 0, 0])
+                  : message.fourByteRoomContactKey,
+            );
+            fourByteHex = message.fourByteRoomContactKey
+                .map((b) => b.toRadixString(16).padLeft(2, '0'))
+                .join()
+                .toUpperCase();
+          }
 
-        return _MessageBubble(
-          message: message,
-          senderName: widget.contact.type == advTypeRoom
-              ? "${contact.name} [$fourByteHex]"
-              : contact.name,
-          isRoomServer: widget.contact.type == advTypeRoom,
-          onTap: () => _openMessagePath(message, contact),
-          onLongPress: () => _showMessageActions(message, contact),
-        );
-      },
+          return Builder(
+            builder: (context) {
+              final textScale = context.select<ChatTextScaleService, double>(
+                (service) => service.scale,
+              );
+              return _MessageBubble(
+                message: message,
+                senderName: widget.contact.type == advTypeRoom
+                    ? "${contact.name} [$fourByteHex]"
+                    : contact.name,
+                isRoomServer: widget.contact.type == advTypeRoom,
+                textScale: textScale,
+                onTap: () => _openMessagePath(message, contact),
+                onLongPress: () => _showMessageActions(message, contact),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 
@@ -346,28 +360,44 @@ class _ChatScreenState extends State<ChatScreen> {
                 builder: (context, value, child) {
                   final gifId = _parseGifId(value.text);
                   if (gifId != null) {
-                    return Row(
-                      children: [
-                        Expanded(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: GifMessage(
-                              url:
-                                  'https://media.giphy.com/media/$gifId/giphy.gif',
-                              backgroundColor:
-                                  colorScheme.surfaceContainerHighest,
-                              fallbackTextColor: colorScheme.onSurface
-                                  .withValues(alpha: 0.6),
-                              maxSize: 160,
+                    return Focus(
+                      autofocus: true,
+                      onKeyEvent: (node, event) {
+                        if (event is KeyDownEvent &&
+                            (event.logicalKey == LogicalKeyboardKey.enter ||
+                                event.logicalKey ==
+                                    LogicalKeyboardKey.numpadEnter)) {
+                          _sendMessage(connector);
+                          return KeyEventResult.handled;
+                        }
+                        return KeyEventResult.ignored;
+                      },
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: GifMessage(
+                                url:
+                                    'https://media.giphy.com/media/$gifId/giphy.gif',
+                                backgroundColor:
+                                    colorScheme.surfaceContainerHighest,
+                                fallbackTextColor: colorScheme.onSurface
+                                    .withValues(alpha: 0.6),
+                                maxSize: 160,
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 8),
-                        IconButton(
-                          icon: const Icon(Icons.close),
-                          onPressed: () => _textController.clear(),
-                        ),
-                      ],
+                          const SizedBox(width: 8),
+                          IconButton(
+                            icon: const Icon(Icons.close),
+                            onPressed: () {
+                              _textController.clear();
+                              _textFieldFocusNode.requestFocus();
+                            },
+                          ),
+                        ],
+                      ),
                     );
                   }
 
@@ -435,6 +465,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     connector.sendMessage(widget.contact, text);
     _textController.clear();
+    _textFieldFocusNode.requestFocus();
   }
 
   void _showPathHistory(BuildContext context) {
@@ -1167,17 +1198,21 @@ class _MessageBubble extends StatelessWidget {
   final bool isRoomServer;
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
+  final double textScale;
 
   const _MessageBubble({
     required this.message,
     required this.senderName,
     required this.isRoomServer,
+    required this.textScale,
     this.onTap,
     this.onLongPress,
   });
 
   @override
   Widget build(BuildContext context) {
+    final settingsService = context.watch<AppSettingsService>();
+    final enableTracing = settingsService.settings.enableMessageTracing;
     final isOutgoing = message.isOutgoing;
     final colorScheme = Theme.of(context).colorScheme;
     final gifId = _parseGifId(message.text);
@@ -1192,6 +1227,7 @@ class _MessageBubble extends StatelessWidget {
         ? colorScheme.onErrorContainer
         : (isOutgoing ? colorScheme.onPrimary : colorScheme.onSurface);
     final metaColor = textColor.withValues(alpha: 0.7);
+    const bodyFontSize = 14.0;
     String messageText = message.text;
     if (isRoomServer && !isOutgoing) {
       messageText = message.text.substring(4.clamp(0, message.text.length));
@@ -1255,102 +1291,180 @@ class _MessageBubble extends StatelessWidget {
                           if (gifId == null) const SizedBox(height: 4),
                         ],
                         if (poi != null)
-                          _buildPoiMessage(context, poi, textColor, metaColor)
+                          _buildPoiMessage(
+                            context,
+                            poi,
+                            textColor,
+                            metaColor,
+                            textScale,
+                            trailing: (!enableTracing && isOutgoing)
+                                ? Padding(
+                                    padding: const EdgeInsets.only(bottom: 2),
+                                    child: MessageStatusIcon(
+                                      isAcked:
+                                          message.status ==
+                                              MessageStatus.delivered &&
+                                          message.pathBytes.isNotEmpty,
+                                      isFailed:
+                                          message.status ==
+                                          MessageStatus.failed,
+                                    ),
+                                  )
+                                : null,
+                          )
                         else if (gifId != null)
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: GifMessage(
-                              url:
-                                  'https://media.giphy.com/media/$gifId/giphy.gif',
-                              backgroundColor: Colors.transparent,
-                              fallbackTextColor: textColor.withValues(
-                                alpha: 0.7,
+                          Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: GifMessage(
+                                  url:
+                                      'https://media.giphy.com/media/$gifId/giphy.gif',
+                                  backgroundColor: Colors.transparent,
+                                  fallbackTextColor: textColor.withValues(
+                                    alpha: 0.7,
+                                  ),
+                                ),
                               ),
-                            ),
+                              if (!enableTracing && isOutgoing)
+                                Positioned(
+                                  top: 0,
+                                  right: 0,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(3),
+                                    decoration: BoxDecoration(
+                                      color: bubbleColor,
+                                      borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(10),
+                                        topRight: Radius.circular(12),
+                                      ),
+                                    ),
+                                    child: MessageStatusIcon(
+                                      isAcked:
+                                          message.status ==
+                                              MessageStatus.delivered &&
+                                          message.pathBytes.isNotEmpty,
+                                      isFailed:
+                                          message.status ==
+                                          MessageStatus.failed,
+                                    ),
+                                  ),
+                                ),
+                            ],
                           )
                         else
-                          Linkify(
-                            text: messageText,
-                            style: TextStyle(color: textColor),
-                            linkStyle: const TextStyle(
-                              color: Colors.green,
-                              decoration: TextDecoration.underline,
-                            ),
-                            options: const LinkifyOptions(
-                              humanize: false,
-                              defaultToHttps: false,
-                            ),
-                            linkifiers: const [UrlLinkifier()],
-                            onOpen: (link) =>
-                                LinkHandler.handleLinkTap(context, link.url),
-                          ),
-                        if (isOutgoing && message.retryCount > 0) ...[
-                          const SizedBox(height: 4),
-                          Padding(
-                            padding: gifId != null
-                                ? const EdgeInsets.symmetric(horizontal: 8)
-                                : EdgeInsets.zero,
-                            child: Text(
-                              context.l10n.chat_retryCount(
-                                message.retryCount,
-                                4,
-                              ),
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: metaColor,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        ],
-                        const SizedBox(height: 4),
-                        Padding(
-                          padding: gifId != null
-                              ? const EdgeInsets.only(
-                                  left: 8,
-                                  right: 8,
-                                  bottom: 4,
-                                )
-                              : EdgeInsets.zero,
-                          child: Wrap(
-                            spacing: 4,
-                            crossAxisAlignment: WrapCrossAlignment.center,
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text(
-                                _formatTime(message.timestamp),
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: metaColor,
+                              Flexible(
+                                child: Linkify(
+                                  text: messageText,
+                                  style: TextStyle(
+                                    color: textColor,
+                                    fontSize: bodyFontSize * textScale,
+                                  ),
+                                  linkStyle: TextStyle(
+                                    color: Colors.green,
+                                    decoration: TextDecoration.underline,
+                                    fontSize: bodyFontSize * textScale,
+                                  ),
+                                  options: const LinkifyOptions(
+                                    humanize: false,
+                                    defaultToHttps: false,
+                                  ),
+                                  linkifiers: const [UrlLinkifier()],
+                                  onOpen: (link) => LinkHandler.handleLinkTap(
+                                    context,
+                                    link.url,
+                                  ),
                                 ),
                               ),
-                              if (isOutgoing) ...[
+                              if (!enableTracing && isOutgoing) ...[
                                 const SizedBox(width: 4),
-                                _buildStatusIcon(metaColor),
-                              ],
-                              if (message.tripTimeMs != null &&
-                                  message.status ==
-                                      MessageStatus.delivered) ...[
-                                const SizedBox(width: 4),
-                                Icon(
-                                  Icons.speed,
-                                  size: 10,
-                                  color: isOutgoing
-                                      ? metaColor
-                                      : Colors.green[700],
-                                ),
-                                Text(
-                                  '${(message.tripTimeMs! / 1000).toStringAsFixed(1)}s',
-                                  style: TextStyle(
-                                    fontSize: 9,
-                                    color: isOutgoing
-                                        ? metaColor
-                                        : Colors.green[700],
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 2),
+                                  child: MessageStatusIcon(
+                                    isAcked:
+                                        message.status ==
+                                            MessageStatus.delivered &&
+                                        message.pathBytes.isNotEmpty,
+                                    isFailed:
+                                        message.status == MessageStatus.failed,
                                   ),
                                 ),
                               ],
                             ],
                           ),
-                        ),
+                        if (enableTracing) ...[
+                          if (isOutgoing && message.retryCount > 0) ...[
+                            const SizedBox(height: 4),
+                            Padding(
+                              padding: gifId != null
+                                  ? const EdgeInsets.symmetric(horizontal: 8)
+                                  : EdgeInsets.zero,
+                              child: Text(
+                                context.l10n.chat_retryCount(
+                                  message.retryCount,
+                                  4,
+                                ),
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: metaColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
+                          ],
+                          const SizedBox(height: 4),
+                          Padding(
+                            padding: gifId != null
+                                ? const EdgeInsets.only(
+                                    left: 8,
+                                    right: 8,
+                                    bottom: 4,
+                                  )
+                                : EdgeInsets.zero,
+                            child: Wrap(
+                              spacing: 4,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              children: [
+                                Text(
+                                  _formatTime(message.timestamp),
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: metaColor,
+                                  ),
+                                ),
+                                if (isOutgoing) ...[
+                                  const SizedBox(width: 4),
+                                  _buildStatusIcon(metaColor),
+                                ],
+                                if (message.tripTimeMs != null &&
+                                    message.status ==
+                                        MessageStatus.delivered) ...[
+                                  const SizedBox(width: 4),
+                                  Icon(
+                                    Icons.speed,
+                                    size: 10,
+                                    color: isOutgoing
+                                        ? metaColor
+                                        : Colors.green[700],
+                                  ),
+                                  Text(
+                                    '${(message.tripTimeMs! / 1000).toStringAsFixed(1)}s',
+                                    style: TextStyle(
+                                      fontSize: 9,
+                                      color: isOutgoing
+                                          ? metaColor
+                                          : Colors.green[700],
+                                    ),
+                                  ),
+                                ],
+                              ],
+                            ),
+                          ),
+                        ],
                       ],
                     ),
                   ),
@@ -1394,7 +1508,9 @@ class _MessageBubble extends StatelessWidget {
     _PoiInfo poi,
     Color textColor,
     Color metaColor,
-  ) {
+    double textScale, {
+    Widget? trailing,
+  }) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -1421,16 +1537,21 @@ class _MessageBubble extends StatelessWidget {
             children: [
               Text(
                 context.l10n.chat_poiShared,
-                style: TextStyle(color: textColor, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  color: textColor,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14 * textScale,
+                ),
               ),
               if (poi.label.isNotEmpty)
                 Text(
                   poi.label,
-                  style: TextStyle(color: metaColor, fontSize: 12),
+                  style: TextStyle(color: metaColor, fontSize: 12 * textScale),
                 ),
             ],
           ),
         ),
+        if (trailing != null) ...[const SizedBox(width: 4), trailing],
       ],
     );
   }

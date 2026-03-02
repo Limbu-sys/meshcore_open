@@ -1,4 +1,5 @@
 import 'dart:async';
+import '../utils/platform_info.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
@@ -326,8 +327,7 @@ class _RepeaterLoginDialogState extends State<RepeaterLoginDialog> {
                     },
                     onSubmitted: (_) => _handleLogin(),
                     autofocus:
-                        !(defaultTargetPlatform == TargetPlatform.android ||
-                            defaultTargetPlatform == TargetPlatform.iOS) &&
+                        !PlatformInfo.isMobile &&
                         _passwordController.text.isEmpty,
                   ),
                   const SizedBox(height: 12),

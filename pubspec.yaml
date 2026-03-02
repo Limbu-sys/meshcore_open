@@ -50,7 +50,7 @@ dependencies:
   cached_network_image: ^3.4.1
   flutter_cache_manager: ^3.4.1
   flutter_foreground_task: ^9.2.0
-  wakelock_plus: ^1.2.8
+  wakelock_plus: ^1.4.0
   characters: ^1.4.0
   package_info_plus: ^9.0.0
   mobile_scanner: ^7.1.4  # QR/barcode scanning
@@ -60,6 +60,10 @@ dependencies:
   gpx: ^2.3.0
   path_provider: ^2.1.5
   share_plus: ^12.0.1
+  build_pipe: ^0.3.1
+  material_symbols_icons: ^4.2906.0
+  web: ^1.1.1
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -87,6 +91,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/icons/
 
 flutter_launcher_icons:
   android: true
@@ -124,3 +129,16 @@ flutter_launcher_icons:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+build_pipe:
+  workflows:
+    default:
+      clean_flutter: true          # Optional: Cleans old build artifacts before running
+      generate_log: true           # Optional: Outputs a build log file for debugging
+      platforms:
+        web:
+          build:
+            build_command: flutter build web --release --pwa-strategy=none
+            # Strongly recommended: disables the default service worker which often causes more cache headaches
+            add_version_query_param: true
+            # This is the key flag! It appends ?v=<your pubspec version> to bootstrap/JS files

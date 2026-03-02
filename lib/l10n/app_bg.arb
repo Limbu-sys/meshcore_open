@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "Неуспешно изтриване на канала \"{name}\"",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "bg",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Контакти",
@@ -334,6 +342,8 @@
   "channels_publicChannel": "Публичен канал",
   "channels_privateChannel": "Частен канал",
   "channels_editChannel": "Редактирай канал",
+  "channels_muteChannel": "Заглуши канала",
+  "channels_unmuteChannel": "Включи известията на канала",
   "channels_deleteChannel": "Изтрий канала",
   "channels_deleteChannelConfirm": "Изтрий \"{name}\"? Това не може да бъде отменено.",
   "@channels_deleteChannelConfirm": {
@@ -1552,6 +1562,8 @@
   "contacts_clipboardEmpty": "Клипборда е празна.",
   "contacts_invalidAdvertFormat": "Невалидни данни за контакт",
   "appSettings_languageRu": "Руски",
+  "appSettings_enableMessageTracing": "Разрешаване на проследяване на съобщения",
+  "appSettings_enableMessageTracingSubtitle": "Показване на подробни метаданни за маршрутизация и синхронизация за съобщения",
   "contacts_contactImported": "Контактът е импортиран.",
   "contacts_zeroHopAdvert": "Реклама без скок",
   "contacts_contactImportFailed": "Контактът не е успешно импортиран.",
@@ -1594,6 +1606,8 @@
   "scanner_bluetoothOff": "Bluetooth е изключен.",
   "scanner_enableBluetooth": "Активирайте Bluetooth",
   "scanner_bluetoothOffMessage": "Моля, активирайте Bluetooth, за да сканирате за устройства.",
+  "scanner_chromeRequired": "Изисква се браузър Chrome",
+  "scanner_chromeRequiredMessage": "Това уеб приложение изисква Google Chrome или браузър, базиран на Chromium, за поддръжка на Bluetooth.",
   "snrIndicator_lastSeen": "Последно видян",
   "snrIndicator_nearByRepeaters": "Близки повтарящи се устройства",
   "chat_ShowAllPaths": "Покажи всички пътища",
@@ -1714,5 +1728,78 @@
   "losPointName": "Име на точката",
   "losShowPanelTooltip": "Показване на LOS панел",
   "losHidePanelTooltip": "Скриване на LOS панела",
-  "losElevationAttribution": "Данни за надморска височина: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Данни за надморска височина: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Радиохоризонт",
+  "losLegendLosBeam": "Линия на видимост",
+  "losLegendTerrain": "Терен",
+  "losFrequencyLabel": "Честота",
+  "losFrequencyInfoTooltip": "Преглед на детайли за изчислението",
+  "losFrequencyDialogTitle": "Изчисляване на радиохоризонта",
+  "losFrequencyDialogDescription": "Започвайки от k={baselineK} при {baselineFreq} MHz, изчислението коригира k-фактора за текущата {frequencyMHz} MHz лента, която определя границата на извития радиохоризонт.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "listFilter_removeFromFavorites": "Премахване от списъка с любими",
+  "listFilter_addToFavorites": "Добави към любими",
+  "listFilter_favorites": "Любими",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchFavorites": "Търсене на {number}{str} любими...",
+  "contacts_searchRoomServers": "Търсене на {number}{str} сървъри в стаята...",
+  "contacts_unread": "Непрочетено",
+  "contacts_searchRepeaters": "Търсене на {number}{str} повтарящи се...",
+  "contacts_searchContactsNoNumber": "Търси контакти...",
+  "contacts_searchUsers": "Търсене на {number}{str} потребители..."
 }

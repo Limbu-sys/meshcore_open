@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "Kanala {name} ni bilo mogoče izbrisati",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "sl",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Stiki",
@@ -334,6 +342,8 @@
   "channels_publicChannel": "Javni kanal",
   "channels_privateChannel": "Zasebni kanal",
   "channels_editChannel": "Uredi kanal",
+  "channels_muteChannel": "Utišaj kanal",
+  "channels_unmuteChannel": "Vklopi obvestila kanala",
   "channels_deleteChannel": "Pošlji kanal",
   "channels_deleteChannelConfirm": "Izbrišem \"{name}\"? To se ne da povrniti.",
   "@channels_deleteChannelConfirm": {
@@ -1550,6 +1560,8 @@
   "contacts_pathTraceTo": "Trace route to {name}",
   "appSettings_languageRu": "Ruščina",
   "appSettings_languageUk": "Ukrajinsko",
+  "appSettings_enableMessageTracing": "Omogoči sledenje sporočilom",
+  "appSettings_enableMessageTracingSubtitle": "Prikaži podrobne metapodatke o usmerjanju in časovnem usklajevanju sporočil",
   "contacts_contactImported": "Kontakt je bil uvožen.",
   "contacts_contactImportFailed": "Kontakt ni bil uspešno uvožen.",
   "contacts_zeroHopAdvert": "Reklama brez posrednikov",
@@ -1593,6 +1605,8 @@
   "map_pathTraceCancelled": "Spremljanje poti je prekinjeno.",
   "scanner_enableBluetooth": "Omogočite Bluetooth",
   "scanner_bluetoothOffMessage": "Prosimo, vklopite Bluetooth, da lahko poiščete naprave.",
+  "scanner_chromeRequired": "Zahtevan brskalnik Chrome",
+  "scanner_chromeRequiredMessage": "Ta spletna aplikacija za podporo Bluetooth zahteva Google Chrome ali brskalnik na osnovi Chromiuma.",
   "scanner_bluetoothOff": "Bluetooth je izklopljen",
   "snrIndicator_lastSeen": "Zadnjič videno",
   "snrIndicator_nearByRepeaters": "Bližnji ponovitelji",
@@ -1714,5 +1728,78 @@
   "losPointName": "Ime točke",
   "losShowPanelTooltip": "Pokaži ploščo LOS",
   "losHidePanelTooltip": "Skrij ploščo LOS",
-  "losElevationAttribution": "Podatki o višini: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Podatki o višini: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Radijski horizont",
+  "losLegendLosBeam": "Linija vidnosti",
+  "losLegendTerrain": "Teren",
+  "losFrequencyLabel": "Frekvenca",
+  "losFrequencyInfoTooltip": "Prikaži podrobnosti izračuna",
+  "losFrequencyDialogTitle": "Izračun radijskega horizonta",
+  "losFrequencyDialogDescription": "Začenši od k={baselineK} pri {baselineFreq} MHz, izračun prilagodi k-faktor za trenutni pas {frequencyMHz} MHz, ki določa ukrivljeno zgornjo mejo radijskega horizonta.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "listFilter_favorites": "Priljubljene",
+  "listFilter_removeFromFavorites": "Odstrani iz priljubljenih",
+  "listFilter_addToFavorites": "Dodaj v priljubljene",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Neprebrano",
+  "contacts_searchFavorites": "Iskanje {number}{str} priljubljenih...",
+  "contacts_searchRoomServers": "Išči {number}{str} strežnikov sob...",
+  "contacts_searchContactsNoNumber": "Iskanje stikov...",
+  "contacts_searchRepeaters": "Išči {number}{str} ponavljalnike...",
+  "contacts_searchUsers": "Išči {number}{str} uporabnikov..."
 }

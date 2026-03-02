@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "Не вдалося видалити канал \"{name}\"",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "uk",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Контакти",
@@ -335,6 +343,8 @@
   "channels_publicChannel": "Публічний канал",
   "channels_privateChannel": "Приватний канал",
   "channels_editChannel": "Редагувати канал",
+  "channels_muteChannel": "Вимкнути сповіщення каналу",
+  "channels_unmuteChannel": "Увімкнути сповіщення каналу",
   "channels_deleteChannel": "Видалити канал",
   "channels_deleteChannelConfirm": "Видалити {name}? Це не можна скасувати.",
   "@channels_deleteChannelConfirm": {
@@ -1557,6 +1567,8 @@
   "contacts_copyAdvertToClipboard": "Копіювати оголошення в буфер обміну",
   "contacts_clipboardEmpty": "Буфер обміну порожній",
   "appSettings_languageRu": "Російська",
+  "appSettings_enableMessageTracing": "Увімкнути відстеження повідомлень",
+  "appSettings_enableMessageTracingSubtitle": "Показувати детальні метадані про маршрутизацію та час для повідомлень",
   "contacts_ShareContact": "Копіювати контакт у буфер обміну",
   "contacts_zeroHopContactAdvertFailed": "Не вдалося надіслати контакт.",
   "contacts_contactAdvertCopied": "Рекламу скопійовано до буфера обміну.",
@@ -1593,6 +1605,8 @@
   "map_pathTraceCancelled": "Відмінується трасування шляху",
   "scanner_enableBluetooth": "Увімкніть Bluetooth",
   "scanner_bluetoothOffMessage": "Будь ласка, увімкніть Bluetooth, щоб сканувати пристрої.",
+  "scanner_chromeRequired": "Потрібен браузер Chrome",
+  "scanner_chromeRequiredMessage": "Для підтримки Bluetooth у цьому веб-додатку потрібен Google Chrome або браузер на базі Chromium.",
   "scanner_bluetoothOff": "Bluetooth вимкнено",
   "snrIndicator_lastSeen": "Останній раз бачили",
   "snrIndicator_nearByRepeaters": "Ближні ретранслятори",
@@ -1714,5 +1728,78 @@
   "losPointName": "Назва точки",
   "losShowPanelTooltip": "Показати панель LOS",
   "losHidePanelTooltip": "Приховати панель LOS",
-  "losElevationAttribution": "Дані про висоту: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Дані про висоту: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Радіогоризонт",
+  "losLegendLosBeam": "Лінія прямої видимості",
+  "losLegendTerrain": "Рельєф",
+  "losFrequencyLabel": "Частота",
+  "losFrequencyInfoTooltip": "Переглянути деталі розрахунку",
+  "losFrequencyDialogTitle": "Розрахунок радіогоризонту",
+  "losFrequencyDialogDescription": "Починаючи з k={baselineK} на {baselineFreq} МГц, обчислення коригує k-фактор для поточного діапазону {frequencyMHz} МГц, який визначає викривлену межу радіогоризонту.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "listFilter_removeFromFavorites": "Видалити зі списку улюблених",
+  "listFilter_addToFavorites": "Додати до улюблених",
+  "listFilter_favorites": "Улюблені",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchRoomServers": "Пошук {number}{str} серверів кімнат...",
+  "contacts_searchUsers": "Пошук {number}{str} користувачів...",
+  "contacts_searchFavorites": "Пошук {number}{str} улюблених...",
+  "contacts_searchContactsNoNumber": "Пошук контактів...",
+  "contacts_searchRepeaters": "Пошук {number}{str} ретрансляторів...",
+  "contacts_unread": "Непрочитане"
 }

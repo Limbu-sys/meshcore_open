@@ -72,6 +72,8 @@
   "scanner_scan": "Scan",
   "scanner_bluetoothOff": "Bluetooth is off",
   "scanner_bluetoothOffMessage": "Please turn on Bluetooth to scan for devices",
+  "scanner_chromeRequired": "Chrome Browser Required",
+  "scanner_chromeRequiredMessage": "This web application requires Google Chrome or a Chromium-based browser for Bluetooth support.",
   "scanner_enableBluetooth": "Enable Bluetooth",
   "device_quickSwitch": "Quick switch",
   "device_meshcore": "MeshCore",
@@ -183,6 +185,8 @@
   "appSettings_languageBg": "Български",
   "appSettings_languageRu": "Русский",
   "appSettings_languageUk": "Українська",
+  "appSettings_enableMessageTracing": "Enable Message Tracing",
+  "appSettings_enableMessageTracingSubtitle": "Show detailed routing and timing metadata for messages",
   "appSettings_notifications": "Notifications",
   "appSettings_enableNotifications": "Enable Notifications",
   "appSettings_enableNotificationsSubtitle": "Receive notifications for messages and adverts",
@@ -266,7 +270,63 @@
   "contacts_title": "Contacts",
   "contacts_noContacts": "No contacts yet",
   "contacts_contactsWillAppear": "Contacts will appear when devices advertise",
-  "contacts_searchContacts": "Search contacts...",
+  "contacts_unread": "Unread",
+  "contacts_searchContactsNoNumber": "Search Contacts...",
+  "contacts_searchContacts": "Search {number}{str} Contacts...",
+  "@contacts_searchContacts": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchFavorites": "Search {number}{str} Favorites...",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchUsers": "Search {number}{str} Users...",
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchRepeaters": "Search {number}{str} Repeaters...",
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchRoomServers": "Search {number}{str} Room servers...",
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
   "contacts_noUnreadContacts": "No unread contacts",
   "contacts_noContactsFound": "No contacts or groups found",
   "contacts_deleteContact": "Delete Contact",
@@ -352,9 +412,19 @@
   "channels_publicChannel": "Public channel",
   "channels_privateChannel": "Private channel",
   "channels_editChannel": "Edit channel",
+  "channels_muteChannel": "Mute channel",
+  "channels_unmuteChannel": "Unmute channel",
   "channels_deleteChannel": "Delete channel",
   "channels_deleteChannelConfirm": "Delete \"{name}\"? This cannot be undone.",
   "@channels_deleteChannelConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "channels_channelDeleteFailed": "Failed to delete channel \"{name}\"",
+  "@channels_channelDeleteFailed": {
     "placeholders": {
       "name": {
         "type": "String"
@@ -1543,6 +1613,9 @@
   "listFilter_az": "A-Z",
   "listFilter_filters": "Filters",
   "listFilter_all": "All",
+  "listFilter_favorites": "Favorites",
+  "listFilter_addToFavorites": "Add to favorites",
+  "listFilter_removeFromFavorites": "Remove from favorites",
   "listFilter_users": "Users",
   "listFilter_repeaters": "Repeaters",
   "listFilter_roomServers": "Room servers",
@@ -1663,6 +1736,30 @@
   "losShowPanelTooltip": "Show LOS panel",
   "losHidePanelTooltip": "Hide LOS panel",
   "losElevationAttribution": "Elevation data: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Radio horizon",
+  "losLegendLosBeam": "LOS beam",
+  "losLegendTerrain": "Terrain",
+  "losFrequencyLabel": "Frequency",
+  "losFrequencyInfoTooltip": "View calculation details",
+  "losFrequencyDialogTitle": "Radio horizon calculation",
+  "losFrequencyDialogDescription": "Starting from k={baselineK} at {baselineFreq} MHz, the calculation adjusts the k-factor for the current {frequencyMHz} MHz band, which defines the curved radio horizon cap.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
   "contacts_pathTrace": "Path Trace",
   "contacts_ping": "Ping",
   "contacts_repeaterPathTrace": "Path trace to repeater",

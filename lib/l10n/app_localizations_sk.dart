@@ -151,6 +151,13 @@ class AppLocalizationsSk extends AppLocalizations {
       'Prosím, zapnite Bluetooth, aby ste mohli skenovať pre zariadenia.';
 
   @override
+  String get scanner_chromeRequired => 'Vyžaduje sa prehliadač Chrome';
+
+  @override
+  String get scanner_chromeRequiredMessage =>
+      'Táto webová aplikácia vyžaduje Google Chrome alebo prehliadač založený na Chromium pre podporu Bluetooth.';
+
+  @override
   String get scanner_enableBluetooth => 'Povolte Bluetooth';
 
   @override
@@ -461,6 +468,13 @@ class AppLocalizationsSk extends AppLocalizations {
   String get appSettings_languageUk => 'Ukrajinská';
 
   @override
+  String get appSettings_enableMessageTracing => 'Povoliť sledovanie správ';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Zobraziť podrobné metadáta o smerovaní a časovaní správ';
+
+  @override
   String get appSettings_notifications => 'Upozornenia';
 
   @override
@@ -664,7 +678,35 @@ class AppLocalizationsSk extends AppLocalizations {
       'Kontakty sa zobrazia, keď zariadenia spúšťajú reklamu.';
 
   @override
-  String get contacts_searchContacts => 'Vyhľadávajte kontakty...';
+  String get contacts_unread => 'Neprečítané';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Hľadať kontakty...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Vyhľadávajte kontakty...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Hľadať $number$str obľúbené...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Hľadať $number$str používateľov...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Hľadať $number$str opakovače...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Hľadaj $number$str serverov miestností...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Žiadne neprečítané kontakty';
@@ -793,11 +835,22 @@ class AppLocalizationsSk extends AppLocalizations {
   String get channels_editChannel => 'Upraviť kanál';
 
   @override
+  String get channels_muteChannel => 'Stlmiť kanál';
+
+  @override
+  String get channels_unmuteChannel => 'Zrušiť stlmenie kanála';
+
+  @override
   String get channels_deleteChannel => 'Odstrániť kanál';
 
   @override
   String channels_deleteChannelConfirm(String name) {
     return 'Odstrániť \"$name\"? To sa nedá zrušiť.';
+  }
+
+  @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Kanál \"$name\" sa nepodarilo odstrániť';
   }
 
   @override
@@ -2695,6 +2748,15 @@ class AppLocalizationsSk extends AppLocalizations {
   String get listFilter_all => 'Všetko';
 
   @override
+  String get listFilter_favorites => 'Obľúbené';
+
+  @override
+  String get listFilter_addToFavorites => 'Pridaj do obľúbených';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Odstrániť z označení';
+
+  @override
   String get listFilter_users => 'Používatelia';
 
   @override
@@ -2837,6 +2899,34 @@ class AppLocalizationsSk extends AppLocalizations {
   @override
   String get losElevationAttribution =>
       'Údaje o nadmorskej výške: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Rádiový horizont';
+
+  @override
+  String get losLegendLosBeam => 'Priama viditeľnosť';
+
+  @override
+  String get losLegendTerrain => 'Terén';
+
+  @override
+  String get losFrequencyLabel => 'Frekvencia';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Zobraziť podrobnosti výpočtu';
+
+  @override
+  String get losFrequencyDialogTitle => 'Výpočet rádiového horizontu';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Počnúc od k=$baselineK pri $baselineFreq MHz výpočet upraví k-faktor pre aktuálne pásmo $frequencyMHz MHz, ktorý definuje zakrivený strop rádiového horizontu.';
+  }
 
   @override
   String get contacts_pathTrace => 'Sledovanie lúčov';

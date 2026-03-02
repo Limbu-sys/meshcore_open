@@ -4,6 +4,7 @@ import 'package:meshcore_open/connector/meshcore_connector.dart';
 import 'package:meshcore_open/connector/meshcore_protocol.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import '../utils/platform_info.dart';
 
 import 'package:share_plus/share_plus.dart';
 
@@ -109,6 +110,10 @@ class GpxExport {
     String shareText,
     String subject,
   ) async {
+    if (PlatformInfo.isWeb) {
+      debugPrint("GPX export is not supported on Web.");
+      return gpxExportNotAvailable;
+    }
     if (_contacts.isEmpty) {
       debugPrint("No repeaters to export – nothing to share.");
       return gpxExportNoContacts;

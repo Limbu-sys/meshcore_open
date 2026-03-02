@@ -12,6 +12,7 @@ import '../services/app_settings_service.dart';
 import '../services/repeater_command_service.dart';
 import '../widgets/path_management_dialog.dart';
 import '../helpers/cayenne_lpp.dart';
+import '../utils/battery_utils.dart';
 
 class TelemetryScreen extends StatefulWidget {
   final Contact repeater;
@@ -74,9 +75,19 @@ class _TelemetryScreenState extends State<TelemetryScreen> {
   }
 
   void _handleStatusResponse(Uint8List frame) {
+    final parsedTelemetry = CayenneLpp.parseByChannel(frame);
+    final batteryMv = _extractTelemetryBatteryMillivolts(parsedTelemetry);
+    if (batteryMv != null) {
+      final connector = Provider.of<MeshCoreConnector>(context, listen: false);
+      connector.updateRepeaterBatterySnapshot(
+        widget.repeater.publicKeyHex,
+        batteryMv,
+        source: 'telemetry',
+      );
+    }
     if (!mounted) return;
     setState(() {
-      _parsedTelemetry = CayenneLpp.parseByChannel(frame);
+      _parsedTelemetry = parsedTelemetry;
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -411,20 +422,35 @@ class _TelemetryScreenState extends State<TelemetryScreen> {
     );
   }
 
-  String _batteryText(double? batteryMv) {
+  int? _extractTelemetryBatteryMillivolts(List<Map<String, dynamic>> entries) {
+    for (final entry in entries) {
+      if (entry['channel'] != 1) continue;
+      final values = entry['values'];
+      if (values is! Map<String, dynamic>) continue;
+      final voltage = values['voltage'];
+      if (voltage is num) return (voltage.toDouble() * 1000).round();
+    }
+    return null;
+  }
+
+  String _batteryText(double? telemetryVolts) {
     final l10n = context.l10n;
+    final connector = context.watch<MeshCoreConnector>();
+    final batteryMv =
+        connector.getRepeaterBatteryMillivolts(widget.repeater.publicKeyHex) ??
+        (telemetryVolts == null ? null : (telemetryVolts * 1000).round());
     if (batteryMv == null) return l10n.common_notAvailable;
-    final percent = _batteryPercentFromMv(batteryMv);
-    final volts = batteryMv.toStringAsFixed(2);
+    final chemistry = _batteryChemistry();
+    final percent = estimateBatteryPercentFromMillivolts(batteryMv, chemistry);
+    final volts = (batteryMv / 1000).toStringAsFixed(2);
     return l10n.telemetry_batteryValue(percent, volts);
   }
 
-  int _batteryPercentFromMv(double millivolts) {
-    const minMv = 2.800;
-    const maxMv = 4.200;
-    if (millivolts <= minMv) return 0;
-    if (millivolts >= maxMv) return 100;
-    return (((millivolts - minMv) * 100) / (maxMv - minMv)).round();
+  String _batteryChemistry() {
+    final settingsService = context.read<AppSettingsService>();
+    return settingsService.batteryChemistryForRepeater(
+      widget.repeater.publicKeyHex,
+    );
   }
 
   String _temperatureText(double? tempC, bool isImperialUnits) {

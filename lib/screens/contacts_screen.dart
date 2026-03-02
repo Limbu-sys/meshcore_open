@@ -184,14 +184,17 @@ class _ContactsScreenState extends State<ContactsScreen>
     final connector = Provider.of<MeshCoreConnector>(context, listen: false);
     final exportContactFrame = buildExportContactFrame(pubKey);
     _pendingOperations.add(ContactOperationType.export);
-    await connector.sendFrame(exportContactFrame);
+    await connector.sendFrame(exportContactFrame, expectsGenericAck: true);
   }
 
   Future<void> _contactZeroHop(Uint8List pubKey) async {
     final connector = Provider.of<MeshCoreConnector>(context, listen: false);
     final exportContactZeroHopFrame = buildZeroHopContact(pubKey);
     _pendingOperations.add(ContactOperationType.zeroHopShare);
-    await connector.sendFrame(exportContactZeroHopFrame);
+    await connector.sendFrame(
+      exportContactZeroHopFrame,
+      expectsGenericAck: true,
+    );
   }
 
   Future<void> _contactImport() async {
@@ -218,7 +221,7 @@ class _ContactsScreenState extends State<ContactsScreen>
     try {
       final importContactFrame = buildImportContactFrame(hexString);
       _pendingOperations.add(ContactOperationType.import);
-      await connector.sendFrame(importContactFrame);
+      await connector.sendFrame(importContactFrame, expectsGenericAck: true);
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -400,6 +403,41 @@ class _ContactsScreenState extends State<ContactsScreen>
         ? const <ContactGroup>[]
         : _filterAndSortGroups(_groups, contacts);
 
+    String hintText = "";
+
+    switch (_typeFilter) {
+      case ContactTypeFilter.all:
+        hintText = context.l10n.contacts_searchContacts(
+          filteredAndSorted.length,
+          _showUnreadOnly ? " ${context.l10n.contacts_unread}" : "",
+        );
+        break;
+      case ContactTypeFilter.users:
+        hintText = context.l10n.contacts_searchUsers(
+          filteredAndSorted.length,
+          _showUnreadOnly ? " ${context.l10n.contacts_unread}" : "",
+        );
+        break;
+      case ContactTypeFilter.repeaters:
+        hintText = context.l10n.contacts_searchRepeaters(
+          filteredAndSorted.length,
+          _showUnreadOnly ? " ${context.l10n.contacts_unread}" : "",
+        );
+        break;
+      case ContactTypeFilter.rooms:
+        hintText = context.l10n.contacts_searchRoomServers(
+          filteredAndSorted.length,
+          _showUnreadOnly ? " ${context.l10n.contacts_unread}" : "",
+        );
+        break;
+      case ContactTypeFilter.favorites:
+        hintText = context.l10n.contacts_searchFavorites(
+          filteredAndSorted.length,
+          _showUnreadOnly ? " ${context.l10n.contacts_unread}" : "",
+        );
+        break;
+    }
+
     return Column(
       children: [
         Padding(
@@ -407,7 +445,7 @@ class _ContactsScreenState extends State<ContactsScreen>
           child: TextField(
             controller: _searchController,
             decoration: InputDecoration(
-              hintText: context.l10n.contacts_searchContacts,
+              hintText: hintText,
               prefixIcon: const Icon(Icons.search),
               suffixIcon: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -479,6 +517,7 @@ class _ContactsScreenState extends State<ContactsScreen>
                         contact: contact,
                         lastSeen: _resolveLastSeen(contact),
                         unreadCount: unreadCount,
+                        isFavorite: contact.isFavorite,
                         onTap: () => _openChat(context, contact),
                         onLongPress: () =>
                             _showContactOptions(context, connector, contact),
@@ -515,6 +554,8 @@ class _ContactsScreenState extends State<ContactsScreen>
         })
         .where((group) {
           if (_typeFilter == ContactTypeFilter.all) return true;
+          // Groups don't have a favorite flag, so hide them under favorites filter
+          if (_typeFilter == ContactTypeFilter.favorites) return false;
           for (final key in group.memberKeys) {
             final contact = contactsByKey[key];
             if (contact != null && _matchesTypeFilter(contact)) return true;
@@ -589,6 +630,8 @@ class _ContactsScreenState extends State<ContactsScreen>
     switch (_typeFilter) {
       case ContactTypeFilter.all:
         return true;
+      case ContactTypeFilter.favorites:
+        return contact.isFavorite;
       case ContactTypeFilter.users:
         return contact.type == advTypeChat;
       case ContactTypeFilter.repeaters:
@@ -993,6 +1036,7 @@ class _ContactsScreenState extends State<ContactsScreen>
     final isRepeater = contact.type == advTypeRepeater;
     final isRoom = contact.type == advTypeRoom;
     final roomSyncService = context.read<RoomSyncService>();
+    final isFavorite = contact.isFavorite;
 
     showModalBottomSheet(
       context: context,
@@ -1116,6 +1160,21 @@ class _ContactsScreenState extends State<ContactsScreen>
               ),
             ],
             ListTile(
+              leading: Icon(
+                isFavorite ? Icons.star : Icons.star_border,
+                color: Colors.amber[700],
+              ),
+              title: Text(
+                isFavorite
+                    ? context.l10n.listFilter_removeFromFavorites
+                    : context.l10n.listFilter_addToFavorites,
+              ),
+              onTap: () async {
+                Navigator.pop(sheetContext);
+                await connector.setContactFavorite(contact, !isFavorite);
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.copy),
               title: Text(context.l10n.contacts_ShareContact),
               onTap: () {
@@ -1183,6 +1242,7 @@ class _ContactTile extends StatelessWidget {
   final Contact contact;
   final DateTime lastSeen;
   final int unreadCount;
+  final bool isFavorite;
   final VoidCallback onTap;
   final VoidCallback onLongPress;
 
@@ -1190,6 +1250,7 @@ class _ContactTile extends StatelessWidget {
     required this.contact,
     required this.lastSeen,
     required this.unreadCount,
+    required this.isFavorite,
     required this.onTap,
     required this.onLongPress,
   });
@@ -1265,6 +1326,10 @@ class _ContactTile extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  if (isFavorite)
+                    Icon(Icons.star, size: 14, color: Colors.amber[700]),
+                  if (isFavorite && contact.hasLocation)
+                    const SizedBox(width: 2),
                   if (contact.hasLocation)
                     Icon(Icons.location_on, size: 14, color: Colors.grey[400]),
                 ],

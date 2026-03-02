@@ -150,6 +150,13 @@ class AppLocalizationsSv extends AppLocalizations {
       'Vänligen aktivera Bluetooth för att söka efter enheter.';
 
   @override
+  String get scanner_chromeRequired => 'Chrome-webbläsare krävs';
+
+  @override
+  String get scanner_chromeRequiredMessage =>
+      'Denna webbapplikation kräver Google Chrome oder en Chromium-baserader webbläsare för Bluetooth-stöd.';
+
+  @override
   String get scanner_enableBluetooth => 'Aktivera Bluetooth';
 
   @override
@@ -458,6 +465,13 @@ class AppLocalizationsSv extends AppLocalizations {
   String get appSettings_languageUk => 'Ukrainska';
 
   @override
+  String get appSettings_enableMessageTracing => 'Aktivera meddelandespårning';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Visa detaljerade metadata om dirigering och tidsinställningar för meddelanden';
+
+  @override
   String get appSettings_notifications => 'Meddelanden';
 
   @override
@@ -660,7 +674,35 @@ class AppLocalizationsSv extends AppLocalizations {
       'Kontakter kommer att visas när enheter annonserar.';
 
   @override
-  String get contacts_searchContacts => 'Sök kontakter...';
+  String get contacts_unread => 'Oläst';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Sök kontakter...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Sök kontakter...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Sök $number$str Favoriter...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Sök $number$str användare...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Sök $number$str upprepningsenheter...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Sök $number$str Room-servrar...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Inga oinlästa kontakter';
@@ -787,11 +829,22 @@ class AppLocalizationsSv extends AppLocalizations {
   String get channels_editChannel => 'Redigera kanal';
 
   @override
+  String get channels_muteChannel => 'Tysta kanal';
+
+  @override
+  String get channels_unmuteChannel => 'Slå på ljud för kanal';
+
+  @override
   String get channels_deleteChannel => 'Ta bort kanal';
 
   @override
   String channels_deleteChannelConfirm(String name) {
     return 'Radera \"$name\"? Detta kan inte ångras.';
+  }
+
+  @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Det gick inte att ta bort kanalen \"$name\"';
   }
 
   @override
@@ -2683,6 +2736,15 @@ class AppLocalizationsSv extends AppLocalizations {
   String get listFilter_all => 'Alla';
 
   @override
+  String get listFilter_favorites => 'Favoriter';
+
+  @override
+  String get listFilter_addToFavorites => 'Lägg till i favoriter';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Ta bort från favoriter';
+
+  @override
   String get listFilter_users => 'Användare';
 
   @override
@@ -2823,6 +2885,34 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get losElevationAttribution => 'Höjddata: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Radiohorisont';
+
+  @override
+  String get losLegendLosBeam => 'Siktlinje';
+
+  @override
+  String get losLegendTerrain => 'Terräng';
+
+  @override
+  String get losFrequencyLabel => 'Frekvens';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Visa detaljer om beräkningen';
+
+  @override
+  String get losFrequencyDialogTitle => 'Beräkning av radiohorisonten';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Med start från k=$baselineK vid $baselineFreq MHz, justerar beräkningen k-faktorn för det aktuella $frequencyMHz MHz-bandet, som definierar den böjda radiohorisonten.';
+  }
 
   @override
   String get contacts_pathTrace => 'Path Trace';

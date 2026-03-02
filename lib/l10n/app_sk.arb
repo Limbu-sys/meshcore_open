@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "Kanál \"{name}\" sa nepodarilo odstrániť",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "sk",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Kontakty",
@@ -334,6 +342,8 @@
   "channels_publicChannel": "Veľké verejne kanály",
   "channels_privateChannel": "Osobné kanál",
   "channels_editChannel": "Upraviť kanál",
+  "channels_muteChannel": "Stlmiť kanál",
+  "channels_unmuteChannel": "Zrušiť stlmenie kanála",
   "channels_deleteChannel": "Odstrániť kanál",
   "channels_deleteChannelConfirm": "Odstrániť \"{name}\"? To sa nedá zrušiť.",
   "@channels_deleteChannelConfirm": {
@@ -1556,6 +1566,8 @@
   "contacts_copyAdvertToClipboard": "Kopírovať reklamu do schránky",
   "contacts_invalidAdvertFormat": "Neplatné kontaktné údaje",
   "appSettings_languageRu": "Ruština",
+  "appSettings_enableMessageTracing": "Povoliť sledovanie správ",
+  "appSettings_enableMessageTracingSubtitle": "Zobraziť podrobné metadáta o smerovaní a časovaní správ",
   "contacts_addContactFromClipboard": "Pridať kontakt z schránky",
   "contacts_contactImported": "Kontakt bol importovaný.",
   "contacts_zeroHopContactAdvertSent": "Poslal kontakt cez inzerát.",
@@ -1592,6 +1604,8 @@
   "map_runTrace": "Spustiť trasovaním cesty",
   "map_pathTraceCancelled": "Zrušenie stopáže cesty bolo zrušené.",
   "scanner_bluetoothOffMessage": "Prosím, zapnite Bluetooth, aby ste mohli skenovať pre zariadenia.",
+  "scanner_chromeRequired": "Vyžaduje sa prehliadač Chrome",
+  "scanner_chromeRequiredMessage": "Táto webová aplikácia vyžaduje Google Chrome alebo prehliadač založený na Chromium pre podporu Bluetooth.",
   "scanner_bluetoothOff": "Bluetooth je vypnutý",
   "scanner_enableBluetooth": "Povolte Bluetooth",
   "snrIndicator_lastSeen": "Naposledy videný",
@@ -1714,5 +1728,78 @@
   "losPointName": "Názov bodu",
   "losShowPanelTooltip": "Zobraziť panel LOS",
   "losHidePanelTooltip": "Skryť panel LOS",
-  "losElevationAttribution": "Údaje o nadmorskej výške: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Údaje o nadmorskej výške: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Rádiový horizont",
+  "losLegendLosBeam": "Priama viditeľnosť",
+  "losLegendTerrain": "Terén",
+  "losFrequencyLabel": "Frekvencia",
+  "losFrequencyInfoTooltip": "Zobraziť podrobnosti výpočtu",
+  "losFrequencyDialogTitle": "Výpočet rádiového horizontu",
+  "losFrequencyDialogDescription": "Počnúc od k={baselineK} pri {baselineFreq} MHz výpočet upraví k-faktor pre aktuálne pásmo {frequencyMHz} MHz, ktorý definuje zakrivený strop rádiového horizontu.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "listFilter_removeFromFavorites": "Odstrániť z označení",
+  "listFilter_addToFavorites": "Pridaj do obľúbených",
+  "listFilter_favorites": "Obľúbené",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchRoomServers": "Hľadaj {number}{str} serverov miestností...",
+  "contacts_searchFavorites": "Hľadať {number}{str} obľúbené...",
+  "contacts_searchRepeaters": "Hľadať {number}{str} opakovače...",
+  "contacts_searchUsers": "Hľadať {number}{str} používateľov...",
+  "contacts_searchContactsNoNumber": "Hľadať kontakty...",
+  "contacts_unread": "Neprečítané"
 }

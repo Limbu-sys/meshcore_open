@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "Impossibile eliminare il canale \"{name}\"",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "it",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Contatti",
@@ -334,6 +342,8 @@
   "channels_publicChannel": "Canale pubblico",
   "channels_privateChannel": "Canale privato",
   "channels_editChannel": "Modifica canale",
+  "channels_muteChannel": "Silenzia canale",
+  "channels_unmuteChannel": "Attiva notifiche canale",
   "channels_deleteChannel": "Elimina canale",
   "channels_deleteChannelConfirm": "Eliminare \"{name}\"? Non può essere annullato.",
   "@channels_deleteChannelConfirm": {
@@ -1551,6 +1561,8 @@
   "appSettings_languageRu": "Russo",
   "contacts_invalidAdvertFormat": "Dati di contatto non validi",
   "appSettings_languageUk": "Ucraino",
+  "appSettings_enableMessageTracing": "Abilita tracciamento messaggi",
+  "appSettings_enableMessageTracingSubtitle": "Mostra metadati dettagliati su instradamento e tempi per i messaggi",
   "contacts_zeroHopAdvert": "Annuncio Zero Hop",
   "contacts_floodAdvert": "Annuncio alluvionale",
   "contacts_copyAdvertToClipboard": "Copia Annuncio negli Appunti",
@@ -1593,6 +1605,8 @@
   "map_tapToAdd": "Tocca i nodi per aggiungerli al percorso.",
   "scanner_bluetoothOff": "Il Bluetooth è disattivato.",
   "scanner_bluetoothOffMessage": "Si prega di attivare il Bluetooth per effettuare la scansione dei dispositivi.",
+  "scanner_chromeRequired": "Browser Chrome richiesto",
+  "scanner_chromeRequiredMessage": "Questa applicazione web richiede Google Chrome o un browser basato su Chromium per il supporto Bluetooth.",
   "scanner_enableBluetooth": "Abilita il Bluetooth",
   "snrIndicator_nearByRepeaters": "Ripetitori vicini",
   "snrIndicator_lastSeen": "Ultimo accesso",
@@ -1714,5 +1728,78 @@
   "losPointName": "Nome del punto",
   "losShowPanelTooltip": "Mostra il pannello LOS",
   "losHidePanelTooltip": "Nascondi il pannello LOS",
-  "losElevationAttribution": "Dati di elevazione: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Dati di elevazione: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Orizzonte radio",
+  "losLegendLosBeam": "Linea di vista",
+  "losLegendTerrain": "Terreno",
+  "losFrequencyLabel": "Frequenza",
+  "losFrequencyInfoTooltip": "Visualizza i dettagli del calcolo",
+  "losFrequencyDialogTitle": "Calcolo dell’orizzonte radio",
+  "losFrequencyDialogDescription": "Partendo da k={baselineK} a {baselineFreq} MHz, il calcolo regola il fattore k per l'attuale banda {frequencyMHz} MHz, che definisce il limite curvo dell'orizzonte radio.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "listFilter_addToFavorites": "Aggiungi ai preferiti",
+  "listFilter_removeFromFavorites": "Rimuovi dai preferiti",
+  "listFilter_favorites": "Preferiti",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchUsers": "Cerca {number}{str} Utenti...",
+  "contacts_searchContactsNoNumber": "Cerca Contatti...",
+  "contacts_searchFavorites": "Cerca {number}{str} Preferiti...",
+  "contacts_unread": "Non letti",
+  "contacts_searchRepeaters": "Cerca {number}{str} Ripetitori...",
+  "contacts_searchRoomServers": "Cerca {number}{str} server Room..."
 }

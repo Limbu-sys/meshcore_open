@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "Kan kanaal {name} niet verwijderen",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "nl",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Contacten",
@@ -334,6 +342,8 @@
   "channels_publicChannel": "Open kanaal",
   "channels_privateChannel": "Private kanaal",
   "channels_editChannel": "Kanaal bewerken",
+  "channels_muteChannel": "Kanaal dempen",
+  "channels_unmuteChannel": "Kanaal dempen opheffen",
   "channels_deleteChannel": "Kanaal verwijderen",
   "channels_deleteChannelConfirm": "Verwijderen \"{name}\"? Dit kan niet worden teruggedraaid.",
   "@channels_deleteChannelConfirm": {
@@ -1555,6 +1565,8 @@
   "contacts_floodAdvert": "Overstromingsadvertentie",
   "contacts_copyAdvertToClipboard": "Advert naar klembord kopiëren",
   "appSettings_languageRu": "Russisch",
+  "appSettings_enableMessageTracing": "Berichttracking inschakelen",
+  "appSettings_enableMessageTracingSubtitle": "Gedetailleerde routerings- en timing-metadata voor berichten weergeven",
   "contacts_clipboardEmpty": "Knipbord is leeg.",
   "contacts_addContactFromClipboard": "Contact uit klembord toevoegen",
   "contacts_contactImported": "Contact is geïmporteerd.",
@@ -1593,6 +1605,8 @@
   "map_runTrace": "Padeshulp traceren",
   "scanner_enableBluetooth": "Activeer Bluetooth",
   "scanner_bluetoothOffMessage": "Zorg ervoor dat Bluetooth is ingeschakeld om naar apparaten te zoeken.",
+  "scanner_chromeRequired": "Chrome-browser vereist",
+  "scanner_chromeRequiredMessage": "Deze webapplicatie vereist Google Chrome of een op Chromium gebaseerde browser voor Bluetooth-ondersteuning.",
   "scanner_bluetoothOff": "Bluetooth is uitgeschakeld",
   "snrIndicator_lastSeen": "Laatst gezien",
   "snrIndicator_nearByRepeaters": "Nabije herhalingseenheden",
@@ -1714,5 +1728,78 @@
   "losPointName": "Puntnaam",
   "losShowPanelTooltip": "Toon LOS-paneel",
   "losHidePanelTooltip": "LOS-paneel verbergen",
-  "losElevationAttribution": "Hoogtegegevens: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Hoogtegegevens: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Radiohorizon",
+  "losLegendLosBeam": "Zichtlijn",
+  "losLegendTerrain": "Terrein",
+  "losFrequencyLabel": "Frequentie",
+  "losFrequencyInfoTooltip": "Bekijk details van de berekening",
+  "losFrequencyDialogTitle": "Berekening van de radiohorizon",
+  "losFrequencyDialogDescription": "Beginnend met k={baselineK} bij {baselineFreq} MHz, wordt bij de berekening de k-factor aangepast voor de huidige {frequencyMHz} MHz-band, die de gebogen radiohorizonkap definieert.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "listFilter_removeFromFavorites": "Verwijderen uit favorieten",
+  "listFilter_favorites": "Favorieten",
+  "listFilter_addToFavorites": "Toevoegen aan favorieten",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Ongelezen",
+  "contacts_searchRepeaters": "Zoek {number}{str} Repeaters...",
+  "contacts_searchContactsNoNumber": "Zoek contacten...",
+  "contacts_searchUsers": "Zoek {number}{str} gebruikers...",
+  "contacts_searchFavorites": "Zoek {number}{str} favorieten...",
+  "contacts_searchRoomServers": "Zoek {number}{str} Room servers..."
 }

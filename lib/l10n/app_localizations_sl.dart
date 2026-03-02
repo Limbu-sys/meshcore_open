@@ -151,6 +151,13 @@ class AppLocalizationsSl extends AppLocalizations {
       'Prosimo, vklopite Bluetooth, da lahko poiščete naprave.';
 
   @override
+  String get scanner_chromeRequired => 'Zahtevan brskalnik Chrome';
+
+  @override
+  String get scanner_chromeRequiredMessage =>
+      'Ta spletna aplikacija za podporo Bluetooth zahteva Google Chrome ali brskalnik na osnovi Chromiuma.';
+
+  @override
   String get scanner_enableBluetooth => 'Omogočite Bluetooth';
 
   @override
@@ -460,6 +467,13 @@ class AppLocalizationsSl extends AppLocalizations {
   String get appSettings_languageUk => 'Ukrajinsko';
 
   @override
+  String get appSettings_enableMessageTracing => 'Omogoči sledenje sporočilom';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Prikaži podrobne metapodatke o usmerjanju in časovnem usklajevanju sporočil';
+
+  @override
   String get appSettings_notifications => 'Obvestila';
 
   @override
@@ -665,7 +679,35 @@ class AppLocalizationsSl extends AppLocalizations {
       'Stiki se bodo prikazali, ko se naprave oglasijo.';
 
   @override
-  String get contacts_searchContacts => 'Iskanje stikov...';
+  String get contacts_unread => 'Neprebrano';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Iskanje stikov...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Iskanje stikov...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Iskanje $number$str priljubljenih...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Išči $number$str uporabnikov...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Išči $number$str ponavljalnike...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Išči $number$str strežnikov sob...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Ne prebrani stiki.';
@@ -791,11 +833,22 @@ class AppLocalizationsSl extends AppLocalizations {
   String get channels_editChannel => 'Uredi kanal';
 
   @override
+  String get channels_muteChannel => 'Utišaj kanal';
+
+  @override
+  String get channels_unmuteChannel => 'Vklopi obvestila kanala';
+
+  @override
   String get channels_deleteChannel => 'Pošlji kanal';
 
   @override
   String channels_deleteChannelConfirm(String name) {
     return 'Izbrišem \"$name\"? To se ne da povrniti.';
+  }
+
+  @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Kanala $name ni bilo mogoče izbrisati';
   }
 
   @override
@@ -2698,6 +2751,15 @@ class AppLocalizationsSl extends AppLocalizations {
   String get listFilter_all => 'Vse';
 
   @override
+  String get listFilter_favorites => 'Priljubljene';
+
+  @override
+  String get listFilter_addToFavorites => 'Dodaj v priljubljene';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Odstrani iz priljubljenih';
+
+  @override
   String get listFilter_users => 'Uporabniki';
 
   @override
@@ -2840,6 +2902,34 @@ class AppLocalizationsSl extends AppLocalizations {
   @override
   String get losElevationAttribution =>
       'Podatki o višini: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Radijski horizont';
+
+  @override
+  String get losLegendLosBeam => 'Linija vidnosti';
+
+  @override
+  String get losLegendTerrain => 'Teren';
+
+  @override
+  String get losFrequencyLabel => 'Frekvenca';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Prikaži podrobnosti izračuna';
+
+  @override
+  String get losFrequencyDialogTitle => 'Izračun radijskega horizonta';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Začenši od k=$baselineK pri $baselineFreq MHz, izračun prilagodi k-faktor za trenutni pas $frequencyMHz MHz, ki določa ukrivljeno zgornjo mejo radijskega horizonta.';
+  }
 
   @override
   String get contacts_pathTrace => 'Sledenje poti';

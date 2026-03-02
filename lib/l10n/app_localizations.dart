@@ -388,6 +388,18 @@ abstract class AppLocalizations {
   /// **'Please turn on Bluetooth to scan for devices'**
   String get scanner_bluetoothOffMessage;
 
+  /// No description provided for @scanner_chromeRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Chrome Browser Required'**
+  String get scanner_chromeRequired;
+
+  /// No description provided for @scanner_chromeRequiredMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'This web application requires Google Chrome or a Chromium-based browser for Bluetooth support.'**
+  String get scanner_chromeRequiredMessage;
+
   /// No description provided for @scanner_enableBluetooth.
   ///
   /// In en, this message translates to:
@@ -970,6 +982,18 @@ abstract class AppLocalizations {
   /// **'Українська'**
   String get appSettings_languageUk;
 
+  /// No description provided for @appSettings_enableMessageTracing.
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Message Tracing'**
+  String get appSettings_enableMessageTracing;
+
+  /// No description provided for @appSettings_enableMessageTracingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Show detailed routing and timing metadata for messages'**
+  String get appSettings_enableMessageTracingSubtitle;
+
   /// No description provided for @appSettings_notifications.
   ///
   /// In en, this message translates to:
@@ -1324,11 +1348,47 @@ abstract class AppLocalizations {
   /// **'Contacts will appear when devices advertise'**
   String get contacts_contactsWillAppear;
 
+  /// No description provided for @contacts_unread.
+  ///
+  /// In en, this message translates to:
+  /// **'Unread'**
+  String get contacts_unread;
+
+  /// No description provided for @contacts_searchContactsNoNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Contacts...'**
+  String get contacts_searchContactsNoNumber;
+
   /// No description provided for @contacts_searchContacts.
   ///
   /// In en, this message translates to:
-  /// **'Search contacts...'**
-  String get contacts_searchContacts;
+  /// **'Search {number}{str} Contacts...'**
+  String contacts_searchContacts(int number, String str);
+
+  /// No description provided for @contacts_searchFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Search {number}{str} Favorites...'**
+  String contacts_searchFavorites(int number, String str);
+
+  /// No description provided for @contacts_searchUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Search {number}{str} Users...'**
+  String contacts_searchUsers(int number, String str);
+
+  /// No description provided for @contacts_searchRepeaters.
+  ///
+  /// In en, this message translates to:
+  /// **'Search {number}{str} Repeaters...'**
+  String contacts_searchRepeaters(int number, String str);
+
+  /// No description provided for @contacts_searchRoomServers.
+  ///
+  /// In en, this message translates to:
+  /// **'Search {number}{str} Room servers...'**
+  String contacts_searchRoomServers(int number, String str);
 
   /// No description provided for @contacts_noUnreadContacts.
   ///
@@ -1546,6 +1606,18 @@ abstract class AppLocalizations {
   /// **'Edit channel'**
   String get channels_editChannel;
 
+  /// No description provided for @channels_muteChannel.
+  ///
+  /// In en, this message translates to:
+  /// **'Mute channel'**
+  String get channels_muteChannel;
+
+  /// No description provided for @channels_unmuteChannel.
+  ///
+  /// In en, this message translates to:
+  /// **'Unmute channel'**
+  String get channels_unmuteChannel;
+
   /// No description provided for @channels_deleteChannel.
   ///
   /// In en, this message translates to:
@@ -1557,6 +1629,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Delete \"{name}\"? This cannot be undone.'**
   String channels_deleteChannelConfirm(String name);
+
+  /// No description provided for @channels_channelDeleteFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete channel \"{name}\"'**
+  String channels_channelDeleteFailed(String name);
 
   /// No description provided for @channels_channelDeleted.
   ///
@@ -4742,6 +4820,24 @@ abstract class AppLocalizations {
   /// **'All'**
   String get listFilter_all;
 
+  /// No description provided for @listFilter_favorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get listFilter_favorites;
+
+  /// No description provided for @listFilter_addToFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to favorites'**
+  String get listFilter_addToFavorites;
+
+  /// No description provided for @listFilter_removeFromFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from favorites'**
+  String get listFilter_removeFromFavorites;
+
   /// No description provided for @listFilter_users.
   ///
   /// In en, this message translates to:
@@ -4979,6 +5075,53 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Elevation data: Open-Meteo (CC BY 4.0)'**
   String get losElevationAttribution;
+
+  /// No description provided for @losLegendRadioHorizon.
+  ///
+  /// In en, this message translates to:
+  /// **'Radio horizon'**
+  String get losLegendRadioHorizon;
+
+  /// No description provided for @losLegendLosBeam.
+  ///
+  /// In en, this message translates to:
+  /// **'LOS beam'**
+  String get losLegendLosBeam;
+
+  /// No description provided for @losLegendTerrain.
+  ///
+  /// In en, this message translates to:
+  /// **'Terrain'**
+  String get losLegendTerrain;
+
+  /// No description provided for @losFrequencyLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Frequency'**
+  String get losFrequencyLabel;
+
+  /// No description provided for @losFrequencyInfoTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'View calculation details'**
+  String get losFrequencyInfoTooltip;
+
+  /// No description provided for @losFrequencyDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Radio horizon calculation'**
+  String get losFrequencyDialogTitle;
+
+  /// Explain how the calculation uses the baseline frequency and derived k-factor.
+  ///
+  /// In en, this message translates to:
+  /// **'Starting from k={baselineK} at {baselineFreq} MHz, the calculation adjusts the k-factor for the current {frequencyMHz} MHz band, which defines the curved radio horizon cap.'**
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  );
 
   /// No description provided for @contacts_pathTrace.
   ///

@@ -151,6 +151,13 @@ class AppLocalizationsPt extends AppLocalizations {
       'Por favor, ative o Bluetooth para escanear por dispositivos.';
 
   @override
+  String get scanner_chromeRequired => 'Navegador Chrome necessário';
+
+  @override
+  String get scanner_chromeRequiredMessage =>
+      'Esta aplicação web requer o Google Chrome ou um navegador baseado no Chromium para suporte de Bluetooth.';
+
+  @override
   String get scanner_enableBluetooth => 'Ative o Bluetooth';
 
   @override
@@ -465,6 +472,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String get appSettings_languageUk => 'Ucraniano';
 
   @override
+  String get appSettings_enableMessageTracing =>
+      'Ativar rastreamento de mensagens';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Mostrar metadados detalhados de roteamento e tempo para as mensagens';
+
+  @override
   String get appSettings_notifications => 'Notificações';
 
   @override
@@ -671,7 +686,35 @@ class AppLocalizationsPt extends AppLocalizations {
       'Os contatos serão exibidos quando os dispositivos anunciarem.';
 
   @override
-  String get contacts_searchContacts => 'Pesquisar contatos...';
+  String get contacts_unread => 'Não lido';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Pesquisar Contatos...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Pesquisar contatos...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Pesquisar $number$str Favoritos...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Pesquisar $number$str Usuários...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Pesquisar $number$str Repetidores...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Pesquisar $number$str servidores de sala...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Sem contatos não lidos.';
@@ -798,11 +841,22 @@ class AppLocalizationsPt extends AppLocalizations {
   String get channels_editChannel => 'Editar canal';
 
   @override
+  String get channels_muteChannel => 'Silenciar canal';
+
+  @override
+  String get channels_unmuteChannel => 'Ativar canal';
+
+  @override
   String get channels_deleteChannel => 'Excluir canal';
 
   @override
   String channels_deleteChannelConfirm(String name) {
     return 'Excluir \"$name\"? Não pode ser desfeito.';
+  }
+
+  @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Falha ao excluir o canal \"$name\"';
   }
 
   @override
@@ -2709,6 +2763,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get listFilter_all => 'Tudo';
 
   @override
+  String get listFilter_favorites => 'Favoritos';
+
+  @override
+  String get listFilter_addToFavorites => 'Adicionar aos favoritos';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Remover da lista de favoritos';
+
+  @override
   String get listFilter_users => 'Usuários';
 
   @override
@@ -2851,6 +2914,34 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get losElevationAttribution =>
       'Dados de elevação: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Horizonte de rádio';
+
+  @override
+  String get losLegendLosBeam => 'Linha de visada';
+
+  @override
+  String get losLegendTerrain => 'Terreno';
+
+  @override
+  String get losFrequencyLabel => 'Frequência';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Ver detalhes do cálculo';
+
+  @override
+  String get losFrequencyDialogTitle => 'Cálculo do horizonte de rádio';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Começando em k=$baselineK em $baselineFreq MHz, o cálculo ajusta o fator k para a banda atual de $frequencyMHz MHz, que define o limite do horizonte de rádio curvo.';
+  }
 
   @override
   String get contacts_pathTrace => 'Traçado de Caminho';

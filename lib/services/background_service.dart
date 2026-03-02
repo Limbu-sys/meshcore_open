@@ -1,12 +1,11 @@
-import 'dart:io';
-
+import '../utils/platform_info.dart';
 import 'package:flutter_foreground_task/flutter_foreground_task.dart';
 
 class BackgroundService {
   bool _initialized = false;
 
   Future<void> initialize() async {
-    if (!Platform.isAndroid || _initialized) return;
+    if (!PlatformInfo.isAndroid || _initialized) return;
     FlutterForegroundTask.init(
       androidNotificationOptions: AndroidNotificationOptions(
         channelId: 'meshcore_background',
@@ -29,7 +28,7 @@ class BackgroundService {
   }
 
   Future<void> start() async {
-    if (!Platform.isAndroid) return;
+    if (!PlatformInfo.isAndroid) return;
     if (!_initialized) {
       await initialize();
     }
@@ -43,7 +42,7 @@ class BackgroundService {
   }
 
   Future<void> stop() async {
-    if (!Platform.isAndroid) return;
+    if (!PlatformInfo.isAndroid) return;
     final running = await FlutterForegroundTask.isRunningService;
     if (!running) return;
     await FlutterForegroundTask.stopService();

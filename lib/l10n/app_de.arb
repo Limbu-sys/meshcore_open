@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "Kanal {name} konnte nicht gelöscht werden",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "de",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Kontakte",
@@ -334,6 +342,8 @@
   "channels_publicChannel": "Öffentlicher Kanal",
   "channels_privateChannel": "Privater Kanal",
   "channels_editChannel": "Kanal bearbeiten",
+  "channels_muteChannel": "Kanal stummschalten",
+  "channels_unmuteChannel": "Kanal Stummschaltung aufheben",
   "channels_deleteChannel": "Lösche den Kanal",
   "channels_deleteChannelConfirm": "Löschen von \"{name}\"? Dies kann nicht rückgängig gemacht werden.",
   "@channels_deleteChannelConfirm": {
@@ -1339,6 +1349,9 @@
   "listFilter_az": "A-Z",
   "listFilter_filters": "Filtere",
   "listFilter_all": "Alle",
+  "listFilter_favorites": "Favoriten",
+  "listFilter_addToFavorites": "Zu Favoriten hinzufügen",
+  "listFilter_removeFromFavorites": "Aus Favoriten entfernen",
   "listFilter_users": "Benutzer",
   "listFilter_repeaters": "Repeater",
   "listFilter_roomServers": "Raumserver",
@@ -1552,6 +1565,8 @@
   "contacts_invalidAdvertFormat": "Ungültige Kontaktdaten",
   "contacts_clipboardEmpty": "Die Zwischenablage ist leer.",
   "appSettings_languageUk": "Ukrainisch",
+  "appSettings_enableMessageTracing": "Nachrichtenverfolgung aktivieren",
+  "appSettings_enableMessageTracingSubtitle": "Detaillierte Routing- und Timing-Metadaten für Nachrichten anzeigen",
   "contacts_contactImported": "Kontakt wurde importiert.",
   "contacts_contactImportFailed": "Kontakt konnte nicht importiert werden",
   "contacts_zeroHopAdvert": "Zero-Hop-Ankündigung",
@@ -1620,6 +1635,8 @@
   "pathTrace_clearTooltip": "Pfad löschen",
   "map_pathTraceCancelled": "Pfadverfolgung abgebrochen.",
   "scanner_bluetoothOffMessage": "Bitte aktivieren Sie Bluetooth, um nach Geräten zu suchen.",
+  "scanner_chromeRequired": "Chrome Browser erforderlich",
+  "scanner_chromeRequiredMessage": "Diese Webanwendung erfordert Google Chrome oder einen Chromium-basierten Browser für die Bluetooth-Unterstützung.",
   "scanner_bluetoothOff": "Bluetooth ist deaktiviert.",
   "scanner_enableBluetooth": "Bluetooth aktivieren",
   "snrIndicator_lastSeen": "Zuletzt gesehen",
@@ -1742,5 +1759,75 @@
   "losPointName": "Punktname",
   "losShowPanelTooltip": "LOS-Panel anzeigen",
   "losHidePanelTooltip": "LOS-Panel ausblenden",
-  "losElevationAttribution": "Höhendaten: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Höhendaten: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Funkhorizont",
+  "losLegendLosBeam": "Sichtlinie",
+  "losLegendTerrain": "Gelände",
+  "losFrequencyLabel": "Frequenz",
+  "losFrequencyInfoTooltip": "Details zur Berechnung anzeigen",
+  "losFrequencyDialogTitle": "Berechnung des Funkhorizonts",
+  "losFrequencyDialogDescription": "Ausgehend von k={baselineK} bei {baselineFreq} MHz passt die Berechnung den k-Faktor für das aktuelle {frequencyMHz} MHz-Band an, das die gekrümmte Funkhorizontobergrenze definiert.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Ungelesen",
+  "contacts_searchContactsNoNumber": "Kontakte suchen...",
+  "contacts_searchRepeaters": "Suche {number}{str} Repeater...",
+  "contacts_searchFavorites": "Suche {number}{str} Favoriten...",
+  "contacts_searchUsers": "Suche {number}{str} Benutzer...",
+  "contacts_searchRoomServers": "Suche {number}{str} Raumserver..."
 }

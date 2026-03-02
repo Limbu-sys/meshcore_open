@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "No se pudo eliminar el canal \"{name}\"",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "es",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Contactos",
@@ -334,6 +342,8 @@
   "channels_publicChannel": "Canal público",
   "channels_privateChannel": "Canal privado",
   "channels_editChannel": "Editar canal",
+  "channels_muteChannel": "Silenciar canal",
+  "channels_unmuteChannel": "Activar canal",
   "channels_deleteChannel": "Eliminar canal",
   "channels_deleteChannelConfirm": "Eliminar \"{name}\"? Esto no se puede deshacer.",
   "@channels_deleteChannelConfirm": {
@@ -1551,6 +1561,8 @@
   "appSettings_languageUk": "Ucraniano",
   "contacts_clipboardEmpty": "El portapapeles está vacío.",
   "appSettings_languageRu": "Ruso",
+  "appSettings_enableMessageTracing": "Habilitar seguimiento de mensajes",
+  "appSettings_enableMessageTracingSubtitle": "Mostrar metadatos detallados de enrutamiento y tiempo para los mensajes",
   "contacts_invalidAdvertFormat": "Datos de contacto no válidos",
   "contacts_floodAdvert": "Anuncio de inundación",
   "contacts_contactImported": "El contacto ha sido importado.",
@@ -1620,6 +1632,8 @@
   "map_removeLast": "Eliminar último",
   "map_pathTraceCancelled": "Rastreo de ruta cancelado.",
   "scanner_bluetoothOffMessage": "Por favor, active el Bluetooth para escanear dispositivos.",
+  "scanner_chromeRequired": "Navegador Chrome requerido",
+  "scanner_chromeRequiredMessage": "Esta aplicación web requiere Google Chrome o un navegador basado en Chromium para el soporte de Bluetooth.",
   "scanner_bluetoothOff": "Bluetooth está desactivado.",
   "scanner_enableBluetooth": "Habilitar Bluetooth",
   "snrIndicator_nearByRepeaters": "Repetidores cercanos",
@@ -1742,5 +1756,78 @@
   "losPointName": "Nombre del punto",
   "losShowPanelTooltip": "Mostrar panel LOS",
   "losHidePanelTooltip": "Ocultar panel LOS",
-  "losElevationAttribution": "Datos de elevación: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Datos de elevación: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Horizonte radioeléctrico",
+  "losLegendLosBeam": "Línea de visión",
+  "losLegendTerrain": "Terreno",
+  "losFrequencyLabel": "Frecuencia",
+  "losFrequencyInfoTooltip": "Ver detalles del cálculo",
+  "losFrequencyDialogTitle": "Cálculo del horizonte radioeléctrico",
+  "losFrequencyDialogDescription": "A partir de k={baselineK} en {baselineFreq} MHz, el cálculo ajusta el factor k para la banda actual de {frequencyMHz} MHz, que define el límite curvo del horizonte de radio.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "listFilter_favorites": "Favoritos",
+  "listFilter_removeFromFavorites": "Eliminar de las favoritas",
+  "listFilter_addToFavorites": "Añadir a favoritos",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchContactsNoNumber": "Buscar contactos...",
+  "contacts_unread": "No leído",
+  "contacts_searchFavorites": "Buscar {number}{str} Favoritos...",
+  "contacts_searchUsers": "Buscar {number}{str} Usuarios...",
+  "contacts_searchRepeaters": "Buscar {number}{str} Repetidores...",
+  "contacts_searchRoomServers": "Buscar {number}{str} servidores de sala..."
 }

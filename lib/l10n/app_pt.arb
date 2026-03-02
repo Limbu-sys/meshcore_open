@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "Falha ao excluir o canal \"{name}\"",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "pt",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Contactos",
@@ -334,6 +342,8 @@
   "channels_publicChannel": "Canal público",
   "channels_privateChannel": "Canal privado",
   "channels_editChannel": "Editar canal",
+  "channels_muteChannel": "Silenciar canal",
+  "channels_unmuteChannel": "Ativar canal",
   "channels_deleteChannel": "Excluir canal",
   "channels_deleteChannelConfirm": "Excluir \"{name}\"? Não pode ser desfeito.",
   "@channels_deleteChannelConfirm": {
@@ -1556,6 +1566,8 @@
   "contacts_copyAdvertToClipboard": "Copiar Anúncio para Área de Transferência",
   "contacts_addContactFromClipboard": "Adicionar Contato da Área de Transferência",
   "appSettings_languageRu": "Russo",
+  "appSettings_enableMessageTracing": "Ativar rastreamento de mensagens",
+  "appSettings_enableMessageTracingSubtitle": "Mostrar metadados detalhados de roteamento e tempo para as mensagens",
   "contacts_ShareContact": "Copiar contato para Área de Transferência",
   "contacts_contactImportFailed": "Contato falhou ao ser importado.",
   "contacts_zeroHopContactAdvertSent": "Enviou contato por anúncio.",
@@ -1594,6 +1606,8 @@
   "scanner_enableBluetooth": "Ative o Bluetooth",
   "scanner_bluetoothOff": "Bluetooth está desativado",
   "scanner_bluetoothOffMessage": "Por favor, ative o Bluetooth para escanear por dispositivos.",
+  "scanner_chromeRequired": "Navegador Chrome necessário",
+  "scanner_chromeRequiredMessage": "Esta aplicação web requer o Google Chrome ou um navegador baseado no Chromium para suporte de Bluetooth.",
   "snrIndicator_nearByRepeaters": "Repetidores Próximos",
   "snrIndicator_lastSeen": "Visto pela última vez",
   "chat_ShowAllPaths": "Mostrar todos os caminhos",
@@ -1714,5 +1728,78 @@
   "losPointName": "Nome do ponto",
   "losShowPanelTooltip": "Mostrar painel LOS",
   "losHidePanelTooltip": "Ocultar painel LOS",
-  "losElevationAttribution": "Dados de elevação: Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Dados de elevação: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Horizonte de rádio",
+  "losLegendLosBeam": "Linha de visada",
+  "losLegendTerrain": "Terreno",
+  "losFrequencyLabel": "Frequência",
+  "losFrequencyInfoTooltip": "Ver detalhes do cálculo",
+  "losFrequencyDialogTitle": "Cálculo do horizonte de rádio",
+  "losFrequencyDialogDescription": "Começando em k={baselineK} em {baselineFreq} MHz, o cálculo ajusta o fator k para a banda atual de {frequencyMHz} MHz, que define o limite do horizonte de rádio curvo.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "listFilter_addToFavorites": "Adicionar aos favoritos",
+  "listFilter_removeFromFavorites": "Remover da lista de favoritos",
+  "listFilter_favorites": "Favoritos",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_searchRepeaters": "Pesquisar {number}{str} Repetidores...",
+  "contacts_searchFavorites": "Pesquisar {number}{str} Favoritos...",
+  "contacts_searchUsers": "Pesquisar {number}{str} Usuários...",
+  "contacts_searchContactsNoNumber": "Pesquisar Contatos...",
+  "contacts_unread": "Não lido",
+  "contacts_searchRoomServers": "Pesquisar {number}{str} servidores de sala..."
 }

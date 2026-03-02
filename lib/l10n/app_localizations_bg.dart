@@ -151,6 +151,13 @@ class AppLocalizationsBg extends AppLocalizations {
       'Моля, активирайте Bluetooth, за да сканирате за устройства.';
 
   @override
+  String get scanner_chromeRequired => 'Изисква се браузър Chrome';
+
+  @override
+  String get scanner_chromeRequiredMessage =>
+      'Това уеб приложение изисква Google Chrome или браузър, базиран на Chromium, за поддръжка на Bluetooth.';
+
+  @override
   String get scanner_enableBluetooth => 'Активирайте Bluetooth';
 
   @override
@@ -467,6 +474,14 @@ class AppLocalizationsBg extends AppLocalizations {
   String get appSettings_languageUk => 'Украински';
 
   @override
+  String get appSettings_enableMessageTracing =>
+      'Разрешаване на проследяване на съобщения';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Показване на подробни метаданни за маршрутизация и синхронизация за съобщения';
+
+  @override
   String get appSettings_notifications => 'Уведомления';
 
   @override
@@ -673,7 +688,35 @@ class AppLocalizationsBg extends AppLocalizations {
       'Контактите ще се появят, когато устройствата рекламират.';
 
   @override
-  String get contacts_searchContacts => 'Търсене на контакти...';
+  String get contacts_unread => 'Непрочетено';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Търси контакти...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Търсене на контакти...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Търсене на $number$str любими...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Търсене на $number$str потребители...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Търсене на $number$str повтарящи се...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Търсене на $number$str сървъри в стаята...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Няма непрочетени контакти';
@@ -799,11 +842,22 @@ class AppLocalizationsBg extends AppLocalizations {
   String get channels_editChannel => 'Редактирай канал';
 
   @override
+  String get channels_muteChannel => 'Заглуши канала';
+
+  @override
+  String get channels_unmuteChannel => 'Включи известията на канала';
+
+  @override
   String get channels_deleteChannel => 'Изтрий канала';
 
   @override
   String channels_deleteChannelConfirm(String name) {
     return 'Изтрий \"$name\"? Това не може да бъде отменено.';
+  }
+
+  @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Неуспешно изтриване на канала \"$name\"';
   }
 
   @override
@@ -2710,6 +2764,15 @@ class AppLocalizationsBg extends AppLocalizations {
   String get listFilter_all => 'Всички';
 
   @override
+  String get listFilter_favorites => 'Любими';
+
+  @override
+  String get listFilter_addToFavorites => 'Добави към любими';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Премахване от списъка с любими';
+
+  @override
   String get listFilter_users => 'Потребители';
 
   @override
@@ -2852,6 +2915,34 @@ class AppLocalizationsBg extends AppLocalizations {
   @override
   String get losElevationAttribution =>
       'Данни за надморска височина: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Радиохоризонт';
+
+  @override
+  String get losLegendLosBeam => 'Линия на видимост';
+
+  @override
+  String get losLegendTerrain => 'Терен';
+
+  @override
+  String get losFrequencyLabel => 'Честота';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Преглед на детайли за изчислението';
+
+  @override
+  String get losFrequencyDialogTitle => 'Изчисляване на радиохоризонта';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Започвайки от k=$baselineK при $baselineFreq MHz, изчислението коригира k-фактора за текущата $frequencyMHz MHz лента, която определя границата на извития радиохоризонт.';
+  }
 
   @override
   String get contacts_pathTrace => 'Пътен проследяване';

@@ -1,4 +1,12 @@
 {
+  "channels_channelDeleteFailed": "Échec de la suppression de la chaîne \"{name}\"",
+  "@channels_channelDeleteFailed": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "@@locale": "fr",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Contacts",
@@ -262,7 +270,7 @@
     }
   },
   "contacts_manageRepeater": "Gérer le répéteur",
-  "contacts_roomLogin": "Connexion Salle",
+  "contacts_roomLogin": "Connexion Room Server",
   "contacts_openChat": "Ouverture du Chat",
   "contacts_editGroup": "Modifier le groupe",
   "contacts_deleteGroup": "Supprimer le groupe",
@@ -334,6 +342,8 @@
   "channels_publicChannel": "Canal public",
   "channels_privateChannel": "Canal privé",
   "channels_editChannel": "Modifier le canal",
+  "channels_muteChannel": "Désactiver les notifications du canal",
+  "channels_unmuteChannel": "Réactiver les notifications du canal",
   "channels_deleteChannel": "Supprimer le canal",
   "channels_deleteChannelConfirm": "Supprimer {name}? Cela ne peut pas être annulé.",
   "@channels_deleteChannelConfirm": {
@@ -796,7 +806,7 @@
   "dialog_disconnect": "Déconnecter",
   "dialog_disconnectConfirm": "Êtes-vous sûr de vouloir vous déconnecter de cet appareil ?",
   "login_repeaterLogin": "Connexion au répéteur",
-  "login_roomLogin": "Connexion Salle",
+  "login_roomLogin": "Connexion Room Server",
   "login_password": "Mot de passe",
   "login_enterPassword": "Entrez votre mot de passe",
   "login_savePassword": "Sauvegarder le mot de passe",
@@ -1391,7 +1401,7 @@
   "settings_locationIntervalSec": "Intervalle de mise-à-jour du GPS (Secondes)",
   "settings_locationIntervalInvalid": "L'intervalle doit être compris entre 60 et 86400 secondes.",
   "contacts_manageRoom": "Gérer le Room Server",
-  "room_management": "Administración del Servidor de Habitación",
+  "room_management": "Administrattion Room Server",
   "@community_joinConfirmation": {
     "placeholders": {
       "name": {
@@ -1551,6 +1561,8 @@
   "contacts_invalidAdvertFormat": "Données de contact non valides",
   "appSettings_languageUk": "Ukrainien",
   "appSettings_languageRu": "Russe",
+  "appSettings_enableMessageTracing": "Activer le traçage des messages",
+  "appSettings_enableMessageTracingSubtitle": "Afficher les métadonnées détaillées de routage et de synchronisation des messages",
   "contacts_clipboardEmpty": "Le presse-papiers est vide.",
   "contacts_contactImported": "Le contact a été importé.",
   "contacts_floodAdvert": "Annonce à tout le réseau",
@@ -1592,6 +1604,8 @@
   "map_removeLast": "Supprimer le dernier",
   "map_runTrace": "Exécuter la traçage de chemin",
   "scanner_bluetoothOffMessage": "Veuillez activer le Bluetooth pour rechercher des appareils.",
+  "scanner_chromeRequired": "Navigateur Chrome requis",
+  "scanner_chromeRequiredMessage": "Cette application web nécessite Google Chrome ou un navigateur basé sur Chromium pour le support Bluetooth.",
   "scanner_bluetoothOff": "Le Bluetooth est désactivé.",
   "scanner_enableBluetooth": "Activer le Bluetooth",
   "snrIndicator_lastSeen": "Dernière fois vu",
@@ -1714,5 +1728,78 @@
   "losPointName": "Nom du point",
   "losShowPanelTooltip": "Afficher le panneau LOS",
   "losHidePanelTooltip": "Masquer le panneau LOS",
-  "losElevationAttribution": "Données d'altitude : Open-Meteo (CC BY 4.0)"
+  "losElevationAttribution": "Données d’altitude : Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Horizon radio",
+  "losLegendLosBeam": "Ligne de visée",
+  "losLegendTerrain": "Terrain",
+  "losFrequencyLabel": "Fréquence",
+  "losFrequencyInfoTooltip": "Voir les détails du calcul",
+  "losFrequencyDialogTitle": "Calcul de l’horizon radio",
+  "losFrequencyDialogDescription": "À partir de k={baselineK} à {baselineFreq} MHz, le calcul ajuste le facteur k pour la bande actuelle de {frequencyMHz} MHz, ce qui définit la limite incurvée de l'horizon radio.",
+  "@losFrequencyDialogDescription": {
+    "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
+    "placeholders": {
+      "baselineK": {
+        "type": "double"
+      },
+      "baselineFreq": {
+        "type": "double"
+      },
+      "frequencyMHz": {
+        "type": "double"
+      },
+      "kFactor": {
+        "type": "double"
+      }
+    }
+  },
+  "listFilter_addToFavorites": "Ajouter à mes favoris",
+  "listFilter_removeFromFavorites": "Supprimer des favoris",
+  "listFilter_favorites": "Préférences",
+  "@contacts_searchFavorites": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchUsers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRepeaters": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "@contacts_searchRoomServers": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "str": {
+        "type": "String"
+      }
+    }
+  },
+  "contacts_unread": "Non lu",
+  "contacts_searchFavorites": "Rechercher {number}{str} Favoris...",
+  "contacts_searchUsers": "Rechercher {number}{str} utilisateurs...",
+  "contacts_searchRoomServers": "Rechercher {number}{str} serveurs de salle...",
+  "contacts_searchRepeaters": "Rechercher {number}{str} Répéteurs...",
+  "contacts_searchContactsNoNumber": "Rechercher des contacts..."
 }

@@ -150,6 +150,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'Please turn on Bluetooth to scan for devices';
 
   @override
+  String get scanner_chromeRequired => 'Chrome Browser Required';
+
+  @override
+  String get scanner_chromeRequiredMessage =>
+      'This web application requires Google Chrome or a Chromium-based browser for Bluetooth support.';
+
+  @override
   String get scanner_enableBluetooth => 'Enable Bluetooth';
 
   @override
@@ -459,6 +466,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appSettings_languageUk => 'Українська';
 
   @override
+  String get appSettings_enableMessageTracing => 'Enable Message Tracing';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Show detailed routing and timing metadata for messages';
+
+  @override
   String get appSettings_notifications => 'Notifications';
 
   @override
@@ -663,7 +677,35 @@ class AppLocalizationsEn extends AppLocalizations {
       'Contacts will appear when devices advertise';
 
   @override
-  String get contacts_searchContacts => 'Search contacts...';
+  String get contacts_unread => 'Unread';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Search Contacts...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Search $number$str Contacts...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Search $number$str Favorites...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Search $number$str Users...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Search $number$str Repeaters...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Search $number$str Room servers...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'No unread contacts';
@@ -788,11 +830,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get channels_editChannel => 'Edit channel';
 
   @override
+  String get channels_muteChannel => 'Mute channel';
+
+  @override
+  String get channels_unmuteChannel => 'Unmute channel';
+
+  @override
   String get channels_deleteChannel => 'Delete channel';
 
   @override
   String channels_deleteChannelConfirm(String name) {
     return 'Delete \"$name\"? This cannot be undone.';
+  }
+
+  @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Failed to delete channel \"$name\"';
   }
 
   @override
@@ -2669,6 +2722,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get listFilter_all => 'All';
 
   @override
+  String get listFilter_favorites => 'Favorites';
+
+  @override
+  String get listFilter_addToFavorites => 'Add to favorites';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Remove from favorites';
+
+  @override
   String get listFilter_users => 'Users';
 
   @override
@@ -2810,6 +2872,34 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get losElevationAttribution =>
       'Elevation data: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Radio horizon';
+
+  @override
+  String get losLegendLosBeam => 'LOS beam';
+
+  @override
+  String get losLegendTerrain => 'Terrain';
+
+  @override
+  String get losFrequencyLabel => 'Frequency';
+
+  @override
+  String get losFrequencyInfoTooltip => 'View calculation details';
+
+  @override
+  String get losFrequencyDialogTitle => 'Radio horizon calculation';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Starting from k=$baselineK at $baselineFreq MHz, the calculation adjusts the k-factor for the current $frequencyMHz MHz band, which defines the curved radio horizon cap.';
+  }
 
   @override
   String get contacts_pathTrace => 'Path Trace';

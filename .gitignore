@@ -30,6 +30,7 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
+pubspec.lock
 /build/
 /coverage/
 
@@ -82,3 +83,6 @@ keystore.properties
 # IDE
 .vscode/launch.json
 .vscode/settings.json
+
+# Cloudflare Wrangler
+.wrangler

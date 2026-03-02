@@ -151,6 +151,13 @@ class AppLocalizationsDe extends AppLocalizations {
       'Bitte aktivieren Sie Bluetooth, um nach Geräten zu suchen.';
 
   @override
+  String get scanner_chromeRequired => 'Chrome Browser erforderlich';
+
+  @override
+  String get scanner_chromeRequiredMessage =>
+      'Diese Webanwendung erfordert Google Chrome oder einen Chromium-basierten Browser für die Bluetooth-Unterstützung.';
+
+  @override
   String get scanner_enableBluetooth => 'Bluetooth aktivieren';
 
   @override
@@ -461,6 +468,14 @@ class AppLocalizationsDe extends AppLocalizations {
   String get appSettings_languageUk => 'Ukrainisch';
 
   @override
+  String get appSettings_enableMessageTracing =>
+      'Nachrichtenverfolgung aktivieren';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Detaillierte Routing- und Timing-Metadaten für Nachrichten anzeigen';
+
+  @override
   String get appSettings_notifications => 'Benachrichtigungen';
 
   @override
@@ -669,7 +684,35 @@ class AppLocalizationsDe extends AppLocalizations {
       'Kontakte werden angezeigt, wenn Geräte eine Ankündigung machen.';
 
   @override
-  String get contacts_searchContacts => 'Suche Kontakte...';
+  String get contacts_unread => 'Ungelesen';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Kontakte suchen...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Suche Kontakte...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Suche $number$str Favoriten...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Suche $number$str Benutzer...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Suche $number$str Repeater...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Suche $number$str Raumserver...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Keine ungesehene Kontakte';
@@ -796,11 +839,22 @@ class AppLocalizationsDe extends AppLocalizations {
   String get channels_editChannel => 'Kanal bearbeiten';
 
   @override
+  String get channels_muteChannel => 'Kanal stummschalten';
+
+  @override
+  String get channels_unmuteChannel => 'Kanal Stummschaltung aufheben';
+
+  @override
   String get channels_deleteChannel => 'Lösche den Kanal';
 
   @override
   String channels_deleteChannelConfirm(String name) {
     return 'Löschen von \"$name\"? Dies kann nicht rückgängig gemacht werden.';
+  }
+
+  @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Kanal $name konnte nicht gelöscht werden';
   }
 
   @override
@@ -2715,6 +2769,15 @@ class AppLocalizationsDe extends AppLocalizations {
   String get listFilter_all => 'Alle';
 
   @override
+  String get listFilter_favorites => 'Favoriten';
+
+  @override
+  String get listFilter_addToFavorites => 'Zu Favoriten hinzufügen';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Aus Favoriten entfernen';
+
+  @override
   String get listFilter_users => 'Benutzer';
 
   @override
@@ -2858,6 +2921,34 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get losElevationAttribution => 'Höhendaten: Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Funkhorizont';
+
+  @override
+  String get losLegendLosBeam => 'Sichtlinie';
+
+  @override
+  String get losLegendTerrain => 'Gelände';
+
+  @override
+  String get losFrequencyLabel => 'Frequenz';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Details zur Berechnung anzeigen';
+
+  @override
+  String get losFrequencyDialogTitle => 'Berechnung des Funkhorizonts';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'Ausgehend von k=$baselineK bei $baselineFreq MHz passt die Berechnung den k-Faktor für das aktuelle $frequencyMHz MHz-Band an, das die gekrümmte Funkhorizontobergrenze definiert.';
+  }
 
   @override
   String get contacts_pathTrace => 'Pfadverfolgung';

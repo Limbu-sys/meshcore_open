@@ -151,6 +151,13 @@ class AppLocalizationsFr extends AppLocalizations {
       'Veuillez activer le Bluetooth pour rechercher des appareils.';
 
   @override
+  String get scanner_chromeRequired => 'Navigateur Chrome requis';
+
+  @override
+  String get scanner_chromeRequiredMessage =>
+      'Cette application web nécessite Google Chrome ou un navigateur basé sur Chromium pour le support Bluetooth.';
+
+  @override
   String get scanner_enableBluetooth => 'Activer le Bluetooth';
 
   @override
@@ -465,6 +472,14 @@ class AppLocalizationsFr extends AppLocalizations {
   String get appSettings_languageUk => 'Ukrainien';
 
   @override
+  String get appSettings_enableMessageTracing =>
+      'Activer le traçage des messages';
+
+  @override
+  String get appSettings_enableMessageTracingSubtitle =>
+      'Afficher les métadonnées détaillées de routage et de synchronisation des messages';
+
+  @override
   String get appSettings_notifications => 'Notifications';
 
   @override
@@ -673,7 +688,35 @@ class AppLocalizationsFr extends AppLocalizations {
       'Les contacts apparaîtront lorsque les appareils font leur annonce.';
 
   @override
-  String get contacts_searchContacts => 'Rechercher des contacts...';
+  String get contacts_unread => 'Non lu';
+
+  @override
+  String get contacts_searchContactsNoNumber => 'Rechercher des contacts...';
+
+  @override
+  String contacts_searchContacts(int number, String str) {
+    return 'Rechercher des contacts...';
+  }
+
+  @override
+  String contacts_searchFavorites(int number, String str) {
+    return 'Rechercher $number$str Favoris...';
+  }
+
+  @override
+  String contacts_searchUsers(int number, String str) {
+    return 'Rechercher $number$str utilisateurs...';
+  }
+
+  @override
+  String contacts_searchRepeaters(int number, String str) {
+    return 'Rechercher $number$str Répéteurs...';
+  }
+
+  @override
+  String contacts_searchRoomServers(int number, String str) {
+    return 'Rechercher $number$str serveurs de salle...';
+  }
 
   @override
   String get contacts_noUnreadContacts => 'Aucun contact non lu';
@@ -696,7 +739,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get contacts_manageRoom => 'Gérer le Room Server';
 
   @override
-  String get contacts_roomLogin => 'Connexion Salle';
+  String get contacts_roomLogin => 'Connexion Room Server';
 
   @override
   String get contacts_openChat => 'Ouverture du Chat';
@@ -799,11 +842,22 @@ class AppLocalizationsFr extends AppLocalizations {
   String get channels_editChannel => 'Modifier le canal';
 
   @override
+  String get channels_muteChannel => 'Désactiver les notifications du canal';
+
+  @override
+  String get channels_unmuteChannel => 'Réactiver les notifications du canal';
+
+  @override
   String get channels_deleteChannel => 'Supprimer le canal';
 
   @override
   String channels_deleteChannelConfirm(String name) {
     return 'Supprimer $name? Cela ne peut pas être annulé.';
+  }
+
+  @override
+  String channels_channelDeleteFailed(String name) {
+    return 'Échec de la suppression de la chaîne \"$name\"';
   }
 
   @override
@@ -1553,7 +1607,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get login_repeaterLogin => 'Connexion au répéteur';
 
   @override
-  String get login_roomLogin => 'Connexion Salle';
+  String get login_roomLogin => 'Connexion Room Server';
 
   @override
   String get login_password => 'Mot de passe';
@@ -1678,7 +1732,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get repeater_management => 'Gestion des répéteurs';
 
   @override
-  String get room_management => 'Administración del Servidor de Habitación';
+  String get room_management => 'Administrattion Room Server';
 
   @override
   String get repeater_managementTools => 'Outils de Gestion';
@@ -2724,6 +2778,15 @@ class AppLocalizationsFr extends AppLocalizations {
   String get listFilter_all => 'Tout';
 
   @override
+  String get listFilter_favorites => 'Préférences';
+
+  @override
+  String get listFilter_addToFavorites => 'Ajouter à mes favoris';
+
+  @override
+  String get listFilter_removeFromFavorites => 'Supprimer des favoris';
+
+  @override
   String get listFilter_users => 'Utilisateurs';
 
   @override
@@ -2866,7 +2929,35 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get losElevationAttribution =>
-      'Données d\'altitude : Open-Meteo (CC BY 4.0)';
+      'Données d’altitude : Open-Meteo (CC BY 4.0)';
+
+  @override
+  String get losLegendRadioHorizon => 'Horizon radio';
+
+  @override
+  String get losLegendLosBeam => 'Ligne de visée';
+
+  @override
+  String get losLegendTerrain => 'Terrain';
+
+  @override
+  String get losFrequencyLabel => 'Fréquence';
+
+  @override
+  String get losFrequencyInfoTooltip => 'Voir les détails du calcul';
+
+  @override
+  String get losFrequencyDialogTitle => 'Calcul de l’horizon radio';
+
+  @override
+  String losFrequencyDialogDescription(
+    double baselineK,
+    double baselineFreq,
+    double frequencyMHz,
+    double kFactor,
+  ) {
+    return 'À partir de k=$baselineK à $baselineFreq MHz, le calcul ajuste le facteur k pour la bande actuelle de $frequencyMHz MHz, ce qui définit la limite incurvée de l\'horizon radio.';
+  }
 
   @override
   String get contacts_pathTrace => 'Traçage de chemin';
