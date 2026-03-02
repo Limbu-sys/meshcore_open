@@ -58,6 +58,7 @@ class RoomSyncService extends ChangeNotifier {
   MeshCoreConnectionState? _lastConnectionState;
   Duration _currentInterval = Duration.zero;
   bool _started = false;
+  bool _lastRoomSyncEnabled = false;
   bool _syncInFlight = false;
   bool _autoLoginInProgress = false;
   DateTime? _lastPushTriggeredSyncAt;
@@ -72,6 +73,13 @@ class RoomSyncService extends ChangeNotifier {
 
   bool isRoomAutoSyncEnabled(String roomPubKeyHex) {
     return _states[roomPubKeyHex]?.autoSyncEnabled ?? false;
+  }
+
+  /// Whether the room has an active login session for the current connection.
+  /// Returns true even when global room sync is disabled, so callers can use
+  /// this to skip the login dialog when the user is already authenticated.
+  bool isRoomSessionActive(String roomPubKeyHex) {
+    return _activeRoomSessions.contains(roomPubKeyHex);
   }
 
   int? roomAclPermissions(String roomPubKeyHex) {
@@ -127,12 +135,14 @@ class RoomSyncService extends ChangeNotifier {
     _lastConnectionState = connector.state;
     _frameSubscription = connector.receivedFrames.listen(_handleFrame);
     connector.addListener(_handleConnectorChange);
+    appSettingsService.addListener(_handleSettingsChange);
     _started = true;
     notifyListeners();
   }
 
   @override
   void dispose() {
+    _appSettingsService?.removeListener(_handleSettingsChange);
     _frameSubscription?.cancel();
     _nextSyncTimer?.cancel();
     _syncTimeoutTimer?.cancel();
@@ -156,17 +166,37 @@ class RoomSyncService extends ChangeNotifier {
 
   void _onConnected() {
     if (!_roomSyncEnabled) return;
+    _lastRoomSyncEnabled = true;
     _currentInterval = _defaultSyncInterval;
     _scheduleNextSync(_defaultSyncInterval);
     unawaited(_autoLoginSavedRooms());
   }
 
   void _onDisconnected() {
+    _lastRoomSyncEnabled = false;
     _syncInFlight = false;
     _nextSyncTimer?.cancel();
     _syncTimeoutTimer?.cancel();
     _pendingLoginByPrefix.clear();
     _activeRoomSessions.clear();
+    notifyListeners();
+  }
+
+  void _handleSettingsChange() {
+    final nowEnabled = _roomSyncEnabled;
+    final connector = _connector;
+    final isConnected = connector != null && connector.isConnected;
+
+    if (nowEnabled && !_lastRoomSyncEnabled && isConnected) {
+      _lastRoomSyncEnabled = true;
+      _currentInterval = _defaultSyncInterval;
+      _scheduleNextSync(_defaultSyncInterval);
+      unawaited(_autoLoginSavedRooms());
+    } else if (!nowEnabled && _lastRoomSyncEnabled) {
+      _lastRoomSyncEnabled = false;
+      _nextSyncTimer?.cancel();
+      _syncTimeoutTimer?.cancel();
+    }
     notifyListeners();
   }
 
@@ -301,14 +331,19 @@ class RoomSyncService extends ChangeNotifier {
     }
 
     if (!_syncInFlight) return;
-    final syncProgressCode =
-        code == respCodeNoMoreMessages ||
-        code == respCodeContactMsgRecv ||
+    if (code == respCodeNoMoreMessages) {
+      _markSyncSuccess();
+      return;
+    }
+    if (code == respCodeContactMsgRecv ||
         code == respCodeContactMsgRecvV3 ||
         code == respCodeChannelMsgRecv ||
-        code == respCodeChannelMsgRecvV3;
-    if (!syncProgressCode) return;
-    _markSyncSuccess();
+        code == respCodeChannelMsgRecvV3) {
+      // Messages are still flowing — extend the timeout to avoid a false failure
+      // while a large queue is being drained.
+      _syncTimeoutTimer?.cancel();
+      _syncTimeoutTimer = Timer(_syncTimeout, _markSyncFailure);
+    }
   }
 
   void _handleQueuedMessagesHint() {

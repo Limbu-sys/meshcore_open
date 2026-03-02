@@ -661,6 +661,7 @@ class _ContactsScreenState extends State<ContactsScreen>
     if (contact.type == advTypeRepeater) {
       _showRepeaterLogin(context, contact);
     } else if (contact.type == advTypeRoom) {
+      context.read<MeshCoreConnector>().markContactRead(contact.publicKeyHex);
       _showRoomLogin(context, contact, RoomLoginDestination.chat);
     } else {
       context.read<MeshCoreConnector>().markContactRead(contact.publicKeyHex);
@@ -713,12 +714,24 @@ class _ContactsScreenState extends State<ContactsScreen>
     Contact room,
     RoomLoginDestination destination,
   ) {
+    // For chat, skip the login dialog if the room already has an active session.
+    // Management always needs the dialog to obtain the password for admin commands.
+    if (destination == RoomLoginDestination.chat) {
+      final roomSync = context.read<RoomSyncService>();
+      if (roomSync.isRoomSessionActive(room.publicKeyHex)) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ChatScreen(contact: room)),
+        );
+        return;
+      }
+    }
+
     showDialog(
       context: context,
       builder: (context) => RoomLoginDialog(
         room: room,
         onLogin: (password) {
-          context.read<MeshCoreConnector>().markContactRead(room.publicKeyHex);
           Navigator.push(
             context,
             MaterialPageRoute(
