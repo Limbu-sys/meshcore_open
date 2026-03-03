@@ -1015,13 +1015,13 @@ abstract class AppLocalizations {
   /// No description provided for @appSettings_languageFr.
   ///
   /// In en, this message translates to:
-  /// **'FranÃ§ais'**
+  /// **'Français'**
   String get appSettings_languageFr;
 
   /// No description provided for @appSettings_languageEs.
   ///
   /// In en, this message translates to:
-  /// **'EspaÃ±ol'**
+  /// **'Español'**
   String get appSettings_languageEs;
 
   /// No description provided for @appSettings_languageDe.
@@ -1039,13 +1039,13 @@ abstract class AppLocalizations {
   /// No description provided for @appSettings_languageSl.
   ///
   /// In en, this message translates to:
-  /// **'SlovenÅ¡Äina'**
+  /// **'Slovenščina'**
   String get appSettings_languageSl;
 
   /// No description provided for @appSettings_languagePt.
   ///
   /// In en, this message translates to:
-  /// **'PortuguÃªs'**
+  /// **'Português'**
   String get appSettings_languagePt;
 
   /// No description provided for @appSettings_languageIt.
@@ -1057,7 +1057,7 @@ abstract class AppLocalizations {
   /// No description provided for @appSettings_languageZh.
   ///
   /// In en, this message translates to:
-  /// **'ä¸­æ–‡'**
+  /// **'中文'**
   String get appSettings_languageZh;
 
   /// No description provided for @appSettings_languageSv.
@@ -1075,25 +1075,25 @@ abstract class AppLocalizations {
   /// No description provided for @appSettings_languageSk.
   ///
   /// In en, this message translates to:
-  /// **'SlovenÄina'**
+  /// **'Slovenčina'**
   String get appSettings_languageSk;
 
   /// No description provided for @appSettings_languageBg.
   ///
   /// In en, this message translates to:
-  /// **'Ð‘ÑŠÐ»Ð³Ð°Ñ€ÑÐºÐ¸'**
+  /// **'Български'**
   String get appSettings_languageBg;
 
   /// No description provided for @appSettings_languageRu.
   ///
   /// In en, this message translates to:
-  /// **'Ð ÑƒÑÑÐºÐ¸Ð¹'**
+  /// **'Русский'**
   String get appSettings_languageRu;
 
   /// No description provided for @appSettings_languageUk.
   ///
   /// In en, this message translates to:
-  /// **'Ð£ÐºÑ€Ð°Ñ—Ð½ÑÑŒÐºÐ°'**
+  /// **'Українська'**
   String get appSettings_languageUk;
 
   /// No description provided for @appSettings_enableMessageTracing.
@@ -4409,7 +4409,7 @@ abstract class AppLocalizations {
   /// No description provided for @telemetry_temperatureValue.
   ///
   /// In en, this message translates to:
-  /// **'{celsius}Ãƒâ€šÃ‚Â°C / {fahrenheit}Ãƒâ€šÃ‚Â°F'**
+  /// **'{celsius}°C / {fahrenheit}°F'**
   String telemetry_temperatureValue(String celsius, String fahrenheit);
 
   /// No description provided for @neighbors_receivedData.
@@ -4523,7 +4523,7 @@ abstract class AppLocalizations {
   /// No description provided for @channelPath_observedPathTitle.
   ///
   /// In en, this message translates to:
-  /// **'Observed path {index} ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {hops}'**
+  /// **'Observed path {index} • {hops}'**
   String channelPath_observedPathTitle(int index, String hops);
 
   /// No description provided for @channelPath_noLocationData.
@@ -4607,7 +4607,7 @@ abstract class AppLocalizations {
   /// No description provided for @channelPath_selectedPathLabel.
   ///
   /// In en, this message translates to:
-  /// **'{label} ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {prefixes}'**
+  /// **'{label} • {prefixes}'**
   String channelPath_selectedPathLabel(String label, String prefixes);
 
   /// No description provided for @channelPath_noHopDetailsAvailable.

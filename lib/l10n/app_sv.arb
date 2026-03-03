@@ -1802,7 +1802,7 @@
   "contacts_searchFavorites": "Sök {number}{str} Favoriter...",
   "contacts_searchUsers": "Sök {number}{str} användare...",
   "contacts_searchRoomServers": "Sök {number}{str} Room-servrar...",
-  "usbScreenNote": "USB-seriell kommunikation är aktiv på stöderdade Android-enheter och skrivbordsplattformar.",
+  "usbScreenNote": "USB-seriell kommunikation är aktiv på stödda Android-enheter och skrivbordsplattformar.",
   "usbScreenStatus": "Välj en USB-enhet",
   "usbScreenSubtitle": "Välj en detekterad seriell enhet och anslut direkt till din MeshCore-nod.",
   "usbScreenTitle": "Anslut via USB",

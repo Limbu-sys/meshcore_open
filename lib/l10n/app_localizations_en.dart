@@ -489,10 +489,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appSettings_languageEn => 'English';
 
   @override
-  String get appSettings_languageFr => 'FranÃ§ais';
+  String get appSettings_languageFr => 'Français';
 
   @override
-  String get appSettings_languageEs => 'EspaÃ±ol';
+  String get appSettings_languageEs => 'Español';
 
   @override
   String get appSettings_languageDe => 'Deutsch';
@@ -501,16 +501,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appSettings_languagePl => 'Polski';
 
   @override
-  String get appSettings_languageSl => 'SlovenÅ¡Äina';
+  String get appSettings_languageSl => 'Slovenščina';
 
   @override
-  String get appSettings_languagePt => 'PortuguÃªs';
+  String get appSettings_languagePt => 'Português';
 
   @override
   String get appSettings_languageIt => 'Italiano';
 
   @override
-  String get appSettings_languageZh => 'ä¸­æ–‡';
+  String get appSettings_languageZh => '中文';
 
   @override
   String get appSettings_languageSv => 'Svenska';
@@ -519,16 +519,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appSettings_languageNl => 'Nederlands';
 
   @override
-  String get appSettings_languageSk => 'SlovenÄina';
+  String get appSettings_languageSk => 'Slovenčina';
 
   @override
-  String get appSettings_languageBg => 'Ð‘ÑŠÐ»Ð³Ð°Ñ€ÑÐºÐ¸';
+  String get appSettings_languageBg => 'Български';
 
   @override
-  String get appSettings_languageRu => 'Ð ÑƒÑÑÐºÐ¸Ð¹';
+  String get appSettings_languageRu => 'Русский';
 
   @override
-  String get appSettings_languageUk => 'Ð£ÐºÑ€Ð°Ñ—Ð½ÑÑŒÐºÐ°';
+  String get appSettings_languageUk => 'Українська';
 
   @override
   String get appSettings_enableMessageTracing => 'Enable Message Tracing';
@@ -2465,7 +2465,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String telemetry_temperatureValue(String celsius, String fahrenheit) {
-    return '$celsiusÃƒâ€šÃ‚Â°C / $fahrenheitÃƒâ€šÃ‚Â°F';
+    return '$celsius°C / $fahrenheit°F';
   }
 
   @override
@@ -2533,7 +2533,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String channelPath_observedPathTitle(int index, String hops) {
-    return 'Observed path $index ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ $hops';
+    return 'Observed path $index • $hops';
   }
 
   @override
@@ -2588,7 +2588,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String channelPath_selectedPathLabel(String label, String prefixes) {
-    return '$label ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ $prefixes';
+    return '$label • $prefixes';
   }
 
   @override

@@ -140,7 +140,7 @@ class AppLocalizationsBg extends AppLocalizations {
       'Избраното USB устройство вече не е налично.';
 
   @override
-  String get usbErrorInvalidPort => 'Изберете валитно USB устройство.';
+  String get usbErrorInvalidPort => 'Изберете валидно USB устройство.';
 
   @override
   String get usbErrorBusy =>

@@ -190,20 +190,20 @@
   "appSettings_language": "Language",
   "appSettings_languageSystem": "System default",
   "appSettings_languageEn": "English",
-  "appSettings_languageFr": "FranÃ§ais",
-  "appSettings_languageEs": "EspaÃ±ol",
+  "appSettings_languageFr": "Français",
+  "appSettings_languageEs": "Español",
   "appSettings_languageDe": "Deutsch",
   "appSettings_languagePl": "Polski",
-  "appSettings_languageSl": "SlovenÅ¡Äina",
-  "appSettings_languagePt": "PortuguÃªs",
+  "appSettings_languageSl": "Slovenščina",
+  "appSettings_languagePt": "Português",
   "appSettings_languageIt": "Italiano",
-  "appSettings_languageZh": "ä¸­æ–‡",
+  "appSettings_languageZh": "中文",
   "appSettings_languageSv": "Svenska",
   "appSettings_languageNl": "Nederlands",
-  "appSettings_languageSk": "SlovenÄina",
-  "appSettings_languageBg": "Ð‘ÑŠÐ»Ð³Ð°Ñ€ÑÐºÐ¸",
-  "appSettings_languageRu": "Ð ÑƒÑÑÐºÐ¸Ð¹",
-  "appSettings_languageUk": "Ð£ÐºÑ€Ð°Ñ—Ð½ÑÑŒÐºÐ°",
+  "appSettings_languageSk": "Slovenčina",
+  "appSettings_languageBg": "Български",
+  "appSettings_languageRu": "Русский",
+  "appSettings_languageUk": "Українська",
   "appSettings_enableMessageTracing": "Enable Message Tracing",
   "appSettings_enableMessageTracingSubtitle": "Show detailed routing and timing metadata for messages",
   "appSettings_notifications": "Notifications",
@@ -1351,7 +1351,7 @@
       }
     }
   },
-  "telemetry_temperatureValue": "{celsius}Ãƒâ€šÃ‚Â°C / {fahrenheit}Ãƒâ€šÃ‚Â°F",
+  "telemetry_temperatureValue": "{celsius}°C / {fahrenheit}°F",
   "@telemetry_temperatureValue": {
     "placeholders": {
       "celsius": {
@@ -1401,7 +1401,7 @@
   "channelPath_repeatsLabel": "Repeats",
   "channelPath_pathLabel": "Path {index}",
   "channelPath_observedLabel": "Observed",
-  "channelPath_observedPathTitle": "Observed path {index} ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {hops}",
+  "channelPath_observedPathTitle": "Observed path {index} • {hops}",
   "@channelPath_observedPathTitle": {
     "placeholders": {
       "index": {
@@ -1476,7 +1476,7 @@
   },
   "channelPath_pathLabelTitle": "Path",
   "channelPath_observedPathHeader": "Observed Path",
-  "channelPath_selectedPathLabel": "{label} ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¢ {prefixes}",
+  "channelPath_selectedPathLabel": "{label} • {prefixes}",
   "@channelPath_selectedPathLabel": {
     "placeholders": {
       "label": {

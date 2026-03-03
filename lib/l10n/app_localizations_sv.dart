@@ -126,7 +126,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get usbScreenNote =>
-      'USB-seriell kommunikation är aktiv på stöderdade Android-enheter och skrivbordsplattformar.';
+      'USB-seriell kommunikation är aktiv på stödda Android-enheter och skrivbordsplattformar.';
 
   @override
   String get usbScreenEmptyState =>

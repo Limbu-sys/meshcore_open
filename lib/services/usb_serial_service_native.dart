@@ -135,7 +135,6 @@ class UsbSerialService {
       } on PlatformException catch (error) {
         _status = UsbSerialStatus.disconnected;
         final msg = error.message ?? error.code;
-        debugPrint('[USB Serial] Android connect failed: $msg');
         _debugLogService?.error(
           'Android connect failed: $msg',
           tag: 'USB Serial',
@@ -180,7 +179,6 @@ class UsbSerialService {
           if (openStatus != FlOpenStatus.open) {
             final msg =
                 'Failed to open USB port $candidate (status: $openStatus)';
-            debugPrint('[USB Serial] $msg');
             _debugLogService?.error(msg, tag: 'USB Serial');
             // Not a FlSerialException — treat as terminal failure
             _status = UsbSerialStatus.disconnected;
@@ -204,9 +202,6 @@ class UsbSerialService {
         } on FlSerialException catch (error) {
           // The native fl_open() already called fl_close() on failure
           // internally, so no extra cleanup is needed here for this candidate.
-          debugPrint(
-            '[USB Serial] Failed to open $candidate: ${error.msg} (code ${error.error})',
-          );
           _debugLogService?.warn(
             'Failed to open $candidate: ${error.msg} (code ${error.error})',
             tag: 'USB Serial',
@@ -215,11 +210,8 @@ class UsbSerialService {
           // Try next candidate
         } catch (error, stackTrace) {
           _status = UsbSerialStatus.disconnected;
-          debugPrint(
-            '[USB Serial] Unexpected error opening $candidate: $error\n$stackTrace',
-          );
           _debugLogService?.error(
-            'Unexpected error opening $candidate: $error',
+            'Unexpected error opening $candidate: $error\n$stackTrace',
             tag: 'USB Serial',
           );
           rethrow;
@@ -232,7 +224,6 @@ class UsbSerialService {
         final msg = lastError != null
             ? 'Failed to open USB port $primary: ${lastError.msg} (code ${lastError.error})'
             : 'Failed to open USB port $primary';
-        debugPrint('[USB Serial] $msg');
         _debugLogService?.error(msg, tag: 'USB Serial');
         throw StateError(msg);
       }

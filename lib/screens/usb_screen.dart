@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../connector/meshcore_connector.dart';
 import '../connector/meshcore_connector_usb.dart';
 import '../l10n/l10n.dart';
+import '../utils/app_logger.dart';
 import '../utils/platform_info.dart';
 import '../utils/usb_port_labels.dart';
 import 'contacts_screen.dart';
@@ -109,7 +110,7 @@ class _UsbScreenState extends State<UsbScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            debugPrint('UsbScreen: back button pressed');
+            appLogger.info('Back button pressed', tag: 'UsbScreen');
             Navigator.of(context).maybePop();
           },
         ),
@@ -124,8 +125,9 @@ class _UsbScreenState extends State<UsbScreen> {
               PlatformInfo.isIOS)
             TextButton.icon(
               onPressed: () {
-                debugPrint(
-                  'UsbScreen: Bluetooth selected, opening ScannerScreen',
+                appLogger.info(
+                  'Bluetooth selected, opening ScannerScreen',
+                  tag: 'UsbScreen',
                 );
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (_) => const ScannerScreen()),
@@ -218,8 +220,9 @@ class _UsbScreenState extends State<UsbScreen> {
                             onPressed: _isLoadingPorts || _isConnecting
                                 ? null
                                 : () {
-                                    debugPrint(
-                                      'UsbScreen: refresh ports pressed',
+                                    appLogger.info(
+                                      'Refresh ports pressed',
+                                      tag: 'UsbScreen',
                                     );
                                     _loadPorts();
                                   },
@@ -234,8 +237,9 @@ class _UsbScreenState extends State<UsbScreen> {
                                   final rawPortName = normalizeUsbPortName(
                                     _selectedPort!,
                                   );
-                                  debugPrint(
-                                    'UsbScreen: connect pressed for $_selectedPort (raw: $rawPortName)',
+                                  appLogger.info(
+                                    'Connect pressed for $_selectedPort (raw: $rawPortName)',
+                                    tag: 'UsbScreen',
                                   );
                                   _connectSelectedPort();
                                 }
@@ -262,8 +266,9 @@ class _UsbScreenState extends State<UsbScreen> {
                               onPressed: _isLoadingPorts || _isConnecting
                                   ? null
                                   : () {
-                                      debugPrint(
-                                        'UsbScreen: refresh ports pressed',
+                                      appLogger.info(
+                                        'Refresh ports pressed',
+                                        tag: 'UsbScreen',
                                       );
                                       _loadPorts();
                                     },
@@ -280,8 +285,9 @@ class _UsbScreenState extends State<UsbScreen> {
                                     final rawPortName = normalizeUsbPortName(
                                       _selectedPort!,
                                     );
-                                    debugPrint(
-                                      'UsbScreen: connect pressed for $_selectedPort (raw: $rawPortName)',
+                                    appLogger.info(
+                                      'Connect pressed for $_selectedPort (raw: $rawPortName)',
+                                      tag: 'UsbScreen',
                                     );
                                     _connectSelectedPort();
                                   }
@@ -413,7 +419,7 @@ class _UsbScreenState extends State<UsbScreen> {
                       _selectedPort = port;
                       _errorText = null;
                     });
-                    debugPrint('UsbScreen: selected port $port');
+                    appLogger.info('Selected port $port', tag: 'UsbScreen');
                   },
             leading: Icon(
               Icons.usb,
@@ -511,8 +517,9 @@ class _UsbScreenState extends State<UsbScreen> {
     try {
       await _usbConnector.connect(portName: rawPortName);
     } catch (error, stackTrace) {
-      debugPrint(
-        'UsbScreen: connect failed for $rawPortName: $error\n$stackTrace',
+      appLogger.error(
+        'Connect failed for $rawPortName: $error\n$stackTrace',
+        tag: 'UsbScreen',
       );
       if (!mounted) return;
       setState(() {

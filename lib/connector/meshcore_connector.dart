@@ -748,7 +748,10 @@ class MeshCoreConnector extends ChangeNotifier {
       try {
         await FlutterBluePlus.stopScan();
       } catch (e) {
-        debugPrint('[FBP] stopScan error in startScan (ignored): $e');
+        _appDebugLogService?.warn(
+          'stopScan error in startScan (ignored): $e',
+          tag: 'BLE Scan',
+        );
       }
     }
     await _scanSubscription?.cancel();
@@ -808,7 +811,10 @@ class MeshCoreConnector extends ChangeNotifier {
       try {
         await FlutterBluePlus.stopScan();
       } catch (e) {
-        debugPrint('[FBP] stopScan error (ignored): $e');
+        _appDebugLogService?.warn(
+          'stopScan error (ignored): $e',
+          tag: 'BLE Scan',
+        );
       }
     }
     await _scanSubscription?.cancel();

@@ -1809,7 +1809,7 @@
   "usbScreenEmptyState": "Няма открити USB устройства. Включете едно и опитайте отново.",
   "usbErrorPermissionDenied": "Не беше разрешено достъпът през USB.",
   "usbErrorDeviceMissing": "Избраното USB устройство вече не е налично.",
-  "usbErrorInvalidPort": "Изберете валитно USB устройство.",
+  "usbErrorInvalidPort": "Изберете валидно USB устройство.",
   "usbErrorBusy": "Друг мол за свързване през USB вече е в процес на изпълнение.",
   "usbErrorNotConnected": "Няма свързано USB устройство.",
   "usbErrorOpenFailed": "Не успях да отворя избраното USB устройство.",

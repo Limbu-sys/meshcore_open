@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
 import '../l10n/l10n.dart';
+import '../utils/app_logger.dart';
 import '../widgets/adaptive_app_bar_title.dart';
 import '../widgets/device_tile.dart';
 import 'contacts_screen.dart';
@@ -60,7 +61,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
         }
       },
       onError: (Object e) {
-        debugPrint("Scanner adapterState stream error: $e");
+        appLogger.warn('Adapter state stream error: $e', tag: 'ScannerScreen');
       },
     );
   }
@@ -86,7 +87,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
             ? IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
-                  debugPrint('ScannerScreen: back button pressed');
+                  appLogger.info('Back button pressed', tag: 'ScannerScreen');
                   Navigator.of(context).maybePop();
                 },
               )
@@ -131,8 +132,9 @@ class _ScannerScreenState extends State<ScannerScreen> {
                 if (usbSupported)
                   FloatingActionButton.extended(
                     onPressed: () {
-                      debugPrint(
-                        'ScannerScreen: USB selected, opening UsbScreen',
+                      appLogger.info(
+                        'USB selected, opening UsbScreen',
+                        tag: 'ScannerScreen',
                       );
                       Navigator.of(context).push(
                         MaterialPageRoute(builder: (_) => const UsbScreen()),
@@ -153,8 +155,9 @@ class _ScannerScreenState extends State<ScannerScreen> {
                           } else {
                             unawaited(
                               connector.startScan().catchError((e) {
-                                debugPrint(
-                                  "Scanner screen startScan error: $e",
+                                appLogger.warn(
+                                  'startScan error: $e',
+                                  tag: 'ScannerScreen',
                                 );
                               }),
                             );
