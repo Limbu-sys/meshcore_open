@@ -1,5 +1,5 @@
-{
-  "channels_channelDeleteFailed": "Kanál \"{name}\" sa nepodarilo odstrániť",
+﻿{
+  "channels_channelDeleteFailed": "KanÃ¡l \"{name}\" sa nepodarilo odstrÃ¡niÅ¥",
   "@channels_channelDeleteFailed": {
     "placeholders": {
       "name": {
@@ -10,32 +10,32 @@
   "@@locale": "sk",
   "appTitle": "MeshCore Open",
   "nav_contacts": "Kontakty",
-  "nav_channels": "Kanály",
+  "nav_channels": "KanÃ¡ly",
   "nav_map": "Mapa",
-  "common_cancel": "Zrušiť",
-  "common_connect": "Pripojiť",
-  "common_unknownDevice": "Neznáme zariadenie",
-  "common_save": "Uložiť",
-  "common_delete": "Odstrániť",
-  "common_close": "Zavrieť",
-  "common_edit": "Upraviť",
-  "common_add": "Pridať",
+  "common_cancel": "ZruÅ¡iÅ¥",
+  "common_connect": "PripojiÅ¥",
+  "common_unknownDevice": "NeznÃ¡me zariadenie",
+  "common_save": "UloÅ¾iÅ¥",
+  "common_delete": "OdstrÃ¡niÅ¥",
+  "common_close": "ZavrieÅ¥",
+  "common_edit": "UpraviÅ¥",
+  "common_add": "PridaÅ¥",
   "common_settings": "Nastavenia",
-  "common_disconnect": "Odpojiť",
-  "common_connected": "Pripojené",
-  "common_disconnected": "Odpojené",
-  "common_create": "Vytvoriť",
-  "common_continue": "Pokračovať",
-  "common_share": "Zdieľať",
-  "common_copy": "Kopírovať",
-  "common_retry": "Pokusť znova",
-  "common_hide": "Skryť",
-  "common_remove": "Odstrániť",
+  "common_disconnect": "OdpojiÅ¥",
+  "common_connected": "PripojenÃ©",
+  "common_disconnected": "OdpojenÃ©",
+  "common_create": "VytvoriÅ¥",
+  "common_continue": "PokraÄovaÅ¥",
+  "common_share": "ZdieÄ¾aÅ¥",
+  "common_copy": "KopÃ­rovaÅ¥",
+  "common_retry": "PokusÅ¥ znova",
+  "common_hide": "SkryÅ¥",
+  "common_remove": "OdstrÃ¡niÅ¥",
   "common_enable": "Povolit",
-  "common_disable": "Zakázať",
-  "common_reboot": "Restartovať",
-  "common_loading": "Načítavanie...",
-  "common_notAvailable": "—",
+  "common_disable": "ZakÃ¡zaÅ¥",
+  "common_reboot": "RestartovaÅ¥",
+  "common_loading": "NaÄÃ­tavanie...",
+  "common_notAvailable": "â€”",
   "common_voltageValue": "{volts} V",
   "@common_voltageValue": {
     "placeholders": {
@@ -53,11 +53,11 @@
     }
   },
   "scanner_title": "MeshCore Open",
-  "scanner_scanning": "Skrívania zariadení...",
+  "scanner_scanning": "SkrÃ­vania zariadenÃ­...",
   "scanner_connecting": "Pripojujem sa...",
   "scanner_disconnecting": "Odpojuje sa...",
-  "scanner_notConnected": "Nezriadené",
-  "scanner_connectedTo": "Pripojené k {deviceName}",
+  "scanner_notConnected": "NezriadenÃ©",
+  "scanner_connectedTo": "PripojenÃ© k {deviceName}",
   "@scanner_connectedTo": {
     "placeholders": {
       "deviceName": {
@@ -65,8 +65,8 @@
       }
     }
   },
-  "scanner_searchingDevices": "Hľadám zariadenia MeshCore...",
-  "scanner_tapToScan": "Stlač skenovanie na nájdenie zariadení MeshCore.",
+  "scanner_searchingDevices": "HÄ¾adÃ¡m zariadenia MeshCore...",
+  "scanner_tapToScan": "StlaÄ skenovanie na nÃ¡jdenie zariadenÃ­ MeshCore.",
   "scanner_connectionFailed": "Pripojenie zlyhalo: {error}",
   "@scanner_connectionFailed": {
     "placeholders": {
@@ -76,51 +76,51 @@
     }
   },
   "scanner_stop": "Zastavte",
-  "scanner_scan": "Skončiť",
-  "device_quickSwitch": "Rýchle prepínač",
+  "scanner_scan": "SkonÄiÅ¥",
+  "device_quickSwitch": "RÃ½chle prepÃ­naÄ",
   "device_meshcore": "MeshCore",
   "settings_title": "Nastavenia",
-  "settings_deviceInfo": "Informácie o zariadení",
-  "settings_appSettings": "Nastavenia aplikácie",
-  "settings_appSettingsSubtitle": "Upozornenia, správy a nastavenia mapy",
+  "settings_deviceInfo": "InformÃ¡cie o zariadenÃ­",
+  "settings_appSettings": "Nastavenia aplikÃ¡cie",
+  "settings_appSettingsSubtitle": "Upozornenia, sprÃ¡vy a nastavenia mapy",
   "settings_nodeSettings": "Nastavenia uzla",
-  "settings_nodeName": "Názov uzla",
-  "settings_nodeNameNotSet": "Nezriadené",
-  "settings_nodeNameHint": "Zadajte názov uzla",
-  "settings_nodeNameUpdated": "Meno aktualizované",
-  "settings_radioSettings": "Nastavenia rádia",
-  "settings_radioSettingsSubtitle": "Frekvencia, výkon, rozptylovací faktor",
-  "settings_radioSettingsUpdated": "Nastavenia rádia aktualizované",
+  "settings_nodeName": "NÃ¡zov uzla",
+  "settings_nodeNameNotSet": "NezriadenÃ©",
+  "settings_nodeNameHint": "Zadajte nÃ¡zov uzla",
+  "settings_nodeNameUpdated": "Meno aktualizovanÃ©",
+  "settings_radioSettings": "Nastavenia rÃ¡dia",
+  "settings_radioSettingsSubtitle": "Frekvencia, vÃ½kon, rozptylovacÃ­ faktor",
+  "settings_radioSettingsUpdated": "Nastavenia rÃ¡dia aktualizovanÃ©",
   "settings_location": "Lokalita",
-  "settings_locationSubtitle": "GPS súradnice",
-  "settings_locationUpdated": "Lokalita aktualizovaná",
-  "settings_locationBothRequired": "Zadajte obidve zložky zemyslenia a zložky meracieho kruhu.",
-  "settings_locationInvalid": "Neplatná šírka alebo dĺžka.",
-  "settings_latitude": "Súradnica",
-  "settings_longitude": "Dĺžka",
-  "settings_privacyMode": "Režim ochrany súkromia",
-  "settings_privacyModeSubtitle": "Skryť meno/poloha v reklamách",
-  "settings_privacyModeToggle": "Prepínač súkromného režimu skryje vaše meno a polohu v reklamách.",
-  "settings_privacyModeEnabled": "Ochranný režim je povolený.",
-  "settings_privacyModeDisabled": "Ochranný režim je vypnutý",
-  "settings_actions": "Možné akcie",
-  "settings_sendAdvertisement": "Odoslať reklamu",
-  "settings_sendAdvertisementSubtitle": "Momentálne priezornejšie.",
-  "settings_advertisementSent": "Reklama odeslaná",
-  "settings_syncTime": "Čas synchronizácie",
-  "settings_syncTimeSubtitle": "Nastaviť hodiny zariadenia na čas telefónu",
-  "settings_timeSynchronized": "Čas synchronizovaný",
-  "settings_refreshContacts": "Načítať Kontakty",
-  "settings_refreshContactsSubtitle": "Načítať zoznam kontaktov z zariadenia",
-  "settings_rebootDevice": "Restartovať zariadenie",
+  "settings_locationSubtitle": "GPS sÃºradnice",
+  "settings_locationUpdated": "Lokalita aktualizovanÃ¡",
+  "settings_locationBothRequired": "Zadajte obidve zloÅ¾ky zemyslenia a zloÅ¾ky meracieho kruhu.",
+  "settings_locationInvalid": "NeplatnÃ¡ Å¡Ã­rka alebo dÄºÅ¾ka.",
+  "settings_latitude": "SÃºradnica",
+  "settings_longitude": "DÄºÅ¾ka",
+  "settings_privacyMode": "ReÅ¾im ochrany sÃºkromia",
+  "settings_privacyModeSubtitle": "SkryÅ¥ meno/poloha v reklamÃ¡ch",
+  "settings_privacyModeToggle": "PrepÃ­naÄ sÃºkromnÃ©ho reÅ¾imu skryje vaÅ¡e meno a polohu v reklamÃ¡ch.",
+  "settings_privacyModeEnabled": "OchrannÃ½ reÅ¾im je povolenÃ½.",
+  "settings_privacyModeDisabled": "OchrannÃ½ reÅ¾im je vypnutÃ½",
+  "settings_actions": "MoÅ¾nÃ© akcie",
+  "settings_sendAdvertisement": "OdoslaÅ¥ reklamu",
+  "settings_sendAdvertisementSubtitle": "MomentÃ¡lne priezornejÅ¡ie.",
+  "settings_advertisementSent": "Reklama odeslanÃ¡",
+  "settings_syncTime": "ÄŒas synchronizÃ¡cie",
+  "settings_syncTimeSubtitle": "NastaviÅ¥ hodiny zariadenia na Äas telefÃ³nu",
+  "settings_timeSynchronized": "ÄŒas synchronizovanÃ½",
+  "settings_refreshContacts": "NaÄÃ­taÅ¥ Kontakty",
+  "settings_refreshContactsSubtitle": "NaÄÃ­taÅ¥ zoznam kontaktov z zariadenia",
+  "settings_rebootDevice": "RestartovaÅ¥ zariadenie",
   "settings_rebootDeviceSubtitle": "Restartujte zariadenie MeshCore.",
-  "settings_rebootDeviceConfirm": "Ste si istý, že chcete zariadenie reštartovať? Budete odpojení.",
+  "settings_rebootDeviceConfirm": "Ste si istÃ½, Å¾e chcete zariadenie reÅ¡tartovaÅ¥? Budete odpojenÃ­.",
   "settings_debug": "Ladenie",
   "settings_bleDebugLog": "Log BLE Debug",
-  "settings_bleDebugLogSubtitle": "Príkazy BLE, odpovede a surové dáta",
-  "settings_appDebugLog": "Záznam ladenia aplikácie",
-  "settings_appDebugLogSubtitle": "Správy z ladenia aplikácie",
-  "settings_about": "O nás",
+  "settings_bleDebugLogSubtitle": "PrÃ­kazy BLE, odpovede a surovÃ© dÃ¡ta",
+  "settings_appDebugLog": "ZÃ¡znam ladenia aplikÃ¡cie",
+  "settings_appDebugLogSubtitle": "SprÃ¡vy z ladenia aplikÃ¡cie",
+  "settings_about": "O nÃ¡s",
   "settings_aboutVersion": "MeshCore Open v{version}",
   "@settings_aboutVersion": {
     "placeholders": {
@@ -130,24 +130,24 @@
     }
   },
   "settings_aboutLegalese": "MeshCore Open Source Projekt 2024",
-  "settings_aboutDescription": "Otvorený zdrojový Flutter klient pre MeshCore LoRa sieťové zariadenia.",
+  "settings_aboutDescription": "OtvorenÃ½ zdrojovÃ½ Flutter klient pre MeshCore LoRa sieÅ¥ovÃ© zariadenia.",
   "settings_infoName": "Meno",
   "settings_infoId": "ID",
   "settings_infoStatus": "Status",
-  "settings_infoBattery": "Batéria",
-  "settings_infoPublicKey": "Verejný kľúč",
-  "settings_infoContactsCount": "Počet kontaktov",
-  "settings_infoChannelCount": "Počet kanálov",
+  "settings_infoBattery": "BatÃ©ria",
+  "settings_infoPublicKey": "VerejnÃ½ kÄ¾ÃºÄ",
+  "settings_infoContactsCount": "PoÄet kontaktov",
+  "settings_infoChannelCount": "PoÄet kanÃ¡lov",
   "settings_presets": "Prednastavenia",
   "settings_frequency": "Frekvencia (MHz)",
-  "settings_frequencyHelper": "300,0 – 2500,0",
-  "settings_frequencyInvalid": "Neplatná frekvencia (300-2500 MHz)",
-  "settings_bandwidth": "Šírka pásma",
-  "settings_spreadingFactor": "Rozptýľovací faktor",
-  "settings_codingRate": "Cenový kurz pre programovanie",
-  "settings_txPower": "TX Výkon (dBm)",
+  "settings_frequencyHelper": "300,0 â€“ 2500,0",
+  "settings_frequencyInvalid": "NeplatnÃ¡ frekvencia (300-2500 MHz)",
+  "settings_bandwidth": "Å Ã­rka pÃ¡sma",
+  "settings_spreadingFactor": "RozptÃ½Ä¾ovacÃ­ faktor",
+  "settings_codingRate": "CenovÃ½ kurz pre programovanie",
+  "settings_txPower": "TX VÃ½kon (dBm)",
   "settings_txPowerHelper": "0 - 22",
-  "settings_txPowerInvalid": "Neplatná hodnota výkonu TX (0-22 dBm)",
+  "settings_txPowerInvalid": "NeplatnÃ¡ hodnota vÃ½konu TX (0-22 dBm)",
   "settings_error": "Chyba: {message}",
   "@settings_error": {
     "placeholders": {
@@ -156,50 +156,50 @@
       }
     }
   },
-  "appSettings_title": "Nastavenia aplikácie",
-  "appSettings_appearance": "Vzhľad",
-  "appSettings_theme": "Téma",
-  "appSettings_themeSystem": "Predvolený systém",
+  "appSettings_title": "Nastavenia aplikÃ¡cie",
+  "appSettings_appearance": "VzhÄ¾ad",
+  "appSettings_theme": "TÃ©ma",
+  "appSettings_themeSystem": "PredvolenÃ½ systÃ©m",
   "appSettings_themeLight": "Svetlo",
-  "appSettings_themeDark": "Tmavé",
+  "appSettings_themeDark": "TmavÃ©",
   "appSettings_language": "Jazyk",
-  "appSettings_languageSystem": "Predvolený systém",
+  "appSettings_languageSystem": "PredvolenÃ½ systÃ©m",
   "appSettings_languageEn": "English",
-  "appSettings_languageFr": "Français",
-  "appSettings_languageEs": "Español",
+  "appSettings_languageFr": "FranÃ§ais",
+  "appSettings_languageEs": "EspaÃ±ol",
   "appSettings_languageDe": "Deutsch",
   "appSettings_languagePl": "Polski",
-  "appSettings_languageSl": "Slovenščina",
-  "appSettings_languagePt": "Português",
+  "appSettings_languageSl": "SlovenÅ¡Äina",
+  "appSettings_languagePt": "PortuguÃªs",
   "appSettings_languageIt": "Italiano",
-  "appSettings_languageZh": "中文",
+  "appSettings_languageZh": "ä¸­æ–‡",
   "appSettings_languageSv": "Svenska",
   "appSettings_languageNl": "Nederlands",
-  "appSettings_languageSk": "Slovenčina",
-  "appSettings_languageBg": "Български",
+  "appSettings_languageSk": "SlovenÄina",
+  "appSettings_languageBg": "Ð‘ÑŠÐ»Ð³Ð°Ñ€ÑÐºÐ¸",
   "appSettings_notifications": "Upozornenia",
-  "appSettings_enableNotifications": "Povolte Notifikácie",
-  "appSettings_enableNotificationsSubtitle": "Zísť o upozornenia na správy a inzeráty",
-  "appSettings_notificationPermissionDenied": "Odmietená povolenie notifikácií",
-  "appSettings_notificationsEnabled": "Upozornenia povolené",
-  "appSettings_notificationsDisabled": "Upozornenia sú vypnuté",
-  "appSettings_messageNotifications": "Správy od upozornení",
-  "appSettings_messageNotificationsSubtitle": "Zobraziť upozornenie pri prijímaní nových správ",
-  "appSettings_channelMessageNotifications": "Notifikácie z kanálov",
-  "appSettings_channelMessageNotificationsSubtitle": "Zobraziť upozornenie pri prijímaní správ z kanálu",
+  "appSettings_enableNotifications": "Povolte NotifikÃ¡cie",
+  "appSettings_enableNotificationsSubtitle": "ZÃ­sÅ¥ o upozornenia na sprÃ¡vy a inzerÃ¡ty",
+  "appSettings_notificationPermissionDenied": "OdmietenÃ¡ povolenie notifikÃ¡ciÃ­",
+  "appSettings_notificationsEnabled": "Upozornenia povolenÃ©",
+  "appSettings_notificationsDisabled": "Upozornenia sÃº vypnutÃ©",
+  "appSettings_messageNotifications": "SprÃ¡vy od upozornenÃ­",
+  "appSettings_messageNotificationsSubtitle": "ZobraziÅ¥ upozornenie pri prijÃ­manÃ­ novÃ½ch sprÃ¡v",
+  "appSettings_channelMessageNotifications": "NotifikÃ¡cie z kanÃ¡lov",
+  "appSettings_channelMessageNotificationsSubtitle": "ZobraziÅ¥ upozornenie pri prijÃ­manÃ­ sprÃ¡v z kanÃ¡lu",
   "appSettings_advertisementNotifications": "Upozornenia na reklamy",
-  "appSettings_advertisementNotificationsSubtitle": "Zobraziť upozornenie, keď sa objavia nové uzly.",
-  "appSettings_messaging": "Správy",
-  "appSettings_clearPathOnMaxRetry": "Vyčisti cestu na Max Retry",
-  "appSettings_clearPathOnMaxRetrySubtitle": "Resetovať kontaktný priebeh po 5 neúspešných pokusoch o doručenie",
-  "appSettings_pathsWillBeCleared": "Cesty budú vymazané po 5 neúspešných pokusoch.",
-  "appSettings_pathsWillNotBeCleared": "Cesty sa automaticky nevymazávajú.",
-  "appSettings_autoRouteRotation": "Automatické prechodové trasy",
-  "appSettings_autoRouteRotationSubtitle": "Striedajte sa medzi najlepšími trasami a režimom povodňovej analýzy.",
-  "appSettings_autoRouteRotationEnabled": "Automatické otáčanie trasy povolené",
-  "appSettings_autoRouteRotationDisabled": "Automatické prekladanie trás pozastavené",
-  "appSettings_battery": "Batéria",
-  "appSettings_batteryChemistry": "Chemická zloženie batérie",
+  "appSettings_advertisementNotificationsSubtitle": "ZobraziÅ¥ upozornenie, keÄ sa objavia novÃ© uzly.",
+  "appSettings_messaging": "SprÃ¡vy",
+  "appSettings_clearPathOnMaxRetry": "VyÄisti cestu na Max Retry",
+  "appSettings_clearPathOnMaxRetrySubtitle": "ResetovaÅ¥ kontaktnÃ½ priebeh po 5 neÃºspeÅ¡nÃ½ch pokusoch o doruÄenie",
+  "appSettings_pathsWillBeCleared": "Cesty budÃº vymazanÃ© po 5 neÃºspeÅ¡nÃ½ch pokusoch.",
+  "appSettings_pathsWillNotBeCleared": "Cesty sa automaticky nevymazÃ¡vajÃº.",
+  "appSettings_autoRouteRotation": "AutomatickÃ© prechodovÃ© trasy",
+  "appSettings_autoRouteRotationSubtitle": "Striedajte sa medzi najlepÅ¡Ã­mi trasami a reÅ¾imom povodÅˆovej analÃ½zy.",
+  "appSettings_autoRouteRotationEnabled": "AutomatickÃ© otÃ¡Äanie trasy povolenÃ©",
+  "appSettings_autoRouteRotationDisabled": "AutomatickÃ© prekladanie trÃ¡s pozastavenÃ©",
+  "appSettings_battery": "BatÃ©ria",
+  "appSettings_batteryChemistry": "ChemickÃ¡ zloÅ¾enie batÃ©rie",
   "appSettings_batteryChemistryPerDevice": "Nastavenie pre {deviceName}",
   "@appSettings_batteryChemistryPerDevice": {
     "placeholders": {
@@ -208,20 +208,20 @@
       }
     }
   },
-  "appSettings_batteryChemistryConnectFirst": "Pripojte sa k zariadeniu na výber",
+  "appSettings_batteryChemistryConnectFirst": "Pripojte sa k zariadeniu na vÃ½ber",
   "appSettings_batteryNmc": "18650 NMC (3,0-4,2V)",
-  "appSettings_batteryLifepo4": "LiFePO4 (2,6–3,65V)",
+  "appSettings_batteryLifepo4": "LiFePO4 (2,6â€“3,65V)",
   "appSettings_batteryLipo": "LiPo (3,0-4,2V)",
   "appSettings_mapDisplay": "Zobrazenie mapy",
-  "appSettings_showRepeaters": "Zobraziť opakovače",
-  "appSettings_showRepeatersSubtitle": "Zobraziť opakujúce sa uzly na mape",
-  "appSettings_showChatNodes": "Zobraziť uzly chatových správ",
-  "appSettings_showChatNodesSubtitle": "Zobraziť chatové uzly na mape",
-  "appSettings_showOtherNodes": "Zobraziť ďalšie uzly",
-  "appSettings_showOtherNodesSubtitle": "Zobraziť ostatné typy uzlov na mape",
-  "appSettings_timeFilter": "Filtrovacie Časové Obdoby",
-  "appSettings_timeFilterShowAll": "Zobraziť všetky uzly",
-  "appSettings_timeFilterShowLast": "Zobraziť uzly z posledných {hours} hodín",
+  "appSettings_showRepeaters": "ZobraziÅ¥ opakovaÄe",
+  "appSettings_showRepeatersSubtitle": "ZobraziÅ¥ opakujÃºce sa uzly na mape",
+  "appSettings_showChatNodes": "ZobraziÅ¥ uzly chatovÃ½ch sprÃ¡v",
+  "appSettings_showChatNodesSubtitle": "ZobraziÅ¥ chatovÃ© uzly na mape",
+  "appSettings_showOtherNodes": "ZobraziÅ¥ ÄalÅ¡ie uzly",
+  "appSettings_showOtherNodesSubtitle": "ZobraziÅ¥ ostatnÃ© typy uzlov na mape",
+  "appSettings_timeFilter": "Filtrovacie ÄŒasovÃ© Obdoby",
+  "appSettings_timeFilterShowAll": "ZobraziÅ¥ vÅ¡etky uzly",
+  "appSettings_timeFilterShowLast": "ZobraziÅ¥ uzly z poslednÃ½ch {hours} hodÃ­n",
   "@appSettings_timeFilterShowLast": {
     "placeholders": {
       "hours": {
@@ -229,16 +229,16 @@
       }
     }
   },
-  "appSettings_mapTimeFilter": "Filtračný čas mapy",
-  "appSettings_showNodesDiscoveredWithin": "Zobraziť uzly objavené v:",
-  "appSettings_allTime": "Všetky časy",
-  "appSettings_lastHour": "Posledná hodina",
-  "appSettings_last6Hours": "Posledné 6 hodín",
-  "appSettings_last24Hours": "Posledných 24 hodín",
-  "appSettings_lastWeek": "Minul týždeň",
-  "appSettings_offlineMapCache": "Offline Mapa Pamäť",
-  "appSettings_noAreaSelected": "Neoznačila sa žiadna oblasť",
-  "appSettings_areaSelectedZoom": "Vyberená oblasť (zoom {minZoom}-{maxZoom})",
+  "appSettings_mapTimeFilter": "FiltraÄnÃ½ Äas mapy",
+  "appSettings_showNodesDiscoveredWithin": "ZobraziÅ¥ uzly objavenÃ© v:",
+  "appSettings_allTime": "VÅ¡etky Äasy",
+  "appSettings_lastHour": "PoslednÃ¡ hodina",
+  "appSettings_last6Hours": "PoslednÃ© 6 hodÃ­n",
+  "appSettings_last24Hours": "PoslednÃ½ch 24 hodÃ­n",
+  "appSettings_lastWeek": "Minul tÃ½Å¾deÅˆ",
+  "appSettings_offlineMapCache": "Offline Mapa PamÃ¤Å¥",
+  "appSettings_noAreaSelected": "NeoznaÄila sa Å¾iadna oblasÅ¥",
+  "appSettings_areaSelectedZoom": "VyberenÃ¡ oblasÅ¥ (zoom {minZoom}-{maxZoom})",
   "@appSettings_areaSelectedZoom": {
     "placeholders": {
       "minZoom": {
@@ -250,18 +250,18 @@
     }
   },
   "appSettings_debugCard": "Ladenie",
-  "appSettings_appDebugLogging": "Záznamy ladenia aplikácie",
-  "appSettings_appDebugLoggingSubtitle": "Logovací správy aplikácie pre ladenie",
-  "appSettings_appDebugLoggingEnabled": "Aplikácia povolila ladenie protokolmi",
-  "appSettings_appDebugLoggingDisabled": "Zabudované ladenie aplikácie je vypnuté.",
+  "appSettings_appDebugLogging": "ZÃ¡znamy ladenia aplikÃ¡cie",
+  "appSettings_appDebugLoggingSubtitle": "LogovacÃ­ sprÃ¡vy aplikÃ¡cie pre ladenie",
+  "appSettings_appDebugLoggingEnabled": "AplikÃ¡cia povolila ladenie protokolmi",
+  "appSettings_appDebugLoggingDisabled": "ZabudovanÃ© ladenie aplikÃ¡cie je vypnutÃ©.",
   "contacts_title": "Kontakty",
-  "contacts_noContacts": "Zatiaľ žiadne kontakty.",
-  "contacts_contactsWillAppear": "Kontakty sa zobrazia, keď zariadenia spúšťajú reklamu.",
-  "contacts_searchContacts": "Vyhľadávajte kontakty...",
-  "contacts_noUnreadContacts": "Žiadne neprečítané kontakty",
-  "contacts_noContactsFound": "Neboli nájdených žiadnych kontaktov ani skupiny.",
-  "contacts_deleteContact": "Odstrániť kontakt",
-  "contacts_removeConfirm": "Odstrániť {contactName} z kontaktov?",
+  "contacts_noContacts": "ZatiaÄ¾ Å¾iadne kontakty.",
+  "contacts_contactsWillAppear": "Kontakty sa zobrazia, keÄ zariadenia spÃºÅ¡Å¥ajÃº reklamu.",
+  "contacts_searchContacts": "VyhÄ¾adÃ¡vajte kontakty...",
+  "contacts_noUnreadContacts": "Å½iadne nepreÄÃ­tanÃ© kontakty",
+  "contacts_noContactsFound": "Neboli nÃ¡jdenÃ½ch Å¾iadnych kontaktov ani skupiny.",
+  "contacts_deleteContact": "OdstrÃ¡niÅ¥ kontakt",
+  "contacts_removeConfirm": "OdstrÃ¡niÅ¥ {contactName} z kontaktov?",
   "@contacts_removeConfirm": {
     "placeholders": {
       "contactName": {
@@ -269,12 +269,12 @@
       }
     }
   },
-  "contacts_manageRepeater": "Spravovať opakované zoznamy",
-  "contacts_roomLogin": "Prihlásenie do miestnosti",
-  "contacts_openChat": "Otvorené Chat",
-  "contacts_editGroup": "Upraviť skupinu",
-  "contacts_deleteGroup": "Vymažť skupinu",
-  "contacts_deleteGroupConfirm": "Odstrániť \"{groupName}\"?",
+  "contacts_manageRepeater": "SpravovaÅ¥ opakovanÃ© zoznamy",
+  "contacts_roomLogin": "PrihlÃ¡senie do miestnosti",
+  "contacts_openChat": "OtvorenÃ© Chat",
+  "contacts_editGroup": "UpraviÅ¥ skupinu",
+  "contacts_deleteGroup": "VymaÅ¾Å¥ skupinu",
+  "contacts_deleteGroupConfirm": "OdstrÃ¡niÅ¥ \"{groupName}\"?",
   "@contacts_deleteGroupConfirm": {
     "placeholders": {
       "groupName": {
@@ -282,10 +282,10 @@
       }
     }
   },
-  "contacts_newGroup": "Nová skupina",
-  "contacts_groupName": "Názov skupiny",
-  "contacts_groupNameRequired": "Skupina musí mať názov.",
-  "contacts_groupAlreadyExists": "Skupina \"{name}\" už existuje",
+  "contacts_newGroup": "NovÃ¡ skupina",
+  "contacts_groupName": "NÃ¡zov skupiny",
+  "contacts_groupNameRequired": "Skupina musÃ­ maÅ¥ nÃ¡zov.",
+  "contacts_groupAlreadyExists": "Skupina \"{name}\" uÅ¾ existuje",
   "@contacts_groupAlreadyExists": {
     "placeholders": {
       "name": {
@@ -293,11 +293,11 @@
       }
     }
   },
-  "contacts_filterContacts": "Filtrovať kontakty...",
-  "contacts_noContactsMatchFilter": "Žiadne kontakty neodídu vášmu filtru.",
-  "contacts_noMembers": "Žiadni členovia",
-  "contacts_lastSeenNow": "Posledné zreteľné zobrazenie teraz",
-  "contacts_lastSeenMinsAgo": "Posledné zobrazenie {minutes} min. dozadu",
+  "contacts_filterContacts": "FiltrovaÅ¥ kontakty...",
+  "contacts_noContactsMatchFilter": "Å½iadne kontakty neodÃ­du vÃ¡Å¡mu filtru.",
+  "contacts_noMembers": "Å½iadni Älenovia",
+  "contacts_lastSeenNow": "PoslednÃ© zreteÄ¾nÃ© zobrazenie teraz",
+  "contacts_lastSeenMinsAgo": "PoslednÃ© zobrazenie {minutes} min. dozadu",
   "@contacts_lastSeenMinsAgo": {
     "placeholders": {
       "minutes": {
@@ -305,8 +305,8 @@
       }
     }
   },
-  "contacts_lastSeenHourAgo": "Zobral/Zabral poslednýkrát pred hodinou.",
-  "contacts_lastSeenHoursAgo": "Posledné zobrazenie {hours} hodín dozadu",
+  "contacts_lastSeenHourAgo": "Zobral/Zabral poslednÃ½krÃ¡t pred hodinou.",
+  "contacts_lastSeenHoursAgo": "PoslednÃ© zobrazenie {hours} hodÃ­n dozadu",
   "@contacts_lastSeenHoursAgo": {
     "placeholders": {
       "hours": {
@@ -314,8 +314,8 @@
       }
     }
   },
-  "contacts_lastSeenDayAgo": "Zobral/Zabral posledný raz pred 1 dňom.",
-  "contacts_lastSeenDaysAgo": "Posledné zobrazenie {days} dní dozadu",
+  "contacts_lastSeenDayAgo": "Zobral/Zabral poslednÃ½ raz pred 1 dÅˆom.",
+  "contacts_lastSeenDaysAgo": "PoslednÃ© zobrazenie {days} dnÃ­ dozadu",
   "@contacts_lastSeenDaysAgo": {
     "placeholders": {
       "days": {
@@ -323,12 +323,12 @@
       }
     }
   },
-  "channels_title": "Kanály",
-  "channels_noChannelsConfigured": "Neobsiahnuté žiadne kanály",
-  "channels_addPublicChannel": "Pridať verejný kanál",
-  "channels_searchChannels": "Vyhľadávajte kanály...",
-  "channels_noChannelsFound": "Neobsiahlo sa žiadnych kanálov.",
-  "channels_channelIndex": "Kanál {index}",
+  "channels_title": "KanÃ¡ly",
+  "channels_noChannelsConfigured": "NeobsiahnutÃ© Å¾iadne kanÃ¡ly",
+  "channels_addPublicChannel": "PridaÅ¥ verejnÃ½ kanÃ¡l",
+  "channels_searchChannels": "VyhÄ¾adÃ¡vajte kanÃ¡ly...",
+  "channels_noChannelsFound": "Neobsiahlo sa Å¾iadnych kanÃ¡lov.",
+  "channels_channelIndex": "KanÃ¡l {index}",
   "@channels_channelIndex": {
     "placeholders": {
       "index": {
@@ -336,16 +336,16 @@
       }
     }
   },
-  "channels_hashtagChannel": "Kanál s hashtagom",
-  "channels_public": "Veľké verejné",
-  "channels_private": "Osobné",
-  "channels_publicChannel": "Veľké verejne kanály",
-  "channels_privateChannel": "Osobné kanál",
-  "channels_editChannel": "Upraviť kanál",
-  "channels_muteChannel": "Stlmiť kanál",
-  "channels_unmuteChannel": "Zrušiť stlmenie kanála",
-  "channels_deleteChannel": "Odstrániť kanál",
-  "channels_deleteChannelConfirm": "Odstrániť \"{name}\"? To sa nedá zrušiť.",
+  "channels_hashtagChannel": "KanÃ¡l s hashtagom",
+  "channels_public": "VeÄ¾kÃ© verejnÃ©",
+  "channels_private": "OsobnÃ©",
+  "channels_publicChannel": "VeÄ¾kÃ© verejne kanÃ¡ly",
+  "channels_privateChannel": "OsobnÃ© kanÃ¡l",
+  "channels_editChannel": "UpraviÅ¥ kanÃ¡l",
+  "channels_muteChannel": "StlmiÅ¥ kanÃ¡l",
+  "channels_unmuteChannel": "ZruÅ¡iÅ¥ stlmenie kanÃ¡la",
+  "channels_deleteChannel": "OdstrÃ¡niÅ¥ kanÃ¡l",
+  "channels_deleteChannelConfirm": "OdstrÃ¡niÅ¥ \"{name}\"? To sa nedÃ¡ zruÅ¡iÅ¥.",
   "@channels_deleteChannelConfirm": {
     "placeholders": {
       "name": {
@@ -353,7 +353,7 @@
       }
     }
   },
-  "channels_channelDeleted": "Kanál \"{name}\" bol odstránený",
+  "channels_channelDeleted": "KanÃ¡l \"{name}\" bol odstrÃ¡nenÃ½",
   "@channels_channelDeleted": {
     "placeholders": {
       "name": {
@@ -361,16 +361,16 @@
       }
     }
   },
-  "channels_addChannel": "Pridať kanál",
-  "channels_channelIndexLabel": "Index kanála",
-  "channels_channelName": "Názov kanálu",
-  "channels_usePublicChannel": "Použite verejný kanál",
-  "channels_standardPublicPsk": "Štandardný verejný PSK",
-  "channels_pskHex": "PSK (Šifrovacia kľúčik)",
-  "channels_generateRandomPsk": "Generovať náhodný PSK",
-  "channels_enterChannelName": "Prosím, zadajte názov kanála.",
-  "channels_pskMustBe32Hex": "PSK musí mať 32 hexadecimálových znakov.",
-  "channels_channelAdded": "Kanál \"{name}\" pridaný",
+  "channels_addChannel": "PridaÅ¥ kanÃ¡l",
+  "channels_channelIndexLabel": "Index kanÃ¡la",
+  "channels_channelName": "NÃ¡zov kanÃ¡lu",
+  "channels_usePublicChannel": "PouÅ¾ite verejnÃ½ kanÃ¡l",
+  "channels_standardPublicPsk": "Å tandardnÃ½ verejnÃ½ PSK",
+  "channels_pskHex": "PSK (Å ifrovacia kÄ¾ÃºÄik)",
+  "channels_generateRandomPsk": "GenerovaÅ¥ nÃ¡hodnÃ½ PSK",
+  "channels_enterChannelName": "ProsÃ­m, zadajte nÃ¡zov kanÃ¡la.",
+  "channels_pskMustBe32Hex": "PSK musÃ­ maÅ¥ 32 hexadecimÃ¡lovÃ½ch znakov.",
+  "channels_channelAdded": "KanÃ¡l \"{name}\" pridanÃ½",
   "@channels_channelAdded": {
     "placeholders": {
       "name": {
@@ -378,7 +378,7 @@
       }
     }
   },
-  "channels_editChannelTitle": "Upraviť kanál {index}",
+  "channels_editChannelTitle": "UpraviÅ¥ kanÃ¡l {index}",
   "@channels_editChannelTitle": {
     "placeholders": {
       "index": {
@@ -386,8 +386,8 @@
       }
     }
   },
-  "channels_smazCompression": "Odstránenie kompresie SMAZ",
-  "channels_channelUpdated": "Kanál \"{name}\" bol aktualizovaný",
+  "channels_smazCompression": "OdstrÃ¡nenie kompresie SMAZ",
+  "channels_channelUpdated": "KanÃ¡l \"{name}\" bol aktualizovanÃ½",
   "@channels_channelUpdated": {
     "placeholders": {
       "name": {
@@ -395,16 +395,16 @@
       }
     }
   },
-  "channels_publicChannelAdded": "Veľký kanál pridaný",
-  "channels_sortBy": "Triediť podľa",
-  "channels_sortManual": "Ručne",
+  "channels_publicChannelAdded": "VeÄ¾kÃ½ kanÃ¡l pridanÃ½",
+  "channels_sortBy": "TriediÅ¥ podÄ¾a",
+  "channels_sortManual": "RuÄne",
   "channels_sortAZ": "A-Z",
-  "channels_sortLatestMessages": "Posledné správy",
-  "channels_sortUnread": "Nezriadené",
-  "chat_noMessages": "Zatiaľ žiadne správy.",
-  "chat_sendMessageToStart": "Pošlite správu na začiatok",
-  "chat_originalMessageNotFound": "Neznámy pôvodný odkaz.",
-  "chat_replyingTo": "Odpovedám {name}",
+  "channels_sortLatestMessages": "PoslednÃ© sprÃ¡vy",
+  "channels_sortUnread": "NezriadenÃ©",
+  "chat_noMessages": "ZatiaÄ¾ Å¾iadne sprÃ¡vy.",
+  "chat_sendMessageToStart": "PoÅ¡lite sprÃ¡vu na zaÄiatok",
+  "chat_originalMessageNotFound": "NeznÃ¡my pÃ´vodnÃ½ odkaz.",
+  "chat_replyingTo": "OdpovedÃ¡m {name}",
   "@chat_replyingTo": {
     "placeholders": {
       "name": {
@@ -412,7 +412,7 @@
       }
     }
   },
-  "chat_replyTo": "Odpovedať {name}",
+  "chat_replyTo": "OdpovedaÅ¥ {name}",
   "@chat_replyTo": {
     "placeholders": {
       "name": {
@@ -421,7 +421,7 @@
     }
   },
   "chat_location": "Lokalita",
-  "chat_sendMessageTo": "Pošli správu {contactName}",
+  "chat_sendMessageTo": "PoÅ¡li sprÃ¡vu {contactName}",
   "@chat_sendMessageTo": {
     "placeholders": {
       "contactName": {
@@ -429,8 +429,8 @@
       }
     }
   },
-  "chat_typeMessage": "Napište správu...",
-  "chat_messageTooLong": "Správa je príliš dlhá (max {maxBytes} bytov).",
+  "chat_typeMessage": "NapiÅ¡te sprÃ¡vu...",
+  "chat_messageTooLong": "SprÃ¡va je prÃ­liÅ¡ dlhÃ¡ (max {maxBytes} bytov).",
   "@chat_messageTooLong": {
     "placeholders": {
       "maxBytes": {
@@ -438,10 +438,10 @@
       }
     }
   },
-  "chat_messageCopied": "Správa skopírovaná",
-  "chat_messageDeleted": "Posolstvo odstránené",
+  "chat_messageCopied": "SprÃ¡va skopÃ­rovanÃ¡",
+  "chat_messageDeleted": "Posolstvo odstrÃ¡nenÃ©",
   "chat_retryingMessage": "Pokus o obnovenie",
-  "chat_retryCount": "Skúsiť {current}/{max}",
+  "chat_retryCount": "SkÃºsiÅ¥ {current}/{max}",
   "@chat_retryCount": {
     "placeholders": {
       "current": {
@@ -452,33 +452,33 @@
       }
     }
   },
-  "chat_sendGif": "Odoslať GIF",
-  "chat_reply": "Odpovedať",
-  "chat_addReaction": "Pridať Reakciu",
+  "chat_sendGif": "OdoslaÅ¥ GIF",
+  "chat_reply": "OdpovedaÅ¥",
+  "chat_addReaction": "PridaÅ¥ Reakciu",
   "chat_me": "Mne",
   "emojiCategorySmileys": "Emoji",
-  "emojiCategoryGestures": "Gestá",
+  "emojiCategoryGestures": "GestÃ¡",
   "emojiCategoryHearts": "Srdcia",
   "emojiCategoryObjects": "Objekty",
   "gifPicker_title": "Vyberte GIF",
-  "gifPicker_searchHint": "Vyhľadávajte GIFy...",
-  "gifPicker_poweredBy": "Napájané spoločnosťou GIPHY",
-  "gifPicker_noGifsFound": "Neboli nájdené žiadne GIFy.",
-  "gifPicker_failedLoad": "Nepodarilo sa načítať GIFy",
-  "gifPicker_failedSearch": "Nepodarilo sa vyhľadať GIFy",
-  "gifPicker_noInternet": "Žiadna internetová konektivita",
-  "debugLog_appTitle": "Záznam ladenia aplikácie",
+  "gifPicker_searchHint": "VyhÄ¾adÃ¡vajte GIFy...",
+  "gifPicker_poweredBy": "NapÃ¡janÃ© spoloÄnosÅ¥ou GIPHY",
+  "gifPicker_noGifsFound": "Neboli nÃ¡jdenÃ© Å¾iadne GIFy.",
+  "gifPicker_failedLoad": "Nepodarilo sa naÄÃ­taÅ¥ GIFy",
+  "gifPicker_failedSearch": "Nepodarilo sa vyhÄ¾adaÅ¥ GIFy",
+  "gifPicker_noInternet": "Å½iadna internetovÃ¡ konektivita",
+  "debugLog_appTitle": "ZÃ¡znam ladenia aplikÃ¡cie",
   "debugLog_bleTitle": "Log BLE Debug",
-  "debugLog_copyLog": "Kopírovať záznam",
-  "debugLog_clearLog": "Vymažať záznam",
-  "debugLog_copied": "Záznam ladenia skopírovaný",
-  "debugLog_bleCopied": "Kopírovaný záznam z BLE.",
-  "debugLog_noEntries": "Zatiaľ neboli zaznamenané žiadne debug logy.",
-  "debugLog_enableInSettings": "Povolte ladicové logy v nastaveniach",
-  "debugLog_frames": "Rámce",
+  "debugLog_copyLog": "KopÃ­rovaÅ¥ zÃ¡znam",
+  "debugLog_clearLog": "VymaÅ¾aÅ¥ zÃ¡znam",
+  "debugLog_copied": "ZÃ¡znam ladenia skopÃ­rovanÃ½",
+  "debugLog_bleCopied": "KopÃ­rovanÃ½ zÃ¡znam z BLE.",
+  "debugLog_noEntries": "ZatiaÄ¾ neboli zaznamenanÃ© Å¾iadne debug logy.",
+  "debugLog_enableInSettings": "Povolte ladicovÃ© logy v nastaveniach",
+  "debugLog_frames": "RÃ¡mce",
   "debugLog_rawLogRx": "Raw Log-RX",
-  "debugLog_noBleActivity": "Zatiaľ žiadna aktivita BLE.",
-  "debugFrame_length": "Dĺžka rámca: {count} bajtov",
+  "debugLog_noBleActivity": "ZatiaÄ¾ Å¾iadna aktivita BLE.",
+  "debugFrame_length": "DÄºÅ¾ka rÃ¡mca: {count} bajtov",
   "@debugFrame_length": {
     "placeholders": {
       "count": {
@@ -486,7 +486,7 @@
       }
     }
   },
-  "debugFrame_command": "Prikáž: 0x{value}",
+  "debugFrame_command": "PrikaÌzÌŒ: 0x{value}",
   "@debugFrame_command": {
     "placeholders": {
       "value": {
@@ -494,8 +494,8 @@
       }
     }
   },
-  "debugFrame_textMessageHeader": "Textová zvesť:",
-  "debugFrame_destinationPubKey": "- Cieľový PubKey: {pubKey}",
+  "debugFrame_textMessageHeader": "TextovÃ¡ zvesÅ¥:",
+  "debugFrame_destinationPubKey": "- CieÄ¾ovÃ½ PubKey: {pubKey}",
   "@debugFrame_destinationPubKey": {
     "placeholders": {
       "pubKey": {
@@ -503,7 +503,7 @@
       }
     }
   },
-  "debugFrame_timestamp": "- Časové označenie: {timestamp}",
+  "debugFrame_timestamp": "- ÄŒasovÃ© oznaÄenie: {timestamp}",
   "@debugFrame_timestamp": {
     "placeholders": {
       "timestamp": {
@@ -511,7 +511,7 @@
       }
     }
   },
-  "debugFrame_flags": "- Žiadne vlajky: 0x{value}",
+  "debugFrame_flags": "- Å½iadne vlajky: 0x{value}",
   "@debugFrame_flags": {
     "placeholders": {
       "value": {
@@ -531,7 +531,7 @@
     }
   },
   "debugFrame_textTypeCli": "CLI",
-  "debugFrame_textTypePlain": "Jednoduché",
+  "debugFrame_textTypePlain": "JednoduchÃ©",
   "debugFrame_text": "- Text: \"{text}\"",
   "@debugFrame_text": {
     "placeholders": {
@@ -541,14 +541,14 @@
     }
   },
   "debugFrame_hexDump": "Hex Dump:",
-  "chat_pathManagement": "Správa ciest",
-  "chat_routingMode": "Režim trasy",
-  "chat_autoUseSavedPath": "Použiť uloženú cestu",
-  "chat_forceFloodMode": "Zavrieť režim núdzového povodňového režimu",
-  "chat_recentAckPaths": "Nedávne cesty ACK (klepni na použitie):",
-  "chat_pathHistoryFull": "História ciest je plná. Odstráňte záznamy, aby ste mohli pridať nové.",
+  "chat_pathManagement": "SprÃ¡va ciest",
+  "chat_routingMode": "ReÅ¾im trasy",
+  "chat_autoUseSavedPath": "PouÅ¾iÅ¥ uloÅ¾enÃº cestu",
+  "chat_forceFloodMode": "ZavrieÅ¥ reÅ¾im nÃºdzovÃ©ho povodÅˆovÃ©ho reÅ¾imu",
+  "chat_recentAckPaths": "NedÃ¡vne cesty ACK (klepni na pouÅ¾itie):",
+  "chat_pathHistoryFull": "HistÃ³ria ciest je plnÃ¡. OdstrÃ¡Åˆte zÃ¡znamy, aby ste mohli pridaÅ¥ novÃ©.",
   "chat_hopSingular": "Skok",
-  "chat_hopPlural": "Skákať",
+  "chat_hopPlural": "SkÃ¡kaÅ¥",
   "chat_hopsCount": "{count} {count, plural, =1{hop} other{hops}}",
   "@chat_hopsCount": {
     "placeholders": {
@@ -557,20 +557,20 @@
       }
     }
   },
-  "chat_successes": "Úspechy",
-  "chat_removePath": "Odstrániť cestu",
-  "chat_noPathHistoryYet": "Zatiaľ žiadna história trás.\nPošlite správu a objavte trasy.",
+  "chat_successes": "Ãšspechy",
+  "chat_removePath": "OdstrÃ¡niÅ¥ cestu",
+  "chat_noPathHistoryYet": "ZatiaÄ¾ Å¾iadna histÃ³ria trÃ¡s.\nPoÅ¡lite sprÃ¡vu a objavte trasy.",
   "chat_pathActions": "Cesty:",
-  "chat_setCustomPath": "Nastaviť vlastnú cestu",
-  "chat_setCustomPathSubtitle": "Ručne zadajte trasu.",
-  "chat_clearPath": "Vyčistiš cestu",
-  "chat_clearPathSubtitle": "Znovu nájsť vynútene pri nasledujúcej pošlite",
-  "chat_pathCleared": "Cesta vyčistená. Nasledujúce prepočetné získa trasu znova.",
-  "chat_floodModeSubtitle": "Použite prepínanie trasy v navigačnom paneli.",
-  "chat_floodModeEnabled": "Odosporňovacia prevádzka je zapnutá. Vypnite ju znova cez ikonu routovania v navigačnom páse.",
-  "chat_fullPath": "Celá cesta",
-  "chat_pathDetailsNotAvailable": "Podrobnosti o ceste zatiaľ dostupné nie sú. Skúste poslať správu na obnovenie.",
-  "chat_pathSetHops": "Cesta nastavená: {hopCount} {hopCount, plural, =1{hop} other{hops}} - {status}",
+  "chat_setCustomPath": "NastaviÅ¥ vlastnÃº cestu",
+  "chat_setCustomPathSubtitle": "RuÄne zadajte trasu.",
+  "chat_clearPath": "VyÄistiÅ¡ cestu",
+  "chat_clearPathSubtitle": "Znovu nÃ¡jsÅ¥ vynÃºtene pri nasledujÃºcej poÅ¡lite",
+  "chat_pathCleared": "Cesta vyÄistenÃ¡. NasledujÃºce prepoÄetnÃ© zÃ­ska trasu znova.",
+  "chat_floodModeSubtitle": "PouÅ¾ite prepÃ­nanie trasy v navigaÄnom paneli.",
+  "chat_floodModeEnabled": "OdosporÅˆovacia prevÃ¡dzka je zapnutÃ¡. Vypnite ju znova cez ikonu routovania v navigaÄnom pÃ¡se.",
+  "chat_fullPath": "CelÃ¡ cesta",
+  "chat_pathDetailsNotAvailable": "Podrobnosti o ceste zatiaÄ¾ dostupnÃ© nie sÃº. SkÃºste poslaÅ¥ sprÃ¡vu na obnovenie.",
+  "chat_pathSetHops": "Cesta nastavenÃ¡: {hopCount} {hopCount, plural, =1{hop} other{hops}} - {status}",
   "@chat_pathSetHops": {
     "placeholders": {
       "hopCount": {
@@ -581,16 +581,16 @@
       }
     }
   },
-  "chat_pathSavedLocally": "Uložené lokálne. Spojte sa na synchronizáciu.",
-  "chat_pathDeviceConfirmed": "Zariadenie potvrdené.",
-  "chat_pathDeviceNotConfirmed": "Zariadenie zatiaľ nebolo potvrdené.",
-  "chat_type": "Napište",
+  "chat_pathSavedLocally": "UloÅ¾enÃ© lokÃ¡lne. Spojte sa na synchronizÃ¡ciu.",
+  "chat_pathDeviceConfirmed": "Zariadenie potvrdenÃ©.",
+  "chat_pathDeviceNotConfirmed": "Zariadenie zatiaÄ¾ nebolo potvrdenÃ©.",
+  "chat_type": "NapiÅ¡te",
   "chat_path": "Cesta",
-  "chat_publicKey": "Verejný kľúč",
-  "chat_compressOutgoingMessages": "Komprimovať odoslané správy",
-  "chat_floodForced": "Povodňová (nutená)",
-  "chat_directForced": "Priame (donútené)",
-  "chat_hopsForced": "{count} skokov (nutené)",
+  "chat_publicKey": "VerejnÃ½ kÄ¾ÃºÄ",
+  "chat_compressOutgoingMessages": "KomprimovaÅ¥ odoslanÃ© sprÃ¡vy",
+  "chat_floodForced": "PovodÅˆovÃ¡ (nutenÃ¡)",
+  "chat_directForced": "Priame (donÃºtenÃ©)",
+  "chat_hopsForced": "{count} skokov (nutenÃ©)",
   "@chat_hopsForced": {
     "placeholders": {
       "count": {
@@ -600,8 +600,8 @@
   },
   "chat_floodAuto": "Povod (automaticky)",
   "chat_direct": "Priamo",
-  "chat_poiShared": "Zdieľané body záujmu",
-  "chat_unread": "Nezriadené: {count}",
+  "chat_poiShared": "ZdieÄ¾anÃ© body zÃ¡ujmu",
+  "chat_unread": "NezriadenÃ©: {count}",
   "@chat_unread": {
     "placeholders": {
       "count": {
@@ -609,10 +609,10 @@
       }
     }
   },
-  "chat_openLink": "Otvoriť odkaz?",
-  "chat_openLinkConfirmation": "Chcete otvoriť tento odkaz v prehliadači?",
-  "chat_open": "Otvoriť",
-  "chat_couldNotOpenLink": "Nepodarilo sa otvoriť odkaz: {url}",
+  "chat_openLink": "OtvoriÅ¥ odkaz?",
+  "chat_openLinkConfirmation": "Chcete otvoriÅ¥ tento odkaz v prehliadaÄi?",
+  "chat_open": "OtvoriÅ¥",
+  "chat_couldNotOpenLink": "Nepodarilo sa otvoriÅ¥ odkaz: {url}",
   "@chat_couldNotOpenLink": {
     "placeholders": {
       "url": {
@@ -620,10 +620,10 @@
       }
     }
   },
-  "chat_invalidLink": "Neplatný formát odkazu",
+  "chat_invalidLink": "NeplatnÃ½ formÃ¡t odkazu",
   "map_title": "Mapa uzlov",
-  "map_noNodesWithLocation": "Žiadne uzly s údajmi o polohe",
-  "map_nodesNeedGps": "Uholníky musia zdieľať svoje GPS súradnice, aby sa zobrazili na mape.",
+  "map_noNodesWithLocation": "Å½iadne uzly s Ãºdajmi o polohe",
+  "map_nodesNeedGps": "UholnÃ­ky musia zdieÄ¾aÅ¥ svoje GPS sÃºradnice, aby sa zobrazili na mape.",
   "map_nodesCount": "Uzly: {count}",
   "@map_nodesCount": {
     "placeholders": {
@@ -632,7 +632,7 @@
       }
     }
   },
-  "map_pinsCount": "Krúžky: {count}",
+  "map_pinsCount": "KrÃºÅ¾ky: {count}",
   "@map_pinsCount": {
     "placeholders": {
       "count": {
@@ -645,22 +645,22 @@
   "map_room": "Izba",
   "map_sensor": "Senzor",
   "map_pinDm": "Zabudka (DM)",
-  "map_pinPrivate": "Zabudka (Osobná)",
-  "map_pinPublic": "Zablokovať (verejne)",
-  "map_lastSeen": "Posledné zreteľné zobrazenie",
-  "map_disconnectConfirm": "Ste si istý/á, že chcete odpojiť od tohto zariadenia?",
+  "map_pinPrivate": "Zabudka (OsobnÃ¡)",
+  "map_pinPublic": "ZablokovaÅ¥ (verejne)",
+  "map_lastSeen": "PoslednÃ© zreteÄ¾nÃ© zobrazenie",
+  "map_disconnectConfirm": "Ste si istÃ½/Ã¡, Å¾e chcete odpojiÅ¥ od tohto zariadenia?",
   "map_from": "Od",
   "map_source": "Zdroj",
-  "map_flags": "Zástavy",
-  "map_shareMarkerHere": "Zdieľte značku tu",
-  "map_pinLabel": "Označka upozornenia",
-  "map_label": "Značka",
-  "map_pointOfInterest": "Bod záujmu",
-  "map_sendToContact": "Pošleť na kontakt",
-  "map_sendToChannel": "Poslať do kanálu",
-  "map_noChannelsAvailable": "Неexistujú žiadne kanály.",
-  "map_publicLocationShare": "Zdieľiť verejnú lokalitu",
-  "map_publicLocationShareConfirm": "Čoskoro budete zdieľať polohu v {channelLabel}. Tento kanál je verejný a môže ho vidieť každý s PSK.",
+  "map_flags": "ZÃ¡stavy",
+  "map_shareMarkerHere": "ZdieÄ¾te znaÄku tu",
+  "map_pinLabel": "OznaÄka upozornenia",
+  "map_label": "ZnaÄka",
+  "map_pointOfInterest": "Bod zÃ¡ujmu",
+  "map_sendToContact": "PoÅ¡leÅ¥ na kontakt",
+  "map_sendToChannel": "PoslaÅ¥ do kanÃ¡lu",
+  "map_noChannelsAvailable": "ÐÐµexistujÃº Å¾iadne kanÃ¡ly.",
+  "map_publicLocationShare": "ZdieÄ¾iÅ¥ verejnÃº lokalitu",
+  "map_publicLocationShareConfirm": "ÄŒoskoro budete zdieÄ¾aÅ¥ polohu v {channelLabel}. Tento kanÃ¡l je verejnÃ½ a mÃ´Å¾e ho vidieÅ¥ kaÅ¾dÃ½ s PSK.",
   "@map_publicLocationShareConfirm": {
     "placeholders": {
       "channelLabel": {
@@ -668,26 +668,26 @@
       }
     }
   },
-  "map_connectToShareMarkers": "Pripojte sa k zariadeniu na zdieľanie značiek",
-  "map_filterNodes": "Filtrovať uzly",
+  "map_connectToShareMarkers": "Pripojte sa k zariadeniu na zdieÄ¾anie znaÄiek",
+  "map_filterNodes": "FiltrovaÅ¥ uzly",
   "map_nodeTypes": "Typy uzlov",
-  "map_chatNodes": "Chatové uzly",
-  "map_repeaters": "Opakovadlá",
-  "map_otherNodes": "Ostatné uzly",
-  "map_keyPrefix": "Päťciferné predpona",
-  "map_filterByKeyPrefix": "Filtrovať podľa predponového kľúča",
-  "map_publicKeyPrefix": "Prefix verejného kľúča",
-  "map_markers": "Označkovače",
-  "map_showSharedMarkers": "Zobraziť zdieľané značky",
-  "map_lastSeenTime": "Posledný čas sledovania",
-  "map_sharedPin": "Zdieľaný PIN",
-  "map_joinRoom": "Pripojiť miestnosť",
-  "map_manageRepeater": "Spravovať Opakovanie",
-  "mapCache_title": "Offline Mapa Pamäť",
-  "mapCache_selectAreaFirst": "Vyberte si oblasť na predprerúčenie.",
-  "mapCache_noTilesToDownload": "Žiadne dlaždice na stiahnutie pre toto zóna",
-  "mapCache_downloadTilesTitle": "Stiahnuť dlaždice",
-  "mapCache_downloadTilesPrompt": "Stiahnuť {count} dlaždíc na offline použitie?",
+  "map_chatNodes": "ChatovÃ© uzly",
+  "map_repeaters": "OpakovadlÃ¡",
+  "map_otherNodes": "OstatnÃ© uzly",
+  "map_keyPrefix": "PÃ¤Å¥cifernÃ© predpona",
+  "map_filterByKeyPrefix": "FiltrovaÅ¥ podÄ¾a predponovÃ©ho kÄ¾ÃºÄa",
+  "map_publicKeyPrefix": "Prefix verejnÃ©ho kÄ¾ÃºÄa",
+  "map_markers": "OznaÄkovaÄe",
+  "map_showSharedMarkers": "ZobraziÅ¥ zdieÄ¾anÃ© znaÄky",
+  "map_lastSeenTime": "PoslednÃ½ Äas sledovania",
+  "map_sharedPin": "ZdieÄ¾anÃ½ PIN",
+  "map_joinRoom": "PripojiÅ¥ miestnosÅ¥",
+  "map_manageRepeater": "SpravovaÅ¥ Opakovanie",
+  "mapCache_title": "Offline Mapa PamÃ¤Å¥",
+  "mapCache_selectAreaFirst": "Vyberte si oblasÅ¥ na predprerÃºÄenie.",
+  "mapCache_noTilesToDownload": "Å½iadne dlaÅ¾dice na stiahnutie pre toto zÃ³na",
+  "mapCache_downloadTilesTitle": "StiahnuÅ¥ dlaÅ¾dice",
+  "mapCache_downloadTilesPrompt": "StiahnuÅ¥ {count} dlaÅ¾dÃ­c na offline pouÅ¾itie?",
   "@mapCache_downloadTilesPrompt": {
     "placeholders": {
       "count": {
@@ -695,8 +695,8 @@
       }
     }
   },
-  "mapCache_downloadAction": "Stiahnuť",
-  "mapCache_cachedTiles": "Zabudené {count} dlaždíc",
+  "mapCache_downloadAction": "StiahnuÅ¥",
+  "mapCache_cachedTiles": "ZabudenÃ© {count} dlaÅ¾dÃ­c",
   "@mapCache_cachedTiles": {
     "placeholders": {
       "count": {
@@ -704,7 +704,7 @@
       }
     }
   },
-  "mapCache_cachedTilesWithFailed": "Uložené {downloaded} dlaždice ({failed} neúspešné)",
+  "mapCache_cachedTilesWithFailed": "UloÅ¾enÃ© {downloaded} dlaÅ¾dice ({failed} neÃºspeÅ¡nÃ©)",
   "@mapCache_cachedTilesWithFailed": {
     "placeholders": {
       "downloaded": {
@@ -715,14 +715,14 @@
       }
     }
   },
-  "mapCache_clearOfflineCacheTitle": "Vymazať offline uloženie",
-  "mapCache_clearOfflineCachePrompt": "Odstrániť všetky uložené mapové dlaždice?",
-  "mapCache_offlineCacheCleared": "Offline polia vymazaná",
-  "mapCache_noAreaSelected": "Neoznačila sa žiadna oblasť",
-  "mapCache_cacheArea": "Obdĺžková oblasť",
-  "mapCache_useCurrentView": "Použite aktuálny zobrazenie",
-  "mapCache_zoomRange": "Rozsah zväčšenia",
-  "mapCache_estimatedTiles": "Odhadnuté dlaždice: {count}",
+  "mapCache_clearOfflineCacheTitle": "VymazaÅ¥ offline uloÅ¾enie",
+  "mapCache_clearOfflineCachePrompt": "OdstrÃ¡niÅ¥ vÅ¡etky uloÅ¾enÃ© mapovÃ© dlaÅ¾dice?",
+  "mapCache_offlineCacheCleared": "Offline polia vymazanÃ¡",
+  "mapCache_noAreaSelected": "NeoznaÄila sa Å¾iadna oblasÅ¥",
+  "mapCache_cacheArea": "ObdÄºÅ¾kovÃ¡ oblasÅ¥",
+  "mapCache_useCurrentView": "PouÅ¾ite aktuÃ¡lny zobrazenie",
+  "mapCache_zoomRange": "Rozsah zvÃ¤ÄÅ¡enia",
+  "mapCache_estimatedTiles": "OdhadnutÃ© dlaÅ¾dice: {count}",
   "@mapCache_estimatedTiles": {
     "placeholders": {
       "count": {
@@ -730,7 +730,7 @@
       }
     }
   },
-  "mapCache_downloadedTiles": "Stiahnuté {completed} / {total}",
+  "mapCache_downloadedTiles": "StiahnutÃ© {completed} / {total}",
   "@mapCache_downloadedTiles": {
     "placeholders": {
       "completed": {
@@ -741,9 +741,9 @@
       }
     }
   },
-  "mapCache_downloadTilesButton": "Stiahnuť dlaždice",
-  "mapCache_clearCacheButton": "Vyprázdniť Vädsť",
-  "mapCache_failedDownloads": "Neúspešné stiahnutia: {count}",
+  "mapCache_downloadTilesButton": "StiahnuÅ¥ dlaÅ¾dice",
+  "mapCache_clearCacheButton": "VyprÃ¡zdniÅ¥ VÃ¤dsÅ¥",
+  "mapCache_failedDownloads": "NeÃºspeÅ¡nÃ© stiahnutia: {count}",
   "@mapCache_failedDownloads": {
     "placeholders": {
       "count": {
@@ -768,7 +768,7 @@
       }
     }
   },
-  "time_justNow": "Príbeh",
+  "time_justNow": "PrÃ­beh",
   "time_minutesAgo": "{minutes} min dozadu",
   "@time_minutesAgo": {
     "placeholders": {
@@ -785,7 +785,7 @@
       }
     }
   },
-  "time_daysAgo": "{days} dní dozadu",
+  "time_daysAgo": "{days} dnÃ­ dozadu",
   "@time_daysAgo": {
     "placeholders": {
       "days": {
@@ -795,31 +795,31 @@
   },
   "time_hour": "hodina",
   "time_hours": "hodiny",
-  "time_day": "deň",
+  "time_day": "deÅˆ",
   "time_days": "dni",
-  "time_week": "týždeň",
-  "time_weeks": "týždne",
+  "time_week": "tÃ½Å¾deÅˆ",
+  "time_weeks": "tÃ½Å¾dne",
   "time_month": "mesiac",
   "time_months": "mesiace",
-  "time_minutes": "minúty",
-  "time_allTime": "Všetko Časom",
-  "dialog_disconnect": "Odpojiť",
-  "dialog_disconnectConfirm": "Ste si istý/á, že chcete odpojiť od tohto zariadenia?",
-  "login_repeaterLogin": "Opätovné prihlásenie",
-  "login_roomLogin": "Prihlásenie do miestnosti",
+  "time_minutes": "minÃºty",
+  "time_allTime": "VÅ¡etko ÄŒasom",
+  "dialog_disconnect": "OdpojiÅ¥",
+  "dialog_disconnectConfirm": "Ste si istÃ½/Ã¡, Å¾e chcete odpojiÅ¥ od tohto zariadenia?",
+  "login_repeaterLogin": "OpÃ¤tovnÃ© prihlÃ¡senie",
+  "login_roomLogin": "PrihlÃ¡senie do miestnosti",
   "login_password": "Heslo",
   "login_enterPassword": "Zadajte heslo",
-  "login_savePassword": "Uložiť heslo",
-  "login_savePasswordSubtitle": "Heslo bude bezpečne uložené na tomto zariadení.",
-  "login_repeaterDescription": "Zadajte heslo opakovača, aby ste získali prístup k nastaveniam a stavu.",
-  "login_roomDescription": "Zadajte heslo do miestnosti na prístup k nastaveniam a stavu.",
-  "login_routing": "Rútiace",
-  "login_routingMode": "Režim trasy",
-  "login_autoUseSavedPath": "Použiť uloženú cestu",
-  "login_forceFloodMode": "Zavrieť režim núdzového povodňového režimu",
-  "login_managePaths": "Spravovať Cesty",
-  "login_login": "Prihlásiť",
-  "login_attempt": "Skúšaj {current}/{max}",
+  "login_savePassword": "UloÅ¾iÅ¥ heslo",
+  "login_savePasswordSubtitle": "Heslo bude bezpeÄne uloÅ¾enÃ© na tomto zariadenÃ­.",
+  "login_repeaterDescription": "Zadajte heslo opakovaÄa, aby ste zÃ­skali prÃ­stup k nastaveniam a stavu.",
+  "login_roomDescription": "Zadajte heslo do miestnosti na prÃ­stup k nastaveniam a stavu.",
+  "login_routing": "RÃºtiace",
+  "login_routingMode": "ReÅ¾im trasy",
+  "login_autoUseSavedPath": "PouÅ¾iÅ¥ uloÅ¾enÃº cestu",
+  "login_forceFloodMode": "ZavrieÅ¥ reÅ¾im nÃºdzovÃ©ho povodÅˆovÃ©ho reÅ¾imu",
+  "login_managePaths": "SpravovaÅ¥ Cesty",
+  "login_login": "PrihlÃ¡siÅ¥",
+  "login_attempt": "SkÃºÅ¡aj {current}/{max}",
   "@login_attempt": {
     "placeholders": {
       "current": {
@@ -830,7 +830,7 @@
       }
     }
   },
-  "login_failed": "Prihlásenie zlyhalo: {error}",
+  "login_failed": "PrihlÃ¡senie zlyhalo: {error}",
   "@login_failed": {
     "placeholders": {
       "error": {
@@ -838,10 +838,10 @@
       }
     }
   },
-  "login_failedMessage": "Prihlásenie zlyhalo. Heslo je nesprávne alebo je opakovač nedostupný.",
-  "common_reload": "Načítať",
-  "common_clear": "Zmazať",
-  "path_currentPath": "Aktívna cesta: {path}",
+  "login_failedMessage": "PrihlÃ¡senie zlyhalo. Heslo je nesprÃ¡vne alebo je opakovaÄ nedostupnÃ½.",
+  "common_reload": "NaÄÃ­taÅ¥",
+  "common_clear": "ZmazaÅ¥",
+  "path_currentPath": "AktÃ­vna cesta: {path}",
   "@path_currentPath": {
     "placeholders": {
       "path": {
@@ -849,7 +849,7 @@
       }
     }
   },
-  "path_usingHopsPath": "Používa {count} {count, plural, =1{hop} other{hops}} cestu",
+  "path_usingHopsPath": "PouÅ¾Ã­va {count} {count, plural, =1{hop} other{hops}} cestu",
   "@path_usingHopsPath": {
     "placeholders": {
       "count": {
@@ -857,16 +857,16 @@
       }
     }
   },
-  "path_enterCustomPath": "Zadajte vlastný priebeh",
-  "path_currentPathLabel": "Aktuálny priebeh",
-  "path_hexPrefixInstructions": "Zadajte 2-miestne hexové predpony pre každú fázu, oddelené čiarkami.",
-  "path_hexPrefixExample": "A1,F2,3C (každý uzel používa prvý bajt svojho verejného kľúča)",
-  "path_labelHexPrefixes": "Cesty (hexové predpony)",
-  "path_helperMaxHops": "Max 64 skokov. Každý prefix je 2 hexadecimálne znaky (1 bajt).",
+  "path_enterCustomPath": "Zadajte vlastnÃ½ priebeh",
+  "path_currentPathLabel": "AktuÃ¡lny priebeh",
+  "path_hexPrefixInstructions": "Zadajte 2-miestne hexovÃ© predpony pre kaÅ¾dÃº fÃ¡zu, oddelenÃ© Äiarkami.",
+  "path_hexPrefixExample": "A1,F2,3C (kaÅ¾dÃ½ uzel pouÅ¾Ã­va prvÃ½ bajt svojho verejnÃ©ho kÄ¾ÃºÄa)",
+  "path_labelHexPrefixes": "Cesty (hexovÃ© predpony)",
+  "path_helperMaxHops": "Max 64 skokov. KaÅ¾dÃ½ prefix je 2 hexadecimÃ¡lne znaky (1 bajt).",
   "path_selectFromContacts": "Vyberte sa z kontaktov:",
-  "path_noRepeatersFound": "Nenašli sa žiadne opakovače ani serverové miestnosti.",
-  "path_customPathsRequire": "Vlastné cesty vyžadujú medziletoch, ktoré môžu prenášať správky.",
-  "path_invalidHexPrefixes": "Neplatné hexové predpony: {prefixes}",
+  "path_noRepeatersFound": "NenaÅ¡li sa Å¾iadne opakovaÄe ani serverovÃ© miestnosti.",
+  "path_customPathsRequire": "VlastnÃ© cesty vyÅ¾adujÃº medziletoch, ktorÃ© mÃ´Å¾u prenÃ¡Å¡aÅ¥ sprÃ¡vky.",
+  "path_invalidHexPrefixes": "NeplatnÃ© hexovÃ© predpony: {prefixes}",
   "@path_invalidHexPrefixes": {
     "placeholders": {
       "prefixes": {
@@ -874,26 +874,26 @@
       }
     }
   },
-  "path_tooLong": "Cesta je príliš dlhá. Umožnené je maximum 64 skokov.",
-  "path_setPath": "Nastaviť cestu",
-  "repeater_management": "Správa opakérov",
-  "repeater_managementTools": "Nástroje na správu",
+  "path_tooLong": "Cesta je prÃ­liÅ¡ dlhÃ¡. UmoÅ¾nenÃ© je maximum 64 skokov.",
+  "path_setPath": "NastaviÅ¥ cestu",
+  "repeater_management": "SprÃ¡va opakÃ©rov",
+  "repeater_managementTools": "NÃ¡stroje na sprÃ¡vu",
   "repeater_status": "Status",
-  "repeater_statusSubtitle": "Zobraziť stav, štatistiky a susedov repeatera",
+  "repeater_statusSubtitle": "ZobraziÅ¥ stav, Å¡tatistiky a susedov repeatera",
   "repeater_telemetry": "Telemetria",
-  "repeater_telemetrySubtitle": "Zobraziť telemetriu senzorov a systémových štatistík",
+  "repeater_telemetrySubtitle": "ZobraziÅ¥ telemetriu senzorov a systÃ©movÃ½ch Å¡tatistÃ­k",
   "repeater_cli": "CLI",
-  "repeater_cliSubtitle": "Pošlite príkazy opakovaču",
+  "repeater_cliSubtitle": "PoÅ¡lite prÃ­kazy opakovaÄu",
   "repeater_settings": "Nastavenia",
-  "repeater_settingsSubtitle": "Konfigurujte parametre opakovača",
-  "repeater_statusTitle": "Status opakého zboru",
-  "repeater_routingMode": "Režim trasy",
-  "repeater_autoUseSavedPath": "Použiť uloženú cestu",
-  "repeater_forceFloodMode": "Zavrieť režim núdzového povodňového režimu",
-  "repeater_pathManagement": "Správa trás",
-  "repeater_refresh": "Obnoviť",
-  "repeater_statusRequestTimeout": "Požiadavka stavu zlyhala.",
-  "repeater_errorLoadingStatus": "Chyba pri načítaní stavu: {error}",
+  "repeater_settingsSubtitle": "Konfigurujte parametre opakovaÄa",
+  "repeater_statusTitle": "Status opakÃ©ho zboru",
+  "repeater_routingMode": "ReÅ¾im trasy",
+  "repeater_autoUseSavedPath": "PouÅ¾iÅ¥ uloÅ¾enÃº cestu",
+  "repeater_forceFloodMode": "ZavrieÅ¥ reÅ¾im nÃºdzovÃ©ho povodÅˆovÃ©ho reÅ¾imu",
+  "repeater_pathManagement": "SprÃ¡va trÃ¡s",
+  "repeater_refresh": "ObnoviÅ¥",
+  "repeater_statusRequestTimeout": "PoÅ¾iadavka stavu zlyhala.",
+  "repeater_errorLoadingStatus": "Chyba pri naÄÃ­tanÃ­ stavu: {error}",
   "@repeater_errorLoadingStatus": {
     "placeholders": {
       "error": {
@@ -901,23 +901,23 @@
       }
     }
   },
-  "repeater_systemInformation": "Informácie o systéme",
-  "repeater_battery": "Batéria",
-  "repeater_clockAtLogin": "Čas (při přihlášení)",
-  "repeater_uptime": "Dostupnosť",
-  "repeater_queueLength": "Dĺžka fronty",
-  "repeater_debugFlags": "Kontrolné značky",
-  "repeater_radioStatistics": "Rádio Štatistiky",
-  "repeater_lastRssi": "Posledná RSSI",
-  "repeater_lastSnr": "Posledný SNR",
-  "repeater_noiseFloor": "Hladina šumu",
+  "repeater_systemInformation": "InformÃ¡cie o systÃ©me",
+  "repeater_battery": "BatÃ©ria",
+  "repeater_clockAtLogin": "ÄŒas (pÅ™i pÅ™ihlÃ¡Å¡enÃ­)",
+  "repeater_uptime": "DostupnosÅ¥",
+  "repeater_queueLength": "DÄºÅ¾ka fronty",
+  "repeater_debugFlags": "KontrolnÃ© znaÄky",
+  "repeater_radioStatistics": "RÃ¡dio Å tatistiky",
+  "repeater_lastRssi": "PoslednÃ¡ RSSI",
+  "repeater_lastSnr": "PoslednÃ½ SNR",
+  "repeater_noiseFloor": "Hladina Å¡umu",
   "repeater_txAirtime": "TX Airtime",
   "repeater_rxAirtime": "RX Airtime",
-  "repeater_packetStatistics": "Statistiky balíka",
-  "repeater_sent": "Odoslané",
-  "repeater_received": "Prišlo",
-  "repeater_duplicates": "Duplikáty",
-  "repeater_daysHoursMinsSecs": "{days} dní {hours}h {minutes}m {seconds}s",
+  "repeater_packetStatistics": "Statistiky balÃ­ka",
+  "repeater_sent": "OdoslanÃ©",
+  "repeater_received": "PriÅ¡lo",
+  "repeater_duplicates": "DuplikÃ¡ty",
+  "repeater_daysHoursMinsSecs": "{days} dnÃ­ {hours}h {minutes}m {seconds}s",
   "@repeater_daysHoursMinsSecs": {
     "placeholders": {
       "days": {
@@ -934,7 +934,7 @@
       }
     }
   },
-  "repeater_packetTxTotal": "Celkem: {total}, Povodňový režim: {flood}, Priamy: {direct}",
+  "repeater_packetTxTotal": "Celkem: {total}, PovodÅˆovÃ½ reÅ¾im: {flood}, Priamy: {direct}",
   "@repeater_packetTxTotal": {
     "placeholders": {
       "total": {
@@ -948,7 +948,7 @@
       }
     }
   },
-  "repeater_packetRxTotal": "Celkem: {total}, Povodňový režim: {flood}, Priamy: {direct}",
+  "repeater_packetRxTotal": "Celkem: {total}, PovodÅˆovÃ½ reÅ¾im: {flood}, Priamy: {direct}",
   "@repeater_packetRxTotal": {
     "placeholders": {
       "total": {
@@ -981,37 +981,37 @@
       }
     }
   },
-  "repeater_settingsTitle": "Nastavenia Opakovača",
-  "repeater_basicSettings": "Základné nastavenia",
-  "repeater_repeaterName": "Opakovacia názov",
-  "repeater_repeaterNameHelper": "Zobrazenie názvu tohto opakovača",
-  "repeater_adminPassword": "Heslo administrátora",
-  "repeater_adminPasswordHelper": "Celý prístupový heslo",
-  "repeater_guestPassword": "Heslo hosťa",
-  "repeater_guestPasswordHelper": "Prístupový heslo iba na čítanie",
-  "repeater_radioSettings": "Nastavenia rádia",
+  "repeater_settingsTitle": "Nastavenia OpakovacÌŒa",
+  "repeater_basicSettings": "ZÃ¡kladnÃ© nastavenia",
+  "repeater_repeaterName": "Opakovacia nÃ¡zov",
+  "repeater_repeaterNameHelper": "Zobrazenie nÃ¡zvu tohto opakovaÄa",
+  "repeater_adminPassword": "Heslo administrÃ¡tora",
+  "repeater_adminPasswordHelper": "CelÃ½ prÃ­stupovÃ½ heslo",
+  "repeater_guestPassword": "Heslo hosÅ¥a",
+  "repeater_guestPasswordHelper": "PrÃ­stupovÃ½ heslo iba na ÄÃ­tanie",
+  "repeater_radioSettings": "Nastavenia rÃ¡dia",
   "repeater_frequencyMhz": "Frekvencia (MHz)",
   "repeater_frequencyHelper": "300-2500 MHz",
   "repeater_txPower": "TX Power",
   "repeater_txPowerHelper": "1-30 dBm",
-  "repeater_bandwidth": "Šírka pásma",
-  "repeater_spreadingFactor": "Šírenie faktoru",
-  "repeater_codingRate": "Rýchlosť kódovania",
+  "repeater_bandwidth": "Å Ã­rka pÃ¡sma",
+  "repeater_spreadingFactor": "Å Ã­renie faktoru",
+  "repeater_codingRate": "RÃ½chlosÅ¥ kÃ³dovania",
   "repeater_locationSettings": "Nastavenia polohy",
-  "repeater_latitude": "Súradnica",
-  "repeater_latitudeHelper": "Desatinné zložky (napr. 37.7749)",
-  "repeater_longitude": "Dĺžka",
-  "repeater_longitudeHelper": "Desatinné zložky (napr. -122.4194)",
+  "repeater_latitude": "SÃºradnica",
+  "repeater_latitudeHelper": "DesatinnÃ© zloÅ¾ky (napr. 37.7749)",
+  "repeater_longitude": "DÄºÅ¾ka",
+  "repeater_longitudeHelper": "DesatinnÃ© zloÅ¾ky (napr. -122.4194)",
   "repeater_features": "Funkcie",
   "repeater_packetForwarding": "Riadenie prienikov",
-  "repeater_packetForwardingSubtitle": "Povolte opakovač na smerovanie paketov.",
-  "repeater_guestAccess": "Prístup pre hostí",
-  "repeater_guestAccessSubtitle": "Umožniť prístup hosta iba na čítanie.",
-  "repeater_privacyMode": "Režim ochrany súkromia",
-  "repeater_privacyModeSubtitle": "Skryť meno/poloha v reklamách",
+  "repeater_packetForwardingSubtitle": "Povolte opakovaÄ na smerovanie paketov.",
+  "repeater_guestAccess": "PrÃ­stup pre hostÃ­",
+  "repeater_guestAccessSubtitle": "UmoÅ¾niÅ¥ prÃ­stup hosta iba na ÄÃ­tanie.",
+  "repeater_privacyMode": "ReÅ¾im ochrany sÃºkromia",
+  "repeater_privacyModeSubtitle": "SkryÅ¥ meno/poloha v reklamÃ¡ch",
   "repeater_advertisementSettings": "Nastavenia reklamy",
-  "repeater_localAdvertInterval": "Lokálna reklamná časová obdoba",
-  "repeater_localAdvertIntervalMinutes": "{minutes} minút",
+  "repeater_localAdvertInterval": "LokÃ¡lna reklamnÃ¡ ÄasovÃ¡ obdoba",
+  "repeater_localAdvertIntervalMinutes": "{minutes} minÃºt",
   "@repeater_localAdvertIntervalMinutes": {
     "placeholders": {
       "minutes": {
@@ -1019,8 +1019,8 @@
       }
     }
   },
-  "repeater_floodAdvertInterval": "Interval reklamnej povodňovej reklamy",
-  "repeater_floodAdvertIntervalHours": "{hours} hodín",
+  "repeater_floodAdvertInterval": "Interval reklamnej povodÅˆovej reklamy",
+  "repeater_floodAdvertIntervalHours": "{hours} hodÃ­n",
   "@repeater_floodAdvertIntervalHours": {
     "placeholders": {
       "hours": {
@@ -1028,19 +1028,19 @@
       }
     }
   },
-  "repeater_encryptedAdvertInterval": "Šifrovaný reklamný interval",
-  "repeater_dangerZone": "Nebezpečná zóna",
-  "repeater_rebootRepeater": "Restart Repetér",
-  "repeater_rebootRepeaterSubtitle": "Resetovať vysielací prístroj",
-  "repeater_rebootRepeaterConfirm": "Ste si istý, že chcete tento opakovač restartovať?",
-  "repeater_regenerateIdentityKey": "Generovať kľúč identity",
-  "repeater_regenerateIdentityKeySubtitle": "Generovať nový pár verejných/privátnych kľúčov",
-  "repeater_regenerateIdentityKeyConfirm": "Toto vytvorí nový identitu pre opakovač. Pokračovať?",
-  "repeater_eraseFileSystem": "Vymažať Systémový Reťazec",
-  "repeater_eraseFileSystemSubtitle": "Formátovať systém opakujúcich sa súborov",
-  "repeater_eraseFileSystemConfirm": "VAROVANIE: Toto zmaže všetky dáta na opakovači. To sa nedá zrušiť!",
-  "repeater_eraseSerialOnly": "Odstránenie je dostupné len cez sériové rozhranie.",
-  "repeater_commandSent": "Poforovaný príkaz: {command}",
+  "repeater_encryptedAdvertInterval": "Å ifrovanÃ½ reklamnÃ½ interval",
+  "repeater_dangerZone": "NebezpeÄnÃ¡ zÃ³na",
+  "repeater_rebootRepeater": "Restart RepetÃ©r",
+  "repeater_rebootRepeaterSubtitle": "ResetovaÅ¥ vysielacÃ­ prÃ­stroj",
+  "repeater_rebootRepeaterConfirm": "Ste si istÃ½, Å¾e chcete tento opakovaÄ restartovaÅ¥?",
+  "repeater_regenerateIdentityKey": "GenerovaÅ¥ kÄ¾ÃºÄ identity",
+  "repeater_regenerateIdentityKeySubtitle": "GenerovaÅ¥ novÃ½ pÃ¡r verejnÃ½ch/privÃ¡tnych kÄ¾ÃºÄov",
+  "repeater_regenerateIdentityKeyConfirm": "Toto vytvorÃ­ novÃ½ identitu pre opakovaÄ. PokraÄovaÅ¥?",
+  "repeater_eraseFileSystem": "VymaÅ¾aÅ¥ SystÃ©movÃ½ ReÅ¥azec",
+  "repeater_eraseFileSystemSubtitle": "FormÃ¡tovaÅ¥ systÃ©m opakujÃºcich sa sÃºborov",
+  "repeater_eraseFileSystemConfirm": "VAROVANIE: Toto zmaÅ¾e vÅ¡etky dÃ¡ta na opakovaÄi. To sa nedÃ¡ zruÅ¡iÅ¥!",
+  "repeater_eraseSerialOnly": "OdstrÃ¡nenie je dostupnÃ© len cez sÃ©riovÃ© rozhranie.",
+  "repeater_commandSent": "PoforovanÃ½ prÃ­kaz: {command}",
   "@repeater_commandSent": {
     "placeholders": {
       "command": {
@@ -1048,7 +1048,7 @@
       }
     }
   },
-  "repeater_errorSendingCommand": "Chyba pri odeslaní príkazu: {error}",
+  "repeater_errorSendingCommand": "Chyba pri odeslanÃ­ prÃ­kazu: {error}",
   "@repeater_errorSendingCommand": {
     "placeholders": {
       "error": {
@@ -1056,9 +1056,9 @@
       }
     }
   },
-  "repeater_confirm": "Potvrdiť",
-  "repeater_settingsSaved": "Nastavenia boli uložené úspešne.",
-  "repeater_errorSavingSettings": "Chyba pri ukladaní nastavení: {error}",
+  "repeater_confirm": "PotvrdiÅ¥",
+  "repeater_settingsSaved": "Nastavenia boli uloÅ¾enÃ© ÃºspeÅ¡ne.",
+  "repeater_errorSavingSettings": "Chyba pri ukladanÃ­ nastavenÃ­: {error}",
   "@repeater_errorSavingSettings": {
     "placeholders": {
       "error": {
@@ -1066,15 +1066,15 @@
       }
     }
   },
-  "repeater_refreshBasicSettings": "Obnoviť základné nastavenia",
-  "repeater_refreshRadioSettings": "Obnoviť Nastavenia Rádií",
-  "repeater_refreshTxPower": "Obnoviť TX napájanie",
-  "repeater_refreshLocationSettings": "Obnoviť Nastavenia Miesta",
-  "repeater_refreshPacketForwarding": "Obnoviť smerovanie paketov",
-  "repeater_refreshGuestAccess": "Obnoviť prístup hosťa",
-  "repeater_refreshPrivacyMode": "Obnoviť Ochranný režim",
-  "repeater_refreshAdvertisementSettings": "Obnoviť nastavenia reklamy",
-  "repeater_refreshed": "{label} sa znova načítalo",
+  "repeater_refreshBasicSettings": "ObnoviÅ¥ zÃ¡kladnÃ© nastavenia",
+  "repeater_refreshRadioSettings": "ObnoviÅ¥ Nastavenia RÃ¡diÃ­",
+  "repeater_refreshTxPower": "ObnoviÅ¥ TX napÃ¡janie",
+  "repeater_refreshLocationSettings": "ObnoviÅ¥ Nastavenia Miesta",
+  "repeater_refreshPacketForwarding": "ObnoviÅ¥ smerovanie paketov",
+  "repeater_refreshGuestAccess": "ObnoviÅ¥ prÃ­stup hosÅ¥a",
+  "repeater_refreshPrivacyMode": "ObnoviÅ¥ OchrannÃ½ reÅ¾im",
+  "repeater_refreshAdvertisementSettings": "ObnoviÅ¥ nastavenia reklamy",
+  "repeater_refreshed": "{label} sa znova naÄÃ­talo",
   "@repeater_refreshed": {
     "placeholders": {
       "label": {
@@ -1082,7 +1082,7 @@
       }
     }
   },
-  "repeater_errorRefreshing": "Chyba pri obnovení {label}",
+  "repeater_errorRefreshing": "Chyba pri obnovenÃ­ {label}",
   "@repeater_errorRefreshing": {
     "placeholders": {
       "label": {
@@ -1091,16 +1091,16 @@
     }
   },
   "repeater_cliTitle": "Opakovacia CLI",
-  "repeater_debugNextCommand": "Oprava Nasledujúceho Príkaz",
+  "repeater_debugNextCommand": "Oprava NasledujÃºceho PrÃ­kaz",
   "repeater_commandHelp": "Pomoc",
-  "repeater_clearHistory": "Vymazať históriu",
-  "repeater_noCommandsSent": "Zatiaľ neboli odeslané žiadne príkazy.",
-  "repeater_typeCommandOrUseQuick": "Zadajte príkaz nižšie alebo použite rýchle príkazy",
-  "repeater_enterCommandHint": "Zadajte príkaz...",
-  "repeater_previousCommand": "Predchádzajúci príkaz",
-  "repeater_nextCommand": "Nasledujúci príkaz",
-  "repeater_enterCommandFirst": "Zadajte najprv príkaz",
-  "repeater_cliCommandFrameTitle": "Rámok Príkaz CLI",
+  "repeater_clearHistory": "VymazaÅ¥ histÃ³riu",
+  "repeater_noCommandsSent": "ZatiaÄ¾ neboli odeslanÃ© Å¾iadne prÃ­kazy.",
+  "repeater_typeCommandOrUseQuick": "Zadajte prÃ­kaz niÅ¾Å¡ie alebo pouÅ¾ite rÃ½chle prÃ­kazy",
+  "repeater_enterCommandHint": "Zadajte prÃ­kaz...",
+  "repeater_previousCommand": "PredchÃ¡dzajÃºci prÃ­kaz",
+  "repeater_nextCommand": "NasledujÃºci prÃ­kaz",
+  "repeater_enterCommandFirst": "Zadajte najprv prÃ­kaz",
+  "repeater_cliCommandFrameTitle": "RÃ¡mok PrÃ­kaz CLI",
   "repeater_cliCommandError": "Chyba: {error}",
   "@repeater_cliCommandError": {
     "placeholders": {
@@ -1109,81 +1109,81 @@
       }
     }
   },
-  "repeater_cliQuickGetName": "Zísť meno",
-  "repeater_cliQuickGetRadio": "Zísť po rádiu",
-  "repeater_cliQuickGetTx": "Zísť TX",
-  "repeater_cliQuickNeighbors": "Súsezný",
+  "repeater_cliQuickGetName": "ZÃ­sÅ¥ meno",
+  "repeater_cliQuickGetRadio": "ZÃ­sÅ¥ po rÃ¡diu",
+  "repeater_cliQuickGetTx": "ZÃ­sÅ¥ TX",
+  "repeater_cliQuickNeighbors": "SÃºseznÃ½",
   "repeater_cliQuickVersion": "Verzia",
   "repeater_cliQuickAdvertise": "Reklama",
   "repeater_cliQuickClock": "Hodiny",
-  "repeater_cliHelpAdvert": "Odosiela reklamnú balíček.",
-  "repeater_cliHelpReboot": "Resetuje zariadenie. (pozor, môže dôjsť k 'Timeoutu', čo je normálne)",
-  "repeater_cliHelpClock": "Zobrazuje aktuálny čas podľa hodiniek zariadenia.",
-  "repeater_cliHelpPassword": "Nastaví nový administrátorský prístupový údaj pre zariadenie.",
-  "repeater_cliHelpVersion": "Zobrazuje verziu zariadenia a dátum zostavenia firmvéru.",
-  "repeater_cliHelpClearStats": "Resetuje rôzne štatistické počítadlá na nulu.",
-  "repeater_cliHelpSetAf": "Nastavuje časový faktor.",
-  "repeater_cliHelpSetTx": "Nastavenie vysielacej sily LoRa v dBm. (potrebuje sa reštart na aplikáciu)",
-  "repeater_cliHelpSetRepeat": "Umožňuje alebo vypína zopakovaný príspevok pre tento uzol.",
-  "repeater_cliHelpSetAllowReadOnly": "(Server miestnosti) Ak je 'zapnuté', potom bude povolený prístup s prázdnym heslom, ale nebude možné posielať správu do miestnosti. (iba čítať).",
-  "repeater_cliHelpSetFloodMax": "Nastavuje maximálny počet skokov pre vstupný povelový paket (ak je >= max, paket nie je preposlaný)",
-  "repeater_cliHelpSetIntThresh": "Nastavuje hranicu ruživeho ladenia (v dB). Predvolené je 14. Nastavením na 0 sa vypne detekcia ruživeho ladenia kanálu.",
-  "repeater_cliHelpSetAgcResetInterval": "Nastavuje interval na reštartovanie Auto Gain Controlleru. Nastavenie na 0 vypne funkciu.",
-  "repeater_cliHelpSetMultiAcks": "Povolí alebo pozastaví funkciiu \"dvojité potvrdenia\".",
-  "repeater_cliHelpSetAdvertInterval": "Nastavuje interval časovača v minútach na odošle miestny (bezprostredný) reklamný paket. Nastavenie na 0 vypne funkciu.",
-  "repeater_cliHelpSetFloodAdvertInterval": "Nastavuje interval časovača v hodinách na odeslanie reklamnej vlne. Nastavenie na 0 vypne.",
-  "repeater_cliHelpSetGuestPassword": "Nastavuje/aktualizuje heslo hosťa. (pre opakované pripojenia môžu hosťovské prihlásenia posielať požadanie \"Get Stats\")",
-  "repeater_cliHelpSetName": "Nastaví názov reklamy.",
-  "repeater_cliHelpSetLat": "Nastaví geografickú šírku reklamnej mapy. (desatinné stupne)",
-  "repeater_cliHelpSetLon": "Nastavuje longitudinu reklamnej mapy. (desatinné stupne)",
-  "repeater_cliHelpSetRadio": "Nastavuje úplne nové parametre rádia a uloží ich do preferencií. Požaduje príkaz \"reboot\" na aplikáciu.",
-  "repeater_cliHelpSetRxDelay": "Nastavenia (experimentálne) základné (musi byť > 1 pre účel) na aplikáciu mierneho onesenia prijatých paketov, na základe signálu/skóre. Nastavenie na 0 vypne.",
-  "repeater_cliHelpSetTxDelay": "Nastavuje faktor násobený časom na vzduchu pre paket v režime povodňovej vlny a s náhodným systémom slotov, aby sa oneskorene jeho prenosovanie (s cieľom znížiť pravdepodobnosť kolízii).",
-  "repeater_cliHelpSetDirectTxDelay": "Podobne ako txdelay, ale pre aplikáciu náhodného oneskorenia pri preposlaní paketov v režime priameho prenosu.",
-  "repeater_cliHelpSetBridgeEnabled": "Aktivovať/Zatvárať most.",
-  "repeater_cliHelpSetBridgeDelay": "Nastaviť odklad pred retransmisiou paketov.",
-  "repeater_cliHelpSetBridgeSource": "Zvolte, či bude most retransmitovať prijaté alebo vysielané balíčky.",
-  "repeater_cliHelpSetBridgeBaud": "Nastavte sériový link baudrate pre rs232 mosty.",
-  "repeater_cliHelpSetBridgeSecret": "Nastaviť tajomstvo mosta pre eshnow mosty.",
-  "repeater_cliHelpSetAdcMultiplier": "Nastavuje vlastný faktor na úpravu nahlásenej batériovej napätia (podporované len na vybraných doskách).",
-  "repeater_cliHelpTempRadio": "Nastaví dočasné rádiové parametre pre zadaný počet minút, po skončení sa vráti k pôvodným rádiovým parametrom. (nepočuva sa do preferencií).",
-  "repeater_cliHelpSetPerm": "Zmení ACL. Odstráni zodpovedný záznam (podľa prefixa pubkey), ak je \"permissions\" rovné 0. Pridá nový záznam, ak je pubkey-hex plnej dĺžky a momentálne sa nenachádza v ACL. Aktualizuje záznam podľa zodpovedajúceho prefixa pubkey. Bitové oprávnenia sa líšia podľa funkčnej roly, ale nízke 2 bity sú: 0 (Hostiteľ), 1 (Čítanie len), 2 (Čítanie a zápis), 3 (Správca).",
-  "repeater_cliHelpGetBridgeType": "Zísť typ mosta: žiadny, rs232, espnow",
-  "repeater_cliHelpLogStart": "Začína protokolovanie balíkov do systému súborov.",
-  "repeater_cliHelpLogStop": "Zastaví protokolovanie paketov do systémového súboru.",
-  "repeater_cliHelpLogErase": "Odstráni záznamy z balíkov z systému súborov.",
-  "repeater_cliHelpNeighbors": "Zobrazuje zoznam iných repeaterových uzlov zasielaných cez zero-hop reklamy. Každý riadok je id-prefix-hex:timestamp:snr-times-4",
-  "repeater_cliHelpNeighborRemove": "Odstráni prvú zhodujúcu položku (podľa prefixu pubkey (hex)) z zoznamu susedov.",
-  "repeater_cliHelpRegion": "(len sériál) Zobrazuje všetky definované regióny a aktuálne povolenia pre povodňové situácie.",
-  "repeater_cliHelpRegionLoad": "Poznámka: toto je špeciálna multi-príkázová inštancia. Každé nasledujúce príkaza je názov oblasti (zapustený s medzerami na indikáciu hierarchického pomeru, s minimálne jednou medzerou). Ukončené odeslaním prázdnej platnej linky/príkazu.",
-  "repeater_cliHelpRegionGet": "Hľadá región s daným príponou názvu (alebo \"\\\" pre globálny rozsah). Odpovedá \"-> región-název (rodič-název) 'F'\"",
-  "repeater_cliHelpRegionPut": "Pridá alebo aktualizuje definíciu regiónu s daným menom.",
-  "repeater_cliHelpRegionRemove": "Odstráni definíciu oblasti s daným názvom. (musí zodpovedať presne a nemala by mať podoblasti)",
-  "repeater_cliHelpRegionAllowf": "Nastavuje povolenie 'P'lávu pre zadanú oblasť. ('' pre globálny/dedičský rozsah)",
-  "repeater_cliHelpRegionDenyf": "Odstráni povolenie 'F'lood' pre zadanú oblasť. (UPOZORNENIE: v tejto fáze nie je odporúčané ho používať na globálnom/dedskom rozsahu!!).",
-  "repeater_cliHelpRegionHome": "Odpovedá s aktuálnou 'domovskou' oblasťou. (Poznámka aplikovaná zatiaľ nikde, vyhradené na budúce)",
-  "repeater_cliHelpRegionHomeSet": "Nastaví 'domovskú' oblasť.",
-  "repeater_cliHelpRegionSave": "Uloží zoznam/mapu regiónov do úložiska.",
-  "repeater_cliHelpGps": "Zobrazuje stav GPS. Ak je GPS vypnutý, odpovedá len \"off\", ak je zapnutý, odpovedá s \"on\", stavom, fixom a počtom satelitov.",
-  "repeater_cliHelpGpsOnOff": "Prepínač stavu GPS napájania.",
-  "repeater_cliHelpGpsSync": "Synchronizuje čas uzla s GPS hodinami.",
-  "repeater_cliHelpGpsSetLoc": "Nastaví polohu uzla na GPS súradnice a uloží preferencie.",
-  "repeater_cliHelpGpsAdvert": "Poskytuje konfiguráciu reklamy pre uzol:\n- žiadna: nezahrňte polohu do reklám\n- zdieľať: zdieľajte GPS polohu (z SensorManager)\n- nastavenia: zobrazujte polohu uloženú v nastaveniach",
-  "repeater_cliHelpGpsAdvertSet": "Nastavuje konfiguráciu reklamy na zadané miesto.",
-  "repeater_commandsListTitle": "Zoznam príkazov",
-  "repeater_commandsListNote": "Poznámka: pre rôzne príkazy \"set ...\" existuje aj príkaz \"get ...\".",
-  "repeater_general": "Obecné",
+  "repeater_cliHelpAdvert": "Odosiela reklamnÃº balÃ­Äek.",
+  "repeater_cliHelpReboot": "Resetuje zariadenie. (pozor, mÃ´Å¾e dÃ´jsÅ¥ k 'Timeoutu', Äo je normÃ¡lne)",
+  "repeater_cliHelpClock": "Zobrazuje aktuÃ¡lny Äas podÄ¾a hodiniek zariadenia.",
+  "repeater_cliHelpPassword": "NastavÃ­ novÃ½ administrÃ¡torskÃ½ prÃ­stupovÃ½ Ãºdaj pre zariadenie.",
+  "repeater_cliHelpVersion": "Zobrazuje verziu zariadenia a dÃ¡tum zostavenia firmvÃ©ru.",
+  "repeater_cliHelpClearStats": "Resetuje rÃ´zne Å¡tatistickÃ© poÄÃ­tadlÃ¡ na nulu.",
+  "repeater_cliHelpSetAf": "Nastavuje ÄasovÃ½ faktor.",
+  "repeater_cliHelpSetTx": "Nastavenie vysielacej sily LoRa v dBm. (potrebuje sa reÅ¡tart na aplikÃ¡ciu)",
+  "repeater_cliHelpSetRepeat": "UmoÅ¾Åˆuje alebo vypÃ­na zopakovanÃ½ prÃ­spevok pre tento uzol.",
+  "repeater_cliHelpSetAllowReadOnly": "(Server miestnosti) Ak je 'zapnutÃ©', potom bude povolenÃ½ prÃ­stup s prÃ¡zdnym heslom, ale nebude moÅ¾nÃ© posielaÅ¥ sprÃ¡vu do miestnosti. (iba ÄÃ­taÅ¥).",
+  "repeater_cliHelpSetFloodMax": "Nastavuje maximÃ¡lny poÄet skokov pre vstupnÃ½ povelovÃ½ paket (ak je >= max, paket nie je preposlanÃ½)",
+  "repeater_cliHelpSetIntThresh": "Nastavuje hranicu ruÅ¾iveho ladenia (v dB). PredvolenÃ© je 14. NastavenÃ­m na 0 sa vypne detekcia ruÅ¾iveho ladenia kanÃ¡lu.",
+  "repeater_cliHelpSetAgcResetInterval": "Nastavuje interval na reÅ¡tartovanie Auto Gain Controlleru. Nastavenie na 0 vypne funkciu.",
+  "repeater_cliHelpSetMultiAcks": "PovolÃ­ alebo pozastavÃ­ funkciiu \"dvojitÃ© potvrdenia\".",
+  "repeater_cliHelpSetAdvertInterval": "Nastavuje interval ÄasovaÄa v minÃºtach na odoÅ¡le miestny (bezprostrednÃ½) reklamnÃ½ paket. Nastavenie na 0 vypne funkciu.",
+  "repeater_cliHelpSetFloodAdvertInterval": "Nastavuje interval ÄasovaÄa v hodinÃ¡ch na odeslanie reklamnej vlne. Nastavenie na 0 vypne.",
+  "repeater_cliHelpSetGuestPassword": "Nastavuje/aktualizuje heslo hosÅ¥a. (pre opakovanÃ© pripojenia mÃ´Å¾u hosÅ¥ovskÃ© prihlÃ¡senia posielaÅ¥ poÅ¾adanie \"Get Stats\")",
+  "repeater_cliHelpSetName": "NastavÃ­ nÃ¡zov reklamy.",
+  "repeater_cliHelpSetLat": "NastavÃ­ geografickÃº Å¡Ã­rku reklamnej mapy. (desatinnÃ© stupne)",
+  "repeater_cliHelpSetLon": "Nastavuje longitudinu reklamnej mapy. (desatinnÃ© stupne)",
+  "repeater_cliHelpSetRadio": "Nastavuje Ãºplne novÃ© parametre rÃ¡dia a uloÅ¾Ã­ ich do preferenciÃ­. PoÅ¾aduje prÃ­kaz \"reboot\" na aplikÃ¡ciu.",
+  "repeater_cliHelpSetRxDelay": "Nastavenia (experimentÃ¡lne) zÃ¡kladnÃ© (musi byÅ¥ > 1 pre ÃºÄel) na aplikÃ¡ciu mierneho onesenia prijatÃ½ch paketov, na zÃ¡klade signÃ¡lu/skÃ³re. Nastavenie na 0 vypne.",
+  "repeater_cliHelpSetTxDelay": "Nastavuje faktor nÃ¡sobenÃ½ Äasom na vzduchu pre paket v reÅ¾ime povodÅˆovej vlny a s nÃ¡hodnÃ½m systÃ©mom slotov, aby sa oneskorene jeho prenosovanie (s cieÄ¾om znÃ­Å¾iÅ¥ pravdepodobnosÅ¥ kolÃ­zii).",
+  "repeater_cliHelpSetDirectTxDelay": "Podobne ako txdelay, ale pre aplikÃ¡ciu nÃ¡hodnÃ©ho oneskorenia pri preposlanÃ­ paketov v reÅ¾ime priameho prenosu.",
+  "repeater_cliHelpSetBridgeEnabled": "AktivovaÅ¥/ZatvÃ¡raÅ¥ most.",
+  "repeater_cliHelpSetBridgeDelay": "NastaviÅ¥ odklad pred retransmisiou paketov.",
+  "repeater_cliHelpSetBridgeSource": "Zvolte, Äi bude most retransmitovaÅ¥ prijatÃ© alebo vysielanÃ© balÃ­Äky.",
+  "repeater_cliHelpSetBridgeBaud": "Nastavte sÃ©riovÃ½ link baudrate pre rs232 mosty.",
+  "repeater_cliHelpSetBridgeSecret": "NastaviÅ¥ tajomstvo mosta pre eshnow mosty.",
+  "repeater_cliHelpSetAdcMultiplier": "Nastavuje vlastnÃ½ faktor na Ãºpravu nahlÃ¡senej batÃ©riovej napÃ¤tia (podporovanÃ© len na vybranÃ½ch doskÃ¡ch).",
+  "repeater_cliHelpTempRadio": "NastavÃ­ doÄasnÃ© rÃ¡diovÃ© parametre pre zadanÃ½ poÄet minÃºt, po skonÄenÃ­ sa vrÃ¡ti k pÃ´vodnÃ½m rÃ¡diovÃ½m parametrom. (nepoÄuva sa do preferenciÃ­).",
+  "repeater_cliHelpSetPerm": "ZmenÃ­ ACL. OdstrÃ¡ni zodpovednÃ½ zÃ¡znam (podÄ¾a prefixa pubkey), ak je \"permissions\" rovnÃ© 0. PridÃ¡ novÃ½ zÃ¡znam, ak je pubkey-hex plnej dÄºÅ¾ky a momentÃ¡lne sa nenachÃ¡dza v ACL. Aktualizuje zÃ¡znam podÄ¾a zodpovedajÃºceho prefixa pubkey. BitovÃ© oprÃ¡vnenia sa lÃ­Å¡ia podÄ¾a funkÄnej roly, ale nÃ­zke 2 bity sÃº: 0 (HostiteÄ¾), 1 (ÄŒÃ­tanie len), 2 (ÄŒÃ­tanie a zÃ¡pis), 3 (SprÃ¡vca).",
+  "repeater_cliHelpGetBridgeType": "ZÃ­sÅ¥ typ mosta: Å¾iadny, rs232, espnow",
+  "repeater_cliHelpLogStart": "ZaÄÃ­na protokolovanie balÃ­kov do systÃ©mu sÃºborov.",
+  "repeater_cliHelpLogStop": "ZastavÃ­ protokolovanie paketov do systÃ©movÃ©ho sÃºboru.",
+  "repeater_cliHelpLogErase": "OdstrÃ¡ni zÃ¡znamy z balÃ­kov z systÃ©mu sÃºborov.",
+  "repeater_cliHelpNeighbors": "Zobrazuje zoznam inÃ½ch repeaterovÃ½ch uzlov zasielanÃ½ch cez zero-hop reklamy. KaÅ¾dÃ½ riadok je id-prefix-hex:timestamp:snr-times-4",
+  "repeater_cliHelpNeighborRemove": "OdstrÃ¡ni prvÃº zhodujÃºcu poloÅ¾ku (podÄ¾a prefixu pubkey (hex)) z zoznamu susedov.",
+  "repeater_cliHelpRegion": "(len sÃ©riÃ¡l) Zobrazuje vÅ¡etky definovanÃ© regiÃ³ny a aktuÃ¡lne povolenia pre povodÅˆovÃ© situÃ¡cie.",
+  "repeater_cliHelpRegionLoad": "PoznÃ¡mka: toto je Å¡peciÃ¡lna multi-prÃ­kÃ¡zovÃ¡ inÅ¡tancia. KaÅ¾dÃ© nasledujÃºce prÃ­kaza je nÃ¡zov oblasti (zapustenÃ½ s medzerami na indikÃ¡ciu hierarchickÃ©ho pomeru, s minimÃ¡lne jednou medzerou). UkonÄenÃ© odeslanÃ­m prÃ¡zdnej platnej linky/prÃ­kazu.",
+  "repeater_cliHelpRegionGet": "HÄ¾adÃ¡ regiÃ³n s danÃ½m prÃ­ponou nÃ¡zvu (alebo \"\\\" pre globÃ¡lny rozsah). OdpovedÃ¡ \"-> regiÃ³n-nÃ¡zev (rodiÄ-nÃ¡zev) 'F'\"",
+  "repeater_cliHelpRegionPut": "PridÃ¡ alebo aktualizuje definÃ­ciu regiÃ³nu s danÃ½m menom.",
+  "repeater_cliHelpRegionRemove": "OdstrÃ¡ni definÃ­ciu oblasti s danÃ½m nÃ¡zvom. (musÃ­ zodpovedaÅ¥ presne a nemala by maÅ¥ podoblasti)",
+  "repeater_cliHelpRegionAllowf": "Nastavuje povolenie 'P'lÃ¡vu pre zadanÃº oblasÅ¥. ('' pre globÃ¡lny/dediÄskÃ½ rozsah)",
+  "repeater_cliHelpRegionDenyf": "OdstrÃ¡ni povolenie 'F'lood' pre zadanÃº oblasÅ¥. (UPOZORNENIE: v tejto fÃ¡ze nie je odporÃºÄanÃ© ho pouÅ¾Ã­vaÅ¥ na globÃ¡lnom/dedskom rozsahu!!).",
+  "repeater_cliHelpRegionHome": "OdpovedÃ¡ s aktuÃ¡lnou 'domovskou' oblasÅ¥ou. (PoznÃ¡mka aplikovanÃ¡ zatiaÄ¾ nikde, vyhradenÃ© na budÃºce)",
+  "repeater_cliHelpRegionHomeSet": "NastavÃ­ 'domovskÃº' oblasÅ¥.",
+  "repeater_cliHelpRegionSave": "UloÅ¾Ã­ zoznam/mapu regiÃ³nov do ÃºloÅ¾iska.",
+  "repeater_cliHelpGps": "Zobrazuje stav GPS. Ak je GPS vypnutÃ½, odpovedÃ¡ len \"off\", ak je zapnutÃ½, odpovedÃ¡ s \"on\", stavom, fixom a poÄtom satelitov.",
+  "repeater_cliHelpGpsOnOff": "PrepÃ­naÄ stavu GPS napÃ¡jania.",
+  "repeater_cliHelpGpsSync": "Synchronizuje Äas uzla s GPS hodinami.",
+  "repeater_cliHelpGpsSetLoc": "NastavÃ­ polohu uzla na GPS sÃºradnice a uloÅ¾Ã­ preferencie.",
+  "repeater_cliHelpGpsAdvert": "Poskytuje konfigurÃ¡ciu reklamy pre uzol:\n- Å¾iadna: nezahrÅˆte polohu do reklÃ¡m\n- zdieÄ¾aÅ¥: zdieÄ¾ajte GPS polohu (z SensorManager)\n- nastavenia: zobrazujte polohu uloÅ¾enÃº v nastaveniach",
+  "repeater_cliHelpGpsAdvertSet": "Nastavuje konfigurÃ¡ciu reklamy na zadanÃ© miesto.",
+  "repeater_commandsListTitle": "Zoznam prÃ­kazov",
+  "repeater_commandsListNote": "PoznÃ¡mka: pre rÃ´zne prÃ­kazy \"set ...\" existuje aj prÃ­kaz \"get ...\".",
+  "repeater_general": "ObecnÃ©",
   "repeater_settingsCategory": "Nastavenia",
   "repeater_bridge": "Most",
-  "repeater_logging": "Záznamy",
-  "repeater_neighborsRepeaterOnly": "Súseznýci (iba opakovač)",
-  "repeater_regionManagementRepeaterOnly": "Správa regiónov (iba opakovač)",
-  "repeater_regionNote": "Regionové príkazy boli zavádzané na správu regionálnych definícií a oprávnení.",
-  "repeater_gpsManagement": "Správa GPS",
-  "repeater_gpsNote": "GPS príkaz bol zavádzaný na riadenie lokalitných tém.",
-  "telemetry_receivedData": "Obdolené Telemetrické dáta",
-  "telemetry_requestTimeout": "Požiadavka telemetrie zlyhala.",
-  "telemetry_errorLoading": "Chyba pri načítaní telemetrie: {error}",
+  "repeater_logging": "ZÃ¡znamy",
+  "repeater_neighborsRepeaterOnly": "SÃºseznÃ½ci (iba opakovaÄ)",
+  "repeater_regionManagementRepeaterOnly": "SprÃ¡va regiÃ³nov (iba opakovaÄ)",
+  "repeater_regionNote": "RegionovÃ© prÃ­kazy boli zavÃ¡dzanÃ© na sprÃ¡vu regionÃ¡lnych definÃ­ciÃ­ a oprÃ¡vnenÃ­.",
+  "repeater_gpsManagement": "SprÃ¡va GPS",
+  "repeater_gpsNote": "GPS prÃ­kaz bol zavÃ¡dzanÃ½ na riadenie lokalitnÃ½ch tÃ©m.",
+  "telemetry_receivedData": "ObdolenÃ© TelemetrickÃ© dÃ¡ta",
+  "telemetry_requestTimeout": "PoÅ¾iadavka telemetrie zlyhala.",
+  "telemetry_errorLoading": "Chyba pri naÄÃ­tanÃ­ telemetrie: {error}",
   "@telemetry_errorLoading": {
     "placeholders": {
       "error": {
@@ -1191,8 +1191,8 @@
       }
     }
   },
-  "telemetry_noData": "Nejsú dostupné žiadne údaje z telemetrie.",
-  "telemetry_channelTitle": "Kanál {channel}",
+  "telemetry_noData": "NejsÃº dostupnÃ© Å¾iadne Ãºdaje z telemetrie.",
+  "telemetry_channelTitle": "KanÃ¡l {channel}",
   "@telemetry_channelTitle": {
     "placeholders": {
       "channel": {
@@ -1200,11 +1200,11 @@
       }
     }
   },
-  "telemetry_batteryLabel": "Batéria",
-  "telemetry_voltageLabel": "Napätie",
+  "telemetry_batteryLabel": "BatÃ©ria",
+  "telemetry_voltageLabel": "NapÃ¤tie",
   "telemetry_mcuTemperatureLabel": "MCU teplota",
   "telemetry_temperatureLabel": "Teplota",
-  "telemetry_currentLabel": "Aktuálne",
+  "telemetry_currentLabel": "AktuÃ¡lne",
   "telemetry_batteryValue": "{percent}% / {volts}V",
   "@telemetry_batteryValue": {
     "placeholders": {
@@ -1232,7 +1232,7 @@
       }
     }
   },
-  "telemetry_temperatureValue": "{celsius}°C / {fahrenheit}°F",
+  "telemetry_temperatureValue": "{celsius}Â°C / {fahrenheit}Â°F",
   "@telemetry_temperatureValue": {
     "placeholders": {
       "celsius": {
@@ -1243,18 +1243,18 @@
       }
     }
   },
-  "channelPath_title": "Cesta balíka",
-  "channelPath_viewMap": "Zobraziť mapu",
-  "channelPath_otherObservedPaths": "Ostatné pozorovacie cesty",
-  "channelPath_repeaterHops": "Skoky opakovača",
-  "channelPath_noHopDetails": "Podrobnosti o balíčku zatiaľ nie sú dostupné.",
-  "channelPath_messageDetails": "Podrobnosti o zprávach",
-  "channelPath_senderLabel": "Posielateľ",
-  "channelPath_timeLabel": "Čas",
+  "channelPath_title": "Cesta balÃ­ka",
+  "channelPath_viewMap": "ZobraziÅ¥ mapu",
+  "channelPath_otherObservedPaths": "OstatnÃ© pozorovacie cesty",
+  "channelPath_repeaterHops": "Skoky opakovaÄa",
+  "channelPath_noHopDetails": "Podrobnosti o balÃ­Äku zatiaÄ¾ nie sÃº dostupnÃ©.",
+  "channelPath_messageDetails": "Podrobnosti o zprÃ¡vach",
+  "channelPath_senderLabel": "PosielateÄ¾",
+  "channelPath_timeLabel": "ÄŒas",
   "channelPath_repeatsLabel": "Opakovanie",
   "channelPath_pathLabel": "Cesta {index}",
-  "channelPath_observedLabel": "Pozorované",
-  "channelPath_observedPathTitle": "Sledovaný postup {index} • {hops}",
+  "channelPath_observedLabel": "PozorovanÃ©",
+  "channelPath_observedPathTitle": "SledovanÃ½ postup {index} â€¢ {hops}",
   "@channelPath_observedPathTitle": {
     "placeholders": {
       "index": {
@@ -1265,7 +1265,7 @@
       }
     }
   },
-  "channelPath_noLocationData": "Žiadne údaje o polohe",
+  "channelPath_noLocationData": "Å½iadne Ãºdaje o polohe",
   "channelPath_timeWithDate": "{day}/{month} {time}",
   "@channelPath_timeWithDate": {
     "placeholders": {
@@ -1288,8 +1288,8 @@
       }
     }
   },
-  "channelPath_unknownPath": "Neznáme",
-  "channelPath_floodPath": "Povodňová",
+  "channelPath_unknownPath": "NeznÃ¡me",
+  "channelPath_floodPath": "PovodÅˆovÃ¡",
   "channelPath_directPath": "Priamo",
   "channelPath_observedZeroOf": "0 z {total} skokov",
   "@channelPath_observedZeroOf": {
@@ -1311,8 +1311,8 @@
     }
   },
   "channelPath_mapTitle": "Mapa Trasy",
-  "channelPath_noRepeaterLocations": "Pre túto cestu nie je dostupných žiadne polohy opakovačov.",
-  "channelPath_primaryPath": "Cesta {index} (Hlavná)",
+  "channelPath_noRepeaterLocations": "Pre tÃºto cestu nie je dostupnÃ½ch Å¾iadne polohy opakovaÄov.",
+  "channelPath_primaryPath": "Cesta {index} (HlavnÃ¡)",
   "@channelPath_primaryPath": {
     "placeholders": {
       "index": {
@@ -1328,8 +1328,8 @@
     }
   },
   "channelPath_pathLabelTitle": "Cesta",
-  "channelPath_observedPathHeader": "Sledovaná cesta",
-  "channelPath_selectedPathLabel": "{label} • {prefixes}",
+  "channelPath_observedPathHeader": "SledovanÃ¡ cesta",
+  "channelPath_selectedPathLabel": "{label} â€¢ {prefixes}",
   "@channelPath_selectedPathLabel": {
     "placeholders": {
       "label": {
@@ -1340,20 +1340,20 @@
       }
     }
   },
-  "channelPath_noHopDetailsAvailable": "Pre toto balíček nie sú dostupné údaje o skokoch.",
-  "channelPath_unknownRepeater": "Neznáme opakovače",
-  "listFilter_tooltip": "Filtrovať a triediť",
-  "listFilter_sortBy": "Triediť podľa",
-  "listFilter_latestMessages": "Posledné správy",
-  "listFilter_heardRecently": "Nedávno počuli.",
+  "channelPath_noHopDetailsAvailable": "Pre toto balÃ­Äek nie sÃº dostupnÃ© Ãºdaje o skokoch.",
+  "channelPath_unknownRepeater": "NeznÃ¡me opakovaÄe",
+  "listFilter_tooltip": "FiltrovaÅ¥ a triediÅ¥",
+  "listFilter_sortBy": "TriediÅ¥ podÄ¾a",
+  "listFilter_latestMessages": "PoslednÃ© sprÃ¡vy",
+  "listFilter_heardRecently": "NedÃ¡vno poÄuli.",
   "listFilter_az": "A-Z",
   "listFilter_filters": "Filtre",
-  "listFilter_all": "Všetko",
-  "listFilter_users": "Používatelia",
-  "listFilter_repeaters": "Opakovadlá",
-  "listFilter_roomServers": "Servéry miestnosti",
-  "listFilter_unreadOnly": "Nezaregistrované len",
-  "listFilter_newGroup": "Nová skupina",
+  "listFilter_all": "VÅ¡etko",
+  "listFilter_users": "PouÅ¾Ã­vatelia",
+  "listFilter_repeaters": "OpakovadlÃ¡",
+  "listFilter_roomServers": "ServÃ©ry miestnosti",
+  "listFilter_unreadOnly": "NezaregistrovanÃ© len",
+  "listFilter_newGroup": "NovÃ¡ skupina",
   "@neighbors_errorLoading": {
     "placeholders": {
       "error": {
@@ -1361,25 +1361,25 @@
       }
     }
   },
-  "repeater_neighborsSubtitle": "Zobraziť susedné body bez skokov.",
-  "neighbors_requestTimedOut": "Súďia žiadajú o časové ukončenie.",
-  "neighbors_receivedData": "Obdielo dáta suseda",
-  "repeater_neighbors": "Súsezný",
-  "neighbors_errorLoading": "Chyba pri načítaní susedov: {error}",
-  "neighbors_repeatersNeighbors": "Opakovadlá Súsezná",
-  "neighbors_noData": "Nie je dostupná žiadna informácia o susedoch.",
-  "channels_createPrivateChannel": "Vytvorte súkromný kanál",
-  "channels_joinPrivateChannel": "Pripojiť sa k súkromnému kanálu",
-  "channels_joinPrivateChannelDesc": "Ručne zadajte tajný kľúč.",
-  "channels_createPrivateChannelDesc": "Zabezpečené pomocou tajného kľúča.",
-  "channels_joinPublicChannel": "Pripojte sa k verejnému kanálu",
-  "channels_joinPublicChannelDesc": "Któvek sátó na tutó kanalizovát.",
-  "channels_joinHashtagChannel": "Pripojte sa k Hashtag Kanálu",
-  "channels_joinHashtagChannelDesc": "Ktoekolikoľvek sa môže pridať do hashtag kanálov.",
-  "channels_scanQrCode": "Skenujte QR kód",
-  "channels_scanQrCodeComingSoon": "Čoskoro",
+  "repeater_neighborsSubtitle": "ZobraziÅ¥ susednÃ© body bez skokov.",
+  "neighbors_requestTimedOut": "SÃºÄia Å¾iadajÃº o ÄasovÃ© ukonÄenie.",
+  "neighbors_receivedData": "Obdielo dÃ¡ta suseda",
+  "repeater_neighbors": "SÃºseznÃ½",
+  "neighbors_errorLoading": "Chyba pri naÄÃ­tanÃ­ susedov: {error}",
+  "neighbors_repeatersNeighbors": "OpakovadlÃ¡ SÃºseznÃ¡",
+  "neighbors_noData": "Nie je dostupnÃ¡ Å¾iadna informÃ¡cia o susedoch.",
+  "channels_createPrivateChannel": "Vytvorte sÃºkromnÃ½ kanÃ¡l",
+  "channels_joinPrivateChannel": "PripojiÅ¥ sa k sÃºkromnÃ©mu kanÃ¡lu",
+  "channels_joinPrivateChannelDesc": "RuÄne zadajte tajnÃ½ kÄ¾ÃºÄ.",
+  "channels_createPrivateChannelDesc": "ZabezpeÄenÃ© pomocou tajnÃ©ho kÄ¾ÃºÄa.",
+  "channels_joinPublicChannel": "Pripojte sa k verejnÃ©mu kanÃ¡lu",
+  "channels_joinPublicChannelDesc": "KtoÌvek saÌtoÌ na tutoÌ kanalizovaÌt.",
+  "channels_joinHashtagChannel": "Pripojte sa k Hashtag KanÃ¡lu",
+  "channels_joinHashtagChannelDesc": "KtoekolikoÄ¾vek sa mÃ´Å¾e pridaÅ¥ do hashtag kanÃ¡lov.",
+  "channels_scanQrCode": "Skenujte QR kÃ³d",
+  "channels_scanQrCodeComingSoon": "ÄŒoskoro",
   "channels_enterHashtag": "Zadajte hashtag",
-  "channels_hashtagHint": "napr. #tím",
+  "channels_hashtagHint": "napr. #tÃ­m",
   "@neighbors_unknownContact": {
     "placeholders": {
       "pubkey": {
@@ -1394,14 +1394,14 @@
       }
     }
   },
-  "neighbors_heardAgo": "Počuli sme to: {time} dozadu",
-  "neighbors_unknownContact": "Neznáma {pubkey}",
-  "settings_locationGPSEnable": "Aktivovať GPS",
-  "settings_locationGPSEnableSubtitle": "Povolí automatické aktualizovanie polohy pomocou GPS.",
+  "neighbors_heardAgo": "PoÄuli sme to: {time} dozadu",
+  "neighbors_unknownContact": "NeznÃ¡ma {pubkey}",
+  "settings_locationGPSEnable": "AktivovaÅ¥ GPS",
+  "settings_locationGPSEnableSubtitle": "PovolÃ­ automatickÃ© aktualizovanie polohy pomocou GPS.",
   "settings_locationIntervalSec": "Interval pre GPS (Sekundy)",
-  "settings_locationIntervalInvalid": "Interval musí byť aspoň 60 sekúnd a menej ako 86400 sekúnd.",
-  "contacts_manageRoom": "Spravovať server miestnosti",
-  "room_management": "Správa servera miestnosti",
+  "settings_locationIntervalInvalid": "Interval musÃ­ byÅ¥ aspoÅˆ 60 sekÃºnd a menej ako 86400 sekÃºnd.",
+  "contacts_manageRoom": "SpravovaÅ¥ server miestnosti",
+  "room_management": "SprÃ¡va servera miestnosti",
   "@community_joinConfirmation": {
     "placeholders": {
       "name": {
@@ -1458,36 +1458,36 @@
       }
     }
   },
-  "community_create": "Vytvoriť komunitu",
+  "community_create": "VytvoriÅ¥ komunitu",
   "community_title": "Komunita",
-  "community_createDesc": "Vytvorte novú komunitu a zdieľajte cez QR kód.",
-  "community_join": "Pripojiť",
-  "community_joinTitle": "Pripojiť sa k spoločenstvu",
-  "community_joinConfirmation": "Chceš sa pridať do komunity \"{name}\"?",
-  "community_scanQr": "Skontrolujte komunitný QR kód",
-  "community_scanInstructions": "Zamerte kameru na komunitný QR kód.",
-  "community_showQr": "Zobraziť QR kód",
+  "community_createDesc": "Vytvorte novÃº komunitu a zdieÄ¾ajte cez QR kÃ³d.",
+  "community_join": "PripojiÅ¥",
+  "community_joinTitle": "PripojiÅ¥ sa k spoloÄenstvu",
+  "community_joinConfirmation": "ChceÅ¡ sa pridaÅ¥ do komunity \"{name}\"?",
+  "community_scanQr": "Skontrolujte komunitnÃ½ QR kÃ³d",
+  "community_scanInstructions": "Zamerte kameru na komunitnÃ½ QR kÃ³d.",
+  "community_showQr": "ZobraziÅ¥ QR kÃ³d",
   "common_ok": "OK\nDobre",
-  "community_publicChannel": "Komunita verejná",
-  "community_hashtagChannel": "Komunitný Hashtag",
+  "community_publicChannel": "Komunita verejnÃ¡",
+  "community_hashtagChannel": "KomunitnÃ½ Hashtag",
   "community_name": "Komunita",
-  "community_enterName": "Zadajte názov komunity",
-  "community_created": "Komunita \"{name}\" vytvorená",
-  "community_joined": "Pripojená komunita \"{name}\"",
-  "community_qrTitle": "Zdieľť komunitu",
-  "community_qrInstructions": "Skenejte tento QR kód, aby ste sa pripojili k {name}.",
-  "community_hashtagPrivacyHint": "Hashtagové kanály komunity sú prístupné len členom komunity",
-  "community_invalidQrCode": "Neplatná QR kód komunity.",
-  "community_alreadyMember": "Už ste členom.",
-  "community_alreadyMemberMessage": "Vy ste už členom \"{name}\".",
-  "community_addPublicChannel": "Pridať verejný komunikačný kanál",
-  "community_addPublicChannelHint": "Automaticky prida verejný kanál pre túto komunitu.",
-  "community_noCommunities": "Zatiaľ ste sa nepripojili k žiadnej komunite",
-  "community_scanOrCreate": "Skene QR kód alebo vytvor komunitu na začiatok.",
-  "community_manageCommunities": "Spravovať komunity",
+  "community_enterName": "Zadajte nÃ¡zov komunity",
+  "community_created": "Komunita \"{name}\" vytvorenÃ¡",
+  "community_joined": "PripojenÃ¡ komunita \"{name}\"",
+  "community_qrTitle": "ZdieÄ¾Å¥ komunitu",
+  "community_qrInstructions": "Skenejte tento QR kÃ³d, aby ste sa pripojili k {name}.",
+  "community_hashtagPrivacyHint": "HashtagovÃ© kanÃ¡ly komunity sÃº prÃ­stupnÃ© len Älenom komunity",
+  "community_invalidQrCode": "NeplatnÃ¡ QR kÃ³d komunity.",
+  "community_alreadyMember": "UÅ¾ ste Älenom.",
+  "community_alreadyMemberMessage": "Vy ste uÅ¾ Älenom \"{name}\".",
+  "community_addPublicChannel": "PridaÅ¥ verejnÃ½ komunikaÄnÃ½ kanÃ¡l",
+  "community_addPublicChannelHint": "Automaticky prida verejnÃ½ kanÃ¡l pre tÃºto komunitu.",
+  "community_noCommunities": "ZatiaÄ¾ ste sa nepripojili k Å¾iadnej komunite",
+  "community_scanOrCreate": "Skene QR kÃ³d alebo vytvor komunitu na zaÄiatok.",
+  "community_manageCommunities": "SpravovaÅ¥ komunity",
   "community_delete": "Nechajte komunitu",
-  "community_deleteConfirm": "Opustiť \"{name}\"?",
-  "community_deleteChannelsWarning": "Tým sa tiež vymaže {count} kanál/kanálov a ich správy.",
+  "community_deleteConfirm": "OpustiÅ¥ \"{name}\"?",
+  "community_deleteChannelsWarning": "TÃ½m sa tieÅ¾ vymaÅ¾e {count} kanÃ¡l/kanÃ¡lov a ich sprÃ¡vy.",
   "@community_deleteChannelsWarning": {
     "placeholders": {
       "count": {
@@ -1495,14 +1495,14 @@
       }
     }
   },
-  "community_deleted": "Opustená komunita \"{name}\"",
-  "community_addHashtagChannel": "Pridať komunitný hashtag",
-  "community_addHashtagChannelDesc": "Pridajte hashtagový kanál pre túto komunitu.",
+  "community_deleted": "OpustenÃ¡ komunita \"{name}\"",
+  "community_addHashtagChannel": "PridaÅ¥ komunitnÃ½ hashtag",
+  "community_addHashtagChannelDesc": "Pridajte hashtagovÃ½ kanÃ¡l pre tÃºto komunitu.",
   "community_selectCommunity": "Vyberte komunitu",
-  "community_regularHashtag": "Zvyčajný hashtag",
-  "community_regularHashtagDesc": "Veľký hashtag (ktočokoľvek sa môže pridať)",
-  "community_communityHashtag": "Komunitný Hashtag",
-  "community_communityHashtagDesc": "Špecifické pre členov komunity",
+  "community_regularHashtag": "ZvyÄajnÃ½ hashtag",
+  "community_regularHashtagDesc": "VeÄ¾kÃ½ hashtag (ktoÄokoÄ¾vek sa mÃ´Å¾e pridaÅ¥)",
+  "community_communityHashtag": "KomunitnÃ½ Hashtag",
+  "community_communityHashtagDesc": "Å pecifickÃ© pre Älenov komunity",
   "community_forCommunity": "Pre {name}",
   "@community_regenerateSecretConfirm": {
     "placeholders": {
@@ -1532,12 +1532,12 @@
       }
     }
   },
-  "community_secretRegenerated": "Záznam pre \"{name}\" bol regenerovaný tajne",
-  "community_regenerateSecretConfirm": "Znovu vygenerovať tajný kľúč pre \"{name}\"? Všetci členovia budú musieť skanovať nový QR kód, aby mohli nadviazať komunikáciu.",
-  "community_regenerate": "Znovu vygenerovať",
-  "community_regenerateSecret": "Zobraziť nový tajný kód",
-  "community_scanToUpdateSecret": "Skáňte nový QR kód na aktualizáciu tajného hesla pre \"{name}\"",
-  "community_updateSecret": "Aktualizovať tajné heslo",
+  "community_secretRegenerated": "ZÃ¡znam pre \"{name}\" bol regenerovanÃ½ tajne",
+  "community_regenerateSecretConfirm": "Znovu vygenerovaÅ¥ tajnÃ½ kÄ¾ÃºÄ pre \"{name}\"? VÅ¡etci Älenovia budÃº musieÅ¥ skanovaÅ¥ novÃ½ QR kÃ³d, aby mohli nadviazaÅ¥ komunikÃ¡ciu.",
+  "community_regenerate": "Znovu vygenerovaÅ¥",
+  "community_regenerateSecret": "ZobraziÅ¥ novÃ½ tajnÃ½ kÃ³d",
+  "community_scanToUpdateSecret": "SkÃ¡Åˆte novÃ½ QR kÃ³d na aktualizÃ¡ciu tajnÃ©ho hesla pre \"{name}\"",
+  "community_updateSecret": "AktualizovaÅ¥ tajnÃ© heslo",
   "community_secretUpdated": "Zmena tajnej slova pre \"{name}\"",
   "@contacts_pathTraceTo": {
     "placeholders": {
@@ -1548,80 +1548,80 @@
   },
   "pathTrace_you": "Vy",
   "pathTrace_failed": "Sledovanie cesty zlyhalo.",
-  "pathTrace_notAvailable": "Path trace nie je k dispozícii.",
-  "pathTrace_refreshTooltip": "Obnoviť Path Trace.",
-  "contacts_pathTrace": "Sledovanie lúčov",
-  "contacts_ping": "Pingovať",
-  "contacts_repeaterPathTrace": "Sledovanie cesty k opakovaču",
-  "contacts_repeaterPing": "Pingovať opakovač",
+  "pathTrace_notAvailable": "Path trace nie je k dispozÃ­cii.",
+  "pathTrace_refreshTooltip": "ObnoviÅ¥ Path Trace.",
+  "contacts_pathTrace": "Sledovanie lÃºÄov",
+  "contacts_ping": "PingovaÅ¥",
+  "contacts_repeaterPathTrace": "Sledovanie cesty k opakovaÄu",
+  "contacts_repeaterPing": "PingovaÅ¥ opakovaÄ",
   "contacts_roomPathTrace": "Sledovanie cesty k serveru miestnosti",
   "contacts_roomPing": "Ping server miestnosti",
-  "contacts_chatTraceRoute": "Sledovať trasu lúča",
-  "contacts_pathTraceTo": "Sledovať trasu k {name}",
-  "contacts_clipboardEmpty": "Schránka je prázdna.",
-  "appSettings_languageUk": "Ukrajinská",
-  "contacts_contactImportFailed": "Kontakt sa nepodarilo importovať.",
-  "contacts_zeroHopAdvert": "Inzerát Zero Hop",
-  "contacts_floodAdvert": "Inzerát povodní",
-  "contacts_copyAdvertToClipboard": "Kopírovať reklamu do schránky",
-  "contacts_invalidAdvertFormat": "Neplatné kontaktné údaje",
-  "appSettings_languageRu": "Ruština",
-  "appSettings_enableMessageTracing": "Povoliť sledovanie správ",
-  "appSettings_enableMessageTracingSubtitle": "Zobraziť podrobné metadáta o smerovaní a časovaní správ",
-  "contacts_addContactFromClipboard": "Pridať kontakt z schránky",
-  "contacts_contactImported": "Kontakt bol importovaný.",
-  "contacts_zeroHopContactAdvertSent": "Poslal kontakt cez inzerát.",
-  "contacts_contactAdvertCopied": "Inzerát bol skopírovaný do schránky.",
-  "contacts_contactAdvertCopyFailed": "Kopírovanie inzerátu do schránky zlyhalo.",
+  "contacts_chatTraceRoute": "SledovaÅ¥ trasu lÃºÄa",
+  "contacts_pathTraceTo": "SledovaÅ¥ trasu k {name}",
+  "contacts_clipboardEmpty": "SchrÃ¡nka je prÃ¡zdna.",
+  "appSettings_languageUk": "UkrajinskÃ¡",
+  "contacts_contactImportFailed": "Kontakt sa nepodarilo importovaÅ¥.",
+  "contacts_zeroHopAdvert": "InzerÃ¡t Zero Hop",
+  "contacts_floodAdvert": "InzerÃ¡t povodnÃ­",
+  "contacts_copyAdvertToClipboard": "KopÃ­rovaÅ¥ reklamu do schrÃ¡nky",
+  "contacts_invalidAdvertFormat": "NeplatnÃ© kontaktnÃ© Ãºdaje",
+  "appSettings_languageRu": "RuÅ¡tina",
+  "appSettings_enableMessageTracing": "PovoliÅ¥ sledovanie sprÃ¡v",
+  "appSettings_enableMessageTracingSubtitle": "ZobraziÅ¥ podrobnÃ© metadÃ¡ta o smerovanÃ­ a ÄasovanÃ­ sprÃ¡v",
+  "contacts_addContactFromClipboard": "PridaÅ¥ kontakt z schrÃ¡nky",
+  "contacts_contactImported": "Kontakt bol importovanÃ½.",
+  "contacts_zeroHopContactAdvertSent": "Poslal kontakt cez inzerÃ¡t.",
+  "contacts_contactAdvertCopied": "InzerÃ¡t bol skopÃ­rovanÃ½ do schrÃ¡nky.",
+  "contacts_contactAdvertCopyFailed": "KopÃ­rovanie inzerÃ¡tu do schrÃ¡nky zlyhalo.",
   "contacts_zeroHopContactAdvertFailed": "Zlyhalo odoslanie kontaktu.",
-  "contacts_ShareContactZeroHop": "Zdieľať kontakt cez inzerát",
-  "contacts_ShareContact": "Kopírovať kontakt do schránky",
+  "contacts_ShareContactZeroHop": "ZdieÄ¾aÅ¥ kontakt cez inzerÃ¡t",
+  "contacts_ShareContact": "KopÃ­rovaÅ¥ kontakt do schrÃ¡nky",
   "notification_activityTitle": "Aktivita MeshCore",
-  "notification_messagesCount": "{count} {count, plural, =1{správa} few{správy} other{správ}}",
-  "notification_channelMessagesCount": "{count} {count, plural, =1{správa kanálu} few{správy kanálu} other{správ kanálu}}",
-  "notification_newNodesCount": "{count} {count, plural, =1{nový uzol} few{nové uzly} other{nových uzlov}}",
-  "notification_newTypeDiscovered": "Nový {contactType} objavený",
-  "notification_receivedNewMessage": "Prijatá nová správa",
-  "settings_gpxExportRepeatersSubtitle": "Exportuje repeater / roomserver s lokalitou do súboru GPX.",
+  "notification_messagesCount": "{count} {count, plural, =1{sprÃ¡va} few{sprÃ¡vy} other{sprÃ¡v}}",
+  "notification_channelMessagesCount": "{count} {count, plural, =1{sprÃ¡va kanÃ¡lu} few{sprÃ¡vy kanÃ¡lu} other{sprÃ¡v kanÃ¡lu}}",
+  "notification_newNodesCount": "{count} {count, plural, =1{novÃ½ uzol} few{novÃ© uzly} other{novÃ½ch uzlov}}",
+  "notification_newTypeDiscovered": "NovÃ½ {contactType} objavenÃ½",
+  "notification_receivedNewMessage": "PrijatÃ¡ novÃ¡ sprÃ¡va",
+  "settings_gpxExportRepeatersSubtitle": "Exportuje repeater / roomserver s lokalitou do sÃºboru GPX.",
   "settings_gpxExportContacts": "Export sprievodcov do GPX",
-  "settings_gpxExportSuccess": "Úspešne exportovaný súbor GPX.",
-  "settings_gpxExportNoContacts": "Žiadne kontakty na export.",
-  "settings_gpxExportNotAvailable": "Nie je podporované na vašom zariadení/operáciomnom systéme",
-  "settings_gpxExportRepeatersRoom": "Umiestnenia opakovačov a serverov miestností",
-  "settings_gpxExportError": "Vyskytol sa chyba počas exportu.",
-  "settings_gpxExportAllSubtitle": "Exportuje všetky kontakty s lokalitou do súboru GPX.",
-  "settings_gpxExportContactsSubtitle": "Exportuje sprievodcov s umiestnením do súboru GPX.",
-  "settings_gpxExportRepeaters": "Exportovať repeater / server miestnosti do GPX",
-  "settings_gpxExportAll": "Exportovať všetky kontakty do GPX",
-  "settings_gpxExportAllContacts": "Všetky kontaktné lokality",
-  "settings_gpxExportChat": "Lokácie sprievodcov",
-  "settings_gpxExportShareText": "Mapové údaje exportované z meshcore-open",
-  "settings_gpxExportShareSubject": "meshcore-open export dát GPX mapových údajov",
-  "pathTrace_someHopsNoLocation": "Jedna alebo viac chmeľov chýba lokalita!",
-  "pathTrace_clearTooltip": "Zmazať cestu",
+  "settings_gpxExportSuccess": "ÃšspeÅ¡ne exportovanÃ½ sÃºbor GPX.",
+  "settings_gpxExportNoContacts": "Å½iadne kontakty na export.",
+  "settings_gpxExportNotAvailable": "Nie je podporovanÃ© na vaÅ¡om zariadenÃ­/operÃ¡ciomnom systÃ©me",
+  "settings_gpxExportRepeatersRoom": "Umiestnenia opakovaÄov a serverov miestnostÃ­",
+  "settings_gpxExportError": "Vyskytol sa chyba poÄas exportu.",
+  "settings_gpxExportAllSubtitle": "Exportuje vÅ¡etky kontakty s lokalitou do sÃºboru GPX.",
+  "settings_gpxExportContactsSubtitle": "Exportuje sprievodcov s umiestnenÃ­m do sÃºboru GPX.",
+  "settings_gpxExportRepeaters": "ExportovaÅ¥ repeater / server miestnosti do GPX",
+  "settings_gpxExportAll": "ExportovaÅ¥ vÅ¡etky kontakty do GPX",
+  "settings_gpxExportAllContacts": "VÅ¡etky kontaktnÃ© lokality",
+  "settings_gpxExportChat": "LokÃ¡cie sprievodcov",
+  "settings_gpxExportShareText": "MapovÃ© Ãºdaje exportovanÃ© z meshcore-open",
+  "settings_gpxExportShareSubject": "meshcore-open export dÃ¡t GPX mapovÃ½ch Ãºdajov",
+  "pathTrace_someHopsNoLocation": "Jedna alebo viac chmeÄ¾ov chÃ½ba lokalita!",
+  "pathTrace_clearTooltip": "ZmazaÅ¥ cestu",
   "map_tapToAdd": "Kliknite na uzly, aby ste ich pridali k ceste.",
-  "map_removeLast": "Odstrániť posledný",
-  "map_runTrace": "Spustiť trasovaním cesty",
-  "map_pathTraceCancelled": "Zrušenie stopáže cesty bolo zrušené.",
-  "scanner_bluetoothOffMessage": "Prosím, zapnite Bluetooth, aby ste mohli skenovať pre zariadenia.",
-  "scanner_chromeRequired": "Vyžaduje sa prehliadač Chrome",
-  "scanner_chromeRequiredMessage": "Táto webová aplikácia vyžaduje Google Chrome alebo prehliadač založený na Chromium pre podporu Bluetooth.",
-  "scanner_bluetoothOff": "Bluetooth je vypnutý",
+  "map_removeLast": "OdstrÃ¡niÅ¥ poslednÃ½",
+  "map_runTrace": "SpustiÅ¥ trasovanÃ­m cesty",
+  "map_pathTraceCancelled": "ZruÅ¡enie stopÃ¡Å¾e cesty bolo zruÅ¡enÃ©.",
+  "scanner_bluetoothOffMessage": "ProsÃ­m, zapnite Bluetooth, aby ste mohli skenovaÅ¥ pre zariadenia.",
+  "scanner_chromeRequired": "VyÅ¾aduje sa prehliadaÄ Chrome",
+  "scanner_chromeRequiredMessage": "TÃ¡to webovÃ¡ aplikÃ¡cia vyÅ¾aduje Google Chrome alebo prehliadaÄ zaloÅ¾enÃ½ na Chromium pre podporu Bluetooth.",
+  "scanner_bluetoothOff": "Bluetooth je vypnutÃ½",
   "scanner_enableBluetooth": "Povolte Bluetooth",
-  "snrIndicator_lastSeen": "Naposledy videný",
-  "snrIndicator_nearByRepeaters": "Miestne opakovače",
-  "chat_ShowAllPaths": "Zobraziť všetky cesty",
-  "settings_clientRepeat": "Opätovné použitie bez elektrickej siete",
-  "settings_clientRepeatFreqWarning": "Použitie off-grid systému vyžaduje frekvencie 433, 869 alebo 918 MHz.",
-  "settings_clientRepeatSubtitle": "Umožnite, aby toto zariadenie opakovávalo siete pre ostatných.",
-  "settings_aboutOpenMeteoAttribution": "Údaje o nadmorskej výške LOS: Open-Meteo (CC BY 4.0)",
+  "snrIndicator_lastSeen": "Naposledy videnÃ½",
+  "snrIndicator_nearByRepeaters": "Miestne opakovaÄe",
+  "chat_ShowAllPaths": "ZobraziÅ¥ vÅ¡etky cesty",
+  "settings_clientRepeat": "OpÃ¤tovnÃ© pouÅ¾itie bez elektrickej siete",
+  "settings_clientRepeatFreqWarning": "PouÅ¾itie off-grid systÃ©mu vyÅ¾aduje frekvencie 433, 869 alebo 918 MHz.",
+  "settings_clientRepeatSubtitle": "UmoÅ¾nite, aby toto zariadenie opakovÃ¡valo siete pre ostatnÃ½ch.",
+  "settings_aboutOpenMeteoAttribution": "Ãšdaje o nadmorskej vÃ½Å¡ke LOS: Open-Meteo (CC BY 4.0)",
   "appSettings_unitsTitle": "Jednotky",
-  "appSettings_unitsMetric": "Metrické (m / km)",
-  "appSettings_unitsImperial": "Imperiálne (ft / mi)",
+  "appSettings_unitsMetric": "MetrickÃ© (m / km)",
+  "appSettings_unitsImperial": "ImperiÃ¡lne (ft / mi)",
   "map_lineOfSight": "Line of Sight",
   "map_losScreenTitle": "Line of Sight",
-  "losSelectStartEnd": "Vyberte počiatočný a koncový uzol pre LOS.",
-  "losRunFailed": "Kontrola priamej viditeľnosti zlyhala: {error}",
+  "losSelectStartEnd": "Vyberte poÄiatoÄnÃ½ a koncovÃ½ uzol pre LOS.",
+  "losRunFailed": "Kontrola priamej viditeÄ¾nosti zlyhala: {error}",
   "@losRunFailed": {
     "placeholders": {
       "error": {
@@ -1629,13 +1629,13 @@
       }
     }
   },
-  "losClearAllPoints": "Vymazať všetky body",
-  "losRunToViewElevationProfile": "Ak chcete zobraziť výškový profil, spustite LOS",
+  "losClearAllPoints": "VymazaÅ¥ vÅ¡etky body",
+  "losRunToViewElevationProfile": "Ak chcete zobraziÅ¥ vÃ½Å¡kovÃ½ profil, spustite LOS",
   "losMenuTitle": "Menu LOS",
-  "losMenuSubtitle": "Klepnutím na uzly alebo dlhým stlačením mapy získate vlastné body",
-  "losShowDisplayNodes": "Zobraziť uzly zobrazenia",
-  "losCustomPoints": "Vlastné body",
-  "losCustomPointLabel": "Vlastné {index}",
+  "losMenuSubtitle": "KlepnutÃ­m na uzly alebo dlhÃ½m stlaÄenÃ­m mapy zÃ­skate vlastnÃ© body",
+  "losShowDisplayNodes": "ZobraziÅ¥ uzly zobrazenia",
+  "losCustomPoints": "VlastnÃ© body",
+  "losCustomPointLabel": "VlastnÃ© {index}",
   "@losCustomPointLabel": {
     "placeholders": {
       "index": {
@@ -1645,7 +1645,7 @@
   },
   "losPointA": "Bod A",
   "losPointB": "Bod B",
-  "losAntennaA": "Anténa A: {value} {unit}",
+  "losAntennaA": "AntÃ©na A: {value} {unit}",
   "@losAntennaA": {
     "placeholders": {
       "value": {
@@ -1656,7 +1656,7 @@
       }
     }
   },
-  "losAntennaB": "Anténa B: {value} {unit}",
+  "losAntennaB": "AntÃ©na B: {value} {unit}",
   "@losAntennaB": {
     "placeholders": {
       "value": {
@@ -1668,8 +1668,8 @@
     }
   },
   "losRun": "Spustite LOS",
-  "losNoElevationData": "Žiadne údaje o nadmorskej výške",
-  "losProfileClear": "{distance} {distanceUnit}, vymazať LOS, min. vôľa {clearance} {heightUnit}",
+  "losNoElevationData": "Å½iadne Ãºdaje o nadmorskej vÃ½Å¡ke",
+  "losProfileClear": "{distance} {distanceUnit}, vymazaÅ¥ LOS, min. vÃ´Ä¾a {clearance} {heightUnit}",
   "@losProfileClear": {
     "placeholders": {
       "distance": {
@@ -1686,7 +1686,7 @@
       }
     }
   },
-  "losProfileBlocked": "{distance} {distanceUnit}, blokovaný {obstruction} {heightUnit}",
+  "losProfileBlocked": "{distance} {distanceUnit}, blokovanÃ½ {obstruction} {heightUnit}",
   "@losProfileBlocked": {
     "placeholders": {
       "distance": {
@@ -1704,8 +1704,8 @@
     }
   },
   "losStatusChecking": "LOS: kontrolujem...",
-  "losStatusNoData": "LOS: žiadne údaje",
-  "losStatusSummary": "LOS: {clear}/{total} vymazané, {blocked} blokované, {unknown} neznáme",
+  "losStatusNoData": "LOS: Å¾iadne Ãºdaje",
+  "losStatusSummary": "LOS: {clear}/{total} vymazanÃ©, {blocked} blokovanÃ©, {unknown} neznÃ¡me",
   "@losStatusSummary": {
     "placeholders": {
       "clear": {
@@ -1722,20 +1722,20 @@
       }
     }
   },
-  "losErrorElevationUnavailable": "Údaje o nadmorskej výške nie sú k dispozícii pre jednu alebo viacero vzoriek.",
-  "losErrorInvalidInput": "Neplatné body/údaje o nadmorskej výške pre výpočet LOS.",
-  "losRenameCustomPoint": "Premenovať vlastný bod",
-  "losPointName": "Názov bodu",
-  "losShowPanelTooltip": "Zobraziť panel LOS",
-  "losHidePanelTooltip": "Skryť panel LOS",
-  "losElevationAttribution": "Údaje o nadmorskej výške: Open-Meteo (CC BY 4.0)",
-  "losLegendRadioHorizon": "Rádiový horizont",
-  "losLegendLosBeam": "Priama viditeľnosť",
-  "losLegendTerrain": "Terén",
+  "losErrorElevationUnavailable": "Ãšdaje o nadmorskej vÃ½Å¡ke nie sÃº k dispozÃ­cii pre jednu alebo viacero vzoriek.",
+  "losErrorInvalidInput": "NeplatnÃ© body/Ãºdaje o nadmorskej vÃ½Å¡ke pre vÃ½poÄet LOS.",
+  "losRenameCustomPoint": "PremenovaÅ¥ vlastnÃ½ bod",
+  "losPointName": "NÃ¡zov bodu",
+  "losShowPanelTooltip": "ZobraziÅ¥ panel LOS",
+  "losHidePanelTooltip": "SkryÅ¥ panel LOS",
+  "losElevationAttribution": "Ãšdaje o nadmorskej vÃ½Å¡ke: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "RÃ¡diovÃ½ horizont",
+  "losLegendLosBeam": "Priama viditeÄ¾nosÅ¥",
+  "losLegendTerrain": "TerÃ©n",
   "losFrequencyLabel": "Frekvencia",
-  "losFrequencyInfoTooltip": "Zobraziť podrobnosti výpočtu",
-  "losFrequencyDialogTitle": "Výpočet rádiového horizontu",
-  "losFrequencyDialogDescription": "Počnúc od k={baselineK} pri {baselineFreq} MHz výpočet upraví k-faktor pre aktuálne pásmo {frequencyMHz} MHz, ktorý definuje zakrivený strop rádiového horizontu.",
+  "losFrequencyInfoTooltip": "ZobraziÅ¥ podrobnosti vÃ½poÄtu",
+  "losFrequencyDialogTitle": "VÃ½poÄet rÃ¡diovÃ©ho horizontu",
+  "losFrequencyDialogDescription": "PoÄnÃºc od k={baselineK} pri {baselineFreq} MHz vÃ½poÄet upravÃ­ k-faktor pre aktuÃ¡lne pÃ¡smo {frequencyMHz} MHz, ktorÃ½ definuje zakrivenÃ½ strop rÃ¡diovÃ©ho horizontu.",
   "@losFrequencyDialogDescription": {
     "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
     "placeholders": {
@@ -1753,9 +1753,9 @@
       }
     }
   },
-  "listFilter_removeFromFavorites": "Odstrániť z označení",
-  "listFilter_addToFavorites": "Pridaj do obľúbených",
-  "listFilter_favorites": "Obľúbené",
+  "listFilter_removeFromFavorites": "OdstrÃ¡niÅ¥ z oznaÄenÃ­",
+  "listFilter_addToFavorites": "Pridaj do obÄ¾ÃºbenÃ½ch",
+  "listFilter_favorites": "ObÄ¾ÃºbenÃ©",
   "@contacts_searchFavorites": {
     "placeholders": {
       "number": {
@@ -1796,19 +1796,17 @@
       }
     }
   },
-  "contacts_searchRoomServers": "Hľadaj {number}{str} serverov miestností...",
-  "contacts_searchFavorites": "Hľadať {number}{str} obľúbené...",
-  "contacts_searchRepeaters": "Hľadať {number}{str} opakovače...",
-  "contacts_searchUsers": "Hľadať {number}{str} používateľov...",
-  "contacts_searchContactsNoNumber": "Hľadať kontakty...",
-  "contacts_unread": "Neprečítané",
+  "contacts_searchRoomServers": "HÄ¾adaj {number}{str} serverov miestnostÃ­...",
+  "contacts_searchFavorites": "HÄ¾adaÅ¥ {number}{str} obÄ¾ÃºbenÃ©...",
+  "contacts_searchRepeaters": "HÄ¾adaÅ¥ {number}{str} opakovaÄe...",
+  "contacts_searchUsers": "HÄ¾adaÅ¥ {number}{str} pouÅ¾Ã­vateÄ¾ov...",
+  "contacts_searchContactsNoNumber": "HÄ¾adaÅ¥ kontakty...",
+  "contacts_unread": "NepreÄÃ­tanÃ©",
   "connectionChoiceBluetoothLabel": "Bluetooth",
   "connectionChoiceUsbLabel": "USB",
-  "connectionChoiceTitle": "Vyberte si metódu prepojenia.",
-  "connectionChoiceSubtitle": "Vyberte si, ako chcete dosiahnuť váš zariadenie MeshCore.",
   "usbScreenStatus": "Vyberte USB zariadenie",
-  "usbScreenSubtitle": "Vyberte detekovaný sériový zariadenie a pripojte ho priamo k vašej MeshCore uzlu.",
-  "usbScreenNote": "USB sériová komunikácia je aktívna na podporovaných zariadeniach s Androidom a na desktopových platformách.",
+  "usbScreenSubtitle": "Vyberte detekovanÃ½ sÃ©riovÃ½ zariadenie a pripojte ho priamo k vaÅ¡ej MeshCore uzlu.",
+  "usbScreenNote": "USB sÃ©riovÃ¡ komunikÃ¡cia je aktÃ­vna na podporovanÃ½ch zariadeniach s Androidom a na desktopovÃ½ch platformÃ¡ch.",
   "usbScreenTitle": "Pripojte cez USB",
-  "usbScreenEmptyState": "Nenašli sa žiadne USB zariadenia. Pripojte jedno a obnovte."
+  "usbScreenEmptyState": "NenaÅ¡li sa Å¾iadne USB zariadenia. Pripojte jedno a obnovte."
 }

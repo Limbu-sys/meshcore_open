@@ -9,6 +9,7 @@ import '../l10n/l10n.dart';
 import '../widgets/adaptive_app_bar_title.dart';
 import '../widgets/device_tile.dart';
 import 'contacts_screen.dart';
+import 'usb_screen.dart';
 
 /// Screen for scanning and connecting to MeshCore devices
 class ScannerScreen extends StatefulWidget {
@@ -114,40 +115,67 @@ class _ScannerScreenState extends State<ScannerScreen> {
           },
         ),
       ),
-      floatingActionButton: Consumer<MeshCoreConnector>(
+      bottomNavigationBar: Consumer<MeshCoreConnector>(
         builder: (context, connector, child) {
           final isScanning =
               connector.state == MeshCoreConnectionState.scanning;
           final isBluetoothOff = _bluetoothState == BluetoothAdapterState.off;
+          final usbSupported = PlatformInfo.supportsUsbSerial;
 
-          return FloatingActionButton.extended(
-            onPressed: isBluetoothOff
-                ? null
-                : () {
-                    if (isScanning) {
-                      connector.stopScan();
-                    } else {
-                      unawaited(
-                        connector.startScan().catchError((e) {
-                          debugPrint("Scanner screen startScan error: $e");
-                        }),
+          return SafeArea(
+            top: false,
+            minimum: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                if (usbSupported)
+                  FloatingActionButton.extended(
+                    onPressed: () {
+                      debugPrint(
+                        'ScannerScreen: USB selected, opening UsbScreen',
                       );
-                    }
-                  },
-            icon: isScanning
-                ? const SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      color: Colors.white,
-                    ),
-                  )
-                : const Icon(Icons.bluetooth_searching),
-            label: Text(
-              isScanning
-                  ? context.l10n.scanner_stop
-                  : context.l10n.scanner_scan,
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const UsbScreen()),
+                      );
+                    },
+                    heroTag: 'scanner_usb_action',
+                    icon: const Icon(Icons.usb),
+                    label: Text(context.l10n.connectionChoiceUsbLabel),
+                  ),
+                if (usbSupported) const SizedBox(width: 12),
+                FloatingActionButton.extended(
+                  heroTag: 'scanner_ble_action',
+                  onPressed: isBluetoothOff
+                      ? null
+                      : () {
+                          if (isScanning) {
+                            connector.stopScan();
+                          } else {
+                            unawaited(
+                              connector.startScan().catchError((e) {
+                                debugPrint(
+                                  "Scanner screen startScan error: $e",
+                                );
+                              }),
+                            );
+                          }
+                        },
+                  icon: isScanning
+                      ? const SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                          ),
+                        )
+                      : const Icon(Icons.bluetooth_searching),
+                  label: Text(
+                    isScanning
+                        ? context.l10n.scanner_stop
+                        : context.l10n.scanner_scan,
+                  ),
+                ),
+              ],
             ),
           );
         },

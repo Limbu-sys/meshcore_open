@@ -16,6 +16,10 @@ class UsbSerialService {
     '2886:1667': 'Seeed Wio Tracker L1',
   };
   static final Map<String, String> _deviceNamesByPortKey = <String, String>{};
+  static final Map<String, String> _baseLabelsByPortKey = <String, String>{};
+  static final Map<String, JSObject> _authorizedPortsByKey =
+      <String, JSObject>{};
+  static int _nextAuthorizedPortId = 1;
 
   final StreamController<Uint8List> _frameController =
       StreamController<Uint8List>.broadcast();
@@ -51,11 +55,12 @@ class UsbSerialService {
       return const <String>[];
     }
 
+    _resetPortCache();
     final ports = await _getAuthorizedPorts();
     if (ports.isEmpty) {
-      return <String>[_requestPortLabel];
+      return <String>[_requestPortListEntry];
     }
-    return ports.map(_displayLabelForPort).toList(growable: false);
+    return ports.map(_listEntryForPort).toList(growable: false);
   }
 
   Future<void> connect({
@@ -75,8 +80,12 @@ class UsbSerialService {
 
     try {
       final requestedPortName = normalizeUsbPortName(portName);
+      final selectedPortKey = requestedPortName.startsWith('web:port:')
+          ? requestedPortName
+          : null;
+      _port = _authorizedPortsByKey[requestedPortName];
       final authorizedPorts = await _getAuthorizedPorts();
-      _port = _selectPort(authorizedPorts, requestedPortName);
+      _port ??= _selectPort(authorizedPorts, requestedPortName);
 
       _port ??= await _requestPort();
       if (_port == null) {
@@ -84,8 +93,11 @@ class UsbSerialService {
       }
 
       await _openPort(_port!, baudRate);
-      _connectedPortKey = _portKeyFor(_port!);
-      _connectedPortName = _buildDisplayLabel(_connectedPortKey!);
+      _connectedPortKey = _cachePort(_port!, preferredKey: selectedPortKey);
+      _connectedPortName = _displayLabelForPort(
+        _port!,
+        portKey: _connectedPortKey,
+      );
       _writer = _getWriter(_port!);
       _reader = _getReader(_port!);
       _status = UsbSerialStatus.connected;
@@ -122,6 +134,11 @@ class UsbSerialService {
   Future<void> disconnect() async {
     if (_status == UsbSerialStatus.disconnected) return;
 
+    final portLabel = _connectedPortName ?? _connectedPortKey;
+    _debugLogService?.info(
+      'USB disconnect starting port=${portLabel ?? 'unknown'}',
+      tag: 'USB Serial',
+    );
     _status = UsbSerialStatus.disconnecting;
     final reader = _reader;
     final writer = _writer;
@@ -156,6 +173,10 @@ class UsbSerialService {
     }
 
     _status = UsbSerialStatus.disconnected;
+    _debugLogService?.info(
+      'USB disconnect complete port=${portLabel ?? 'unknown'}',
+      tag: 'USB Serial',
+    );
   }
 
   void updateConnectedLabel(String label) {
@@ -210,8 +231,11 @@ class UsbSerialService {
     if (ports.isEmpty) {
       return null;
     }
-    if (requestedPortName.isEmpty || requestedPortName == _requestPortLabel) {
+    if (requestedPortName.isEmpty || requestedPortName == _requestPortKey) {
       return ports.first;
+    }
+    if (requestedPortName.startsWith('web:port:')) {
+      return null;
     }
     for (final port in ports) {
       final description = _describePort(port);
@@ -368,10 +392,29 @@ class UsbSerialService {
   }
 
   String _describePort(JSObject port) {
+    final info = _portInfo(port);
+    if (info == null) {
+      return _requestPortLabel;
+    }
+
+    final vendorId = info.usbVendorId;
+    final productId = info.usbProductId;
+    final hasVendor = vendorId != null;
+    final hasProduct = productId != null;
+
+    return describeWebUsbPort(
+      vendorId: hasVendor ? vendorId : null,
+      productId: hasProduct ? productId : null,
+      requestPortLabel: _requestPortLabel,
+      knownUsbNames: _knownUsbNames,
+    );
+  }
+
+  _WebPortInfo? _portInfo(JSObject port) {
     try {
       final info = port.callMethod<JSAny?>('getInfo'.toJS);
       if (info == null) {
-        return _requestPortLabel;
+        return null;
       }
       final infoObject = info as JSObject;
 
@@ -381,30 +424,50 @@ class UsbSerialService {
       final productId = infoObject
           .getProperty<JSAny?>('usbProductId'.toJS)
           ?.dartify();
-      final hasVendor = vendorId is num;
-      final hasProduct = productId is num;
-
-      return describeWebUsbPort(
-        vendorId: hasVendor ? vendorId.toInt() : null,
-        productId: hasProduct ? productId.toInt() : null,
-        requestPortLabel: _requestPortLabel,
-        knownUsbNames: _knownUsbNames,
+      return _WebPortInfo(
+        usbVendorId: vendorId is num ? vendorId.toInt() : null,
+        usbProductId: productId is num ? productId.toInt() : null,
       );
     } catch (_) {
-      return _requestPortLabel;
+      return null;
     }
   }
 
-  String _portKeyFor(JSObject port) => _describePort(port);
+  String _portKeyFor(JSObject port) {
+    return _cachePort(port);
+  }
 
-  String _displayLabelForPort(JSObject port) =>
-      _buildDisplayLabel(_portKeyFor(port));
+  String _cachePort(JSObject port, {String? preferredKey}) {
+    final portKey = preferredKey ?? 'web:port:${_nextAuthorizedPortId++}';
+    _baseLabelsByPortKey[portKey] = _describePort(port);
+    _authorizedPortsByKey[portKey] = port;
+    return portKey;
+  }
+
+  String _displayLabelForPort(JSObject port, {String? portKey}) =>
+      _buildDisplayLabel(portKey ?? _portKeyFor(port));
 
   String _buildDisplayLabel(String portKey) {
     return buildUsbDisplayLabel(
-      basePortLabel: portKey,
+      basePortLabel: _baseLabelsByPortKey[portKey] ?? portKey,
       deviceName: _deviceNamesByPortKey[portKey],
     );
+  }
+
+  String _listEntryForPort(JSObject port) {
+    final portKey = _portKeyFor(port);
+    return '$portKey - ${_displayLabelForPort(port, portKey: portKey)}';
+  }
+
+  String get _requestPortKey => 'web:request';
+
+  String get _requestPortListEntry => '$_requestPortKey - $_requestPortLabel';
+
+  void _resetPortCache() {
+    _authorizedPortsByKey.clear();
+    _baseLabelsByPortKey.clear();
+    _deviceNamesByPortKey.clear();
+    _nextAuthorizedPortId = 1;
   }
 
   void _releaseLock(JSObject resource) {
@@ -462,3 +525,10 @@ class UsbSerialService {
 }
 
 enum UsbSerialStatus { disconnected, connecting, connected, disconnecting }
+
+final class _WebPortInfo {
+  const _WebPortInfo({required this.usbVendorId, required this.usbProductId});
+
+  final int? usbVendorId;
+  final int? usbProductId;
+}

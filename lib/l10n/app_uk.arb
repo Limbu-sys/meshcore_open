@@ -1,5 +1,5 @@
-{
-  "channels_channelDeleteFailed": "Не вдалося видалити канал \"{name}\"",
+﻿{
+  "channels_channelDeleteFailed": "ÐÐµ Ð²Ð´Ð°Ð»Ð¾ÑÑ Ð²Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ ÐºÐ°Ð½Ð°Ð» \"{name}\"",
   "@channels_channelDeleteFailed": {
     "placeholders": {
       "name": {
@@ -9,34 +9,34 @@
   },
   "@@locale": "uk",
   "appTitle": "MeshCore Open",
-  "nav_contacts": "Контакти",
-  "nav_channels": "Канали",
-  "nav_map": "Карта",
-  "common_cancel": "Скасувати",
-  "common_connect": "Підключити",
-  "common_unknownDevice": "Невідомий пристрій",
-  "common_save": "Зберегти",
-  "common_delete": "Видалити",
-  "common_close": "Закрити",
-  "common_edit": "Редагувати",
-  "common_add": "Додати",
-  "common_settings": "Налаштування",
-  "common_disconnect": "Відключити",
-  "common_connected": "Підключено",
-  "common_disconnected": "Відключено",
-  "common_create": "Створити",
-  "common_continue": "Продовжити",
-  "common_share": "Поділитися",
-  "common_copy": "Копіювати",
-  "common_retry": "Повторити",
-  "common_hide": "Приховати",
-  "common_remove": "Прибрати",
-  "common_enable": "Увімкнути",
-  "common_disable": "Вимкнути",
-  "common_reboot": "Перезавантажити",
-  "common_loading": "Завантаження...",
-  "common_notAvailable": "—",
-  "common_voltageValue": "{volts} В",
+  "nav_contacts": "ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸",
+  "nav_channels": "ÐšÐ°Ð½Ð°Ð»Ð¸",
+  "nav_map": "ÐšÐ°Ñ€Ñ‚Ð°",
+  "common_cancel": "Ð¡ÐºÐ°ÑÑƒÐ²Ð°Ñ‚Ð¸",
+  "common_connect": "ÐŸÑ–Ð´ÐºÐ»ÑŽÑ‡Ð¸Ñ‚Ð¸",
+  "common_unknownDevice": "ÐÐµÐ²Ñ–Ð´Ð¾Ð¼Ð¸Ð¹ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ñ–Ð¹",
+  "common_save": "Ð—Ð±ÐµÑ€ÐµÐ³Ñ‚Ð¸",
+  "common_delete": "Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸",
+  "common_close": "Ð—Ð°ÐºÑ€Ð¸Ñ‚Ð¸",
+  "common_edit": "Ð ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ñ‚Ð¸",
+  "common_add": "Ð”Ð¾Ð´Ð°Ñ‚Ð¸",
+  "common_settings": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ",
+  "common_disconnect": "Ð’Ñ–Ð´ÐºÐ»ÑŽÑ‡Ð¸Ñ‚Ð¸",
+  "common_connected": "ÐŸÑ–Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¾",
+  "common_disconnected": "Ð’Ñ–Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¾",
+  "common_create": "Ð¡Ñ‚Ð²Ð¾Ñ€Ð¸Ñ‚Ð¸",
+  "common_continue": "ÐŸÑ€Ð¾Ð´Ð¾Ð²Ð¶Ð¸Ñ‚Ð¸",
+  "common_share": "ÐŸÐ¾Ð´Ñ–Ð»Ð¸Ñ‚Ð¸ÑÑ",
+  "common_copy": "ÐšÐ¾Ð¿Ñ–ÑŽÐ²Ð°Ñ‚Ð¸",
+  "common_retry": "ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚Ð¸",
+  "common_hide": "ÐŸÑ€Ð¸Ñ…Ð¾Ð²Ð°Ñ‚Ð¸",
+  "common_remove": "ÐŸÑ€Ð¸Ð±Ñ€Ð°Ñ‚Ð¸",
+  "common_enable": "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸",
+  "common_disable": "Ð’Ð¸Ð¼ÐºÐ½ÑƒÑ‚Ð¸",
+  "common_reboot": "ÐŸÐµÑ€ÐµÐ·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸",
+  "common_loading": "Ð—Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶ÐµÐ½Ð½Ñ...",
+  "common_notAvailable": "â€”",
+  "common_voltageValue": "{volts} Ð’",
   "@common_voltageValue": {
     "placeholders": {
       "volts": {
@@ -53,11 +53,11 @@
     }
   },
   "scanner_title": "MeshCore Open",
-  "scanner_scanning": "Пошук пристроїв...",
-  "scanner_connecting": "Підключення...",
-  "scanner_disconnecting": "Відключення...",
-  "scanner_notConnected": "Не підключено",
-  "scanner_connectedTo": "Підключено до {deviceName}",
+  "scanner_scanning": "ÐŸÐ¾ÑˆÑƒÐº Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾Ñ—Ð²...",
+  "scanner_connecting": "ÐŸÑ–Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð½Ñ...",
+  "scanner_disconnecting": "Ð’Ñ–Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð½Ñ...",
+  "scanner_notConnected": "ÐÐµ Ð¿Ñ–Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¾",
+  "scanner_connectedTo": "ÐŸÑ–Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¾ Ð´Ð¾ {deviceName}",
   "@scanner_connectedTo": {
     "placeholders": {
       "deviceName": {
@@ -65,9 +65,9 @@
       }
     }
   },
-  "scanner_searchingDevices": "Пошук пристроїв MeshCore...",
-  "scanner_tapToScan": "Натисніть «Сканувати», щоб знайти пристрої MeshCore",
-  "scanner_connectionFailed": "Помилка підключення: {error}",
+  "scanner_searchingDevices": "ÐŸÐ¾ÑˆÑƒÐº Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾Ñ—Ð² MeshCore...",
+  "scanner_tapToScan": "ÐÐ°Ñ‚Ð¸ÑÐ½Ñ–Ñ‚ÑŒ Â«Ð¡ÐºÐ°Ð½ÑƒÐ²Ð°Ñ‚Ð¸Â», Ñ‰Ð¾Ð± Ð·Ð½Ð°Ð¹Ñ‚Ð¸ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾Ñ— MeshCore",
+  "scanner_connectionFailed": "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ° Ð¿Ñ–Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð½Ñ: {error}",
   "@scanner_connectionFailed": {
     "placeholders": {
       "error": {
@@ -75,52 +75,52 @@
       }
     }
   },
-  "scanner_stop": "Стоп",
-  "scanner_scan": "Сканувати",
-  "device_quickSwitch": "Швидке перемикання",
+  "scanner_stop": "Ð¡Ñ‚Ð¾Ð¿",
+  "scanner_scan": "Ð¡ÐºÐ°Ð½ÑƒÐ²Ð°Ñ‚Ð¸",
+  "device_quickSwitch": "Ð¨Ð²Ð¸Ð´ÐºÐµ Ð¿ÐµÑ€ÐµÐ¼Ð¸ÐºÐ°Ð½Ð½Ñ",
   "device_meshcore": "MeshCore",
-  "settings_title": "Налаштування",
-  "settings_deviceInfo": "Інформація про пристрій",
-  "settings_appSettings": "Налаштування програми",
-  "settings_appSettingsSubtitle": "Сповіщення, повідомлення та налаштування карти",
-  "settings_nodeSettings": "Налаштування вузла",
-  "settings_nodeName": "Ім'я вузла",
-  "settings_nodeNameNotSet": "Не встановлено",
-  "settings_nodeNameHint": "Введіть ім'я вузла",
-  "settings_nodeNameUpdated": "Ім'я оновлено",
-  "settings_radioSettings": "Налаштування радіо",
-  "settings_radioSettingsSubtitle": "Частота, потужність, коефіцієнт розширення",
-  "settings_radioSettingsUpdated": "Налаштування радіо оновлено",
-  "settings_location": "Розташування",
-  "settings_locationSubtitle": "GPS координати",
-  "settings_locationUpdated": "Розташування оновлено",
-  "settings_locationBothRequired": "Введіть широту та довготу.",
-  "settings_locationInvalid": "Некоректна широта або довгота.",
-  "settings_latitude": "Широта",
-  "settings_longitude": "Довгота",
-  "settings_privacyMode": "Режим приватності",
-  "settings_privacyModeSubtitle": "Приховати ім'я/розташування в оголошеннях",
-  "settings_privacyModeToggle": "Увімкніть режим приватності, щоб приховати своє ім'я та місцезнаходження в оголошеннях.",
-  "settings_privacyModeEnabled": "Режим приватності увімкнено",
-  "settings_privacyModeDisabled": "Режим приватності вимкнено",
-  "settings_actions": "Дії",
-  "settings_sendAdvertisement": "Оголосити себе",
-  "settings_sendAdvertisementSubtitle": "Транслювати присутність зараз",
-  "settings_advertisementSent": "Оголошення надіслано",
-  "settings_syncTime": "Синхронізація часу",
-  "settings_syncTimeSubtitle": "Встановити час пристрою відповідно до часу телефону.",
-  "settings_timeSynchronized": "Час синхронізовано",
-  "settings_refreshContacts": "Оновити контакти",
-  "settings_refreshContactsSubtitle": "Перезавантажити список контактів з пристрою",
-  "settings_rebootDevice": "Перезавантажити пристрій",
-  "settings_rebootDeviceSubtitle": "Перезавантажити пристрій MeshCore",
-  "settings_rebootDeviceConfirm": "Ви впевнені, що хочете перезавантажити пристрій? Вас буде відключено.",
-  "settings_debug": "Налагодження",
-  "settings_bleDebugLog": "Журнал налагодження BLE",
-  "settings_bleDebugLogSubtitle": "Команди BLE, відповіді та необроблені дані",
-  "settings_appDebugLog": "Журнал налагодження програми",
-  "settings_appDebugLogSubtitle": "Повідомлення налагодження програми",
-  "settings_about": "Про програму",
+  "settings_title": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ",
+  "settings_deviceInfo": "Ð†Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ñ–Ñ Ð¿Ñ€Ð¾ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ñ–Ð¹",
+  "settings_appSettings": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸",
+  "settings_appSettingsSubtitle": "Ð¡Ð¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ, Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ Ñ‚Ð° Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ ÐºÐ°Ñ€Ñ‚Ð¸",
+  "settings_nodeSettings": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Ð²ÑƒÐ·Ð»Ð°",
+  "settings_nodeName": "Ð†Ð¼'Ñ Ð²ÑƒÐ·Ð»Ð°",
+  "settings_nodeNameNotSet": "ÐÐµ Ð²ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾",
+  "settings_nodeNameHint": "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ñ–Ð¼'Ñ Ð²ÑƒÐ·Ð»Ð°",
+  "settings_nodeNameUpdated": "Ð†Ð¼'Ñ Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾",
+  "settings_radioSettings": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Ñ€Ð°Ð´Ñ–Ð¾",
+  "settings_radioSettingsSubtitle": "Ð§Ð°ÑÑ‚Ð¾Ñ‚Ð°, Ð¿Ð¾Ñ‚ÑƒÐ¶Ð½Ñ–ÑÑ‚ÑŒ, ÐºÐ¾ÐµÑ„Ñ–Ñ†Ñ–Ñ”Ð½Ñ‚ Ñ€Ð¾Ð·ÑˆÐ¸Ñ€ÐµÐ½Ð½Ñ",
+  "settings_radioSettingsUpdated": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Ñ€Ð°Ð´Ñ–Ð¾ Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾",
+  "settings_location": "Ð Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ",
+  "settings_locationSubtitle": "GPS ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð¸",
+  "settings_locationUpdated": "Ð Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾",
+  "settings_locationBothRequired": "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ ÑˆÐ¸Ñ€Ð¾Ñ‚Ñƒ Ñ‚Ð° Ð´Ð¾Ð²Ð³Ð¾Ñ‚Ñƒ.",
+  "settings_locationInvalid": "ÐÐµÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ð° ÑˆÐ¸Ñ€Ð¾Ñ‚Ð° Ð°Ð±Ð¾ Ð´Ð¾Ð²Ð³Ð¾Ñ‚Ð°.",
+  "settings_latitude": "Ð¨Ð¸Ñ€Ð¾Ñ‚Ð°",
+  "settings_longitude": "Ð”Ð¾Ð²Ð³Ð¾Ñ‚Ð°",
+  "settings_privacyMode": "Ð ÐµÐ¶Ð¸Ð¼ Ð¿Ñ€Ð¸Ð²Ð°Ñ‚Ð½Ð¾ÑÑ‚Ñ–",
+  "settings_privacyModeSubtitle": "ÐŸÑ€Ð¸Ñ…Ð¾Ð²Ð°Ñ‚Ð¸ Ñ–Ð¼'Ñ/Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ Ð² Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½ÑÑ…",
+  "settings_privacyModeToggle": "Ð£Ð²Ñ–Ð¼ÐºÐ½Ñ–Ñ‚ÑŒ Ñ€ÐµÐ¶Ð¸Ð¼ Ð¿Ñ€Ð¸Ð²Ð°Ñ‚Ð½Ð¾ÑÑ‚Ñ–, Ñ‰Ð¾Ð± Ð¿Ñ€Ð¸Ñ…Ð¾Ð²Ð°Ñ‚Ð¸ ÑÐ²Ð¾Ñ” Ñ–Ð¼'Ñ Ñ‚Ð° Ð¼Ñ–ÑÑ†ÐµÐ·Ð½Ð°Ñ…Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ Ð² Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½ÑÑ….",
+  "settings_privacyModeEnabled": "Ð ÐµÐ¶Ð¸Ð¼ Ð¿Ñ€Ð¸Ð²Ð°Ñ‚Ð½Ð¾ÑÑ‚Ñ– ÑƒÐ²Ñ–Ð¼ÐºÐ½ÐµÐ½Ð¾",
+  "settings_privacyModeDisabled": "Ð ÐµÐ¶Ð¸Ð¼ Ð¿Ñ€Ð¸Ð²Ð°Ñ‚Ð½Ð¾ÑÑ‚Ñ– Ð²Ð¸Ð¼ÐºÐ½ÐµÐ½Ð¾",
+  "settings_actions": "Ð”Ñ–Ñ—",
+  "settings_sendAdvertisement": "ÐžÐ³Ð¾Ð»Ð¾ÑÐ¸Ñ‚Ð¸ ÑÐµÐ±Ðµ",
+  "settings_sendAdvertisementSubtitle": "Ð¢Ñ€Ð°Ð½ÑÐ»ÑŽÐ²Ð°Ñ‚Ð¸ Ð¿Ñ€Ð¸ÑÑƒÑ‚Ð½Ñ–ÑÑ‚ÑŒ Ð·Ð°Ñ€Ð°Ð·",
+  "settings_advertisementSent": "ÐžÐ³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ Ð½Ð°Ð´Ñ–ÑÐ»Ð°Ð½Ð¾",
+  "settings_syncTime": "Ð¡Ð¸Ð½Ñ…Ñ€Ð¾Ð½Ñ–Ð·Ð°Ñ†Ñ–Ñ Ñ‡Ð°ÑÑƒ",
+  "settings_syncTimeSubtitle": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ð¸ Ñ‡Ð°Ñ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾ÑŽ Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ð½Ð¾ Ð´Ð¾ Ñ‡Ð°ÑÑƒ Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½Ñƒ.",
+  "settings_timeSynchronized": "Ð§Ð°Ñ ÑÐ¸Ð½Ñ…Ñ€Ð¾Ð½Ñ–Ð·Ð¾Ð²Ð°Ð½Ð¾",
+  "settings_refreshContacts": "ÐžÐ½Ð¾Ð²Ð¸Ñ‚Ð¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸",
+  "settings_refreshContactsSubtitle": "ÐŸÐµÑ€ÐµÐ·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸ ÑÐ¿Ð¸ÑÐ¾Ðº ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñ–Ð² Ð· Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾ÑŽ",
+  "settings_rebootDevice": "ÐŸÐµÑ€ÐµÐ·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ñ–Ð¹",
+  "settings_rebootDeviceSubtitle": "ÐŸÐµÑ€ÐµÐ·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ñ–Ð¹ MeshCore",
+  "settings_rebootDeviceConfirm": "Ð’Ð¸ Ð²Ð¿ÐµÐ²Ð½ÐµÐ½Ñ–, Ñ‰Ð¾ Ñ…Ð¾Ñ‡ÐµÑ‚Ðµ Ð¿ÐµÑ€ÐµÐ·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ñ–Ð¹? Ð’Ð°Ñ Ð±ÑƒÐ´Ðµ Ð²Ñ–Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¾.",
+  "settings_debug": "ÐÐ°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ",
+  "settings_bleDebugLog": "Ð–ÑƒÑ€Ð½Ð°Ð» Ð½Ð°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ BLE",
+  "settings_bleDebugLogSubtitle": "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð¸ BLE, Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ñ– Ñ‚Ð° Ð½ÐµÐ¾Ð±Ñ€Ð¾Ð±Ð»ÐµÐ½Ñ– Ð´Ð°Ð½Ñ–",
+  "settings_appDebugLog": "Ð–ÑƒÑ€Ð½Ð°Ð» Ð½Ð°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸",
+  "settings_appDebugLogSubtitle": "ÐŸÐ¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ Ð½Ð°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸",
+  "settings_about": "ÐŸÑ€Ð¾ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ñƒ",
   "settings_aboutVersion": "MeshCore Open v{version}",
   "@settings_aboutVersion": {
     "placeholders": {
@@ -129,26 +129,26 @@
       }
     }
   },
-  "settings_aboutLegalese": "Проєкт MeshCore Open Source 2026",
-  "settings_aboutDescription": "Клієнт Flutter з відкритим вихідним кодом для пристроїв мережі MeshCore LoRa.",
-  "settings_infoName": "Ім'я",
+  "settings_aboutLegalese": "ÐŸÑ€Ð¾Ñ”ÐºÑ‚ MeshCore Open Source 2026",
+  "settings_aboutDescription": "ÐšÐ»Ñ–Ñ”Ð½Ñ‚ Flutter Ð· Ð²Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸Ð¼ Ð²Ð¸Ñ…Ñ–Ð´Ð½Ð¸Ð¼ ÐºÐ¾Ð´Ð¾Ð¼ Ð´Ð»Ñ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾Ñ—Ð² Ð¼ÐµÑ€ÐµÐ¶Ñ– MeshCore LoRa.",
+  "settings_infoName": "Ð†Ð¼'Ñ",
   "settings_infoId": "ID",
-  "settings_infoStatus": "Статус",
-  "settings_infoBattery": "Батарея",
-  "settings_infoPublicKey": "Відкритий ключ",
-  "settings_infoContactsCount": "Кількість контактів",
-  "settings_infoChannelCount": "Кількість каналів",
-  "settings_presets": "Попередні налаштування",
-  "settings_frequency": "Частота (МГц)",
+  "settings_infoStatus": "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ",
+  "settings_infoBattery": "Ð‘Ð°Ñ‚Ð°Ñ€ÐµÑ",
+  "settings_infoPublicKey": "Ð’Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸Ð¹ ÐºÐ»ÑŽÑ‡",
+  "settings_infoContactsCount": "ÐšÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŒ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñ–Ð²",
+  "settings_infoChannelCount": "ÐšÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŒ ÐºÐ°Ð½Ð°Ð»Ñ–Ð²",
+  "settings_presets": "ÐŸÐ¾Ð¿ÐµÑ€ÐµÐ´Ð½Ñ– Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ",
+  "settings_frequency": "Ð§Ð°ÑÑ‚Ð¾Ñ‚Ð° (ÐœÐ“Ñ†)",
   "settings_frequencyHelper": "300.0 - 2500.0",
-  "settings_frequencyInvalid": "Некоректна частота (300-2500 МГц)",
-  "settings_bandwidth": "Смуга пропускання",
-  "settings_spreadingFactor": "Коефіцієнт розширення",
-  "settings_codingRate": "Швидкість кодування",
-  "settings_txPower": "Потужність TX (дБм)",
+  "settings_frequencyInvalid": "ÐÐµÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ð° Ñ‡Ð°ÑÑ‚Ð¾Ñ‚Ð° (300-2500 ÐœÐ“Ñ†)",
+  "settings_bandwidth": "Ð¡Ð¼ÑƒÐ³Ð° Ð¿Ñ€Ð¾Ð¿ÑƒÑÐºÐ°Ð½Ð½Ñ",
+  "settings_spreadingFactor": "ÐšÐ¾ÐµÑ„Ñ–Ñ†Ñ–Ñ”Ð½Ñ‚ Ñ€Ð¾Ð·ÑˆÐ¸Ñ€ÐµÐ½Ð½Ñ",
+  "settings_codingRate": "Ð¨Ð²Ð¸Ð´ÐºÑ–ÑÑ‚ÑŒ ÐºÐ¾Ð´ÑƒÐ²Ð°Ð½Ð½Ñ",
+  "settings_txPower": "ÐŸÐ¾Ñ‚ÑƒÐ¶Ð½Ñ–ÑÑ‚ÑŒ TX (Ð´Ð‘Ð¼)",
   "settings_txPowerHelper": "0 - 22",
-  "settings_txPowerInvalid": "Некоректна потужність TX (0-22 дБм)",
-  "settings_error": "Помилка: {message}",
+  "settings_txPowerInvalid": "ÐÐµÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ð° Ð¿Ð¾Ñ‚ÑƒÐ¶Ð½Ñ–ÑÑ‚ÑŒ TX (0-22 Ð´Ð‘Ð¼)",
+  "settings_error": "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ°: {message}",
   "@settings_error": {
     "placeholders": {
       "message": {
@@ -156,52 +156,52 @@
       }
     }
   },
-  "appSettings_title": "Налаштування програми",
-  "appSettings_appearance": "Вигляд",
-  "appSettings_theme": "Тема",
-  "appSettings_themeSystem": "Системна",
-  "appSettings_themeLight": "Світла",
-  "appSettings_themeDark": "Темна",
-  "appSettings_language": "Мова",
-  "appSettings_languageSystem": "Як у системі",
+  "appSettings_title": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸",
+  "appSettings_appearance": "Ð’Ð¸Ð³Ð»ÑÐ´",
+  "appSettings_theme": "Ð¢ÐµÐ¼Ð°",
+  "appSettings_themeSystem": "Ð¡Ð¸ÑÑ‚ÐµÐ¼Ð½Ð°",
+  "appSettings_themeLight": "Ð¡Ð²Ñ–Ñ‚Ð»Ð°",
+  "appSettings_themeDark": "Ð¢ÐµÐ¼Ð½Ð°",
+  "appSettings_language": "ÐœÐ¾Ð²Ð°",
+  "appSettings_languageSystem": "Ð¯Ðº Ñƒ ÑÐ¸ÑÑ‚ÐµÐ¼Ñ–",
   "appSettings_languageEn": "English",
-  "appSettings_languageFr": "Français",
-  "appSettings_languageEs": "Español",
+  "appSettings_languageFr": "FranÃ§ais",
+  "appSettings_languageEs": "EspaÃ±ol",
   "appSettings_languageDe": "Deutsch",
   "appSettings_languagePl": "Polski",
-  "appSettings_languageSl": "Slovenščina",
-  "appSettings_languagePt": "Português",
+  "appSettings_languageSl": "SlovenÅ¡Äina",
+  "appSettings_languagePt": "PortuguÃªs",
   "appSettings_languageIt": "Italiano",
-  "appSettings_languageZh": "中文",
+  "appSettings_languageZh": "ä¸­æ–‡",
   "appSettings_languageSv": "Svenska",
   "appSettings_languageNl": "Nederlands",
-  "appSettings_languageSk": "Slovenčina",
-  "appSettings_languageBg": "Български",
-  "appSettings_languageUk": "Українська",
-  "appSettings_notifications": "Сповіщення",
-  "appSettings_enableNotifications": "Увімкнути сповіщення",
-  "appSettings_enableNotificationsSubtitle": "Отримувати сповіщення про повідомлення та оголошення",
-  "appSettings_notificationPermissionDenied": "У доступі до сповіщень відмовлено",
-  "appSettings_notificationsEnabled": "Сповіщення увімкнено",
-  "appSettings_notificationsDisabled": "Сповіщення вимкнено",
-  "appSettings_messageNotifications": "Сповіщення про повідомлення",
-  "appSettings_messageNotificationsSubtitle": "Показувати сповіщення при отриманні нових повідомлень",
-  "appSettings_channelMessageNotifications": "Сповіщення каналів",
-  "appSettings_channelMessageNotificationsSubtitle": "Показувати сповіщення при отриманні повідомлень каналу",
-  "appSettings_advertisementNotifications": "Сповіщення про оголошення",
-  "appSettings_advertisementNotificationsSubtitle": "Показувати сповіщення при виявленні нових вузлів",
-  "appSettings_messaging": "Обмін повідомленнями",
-  "appSettings_clearPathOnMaxRetry": "Очищати шлях після макс. спроб",
-  "appSettings_clearPathOnMaxRetrySubtitle": "Скидати шлях до контакту після 5 невдалих спроб надсилання",
-  "appSettings_pathsWillBeCleared": "Шляхи будуть очищені після 5 невдалих спроб.",
-  "appSettings_pathsWillNotBeCleared": "Шляхи не будуть очищатися автоматично.",
-  "appSettings_autoRouteRotation": "Авторотація маршруту",
-  "appSettings_autoRouteRotationSubtitle": "Чергувати найкращі шляхи та режим «на всю мережу» (flood)",
-  "appSettings_autoRouteRotationEnabled": "Авторотація маршрутизації увімкнена",
-  "appSettings_autoRouteRotationDisabled": "Авторотація маршрутизації вимкнена",
-  "appSettings_battery": "Батарея",
-  "appSettings_batteryChemistry": "Хімія батареї",
-  "appSettings_batteryChemistryPerDevice": "Встановити для пристрою ({deviceName})",
+  "appSettings_languageSk": "SlovenÄina",
+  "appSettings_languageBg": "Ð‘ÑŠÐ»Ð³Ð°Ñ€ÑÐºÐ¸",
+  "appSettings_languageUk": "Ð£ÐºÑ€Ð°Ñ—Ð½ÑÑŒÐºÐ°",
+  "appSettings_notifications": "Ð¡Ð¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ",
+  "appSettings_enableNotifications": "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ",
+  "appSettings_enableNotificationsSubtitle": "ÐžÑ‚Ñ€Ð¸Ð¼ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¾ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ Ñ‚Ð° Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ",
+  "appSettings_notificationPermissionDenied": "Ð£ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ñ– Ð´Ð¾ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½ÑŒ Ð²Ñ–Ð´Ð¼Ð¾Ð²Ð»ÐµÐ½Ð¾",
+  "appSettings_notificationsEnabled": "Ð¡Ð¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ ÑƒÐ²Ñ–Ð¼ÐºÐ½ÐµÐ½Ð¾",
+  "appSettings_notificationsDisabled": "Ð¡Ð¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ Ð²Ð¸Ð¼ÐºÐ½ÐµÐ½Ð¾",
+  "appSettings_messageNotifications": "Ð¡Ð¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¾ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ",
+  "appSettings_messageNotificationsSubtitle": "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¸ Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ð½Ð½Ñ– Ð½Ð¾Ð²Ð¸Ñ… Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½ÑŒ",
+  "appSettings_channelMessageNotifications": "Ð¡Ð¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ ÐºÐ°Ð½Ð°Ð»Ñ–Ð²",
+  "appSettings_channelMessageNotificationsSubtitle": "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¸ Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ð½Ð½Ñ– Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½ÑŒ ÐºÐ°Ð½Ð°Ð»Ñƒ",
+  "appSettings_advertisementNotifications": "Ð¡Ð¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¾ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ",
+  "appSettings_advertisementNotificationsSubtitle": "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¸ Ð²Ð¸ÑÐ²Ð»ÐµÐ½Ð½Ñ– Ð½Ð¾Ð²Ð¸Ñ… Ð²ÑƒÐ·Ð»Ñ–Ð²",
+  "appSettings_messaging": "ÐžÐ±Ð¼Ñ–Ð½ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½ÑÐ¼Ð¸",
+  "appSettings_clearPathOnMaxRetry": "ÐžÑ‡Ð¸Ñ‰Ð°Ñ‚Ð¸ ÑˆÐ»ÑÑ… Ð¿Ñ–ÑÐ»Ñ Ð¼Ð°ÐºÑ. ÑÐ¿Ñ€Ð¾Ð±",
+  "appSettings_clearPathOnMaxRetrySubtitle": "Ð¡ÐºÐ¸Ð´Ð°Ñ‚Ð¸ ÑˆÐ»ÑÑ… Ð´Ð¾ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñƒ Ð¿Ñ–ÑÐ»Ñ 5 Ð½ÐµÐ²Ð´Ð°Ð»Ð¸Ñ… ÑÐ¿Ñ€Ð¾Ð± Ð½Ð°Ð´ÑÐ¸Ð»Ð°Ð½Ð½Ñ",
+  "appSettings_pathsWillBeCleared": "Ð¨Ð»ÑÑ…Ð¸ Ð±ÑƒÐ´ÑƒÑ‚ÑŒ Ð¾Ñ‡Ð¸Ñ‰ÐµÐ½Ñ– Ð¿Ñ–ÑÐ»Ñ 5 Ð½ÐµÐ²Ð´Ð°Ð»Ð¸Ñ… ÑÐ¿Ñ€Ð¾Ð±.",
+  "appSettings_pathsWillNotBeCleared": "Ð¨Ð»ÑÑ…Ð¸ Ð½Ðµ Ð±ÑƒÐ´ÑƒÑ‚ÑŒ Ð¾Ñ‡Ð¸Ñ‰Ð°Ñ‚Ð¸ÑÑ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾.",
+  "appSettings_autoRouteRotation": "ÐÐ²Ñ‚Ð¾Ñ€Ð¾Ñ‚Ð°Ñ†Ñ–Ñ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ñƒ",
+  "appSettings_autoRouteRotationSubtitle": "Ð§ÐµÑ€Ð³ÑƒÐ²Ð°Ñ‚Ð¸ Ð½Ð°Ð¹ÐºÑ€Ð°Ñ‰Ñ– ÑˆÐ»ÑÑ…Ð¸ Ñ‚Ð° Ñ€ÐµÐ¶Ð¸Ð¼ Â«Ð½Ð° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶ÑƒÂ» (flood)",
+  "appSettings_autoRouteRotationEnabled": "ÐÐ²Ñ‚Ð¾Ñ€Ð¾Ñ‚Ð°Ñ†Ñ–Ñ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð°Ñ†Ñ–Ñ— ÑƒÐ²Ñ–Ð¼ÐºÐ½ÐµÐ½Ð°",
+  "appSettings_autoRouteRotationDisabled": "ÐÐ²Ñ‚Ð¾Ñ€Ð¾Ñ‚Ð°Ñ†Ñ–Ñ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð°Ñ†Ñ–Ñ— Ð²Ð¸Ð¼ÐºÐ½ÐµÐ½Ð°",
+  "appSettings_battery": "Ð‘Ð°Ñ‚Ð°Ñ€ÐµÑ",
+  "appSettings_batteryChemistry": "Ð¥Ñ–Ð¼Ñ–Ñ Ð±Ð°Ñ‚Ð°Ñ€ÐµÑ—",
+  "appSettings_batteryChemistryPerDevice": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ð¸ Ð´Ð»Ñ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾ÑŽ ({deviceName})",
   "@appSettings_batteryChemistryPerDevice": {
     "placeholders": {
       "deviceName": {
@@ -209,20 +209,20 @@
       }
     }
   },
-  "appSettings_batteryChemistryConnectFirst": "Підключіть пристрій, щоб вибрати",
-  "appSettings_batteryNmc": "18650 NMC (3.0-4.2В)",
-  "appSettings_batteryLifepo4": "LiFePO4 (2.6-3.65В)",
-  "appSettings_batteryLipo": "LiPo (3.0-4.2В)",
-  "appSettings_mapDisplay": "Відображення карти",
-  "appSettings_showRepeaters": "Показувати ретранслятори",
-  "appSettings_showRepeatersSubtitle": "Відображати вузли-ретранслятори на карті",
-  "appSettings_showChatNodes": "Показувати вузли чату",
-  "appSettings_showChatNodesSubtitle": "Відображати вузли чату на карті",
-  "appSettings_showOtherNodes": "Показувати інші вузли",
-  "appSettings_showOtherNodesSubtitle": "Відображати інші типи вузлів на карті",
-  "appSettings_timeFilter": "Фільтр часу",
-  "appSettings_timeFilterShowAll": "Показати всі вузли",
-  "appSettings_timeFilterShowLast": "Показати вузли за останні {hours} год",
+  "appSettings_batteryChemistryConnectFirst": "ÐŸÑ–Ð´ÐºÐ»ÑŽÑ‡Ñ–Ñ‚ÑŒ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ñ–Ð¹, Ñ‰Ð¾Ð± Ð²Ð¸Ð±Ñ€Ð°Ñ‚Ð¸",
+  "appSettings_batteryNmc": "18650 NMC (3.0-4.2Ð’)",
+  "appSettings_batteryLifepo4": "LiFePO4 (2.6-3.65Ð’)",
+  "appSettings_batteryLipo": "LiPo (3.0-4.2Ð’)",
+  "appSettings_mapDisplay": "Ð’Ñ–Ð´Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð½Ñ ÐºÐ°Ñ€Ñ‚Ð¸",
+  "appSettings_showRepeaters": "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð¸",
+  "appSettings_showRepeatersSubtitle": "Ð’Ñ–Ð´Ð¾Ð±Ñ€Ð°Ð¶Ð°Ñ‚Ð¸ Ð²ÑƒÐ·Ð»Ð¸-Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð¸ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ñ–",
+  "appSettings_showChatNodes": "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ Ð²ÑƒÐ·Ð»Ð¸ Ñ‡Ð°Ñ‚Ñƒ",
+  "appSettings_showChatNodesSubtitle": "Ð’Ñ–Ð´Ð¾Ð±Ñ€Ð°Ð¶Ð°Ñ‚Ð¸ Ð²ÑƒÐ·Ð»Ð¸ Ñ‡Ð°Ñ‚Ñƒ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ñ–",
+  "appSettings_showOtherNodes": "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ Ñ–Ð½ÑˆÑ– Ð²ÑƒÐ·Ð»Ð¸",
+  "appSettings_showOtherNodesSubtitle": "Ð’Ñ–Ð´Ð¾Ð±Ñ€Ð°Ð¶Ð°Ñ‚Ð¸ Ñ–Ð½ÑˆÑ– Ñ‚Ð¸Ð¿Ð¸ Ð²ÑƒÐ·Ð»Ñ–Ð² Ð½Ð° ÐºÐ°Ñ€Ñ‚Ñ–",
+  "appSettings_timeFilter": "Ð¤Ñ–Ð»ÑŒÑ‚Ñ€ Ñ‡Ð°ÑÑƒ",
+  "appSettings_timeFilterShowAll": "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚Ð¸ Ð²ÑÑ– Ð²ÑƒÐ·Ð»Ð¸",
+  "appSettings_timeFilterShowLast": "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚Ð¸ Ð²ÑƒÐ·Ð»Ð¸ Ð·Ð° Ð¾ÑÑ‚Ð°Ð½Ð½Ñ– {hours} Ð³Ð¾Ð´",
   "@appSettings_timeFilterShowLast": {
     "placeholders": {
       "hours": {
@@ -230,16 +230,16 @@
       }
     }
   },
-  "appSettings_mapTimeFilter": "Фільтр часу карти",
-  "appSettings_showNodesDiscoveredWithin": "Показувати вузли, виявлені за:",
-  "appSettings_allTime": "Весь час",
-  "appSettings_lastHour": "Останню годину",
-  "appSettings_last6Hours": "Останні 6 годин",
-  "appSettings_last24Hours": "Останні 24 години",
-  "appSettings_lastWeek": "Минулий тиждень",
-  "appSettings_offlineMapCache": "Офлайн-кеш карти",
-  "appSettings_noAreaSelected": "Область не вибрано",
-  "appSettings_areaSelectedZoom": "Вибрана область (зум {minZoom}-{maxZoom})",
+  "appSettings_mapTimeFilter": "Ð¤Ñ–Ð»ÑŒÑ‚Ñ€ Ñ‡Ð°ÑÑƒ ÐºÐ°Ñ€Ñ‚Ð¸",
+  "appSettings_showNodesDiscoveredWithin": "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ Ð²ÑƒÐ·Ð»Ð¸, Ð²Ð¸ÑÐ²Ð»ÐµÐ½Ñ– Ð·Ð°:",
+  "appSettings_allTime": "Ð’ÐµÑÑŒ Ñ‡Ð°Ñ",
+  "appSettings_lastHour": "ÐžÑÑ‚Ð°Ð½Ð½ÑŽ Ð³Ð¾Ð´Ð¸Ð½Ñƒ",
+  "appSettings_last6Hours": "ÐžÑÑ‚Ð°Ð½Ð½Ñ– 6 Ð³Ð¾Ð´Ð¸Ð½",
+  "appSettings_last24Hours": "ÐžÑÑ‚Ð°Ð½Ð½Ñ– 24 Ð³Ð¾Ð´Ð¸Ð½Ð¸",
+  "appSettings_lastWeek": "ÐœÐ¸Ð½ÑƒÐ»Ð¸Ð¹ Ñ‚Ð¸Ð¶Ð´ÐµÐ½ÑŒ",
+  "appSettings_offlineMapCache": "ÐžÑ„Ð»Ð°Ð¹Ð½-ÐºÐµÑˆ ÐºÐ°Ñ€Ñ‚Ð¸",
+  "appSettings_noAreaSelected": "ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ Ð½Ðµ Ð²Ð¸Ð±Ñ€Ð°Ð½Ð¾",
+  "appSettings_areaSelectedZoom": "Ð’Ð¸Ð±Ñ€Ð°Ð½Ð° Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ (Ð·ÑƒÐ¼ {minZoom}-{maxZoom})",
   "@appSettings_areaSelectedZoom": {
     "placeholders": {
       "minZoom": {
@@ -250,19 +250,19 @@
       }
     }
   },
-  "appSettings_debugCard": "Налагодження",
-  "appSettings_appDebugLogging": "Логування налагодження програми",
-  "appSettings_appDebugLoggingSubtitle": "Записувати повідомлення налагодження програми в лог для усунення несправностей.",
-  "appSettings_appDebugLoggingEnabled": "Логування налагодження програми увімкнено",
-  "appSettings_appDebugLoggingDisabled": "Налагодження програми вимкнено.",
-  "contacts_title": "Контакти",
-  "contacts_noContacts": "Контактів не знайдено.",
-  "contacts_contactsWillAppear": "Контакти з'являться, коли пристрої надішлють оголошення.",
-  "contacts_searchContacts": "Пошук контактів...",
-  "contacts_noUnreadContacts": "Немає непрочитаних контактів",
-  "contacts_noContactsFound": "Контактів або груп не знайдено.",
-  "contacts_deleteContact": "Видалити контакт",
-  "contacts_removeConfirm": "Видалити {contactName} з контактів?",
+  "appSettings_debugCard": "ÐÐ°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ",
+  "appSettings_appDebugLogging": "Ð›Ð¾Ð³ÑƒÐ²Ð°Ð½Ð½Ñ Ð½Ð°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸",
+  "appSettings_appDebugLoggingSubtitle": "Ð—Ð°Ð¿Ð¸ÑÑƒÐ²Ð°Ñ‚Ð¸ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ Ð½Ð°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸ Ð² Ð»Ð¾Ð³ Ð´Ð»Ñ ÑƒÑÑƒÐ½ÐµÐ½Ð½Ñ Ð½ÐµÑÐ¿Ñ€Ð°Ð²Ð½Ð¾ÑÑ‚ÐµÐ¹.",
+  "appSettings_appDebugLoggingEnabled": "Ð›Ð¾Ð³ÑƒÐ²Ð°Ð½Ð½Ñ Ð½Ð°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸ ÑƒÐ²Ñ–Ð¼ÐºÐ½ÐµÐ½Ð¾",
+  "appSettings_appDebugLoggingDisabled": "ÐÐ°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸ Ð²Ð¸Ð¼ÐºÐ½ÐµÐ½Ð¾.",
+  "contacts_title": "ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸",
+  "contacts_noContacts": "ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñ–Ð² Ð½Ðµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾.",
+  "contacts_contactsWillAppear": "ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸ Ð·'ÑÐ²Ð»ÑÑ‚ÑŒÑÑ, ÐºÐ¾Ð»Ð¸ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾Ñ— Ð½Ð°Ð´Ñ–ÑˆÐ»ÑŽÑ‚ÑŒ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ.",
+  "contacts_searchContacts": "ÐŸÐ¾ÑˆÑƒÐº ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñ–Ð²...",
+  "contacts_noUnreadContacts": "ÐÐµÐ¼Ð°Ñ” Ð½ÐµÐ¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð¸Ñ… ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñ–Ð²",
+  "contacts_noContactsFound": "ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñ–Ð² Ð°Ð±Ð¾ Ð³Ñ€ÑƒÐ¿ Ð½Ðµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾.",
+  "contacts_deleteContact": "Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚",
+  "contacts_removeConfirm": "Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ {contactName} Ð· ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñ–Ð²?",
   "@contacts_removeConfirm": {
     "placeholders": {
       "contactName": {
@@ -270,12 +270,12 @@
       }
     }
   },
-  "contacts_manageRepeater": "Керувати ретранслятором",
-  "contacts_roomLogin": "Вхід у кімнату",
-  "contacts_openChat": "Відкрити чат",
-  "contacts_editGroup": "Редагувати групу",
-  "contacts_deleteGroup": "Видалити групу",
-  "contacts_deleteGroupConfirm": "Видалити {groupName}?",
+  "contacts_manageRepeater": "ÐšÐµÑ€ÑƒÐ²Ð°Ñ‚Ð¸ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð¾Ð¼",
+  "contacts_roomLogin": "Ð’Ñ…Ñ–Ð´ Ñƒ ÐºÑ–Ð¼Ð½Ð°Ñ‚Ñƒ",
+  "contacts_openChat": "Ð’Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸ Ñ‡Ð°Ñ‚",
+  "contacts_editGroup": "Ð ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ñ‚Ð¸ Ð³Ñ€ÑƒÐ¿Ñƒ",
+  "contacts_deleteGroup": "Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ Ð³Ñ€ÑƒÐ¿Ñƒ",
+  "contacts_deleteGroupConfirm": "Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ {groupName}?",
   "@contacts_deleteGroupConfirm": {
     "placeholders": {
       "groupName": {
@@ -283,10 +283,10 @@
       }
     }
   },
-  "contacts_newGroup": "Нова група",
-  "contacts_groupName": "Назва групи",
-  "contacts_groupNameRequired": "Назва групи обов'язкова.",
-  "contacts_groupAlreadyExists": "Група «{name}» вже існує.",
+  "contacts_newGroup": "ÐÐ¾Ð²Ð° Ð³Ñ€ÑƒÐ¿Ð°",
+  "contacts_groupName": "ÐÐ°Ð·Ð²Ð° Ð³Ñ€ÑƒÐ¿Ð¸",
+  "contacts_groupNameRequired": "ÐÐ°Ð·Ð²Ð° Ð³Ñ€ÑƒÐ¿Ð¸ Ð¾Ð±Ð¾Ð²'ÑÐ·ÐºÐ¾Ð²Ð°.",
+  "contacts_groupAlreadyExists": "Ð“Ñ€ÑƒÐ¿Ð° Â«{name}Â» Ð²Ð¶Ðµ Ñ–ÑÐ½ÑƒÑ”.",
   "@contacts_groupAlreadyExists": {
     "placeholders": {
       "name": {
@@ -294,11 +294,11 @@
       }
     }
   },
-  "contacts_filterContacts": "Фільтрувати контакти...",
-  "contacts_noContactsMatchFilter": "Жоден контакт не відповідає фільтру.",
-  "contacts_noMembers": "Немає учасників",
-  "contacts_lastSeenNow": "В мережі",
-  "contacts_lastSeenMinsAgo": "В мережі {minutes} хв. тому",
+  "contacts_filterContacts": "Ð¤Ñ–Ð»ÑŒÑ‚Ñ€ÑƒÐ²Ð°Ñ‚Ð¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸...",
+  "contacts_noContactsMatchFilter": "Ð–Ð¾Ð´ÐµÐ½ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚ Ð½Ðµ Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ð°Ñ” Ñ„Ñ–Ð»ÑŒÑ‚Ñ€Ñƒ.",
+  "contacts_noMembers": "ÐÐµÐ¼Ð°Ñ” ÑƒÑ‡Ð°ÑÐ½Ð¸ÐºÑ–Ð²",
+  "contacts_lastSeenNow": "Ð’ Ð¼ÐµÑ€ÐµÐ¶Ñ–",
+  "contacts_lastSeenMinsAgo": "Ð’ Ð¼ÐµÑ€ÐµÐ¶Ñ– {minutes} Ñ…Ð². Ñ‚Ð¾Ð¼Ñƒ",
   "@contacts_lastSeenMinsAgo": {
     "placeholders": {
       "minutes": {
@@ -306,8 +306,8 @@
       }
     }
   },
-  "contacts_lastSeenHourAgo": "В мережі 1 годину тому",
-  "contacts_lastSeenHoursAgo": "В мережі {hours} год. тому",
+  "contacts_lastSeenHourAgo": "Ð’ Ð¼ÐµÑ€ÐµÐ¶Ñ– 1 Ð³Ð¾Ð´Ð¸Ð½Ñƒ Ñ‚Ð¾Ð¼Ñƒ",
+  "contacts_lastSeenHoursAgo": "Ð’ Ð¼ÐµÑ€ÐµÐ¶Ñ– {hours} Ð³Ð¾Ð´. Ñ‚Ð¾Ð¼Ñƒ",
   "@contacts_lastSeenHoursAgo": {
     "placeholders": {
       "hours": {
@@ -315,8 +315,8 @@
       }
     }
   },
-  "contacts_lastSeenDayAgo": "В мережі 1 день тому",
-  "contacts_lastSeenDaysAgo": "В мережі {days} дн. тому",
+  "contacts_lastSeenDayAgo": "Ð’ Ð¼ÐµÑ€ÐµÐ¶Ñ– 1 Ð´ÐµÐ½ÑŒ Ñ‚Ð¾Ð¼Ñƒ",
+  "contacts_lastSeenDaysAgo": "Ð’ Ð¼ÐµÑ€ÐµÐ¶Ñ– {days} Ð´Ð½. Ñ‚Ð¾Ð¼Ñƒ",
   "@contacts_lastSeenDaysAgo": {
     "placeholders": {
       "days": {
@@ -324,12 +324,12 @@
       }
     }
   },
-  "channels_title": "Канали",
-  "channels_noChannelsConfigured": "Канали не налаштовані",
-  "channels_addPublicChannel": "Додати публічний канал",
-  "channels_searchChannels": "Пошук каналів...",
-  "channels_noChannelsFound": "Каналів не знайдено",
-  "channels_channelIndex": "Канал {index}",
+  "channels_title": "ÐšÐ°Ð½Ð°Ð»Ð¸",
+  "channels_noChannelsConfigured": "ÐšÐ°Ð½Ð°Ð»Ð¸ Ð½Ðµ Ð½Ð°Ð»Ð°ÑˆÑ‚Ð¾Ð²Ð°Ð½Ñ–",
+  "channels_addPublicChannel": "Ð”Ð¾Ð´Ð°Ñ‚Ð¸ Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¸Ð¹ ÐºÐ°Ð½Ð°Ð»",
+  "channels_searchChannels": "ÐŸÐ¾ÑˆÑƒÐº ÐºÐ°Ð½Ð°Ð»Ñ–Ð²...",
+  "channels_noChannelsFound": "ÐšÐ°Ð½Ð°Ð»Ñ–Ð² Ð½Ðµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾",
+  "channels_channelIndex": "ÐšÐ°Ð½Ð°Ð» {index}",
   "@channels_channelIndex": {
     "placeholders": {
       "index": {
@@ -337,16 +337,16 @@
       }
     }
   },
-  "channels_hashtagChannel": "Канал з хештегом",
-  "channels_public": "Публічний",
-  "channels_private": "Приватний",
-  "channels_publicChannel": "Публічний канал",
-  "channels_privateChannel": "Приватний канал",
-  "channels_editChannel": "Редагувати канал",
-  "channels_muteChannel": "Вимкнути сповіщення каналу",
-  "channels_unmuteChannel": "Увімкнути сповіщення каналу",
-  "channels_deleteChannel": "Видалити канал",
-  "channels_deleteChannelConfirm": "Видалити {name}? Це не можна скасувати.",
+  "channels_hashtagChannel": "ÐšÐ°Ð½Ð°Ð» Ð· Ñ…ÐµÑˆÑ‚ÐµÐ³Ð¾Ð¼",
+  "channels_public": "ÐŸÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¸Ð¹",
+  "channels_private": "ÐŸÑ€Ð¸Ð²Ð°Ñ‚Ð½Ð¸Ð¹",
+  "channels_publicChannel": "ÐŸÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¸Ð¹ ÐºÐ°Ð½Ð°Ð»",
+  "channels_privateChannel": "ÐŸÑ€Ð¸Ð²Ð°Ñ‚Ð½Ð¸Ð¹ ÐºÐ°Ð½Ð°Ð»",
+  "channels_editChannel": "Ð ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ñ‚Ð¸ ÐºÐ°Ð½Ð°Ð»",
+  "channels_muteChannel": "Ð’Ð¸Ð¼ÐºÐ½ÑƒÑ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ ÐºÐ°Ð½Ð°Ð»Ñƒ",
+  "channels_unmuteChannel": "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ ÑÐ¿Ð¾Ð²Ñ–Ñ‰ÐµÐ½Ð½Ñ ÐºÐ°Ð½Ð°Ð»Ñƒ",
+  "channels_deleteChannel": "Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ ÐºÐ°Ð½Ð°Ð»",
+  "channels_deleteChannelConfirm": "Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ {name}? Ð¦Ðµ Ð½Ðµ Ð¼Ð¾Ð¶Ð½Ð° ÑÐºÐ°ÑÑƒÐ²Ð°Ñ‚Ð¸.",
   "@channels_deleteChannelConfirm": {
     "placeholders": {
       "name": {
@@ -354,7 +354,7 @@
       }
     }
   },
-  "channels_channelDeleted": "Канал «{name}» видалено",
+  "channels_channelDeleted": "ÐšÐ°Ð½Ð°Ð» Â«{name}Â» Ð²Ð¸Ð´Ð°Ð»ÐµÐ½Ð¾",
   "@channels_channelDeleted": {
     "placeholders": {
       "name": {
@@ -362,16 +362,16 @@
       }
     }
   },
-  "channels_addChannel": "Додати канал",
-  "channels_channelIndexLabel": "Індекс каналу",
-  "channels_channelName": "Назва каналу",
-  "channels_usePublicChannel": "Використовувати публічний канал",
-  "channels_standardPublicPsk": "Стандартний публічний PSK",
+  "channels_addChannel": "Ð”Ð¾Ð´Ð°Ñ‚Ð¸ ÐºÐ°Ð½Ð°Ð»",
+  "channels_channelIndexLabel": "Ð†Ð½Ð´ÐµÐºÑ ÐºÐ°Ð½Ð°Ð»Ñƒ",
+  "channels_channelName": "ÐÐ°Ð·Ð²Ð° ÐºÐ°Ð½Ð°Ð»Ñƒ",
+  "channels_usePublicChannel": "Ð’Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð¾Ð²ÑƒÐ²Ð°Ñ‚Ð¸ Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¸Ð¹ ÐºÐ°Ð½Ð°Ð»",
+  "channels_standardPublicPsk": "Ð¡Ñ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚Ð½Ð¸Ð¹ Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¸Ð¹ PSK",
   "channels_pskHex": "PSK (Hex)",
-  "channels_generateRandomPsk": "Згенерувати випадковий ключ PSK",
-  "channels_enterChannelName": "Будь ласка, введіть назву каналу",
-  "channels_pskMustBe32Hex": "PSK має складатися з 32 шістнадцяткових символів.",
-  "channels_channelAdded": "Канал «{name}» додано",
+  "channels_generateRandomPsk": "Ð—Ð³ÐµÐ½ÐµÑ€ÑƒÐ²Ð°Ñ‚Ð¸ Ð²Ð¸Ð¿Ð°Ð´ÐºÐ¾Ð²Ð¸Ð¹ ÐºÐ»ÑŽÑ‡ PSK",
+  "channels_enterChannelName": "Ð‘ÑƒÐ´ÑŒ Ð»Ð°ÑÐºÐ°, Ð²Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð°Ð·Ð²Ñƒ ÐºÐ°Ð½Ð°Ð»Ñƒ",
+  "channels_pskMustBe32Hex": "PSK Ð¼Ð°Ñ” ÑÐºÐ»Ð°Ð´Ð°Ñ‚Ð¸ÑÑ Ð· 32 ÑˆÑ–ÑÑ‚Ð½Ð°Ð´Ñ†ÑÑ‚ÐºÐ¾Ð²Ð¸Ñ… ÑÐ¸Ð¼Ð²Ð¾Ð»Ñ–Ð².",
+  "channels_channelAdded": "ÐšÐ°Ð½Ð°Ð» Â«{name}Â» Ð´Ð¾Ð´Ð°Ð½Ð¾",
   "@channels_channelAdded": {
     "placeholders": {
       "name": {
@@ -379,7 +379,7 @@
       }
     }
   },
-  "channels_editChannelTitle": "Редагувати канал {index}",
+  "channels_editChannelTitle": "Ð ÐµÐ´Ð°Ð³ÑƒÐ²Ð°Ñ‚Ð¸ ÐºÐ°Ð½Ð°Ð» {index}",
   "@channels_editChannelTitle": {
     "placeholders": {
       "index": {
@@ -387,8 +387,8 @@
       }
     }
   },
-  "channels_smazCompression": "Стиснення SMAZ",
-  "channels_channelUpdated": "Канал «{name}» оновлено",
+  "channels_smazCompression": "Ð¡Ñ‚Ð¸ÑÐ½ÐµÐ½Ð½Ñ SMAZ",
+  "channels_channelUpdated": "ÐšÐ°Ð½Ð°Ð» Â«{name}Â» Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾",
   "@channels_channelUpdated": {
     "placeholders": {
       "name": {
@@ -396,16 +396,16 @@
       }
     }
   },
-  "channels_publicChannelAdded": "Публічний канал додано",
-  "channels_sortBy": "Сортувати за",
-  "channels_sortManual": "Вручну",
-  "channels_sortAZ": "А-Я",
-  "channels_sortLatestMessages": "Останні повідомлення",
-  "channels_sortUnread": "Непрочитані",
-  "chat_noMessages": "Поки немає повідомлень.",
-  "chat_sendMessageToStart": "Надішліть повідомлення, щоб почати",
-  "chat_originalMessageNotFound": "Оригінальне повідомлення не знайдено",
-  "chat_replyingTo": "Відповідь {name}",
+  "channels_publicChannelAdded": "ÐŸÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¸Ð¹ ÐºÐ°Ð½Ð°Ð» Ð´Ð¾Ð´Ð°Ð½Ð¾",
+  "channels_sortBy": "Ð¡Ð¾Ñ€Ñ‚ÑƒÐ²Ð°Ñ‚Ð¸ Ð·Ð°",
+  "channels_sortManual": "Ð’Ñ€ÑƒÑ‡Ð½Ñƒ",
+  "channels_sortAZ": "Ð-Ð¯",
+  "channels_sortLatestMessages": "ÐžÑÑ‚Ð°Ð½Ð½Ñ– Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ",
+  "channels_sortUnread": "ÐÐµÐ¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ñ–",
+  "chat_noMessages": "ÐŸÐ¾ÐºÐ¸ Ð½ÐµÐ¼Ð°Ñ” Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½ÑŒ.",
+  "chat_sendMessageToStart": "ÐÐ°Ð´Ñ–ÑˆÐ»Ñ–Ñ‚ÑŒ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ, Ñ‰Ð¾Ð± Ð¿Ð¾Ñ‡Ð°Ñ‚Ð¸",
+  "chat_originalMessageNotFound": "ÐžÑ€Ð¸Ð³Ñ–Ð½Ð°Ð»ÑŒÐ½Ðµ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ Ð½Ðµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾",
+  "chat_replyingTo": "Ð’Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´ÑŒ {name}",
   "@chat_replyingTo": {
     "placeholders": {
       "name": {
@@ -413,7 +413,7 @@
       }
     }
   },
-  "chat_replyTo": "Відповісти {name}",
+  "chat_replyTo": "Ð’Ñ–Ð´Ð¿Ð¾Ð²Ñ–ÑÑ‚Ð¸ {name}",
   "@chat_replyTo": {
     "placeholders": {
       "name": {
@@ -421,8 +421,8 @@
       }
     }
   },
-  "chat_location": "Розташування",
-  "chat_sendMessageTo": "Надіслати повідомлення {contactName}",
+  "chat_location": "Ð Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ",
+  "chat_sendMessageTo": "ÐÐ°Ð´Ñ–ÑÐ»Ð°Ñ‚Ð¸ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ {contactName}",
   "@chat_sendMessageTo": {
     "placeholders": {
       "contactName": {
@@ -430,8 +430,8 @@
       }
     }
   },
-  "chat_typeMessage": "Введіть повідомлення...",
-  "chat_messageTooLong": "Повідомлення занадто довге (макс. {maxBytes} байт).",
+  "chat_typeMessage": "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ...",
+  "chat_messageTooLong": "ÐŸÐ¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ Ð·Ð°Ð½Ð°Ð´Ñ‚Ð¾ Ð´Ð¾Ð²Ð³Ðµ (Ð¼Ð°ÐºÑ. {maxBytes} Ð±Ð°Ð¹Ñ‚).",
   "@chat_messageTooLong": {
     "placeholders": {
       "maxBytes": {
@@ -439,10 +439,10 @@
       }
     }
   },
-  "chat_messageCopied": "Повідомлення скопійовано",
-  "chat_messageDeleted": "Повідомлення видалено",
-  "chat_retryingMessage": "Спроба відновлення.",
-  "chat_retryCount": "Повторна спроба {current}/{max}",
+  "chat_messageCopied": "ÐŸÐ¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ ÑÐºÐ¾Ð¿Ñ–Ð¹Ð¾Ð²Ð°Ð½Ð¾",
+  "chat_messageDeleted": "ÐŸÐ¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ Ð²Ð¸Ð´Ð°Ð»ÐµÐ½Ð¾",
+  "chat_retryingMessage": "Ð¡Ð¿Ñ€Ð¾Ð±Ð° Ð²Ñ–Ð´Ð½Ð¾Ð²Ð»ÐµÐ½Ð½Ñ.",
+  "chat_retryCount": "ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð½Ð° ÑÐ¿Ñ€Ð¾Ð±Ð° {current}/{max}",
   "@chat_retryCount": {
     "placeholders": {
       "current": {
@@ -453,33 +453,33 @@
       }
     }
   },
-  "chat_sendGif": "Надіслати GIF",
-  "chat_reply": "Відповісти",
-  "chat_addReaction": "Додати реакцію",
-  "chat_me": "Я",
-  "emojiCategorySmileys": "Емодзі",
-  "emojiCategoryGestures": "Жести",
-  "emojiCategoryHearts": "Серця",
-  "emojiCategoryObjects": "Об'єкти",
-  "gifPicker_title": "Вибрати GIF",
-  "gifPicker_searchHint": "Пошук GIF...",
-  "gifPicker_poweredBy": "На базі GIPHY",
-  "gifPicker_noGifsFound": "GIF не знайдено",
-  "gifPicker_failedLoad": "Не вдалося завантажити GIF-файли",
-  "gifPicker_failedSearch": "Пошук GIF не вдався",
-  "gifPicker_noInternet": "Немає інтернет-з'єднання",
-  "debugLog_appTitle": "Журнал налагодження програми",
-  "debugLog_bleTitle": "Журнал налагодження BLE",
-  "debugLog_copyLog": "Копіювати журнал",
-  "debugLog_clearLog": "Очистити журнал",
-  "debugLog_copied": "Журнал налагодження скопійовано",
-  "debugLog_bleCopied": "Журнал BLE скопійовано",
-  "debugLog_noEntries": "Поки що немає записів журналу налагодження.",
-  "debugLog_enableInSettings": "Увімкніть налагодження програми в налаштуваннях",
-  "debugLog_frames": "Кадри",
-  "debugLog_rawLogRx": "Необроблений лог - RX",
-  "debugLog_noBleActivity": "Поки що немає активності BLE.",
-  "debugFrame_length": "Довжина кадру: {count} байт",
+  "chat_sendGif": "ÐÐ°Ð´Ñ–ÑÐ»Ð°Ñ‚Ð¸ GIF",
+  "chat_reply": "Ð’Ñ–Ð´Ð¿Ð¾Ð²Ñ–ÑÑ‚Ð¸",
+  "chat_addReaction": "Ð”Ð¾Ð´Ð°Ñ‚Ð¸ Ñ€ÐµÐ°ÐºÑ†Ñ–ÑŽ",
+  "chat_me": "Ð¯",
+  "emojiCategorySmileys": "Ð•Ð¼Ð¾Ð´Ð·Ñ–",
+  "emojiCategoryGestures": "Ð–ÐµÑÑ‚Ð¸",
+  "emojiCategoryHearts": "Ð¡ÐµÑ€Ñ†Ñ",
+  "emojiCategoryObjects": "ÐžÐ±'Ñ”ÐºÑ‚Ð¸",
+  "gifPicker_title": "Ð’Ð¸Ð±Ñ€Ð°Ñ‚Ð¸ GIF",
+  "gifPicker_searchHint": "ÐŸÐ¾ÑˆÑƒÐº GIF...",
+  "gifPicker_poweredBy": "ÐÐ° Ð±Ð°Ð·Ñ– GIPHY",
+  "gifPicker_noGifsFound": "GIF Ð½Ðµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾",
+  "gifPicker_failedLoad": "ÐÐµ Ð²Ð´Ð°Ð»Ð¾ÑÑ Ð·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸ GIF-Ñ„Ð°Ð¹Ð»Ð¸",
+  "gifPicker_failedSearch": "ÐŸÐ¾ÑˆÑƒÐº GIF Ð½Ðµ Ð²Ð´Ð°Ð²ÑÑ",
+  "gifPicker_noInternet": "ÐÐµÐ¼Ð°Ñ” Ñ–Ð½Ñ‚ÐµÑ€Ð½ÐµÑ‚-Ð·'Ñ”Ð´Ð½Ð°Ð½Ð½Ñ",
+  "debugLog_appTitle": "Ð–ÑƒÑ€Ð½Ð°Ð» Ð½Ð°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸",
+  "debugLog_bleTitle": "Ð–ÑƒÑ€Ð½Ð°Ð» Ð½Ð°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ BLE",
+  "debugLog_copyLog": "ÐšÐ¾Ð¿Ñ–ÑŽÐ²Ð°Ñ‚Ð¸ Ð¶ÑƒÑ€Ð½Ð°Ð»",
+  "debugLog_clearLog": "ÐžÑ‡Ð¸ÑÑ‚Ð¸Ñ‚Ð¸ Ð¶ÑƒÑ€Ð½Ð°Ð»",
+  "debugLog_copied": "Ð–ÑƒÑ€Ð½Ð°Ð» Ð½Ð°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ ÑÐºÐ¾Ð¿Ñ–Ð¹Ð¾Ð²Ð°Ð½Ð¾",
+  "debugLog_bleCopied": "Ð–ÑƒÑ€Ð½Ð°Ð» BLE ÑÐºÐ¾Ð¿Ñ–Ð¹Ð¾Ð²Ð°Ð½Ð¾",
+  "debugLog_noEntries": "ÐŸÐ¾ÐºÐ¸ Ñ‰Ð¾ Ð½ÐµÐ¼Ð°Ñ” Ð·Ð°Ð¿Ð¸ÑÑ–Ð² Ð¶ÑƒÑ€Ð½Ð°Ð»Ñƒ Ð½Ð°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ.",
+  "debugLog_enableInSettings": "Ð£Ð²Ñ–Ð¼ÐºÐ½Ñ–Ñ‚ÑŒ Ð½Ð°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸ Ð² Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½ÑÑ…",
+  "debugLog_frames": "ÐšÐ°Ð´Ñ€Ð¸",
+  "debugLog_rawLogRx": "ÐÐµÐ¾Ð±Ñ€Ð¾Ð±Ð»ÐµÐ½Ð¸Ð¹ Ð»Ð¾Ð³ - RX",
+  "debugLog_noBleActivity": "ÐŸÐ¾ÐºÐ¸ Ñ‰Ð¾ Ð½ÐµÐ¼Ð°Ñ” Ð°ÐºÑ‚Ð¸Ð²Ð½Ð¾ÑÑ‚Ñ– BLE.",
+  "debugFrame_length": "Ð”Ð¾Ð²Ð¶Ð¸Ð½Ð° ÐºÐ°Ð´Ñ€Ñƒ: {count} Ð±Ð°Ð¹Ñ‚",
   "@debugFrame_length": {
     "placeholders": {
       "count": {
@@ -487,7 +487,7 @@
       }
     }
   },
-  "debugFrame_command": "Команда: 0x{value}",
+  "debugFrame_command": "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð°: 0x{value}",
   "@debugFrame_command": {
     "placeholders": {
       "value": {
@@ -495,8 +495,8 @@
       }
     }
   },
-  "debugFrame_textMessageHeader": "Повідомлення:",
-  "debugFrame_destinationPubKey": "- PubKey призначення: {pubKey}",
+  "debugFrame_textMessageHeader": "ÐŸÐ¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ:",
+  "debugFrame_destinationPubKey": "- PubKey Ð¿Ñ€Ð¸Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ: {pubKey}",
   "@debugFrame_destinationPubKey": {
     "placeholders": {
       "pubKey": {
@@ -504,7 +504,7 @@
       }
     }
   },
-  "debugFrame_timestamp": "- Мітка часу: {timestamp}",
+  "debugFrame_timestamp": "- ÐœÑ–Ñ‚ÐºÐ° Ñ‡Ð°ÑÑƒ: {timestamp}",
   "@debugFrame_timestamp": {
     "placeholders": {
       "timestamp": {
@@ -512,7 +512,7 @@
       }
     }
   },
-  "debugFrame_flags": "- Прапорці: 0x{value}",
+  "debugFrame_flags": "- ÐŸÑ€Ð°Ð¿Ð¾Ñ€Ñ†Ñ–: 0x{value}",
   "@debugFrame_flags": {
     "placeholders": {
       "value": {
@@ -520,7 +520,7 @@
       }
     }
   },
-  "debugFrame_textType": "- Тип тексту: {type} ({label})",
+  "debugFrame_textType": "- Ð¢Ð¸Ð¿ Ñ‚ÐµÐºÑÑ‚Ñƒ: {type} ({label})",
   "@debugFrame_textType": {
     "placeholders": {
       "type": {
@@ -532,8 +532,8 @@
     }
   },
   "debugFrame_textTypeCli": "CLI",
-  "debugFrame_textTypePlain": "Звичайний",
-  "debugFrame_text": "- Текст: \"{text}\"",
+  "debugFrame_textTypePlain": "Ð—Ð²Ð¸Ñ‡Ð°Ð¹Ð½Ð¸Ð¹",
+  "debugFrame_text": "- Ð¢ÐµÐºÑÑ‚: \"{text}\"",
   "@debugFrame_text": {
     "placeholders": {
       "text": {
@@ -541,16 +541,16 @@
       }
     }
   },
-  "debugFrame_hexDump": "Дамп Hex:",
-  "chat_pathManagement": "Керування шляхами",
-  "chat_routingMode": "Режим маршрутизації",
-  "chat_autoUseSavedPath": "Авто (використовувати збережений шлях)",
-  "chat_forceFloodMode": "Примусово на всю мережу",
-  "chat_recentAckPaths": "Недавні шляхи ACK (натисніть, щоб використати):",
-  "chat_pathHistoryFull": "Історія шляхів заповнена. Видаліть записи, щоб додати нові.",
-  "chat_hopSingular": "Стрибок",
-  "chat_hopPlural": "стрибків",
-  "chat_hopsCount": "{count} {count, plural, =1{стрибок} few{стрибки} many{стрибків} other{стрибків}}",
+  "debugFrame_hexDump": "Ð”Ð°Ð¼Ð¿ Hex:",
+  "chat_pathManagement": "ÐšÐµÑ€ÑƒÐ²Ð°Ð½Ð½Ñ ÑˆÐ»ÑÑ…Ð°Ð¼Ð¸",
+  "chat_routingMode": "Ð ÐµÐ¶Ð¸Ð¼ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð°Ñ†Ñ–Ñ—",
+  "chat_autoUseSavedPath": "ÐÐ²Ñ‚Ð¾ (Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð¾Ð²ÑƒÐ²Ð°Ñ‚Ð¸ Ð·Ð±ÐµÑ€ÐµÐ¶ÐµÐ½Ð¸Ð¹ ÑˆÐ»ÑÑ…)",
+  "chat_forceFloodMode": "ÐŸÑ€Ð¸Ð¼ÑƒÑÐ¾Ð²Ð¾ Ð½Ð° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶Ñƒ",
+  "chat_recentAckPaths": "ÐÐµÐ´Ð°Ð²Ð½Ñ– ÑˆÐ»ÑÑ…Ð¸ ACK (Ð½Ð°Ñ‚Ð¸ÑÐ½Ñ–Ñ‚ÑŒ, Ñ‰Ð¾Ð± Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ñ‚Ð¸):",
+  "chat_pathHistoryFull": "Ð†ÑÑ‚Ð¾Ñ€Ñ–Ñ ÑˆÐ»ÑÑ…Ñ–Ð² Ð·Ð°Ð¿Ð¾Ð²Ð½ÐµÐ½Ð°. Ð’Ð¸Ð´Ð°Ð»Ñ–Ñ‚ÑŒ Ð·Ð°Ð¿Ð¸ÑÐ¸, Ñ‰Ð¾Ð± Ð´Ð¾Ð´Ð°Ñ‚Ð¸ Ð½Ð¾Ð²Ñ–.",
+  "chat_hopSingular": "Ð¡Ñ‚Ñ€Ð¸Ð±Ð¾Ðº",
+  "chat_hopPlural": "ÑÑ‚Ñ€Ð¸Ð±ÐºÑ–Ð²",
+  "chat_hopsCount": "{count} {count, plural, =1{ÑÑ‚Ñ€Ð¸Ð±Ð¾Ðº} few{ÑÑ‚Ñ€Ð¸Ð±ÐºÐ¸} many{ÑÑ‚Ñ€Ð¸Ð±ÐºÑ–Ð²} other{ÑÑ‚Ñ€Ð¸Ð±ÐºÑ–Ð²}}",
   "@chat_hopsCount": {
     "placeholders": {
       "count": {
@@ -558,20 +558,20 @@
       }
     }
   },
-  "chat_successes": "Успішно",
-  "chat_removePath": "Видалити шлях",
-  "chat_noPathHistoryYet": "Історія шляхів недоступна.\nНадішліть повідомлення, щоб виявити шляхи.",
-  "chat_pathActions": "Дії зі шляхом:",
-  "chat_setCustomPath": "Встановити власний шлях",
-  "chat_setCustomPathSubtitle": "Вказати шлях маршрутизації вручну",
-  "chat_clearPath": "Очистити шлях",
-  "chat_clearPathSubtitle": "Примусово повторити пошук при наступному надсиланні",
-  "chat_pathCleared": "Шлях очищено. Наступне повідомлення оновить маршрут.",
-  "chat_floodModeSubtitle": "Використовувати перемикач маршрутизації в панелі програми",
-  "chat_floodModeEnabled": "Увімкнено режим «на всю мережу». Перемикайте через іконку маршрутизації на панелі інструментів.",
-  "chat_fullPath": "Повний шлях",
-  "chat_pathDetailsNotAvailable": "Деталі шляху ще недоступні. Спробуйте надіслати повідомлення для оновлення.",
-  "chat_pathSetHops": "Шлях встановлено: {hopCount} {hopCount, plural, =1{стрибок} few{стрибки} many{стрибків} other{стрибків}} - {status}",
+  "chat_successes": "Ð£ÑÐ¿Ñ–ÑˆÐ½Ð¾",
+  "chat_removePath": "Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ ÑˆÐ»ÑÑ…",
+  "chat_noPathHistoryYet": "Ð†ÑÑ‚Ð¾Ñ€Ñ–Ñ ÑˆÐ»ÑÑ…Ñ–Ð² Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð°.\nÐÐ°Ð´Ñ–ÑˆÐ»Ñ–Ñ‚ÑŒ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ, Ñ‰Ð¾Ð± Ð²Ð¸ÑÐ²Ð¸Ñ‚Ð¸ ÑˆÐ»ÑÑ…Ð¸.",
+  "chat_pathActions": "Ð”Ñ–Ñ— Ð·Ñ– ÑˆÐ»ÑÑ…Ð¾Ð¼:",
+  "chat_setCustomPath": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ð¸ Ð²Ð»Ð°ÑÐ½Ð¸Ð¹ ÑˆÐ»ÑÑ…",
+  "chat_setCustomPathSubtitle": "Ð’ÐºÐ°Ð·Ð°Ñ‚Ð¸ ÑˆÐ»ÑÑ… Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð°Ñ†Ñ–Ñ— Ð²Ñ€ÑƒÑ‡Ð½Ñƒ",
+  "chat_clearPath": "ÐžÑ‡Ð¸ÑÑ‚Ð¸Ñ‚Ð¸ ÑˆÐ»ÑÑ…",
+  "chat_clearPathSubtitle": "ÐŸÑ€Ð¸Ð¼ÑƒÑÐ¾Ð²Ð¾ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚Ð¸ Ð¿Ð¾ÑˆÑƒÐº Ð¿Ñ€Ð¸ Ð½Ð°ÑÑ‚ÑƒÐ¿Ð½Ð¾Ð¼Ñƒ Ð½Ð°Ð´ÑÐ¸Ð»Ð°Ð½Ð½Ñ–",
+  "chat_pathCleared": "Ð¨Ð»ÑÑ… Ð¾Ñ‡Ð¸Ñ‰ÐµÐ½Ð¾. ÐÐ°ÑÑ‚ÑƒÐ¿Ð½Ðµ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ Ð¾Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚.",
+  "chat_floodModeSubtitle": "Ð’Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð¾Ð²ÑƒÐ²Ð°Ñ‚Ð¸ Ð¿ÐµÑ€ÐµÐ¼Ð¸ÐºÐ°Ñ‡ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð°Ñ†Ñ–Ñ— Ð² Ð¿Ð°Ð½ÐµÐ»Ñ– Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸",
+  "chat_floodModeEnabled": "Ð£Ð²Ñ–Ð¼ÐºÐ½ÐµÐ½Ð¾ Ñ€ÐµÐ¶Ð¸Ð¼ Â«Ð½Ð° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶ÑƒÂ». ÐŸÐµÑ€ÐµÐ¼Ð¸ÐºÐ°Ð¹Ñ‚Ðµ Ñ‡ÐµÑ€ÐµÐ· Ñ–ÐºÐ¾Ð½ÐºÑƒ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð°Ñ†Ñ–Ñ— Ð½Ð° Ð¿Ð°Ð½ÐµÐ»Ñ– Ñ–Ð½ÑÑ‚Ñ€ÑƒÐ¼ÐµÐ½Ñ‚Ñ–Ð².",
+  "chat_fullPath": "ÐŸÐ¾Ð²Ð½Ð¸Ð¹ ÑˆÐ»ÑÑ…",
+  "chat_pathDetailsNotAvailable": "Ð”ÐµÑ‚Ð°Ð»Ñ– ÑˆÐ»ÑÑ…Ñƒ Ñ‰Ðµ Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ–. Ð¡Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ð½Ð°Ð´Ñ–ÑÐ»Ð°Ñ‚Ð¸ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ Ð´Ð»Ñ Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð½Ñ.",
+  "chat_pathSetHops": "Ð¨Ð»ÑÑ… Ð²ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾: {hopCount} {hopCount, plural, =1{ÑÑ‚Ñ€Ð¸Ð±Ð¾Ðº} few{ÑÑ‚Ñ€Ð¸Ð±ÐºÐ¸} many{ÑÑ‚Ñ€Ð¸Ð±ÐºÑ–Ð²} other{ÑÑ‚Ñ€Ð¸Ð±ÐºÑ–Ð²}} - {status}",
   "@chat_pathSetHops": {
     "placeholders": {
       "hopCount": {
@@ -582,16 +582,16 @@
       }
     }
   },
-  "chat_pathSavedLocally": "Збережено локально. Підключіться для синхронізації.",
-  "chat_pathDeviceConfirmed": "Пристрій підтверджено.",
-  "chat_pathDeviceNotConfirmed": "Пристрій ще не підтверджено.",
-  "chat_type": "Ввід",
-  "chat_path": "Шлях",
-  "chat_publicKey": "Відкритий ключ",
-  "chat_compressOutgoingMessages": "Стискати вихідні повідомлення",
-  "chat_floodForced": "На всю мережу (примусово)",
-  "chat_directForced": "Прямий (примусово)",
-  "chat_hopsForced": "{count} стрибків (примусово)",
+  "chat_pathSavedLocally": "Ð—Ð±ÐµÑ€ÐµÐ¶ÐµÐ½Ð¾ Ð»Ð¾ÐºÐ°Ð»ÑŒÐ½Ð¾. ÐŸÑ–Ð´ÐºÐ»ÑŽÑ‡Ñ–Ñ‚ÑŒÑÑ Ð´Ð»Ñ ÑÐ¸Ð½Ñ…Ñ€Ð¾Ð½Ñ–Ð·Ð°Ñ†Ñ–Ñ—.",
+  "chat_pathDeviceConfirmed": "ÐŸÑ€Ð¸ÑÑ‚Ñ€Ñ–Ð¹ Ð¿Ñ–Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¶ÐµÐ½Ð¾.",
+  "chat_pathDeviceNotConfirmed": "ÐŸÑ€Ð¸ÑÑ‚Ñ€Ñ–Ð¹ Ñ‰Ðµ Ð½Ðµ Ð¿Ñ–Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¶ÐµÐ½Ð¾.",
+  "chat_type": "Ð’Ð²Ñ–Ð´",
+  "chat_path": "Ð¨Ð»ÑÑ…",
+  "chat_publicKey": "Ð’Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸Ð¹ ÐºÐ»ÑŽÑ‡",
+  "chat_compressOutgoingMessages": "Ð¡Ñ‚Ð¸ÑÐºÐ°Ñ‚Ð¸ Ð²Ð¸Ñ…Ñ–Ð´Ð½Ñ– Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ",
+  "chat_floodForced": "ÐÐ° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶Ñƒ (Ð¿Ñ€Ð¸Ð¼ÑƒÑÐ¾Ð²Ð¾)",
+  "chat_directForced": "ÐŸÑ€ÑÐ¼Ð¸Ð¹ (Ð¿Ñ€Ð¸Ð¼ÑƒÑÐ¾Ð²Ð¾)",
+  "chat_hopsForced": "{count} ÑÑ‚Ñ€Ð¸Ð±ÐºÑ–Ð² (Ð¿Ñ€Ð¸Ð¼ÑƒÑÐ¾Ð²Ð¾)",
   "@chat_hopsForced": {
     "placeholders": {
       "count": {
@@ -599,10 +599,10 @@
       }
     }
   },
-  "chat_floodAuto": "На всю мережу (авто)",
-  "chat_direct": "Прямий",
-  "chat_poiShared": "Точкою інтересу поділилися",
-  "chat_unread": "Непрочитано: {count}",
+  "chat_floodAuto": "ÐÐ° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶Ñƒ (Ð°Ð²Ñ‚Ð¾)",
+  "chat_direct": "ÐŸÑ€ÑÐ¼Ð¸Ð¹",
+  "chat_poiShared": "Ð¢Ð¾Ñ‡ÐºÐ¾ÑŽ Ñ–Ð½Ñ‚ÐµÑ€ÐµÑÑƒ Ð¿Ð¾Ð´Ñ–Ð»Ð¸Ð»Ð¸ÑÑ",
+  "chat_unread": "ÐÐµÐ¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð¾: {count}",
   "@chat_unread": {
     "placeholders": {
       "count": {
@@ -610,10 +610,10 @@
       }
     }
   },
-  "chat_openLink": "Відкрити посилання?",
-  "chat_openLinkConfirmation": "Ви хочете відкрити це посилання у браузері?",
-  "chat_open": "Відкрити",
-  "chat_couldNotOpenLink": "Не вдалося відкрити посилання: {url}",
+  "chat_openLink": "Ð’Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸ Ð¿Ð¾ÑÐ¸Ð»Ð°Ð½Ð½Ñ?",
+  "chat_openLinkConfirmation": "Ð’Ð¸ Ñ…Ð¾Ñ‡ÐµÑ‚Ðµ Ð²Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸ Ñ†Ðµ Ð¿Ð¾ÑÐ¸Ð»Ð°Ð½Ð½Ñ Ñƒ Ð±Ñ€Ð°ÑƒÐ·ÐµÑ€Ñ–?",
+  "chat_open": "Ð’Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸",
+  "chat_couldNotOpenLink": "ÐÐµ Ð²Ð´Ð°Ð»Ð¾ÑÑ Ð²Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸ Ð¿Ð¾ÑÐ¸Ð»Ð°Ð½Ð½Ñ: {url}",
   "@chat_couldNotOpenLink": {
     "placeholders": {
       "url": {
@@ -621,11 +621,11 @@
       }
     }
   },
-  "chat_invalidLink": "Невірний формат посилання",
-  "map_title": "Карта вузлів",
-  "map_noNodesWithLocation": "Немає вузлів з даними про розташування",
-  "map_nodesNeedGps": "Вузли повинні надавати свої GPS координати,\nщоб з'явитися на карті.",
-  "map_nodesCount": "Вузли: {count}",
+  "chat_invalidLink": "ÐÐµÐ²Ñ–Ñ€Ð½Ð¸Ð¹ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ Ð¿Ð¾ÑÐ¸Ð»Ð°Ð½Ð½Ñ",
+  "map_title": "ÐšÐ°Ñ€Ñ‚Ð° Ð²ÑƒÐ·Ð»Ñ–Ð²",
+  "map_noNodesWithLocation": "ÐÐµÐ¼Ð°Ñ” Ð²ÑƒÐ·Ð»Ñ–Ð² Ð· Ð´Ð°Ð½Ð¸Ð¼Ð¸ Ð¿Ñ€Ð¾ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ",
+  "map_nodesNeedGps": "Ð’ÑƒÐ·Ð»Ð¸ Ð¿Ð¾Ð²Ð¸Ð½Ð½Ñ– Ð½Ð°Ð´Ð°Ð²Ð°Ñ‚Ð¸ ÑÐ²Ð¾Ñ— GPS ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð¸,\nÑ‰Ð¾Ð± Ð·'ÑÐ²Ð¸Ñ‚Ð¸ÑÑ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ñ–.",
+  "map_nodesCount": "Ð’ÑƒÐ·Ð»Ð¸: {count}",
   "@map_nodesCount": {
     "placeholders": {
       "count": {
@@ -633,7 +633,7 @@
       }
     }
   },
-  "map_pinsCount": "Мітки: {count}",
+  "map_pinsCount": "ÐœÑ–Ñ‚ÐºÐ¸: {count}",
   "@map_pinsCount": {
     "placeholders": {
       "count": {
@@ -641,27 +641,27 @@
       }
     }
   },
-  "map_chat": "Чат",
-  "map_repeater": "Ретранслятор",
-  "map_room": "Кімната",
-  "map_sensor": "Сенсор",
-  "map_pinDm": "Ключ (DM)",
-  "map_pinPrivate": "Замок (Приватний)",
-  "map_pinPublic": "Ключ (Публічний)",
-  "map_lastSeen": "Останній раз бачили",
-  "map_disconnectConfirm": "Ви впевнені, що хочете відключитися від цього пристрою?",
-  "map_from": "Від",
-  "map_source": "Джерело",
-  "map_flags": "Прапорці",
-  "map_shareMarkerHere": "Поділитися маркером тут",
-  "map_pinLabel": "Мітка піна",
-  "map_label": "Мітка",
-  "map_pointOfInterest": "Точка інтересу",
-  "map_sendToContact": "Надіслати контакту",
-  "map_sendToChannel": "Надіслати в канал",
-  "map_noChannelsAvailable": "Немає доступних каналів",
-  "map_publicLocationShare": "Поділитися в публічному місці",
-  "map_publicLocationShareConfirm": "Ви збираєтеся поділитися розташуванням у {channelLabel}. Цей канал публічний, і кожен, хто має ключ PSK, може це побачити.",
+  "map_chat": "Ð§Ð°Ñ‚",
+  "map_repeater": "Ð ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€",
+  "map_room": "ÐšÑ–Ð¼Ð½Ð°Ñ‚Ð°",
+  "map_sensor": "Ð¡ÐµÐ½ÑÐ¾Ñ€",
+  "map_pinDm": "ÐšÐ»ÑŽÑ‡ (DM)",
+  "map_pinPrivate": "Ð—Ð°Ð¼Ð¾Ðº (ÐŸÑ€Ð¸Ð²Ð°Ñ‚Ð½Ð¸Ð¹)",
+  "map_pinPublic": "ÐšÐ»ÑŽÑ‡ (ÐŸÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¸Ð¹)",
+  "map_lastSeen": "ÐžÑÑ‚Ð°Ð½Ð½Ñ–Ð¹ Ñ€Ð°Ð· Ð±Ð°Ñ‡Ð¸Ð»Ð¸",
+  "map_disconnectConfirm": "Ð’Ð¸ Ð²Ð¿ÐµÐ²Ð½ÐµÐ½Ñ–, Ñ‰Ð¾ Ñ…Ð¾Ñ‡ÐµÑ‚Ðµ Ð²Ñ–Ð´ÐºÐ»ÑŽÑ‡Ð¸Ñ‚Ð¸ÑÑ Ð²Ñ–Ð´ Ñ†ÑŒÐ¾Ð³Ð¾ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾ÑŽ?",
+  "map_from": "Ð’Ñ–Ð´",
+  "map_source": "Ð”Ð¶ÐµÑ€ÐµÐ»Ð¾",
+  "map_flags": "ÐŸÑ€Ð°Ð¿Ð¾Ñ€Ñ†Ñ–",
+  "map_shareMarkerHere": "ÐŸÐ¾Ð´Ñ–Ð»Ð¸Ñ‚Ð¸ÑÑ Ð¼Ð°Ñ€ÐºÐµÑ€Ð¾Ð¼ Ñ‚ÑƒÑ‚",
+  "map_pinLabel": "ÐœÑ–Ñ‚ÐºÐ° Ð¿Ñ–Ð½Ð°",
+  "map_label": "ÐœÑ–Ñ‚ÐºÐ°",
+  "map_pointOfInterest": "Ð¢Ð¾Ñ‡ÐºÐ° Ñ–Ð½Ñ‚ÐµÑ€ÐµÑÑƒ",
+  "map_sendToContact": "ÐÐ°Ð´Ñ–ÑÐ»Ð°Ñ‚Ð¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñƒ",
+  "map_sendToChannel": "ÐÐ°Ð´Ñ–ÑÐ»Ð°Ñ‚Ð¸ Ð² ÐºÐ°Ð½Ð°Ð»",
+  "map_noChannelsAvailable": "ÐÐµÐ¼Ð°Ñ” Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¸Ñ… ÐºÐ°Ð½Ð°Ð»Ñ–Ð²",
+  "map_publicLocationShare": "ÐŸÐ¾Ð´Ñ–Ð»Ð¸Ñ‚Ð¸ÑÑ Ð² Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¾Ð¼Ñƒ Ð¼Ñ–ÑÑ†Ñ–",
+  "map_publicLocationShareConfirm": "Ð’Ð¸ Ð·Ð±Ð¸Ñ€Ð°Ñ”Ñ‚ÐµÑÑ Ð¿Ð¾Ð´Ñ–Ð»Ð¸Ñ‚Ð¸ÑÑ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½ÑÐ¼ Ñƒ {channelLabel}. Ð¦ÐµÐ¹ ÐºÐ°Ð½Ð°Ð» Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¸Ð¹, Ñ– ÐºÐ¾Ð¶ÐµÐ½, Ñ…Ñ‚Ð¾ Ð¼Ð°Ñ” ÐºÐ»ÑŽÑ‡ PSK, Ð¼Ð¾Ð¶Ðµ Ñ†Ðµ Ð¿Ð¾Ð±Ð°Ñ‡Ð¸Ñ‚Ð¸.",
   "@map_publicLocationShareConfirm": {
     "placeholders": {
       "channelLabel": {
@@ -669,26 +669,26 @@
       }
     }
   },
-  "map_connectToShareMarkers": "Підключіться до пристрою, щоб поділитися маркерами",
-  "map_filterNodes": "Фільтрувати вузли",
-  "map_nodeTypes": "Типи вузлів",
-  "map_chatNodes": "Вузли чату",
-  "map_repeaters": "Ретранслятори",
-  "map_otherNodes": "Інші вузли",
-  "map_keyPrefix": "Префікс ключа",
-  "map_filterByKeyPrefix": "Фільтрувати за префіксом ключа",
-  "map_publicKeyPrefix": "Префікс відкритого ключа",
-  "map_markers": "Маркери",
-  "map_showSharedMarkers": "Показувати спільні маркери",
-  "map_lastSeenTime": "Час останньої активності",
-  "map_sharedPin": "Спільний пін",
-  "map_joinRoom": "Приєднатися до кімнати",
-  "map_manageRepeater": "Керувати ретранслятором",
-  "mapCache_title": "Офлайн-кеш карти",
-  "mapCache_selectAreaFirst": "Спершу виберіть область для кешування",
-  "mapCache_noTilesToDownload": "Немає плиток для завантаження в цій області.",
-  "mapCache_downloadTilesTitle": "Завантажити плитки",
-  "mapCache_downloadTilesPrompt": "Завантажити {count} плиток для використання офлайн?",
+  "map_connectToShareMarkers": "ÐŸÑ–Ð´ÐºÐ»ÑŽÑ‡Ñ–Ñ‚ÑŒÑÑ Ð´Ð¾ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾ÑŽ, Ñ‰Ð¾Ð± Ð¿Ð¾Ð´Ñ–Ð»Ð¸Ñ‚Ð¸ÑÑ Ð¼Ð°Ñ€ÐºÐµÑ€Ð°Ð¼Ð¸",
+  "map_filterNodes": "Ð¤Ñ–Ð»ÑŒÑ‚Ñ€ÑƒÐ²Ð°Ñ‚Ð¸ Ð²ÑƒÐ·Ð»Ð¸",
+  "map_nodeTypes": "Ð¢Ð¸Ð¿Ð¸ Ð²ÑƒÐ·Ð»Ñ–Ð²",
+  "map_chatNodes": "Ð’ÑƒÐ·Ð»Ð¸ Ñ‡Ð°Ñ‚Ñƒ",
+  "map_repeaters": "Ð ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð¸",
+  "map_otherNodes": "Ð†Ð½ÑˆÑ– Ð²ÑƒÐ·Ð»Ð¸",
+  "map_keyPrefix": "ÐŸÑ€ÐµÑ„Ñ–ÐºÑ ÐºÐ»ÑŽÑ‡Ð°",
+  "map_filterByKeyPrefix": "Ð¤Ñ–Ð»ÑŒÑ‚Ñ€ÑƒÐ²Ð°Ñ‚Ð¸ Ð·Ð° Ð¿Ñ€ÐµÑ„Ñ–ÐºÑÐ¾Ð¼ ÐºÐ»ÑŽÑ‡Ð°",
+  "map_publicKeyPrefix": "ÐŸÑ€ÐµÑ„Ñ–ÐºÑ Ð²Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¾Ð³Ð¾ ÐºÐ»ÑŽÑ‡Ð°",
+  "map_markers": "ÐœÐ°Ñ€ÐºÐµÑ€Ð¸",
+  "map_showSharedMarkers": "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¿Ñ–Ð»ÑŒÐ½Ñ– Ð¼Ð°Ñ€ÐºÐµÑ€Ð¸",
+  "map_lastSeenTime": "Ð§Ð°Ñ Ð¾ÑÑ‚Ð°Ð½Ð½ÑŒÐ¾Ñ— Ð°ÐºÑ‚Ð¸Ð²Ð½Ð¾ÑÑ‚Ñ–",
+  "map_sharedPin": "Ð¡Ð¿Ñ–Ð»ÑŒÐ½Ð¸Ð¹ Ð¿Ñ–Ð½",
+  "map_joinRoom": "ÐŸÑ€Ð¸Ñ”Ð´Ð½Ð°Ñ‚Ð¸ÑÑ Ð´Ð¾ ÐºÑ–Ð¼Ð½Ð°Ñ‚Ð¸",
+  "map_manageRepeater": "ÐšÐµÑ€ÑƒÐ²Ð°Ñ‚Ð¸ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð¾Ð¼",
+  "mapCache_title": "ÐžÑ„Ð»Ð°Ð¹Ð½-ÐºÐµÑˆ ÐºÐ°Ñ€Ñ‚Ð¸",
+  "mapCache_selectAreaFirst": "Ð¡Ð¿ÐµÑ€ÑˆÑƒ Ð²Ð¸Ð±ÐµÑ€Ñ–Ñ‚ÑŒ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ Ð´Ð»Ñ ÐºÐµÑˆÑƒÐ²Ð°Ð½Ð½Ñ",
+  "mapCache_noTilesToDownload": "ÐÐµÐ¼Ð°Ñ” Ð¿Ð»Ð¸Ñ‚Ð¾Ðº Ð´Ð»Ñ Ð·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶ÐµÐ½Ð½Ñ Ð² Ñ†Ñ–Ð¹ Ð¾Ð±Ð»Ð°ÑÑ‚Ñ–.",
+  "mapCache_downloadTilesTitle": "Ð—Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸ Ð¿Ð»Ð¸Ñ‚ÐºÐ¸",
+  "mapCache_downloadTilesPrompt": "Ð—Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸ {count} Ð¿Ð»Ð¸Ñ‚Ð¾Ðº Ð´Ð»Ñ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð½Ñ Ð¾Ñ„Ð»Ð°Ð¹Ð½?",
   "@mapCache_downloadTilesPrompt": {
     "placeholders": {
       "count": {
@@ -696,8 +696,8 @@
       }
     }
   },
-  "mapCache_downloadAction": "Завантажити",
-  "mapCache_cachedTiles": "Закешовано {count} плиток",
+  "mapCache_downloadAction": "Ð—Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸",
+  "mapCache_cachedTiles": "Ð—Ð°ÐºÐµÑˆÐ¾Ð²Ð°Ð½Ð¾ {count} Ð¿Ð»Ð¸Ñ‚Ð¾Ðº",
   "@mapCache_cachedTiles": {
     "placeholders": {
       "count": {
@@ -705,7 +705,7 @@
       }
     }
   },
-  "mapCache_cachedTilesWithFailed": "Плитки в кеші ({downloaded}) ({failed} помилок)",
+  "mapCache_cachedTilesWithFailed": "ÐŸÐ»Ð¸Ñ‚ÐºÐ¸ Ð² ÐºÐµÑˆÑ– ({downloaded}) ({failed} Ð¿Ð¾Ð¼Ð¸Ð»Ð¾Ðº)",
   "@mapCache_cachedTilesWithFailed": {
     "placeholders": {
       "downloaded": {
@@ -716,14 +716,14 @@
       }
     }
   },
-  "mapCache_clearOfflineCacheTitle": "Очистити офлайн-кеш",
-  "mapCache_clearOfflineCachePrompt": "Видалити всі закешовані плитки карти?",
-  "mapCache_offlineCacheCleared": "Офлайн-кеш очищено.",
-  "mapCache_noAreaSelected": "Область не вибрано",
-  "mapCache_cacheArea": "Область кешування",
-  "mapCache_useCurrentView": "Використати поточний вигляд",
-  "mapCache_zoomRange": "Діапазон масштабування",
-  "mapCache_estimatedTiles": "Оцінка плиток: {count}",
+  "mapCache_clearOfflineCacheTitle": "ÐžÑ‡Ð¸ÑÑ‚Ð¸Ñ‚Ð¸ Ð¾Ñ„Ð»Ð°Ð¹Ð½-ÐºÐµÑˆ",
+  "mapCache_clearOfflineCachePrompt": "Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ Ð²ÑÑ– Ð·Ð°ÐºÐµÑˆÐ¾Ð²Ð°Ð½Ñ– Ð¿Ð»Ð¸Ñ‚ÐºÐ¸ ÐºÐ°Ñ€Ñ‚Ð¸?",
+  "mapCache_offlineCacheCleared": "ÐžÑ„Ð»Ð°Ð¹Ð½-ÐºÐµÑˆ Ð¾Ñ‡Ð¸Ñ‰ÐµÐ½Ð¾.",
+  "mapCache_noAreaSelected": "ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ Ð½Ðµ Ð²Ð¸Ð±Ñ€Ð°Ð½Ð¾",
+  "mapCache_cacheArea": "ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ ÐºÐµÑˆÑƒÐ²Ð°Ð½Ð½Ñ",
+  "mapCache_useCurrentView": "Ð’Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ñ‚Ð¸ Ð¿Ð¾Ñ‚Ð¾Ñ‡Ð½Ð¸Ð¹ Ð²Ð¸Ð³Ð»ÑÐ´",
+  "mapCache_zoomRange": "Ð”Ñ–Ð°Ð¿Ð°Ð·Ð¾Ð½ Ð¼Ð°ÑÑˆÑ‚Ð°Ð±ÑƒÐ²Ð°Ð½Ð½Ñ",
+  "mapCache_estimatedTiles": "ÐžÑ†Ñ–Ð½ÐºÐ° Ð¿Ð»Ð¸Ñ‚Ð¾Ðº: {count}",
   "@mapCache_estimatedTiles": {
     "placeholders": {
       "count": {
@@ -731,7 +731,7 @@
       }
     }
   },
-  "mapCache_downloadedTiles": "Завантажено {completed} / {total}",
+  "mapCache_downloadedTiles": "Ð—Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶ÐµÐ½Ð¾ {completed} / {total}",
   "@mapCache_downloadedTiles": {
     "placeholders": {
       "completed": {
@@ -742,9 +742,9 @@
       }
     }
   },
-  "mapCache_downloadTilesButton": "Завантажити плитки",
-  "mapCache_clearCacheButton": "Очистити кеш",
-  "mapCache_failedDownloads": "Невдалі завантаження: {count}",
+  "mapCache_downloadTilesButton": "Ð—Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸ Ð¿Ð»Ð¸Ñ‚ÐºÐ¸",
+  "mapCache_clearCacheButton": "ÐžÑ‡Ð¸ÑÑ‚Ð¸Ñ‚Ð¸ ÐºÐµÑˆ",
+  "mapCache_failedDownloads": "ÐÐµÐ²Ð´Ð°Ð»Ñ– Ð·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶ÐµÐ½Ð½Ñ: {count}",
   "@mapCache_failedDownloads": {
     "placeholders": {
       "count": {
@@ -752,7 +752,7 @@
       }
     }
   },
-  "mapCache_boundsLabel": "Пн {north}, Пд {south}, Сх {east}, Зх {west}",
+  "mapCache_boundsLabel": "ÐŸÐ½ {north}, ÐŸÐ´ {south}, Ð¡Ñ… {east}, Ð—Ñ… {west}",
   "@mapCache_boundsLabel": {
     "placeholders": {
       "north": {
@@ -769,8 +769,8 @@
       }
     }
   },
-  "time_justNow": "Тільки що",
-  "time_minutesAgo": "{minutes} хв. тому",
+  "time_justNow": "Ð¢Ñ–Ð»ÑŒÐºÐ¸ Ñ‰Ð¾",
+  "time_minutesAgo": "{minutes} Ñ…Ð². Ñ‚Ð¾Ð¼Ñƒ",
   "@time_minutesAgo": {
     "placeholders": {
       "minutes": {
@@ -778,7 +778,7 @@
       }
     }
   },
-  "time_hoursAgo": "{hours} год. тому",
+  "time_hoursAgo": "{hours} Ð³Ð¾Ð´. Ñ‚Ð¾Ð¼Ñƒ",
   "@time_hoursAgo": {
     "placeholders": {
       "hours": {
@@ -786,7 +786,7 @@
       }
     }
   },
-  "time_daysAgo": "{days} дн. тому",
+  "time_daysAgo": "{days} Ð´Ð½. Ñ‚Ð¾Ð¼Ñƒ",
   "@time_daysAgo": {
     "placeholders": {
       "days": {
@@ -794,33 +794,33 @@
       }
     }
   },
-  "time_hour": "година",
-  "time_hours": "годин",
-  "time_day": "день",
-  "time_days": "днів",
-  "time_week": "тиждень",
-  "time_weeks": "тижнів",
-  "time_month": "місяць",
-  "time_months": "місяців",
-  "time_minutes": "хвилин",
-  "time_allTime": "Весь час",
-  "dialog_disconnect": "Відключити",
-  "dialog_disconnectConfirm": "Ви впевнені, що хочете відключитися від цього пристрою?",
-  "login_repeaterLogin": "Вхід у ретранслятор",
-  "login_roomLogin": "Вхід у кімнату",
-  "login_password": "Пароль",
-  "login_enterPassword": "Введіть пароль",
-  "login_savePassword": "Зберегти пароль",
-  "login_savePasswordSubtitle": "Пароль буде надійно збережено на цьому пристрої.",
-  "login_repeaterDescription": "Введіть пароль ретранслятора для доступу до налаштувань та статусу.",
-  "login_roomDescription": "Введіть пароль кімнати для доступу до налаштувань та статусу.",
-  "login_routing": "Маршрутизація",
-  "login_routingMode": "Режим маршрутизації",
-  "login_autoUseSavedPath": "Авто (використовувати збережений шлях)",
-  "login_forceFloodMode": "Примусово на всю мережу",
-  "login_managePaths": "Керувати шляхами",
-  "login_login": "Вхід",
-  "login_attempt": "Спроба {current}/{max}",
+  "time_hour": "Ð³Ð¾Ð´Ð¸Ð½Ð°",
+  "time_hours": "Ð³Ð¾Ð´Ð¸Ð½",
+  "time_day": "Ð´ÐµÐ½ÑŒ",
+  "time_days": "Ð´Ð½Ñ–Ð²",
+  "time_week": "Ñ‚Ð¸Ð¶Ð´ÐµÐ½ÑŒ",
+  "time_weeks": "Ñ‚Ð¸Ð¶Ð½Ñ–Ð²",
+  "time_month": "Ð¼Ñ–ÑÑÑ†ÑŒ",
+  "time_months": "Ð¼Ñ–ÑÑÑ†Ñ–Ð²",
+  "time_minutes": "Ñ…Ð²Ð¸Ð»Ð¸Ð½",
+  "time_allTime": "Ð’ÐµÑÑŒ Ñ‡Ð°Ñ",
+  "dialog_disconnect": "Ð’Ñ–Ð´ÐºÐ»ÑŽÑ‡Ð¸Ñ‚Ð¸",
+  "dialog_disconnectConfirm": "Ð’Ð¸ Ð²Ð¿ÐµÐ²Ð½ÐµÐ½Ñ–, Ñ‰Ð¾ Ñ…Ð¾Ñ‡ÐµÑ‚Ðµ Ð²Ñ–Ð´ÐºÐ»ÑŽÑ‡Ð¸Ñ‚Ð¸ÑÑ Ð²Ñ–Ð´ Ñ†ÑŒÐ¾Ð³Ð¾ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾ÑŽ?",
+  "login_repeaterLogin": "Ð’Ñ…Ñ–Ð´ Ñƒ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€",
+  "login_roomLogin": "Ð’Ñ…Ñ–Ð´ Ñƒ ÐºÑ–Ð¼Ð½Ð°Ñ‚Ñƒ",
+  "login_password": "ÐŸÐ°Ñ€Ð¾Ð»ÑŒ",
+  "login_enterPassword": "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ",
+  "login_savePassword": "Ð—Ð±ÐµÑ€ÐµÐ³Ñ‚Ð¸ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ",
+  "login_savePasswordSubtitle": "ÐŸÐ°Ñ€Ð¾Ð»ÑŒ Ð±ÑƒÐ´Ðµ Ð½Ð°Ð´Ñ–Ð¹Ð½Ð¾ Ð·Ð±ÐµÑ€ÐµÐ¶ÐµÐ½Ð¾ Ð½Ð° Ñ†ÑŒÐ¾Ð¼Ñƒ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾Ñ—.",
+  "login_repeaterDescription": "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð° Ð´Ð»Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ñƒ Ð´Ð¾ Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½ÑŒ Ñ‚Ð° ÑÑ‚Ð°Ñ‚ÑƒÑÑƒ.",
+  "login_roomDescription": "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ ÐºÑ–Ð¼Ð½Ð°Ñ‚Ð¸ Ð´Ð»Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ñƒ Ð´Ð¾ Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½ÑŒ Ñ‚Ð° ÑÑ‚Ð°Ñ‚ÑƒÑÑƒ.",
+  "login_routing": "ÐœÐ°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð°Ñ†Ñ–Ñ",
+  "login_routingMode": "Ð ÐµÐ¶Ð¸Ð¼ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð°Ñ†Ñ–Ñ—",
+  "login_autoUseSavedPath": "ÐÐ²Ñ‚Ð¾ (Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð¾Ð²ÑƒÐ²Ð°Ñ‚Ð¸ Ð·Ð±ÐµÑ€ÐµÐ¶ÐµÐ½Ð¸Ð¹ ÑˆÐ»ÑÑ…)",
+  "login_forceFloodMode": "ÐŸÑ€Ð¸Ð¼ÑƒÑÐ¾Ð²Ð¾ Ð½Ð° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶Ñƒ",
+  "login_managePaths": "ÐšÐµÑ€ÑƒÐ²Ð°Ñ‚Ð¸ ÑˆÐ»ÑÑ…Ð°Ð¼Ð¸",
+  "login_login": "Ð’Ñ…Ñ–Ð´",
+  "login_attempt": "Ð¡Ð¿Ñ€Ð¾Ð±Ð° {current}/{max}",
   "@login_attempt": {
     "placeholders": {
       "current": {
@@ -831,7 +831,7 @@
       }
     }
   },
-  "login_failed": "Вхід не вдався: {error}",
+  "login_failed": "Ð’Ñ…Ñ–Ð´ Ð½Ðµ Ð²Ð´Ð°Ð²ÑÑ: {error}",
   "@login_failed": {
     "placeholders": {
       "error": {
@@ -839,10 +839,10 @@
       }
     }
   },
-  "login_failedMessage": "Вхід не вдався. Або пароль неправильний, або ретранслятор недосяжний.",
-  "common_reload": "Перезавантажити",
-  "common_clear": "Очистити",
-  "path_currentPath": "Поточний шлях: {path}",
+  "login_failedMessage": "Ð’Ñ…Ñ–Ð´ Ð½Ðµ Ð²Ð´Ð°Ð²ÑÑ. ÐÐ±Ð¾ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð½ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð¸Ð¹, Ð°Ð±Ð¾ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€ Ð½ÐµÐ´Ð¾ÑÑÐ¶Ð½Ð¸Ð¹.",
+  "common_reload": "ÐŸÐµÑ€ÐµÐ·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸",
+  "common_clear": "ÐžÑ‡Ð¸ÑÑ‚Ð¸Ñ‚Ð¸",
+  "path_currentPath": "ÐŸÐ¾Ñ‚Ð¾Ñ‡Ð½Ð¸Ð¹ ÑˆÐ»ÑÑ…: {path}",
   "@path_currentPath": {
     "placeholders": {
       "path": {
@@ -850,7 +850,7 @@
       }
     }
   },
-  "path_usingHopsPath": "Використання шляху з {count} {count, plural, =1{стрибком} few{стрибками} many{стрибками} other{стрибками}}",
+  "path_usingHopsPath": "Ð’Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð½Ñ ÑˆÐ»ÑÑ…Ñƒ Ð· {count} {count, plural, =1{ÑÑ‚Ñ€Ð¸Ð±ÐºÐ¾Ð¼} few{ÑÑ‚Ñ€Ð¸Ð±ÐºÐ°Ð¼Ð¸} many{ÑÑ‚Ñ€Ð¸Ð±ÐºÐ°Ð¼Ð¸} other{ÑÑ‚Ñ€Ð¸Ð±ÐºÐ°Ð¼Ð¸}}",
   "@path_usingHopsPath": {
     "placeholders": {
       "count": {
@@ -858,16 +858,16 @@
       }
     }
   },
-  "path_enterCustomPath": "Ввести власний шлях",
-  "path_currentPathLabel": "Поточний шлях",
-  "path_hexPrefixInstructions": "Введіть 2-символьні hex-префікси для кожного стрибка, розділені комами.",
-  "path_hexPrefixExample": "Приклад: A1,F2,3C (кожен вузол використовує перший байт свого відкритого ключа).",
-  "path_labelHexPrefixes": "Hex-префікси",
-  "path_helperMaxHops": "Макс. 64 стрибки. Кожен префікс - 2 шістнадцяткові символи (1 байт)",
-  "path_selectFromContacts": "Вибрати з контактів:",
-  "path_noRepeatersFound": "Ретрансляторів або серверів кімнат не знайдено.",
-  "path_customPathsRequire": "Власні шляхи вимагають проміжних вузлів, які можуть передавати повідомлення.",
-  "path_invalidHexPrefixes": "Некоректні hex-префікси: {prefixes}",
+  "path_enterCustomPath": "Ð’Ð²ÐµÑÑ‚Ð¸ Ð²Ð»Ð°ÑÐ½Ð¸Ð¹ ÑˆÐ»ÑÑ…",
+  "path_currentPathLabel": "ÐŸÐ¾Ñ‚Ð¾Ñ‡Ð½Ð¸Ð¹ ÑˆÐ»ÑÑ…",
+  "path_hexPrefixInstructions": "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ 2-ÑÐ¸Ð¼Ð²Ð¾Ð»ÑŒÐ½Ñ– hex-Ð¿Ñ€ÐµÑ„Ñ–ÐºÑÐ¸ Ð´Ð»Ñ ÐºÐ¾Ð¶Ð½Ð¾Ð³Ð¾ ÑÑ‚Ñ€Ð¸Ð±ÐºÐ°, Ñ€Ð¾Ð·Ð´Ñ–Ð»ÐµÐ½Ñ– ÐºÐ¾Ð¼Ð°Ð¼Ð¸.",
+  "path_hexPrefixExample": "ÐŸÑ€Ð¸ÐºÐ»Ð°Ð´: A1,F2,3C (ÐºÐ¾Ð¶ÐµÐ½ Ð²ÑƒÐ·Ð¾Ð» Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð¾Ð²ÑƒÑ” Ð¿ÐµÑ€ÑˆÐ¸Ð¹ Ð±Ð°Ð¹Ñ‚ ÑÐ²Ð¾Ð³Ð¾ Ð²Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¾Ð³Ð¾ ÐºÐ»ÑŽÑ‡Ð°).",
+  "path_labelHexPrefixes": "Hex-Ð¿Ñ€ÐµÑ„Ñ–ÐºÑÐ¸",
+  "path_helperMaxHops": "ÐœÐ°ÐºÑ. 64 ÑÑ‚Ñ€Ð¸Ð±ÐºÐ¸. ÐšÐ¾Ð¶ÐµÐ½ Ð¿Ñ€ÐµÑ„Ñ–ÐºÑ - 2 ÑˆÑ–ÑÑ‚Ð½Ð°Ð´Ñ†ÑÑ‚ÐºÐ¾Ð²Ñ– ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¸ (1 Ð±Ð°Ð¹Ñ‚)",
+  "path_selectFromContacts": "Ð’Ð¸Ð±Ñ€Ð°Ñ‚Ð¸ Ð· ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñ–Ð²:",
+  "path_noRepeatersFound": "Ð ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ñ–Ð² Ð°Ð±Ð¾ ÑÐµÑ€Ð²ÐµÑ€Ñ–Ð² ÐºÑ–Ð¼Ð½Ð°Ñ‚ Ð½Ðµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾.",
+  "path_customPathsRequire": "Ð’Ð»Ð°ÑÐ½Ñ– ÑˆÐ»ÑÑ…Ð¸ Ð²Ð¸Ð¼Ð°Ð³Ð°ÑŽÑ‚ÑŒ Ð¿Ñ€Ð¾Ð¼Ñ–Ð¶Ð½Ð¸Ñ… Ð²ÑƒÐ·Ð»Ñ–Ð², ÑÐºÑ– Ð¼Ð¾Ð¶ÑƒÑ‚ÑŒ Ð¿ÐµÑ€ÐµÐ´Ð°Ð²Ð°Ñ‚Ð¸ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ.",
+  "path_invalidHexPrefixes": "ÐÐµÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ñ– hex-Ð¿Ñ€ÐµÑ„Ñ–ÐºÑÐ¸: {prefixes}",
   "@path_invalidHexPrefixes": {
     "placeholders": {
       "prefixes": {
@@ -875,26 +875,26 @@
       }
     }
   },
-  "path_tooLong": "Шлях занадто довгий. Максимум 64 стрибки.",
-  "path_setPath": "Встановити шлях",
-  "repeater_management": "Керування ретранслятором",
-  "repeater_managementTools": "Інструменти керування",
-  "repeater_status": "Статус",
-  "repeater_statusSubtitle": "Показати статус, статистику та сусідів ретранслятора",
-  "repeater_telemetry": "Телеметрія",
-  "repeater_telemetrySubtitle": "Показати телеметрію сенсорів та статистику системи",
+  "path_tooLong": "Ð¨Ð»ÑÑ… Ð·Ð°Ð½Ð°Ð´Ñ‚Ð¾ Ð´Ð¾Ð²Ð³Ð¸Ð¹. ÐœÐ°ÐºÑÐ¸Ð¼ÑƒÐ¼ 64 ÑÑ‚Ñ€Ð¸Ð±ÐºÐ¸.",
+  "path_setPath": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ð¸ ÑˆÐ»ÑÑ…",
+  "repeater_management": "ÐšÐµÑ€ÑƒÐ²Ð°Ð½Ð½Ñ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð¾Ð¼",
+  "repeater_managementTools": "Ð†Ð½ÑÑ‚Ñ€ÑƒÐ¼ÐµÐ½Ñ‚Ð¸ ÐºÐµÑ€ÑƒÐ²Ð°Ð½Ð½Ñ",
+  "repeater_status": "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ",
+  "repeater_statusSubtitle": "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚Ð¸ ÑÑ‚Ð°Ñ‚ÑƒÑ, ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÑƒ Ñ‚Ð° ÑÑƒÑÑ–Ð´Ñ–Ð² Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð°",
+  "repeater_telemetry": "Ð¢ÐµÐ»ÐµÐ¼ÐµÑ‚Ñ€Ñ–Ñ",
+  "repeater_telemetrySubtitle": "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚Ð¸ Ñ‚ÐµÐ»ÐµÐ¼ÐµÑ‚Ñ€Ñ–ÑŽ ÑÐµÐ½ÑÐ¾Ñ€Ñ–Ð² Ñ‚Ð° ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÑƒ ÑÐ¸ÑÑ‚ÐµÐ¼Ð¸",
   "repeater_cli": "CLI",
-  "repeater_cliSubtitle": "Надіслати команди ретранслятору",
-  "repeater_settings": "Налаштування",
-  "repeater_settingsSubtitle": "Налаштувати параметри ретранслятора",
-  "repeater_statusTitle": "Статус ретранслятора",
-  "repeater_routingMode": "Режим маршрутизації",
-  "repeater_autoUseSavedPath": "Авто (використовувати збережений шлях)",
-  "repeater_forceFloodMode": "Примусово на всю мережу",
-  "repeater_pathManagement": "Керування шляхами",
-  "repeater_refresh": "Оновити",
-  "repeater_statusRequestTimeout": "Час очікування запиту статусу вичерпано.",
-  "repeater_errorLoadingStatus": "Помилка завантаження статусу: {error}",
+  "repeater_cliSubtitle": "ÐÐ°Ð´Ñ–ÑÐ»Ð°Ñ‚Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ñƒ",
+  "repeater_settings": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ",
+  "repeater_settingsSubtitle": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ñ‚Ð¸ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¸ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð°",
+  "repeater_statusTitle": "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð°",
+  "repeater_routingMode": "Ð ÐµÐ¶Ð¸Ð¼ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð°Ñ†Ñ–Ñ—",
+  "repeater_autoUseSavedPath": "ÐÐ²Ñ‚Ð¾ (Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð¾Ð²ÑƒÐ²Ð°Ñ‚Ð¸ Ð·Ð±ÐµÑ€ÐµÐ¶ÐµÐ½Ð¸Ð¹ ÑˆÐ»ÑÑ…)",
+  "repeater_forceFloodMode": "ÐŸÑ€Ð¸Ð¼ÑƒÑÐ¾Ð²Ð¾ Ð½Ð° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶Ñƒ",
+  "repeater_pathManagement": "ÐšÐµÑ€ÑƒÐ²Ð°Ð½Ð½Ñ ÑˆÐ»ÑÑ…Ð°Ð¼Ð¸",
+  "repeater_refresh": "ÐžÐ½Ð¾Ð²Ð¸Ñ‚Ð¸",
+  "repeater_statusRequestTimeout": "Ð§Ð°Ñ Ð¾Ñ‡Ñ–ÐºÑƒÐ²Ð°Ð½Ð½Ñ Ð·Ð°Ð¿Ð¸Ñ‚Ñƒ ÑÑ‚Ð°Ñ‚ÑƒÑÑƒ Ð²Ð¸Ñ‡ÐµÑ€Ð¿Ð°Ð½Ð¾.",
+  "repeater_errorLoadingStatus": "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ° Ð·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶ÐµÐ½Ð½Ñ ÑÑ‚Ð°Ñ‚ÑƒÑÑƒ: {error}",
   "@repeater_errorLoadingStatus": {
     "placeholders": {
       "error": {
@@ -902,23 +902,23 @@
       }
     }
   },
-  "repeater_systemInformation": "Системна інформація",
-  "repeater_battery": "Батарея",
-  "repeater_clockAtLogin": "Годинник (при вході)",
-  "repeater_uptime": "Час роботи",
-  "repeater_queueLength": "Довжина черги",
-  "repeater_debugFlags": "Прапорці налагодження",
-  "repeater_radioStatistics": "Статистика радіо",
-  "repeater_lastRssi": "Останній RSSI",
-  "repeater_lastSnr": "Останній SNR",
-  "repeater_noiseFloor": "Рівень шуму",
-  "repeater_txAirtime": "Ефірний час TX",
-  "repeater_rxAirtime": "Ефірний час RX",
-  "repeater_packetStatistics": "Статистика пакетів",
-  "repeater_sent": "Надіслано",
-  "repeater_received": "Отримано",
-  "repeater_duplicates": "Дублікати",
-  "repeater_daysHoursMinsSecs": "{days} дн. {hours} год {minutes} хв {seconds} с",
+  "repeater_systemInformation": "Ð¡Ð¸ÑÑ‚ÐµÐ¼Ð½Ð° Ñ–Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ñ–Ñ",
+  "repeater_battery": "Ð‘Ð°Ñ‚Ð°Ñ€ÐµÑ",
+  "repeater_clockAtLogin": "Ð“Ð¾Ð´Ð¸Ð½Ð½Ð¸Ðº (Ð¿Ñ€Ð¸ Ð²Ñ…Ð¾Ð´Ñ–)",
+  "repeater_uptime": "Ð§Ð°Ñ Ñ€Ð¾Ð±Ð¾Ñ‚Ð¸",
+  "repeater_queueLength": "Ð”Ð¾Ð²Ð¶Ð¸Ð½Ð° Ñ‡ÐµÑ€Ð³Ð¸",
+  "repeater_debugFlags": "ÐŸÑ€Ð°Ð¿Ð¾Ñ€Ñ†Ñ– Ð½Ð°Ð»Ð°Ð³Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ",
+  "repeater_radioStatistics": "Ð¡Ñ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ° Ñ€Ð°Ð´Ñ–Ð¾",
+  "repeater_lastRssi": "ÐžÑÑ‚Ð°Ð½Ð½Ñ–Ð¹ RSSI",
+  "repeater_lastSnr": "ÐžÑÑ‚Ð°Ð½Ð½Ñ–Ð¹ SNR",
+  "repeater_noiseFloor": "Ð Ñ–Ð²ÐµÐ½ÑŒ ÑˆÑƒÐ¼Ñƒ",
+  "repeater_txAirtime": "Ð•Ñ„Ñ–Ñ€Ð½Ð¸Ð¹ Ñ‡Ð°Ñ TX",
+  "repeater_rxAirtime": "Ð•Ñ„Ñ–Ñ€Ð½Ð¸Ð¹ Ñ‡Ð°Ñ RX",
+  "repeater_packetStatistics": "Ð¡Ñ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ° Ð¿Ð°ÐºÐµÑ‚Ñ–Ð²",
+  "repeater_sent": "ÐÐ°Ð´Ñ–ÑÐ»Ð°Ð½Ð¾",
+  "repeater_received": "ÐžÑ‚Ñ€Ð¸Ð¼Ð°Ð½Ð¾",
+  "repeater_duplicates": "Ð”ÑƒÐ±Ð»Ñ–ÐºÐ°Ñ‚Ð¸",
+  "repeater_daysHoursMinsSecs": "{days} Ð´Ð½. {hours} Ð³Ð¾Ð´ {minutes} Ñ…Ð² {seconds} Ñ",
   "@repeater_daysHoursMinsSecs": {
     "placeholders": {
       "days": {
@@ -935,7 +935,7 @@
       }
     }
   },
-  "repeater_packetTxTotal": "Всього: {total}, На всю мережу: {flood}, Прямі: {direct}",
+  "repeater_packetTxTotal": "Ð’ÑÑŒÐ¾Ð³Ð¾: {total}, ÐÐ° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶Ñƒ: {flood}, ÐŸÑ€ÑÐ¼Ñ–: {direct}",
   "@repeater_packetTxTotal": {
     "placeholders": {
       "total": {
@@ -949,7 +949,7 @@
       }
     }
   },
-  "repeater_packetRxTotal": "Всього: {total}, На всю мережу: {flood}, Прямі: {direct}",
+  "repeater_packetRxTotal": "Ð’ÑÑŒÐ¾Ð³Ð¾: {total}, ÐÐ° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶Ñƒ: {flood}, ÐŸÑ€ÑÐ¼Ñ–: {direct}",
   "@repeater_packetRxTotal": {
     "placeholders": {
       "total": {
@@ -963,7 +963,7 @@
       }
     }
   },
-  "repeater_duplicatesFloodDirect": "На всю мережу: {flood}, Прямі: {direct}",
+  "repeater_duplicatesFloodDirect": "ÐÐ° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶Ñƒ: {flood}, ÐŸÑ€ÑÐ¼Ñ–: {direct}",
   "@repeater_duplicatesFloodDirect": {
     "placeholders": {
       "flood": {
@@ -974,7 +974,7 @@
       }
     }
   },
-  "repeater_duplicatesTotal": "Всього: {total}",
+  "repeater_duplicatesTotal": "Ð’ÑÑŒÐ¾Ð³Ð¾: {total}",
   "@repeater_duplicatesTotal": {
     "placeholders": {
       "total": {
@@ -982,37 +982,37 @@
       }
     }
   },
-  "repeater_settingsTitle": "Налаштування ретранслятора",
-  "repeater_basicSettings": "Основні налаштування",
-  "repeater_repeaterName": "Ім'я ретранслятора",
-  "repeater_repeaterNameHelper": "Показати ім'я цього ретранслятора",
-  "repeater_adminPassword": "Пароль адміністратора",
-  "repeater_adminPasswordHelper": "Пароль повного доступу",
-  "repeater_guestPassword": "Гостьовий пароль",
-  "repeater_guestPasswordHelper": "Доступ лише для читання з паролем",
-  "repeater_radioSettings": "Налаштування радіо",
-  "repeater_frequencyMhz": "Частота (МГц)",
-  "repeater_frequencyHelper": "300-2500 МГц",
-  "repeater_txPower": "Потужність TX",
-  "repeater_txPowerHelper": "1-30 дБм",
-  "repeater_bandwidth": "Смуга пропускання",
-  "repeater_spreadingFactor": "Коефіцієнт розширення",
-  "repeater_codingRate": "Швидкість кодування",
-  "repeater_locationSettings": "Налаштування розташування",
-  "repeater_latitude": "Широта",
-  "repeater_latitudeHelper": "Десяткові градуси (наприклад, 37.7749)",
-  "repeater_longitude": "Довгота",
-  "repeater_longitudeHelper": "Десяткові градуси (наприклад, -122.4194)",
-  "repeater_features": "Функції",
-  "repeater_packetForwarding": "Пересилання пакетів",
-  "repeater_packetForwardingSubtitle": "Дозволити ретранслятору пересилати пакети",
-  "repeater_guestAccess": "Гостьовий доступ",
-  "repeater_guestAccessSubtitle": "Дозволити гостьовий доступ лише для читання",
-  "repeater_privacyMode": "Режим приватності",
-  "repeater_privacyModeSubtitle": "Приховати ім'я/розташування в оголошеннях",
-  "repeater_advertisementSettings": "Налаштування оголошень",
-  "repeater_localAdvertInterval": "Інтервал локальних оголошень (0 стрибків)",
-  "repeater_localAdvertIntervalMinutes": "{minutes} хвилин",
+  "repeater_settingsTitle": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð°",
+  "repeater_basicSettings": "ÐžÑÐ½Ð¾Ð²Ð½Ñ– Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ",
+  "repeater_repeaterName": "Ð†Ð¼'Ñ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð°",
+  "repeater_repeaterNameHelper": "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚Ð¸ Ñ–Ð¼'Ñ Ñ†ÑŒÐ¾Ð³Ð¾ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð°",
+  "repeater_adminPassword": "ÐŸÐ°Ñ€Ð¾Ð»ÑŒ Ð°Ð´Ð¼Ñ–Ð½Ñ–ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð°",
+  "repeater_adminPasswordHelper": "ÐŸÐ°Ñ€Ð¾Ð»ÑŒ Ð¿Ð¾Ð²Ð½Ð¾Ð³Ð¾ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ñƒ",
+  "repeater_guestPassword": "Ð“Ð¾ÑÑ‚ÑŒÐ¾Ð²Ð¸Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ",
+  "repeater_guestPasswordHelper": "Ð”Ð¾ÑÑ‚ÑƒÐ¿ Ð»Ð¸ÑˆÐµ Ð´Ð»Ñ Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ Ð· Ð¿Ð°Ñ€Ð¾Ð»ÐµÐ¼",
+  "repeater_radioSettings": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Ñ€Ð°Ð´Ñ–Ð¾",
+  "repeater_frequencyMhz": "Ð§Ð°ÑÑ‚Ð¾Ñ‚Ð° (ÐœÐ“Ñ†)",
+  "repeater_frequencyHelper": "300-2500 ÐœÐ“Ñ†",
+  "repeater_txPower": "ÐŸÐ¾Ñ‚ÑƒÐ¶Ð½Ñ–ÑÑ‚ÑŒ TX",
+  "repeater_txPowerHelper": "1-30 Ð´Ð‘Ð¼",
+  "repeater_bandwidth": "Ð¡Ð¼ÑƒÐ³Ð° Ð¿Ñ€Ð¾Ð¿ÑƒÑÐºÐ°Ð½Ð½Ñ",
+  "repeater_spreadingFactor": "ÐšÐ¾ÐµÑ„Ñ–Ñ†Ñ–Ñ”Ð½Ñ‚ Ñ€Ð¾Ð·ÑˆÐ¸Ñ€ÐµÐ½Ð½Ñ",
+  "repeater_codingRate": "Ð¨Ð²Ð¸Ð´ÐºÑ–ÑÑ‚ÑŒ ÐºÐ¾Ð´ÑƒÐ²Ð°Ð½Ð½Ñ",
+  "repeater_locationSettings": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ",
+  "repeater_latitude": "Ð¨Ð¸Ñ€Ð¾Ñ‚Ð°",
+  "repeater_latitudeHelper": "Ð”ÐµÑÑÑ‚ÐºÐ¾Ð²Ñ– Ð³Ñ€Ð°Ð´ÑƒÑÐ¸ (Ð½Ð°Ð¿Ñ€Ð¸ÐºÐ»Ð°Ð´, 37.7749)",
+  "repeater_longitude": "Ð”Ð¾Ð²Ð³Ð¾Ñ‚Ð°",
+  "repeater_longitudeHelper": "Ð”ÐµÑÑÑ‚ÐºÐ¾Ð²Ñ– Ð³Ñ€Ð°Ð´ÑƒÑÐ¸ (Ð½Ð°Ð¿Ñ€Ð¸ÐºÐ»Ð°Ð´, -122.4194)",
+  "repeater_features": "Ð¤ÑƒÐ½ÐºÑ†Ñ–Ñ—",
+  "repeater_packetForwarding": "ÐŸÐµÑ€ÐµÑÐ¸Ð»Ð°Ð½Ð½Ñ Ð¿Ð°ÐºÐµÑ‚Ñ–Ð²",
+  "repeater_packetForwardingSubtitle": "Ð”Ð¾Ð·Ð²Ð¾Ð»Ð¸Ñ‚Ð¸ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ñƒ Ð¿ÐµÑ€ÐµÑÐ¸Ð»Ð°Ñ‚Ð¸ Ð¿Ð°ÐºÐµÑ‚Ð¸",
+  "repeater_guestAccess": "Ð“Ð¾ÑÑ‚ÑŒÐ¾Ð²Ð¸Ð¹ Ð´Ð¾ÑÑ‚ÑƒÐ¿",
+  "repeater_guestAccessSubtitle": "Ð”Ð¾Ð·Ð²Ð¾Ð»Ð¸Ñ‚Ð¸ Ð³Ð¾ÑÑ‚ÑŒÐ¾Ð²Ð¸Ð¹ Ð´Ð¾ÑÑ‚ÑƒÐ¿ Ð»Ð¸ÑˆÐµ Ð´Ð»Ñ Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ",
+  "repeater_privacyMode": "Ð ÐµÐ¶Ð¸Ð¼ Ð¿Ñ€Ð¸Ð²Ð°Ñ‚Ð½Ð¾ÑÑ‚Ñ–",
+  "repeater_privacyModeSubtitle": "ÐŸÑ€Ð¸Ñ…Ð¾Ð²Ð°Ñ‚Ð¸ Ñ–Ð¼'Ñ/Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ Ð² Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½ÑÑ…",
+  "repeater_advertisementSettings": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½ÑŒ",
+  "repeater_localAdvertInterval": "Ð†Ð½Ñ‚ÐµÑ€Ð²Ð°Ð» Ð»Ð¾ÐºÐ°Ð»ÑŒÐ½Ð¸Ñ… Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½ÑŒ (0 ÑÑ‚Ñ€Ð¸Ð±ÐºÑ–Ð²)",
+  "repeater_localAdvertIntervalMinutes": "{minutes} Ñ…Ð²Ð¸Ð»Ð¸Ð½",
   "@repeater_localAdvertIntervalMinutes": {
     "placeholders": {
       "minutes": {
@@ -1020,8 +1020,8 @@
       }
     }
   },
-  "repeater_floodAdvertInterval": "Інтервал оголошень на всю мережу (flood)",
-  "repeater_floodAdvertIntervalHours": "{hours} годин",
+  "repeater_floodAdvertInterval": "Ð†Ð½Ñ‚ÐµÑ€Ð²Ð°Ð» Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½ÑŒ Ð½Ð° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶Ñƒ (flood)",
+  "repeater_floodAdvertIntervalHours": "{hours} Ð³Ð¾Ð´Ð¸Ð½",
   "@repeater_floodAdvertIntervalHours": {
     "placeholders": {
       "hours": {
@@ -1029,19 +1029,19 @@
       }
     }
   },
-  "repeater_encryptedAdvertInterval": "Інтервал зашифрованих оголошень",
-  "repeater_dangerZone": "Небезпечна зона",
-  "repeater_rebootRepeater": "Перезавантажити ретранслятор",
-  "repeater_rebootRepeaterSubtitle": "Скинути пристрій ретранслятора",
-  "repeater_rebootRepeaterConfirm": "Ви впевнені, що хочете перезавантажити цей ретранслятор?",
-  "repeater_regenerateIdentityKey": "Перегенерувати ключ ідентичності",
-  "repeater_regenerateIdentityKeySubtitle": "Згенерувати нову пару ключів (публічний/приватний)",
-  "repeater_regenerateIdentityKeyConfirm": "Це створить нову ідентичність для ретранслятора. Продовжити?",
-  "repeater_eraseFileSystem": "Очистити файлову систему",
-  "repeater_eraseFileSystemSubtitle": "Відформатувати файлову систему ретранслятора",
-  "repeater_eraseFileSystemConfirm": "УВАГА: Це видалить всі дані з ретранслятора. Це не можна скасувати!",
-  "repeater_eraseSerialOnly": "Очищення доступне лише через послідовну консоль.",
-  "repeater_commandSent": "Команда надіслана: {command}",
+  "repeater_encryptedAdvertInterval": "Ð†Ð½Ñ‚ÐµÑ€Ð²Ð°Ð» Ð·Ð°ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ… Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½ÑŒ",
+  "repeater_dangerZone": "ÐÐµÐ±ÐµÐ·Ð¿ÐµÑ‡Ð½Ð° Ð·Ð¾Ð½Ð°",
+  "repeater_rebootRepeater": "ÐŸÐµÑ€ÐµÐ·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€",
+  "repeater_rebootRepeaterSubtitle": "Ð¡ÐºÐ¸Ð½ÑƒÑ‚Ð¸ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ñ–Ð¹ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð°",
+  "repeater_rebootRepeaterConfirm": "Ð’Ð¸ Ð²Ð¿ÐµÐ²Ð½ÐµÐ½Ñ–, Ñ‰Ð¾ Ñ…Ð¾Ñ‡ÐµÑ‚Ðµ Ð¿ÐµÑ€ÐµÐ·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ð¸Ñ‚Ð¸ Ñ†ÐµÐ¹ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€?",
+  "repeater_regenerateIdentityKey": "ÐŸÐµÑ€ÐµÐ³ÐµÐ½ÐµÑ€ÑƒÐ²Ð°Ñ‚Ð¸ ÐºÐ»ÑŽÑ‡ Ñ–Ð´ÐµÐ½Ñ‚Ð¸Ñ‡Ð½Ð¾ÑÑ‚Ñ–",
+  "repeater_regenerateIdentityKeySubtitle": "Ð—Ð³ÐµÐ½ÐµÑ€ÑƒÐ²Ð°Ñ‚Ð¸ Ð½Ð¾Ð²Ñƒ Ð¿Ð°Ñ€Ñƒ ÐºÐ»ÑŽÑ‡Ñ–Ð² (Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¸Ð¹/Ð¿Ñ€Ð¸Ð²Ð°Ñ‚Ð½Ð¸Ð¹)",
+  "repeater_regenerateIdentityKeyConfirm": "Ð¦Ðµ ÑÑ‚Ð²Ð¾Ñ€Ð¸Ñ‚ÑŒ Ð½Ð¾Ð²Ñƒ Ñ–Ð´ÐµÐ½Ñ‚Ð¸Ñ‡Ð½Ñ–ÑÑ‚ÑŒ Ð´Ð»Ñ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð°. ÐŸÑ€Ð¾Ð´Ð¾Ð²Ð¶Ð¸Ñ‚Ð¸?",
+  "repeater_eraseFileSystem": "ÐžÑ‡Ð¸ÑÑ‚Ð¸Ñ‚Ð¸ Ñ„Ð°Ð¹Ð»Ð¾Ð²Ñƒ ÑÐ¸ÑÑ‚ÐµÐ¼Ñƒ",
+  "repeater_eraseFileSystemSubtitle": "Ð’Ñ–Ð´Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ÑƒÐ²Ð°Ñ‚Ð¸ Ñ„Ð°Ð¹Ð»Ð¾Ð²Ñƒ ÑÐ¸ÑÑ‚ÐµÐ¼Ñƒ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð°",
+  "repeater_eraseFileSystemConfirm": "Ð£Ð’ÐÐ“Ð: Ð¦Ðµ Ð²Ð¸Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð²ÑÑ– Ð´Ð°Ð½Ñ– Ð· Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð°. Ð¦Ðµ Ð½Ðµ Ð¼Ð¾Ð¶Ð½Ð° ÑÐºÐ°ÑÑƒÐ²Ð°Ñ‚Ð¸!",
+  "repeater_eraseSerialOnly": "ÐžÑ‡Ð¸Ñ‰ÐµÐ½Ð½Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ðµ Ð»Ð¸ÑˆÐµ Ñ‡ÐµÑ€ÐµÐ· Ð¿Ð¾ÑÐ»Ñ–Ð´Ð¾Ð²Ð½Ñƒ ÐºÐ¾Ð½ÑÐ¾Ð»ÑŒ.",
+  "repeater_commandSent": "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° Ð½Ð°Ð´Ñ–ÑÐ»Ð°Ð½Ð°: {command}",
   "@repeater_commandSent": {
     "placeholders": {
       "command": {
@@ -1049,7 +1049,7 @@
       }
     }
   },
-  "repeater_errorSendingCommand": "Помилка надсилання команди: {error}",
+  "repeater_errorSendingCommand": "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ° Ð½Ð°Ð´ÑÐ¸Ð»Ð°Ð½Ð½Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸: {error}",
   "@repeater_errorSendingCommand": {
     "placeholders": {
       "error": {
@@ -1057,9 +1057,9 @@
       }
     }
   },
-  "repeater_confirm": "Підтвердити",
-  "repeater_settingsSaved": "Налаштування успішно збережено.",
-  "repeater_errorSavingSettings": "Помилка збереження налаштувань: {error}",
+  "repeater_confirm": "ÐŸÑ–Ð´Ñ‚Ð²ÐµÑ€Ð´Ð¸Ñ‚Ð¸",
+  "repeater_settingsSaved": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ ÑƒÑÐ¿Ñ–ÑˆÐ½Ð¾ Ð·Ð±ÐµÑ€ÐµÐ¶ÐµÐ½Ð¾.",
+  "repeater_errorSavingSettings": "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ° Ð·Ð±ÐµÑ€ÐµÐ¶ÐµÐ½Ð½Ñ Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½ÑŒ: {error}",
   "@repeater_errorSavingSettings": {
     "placeholders": {
       "error": {
@@ -1067,15 +1067,15 @@
       }
     }
   },
-  "repeater_refreshBasicSettings": "Оновити основні налаштування",
-  "repeater_refreshRadioSettings": "Оновити налаштування радіо",
-  "repeater_refreshTxPower": "Оновити потужність TX",
-  "repeater_refreshLocationSettings": "Оновити налаштування розташування",
-  "repeater_refreshPacketForwarding": "Оновити пересилання пакетів",
-  "repeater_refreshGuestAccess": "Оновити гостьовий доступ",
-  "repeater_refreshPrivacyMode": "Оновити режим приватності",
-  "repeater_refreshAdvertisementSettings": "Оновити налаштування оголошень",
-  "repeater_refreshed": "{label} оновлено",
+  "repeater_refreshBasicSettings": "ÐžÐ½Ð¾Ð²Ð¸Ñ‚Ð¸ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ– Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ",
+  "repeater_refreshRadioSettings": "ÐžÐ½Ð¾Ð²Ð¸Ñ‚Ð¸ Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Ñ€Ð°Ð´Ñ–Ð¾",
+  "repeater_refreshTxPower": "ÐžÐ½Ð¾Ð²Ð¸Ñ‚Ð¸ Ð¿Ð¾Ñ‚ÑƒÐ¶Ð½Ñ–ÑÑ‚ÑŒ TX",
+  "repeater_refreshLocationSettings": "ÐžÐ½Ð¾Ð²Ð¸Ñ‚Ð¸ Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ",
+  "repeater_refreshPacketForwarding": "ÐžÐ½Ð¾Ð²Ð¸Ñ‚Ð¸ Ð¿ÐµÑ€ÐµÑÐ¸Ð»Ð°Ð½Ð½Ñ Ð¿Ð°ÐºÐµÑ‚Ñ–Ð²",
+  "repeater_refreshGuestAccess": "ÐžÐ½Ð¾Ð²Ð¸Ñ‚Ð¸ Ð³Ð¾ÑÑ‚ÑŒÐ¾Ð²Ð¸Ð¹ Ð´Ð¾ÑÑ‚ÑƒÐ¿",
+  "repeater_refreshPrivacyMode": "ÐžÐ½Ð¾Ð²Ð¸Ñ‚Ð¸ Ñ€ÐµÐ¶Ð¸Ð¼ Ð¿Ñ€Ð¸Ð²Ð°Ñ‚Ð½Ð¾ÑÑ‚Ñ–",
+  "repeater_refreshAdvertisementSettings": "ÐžÐ½Ð¾Ð²Ð¸Ñ‚Ð¸ Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½ÑŒ",
+  "repeater_refreshed": "{label} Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾",
   "@repeater_refreshed": {
     "placeholders": {
       "label": {
@@ -1083,7 +1083,7 @@
       }
     }
   },
-  "repeater_errorRefreshing": "Помилка оновлення {label}",
+  "repeater_errorRefreshing": "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ° Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð½Ñ {label}",
   "@repeater_errorRefreshing": {
     "placeholders": {
       "label": {
@@ -1091,18 +1091,18 @@
       }
     }
   },
-  "repeater_cliTitle": "Ретранслятор CLI",
-  "repeater_debugNextCommand": "Налагодити наступну команду",
-  "repeater_commandHelp": "Довідка",
-  "repeater_clearHistory": "Очистити історію",
-  "repeater_noCommandsSent": "Команди ще не надсилалися.",
-  "repeater_typeCommandOrUseQuick": "Введіть команду нижче або використовуйте швидкі команди",
-  "repeater_enterCommandHint": "Введіть команду...",
-  "repeater_previousCommand": "Попередня команда",
-  "repeater_nextCommand": "Наступна команда",
-  "repeater_enterCommandFirst": "Спершу введіть команду",
-  "repeater_cliCommandFrameTitle": "Фрейм команди CLI",
-  "repeater_cliCommandError": "Помилка: {error}",
+  "repeater_cliTitle": "Ð ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€ CLI",
+  "repeater_debugNextCommand": "ÐÐ°Ð»Ð°Ð³Ð¾Ð´Ð¸Ñ‚Ð¸ Ð½Ð°ÑÑ‚ÑƒÐ¿Ð½Ñƒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñƒ",
+  "repeater_commandHelp": "Ð”Ð¾Ð²Ñ–Ð´ÐºÐ°",
+  "repeater_clearHistory": "ÐžÑ‡Ð¸ÑÑ‚Ð¸Ñ‚Ð¸ Ñ–ÑÑ‚Ð¾Ñ€Ñ–ÑŽ",
+  "repeater_noCommandsSent": "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð¸ Ñ‰Ðµ Ð½Ðµ Ð½Ð°Ð´ÑÐ¸Ð»Ð°Ð»Ð¸ÑÑ.",
+  "repeater_typeCommandOrUseQuick": "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñƒ Ð½Ð¸Ð¶Ñ‡Ðµ Ð°Ð±Ð¾ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð¾Ð²ÑƒÐ¹Ñ‚Ðµ ÑˆÐ²Ð¸Ð´ÐºÑ– ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸",
+  "repeater_enterCommandHint": "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñƒ...",
+  "repeater_previousCommand": "ÐŸÐ¾Ð¿ÐµÑ€ÐµÐ´Ð½Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°",
+  "repeater_nextCommand": "ÐÐ°ÑÑ‚ÑƒÐ¿Ð½Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°",
+  "repeater_enterCommandFirst": "Ð¡Ð¿ÐµÑ€ÑˆÑƒ Ð²Ð²ÐµÐ´Ñ–Ñ‚ÑŒ ÐºÐ¾Ð¼Ð°Ð½Ð´Ñƒ",
+  "repeater_cliCommandFrameTitle": "Ð¤Ñ€ÐµÐ¹Ð¼ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸ CLI",
+  "repeater_cliCommandError": "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ°: {error}",
   "@repeater_cliCommandError": {
     "placeholders": {
       "error": {
@@ -1110,81 +1110,81 @@
       }
     }
   },
-  "repeater_cliQuickGetName": "Отримати ім'я",
-  "repeater_cliQuickGetRadio": "Отримати Радіо",
-  "repeater_cliQuickGetTx": "Отримати TX",
-  "repeater_cliQuickNeighbors": "Сусіди",
-  "repeater_cliQuickVersion": "Версія",
-  "repeater_cliQuickAdvertise": "Оголосити",
-  "repeater_cliQuickClock": "Годинник",
-  "repeater_cliHelpAdvert": "Надсилає пакет оголошення",
-  "repeater_cliHelpReboot": "Перезавантажує пристрій. (Зверніть увагу, ви можете отримати «Тайм-аут», що є нормальним)",
-  "repeater_cliHelpClock": "Відображає поточний час за годинником кожного пристрою.",
-  "repeater_cliHelpPassword": "Встановлює новий пароль адміністратора для пристрою.",
-  "repeater_cliHelpVersion": "Відображає версію пристрою та дату збірки прошивки.",
-  "repeater_cliHelpClearStats": "Скидає різні лічильники статистики до нуля.",
-  "repeater_cliHelpSetAf": "Встановлює коефіцієнт ефірного часу.",
-  "repeater_cliHelpSetTx": "Встановлює потужність передачі LoRa в дБм (для застосування потрібне перезавантаження).",
-  "repeater_cliHelpSetRepeat": "Вмикає або вимикає роль ретранслятора для цього вузла.",
-  "repeater_cliHelpSetAllowReadOnly": "(Сервер кімнати) Якщо «увімкнено», порожній пароль дозволить вхід, але не дозволить публікувати в кімнаті. (тільки читання)",
-  "repeater_cliHelpSetFloodMax": "Встановлює максимальну кількість стрибків для вхідних пакетів flood (якщо >= max, пакет не пересилається).",
-  "repeater_cliHelpSetIntThresh": "Встановлює поріг інтерференції (в дБ). Значення за замовчуванням — 14. Встановлення на 0 вимикає виявлення інтерференції каналу.",
-  "repeater_cliHelpSetAgcResetInterval": "Встановлює інтервал скидання автоматичного контролера посилення (AGC). Встановіть 0 для вимкнення.",
-  "repeater_cliHelpSetMultiAcks": "Вмикає або вимикає функціональність подвійних ACK.",
-  "repeater_cliHelpSetAdvertInterval": "Встановлює інтервал таймера для надсилання локального пакету оголошення (без ретрансляції). Встановіть 0 для вимкнення.",
-  "repeater_cliHelpSetFloodAdvertInterval": "Встановлює інтервал таймера в годинах для надсилання пакету оголошення на всю мережу. Встановіть 0 для вимкнення.",
-  "repeater_cliHelpSetGuestPassword": "Встановлює/оновлює гостьовий пароль. (для ретрансляторів гостьові підключення можуть надсилати запит «Get Stats»)",
-  "repeater_cliHelpSetName": "Встановлює ім'я для оголошення.",
-  "repeater_cliHelpSetLat": "Встановлює широту для карти оголошень. (десяткові градуси)",
-  "repeater_cliHelpSetLon": "Встановлює довготу для карти оголошень. (десяткові градуси)",
-  "repeater_cliHelpSetRadio": "Повністю встановлює нові параметри радіо та зберігає їх у налаштуваннях. Потребує команди «перезавантаження» для застосування.",
-  "repeater_cliHelpSetRxDelay": "Базові (експериментальні) параметри для застосування невеликої затримки до отриманих пакетів залежно від сили сигналу/оцінки. Встановіть 0 для вимкнення.",
-  "repeater_cliHelpSetTxDelay": "Встановлює множник для часу роботи в режимі «на всю мережу» (flood) для пакету та системи випадкових слотів, щоб затримати його відправку (для зменшення ймовірності колізій).",
-  "repeater_cliHelpSetDirectTxDelay": "Те саме, що й txdelay, але для застосування випадкової затримки при пересиланні пакетів у прямому режимі.",
-  "repeater_cliHelpSetBridgeEnabled": "Увімкнути/Вимкнути міст.",
-  "repeater_cliHelpSetBridgeDelay": "Встановити затримку перед пересиланням пакетів.",
-  "repeater_cliHelpSetBridgeSource": "Виберіть, чи буде міст ретранслювати отримані пакети або передані пакети.",
-  "repeater_cliHelpSetBridgeBaud": "Встановити швидкість послідовного зв'язку для мостів Rs232.",
-  "repeater_cliHelpSetBridgeSecret": "Встановити секрет мосту для мостів espnow.",
-  "repeater_cliHelpSetAdcMultiplier": "Встановлює власний множник для коригування повідомлюваної напруги батареї (підтримується лише на деяких платах).",
-  "repeater_cliHelpTempRadio": "Встановлює тимчасові параметри радіо на задану кількість хвилин, потім повертається до початкових налаштувань. (не зберігає в налаштуваннях).",
-  "repeater_cliHelpSetPerm": "Змінює ACL (список контролю доступу). Видаляє відповідний запис (за префіксом публічного ключа), якщо «permissions» дорівнює нулю. Додає новий запис, якщо hex публічного ключа повний і його немає в ACL. Оновлює запис на основі префікса публічного ключа. Біти дозволів залежать від ролі прошивки, але нижні 2 біти: 0 (Гість), 1 (Тільки читання), 2 (Читання/Запис), 3 (Адміністратор).",
-  "repeater_cliHelpGetBridgeType": "Отримати тип мосту: немає, rs232, espnow",
-  "repeater_cliHelpLogStart": "Починає запис пакетів у файлову систему.",
-  "repeater_cliHelpLogStop": "Зупиняє запис пакетів у файлову систему.",
-  "repeater_cliHelpLogErase": "Видаляє журнали пакетів з файлової системи.",
-  "repeater_cliHelpNeighbors": "Показує список інших вузлів-ретрансляторів, почутих через оголошення без ретрансляції. Кожен рядок — id-hex-префікс:timestamp:snr-помножено-на-4",
-  "repeater_cliHelpNeighborRemove": "Видаляє перший відповідний запис (за префіксом публічного ключа (hex)) зі списку сусідів.",
-  "repeater_cliHelpRegion": "(тільки серійний) Перелічує всі визначені регіони та поточні дозволи на оголошення «на всю мережу» (flood).",
-  "repeater_cliHelpRegionLoad": "ПРИМІТКА: це спеціальний виклик кількох команд. Кожна наступна команда — це назва регіону (з відступом пробілами для позначення ієрархії батьків, мінімум один пробіл). Завершується надсиланням порожнього рядка/команди.",
-  "repeater_cliHelpRegionGet": "Шукає регіон із заданим префіксом назви (або «» для глобальної області). Відповідає: «-> ім'я-регіону (ім'я-батька) 'F'»",
-  "repeater_cliHelpRegionPut": "Додає або оновлює визначення регіону з заданою назвою.",
-  "repeater_cliHelpRegionRemove": "Видаляє визначення регіону з заданою назвою.",
-  "repeater_cliHelpRegionAllowf": "Встановлює дозвіл «Flood» для заданого регіону. ('' для глобальної/успадкованої області)",
-  "repeater_cliHelpRegionDenyf": "Видаляє дозвіл «Flood» для заданого регіону. (ПРИМІТКА: на даному етапі не рекомендується використовувати для глобальної/успадкованої області!! )",
-  "repeater_cliHelpRegionHome": "Відповідає поточним «домашнім» регіоном. (Примітка: поки ніде не застосовується, зарезервовано для майбутнього використання)",
-  "repeater_cliHelpRegionHomeSet": "Встановлює «домашній» регіон.",
-  "repeater_cliHelpRegionSave": "Зберігає список/карту регіонів у сховищі.",
-  "repeater_cliHelpGps": "Показує статус GPS. Коли GPS вимкнено, відповідає лише «вимкнено», якщо увімкнено — відповідає «увімкнено», статус, корекція, кількість супутників.",
-  "repeater_cliHelpGpsOnOff": "Увімкнути/вимкнути GPS.",
-  "repeater_cliHelpGpsSync": "Синхронізує час вузла з годинником GPS.",
-  "repeater_cliHelpGpsSetLoc": "Встановлює позицію вузла за координатами GPS і зберігає в налаштуваннях.",
-  "repeater_cliHelpGpsAdvert": "Надає конфігурацію оголошення розташування вузла:\n- none : не включати розташування в оголошення\n- share : ділитися розташуванням GPS (з SensorManager)\n- prefs : оголошувати розташування, збережене в налаштуваннях",
-  "repeater_cliHelpGpsAdvertSet": "Встановлює конфігурацію оголошення розташування.",
-  "repeater_commandsListTitle": "Список команд",
-  "repeater_commandsListNote": "ПРИМІТКА: для різних команд «set»... також існує команда «get»...",
-  "repeater_general": "Загальні",
-  "repeater_settingsCategory": "Налаштування",
-  "repeater_bridge": "Міст",
-  "repeater_logging": "Логування",
-  "repeater_neighborsRepeaterOnly": "Сусіди (Тільки ретранслятор)",
-  "repeater_regionManagementRepeaterOnly": "Керування регіонами (Тільки ретранслятор)",
-  "repeater_regionNote": "Команди регіонів були введені для керування визначеннями та дозволами регіонів.",
-  "repeater_gpsManagement": "Керування GPS",
-  "repeater_gpsNote": "Команда GPS була введена для керування питаннями, пов'язаними з локацією.",
-  "telemetry_receivedData": "Дані телеметрії отримано",
-  "telemetry_requestTimeout": "Час запиту телеметрії вичерпано.",
-  "telemetry_errorLoading": "Помилка завантаження телеметрії: {error}",
+  "repeater_cliQuickGetName": "ÐžÑ‚Ñ€Ð¸Ð¼Ð°Ñ‚Ð¸ Ñ–Ð¼'Ñ",
+  "repeater_cliQuickGetRadio": "ÐžÑ‚Ñ€Ð¸Ð¼Ð°Ñ‚Ð¸ Ð Ð°Ð´Ñ–Ð¾",
+  "repeater_cliQuickGetTx": "ÐžÑ‚Ñ€Ð¸Ð¼Ð°Ñ‚Ð¸ TX",
+  "repeater_cliQuickNeighbors": "Ð¡ÑƒÑÑ–Ð´Ð¸",
+  "repeater_cliQuickVersion": "Ð’ÐµÑ€ÑÑ–Ñ",
+  "repeater_cliQuickAdvertise": "ÐžÐ³Ð¾Ð»Ð¾ÑÐ¸Ñ‚Ð¸",
+  "repeater_cliQuickClock": "Ð“Ð¾Ð´Ð¸Ð½Ð½Ð¸Ðº",
+  "repeater_cliHelpAdvert": "ÐÐ°Ð´ÑÐ¸Ð»Ð°Ñ” Ð¿Ð°ÐºÐµÑ‚ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ",
+  "repeater_cliHelpReboot": "ÐŸÐµÑ€ÐµÐ·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶ÑƒÑ” Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ñ–Ð¹. (Ð—Ð²ÐµÑ€Ð½Ñ–Ñ‚ÑŒ ÑƒÐ²Ð°Ð³Ñƒ, Ð²Ð¸ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ñ‚Ð¸ Â«Ð¢Ð°Ð¹Ð¼-Ð°ÑƒÑ‚Â», Ñ‰Ð¾ Ñ” Ð½Ð¾Ñ€Ð¼Ð°Ð»ÑŒÐ½Ð¸Ð¼)",
+  "repeater_cliHelpClock": "Ð’Ñ–Ð´Ð¾Ð±Ñ€Ð°Ð¶Ð°Ñ” Ð¿Ð¾Ñ‚Ð¾Ñ‡Ð½Ð¸Ð¹ Ñ‡Ð°Ñ Ð·Ð° Ð³Ð¾Ð´Ð¸Ð½Ð½Ð¸ÐºÐ¾Ð¼ ÐºÐ¾Ð¶Ð½Ð¾Ð³Ð¾ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾ÑŽ.",
+  "repeater_cliHelpPassword": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ð½Ð¾Ð²Ð¸Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð°Ð´Ð¼Ñ–Ð½Ñ–ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð° Ð´Ð»Ñ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾ÑŽ.",
+  "repeater_cliHelpVersion": "Ð’Ñ–Ð´Ð¾Ð±Ñ€Ð°Ð¶Ð°Ñ” Ð²ÐµÑ€ÑÑ–ÑŽ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾ÑŽ Ñ‚Ð° Ð´Ð°Ñ‚Ñƒ Ð·Ð±Ñ–Ñ€ÐºÐ¸ Ð¿Ñ€Ð¾ÑˆÐ¸Ð²ÐºÐ¸.",
+  "repeater_cliHelpClearStats": "Ð¡ÐºÐ¸Ð´Ð°Ñ” Ñ€Ñ–Ð·Ð½Ñ– Ð»Ñ–Ñ‡Ð¸Ð»ÑŒÐ½Ð¸ÐºÐ¸ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ¸ Ð´Ð¾ Ð½ÑƒÐ»Ñ.",
+  "repeater_cliHelpSetAf": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” ÐºÐ¾ÐµÑ„Ñ–Ñ†Ñ–Ñ”Ð½Ñ‚ ÐµÑ„Ñ–Ñ€Ð½Ð¾Ð³Ð¾ Ñ‡Ð°ÑÑƒ.",
+  "repeater_cliHelpSetTx": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ð¿Ð¾Ñ‚ÑƒÐ¶Ð½Ñ–ÑÑ‚ÑŒ Ð¿ÐµÑ€ÐµÐ´Ð°Ñ‡Ñ– LoRa Ð² Ð´Ð‘Ð¼ (Ð´Ð»Ñ Ð·Ð°ÑÑ‚Ð¾ÑÑƒÐ²Ð°Ð½Ð½Ñ Ð¿Ð¾Ñ‚Ñ€Ñ–Ð±Ð½Ðµ Ð¿ÐµÑ€ÐµÐ·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶ÐµÐ½Ð½Ñ).",
+  "repeater_cliHelpSetRepeat": "Ð’Ð¼Ð¸ÐºÐ°Ñ” Ð°Ð±Ð¾ Ð²Ð¸Ð¼Ð¸ÐºÐ°Ñ” Ñ€Ð¾Ð»ÑŒ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð° Ð´Ð»Ñ Ñ†ÑŒÐ¾Ð³Ð¾ Ð²ÑƒÐ·Ð»Ð°.",
+  "repeater_cliHelpSetAllowReadOnly": "(Ð¡ÐµÑ€Ð²ÐµÑ€ ÐºÑ–Ð¼Ð½Ð°Ñ‚Ð¸) Ð¯ÐºÑ‰Ð¾ Â«ÑƒÐ²Ñ–Ð¼ÐºÐ½ÐµÐ½Ð¾Â», Ð¿Ð¾Ñ€Ð¾Ð¶Ð½Ñ–Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð´Ð¾Ð·Ð²Ð¾Ð»Ð¸Ñ‚ÑŒ Ð²Ñ…Ñ–Ð´, Ð°Ð»Ðµ Ð½Ðµ Ð´Ð¾Ð·Ð²Ð¾Ð»Ð¸Ñ‚ÑŒ Ð¿ÑƒÐ±Ð»Ñ–ÐºÑƒÐ²Ð°Ñ‚Ð¸ Ð² ÐºÑ–Ð¼Ð½Ð°Ñ‚Ñ–. (Ñ‚Ñ–Ð»ÑŒÐºÐ¸ Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ)",
+  "repeater_cliHelpSetFloodMax": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñƒ ÐºÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŒ ÑÑ‚Ñ€Ð¸Ð±ÐºÑ–Ð² Ð´Ð»Ñ Ð²Ñ…Ñ–Ð´Ð½Ð¸Ñ… Ð¿Ð°ÐºÐµÑ‚Ñ–Ð² flood (ÑÐºÑ‰Ð¾ >= max, Ð¿Ð°ÐºÐµÑ‚ Ð½Ðµ Ð¿ÐµÑ€ÐµÑÐ¸Ð»Ð°Ñ”Ñ‚ÑŒÑÑ).",
+  "repeater_cliHelpSetIntThresh": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ð¿Ð¾Ñ€Ñ–Ð³ Ñ–Ð½Ñ‚ÐµÑ€Ñ„ÐµÑ€ÐµÐ½Ñ†Ñ–Ñ— (Ð² Ð´Ð‘). Ð—Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ Ð·Ð° Ð·Ð°Ð¼Ð¾Ð²Ñ‡ÑƒÐ²Ð°Ð½Ð½ÑÐ¼ â€” 14. Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð½Ñ Ð½Ð° 0 Ð²Ð¸Ð¼Ð¸ÐºÐ°Ñ” Ð²Ð¸ÑÐ²Ð»ÐµÐ½Ð½Ñ Ñ–Ð½Ñ‚ÐµÑ€Ñ„ÐµÑ€ÐµÐ½Ñ†Ñ–Ñ— ÐºÐ°Ð½Ð°Ð»Ñƒ.",
+  "repeater_cliHelpSetAgcResetInterval": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ñ–Ð½Ñ‚ÐµÑ€Ð²Ð°Ð» ÑÐºÐ¸Ð´Ð°Ð½Ð½Ñ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾Ð³Ð¾ ÐºÐ¾Ð½Ñ‚Ñ€Ð¾Ð»ÐµÑ€Ð° Ð¿Ð¾ÑÐ¸Ð»ÐµÐ½Ð½Ñ (AGC). Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ñ–Ñ‚ÑŒ 0 Ð´Ð»Ñ Ð²Ð¸Ð¼ÐºÐ½ÐµÐ½Ð½Ñ.",
+  "repeater_cliHelpSetMultiAcks": "Ð’Ð¼Ð¸ÐºÐ°Ñ” Ð°Ð±Ð¾ Ð²Ð¸Ð¼Ð¸ÐºÐ°Ñ” Ñ„ÑƒÐ½ÐºÑ†Ñ–Ð¾Ð½Ð°Ð»ÑŒÐ½Ñ–ÑÑ‚ÑŒ Ð¿Ð¾Ð´Ð²Ñ–Ð¹Ð½Ð¸Ñ… ACK.",
+  "repeater_cliHelpSetAdvertInterval": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ñ–Ð½Ñ‚ÐµÑ€Ð²Ð°Ð» Ñ‚Ð°Ð¹Ð¼ÐµÑ€Ð° Ð´Ð»Ñ Ð½Ð°Ð´ÑÐ¸Ð»Ð°Ð½Ð½Ñ Ð»Ð¾ÐºÐ°Ð»ÑŒÐ½Ð¾Ð³Ð¾ Ð¿Ð°ÐºÐµÑ‚Ñƒ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ (Ð±ÐµÐ· Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ†Ñ–Ñ—). Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ñ–Ñ‚ÑŒ 0 Ð´Ð»Ñ Ð²Ð¸Ð¼ÐºÐ½ÐµÐ½Ð½Ñ.",
+  "repeater_cliHelpSetFloodAdvertInterval": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ñ–Ð½Ñ‚ÐµÑ€Ð²Ð°Ð» Ñ‚Ð°Ð¹Ð¼ÐµÑ€Ð° Ð² Ð³Ð¾Ð´Ð¸Ð½Ð°Ñ… Ð´Ð»Ñ Ð½Ð°Ð´ÑÐ¸Ð»Ð°Ð½Ð½Ñ Ð¿Ð°ÐºÐµÑ‚Ñƒ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ Ð½Ð° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶Ñƒ. Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ñ–Ñ‚ÑŒ 0 Ð´Ð»Ñ Ð²Ð¸Ð¼ÐºÐ½ÐµÐ½Ð½Ñ.",
+  "repeater_cliHelpSetGuestPassword": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ”/Ð¾Ð½Ð¾Ð²Ð»ÑŽÑ” Ð³Ð¾ÑÑ‚ÑŒÐ¾Ð²Ð¸Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ. (Ð´Ð»Ñ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ñ–Ð² Ð³Ð¾ÑÑ‚ÑŒÐ¾Ð²Ñ– Ð¿Ñ–Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð½Ñ Ð¼Ð¾Ð¶ÑƒÑ‚ÑŒ Ð½Ð°Ð´ÑÐ¸Ð»Ð°Ñ‚Ð¸ Ð·Ð°Ð¿Ð¸Ñ‚ Â«Get StatsÂ»)",
+  "repeater_cliHelpSetName": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ñ–Ð¼'Ñ Ð´Ð»Ñ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ.",
+  "repeater_cliHelpSetLat": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” ÑˆÐ¸Ñ€Ð¾Ñ‚Ñƒ Ð´Ð»Ñ ÐºÐ°Ñ€Ñ‚Ð¸ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½ÑŒ. (Ð´ÐµÑÑÑ‚ÐºÐ¾Ð²Ñ– Ð³Ñ€Ð°Ð´ÑƒÑÐ¸)",
+  "repeater_cliHelpSetLon": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ð´Ð¾Ð²Ð³Ð¾Ñ‚Ñƒ Ð´Ð»Ñ ÐºÐ°Ñ€Ñ‚Ð¸ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½ÑŒ. (Ð´ÐµÑÑÑ‚ÐºÐ¾Ð²Ñ– Ð³Ñ€Ð°Ð´ÑƒÑÐ¸)",
+  "repeater_cliHelpSetRadio": "ÐŸÐ¾Ð²Ð½Ñ–ÑÑ‚ÑŽ Ð²ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ð½Ð¾Ð²Ñ– Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¸ Ñ€Ð°Ð´Ñ–Ð¾ Ñ‚Ð° Ð·Ð±ÐµÑ€Ñ–Ð³Ð°Ñ” Ñ—Ñ… Ñƒ Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½ÑÑ…. ÐŸÐ¾Ñ‚Ñ€ÐµÐ±ÑƒÑ” ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸ Â«Ð¿ÐµÑ€ÐµÐ·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶ÐµÐ½Ð½ÑÂ» Ð´Ð»Ñ Ð·Ð°ÑÑ‚Ð¾ÑÑƒÐ²Ð°Ð½Ð½Ñ.",
+  "repeater_cliHelpSetRxDelay": "Ð‘Ð°Ð·Ð¾Ð²Ñ– (ÐµÐºÑÐ¿ÐµÑ€Ð¸Ð¼ÐµÐ½Ñ‚Ð°Ð»ÑŒÐ½Ñ–) Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¸ Ð´Ð»Ñ Ð·Ð°ÑÑ‚Ð¾ÑÑƒÐ²Ð°Ð½Ð½Ñ Ð½ÐµÐ²ÐµÐ»Ð¸ÐºÐ¾Ñ— Ð·Ð°Ñ‚Ñ€Ð¸Ð¼ÐºÐ¸ Ð´Ð¾ Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ð½Ð¸Ñ… Ð¿Ð°ÐºÐµÑ‚Ñ–Ð² Ð·Ð°Ð»ÐµÐ¶Ð½Ð¾ Ð²Ñ–Ð´ ÑÐ¸Ð»Ð¸ ÑÐ¸Ð³Ð½Ð°Ð»Ñƒ/Ð¾Ñ†Ñ–Ð½ÐºÐ¸. Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ñ–Ñ‚ÑŒ 0 Ð´Ð»Ñ Ð²Ð¸Ð¼ÐºÐ½ÐµÐ½Ð½Ñ.",
+  "repeater_cliHelpSetTxDelay": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ð¼Ð½Ð¾Ð¶Ð½Ð¸Ðº Ð´Ð»Ñ Ñ‡Ð°ÑÑƒ Ñ€Ð¾Ð±Ð¾Ñ‚Ð¸ Ð² Ñ€ÐµÐ¶Ð¸Ð¼Ñ– Â«Ð½Ð° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶ÑƒÂ» (flood) Ð´Ð»Ñ Ð¿Ð°ÐºÐµÑ‚Ñƒ Ñ‚Ð° ÑÐ¸ÑÑ‚ÐµÐ¼Ð¸ Ð²Ð¸Ð¿Ð°Ð´ÐºÐ¾Ð²Ð¸Ñ… ÑÐ»Ð¾Ñ‚Ñ–Ð², Ñ‰Ð¾Ð± Ð·Ð°Ñ‚Ñ€Ð¸Ð¼Ð°Ñ‚Ð¸ Ð¹Ð¾Ð³Ð¾ Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²ÐºÑƒ (Ð´Ð»Ñ Ð·Ð¼ÐµÐ½ÑˆÐµÐ½Ð½Ñ Ð¹Ð¼Ð¾Ð²Ñ–Ñ€Ð½Ð¾ÑÑ‚Ñ– ÐºÐ¾Ð»Ñ–Ð·Ñ–Ð¹).",
+  "repeater_cliHelpSetDirectTxDelay": "Ð¢Ðµ ÑÐ°Ð¼Ðµ, Ñ‰Ð¾ Ð¹ txdelay, Ð°Ð»Ðµ Ð´Ð»Ñ Ð·Ð°ÑÑ‚Ð¾ÑÑƒÐ²Ð°Ð½Ð½Ñ Ð²Ð¸Ð¿Ð°Ð´ÐºÐ¾Ð²Ð¾Ñ— Ð·Ð°Ñ‚Ñ€Ð¸Ð¼ÐºÐ¸ Ð¿Ñ€Ð¸ Ð¿ÐµÑ€ÐµÑÐ¸Ð»Ð°Ð½Ð½Ñ– Ð¿Ð°ÐºÐµÑ‚Ñ–Ð² Ñƒ Ð¿Ñ€ÑÐ¼Ð¾Ð¼Ñƒ Ñ€ÐµÐ¶Ð¸Ð¼Ñ–.",
+  "repeater_cliHelpSetBridgeEnabled": "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸/Ð’Ð¸Ð¼ÐºÐ½ÑƒÑ‚Ð¸ Ð¼Ñ–ÑÑ‚.",
+  "repeater_cliHelpSetBridgeDelay": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ð¸ Ð·Ð°Ñ‚Ñ€Ð¸Ð¼ÐºÑƒ Ð¿ÐµÑ€ÐµÐ´ Ð¿ÐµÑ€ÐµÑÐ¸Ð»Ð°Ð½Ð½ÑÐ¼ Ð¿Ð°ÐºÐµÑ‚Ñ–Ð².",
+  "repeater_cliHelpSetBridgeSource": "Ð’Ð¸Ð±ÐµÑ€Ñ–Ñ‚ÑŒ, Ñ‡Ð¸ Ð±ÑƒÐ´Ðµ Ð¼Ñ–ÑÑ‚ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑŽÐ²Ð°Ñ‚Ð¸ Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ð½Ñ– Ð¿Ð°ÐºÐµÑ‚Ð¸ Ð°Ð±Ð¾ Ð¿ÐµÑ€ÐµÐ´Ð°Ð½Ñ– Ð¿Ð°ÐºÐµÑ‚Ð¸.",
+  "repeater_cliHelpSetBridgeBaud": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ð¸ ÑˆÐ²Ð¸Ð´ÐºÑ–ÑÑ‚ÑŒ Ð¿Ð¾ÑÐ»Ñ–Ð´Ð¾Ð²Ð½Ð¾Ð³Ð¾ Ð·Ð²'ÑÐ·ÐºÑƒ Ð´Ð»Ñ Ð¼Ð¾ÑÑ‚Ñ–Ð² Rs232.",
+  "repeater_cliHelpSetBridgeSecret": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚Ð¸ ÑÐµÐºÑ€ÐµÑ‚ Ð¼Ð¾ÑÑ‚Ñƒ Ð´Ð»Ñ Ð¼Ð¾ÑÑ‚Ñ–Ð² espnow.",
+  "repeater_cliHelpSetAdcMultiplier": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ð²Ð»Ð°ÑÐ½Ð¸Ð¹ Ð¼Ð½Ð¾Ð¶Ð½Ð¸Ðº Ð´Ð»Ñ ÐºÐ¾Ñ€Ð¸Ð³ÑƒÐ²Ð°Ð½Ð½Ñ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÑŽÐ²Ð°Ð½Ð¾Ñ— Ð½Ð°Ð¿Ñ€ÑƒÐ³Ð¸ Ð±Ð°Ñ‚Ð°Ñ€ÐµÑ— (Ð¿Ñ–Ð´Ñ‚Ñ€Ð¸Ð¼ÑƒÑ”Ñ‚ÑŒÑÑ Ð»Ð¸ÑˆÐµ Ð½Ð° Ð´ÐµÑÐºÐ¸Ñ… Ð¿Ð»Ð°Ñ‚Ð°Ñ…).",
+  "repeater_cliHelpTempRadio": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ñ‚Ð¸Ð¼Ñ‡Ð°ÑÐ¾Ð²Ñ– Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¸ Ñ€Ð°Ð´Ñ–Ð¾ Ð½Ð° Ð·Ð°Ð´Ð°Ð½Ñƒ ÐºÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŒ Ñ…Ð²Ð¸Ð»Ð¸Ð½, Ð¿Ð¾Ñ‚Ñ–Ð¼ Ð¿Ð¾Ð²ÐµÑ€Ñ‚Ð°Ñ”Ñ‚ÑŒÑÑ Ð´Ð¾ Ð¿Ð¾Ñ‡Ð°Ñ‚ÐºÐ¾Ð²Ð¸Ñ… Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½ÑŒ. (Ð½Ðµ Ð·Ð±ÐµÑ€Ñ–Ð³Ð°Ñ” Ð² Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½ÑÑ…).",
+  "repeater_cliHelpSetPerm": "Ð—Ð¼Ñ–Ð½ÑŽÑ” ACL (ÑÐ¿Ð¸ÑÐ¾Ðº ÐºÐ¾Ð½Ñ‚Ñ€Ð¾Ð»ÑŽ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ñƒ). Ð’Ð¸Ð´Ð°Ð»ÑÑ” Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ð½Ð¸Ð¹ Ð·Ð°Ð¿Ð¸Ñ (Ð·Ð° Ð¿Ñ€ÐµÑ„Ñ–ÐºÑÐ¾Ð¼ Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¾Ð³Ð¾ ÐºÐ»ÑŽÑ‡Ð°), ÑÐºÑ‰Ð¾ Â«permissionsÂ» Ð´Ð¾Ñ€Ñ–Ð²Ð½ÑŽÑ” Ð½ÑƒÐ»ÑŽ. Ð”Ð¾Ð´Ð°Ñ” Ð½Ð¾Ð²Ð¸Ð¹ Ð·Ð°Ð¿Ð¸Ñ, ÑÐºÑ‰Ð¾ hex Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¾Ð³Ð¾ ÐºÐ»ÑŽÑ‡Ð° Ð¿Ð¾Ð²Ð½Ð¸Ð¹ Ñ– Ð¹Ð¾Ð³Ð¾ Ð½ÐµÐ¼Ð°Ñ” Ð² ACL. ÐžÐ½Ð¾Ð²Ð»ÑŽÑ” Ð·Ð°Ð¿Ð¸Ñ Ð½Ð° Ð¾ÑÐ½Ð¾Ð²Ñ– Ð¿Ñ€ÐµÑ„Ñ–ÐºÑÐ° Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¾Ð³Ð¾ ÐºÐ»ÑŽÑ‡Ð°. Ð‘Ñ–Ñ‚Ð¸ Ð´Ð¾Ð·Ð²Ð¾Ð»Ñ–Ð² Ð·Ð°Ð»ÐµÐ¶Ð°Ñ‚ÑŒ Ð²Ñ–Ð´ Ñ€Ð¾Ð»Ñ– Ð¿Ñ€Ð¾ÑˆÐ¸Ð²ÐºÐ¸, Ð°Ð»Ðµ Ð½Ð¸Ð¶Ð½Ñ– 2 Ð±Ñ–Ñ‚Ð¸: 0 (Ð“Ñ–ÑÑ‚ÑŒ), 1 (Ð¢Ñ–Ð»ÑŒÐºÐ¸ Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ), 2 (Ð§Ð¸Ñ‚Ð°Ð½Ð½Ñ/Ð—Ð°Ð¿Ð¸Ñ), 3 (ÐÐ´Ð¼Ñ–Ð½Ñ–ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€).",
+  "repeater_cliHelpGetBridgeType": "ÐžÑ‚Ñ€Ð¸Ð¼Ð°Ñ‚Ð¸ Ñ‚Ð¸Ð¿ Ð¼Ð¾ÑÑ‚Ñƒ: Ð½ÐµÐ¼Ð°Ñ”, rs232, espnow",
+  "repeater_cliHelpLogStart": "ÐŸÐ¾Ñ‡Ð¸Ð½Ð°Ñ” Ð·Ð°Ð¿Ð¸Ñ Ð¿Ð°ÐºÐµÑ‚Ñ–Ð² Ñƒ Ñ„Ð°Ð¹Ð»Ð¾Ð²Ñƒ ÑÐ¸ÑÑ‚ÐµÐ¼Ñƒ.",
+  "repeater_cliHelpLogStop": "Ð—ÑƒÐ¿Ð¸Ð½ÑÑ” Ð·Ð°Ð¿Ð¸Ñ Ð¿Ð°ÐºÐµÑ‚Ñ–Ð² Ñƒ Ñ„Ð°Ð¹Ð»Ð¾Ð²Ñƒ ÑÐ¸ÑÑ‚ÐµÐ¼Ñƒ.",
+  "repeater_cliHelpLogErase": "Ð’Ð¸Ð´Ð°Ð»ÑÑ” Ð¶ÑƒÑ€Ð½Ð°Ð»Ð¸ Ð¿Ð°ÐºÐµÑ‚Ñ–Ð² Ð· Ñ„Ð°Ð¹Ð»Ð¾Ð²Ð¾Ñ— ÑÐ¸ÑÑ‚ÐµÐ¼Ð¸.",
+  "repeater_cliHelpNeighbors": "ÐŸÐ¾ÐºÐ°Ð·ÑƒÑ” ÑÐ¿Ð¸ÑÐ¾Ðº Ñ–Ð½ÑˆÐ¸Ñ… Ð²ÑƒÐ·Ð»Ñ–Ð²-Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ñ–Ð², Ð¿Ð¾Ñ‡ÑƒÑ‚Ð¸Ñ… Ñ‡ÐµÑ€ÐµÐ· Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ Ð±ÐµÐ· Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ†Ñ–Ñ—. ÐšÐ¾Ð¶ÐµÐ½ Ñ€ÑÐ´Ð¾Ðº â€” id-hex-Ð¿Ñ€ÐµÑ„Ñ–ÐºÑ:timestamp:snr-Ð¿Ð¾Ð¼Ð½Ð¾Ð¶ÐµÐ½Ð¾-Ð½Ð°-4",
+  "repeater_cliHelpNeighborRemove": "Ð’Ð¸Ð´Ð°Ð»ÑÑ” Ð¿ÐµÑ€ÑˆÐ¸Ð¹ Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ð½Ð¸Ð¹ Ð·Ð°Ð¿Ð¸Ñ (Ð·Ð° Ð¿Ñ€ÐµÑ„Ñ–ÐºÑÐ¾Ð¼ Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¾Ð³Ð¾ ÐºÐ»ÑŽÑ‡Ð° (hex)) Ð·Ñ– ÑÐ¿Ð¸ÑÐºÑƒ ÑÑƒÑÑ–Ð´Ñ–Ð².",
+  "repeater_cliHelpRegion": "(Ñ‚Ñ–Ð»ÑŒÐºÐ¸ ÑÐµÑ€Ñ–Ð¹Ð½Ð¸Ð¹) ÐŸÐµÑ€ÐµÐ»Ñ–Ñ‡ÑƒÑ” Ð²ÑÑ– Ð²Ð¸Ð·Ð½Ð°Ñ‡ÐµÐ½Ñ– Ñ€ÐµÐ³Ñ–Ð¾Ð½Ð¸ Ñ‚Ð° Ð¿Ð¾Ñ‚Ð¾Ñ‡Ð½Ñ– Ð´Ð¾Ð·Ð²Ð¾Ð»Ð¸ Ð½Ð° Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ Â«Ð½Ð° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶ÑƒÂ» (flood).",
+  "repeater_cliHelpRegionLoad": "ÐŸÐ Ð˜ÐœÐ†Ð¢ÐšÐ: Ñ†Ðµ ÑÐ¿ÐµÑ†Ñ–Ð°Ð»ÑŒÐ½Ð¸Ð¹ Ð²Ð¸ÐºÐ»Ð¸Ðº ÐºÑ–Ð»ÑŒÐºÐ¾Ñ… ÐºÐ¾Ð¼Ð°Ð½Ð´. ÐšÐ¾Ð¶Ð½Ð° Ð½Ð°ÑÑ‚ÑƒÐ¿Ð½Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° â€” Ñ†Ðµ Ð½Ð°Ð·Ð²Ð° Ñ€ÐµÐ³Ñ–Ð¾Ð½Ñƒ (Ð· Ð²Ñ–Ð´ÑÑ‚ÑƒÐ¿Ð¾Ð¼ Ð¿Ñ€Ð¾Ð±Ñ–Ð»Ð°Ð¼Ð¸ Ð´Ð»Ñ Ð¿Ð¾Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ Ñ–Ñ”Ñ€Ð°Ñ€Ñ…Ñ–Ñ— Ð±Ð°Ñ‚ÑŒÐºÑ–Ð², Ð¼Ñ–Ð½Ñ–Ð¼ÑƒÐ¼ Ð¾Ð´Ð¸Ð½ Ð¿Ñ€Ð¾Ð±Ñ–Ð»). Ð—Ð°Ð²ÐµÑ€ÑˆÑƒÑ”Ñ‚ÑŒÑÑ Ð½Ð°Ð´ÑÐ¸Ð»Ð°Ð½Ð½ÑÐ¼ Ð¿Ð¾Ñ€Ð¾Ð¶Ð½ÑŒÐ¾Ð³Ð¾ Ñ€ÑÐ´ÐºÐ°/ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸.",
+  "repeater_cliHelpRegionGet": "Ð¨ÑƒÐºÐ°Ñ” Ñ€ÐµÐ³Ñ–Ð¾Ð½ Ñ–Ð· Ð·Ð°Ð´Ð°Ð½Ð¸Ð¼ Ð¿Ñ€ÐµÑ„Ñ–ÐºÑÐ¾Ð¼ Ð½Ð°Ð·Ð²Ð¸ (Ð°Ð±Ð¾ Â«Â» Ð´Ð»Ñ Ð³Ð»Ð¾Ð±Ð°Ð»ÑŒÐ½Ð¾Ñ— Ð¾Ð±Ð»Ð°ÑÑ‚Ñ–). Ð’Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ð°Ñ”: Â«-> Ñ–Ð¼'Ñ-Ñ€ÐµÐ³Ñ–Ð¾Ð½Ñƒ (Ñ–Ð¼'Ñ-Ð±Ð°Ñ‚ÑŒÐºÐ°) 'F'Â»",
+  "repeater_cliHelpRegionPut": "Ð”Ð¾Ð´Ð°Ñ” Ð°Ð±Ð¾ Ð¾Ð½Ð¾Ð²Ð»ÑŽÑ” Ð²Ð¸Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ Ñ€ÐµÐ³Ñ–Ð¾Ð½Ñƒ Ð· Ð·Ð°Ð´Ð°Ð½Ð¾ÑŽ Ð½Ð°Ð·Ð²Ð¾ÑŽ.",
+  "repeater_cliHelpRegionRemove": "Ð’Ð¸Ð´Ð°Ð»ÑÑ” Ð²Ð¸Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ Ñ€ÐµÐ³Ñ–Ð¾Ð½Ñƒ Ð· Ð·Ð°Ð´Ð°Ð½Ð¾ÑŽ Ð½Ð°Ð·Ð²Ð¾ÑŽ.",
+  "repeater_cliHelpRegionAllowf": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ð´Ð¾Ð·Ð²Ñ–Ð» Â«FloodÂ» Ð´Ð»Ñ Ð·Ð°Ð´Ð°Ð½Ð¾Ð³Ð¾ Ñ€ÐµÐ³Ñ–Ð¾Ð½Ñƒ. ('' Ð´Ð»Ñ Ð³Ð»Ð¾Ð±Ð°Ð»ÑŒÐ½Ð¾Ñ—/ÑƒÑÐ¿Ð°Ð´ÐºÐ¾Ð²Ð°Ð½Ð¾Ñ— Ð¾Ð±Ð»Ð°ÑÑ‚Ñ–)",
+  "repeater_cliHelpRegionDenyf": "Ð’Ð¸Ð´Ð°Ð»ÑÑ” Ð´Ð¾Ð·Ð²Ñ–Ð» Â«FloodÂ» Ð´Ð»Ñ Ð·Ð°Ð´Ð°Ð½Ð¾Ð³Ð¾ Ñ€ÐµÐ³Ñ–Ð¾Ð½Ñƒ. (ÐŸÐ Ð˜ÐœÐ†Ð¢ÐšÐ: Ð½Ð° Ð´Ð°Ð½Ð¾Ð¼Ñƒ ÐµÑ‚Ð°Ð¿Ñ– Ð½Ðµ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´ÑƒÑ”Ñ‚ÑŒÑÑ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð¾Ð²ÑƒÐ²Ð°Ñ‚Ð¸ Ð´Ð»Ñ Ð³Ð»Ð¾Ð±Ð°Ð»ÑŒÐ½Ð¾Ñ—/ÑƒÑÐ¿Ð°Ð´ÐºÐ¾Ð²Ð°Ð½Ð¾Ñ— Ð¾Ð±Ð»Ð°ÑÑ‚Ñ–!! )",
+  "repeater_cliHelpRegionHome": "Ð’Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ð°Ñ” Ð¿Ð¾Ñ‚Ð¾Ñ‡Ð½Ð¸Ð¼ Â«Ð´Ð¾Ð¼Ð°ÑˆÐ½Ñ–Ð¼Â» Ñ€ÐµÐ³Ñ–Ð¾Ð½Ð¾Ð¼. (ÐŸÑ€Ð¸Ð¼Ñ–Ñ‚ÐºÐ°: Ð¿Ð¾ÐºÐ¸ Ð½Ñ–Ð´Ðµ Ð½Ðµ Ð·Ð°ÑÑ‚Ð¾ÑÐ¾Ð²ÑƒÑ”Ñ‚ÑŒÑÑ, Ð·Ð°Ñ€ÐµÐ·ÐµÑ€Ð²Ð¾Ð²Ð°Ð½Ð¾ Ð´Ð»Ñ Ð¼Ð°Ð¹Ð±ÑƒÑ‚Ð½ÑŒÐ¾Ð³Ð¾ Ð²Ð¸ÐºÐ¾Ñ€Ð¸ÑÑ‚Ð°Ð½Ð½Ñ)",
+  "repeater_cliHelpRegionHomeSet": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Â«Ð´Ð¾Ð¼Ð°ÑˆÐ½Ñ–Ð¹Â» Ñ€ÐµÐ³Ñ–Ð¾Ð½.",
+  "repeater_cliHelpRegionSave": "Ð—Ð±ÐµÑ€Ñ–Ð³Ð°Ñ” ÑÐ¿Ð¸ÑÐ¾Ðº/ÐºÐ°Ñ€Ñ‚Ñƒ Ñ€ÐµÐ³Ñ–Ð¾Ð½Ñ–Ð² Ñƒ ÑÑ…Ð¾Ð²Ð¸Ñ‰Ñ–.",
+  "repeater_cliHelpGps": "ÐŸÐ¾ÐºÐ°Ð·ÑƒÑ” ÑÑ‚Ð°Ñ‚ÑƒÑ GPS. ÐšÐ¾Ð»Ð¸ GPS Ð²Ð¸Ð¼ÐºÐ½ÐµÐ½Ð¾, Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ð°Ñ” Ð»Ð¸ÑˆÐµ Â«Ð²Ð¸Ð¼ÐºÐ½ÐµÐ½Ð¾Â», ÑÐºÑ‰Ð¾ ÑƒÐ²Ñ–Ð¼ÐºÐ½ÐµÐ½Ð¾ â€” Ð²Ñ–Ð´Ð¿Ð¾Ð²Ñ–Ð´Ð°Ñ” Â«ÑƒÐ²Ñ–Ð¼ÐºÐ½ÐµÐ½Ð¾Â», ÑÑ‚Ð°Ñ‚ÑƒÑ, ÐºÐ¾Ñ€ÐµÐºÑ†Ñ–Ñ, ÐºÑ–Ð»ÑŒÐºÑ–ÑÑ‚ÑŒ ÑÑƒÐ¿ÑƒÑ‚Ð½Ð¸ÐºÑ–Ð².",
+  "repeater_cliHelpGpsOnOff": "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸/Ð²Ð¸Ð¼ÐºÐ½ÑƒÑ‚Ð¸ GPS.",
+  "repeater_cliHelpGpsSync": "Ð¡Ð¸Ð½Ñ…Ñ€Ð¾Ð½Ñ–Ð·ÑƒÑ” Ñ‡Ð°Ñ Ð²ÑƒÐ·Ð»Ð° Ð· Ð³Ð¾Ð´Ð¸Ð½Ð½Ð¸ÐºÐ¾Ð¼ GPS.",
+  "repeater_cliHelpGpsSetLoc": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” Ð¿Ð¾Ð·Ð¸Ñ†Ñ–ÑŽ Ð²ÑƒÐ·Ð»Ð° Ð·Ð° ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ GPS Ñ– Ð·Ð±ÐµÑ€Ñ–Ð³Ð°Ñ” Ð² Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½ÑÑ….",
+  "repeater_cliHelpGpsAdvert": "ÐÐ°Ð´Ð°Ñ” ÐºÐ¾Ð½Ñ„Ñ–Ð³ÑƒÑ€Ð°Ñ†Ñ–ÑŽ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ Ð²ÑƒÐ·Ð»Ð°:\n- none : Ð½Ðµ Ð²ÐºÐ»ÑŽÑ‡Ð°Ñ‚Ð¸ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ Ð² Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ\n- share : Ð´Ñ–Ð»Ð¸Ñ‚Ð¸ÑÑ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½ÑÐ¼ GPS (Ð· SensorManager)\n- prefs : Ð¾Ð³Ð¾Ð»Ð¾ÑˆÑƒÐ²Ð°Ñ‚Ð¸ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ, Ð·Ð±ÐµÑ€ÐµÐ¶ÐµÐ½Ðµ Ð² Ð½Ð°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½ÑÑ…",
+  "repeater_cliHelpGpsAdvertSet": "Ð’ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÑŽÑ” ÐºÐ¾Ð½Ñ„Ñ–Ð³ÑƒÑ€Ð°Ñ†Ñ–ÑŽ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ.",
+  "repeater_commandsListTitle": "Ð¡Ð¿Ð¸ÑÐ¾Ðº ÐºÐ¾Ð¼Ð°Ð½Ð´",
+  "repeater_commandsListNote": "ÐŸÐ Ð˜ÐœÐ†Ð¢ÐšÐ: Ð´Ð»Ñ Ñ€Ñ–Ð·Ð½Ð¸Ñ… ÐºÐ¾Ð¼Ð°Ð½Ð´ Â«setÂ»... Ñ‚Ð°ÐºÐ¾Ð¶ Ñ–ÑÐ½ÑƒÑ” ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Â«getÂ»...",
+  "repeater_general": "Ð—Ð°Ð³Ð°Ð»ÑŒÐ½Ñ–",
+  "repeater_settingsCategory": "ÐÐ°Ð»Ð°ÑˆÑ‚ÑƒÐ²Ð°Ð½Ð½Ñ",
+  "repeater_bridge": "ÐœÑ–ÑÑ‚",
+  "repeater_logging": "Ð›Ð¾Ð³ÑƒÐ²Ð°Ð½Ð½Ñ",
+  "repeater_neighborsRepeaterOnly": "Ð¡ÑƒÑÑ–Ð´Ð¸ (Ð¢Ñ–Ð»ÑŒÐºÐ¸ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€)",
+  "repeater_regionManagementRepeaterOnly": "ÐšÐµÑ€ÑƒÐ²Ð°Ð½Ð½Ñ Ñ€ÐµÐ³Ñ–Ð¾Ð½Ð°Ð¼Ð¸ (Ð¢Ñ–Ð»ÑŒÐºÐ¸ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€)",
+  "repeater_regionNote": "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð¸ Ñ€ÐµÐ³Ñ–Ð¾Ð½Ñ–Ð² Ð±ÑƒÐ»Ð¸ Ð²Ð²ÐµÐ´ÐµÐ½Ñ– Ð´Ð»Ñ ÐºÐµÑ€ÑƒÐ²Ð°Ð½Ð½Ñ Ð²Ð¸Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½ÑÐ¼Ð¸ Ñ‚Ð° Ð´Ð¾Ð·Ð²Ð¾Ð»Ð°Ð¼Ð¸ Ñ€ÐµÐ³Ñ–Ð¾Ð½Ñ–Ð².",
+  "repeater_gpsManagement": "ÐšÐµÑ€ÑƒÐ²Ð°Ð½Ð½Ñ GPS",
+  "repeater_gpsNote": "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð° GPS Ð±ÑƒÐ»Ð° Ð²Ð²ÐµÐ´ÐµÐ½Ð° Ð´Ð»Ñ ÐºÐµÑ€ÑƒÐ²Ð°Ð½Ð½Ñ Ð¿Ð¸Ñ‚Ð°Ð½Ð½ÑÐ¼Ð¸, Ð¿Ð¾Ð²'ÑÐ·Ð°Ð½Ð¸Ð¼Ð¸ Ð· Ð»Ð¾ÐºÐ°Ñ†Ñ–Ñ”ÑŽ.",
+  "telemetry_receivedData": "Ð”Ð°Ð½Ñ– Ñ‚ÐµÐ»ÐµÐ¼ÐµÑ‚Ñ€Ñ–Ñ— Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ð½Ð¾",
+  "telemetry_requestTimeout": "Ð§Ð°Ñ Ð·Ð°Ð¿Ð¸Ñ‚Ñƒ Ñ‚ÐµÐ»ÐµÐ¼ÐµÑ‚Ñ€Ñ–Ñ— Ð²Ð¸Ñ‡ÐµÑ€Ð¿Ð°Ð½Ð¾.",
+  "telemetry_errorLoading": "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ° Ð·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶ÐµÐ½Ð½Ñ Ñ‚ÐµÐ»ÐµÐ¼ÐµÑ‚Ñ€Ñ–Ñ—: {error}",
   "@telemetry_errorLoading": {
     "placeholders": {
       "error": {
@@ -1192,8 +1192,8 @@
       }
     }
   },
-  "telemetry_noData": "Дані телеметрії недоступні.",
-  "telemetry_channelTitle": "Канал {channel}",
+  "telemetry_noData": "Ð”Ð°Ð½Ñ– Ñ‚ÐµÐ»ÐµÐ¼ÐµÑ‚Ñ€Ñ–Ñ— Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ–.",
+  "telemetry_channelTitle": "ÐšÐ°Ð½Ð°Ð» {channel}",
   "@telemetry_channelTitle": {
     "placeholders": {
       "channel": {
@@ -1201,12 +1201,12 @@
       }
     }
   },
-  "telemetry_batteryLabel": "Батарея",
-  "telemetry_voltageLabel": "Напруга",
-  "telemetry_mcuTemperatureLabel": "Температура MCU",
-  "telemetry_temperatureLabel": "Температура",
-  "telemetry_currentLabel": "Поточний струм",
-  "telemetry_batteryValue": "{percent}% / {volts}В",
+  "telemetry_batteryLabel": "Ð‘Ð°Ñ‚Ð°Ñ€ÐµÑ",
+  "telemetry_voltageLabel": "ÐÐ°Ð¿Ñ€ÑƒÐ³Ð°",
+  "telemetry_mcuTemperatureLabel": "Ð¢ÐµÐ¼Ð¿ÐµÑ€Ð°Ñ‚ÑƒÑ€Ð° MCU",
+  "telemetry_temperatureLabel": "Ð¢ÐµÐ¼Ð¿ÐµÑ€Ð°Ñ‚ÑƒÑ€Ð°",
+  "telemetry_currentLabel": "ÐŸÐ¾Ñ‚Ð¾Ñ‡Ð½Ð¸Ð¹ ÑÑ‚Ñ€ÑƒÐ¼",
+  "telemetry_batteryValue": "{percent}% / {volts}Ð’",
   "@telemetry_batteryValue": {
     "placeholders": {
       "percent": {
@@ -1217,7 +1217,7 @@
       }
     }
   },
-  "telemetry_voltageValue": "{volts}В",
+  "telemetry_voltageValue": "{volts}Ð’",
   "@telemetry_voltageValue": {
     "placeholders": {
       "volts": {
@@ -1225,7 +1225,7 @@
       }
     }
   },
-  "telemetry_currentValue": "{amps}А",
+  "telemetry_currentValue": "{amps}Ð",
   "@telemetry_currentValue": {
     "placeholders": {
       "amps": {
@@ -1233,7 +1233,7 @@
       }
     }
   },
-  "telemetry_temperatureValue": "{celsius}°C / {fahrenheit}°F",
+  "telemetry_temperatureValue": "{celsius}Â°C / {fahrenheit}Â°F",
   "@telemetry_temperatureValue": {
     "placeholders": {
       "celsius": {
@@ -1244,18 +1244,18 @@
       }
     }
   },
-  "channelPath_title": "Шлях пакету",
-  "channelPath_viewMap": "Показати карту",
-  "channelPath_otherObservedPaths": "Інші спостережувані шляхи",
-  "channelPath_repeaterHops": "Стрибки ретранслятора",
-  "channelPath_noHopDetails": "Деталі відправки не надані для цього пакету.",
-  "channelPath_messageDetails": "Деталі повідомлення",
-  "channelPath_senderLabel": "Відправник",
-  "channelPath_timeLabel": "Час",
-  "channelPath_repeatsLabel": "Повторення",
-  "channelPath_pathLabel": "Шлях {index}",
-  "channelPath_observedLabel": "Спостережено",
-  "channelPath_observedPathTitle": "Спостережуваний шлях {index} • {hops}",
+  "channelPath_title": "Ð¨Ð»ÑÑ… Ð¿Ð°ÐºÐµÑ‚Ñƒ",
+  "channelPath_viewMap": "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚Ð¸ ÐºÐ°Ñ€Ñ‚Ñƒ",
+  "channelPath_otherObservedPaths": "Ð†Ð½ÑˆÑ– ÑÐ¿Ð¾ÑÑ‚ÐµÑ€ÐµÐ¶ÑƒÐ²Ð°Ð½Ñ– ÑˆÐ»ÑÑ…Ð¸",
+  "channelPath_repeaterHops": "Ð¡Ñ‚Ñ€Ð¸Ð±ÐºÐ¸ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð°",
+  "channelPath_noHopDetails": "Ð”ÐµÑ‚Ð°Ð»Ñ– Ð²Ñ–Ð´Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ð½Ðµ Ð½Ð°Ð´Ð°Ð½Ñ– Ð´Ð»Ñ Ñ†ÑŒÐ¾Ð³Ð¾ Ð¿Ð°ÐºÐµÑ‚Ñƒ.",
+  "channelPath_messageDetails": "Ð”ÐµÑ‚Ð°Ð»Ñ– Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ",
+  "channelPath_senderLabel": "Ð’Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð½Ð¸Ðº",
+  "channelPath_timeLabel": "Ð§Ð°Ñ",
+  "channelPath_repeatsLabel": "ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€ÐµÐ½Ð½Ñ",
+  "channelPath_pathLabel": "Ð¨Ð»ÑÑ… {index}",
+  "channelPath_observedLabel": "Ð¡Ð¿Ð¾ÑÑ‚ÐµÑ€ÐµÐ¶ÐµÐ½Ð¾",
+  "channelPath_observedPathTitle": "Ð¡Ð¿Ð¾ÑÑ‚ÐµÑ€ÐµÐ¶ÑƒÐ²Ð°Ð½Ð¸Ð¹ ÑˆÐ»ÑÑ… {index} â€¢ {hops}",
   "@channelPath_observedPathTitle": {
     "placeholders": {
       "index": {
@@ -1266,7 +1266,7 @@
       }
     }
   },
-  "channelPath_noLocationData": "Немає даних про розташування",
+  "channelPath_noLocationData": "ÐÐµÐ¼Ð°Ñ” Ð´Ð°Ð½Ð¸Ñ… Ð¿Ñ€Ð¾ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ",
   "channelPath_timeWithDate": "{day}/{month} {time}",
   "@channelPath_timeWithDate": {
     "placeholders": {
@@ -1289,10 +1289,10 @@
       }
     }
   },
-  "channelPath_unknownPath": "Невідомий",
-  "channelPath_floodPath": "На всю мережу",
-  "channelPath_directPath": "Прямий",
-  "channelPath_observedZeroOf": "0 з {total} стрибків",
+  "channelPath_unknownPath": "ÐÐµÐ²Ñ–Ð´Ð¾Ð¼Ð¸Ð¹",
+  "channelPath_floodPath": "ÐÐ° Ð²ÑÑŽ Ð¼ÐµÑ€ÐµÐ¶Ñƒ",
+  "channelPath_directPath": "ÐŸÑ€ÑÐ¼Ð¸Ð¹",
+  "channelPath_observedZeroOf": "0 Ð· {total} ÑÑ‚Ñ€Ð¸Ð±ÐºÑ–Ð²",
   "@channelPath_observedZeroOf": {
     "placeholders": {
       "total": {
@@ -1300,7 +1300,7 @@
       }
     }
   },
-  "channelPath_observedSomeOf": "{observed} з {total} стрибків",
+  "channelPath_observedSomeOf": "{observed} Ð· {total} ÑÑ‚Ñ€Ð¸Ð±ÐºÑ–Ð²",
   "@channelPath_observedSomeOf": {
     "placeholders": {
       "observed": {
@@ -1311,9 +1311,9 @@
       }
     }
   },
-  "channelPath_mapTitle": "Карта шляху",
-  "channelPath_noRepeaterLocations": "Позиції ретрансляторів недоступні для цього шляху.",
-  "channelPath_primaryPath": "Шлях {index} (Основний)",
+  "channelPath_mapTitle": "ÐšÐ°Ñ€Ñ‚Ð° ÑˆÐ»ÑÑ…Ñƒ",
+  "channelPath_noRepeaterLocations": "ÐŸÐ¾Ð·Ð¸Ñ†Ñ–Ñ— Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ñ–Ð² Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ– Ð´Ð»Ñ Ñ†ÑŒÐ¾Ð³Ð¾ ÑˆÐ»ÑÑ…Ñƒ.",
+  "channelPath_primaryPath": "Ð¨Ð»ÑÑ… {index} (ÐžÑÐ½Ð¾Ð²Ð½Ð¸Ð¹)",
   "@channelPath_primaryPath": {
     "placeholders": {
       "index": {
@@ -1328,9 +1328,9 @@
       }
     }
   },
-  "channelPath_pathLabelTitle": "Шлях",
-  "channelPath_observedPathHeader": "Спостережуваний шлях",
-  "channelPath_selectedPathLabel": "{label} • {prefixes}",
+  "channelPath_pathLabelTitle": "Ð¨Ð»ÑÑ…",
+  "channelPath_observedPathHeader": "Ð¡Ð¿Ð¾ÑÑ‚ÐµÑ€ÐµÐ¶ÑƒÐ²Ð°Ð½Ð¸Ð¹ ÑˆÐ»ÑÑ…",
+  "channelPath_selectedPathLabel": "{label} â€¢ {prefixes}",
   "@channelPath_selectedPathLabel": {
     "placeholders": {
       "label": {
@@ -1341,20 +1341,20 @@
       }
     }
   },
-  "channelPath_noHopDetailsAvailable": "Деталі стрибків недоступні для цього пакету.",
-  "channelPath_unknownRepeater": "Невідомий ретранслятор",
-  "listFilter_tooltip": "Фільтр та сортування",
-  "listFilter_sortBy": "Сортувати за",
-  "listFilter_latestMessages": "Останні повідомлення",
-  "listFilter_heardRecently": "Нещодавно чули",
-  "listFilter_az": "А-Я",
-  "listFilter_filters": "Фільтри",
-  "listFilter_all": "Все",
-  "listFilter_users": "Користувачі",
-  "listFilter_repeaters": "Ретранслятори",
-  "listFilter_roomServers": "Сервери кімнат",
-  "listFilter_unreadOnly": "Тільки непрочитані повідомлення",
-  "listFilter_newGroup": "Нова група",
+  "channelPath_noHopDetailsAvailable": "Ð”ÐµÑ‚Ð°Ð»Ñ– ÑÑ‚Ñ€Ð¸Ð±ÐºÑ–Ð² Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ– Ð´Ð»Ñ Ñ†ÑŒÐ¾Ð³Ð¾ Ð¿Ð°ÐºÐµÑ‚Ñƒ.",
+  "channelPath_unknownRepeater": "ÐÐµÐ²Ñ–Ð´Ð¾Ð¼Ð¸Ð¹ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€",
+  "listFilter_tooltip": "Ð¤Ñ–Ð»ÑŒÑ‚Ñ€ Ñ‚Ð° ÑÐ¾Ñ€Ñ‚ÑƒÐ²Ð°Ð½Ð½Ñ",
+  "listFilter_sortBy": "Ð¡Ð¾Ñ€Ñ‚ÑƒÐ²Ð°Ñ‚Ð¸ Ð·Ð°",
+  "listFilter_latestMessages": "ÐžÑÑ‚Ð°Ð½Ð½Ñ– Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ",
+  "listFilter_heardRecently": "ÐÐµÑ‰Ð¾Ð´Ð°Ð²Ð½Ð¾ Ñ‡ÑƒÐ»Ð¸",
+  "listFilter_az": "Ð-Ð¯",
+  "listFilter_filters": "Ð¤Ñ–Ð»ÑŒÑ‚Ñ€Ð¸",
+  "listFilter_all": "Ð’ÑÐµ",
+  "listFilter_users": "ÐšÐ¾Ñ€Ð¸ÑÑ‚ÑƒÐ²Ð°Ñ‡Ñ–",
+  "listFilter_repeaters": "Ð ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð¸",
+  "listFilter_roomServers": "Ð¡ÐµÑ€Ð²ÐµÑ€Ð¸ ÐºÑ–Ð¼Ð½Ð°Ñ‚",
+  "listFilter_unreadOnly": "Ð¢Ñ–Ð»ÑŒÐºÐ¸ Ð½ÐµÐ¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ñ– Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ",
+  "listFilter_newGroup": "ÐÐ¾Ð²Ð° Ð³Ñ€ÑƒÐ¿Ð°",
   "@neighbors_errorLoading": {
     "placeholders": {
       "error": {
@@ -1362,25 +1362,25 @@
       }
     }
   },
-  "repeater_neighbors": "Сусіди",
-  "repeater_neighborsSubtitle": "Показати сусідів нульового стрибка.",
-  "neighbors_receivedData": "Дані сусідів отримано",
-  "neighbors_requestTimedOut": "Час запиту сусідів вичерпано.",
-  "neighbors_errorLoading": "Помилка завантаження сусідів: {error}",
-  "neighbors_repeatersNeighbors": "Ретранслятори-сусіди",
-  "neighbors_noData": "Дані про сусідів недоступні.",
-  "channels_createPrivateChannelDesc": "Захищено секретним ключем.",
-  "channels_joinPrivateChannel": "Приєднатися до приватного каналу",
-  "channels_createPrivateChannel": "Створити приватний канал",
-  "channels_joinPrivateChannelDesc": "Ввести секретний ключ вручну.",
-  "channels_joinPublicChannel": "Приєднатися до публічного каналу",
-  "channels_joinPublicChannelDesc": "Будь-хто може приєднатися до цього каналу.",
-  "channels_joinHashtagChannel": "Приєднатися до каналу з хештегом",
-  "channels_joinHashtagChannelDesc": "Будь-хто може приєднатися до каналів #hashtag.",
-  "channels_scanQrCode": "Сканувати QR-код",
-  "channels_scanQrCodeComingSoon": "Скоро буде",
-  "channels_enterHashtag": "Введіть хештег",
-  "channels_hashtagHint": "напр. #команда",
+  "repeater_neighbors": "Ð¡ÑƒÑÑ–Ð´Ð¸",
+  "repeater_neighborsSubtitle": "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚Ð¸ ÑÑƒÑÑ–Ð´Ñ–Ð² Ð½ÑƒÐ»ÑŒÐ¾Ð²Ð¾Ð³Ð¾ ÑÑ‚Ñ€Ð¸Ð±ÐºÐ°.",
+  "neighbors_receivedData": "Ð”Ð°Ð½Ñ– ÑÑƒÑÑ–Ð´Ñ–Ð² Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ð½Ð¾",
+  "neighbors_requestTimedOut": "Ð§Ð°Ñ Ð·Ð°Ð¿Ð¸Ñ‚Ñƒ ÑÑƒÑÑ–Ð´Ñ–Ð² Ð²Ð¸Ñ‡ÐµÑ€Ð¿Ð°Ð½Ð¾.",
+  "neighbors_errorLoading": "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ° Ð·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶ÐµÐ½Ð½Ñ ÑÑƒÑÑ–Ð´Ñ–Ð²: {error}",
+  "neighbors_repeatersNeighbors": "Ð ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð¸-ÑÑƒÑÑ–Ð´Ð¸",
+  "neighbors_noData": "Ð”Ð°Ð½Ñ– Ð¿Ñ€Ð¾ ÑÑƒÑÑ–Ð´Ñ–Ð² Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ–.",
+  "channels_createPrivateChannelDesc": "Ð—Ð°Ñ…Ð¸Ñ‰ÐµÐ½Ð¾ ÑÐµÐºÑ€ÐµÑ‚Ð½Ð¸Ð¼ ÐºÐ»ÑŽÑ‡ÐµÐ¼.",
+  "channels_joinPrivateChannel": "ÐŸÑ€Ð¸Ñ”Ð´Ð½Ð°Ñ‚Ð¸ÑÑ Ð´Ð¾ Ð¿Ñ€Ð¸Ð²Ð°Ñ‚Ð½Ð¾Ð³Ð¾ ÐºÐ°Ð½Ð°Ð»Ñƒ",
+  "channels_createPrivateChannel": "Ð¡Ñ‚Ð²Ð¾Ñ€Ð¸Ñ‚Ð¸ Ð¿Ñ€Ð¸Ð²Ð°Ñ‚Ð½Ð¸Ð¹ ÐºÐ°Ð½Ð°Ð»",
+  "channels_joinPrivateChannelDesc": "Ð’Ð²ÐµÑÑ‚Ð¸ ÑÐµÐºÑ€ÐµÑ‚Ð½Ð¸Ð¹ ÐºÐ»ÑŽÑ‡ Ð²Ñ€ÑƒÑ‡Ð½Ñƒ.",
+  "channels_joinPublicChannel": "ÐŸÑ€Ð¸Ñ”Ð´Ð½Ð°Ñ‚Ð¸ÑÑ Ð´Ð¾ Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¾Ð³Ð¾ ÐºÐ°Ð½Ð°Ð»Ñƒ",
+  "channels_joinPublicChannelDesc": "Ð‘ÑƒÐ´ÑŒ-Ñ…Ñ‚Ð¾ Ð¼Ð¾Ð¶Ðµ Ð¿Ñ€Ð¸Ñ”Ð´Ð½Ð°Ñ‚Ð¸ÑÑ Ð´Ð¾ Ñ†ÑŒÐ¾Ð³Ð¾ ÐºÐ°Ð½Ð°Ð»Ñƒ.",
+  "channels_joinHashtagChannel": "ÐŸÑ€Ð¸Ñ”Ð´Ð½Ð°Ñ‚Ð¸ÑÑ Ð´Ð¾ ÐºÐ°Ð½Ð°Ð»Ñƒ Ð· Ñ…ÐµÑˆÑ‚ÐµÐ³Ð¾Ð¼",
+  "channels_joinHashtagChannelDesc": "Ð‘ÑƒÐ´ÑŒ-Ñ…Ñ‚Ð¾ Ð¼Ð¾Ð¶Ðµ Ð¿Ñ€Ð¸Ñ”Ð´Ð½Ð°Ñ‚Ð¸ÑÑ Ð´Ð¾ ÐºÐ°Ð½Ð°Ð»Ñ–Ð² #hashtag.",
+  "channels_scanQrCode": "Ð¡ÐºÐ°Ð½ÑƒÐ²Ð°Ñ‚Ð¸ QR-ÐºÐ¾Ð´",
+  "channels_scanQrCodeComingSoon": "Ð¡ÐºÐ¾Ñ€Ð¾ Ð±ÑƒÐ´Ðµ",
+  "channels_enterHashtag": "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ñ…ÐµÑˆÑ‚ÐµÐ³",
+  "channels_hashtagHint": "Ð½Ð°Ð¿Ñ€. #ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°",
   "@neighbors_unknownContact": {
     "placeholders": {
       "pubkey": {
@@ -1395,14 +1395,14 @@
       }
     }
   },
-  "neighbors_unknownContact": "Невідомий відкритий ключ {pubkey}",
-  "neighbors_heardAgo": "Почуто: {time} тому",
-  "settings_locationGPSEnable": "Увімкнути GPS",
-  "settings_locationGPSEnableSubtitle": "Вмикає автоматичне оновлення місцезнаходження через GPS.",
-  "settings_locationIntervalSec": "Інтервал для GPS (Секунди)",
-  "settings_locationIntervalInvalid": "Інтервал має бути не менше 60 секунд і менше 86400 секунд.",
-  "contacts_manageRoom": "Керувати сервером кімнати",
-  "room_management": "Адміністрування сервера кімнати",
+  "neighbors_unknownContact": "ÐÐµÐ²Ñ–Ð´Ð¾Ð¼Ð¸Ð¹ Ð²Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸Ð¹ ÐºÐ»ÑŽÑ‡ {pubkey}",
+  "neighbors_heardAgo": "ÐŸÐ¾Ñ‡ÑƒÑ‚Ð¾: {time} Ñ‚Ð¾Ð¼Ñƒ",
+  "settings_locationGPSEnable": "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ GPS",
+  "settings_locationGPSEnableSubtitle": "Ð’Ð¼Ð¸ÐºÐ°Ñ” Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ðµ Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð½Ñ Ð¼Ñ–ÑÑ†ÐµÐ·Ð½Ð°Ñ…Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ Ñ‡ÐµÑ€ÐµÐ· GPS.",
+  "settings_locationIntervalSec": "Ð†Ð½Ñ‚ÐµÑ€Ð²Ð°Ð» Ð´Ð»Ñ GPS (Ð¡ÐµÐºÑƒÐ½Ð´Ð¸)",
+  "settings_locationIntervalInvalid": "Ð†Ð½Ñ‚ÐµÑ€Ð²Ð°Ð» Ð¼Ð°Ñ” Ð±ÑƒÑ‚Ð¸ Ð½Ðµ Ð¼ÐµÐ½ÑˆÐµ 60 ÑÐµÐºÑƒÐ½Ð´ Ñ– Ð¼ÐµÐ½ÑˆÐµ 86400 ÑÐµÐºÑƒÐ½Ð´.",
+  "contacts_manageRoom": "ÐšÐµÑ€ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐµÑ€Ð²ÐµÑ€Ð¾Ð¼ ÐºÑ–Ð¼Ð½Ð°Ñ‚Ð¸",
+  "room_management": "ÐÐ´Ð¼Ñ–Ð½Ñ–ÑÑ‚Ñ€ÑƒÐ²Ð°Ð½Ð½Ñ ÑÐµÑ€Ð²ÐµÑ€Ð° ÐºÑ–Ð¼Ð½Ð°Ñ‚Ð¸",
   "@community_joinConfirmation": {
     "placeholders": {
       "name": {
@@ -1459,36 +1459,36 @@
       }
     }
   },
-  "common_ok": "ОК",
-  "community_title": "Спільнота",
-  "community_create": "Створити спільноту",
-  "community_createDesc": "Створити нову спільноту та поділитися через QR-код.",
-  "community_join": "Приєднатися",
-  "community_joinTitle": "Приєднатися до спільноти",
-  "community_joinConfirmation": "Ви бажаєте приєднатися до спільноти «{name}»?",
-  "community_scanQr": "Сканувати QR спільноти",
-  "community_scanInstructions": "Наведіть камеру на QR-код спільноти.",
-  "community_showQr": "Показати QR-код",
-  "community_publicChannel": "Публічна спільнота",
-  "community_hashtagChannel": "Хештег спільноти",
-  "community_name": "Назва спільноти",
-  "community_enterName": "Введіть назву спільноти",
-  "community_created": "Спільноту «{name}» створено",
-  "community_joined": "Приєднався до спільноти «{name}»",
-  "community_qrTitle": "Поділитися спільнотою",
-  "community_qrInstructions": "Відскануйте цей QR-код, щоб приєднатися до {name}",
-  "community_hashtagPrivacyHint": "Канали хештегів спільноти доступні лише членам спільноти",
-  "community_invalidQrCode": "Недійсний QR-код спільноти",
-  "community_alreadyMember": "Вже учасник",
-  "community_alreadyMemberMessage": "Ви вже є учасником «{name}».",
-  "community_addPublicChannel": "Додати публічний канал спільноти",
-  "community_addPublicChannelHint": "Автоматично додати публічний канал для цієї спільноти",
-  "community_noCommunities": "Поки не приєднано до жодної групи.",
-  "community_scanOrCreate": "Відскануйте QR-код або створіть спільноту, щоб почати",
-  "community_manageCommunities": "Керувати спільнотами",
-  "community_delete": "Покинути спільноту",
-  "community_deleteConfirm": "Покинути «{name}»?",
-  "community_deleteChannelsWarning": "Це також видалить {count} {count, plural, =1{канал} few{канали} many{каналів} other{каналів}} та їх повідомлення.",
+  "common_ok": "ÐžÐš",
+  "community_title": "Ð¡Ð¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð°",
+  "community_create": "Ð¡Ñ‚Ð²Ð¾Ñ€Ð¸Ñ‚Ð¸ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ñƒ",
+  "community_createDesc": "Ð¡Ñ‚Ð²Ð¾Ñ€Ð¸Ñ‚Ð¸ Ð½Ð¾Ð²Ñƒ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ñƒ Ñ‚Ð° Ð¿Ð¾Ð´Ñ–Ð»Ð¸Ñ‚Ð¸ÑÑ Ñ‡ÐµÑ€ÐµÐ· QR-ÐºÐ¾Ð´.",
+  "community_join": "ÐŸÑ€Ð¸Ñ”Ð´Ð½Ð°Ñ‚Ð¸ÑÑ",
+  "community_joinTitle": "ÐŸÑ€Ð¸Ñ”Ð´Ð½Ð°Ñ‚Ð¸ÑÑ Ð´Ð¾ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸",
+  "community_joinConfirmation": "Ð’Ð¸ Ð±Ð°Ð¶Ð°Ñ”Ñ‚Ðµ Ð¿Ñ€Ð¸Ñ”Ð´Ð½Ð°Ñ‚Ð¸ÑÑ Ð´Ð¾ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸ Â«{name}Â»?",
+  "community_scanQr": "Ð¡ÐºÐ°Ð½ÑƒÐ²Ð°Ñ‚Ð¸ QR ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸",
+  "community_scanInstructions": "ÐÐ°Ð²ÐµÐ´Ñ–Ñ‚ÑŒ ÐºÐ°Ð¼ÐµÑ€Ñƒ Ð½Ð° QR-ÐºÐ¾Ð´ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸.",
+  "community_showQr": "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚Ð¸ QR-ÐºÐ¾Ð´",
+  "community_publicChannel": "ÐŸÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð° ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð°",
+  "community_hashtagChannel": "Ð¥ÐµÑˆÑ‚ÐµÐ³ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸",
+  "community_name": "ÐÐ°Ð·Ð²Ð° ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸",
+  "community_enterName": "Ð’Ð²ÐµÐ´Ñ–Ñ‚ÑŒ Ð½Ð°Ð·Ð²Ñƒ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸",
+  "community_created": "Ð¡Ð¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ñƒ Â«{name}Â» ÑÑ‚Ð²Ð¾Ñ€ÐµÐ½Ð¾",
+  "community_joined": "ÐŸÑ€Ð¸Ñ”Ð´Ð½Ð°Ð²ÑÑ Ð´Ð¾ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸ Â«{name}Â»",
+  "community_qrTitle": "ÐŸÐ¾Ð´Ñ–Ð»Ð¸Ñ‚Ð¸ÑÑ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¾ÑŽ",
+  "community_qrInstructions": "Ð’Ñ–Ð´ÑÐºÐ°Ð½ÑƒÐ¹Ñ‚Ðµ Ñ†ÐµÐ¹ QR-ÐºÐ¾Ð´, Ñ‰Ð¾Ð± Ð¿Ñ€Ð¸Ñ”Ð´Ð½Ð°Ñ‚Ð¸ÑÑ Ð´Ð¾ {name}",
+  "community_hashtagPrivacyHint": "ÐšÐ°Ð½Ð°Ð»Ð¸ Ñ…ÐµÑˆÑ‚ÐµÐ³Ñ–Ð² ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ– Ð»Ð¸ÑˆÐµ Ñ‡Ð»ÐµÐ½Ð°Ð¼ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸",
+  "community_invalidQrCode": "ÐÐµÐ´Ñ–Ð¹ÑÐ½Ð¸Ð¹ QR-ÐºÐ¾Ð´ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸",
+  "community_alreadyMember": "Ð’Ð¶Ðµ ÑƒÑ‡Ð°ÑÐ½Ð¸Ðº",
+  "community_alreadyMemberMessage": "Ð’Ð¸ Ð²Ð¶Ðµ Ñ” ÑƒÑ‡Ð°ÑÐ½Ð¸ÐºÐ¾Ð¼ Â«{name}Â».",
+  "community_addPublicChannel": "Ð”Ð¾Ð´Ð°Ñ‚Ð¸ Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¸Ð¹ ÐºÐ°Ð½Ð°Ð» ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸",
+  "community_addPublicChannelHint": "ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾ Ð´Ð¾Ð´Ð°Ñ‚Ð¸ Ð¿ÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¸Ð¹ ÐºÐ°Ð½Ð°Ð» Ð´Ð»Ñ Ñ†Ñ–Ñ”Ñ— ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸",
+  "community_noCommunities": "ÐŸÐ¾ÐºÐ¸ Ð½Ðµ Ð¿Ñ€Ð¸Ñ”Ð´Ð½Ð°Ð½Ð¾ Ð´Ð¾ Ð¶Ð¾Ð´Ð½Ð¾Ñ— Ð³Ñ€ÑƒÐ¿Ð¸.",
+  "community_scanOrCreate": "Ð’Ñ–Ð´ÑÐºÐ°Ð½ÑƒÐ¹Ñ‚Ðµ QR-ÐºÐ¾Ð´ Ð°Ð±Ð¾ ÑÑ‚Ð²Ð¾Ñ€Ñ–Ñ‚ÑŒ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ñƒ, Ñ‰Ð¾Ð± Ð¿Ð¾Ñ‡Ð°Ñ‚Ð¸",
+  "community_manageCommunities": "ÐšÐµÑ€ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð°Ð¼Ð¸",
+  "community_delete": "ÐŸÐ¾ÐºÐ¸Ð½ÑƒÑ‚Ð¸ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ñƒ",
+  "community_deleteConfirm": "ÐŸÐ¾ÐºÐ¸Ð½ÑƒÑ‚Ð¸ Â«{name}Â»?",
+  "community_deleteChannelsWarning": "Ð¦Ðµ Ñ‚Ð°ÐºÐ¾Ð¶ Ð²Ð¸Ð´Ð°Ð»Ð¸Ñ‚ÑŒ {count} {count, plural, =1{ÐºÐ°Ð½Ð°Ð»} few{ÐºÐ°Ð½Ð°Ð»Ð¸} many{ÐºÐ°Ð½Ð°Ð»Ñ–Ð²} other{ÐºÐ°Ð½Ð°Ð»Ñ–Ð²}} Ñ‚Ð° Ñ—Ñ… Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ.",
   "@community_deleteChannelsWarning": {
     "placeholders": {
       "count": {
@@ -1496,15 +1496,15 @@
       }
     }
   },
-  "community_deleted": "Спільноту «{name}» покинуто",
-  "community_addHashtagChannel": "Додати хештег спільноти",
-  "community_addHashtagChannelDesc": "Додати канал хештегу для цієї спільноти",
-  "community_selectCommunity": "Вибрати спільноту",
-  "community_regularHashtag": "Звичайний хештег",
-  "community_regularHashtagDesc": "Публічний хештег (будь-хто може приєднатися)",
-  "community_communityHashtag": "Хештег спільноти",
-  "community_communityHashtagDesc": "Ексклюзивно для членів спільноти",
-  "community_forCommunity": "Для {name}",
+  "community_deleted": "Ð¡Ð¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ñƒ Â«{name}Â» Ð¿Ð¾ÐºÐ¸Ð½ÑƒÑ‚Ð¾",
+  "community_addHashtagChannel": "Ð”Ð¾Ð´Ð°Ñ‚Ð¸ Ñ…ÐµÑˆÑ‚ÐµÐ³ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸",
+  "community_addHashtagChannelDesc": "Ð”Ð¾Ð´Ð°Ñ‚Ð¸ ÐºÐ°Ð½Ð°Ð» Ñ…ÐµÑˆÑ‚ÐµÐ³Ñƒ Ð´Ð»Ñ Ñ†Ñ–Ñ”Ñ— ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸",
+  "community_selectCommunity": "Ð’Ð¸Ð±Ñ€Ð°Ñ‚Ð¸ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ñƒ",
+  "community_regularHashtag": "Ð—Ð²Ð¸Ñ‡Ð°Ð¹Ð½Ð¸Ð¹ Ñ…ÐµÑˆÑ‚ÐµÐ³",
+  "community_regularHashtagDesc": "ÐŸÑƒÐ±Ð»Ñ–Ñ‡Ð½Ð¸Ð¹ Ñ…ÐµÑˆÑ‚ÐµÐ³ (Ð±ÑƒÐ´ÑŒ-Ñ…Ñ‚Ð¾ Ð¼Ð¾Ð¶Ðµ Ð¿Ñ€Ð¸Ñ”Ð´Ð½Ð°Ñ‚Ð¸ÑÑ)",
+  "community_communityHashtag": "Ð¥ÐµÑˆÑ‚ÐµÐ³ ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸",
+  "community_communityHashtagDesc": "Ð•ÐºÑÐºÐ»ÑŽÐ·Ð¸Ð²Ð½Ð¾ Ð´Ð»Ñ Ñ‡Ð»ÐµÐ½Ñ–Ð² ÑÐ¿Ñ–Ð»ÑŒÐ½Ð¾Ñ‚Ð¸",
+  "community_forCommunity": "Ð”Ð»Ñ {name}",
   "@community_regenerateSecretConfirm": {
     "placeholders": {
       "name": {
@@ -1533,13 +1533,13 @@
       }
     }
   },
-  "community_regenerateSecret": "Перегенерувати секрет",
-  "community_regenerateSecretConfirm": "Перегенерувати секретний ключ для «{name}»? Всі учасники повинні будуть відсканувати новий QR-код, щоб продовжити спілкування.",
-  "community_regenerate": "Перегенерувати",
-  "community_secretRegenerated": "Секретний пароль для «{name}» перегенеровано",
-  "community_scanToUpdateSecret": "Відскануйте новий QR-код, щоб оновити пароль для «{name}»",
-  "community_updateSecret": "Оновити секрет",
-  "community_secretUpdated": "Зміну секрету для «{name}» оновлено",
+  "community_regenerateSecret": "ÐŸÐµÑ€ÐµÐ³ÐµÐ½ÐµÑ€ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐµÐºÑ€ÐµÑ‚",
+  "community_regenerateSecretConfirm": "ÐŸÐµÑ€ÐµÐ³ÐµÐ½ÐµÑ€ÑƒÐ²Ð°Ñ‚Ð¸ ÑÐµÐºÑ€ÐµÑ‚Ð½Ð¸Ð¹ ÐºÐ»ÑŽÑ‡ Ð´Ð»Ñ Â«{name}Â»? Ð’ÑÑ– ÑƒÑ‡Ð°ÑÐ½Ð¸ÐºÐ¸ Ð¿Ð¾Ð²Ð¸Ð½Ð½Ñ– Ð±ÑƒÐ´ÑƒÑ‚ÑŒ Ð²Ñ–Ð´ÑÐºÐ°Ð½ÑƒÐ²Ð°Ñ‚Ð¸ Ð½Ð¾Ð²Ð¸Ð¹ QR-ÐºÐ¾Ð´, Ñ‰Ð¾Ð± Ð¿Ñ€Ð¾Ð´Ð¾Ð²Ð¶Ð¸Ñ‚Ð¸ ÑÐ¿Ñ–Ð»ÐºÑƒÐ²Ð°Ð½Ð½Ñ.",
+  "community_regenerate": "ÐŸÐµÑ€ÐµÐ³ÐµÐ½ÐµÑ€ÑƒÐ²Ð°Ñ‚Ð¸",
+  "community_secretRegenerated": "Ð¡ÐµÐºÑ€ÐµÑ‚Ð½Ð¸Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð´Ð»Ñ Â«{name}Â» Ð¿ÐµÑ€ÐµÐ³ÐµÐ½ÐµÑ€Ð¾Ð²Ð°Ð½Ð¾",
+  "community_scanToUpdateSecret": "Ð’Ñ–Ð´ÑÐºÐ°Ð½ÑƒÐ¹Ñ‚Ðµ Ð½Ð¾Ð²Ð¸Ð¹ QR-ÐºÐ¾Ð´, Ñ‰Ð¾Ð± Ð¾Ð½Ð¾Ð²Ð¸Ñ‚Ð¸ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð´Ð»Ñ Â«{name}Â»",
+  "community_updateSecret": "ÐžÐ½Ð¾Ð²Ð¸Ñ‚Ð¸ ÑÐµÐºÑ€ÐµÑ‚",
+  "community_secretUpdated": "Ð—Ð¼Ñ–Ð½Ñƒ ÑÐµÐºÑ€ÐµÑ‚Ñƒ Ð´Ð»Ñ Â«{name}Â» Ð¾Ð½Ð¾Ð²Ð»ÐµÐ½Ð¾",
   "@contacts_pathTraceTo": {
     "placeholders": {
       "name": {
@@ -1547,81 +1547,81 @@
       }
     }
   },
-  "pathTrace_you": "Ви",
-  "pathTrace_failed": "Відстеження шляху не вдалося.",
-  "pathTrace_notAvailable": "Трасування шляху недоступне.",
-  "pathTrace_refreshTooltip": "Оновити Path Trace",
-  "contacts_pathTrace": "Трасування шляхів",
-  "contacts_ping": "Пінгувати",
-  "contacts_repeaterPathTrace": "Трасування шляху до повторювача",
-  "contacts_repeaterPing": "Пінгувати повторювач",
-  "contacts_roomPathTrace": "Трасування шляху до серверу кімнати",
-  "contacts_roomPing": "Пінг сервера кімнати",
-  "contacts_chatTraceRoute": "Трасування шляху",
-  "contacts_pathTraceTo": "Відстежити маршрут до {name}",
-  "contacts_invalidAdvertFormat": "Недійсні контактні дані",
-  "contacts_contactImported": "Контакт було імпортовано.",
-  "contacts_contactImportFailed": "Контакт не вдалося імпортувати",
-  "contacts_zeroHopAdvert": "Реклама без перехоплення",
-  "contacts_floodAdvert": "Залив реклами",
-  "contacts_copyAdvertToClipboard": "Копіювати оголошення в буфер обміну",
-  "contacts_clipboardEmpty": "Буфер обміну порожній",
-  "appSettings_languageRu": "Російська",
-  "appSettings_enableMessageTracing": "Увімкнути відстеження повідомлень",
-  "appSettings_enableMessageTracingSubtitle": "Показувати детальні метадані про маршрутизацію та час для повідомлень",
-  "contacts_ShareContact": "Копіювати контакт у буфер обміну",
-  "contacts_zeroHopContactAdvertFailed": "Не вдалося надіслати контакт.",
-  "contacts_contactAdvertCopied": "Рекламу скопійовано до буфера обміну.",
-  "contacts_contactAdvertCopyFailed": "Копіювання оголошення в буфер обміну завершилося невдало",
-  "contacts_zeroHopContactAdvertSent": "Відправлено контакт за оголошенням",
-  "contacts_addContactFromClipboard": "Додати контакт з буфера обміну",
-  "contacts_ShareContactZeroHop": "Поділитися контактом за оголошенням",
-  "notification_activityTitle": "Активність MeshCore",
-  "notification_messagesCount": "{count} {count, plural, =1{повідомлення} few{повідомлення} many{повідомлень} other{повідомлень}}",
-  "notification_channelMessagesCount": "{count} {count, plural, =1{повідомлення каналу} few{повідомлення каналу} many{повідомлень каналу} other{повідомлень каналу}}",
-  "notification_newNodesCount": "{count} {count, plural, =1{новий вузол} few{нових вузли} many{нових вузлів} other{нових вузлів}}",
-  "notification_newTypeDiscovered": "Виявлено новий {contactType}",
-  "notification_receivedNewMessage": "Отримано нове повідомлення",
-  "settings_gpxExportRepeaters": "Експортувати ретранслятори / сервер кімнати до GPX",
-  "settings_gpxExportRepeatersSubtitle": "Експортує ретранслятори / сервер кімнати з місцезнаходженням у файл GPX.",
-  "settings_gpxExportSuccess": "Успішно експортовано файл GPX.",
-  "settings_gpxExportNoContacts": "Немає контактів для експорту.",
-  "settings_gpxExportNotAvailable": "Не підтримується на вашому пристрої/операційній системі",
-  "settings_gpxExportError": "Сталася помилка під час експорту.",
-  "settings_gpxExportAllSubtitle": "Експортує всі контакти з місцем розташування у файл GPX.",
-  "settings_gpxExportAll": "Експортувати всі контакти до GPX",
-  "settings_gpxExportContactsSubtitle": "Експортує супутників з місцезнаходженням у файл GPX.",
-  "settings_gpxExportContacts": "Експортувати супутників до GPX",
-  "settings_gpxExportRepeatersRoom": "Місцезнаходження повторювача та сервера кімнати",
-  "settings_gpxExportChat": "Місця супутників",
-  "settings_gpxExportShareText": "Дані карти експортовані з meshcore-open",
-  "settings_gpxExportAllContacts": "Усі місця контактів",
-  "settings_gpxExportShareSubject": "експорт даних карти meshcore-open у форматі GPX",
-  "pathTrace_someHopsNoLocation": "Одне або більше хмелів відсутнє місце розташування!",
-  "map_tapToAdd": "Натисніть на вузли, щоб додати їх до шляху",
-  "map_runTrace": "Виконати трасування шляху",
-  "pathTrace_clearTooltip": "Очистити шлях",
-  "map_removeLast": "Видалити останній",
-  "map_pathTraceCancelled": "Відмінується трасування шляху",
-  "scanner_enableBluetooth": "Увімкніть Bluetooth",
-  "scanner_bluetoothOffMessage": "Будь ласка, увімкніть Bluetooth, щоб сканувати пристрої.",
-  "scanner_chromeRequired": "Потрібен браузер Chrome",
-  "scanner_chromeRequiredMessage": "Для підтримки Bluetooth у цьому веб-додатку потрібен Google Chrome або браузер на базі Chromium.",
-  "scanner_bluetoothOff": "Bluetooth вимкнено",
-  "snrIndicator_lastSeen": "Останній раз бачили",
-  "snrIndicator_nearByRepeaters": "Ближні ретранслятори",
-  "chat_ShowAllPaths": "Показати всі шляхи",
-  "settings_clientRepeatFreqWarning": "Повтор без підключення до мережі вимагає частоти 433, 869 або 918 МГц.",
-  "settings_clientRepeatSubtitle": "Дозвольте цьому пристрою повторювати пакети даних для інших пристроїв.",
-  "settings_clientRepeat": "Автономна система",
-  "settings_aboutOpenMeteoAttribution": "Дані про висоту LOS: Open-Meteo (CC BY 4.0)",
-  "appSettings_unitsTitle": "одиниці",
-  "appSettings_unitsMetric": "Метричний (м / км)",
-  "appSettings_unitsImperial": "Імперська (ft / mi)",
-  "map_lineOfSight": "Пряма видимість",
-  "map_losScreenTitle": "Пряма видимість",
-  "losSelectStartEnd": "Виберіть початковий і кінцевий вузли для LOS.",
-  "losRunFailed": "Помилка перевірки прямої видимості: {error}",
+  "pathTrace_you": "Ð’Ð¸",
+  "pathTrace_failed": "Ð’Ñ–Ð´ÑÑ‚ÐµÐ¶ÐµÐ½Ð½Ñ ÑˆÐ»ÑÑ…Ñƒ Ð½Ðµ Ð²Ð´Ð°Ð»Ð¾ÑÑ.",
+  "pathTrace_notAvailable": "Ð¢Ñ€Ð°ÑÑƒÐ²Ð°Ð½Ð½Ñ ÑˆÐ»ÑÑ…Ñƒ Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ðµ.",
+  "pathTrace_refreshTooltip": "ÐžÐ½Ð¾Ð²Ð¸Ñ‚Ð¸ Path Trace",
+  "contacts_pathTrace": "Ð¢Ñ€Ð°ÑÑƒÐ²Ð°Ð½Ð½Ñ ÑˆÐ»ÑÑ…Ñ–Ð²",
+  "contacts_ping": "ÐŸÑ–Ð½Ð³ÑƒÐ²Ð°Ñ‚Ð¸",
+  "contacts_repeaterPathTrace": "Ð¢Ñ€Ð°ÑÑƒÐ²Ð°Ð½Ð½Ñ ÑˆÐ»ÑÑ…Ñƒ Ð´Ð¾ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÑŽÐ²Ð°Ñ‡Ð°",
+  "contacts_repeaterPing": "ÐŸÑ–Ð½Ð³ÑƒÐ²Ð°Ñ‚Ð¸ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÑŽÐ²Ð°Ñ‡",
+  "contacts_roomPathTrace": "Ð¢Ñ€Ð°ÑÑƒÐ²Ð°Ð½Ð½Ñ ÑˆÐ»ÑÑ…Ñƒ Ð´Ð¾ ÑÐµÑ€Ð²ÐµÑ€Ñƒ ÐºÑ–Ð¼Ð½Ð°Ñ‚Ð¸",
+  "contacts_roomPing": "ÐŸÑ–Ð½Ð³ ÑÐµÑ€Ð²ÐµÑ€Ð° ÐºÑ–Ð¼Ð½Ð°Ñ‚Ð¸",
+  "contacts_chatTraceRoute": "Ð¢Ñ€Ð°ÑÑƒÐ²Ð°Ð½Ð½Ñ ÑˆÐ»ÑÑ…Ñƒ",
+  "contacts_pathTraceTo": "Ð’Ñ–Ð´ÑÑ‚ÐµÐ¶Ð¸Ñ‚Ð¸ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚ Ð´Ð¾ {name}",
+  "contacts_invalidAdvertFormat": "ÐÐµÐ´Ñ–Ð¹ÑÐ½Ñ– ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð½Ñ– Ð´Ð°Ð½Ñ–",
+  "contacts_contactImported": "ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚ Ð±ÑƒÐ»Ð¾ Ñ–Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¾Ð²Ð°Ð½Ð¾.",
+  "contacts_contactImportFailed": "ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚ Ð½Ðµ Ð²Ð´Ð°Ð»Ð¾ÑÑ Ñ–Ð¼Ð¿Ð¾Ñ€Ñ‚ÑƒÐ²Ð°Ñ‚Ð¸",
+  "contacts_zeroHopAdvert": "Ð ÐµÐºÐ»Ð°Ð¼Ð° Ð±ÐµÐ· Ð¿ÐµÑ€ÐµÑ…Ð¾Ð¿Ð»ÐµÐ½Ð½Ñ",
+  "contacts_floodAdvert": "Ð—Ð°Ð»Ð¸Ð² Ñ€ÐµÐºÐ»Ð°Ð¼Ð¸",
+  "contacts_copyAdvertToClipboard": "ÐšÐ¾Ð¿Ñ–ÑŽÐ²Ð°Ñ‚Ð¸ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ Ð² Ð±ÑƒÑ„ÐµÑ€ Ð¾Ð±Ð¼Ñ–Ð½Ñƒ",
+  "contacts_clipboardEmpty": "Ð‘ÑƒÑ„ÐµÑ€ Ð¾Ð±Ð¼Ñ–Ð½Ñƒ Ð¿Ð¾Ñ€Ð¾Ð¶Ð½Ñ–Ð¹",
+  "appSettings_languageRu": "Ð Ð¾ÑÑ–Ð¹ÑÑŒÐºÐ°",
+  "appSettings_enableMessageTracing": "Ð£Ð²Ñ–Ð¼ÐºÐ½ÑƒÑ‚Ð¸ Ð²Ñ–Ð´ÑÑ‚ÐµÐ¶ÐµÐ½Ð½Ñ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½ÑŒ",
+  "appSettings_enableMessageTracingSubtitle": "ÐŸÐ¾ÐºÐ°Ð·ÑƒÐ²Ð°Ñ‚Ð¸ Ð´ÐµÑ‚Ð°Ð»ÑŒÐ½Ñ– Ð¼ÐµÑ‚Ð°Ð´Ð°Ð½Ñ– Ð¿Ñ€Ð¾ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð°Ñ†Ñ–ÑŽ Ñ‚Ð° Ñ‡Ð°Ñ Ð´Ð»Ñ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½ÑŒ",
+  "contacts_ShareContact": "ÐšÐ¾Ð¿Ñ–ÑŽÐ²Ð°Ñ‚Ð¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚ Ñƒ Ð±ÑƒÑ„ÐµÑ€ Ð¾Ð±Ð¼Ñ–Ð½Ñƒ",
+  "contacts_zeroHopContactAdvertFailed": "ÐÐµ Ð²Ð´Ð°Ð»Ð¾ÑÑ Ð½Ð°Ð´Ñ–ÑÐ»Ð°Ñ‚Ð¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚.",
+  "contacts_contactAdvertCopied": "Ð ÐµÐºÐ»Ð°Ð¼Ñƒ ÑÐºÐ¾Ð¿Ñ–Ð¹Ð¾Ð²Ð°Ð½Ð¾ Ð´Ð¾ Ð±ÑƒÑ„ÐµÑ€Ð° Ð¾Ð±Ð¼Ñ–Ð½Ñƒ.",
+  "contacts_contactAdvertCopyFailed": "ÐšÐ¾Ð¿Ñ–ÑŽÐ²Ð°Ð½Ð½Ñ Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½Ñ Ð² Ð±ÑƒÑ„ÐµÑ€ Ð¾Ð±Ð¼Ñ–Ð½Ñƒ Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ð»Ð¾ÑÑ Ð½ÐµÐ²Ð´Ð°Ð»Ð¾",
+  "contacts_zeroHopContactAdvertSent": "Ð’Ñ–Ð´Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¾ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚ Ð·Ð° Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½ÑÐ¼",
+  "contacts_addContactFromClipboard": "Ð”Ð¾Ð´Ð°Ñ‚Ð¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚ Ð· Ð±ÑƒÑ„ÐµÑ€Ð° Ð¾Ð±Ð¼Ñ–Ð½Ñƒ",
+  "contacts_ShareContactZeroHop": "ÐŸÐ¾Ð´Ñ–Ð»Ð¸Ñ‚Ð¸ÑÑ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¾Ð¼ Ð·Ð° Ð¾Ð³Ð¾Ð»Ð¾ÑˆÐµÐ½Ð½ÑÐ¼",
+  "notification_activityTitle": "ÐÐºÑ‚Ð¸Ð²Ð½Ñ–ÑÑ‚ÑŒ MeshCore",
+  "notification_messagesCount": "{count} {count, plural, =1{Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ} few{Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ} many{Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½ÑŒ} other{Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½ÑŒ}}",
+  "notification_channelMessagesCount": "{count} {count, plural, =1{Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ ÐºÐ°Ð½Ð°Ð»Ñƒ} few{Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ ÐºÐ°Ð½Ð°Ð»Ñƒ} many{Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½ÑŒ ÐºÐ°Ð½Ð°Ð»Ñƒ} other{Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½ÑŒ ÐºÐ°Ð½Ð°Ð»Ñƒ}}",
+  "notification_newNodesCount": "{count} {count, plural, =1{Ð½Ð¾Ð²Ð¸Ð¹ Ð²ÑƒÐ·Ð¾Ð»} few{Ð½Ð¾Ð²Ð¸Ñ… Ð²ÑƒÐ·Ð»Ð¸} many{Ð½Ð¾Ð²Ð¸Ñ… Ð²ÑƒÐ·Ð»Ñ–Ð²} other{Ð½Ð¾Ð²Ð¸Ñ… Ð²ÑƒÐ·Ð»Ñ–Ð²}}",
+  "notification_newTypeDiscovered": "Ð’Ð¸ÑÐ²Ð»ÐµÐ½Ð¾ Ð½Ð¾Ð²Ð¸Ð¹ {contactType}",
+  "notification_receivedNewMessage": "ÐžÑ‚Ñ€Ð¸Ð¼Ð°Ð½Ð¾ Ð½Ð¾Ð²Ðµ Ð¿Ð¾Ð²Ñ–Ð´Ð¾Ð¼Ð»ÐµÐ½Ð½Ñ",
+  "settings_gpxExportRepeaters": "Ð•ÐºÑÐ¿Ð¾Ñ€Ñ‚ÑƒÐ²Ð°Ñ‚Ð¸ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð¸ / ÑÐµÑ€Ð²ÐµÑ€ ÐºÑ–Ð¼Ð½Ð°Ñ‚Ð¸ Ð´Ð¾ GPX",
+  "settings_gpxExportRepeatersSubtitle": "Ð•ÐºÑÐ¿Ð¾Ñ€Ñ‚ÑƒÑ” Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð¸ / ÑÐµÑ€Ð²ÐµÑ€ ÐºÑ–Ð¼Ð½Ð°Ñ‚Ð¸ Ð· Ð¼Ñ–ÑÑ†ÐµÐ·Ð½Ð°Ñ…Ð¾Ð´Ð¶ÐµÐ½Ð½ÑÐ¼ Ñƒ Ñ„Ð°Ð¹Ð» GPX.",
+  "settings_gpxExportSuccess": "Ð£ÑÐ¿Ñ–ÑˆÐ½Ð¾ ÐµÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¾Ð²Ð°Ð½Ð¾ Ñ„Ð°Ð¹Ð» GPX.",
+  "settings_gpxExportNoContacts": "ÐÐµÐ¼Ð°Ñ” ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñ–Ð² Ð´Ð»Ñ ÐµÐºÑÐ¿Ð¾Ñ€Ñ‚Ñƒ.",
+  "settings_gpxExportNotAvailable": "ÐÐµ Ð¿Ñ–Ð´Ñ‚Ñ€Ð¸Ð¼ÑƒÑ”Ñ‚ÑŒÑÑ Ð½Ð° Ð²Ð°ÑˆÐ¾Ð¼Ñƒ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾Ñ—/Ð¾Ð¿ÐµÑ€Ð°Ñ†Ñ–Ð¹Ð½Ñ–Ð¹ ÑÐ¸ÑÑ‚ÐµÐ¼Ñ–",
+  "settings_gpxExportError": "Ð¡Ñ‚Ð°Ð»Ð°ÑÑ Ð¿Ð¾Ð¼Ð¸Ð»ÐºÐ° Ð¿Ñ–Ð´ Ñ‡Ð°Ñ ÐµÐºÑÐ¿Ð¾Ñ€Ñ‚Ñƒ.",
+  "settings_gpxExportAllSubtitle": "Ð•ÐºÑÐ¿Ð¾Ñ€Ñ‚ÑƒÑ” Ð²ÑÑ– ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸ Ð· Ð¼Ñ–ÑÑ†ÐµÐ¼ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ Ñƒ Ñ„Ð°Ð¹Ð» GPX.",
+  "settings_gpxExportAll": "Ð•ÐºÑÐ¿Ð¾Ñ€Ñ‚ÑƒÐ²Ð°Ñ‚Ð¸ Ð²ÑÑ– ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸ Ð´Ð¾ GPX",
+  "settings_gpxExportContactsSubtitle": "Ð•ÐºÑÐ¿Ð¾Ñ€Ñ‚ÑƒÑ” ÑÑƒÐ¿ÑƒÑ‚Ð½Ð¸ÐºÑ–Ð² Ð· Ð¼Ñ–ÑÑ†ÐµÐ·Ð½Ð°Ñ…Ð¾Ð´Ð¶ÐµÐ½Ð½ÑÐ¼ Ñƒ Ñ„Ð°Ð¹Ð» GPX.",
+  "settings_gpxExportContacts": "Ð•ÐºÑÐ¿Ð¾Ñ€Ñ‚ÑƒÐ²Ð°Ñ‚Ð¸ ÑÑƒÐ¿ÑƒÑ‚Ð½Ð¸ÐºÑ–Ð² Ð´Ð¾ GPX",
+  "settings_gpxExportRepeatersRoom": "ÐœÑ–ÑÑ†ÐµÐ·Ð½Ð°Ñ…Ð¾Ð´Ð¶ÐµÐ½Ð½Ñ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÑŽÐ²Ð°Ñ‡Ð° Ñ‚Ð° ÑÐµÑ€Ð²ÐµÑ€Ð° ÐºÑ–Ð¼Ð½Ð°Ñ‚Ð¸",
+  "settings_gpxExportChat": "ÐœÑ–ÑÑ†Ñ ÑÑƒÐ¿ÑƒÑ‚Ð½Ð¸ÐºÑ–Ð²",
+  "settings_gpxExportShareText": "Ð”Ð°Ð½Ñ– ÐºÐ°Ñ€Ñ‚Ð¸ ÐµÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¾Ð²Ð°Ð½Ñ– Ð· meshcore-open",
+  "settings_gpxExportAllContacts": "Ð£ÑÑ– Ð¼Ñ–ÑÑ†Ñ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñ–Ð²",
+  "settings_gpxExportShareSubject": "ÐµÐºÑÐ¿Ð¾Ñ€Ñ‚ Ð´Ð°Ð½Ð¸Ñ… ÐºÐ°Ñ€Ñ‚Ð¸ meshcore-open Ñƒ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ñ– GPX",
+  "pathTrace_someHopsNoLocation": "ÐžÐ´Ð½Ðµ Ð°Ð±Ð¾ Ð±Ñ–Ð»ÑŒÑˆÐµ Ñ…Ð¼ÐµÐ»Ñ–Ð² Ð²Ñ–Ð´ÑÑƒÑ‚Ð½Ñ” Ð¼Ñ–ÑÑ†Ðµ Ñ€Ð¾Ð·Ñ‚Ð°ÑˆÑƒÐ²Ð°Ð½Ð½Ñ!",
+  "map_tapToAdd": "ÐÐ°Ñ‚Ð¸ÑÐ½Ñ–Ñ‚ÑŒ Ð½Ð° Ð²ÑƒÐ·Ð»Ð¸, Ñ‰Ð¾Ð± Ð´Ð¾Ð´Ð°Ñ‚Ð¸ Ñ—Ñ… Ð´Ð¾ ÑˆÐ»ÑÑ…Ñƒ",
+  "map_runTrace": "Ð’Ð¸ÐºÐ¾Ð½Ð°Ñ‚Ð¸ Ñ‚Ñ€Ð°ÑÑƒÐ²Ð°Ð½Ð½Ñ ÑˆÐ»ÑÑ…Ñƒ",
+  "pathTrace_clearTooltip": "ÐžÑ‡Ð¸ÑÑ‚Ð¸Ñ‚Ð¸ ÑˆÐ»ÑÑ…",
+  "map_removeLast": "Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ Ð¾ÑÑ‚Ð°Ð½Ð½Ñ–Ð¹",
+  "map_pathTraceCancelled": "Ð’Ñ–Ð´Ð¼Ñ–Ð½ÑƒÑ”Ñ‚ÑŒÑÑ Ñ‚Ñ€Ð°ÑÑƒÐ²Ð°Ð½Ð½Ñ ÑˆÐ»ÑÑ…Ñƒ",
+  "scanner_enableBluetooth": "Ð£Ð²Ñ–Ð¼ÐºÐ½Ñ–Ñ‚ÑŒ Bluetooth",
+  "scanner_bluetoothOffMessage": "Ð‘ÑƒÐ´ÑŒ Ð»Ð°ÑÐºÐ°, ÑƒÐ²Ñ–Ð¼ÐºÐ½Ñ–Ñ‚ÑŒ Bluetooth, Ñ‰Ð¾Ð± ÑÐºÐ°Ð½ÑƒÐ²Ð°Ñ‚Ð¸ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾Ñ—.",
+  "scanner_chromeRequired": "ÐŸÐ¾Ñ‚Ñ€Ñ–Ð±ÐµÐ½ Ð±Ñ€Ð°ÑƒÐ·ÐµÑ€ Chrome",
+  "scanner_chromeRequiredMessage": "Ð”Ð»Ñ Ð¿Ñ–Ð´Ñ‚Ñ€Ð¸Ð¼ÐºÐ¸ Bluetooth Ñƒ Ñ†ÑŒÐ¾Ð¼Ñƒ Ð²ÐµÐ±-Ð´Ð¾Ð´Ð°Ñ‚ÐºÑƒ Ð¿Ð¾Ñ‚Ñ€Ñ–Ð±ÐµÐ½ Google Chrome Ð°Ð±Ð¾ Ð±Ñ€Ð°ÑƒÐ·ÐµÑ€ Ð½Ð° Ð±Ð°Ð·Ñ– Chromium.",
+  "scanner_bluetoothOff": "Bluetooth Ð²Ð¸Ð¼ÐºÐ½ÐµÐ½Ð¾",
+  "snrIndicator_lastSeen": "ÐžÑÑ‚Ð°Ð½Ð½Ñ–Ð¹ Ñ€Ð°Ð· Ð±Ð°Ñ‡Ð¸Ð»Ð¸",
+  "snrIndicator_nearByRepeaters": "Ð‘Ð»Ð¸Ð¶Ð½Ñ– Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ð¸",
+  "chat_ShowAllPaths": "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚Ð¸ Ð²ÑÑ– ÑˆÐ»ÑÑ…Ð¸",
+  "settings_clientRepeatFreqWarning": "ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€ Ð±ÐµÐ· Ð¿Ñ–Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð½Ñ Ð´Ð¾ Ð¼ÐµÑ€ÐµÐ¶Ñ– Ð²Ð¸Ð¼Ð°Ð³Ð°Ñ” Ñ‡Ð°ÑÑ‚Ð¾Ñ‚Ð¸ 433, 869 Ð°Ð±Ð¾ 918 ÐœÐ“Ñ†.",
+  "settings_clientRepeatSubtitle": "Ð”Ð¾Ð·Ð²Ð¾Ð»ÑŒÑ‚Ðµ Ñ†ÑŒÐ¾Ð¼Ñƒ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾ÑŽ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÑŽÐ²Ð°Ñ‚Ð¸ Ð¿Ð°ÐºÐµÑ‚Ð¸ Ð´Ð°Ð½Ð¸Ñ… Ð´Ð»Ñ Ñ–Ð½ÑˆÐ¸Ñ… Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾Ñ—Ð².",
+  "settings_clientRepeat": "ÐÐ²Ñ‚Ð¾Ð½Ð¾Ð¼Ð½Ð° ÑÐ¸ÑÑ‚ÐµÐ¼Ð°",
+  "settings_aboutOpenMeteoAttribution": "Ð”Ð°Ð½Ñ– Ð¿Ñ€Ð¾ Ð²Ð¸ÑÐ¾Ñ‚Ñƒ LOS: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "Ð¾Ð´Ð¸Ð½Ð¸Ñ†Ñ–",
+  "appSettings_unitsMetric": "ÐœÐµÑ‚Ñ€Ð¸Ñ‡Ð½Ð¸Ð¹ (Ð¼ / ÐºÐ¼)",
+  "appSettings_unitsImperial": "Ð†Ð¼Ð¿ÐµÑ€ÑÑŒÐºÐ° (ft / mi)",
+  "map_lineOfSight": "ÐŸÑ€ÑÐ¼Ð° Ð²Ð¸Ð´Ð¸Ð¼Ñ–ÑÑ‚ÑŒ",
+  "map_losScreenTitle": "ÐŸÑ€ÑÐ¼Ð° Ð²Ð¸Ð´Ð¸Ð¼Ñ–ÑÑ‚ÑŒ",
+  "losSelectStartEnd": "Ð’Ð¸Ð±ÐµÑ€Ñ–Ñ‚ÑŒ Ð¿Ð¾Ñ‡Ð°Ñ‚ÐºÐ¾Ð²Ð¸Ð¹ Ñ– ÐºÑ–Ð½Ñ†ÐµÐ²Ð¸Ð¹ Ð²ÑƒÐ·Ð»Ð¸ Ð´Ð»Ñ LOS.",
+  "losRunFailed": "ÐŸÐ¾Ð¼Ð¸Ð»ÐºÐ° Ð¿ÐµÑ€ÐµÐ²Ñ–Ñ€ÐºÐ¸ Ð¿Ñ€ÑÐ¼Ð¾Ñ— Ð²Ð¸Ð´Ð¸Ð¼Ð¾ÑÑ‚Ñ–: {error}",
   "@losRunFailed": {
     "placeholders": {
       "error": {
@@ -1629,13 +1629,13 @@
       }
     }
   },
-  "losClearAllPoints": "Очистити всі пункти",
-  "losRunToViewElevationProfile": "Запустіть LOS, щоб переглянути профіль висоти",
-  "losMenuTitle": "Меню LOS",
-  "losMenuSubtitle": "Торкніться вузлів або утримуйте карту, щоб отримати власні точки",
-  "losShowDisplayNodes": "Показати вузли відображення",
-  "losCustomPoints": "Користувальницькі точки",
-  "losCustomPointLabel": "Спеціальний {index}",
+  "losClearAllPoints": "ÐžÑ‡Ð¸ÑÑ‚Ð¸Ñ‚Ð¸ Ð²ÑÑ– Ð¿ÑƒÐ½ÐºÑ‚Ð¸",
+  "losRunToViewElevationProfile": "Ð—Ð°Ð¿ÑƒÑÑ‚Ñ–Ñ‚ÑŒ LOS, Ñ‰Ð¾Ð± Ð¿ÐµÑ€ÐµÐ³Ð»ÑÐ½ÑƒÑ‚Ð¸ Ð¿Ñ€Ð¾Ñ„Ñ–Ð»ÑŒ Ð²Ð¸ÑÐ¾Ñ‚Ð¸",
+  "losMenuTitle": "ÐœÐµÐ½ÑŽ LOS",
+  "losMenuSubtitle": "Ð¢Ð¾Ñ€ÐºÐ½Ñ–Ñ‚ÑŒÑÑ Ð²ÑƒÐ·Ð»Ñ–Ð² Ð°Ð±Ð¾ ÑƒÑ‚Ñ€Ð¸Ð¼ÑƒÐ¹Ñ‚Ðµ ÐºÐ°Ñ€Ñ‚Ñƒ, Ñ‰Ð¾Ð± Ð¾Ñ‚Ñ€Ð¸Ð¼Ð°Ñ‚Ð¸ Ð²Ð»Ð°ÑÐ½Ñ– Ñ‚Ð¾Ñ‡ÐºÐ¸",
+  "losShowDisplayNodes": "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚Ð¸ Ð²ÑƒÐ·Ð»Ð¸ Ð²Ñ–Ð´Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð½Ñ",
+  "losCustomPoints": "ÐšÐ¾Ñ€Ð¸ÑÑ‚ÑƒÐ²Ð°Ð»ÑŒÐ½Ð¸Ñ†ÑŒÐºÑ– Ñ‚Ð¾Ñ‡ÐºÐ¸",
+  "losCustomPointLabel": "Ð¡Ð¿ÐµÑ†Ñ–Ð°Ð»ÑŒÐ½Ð¸Ð¹ {index}",
   "@losCustomPointLabel": {
     "placeholders": {
       "index": {
@@ -1643,9 +1643,9 @@
       }
     }
   },
-  "losPointA": "Точка А",
-  "losPointB": "Точка Б",
-  "losAntennaA": "Антена A: {value} {unit}",
+  "losPointA": "Ð¢Ð¾Ñ‡ÐºÐ° Ð",
+  "losPointB": "Ð¢Ð¾Ñ‡ÐºÐ° Ð‘",
+  "losAntennaA": "ÐÐ½Ñ‚ÐµÐ½Ð° A: {value} {unit}",
   "@losAntennaA": {
     "placeholders": {
       "value": {
@@ -1656,7 +1656,7 @@
       }
     }
   },
-  "losAntennaB": "Антена B: {value} {unit}",
+  "losAntennaB": "ÐÐ½Ñ‚ÐµÐ½Ð° B: {value} {unit}",
   "@losAntennaB": {
     "placeholders": {
       "value": {
@@ -1667,9 +1667,9 @@
       }
     }
   },
-  "losRun": "Запустіть LOS",
-  "losNoElevationData": "Немає даних про висоту",
-  "losProfileClear": "{distance} {distanceUnit}, чистий LOS, мінімальний зазор {clearance} {heightUnit}",
+  "losRun": "Ð—Ð°Ð¿ÑƒÑÑ‚Ñ–Ñ‚ÑŒ LOS",
+  "losNoElevationData": "ÐÐµÐ¼Ð°Ñ” Ð´Ð°Ð½Ð¸Ñ… Ð¿Ñ€Ð¾ Ð²Ð¸ÑÐ¾Ñ‚Ñƒ",
+  "losProfileClear": "{distance} {distanceUnit}, Ñ‡Ð¸ÑÑ‚Ð¸Ð¹ LOS, Ð¼Ñ–Ð½Ñ–Ð¼Ð°Ð»ÑŒÐ½Ð¸Ð¹ Ð·Ð°Ð·Ð¾Ñ€ {clearance} {heightUnit}",
   "@losProfileClear": {
     "placeholders": {
       "distance": {
@@ -1686,7 +1686,7 @@
       }
     }
   },
-  "losProfileBlocked": "{distance} {distanceUnit}, заблоковано {obstruction} {heightUnit}",
+  "losProfileBlocked": "{distance} {distanceUnit}, Ð·Ð°Ð±Ð»Ð¾ÐºÐ¾Ð²Ð°Ð½Ð¾ {obstruction} {heightUnit}",
   "@losProfileBlocked": {
     "placeholders": {
       "distance": {
@@ -1703,9 +1703,9 @@
       }
     }
   },
-  "losStatusChecking": "LOS: перевірка...",
-  "losStatusNoData": "LOS: немає даних",
-  "losStatusSummary": "LOS: {clear}/{total} очищено, {blocked} заблоковано, {unknown} невідомо",
+  "losStatusChecking": "LOS: Ð¿ÐµÑ€ÐµÐ²Ñ–Ñ€ÐºÐ°...",
+  "losStatusNoData": "LOS: Ð½ÐµÐ¼Ð°Ñ” Ð´Ð°Ð½Ð¸Ñ…",
+  "losStatusSummary": "LOS: {clear}/{total} Ð¾Ñ‡Ð¸Ñ‰ÐµÐ½Ð¾, {blocked} Ð·Ð°Ð±Ð»Ð¾ÐºÐ¾Ð²Ð°Ð½Ð¾, {unknown} Ð½ÐµÐ²Ñ–Ð´Ð¾Ð¼Ð¾",
   "@losStatusSummary": {
     "placeholders": {
       "clear": {
@@ -1722,20 +1722,20 @@
       }
     }
   },
-  "losErrorElevationUnavailable": "Дані про висоту недоступні для одного чи кількох зразків.",
-  "losErrorInvalidInput": "Недійсні дані про точки/висоту для розрахунку LOS.",
-  "losRenameCustomPoint": "Перейменуйте спеціальну точку",
-  "losPointName": "Назва точки",
-  "losShowPanelTooltip": "Показати панель LOS",
-  "losHidePanelTooltip": "Приховати панель LOS",
-  "losElevationAttribution": "Дані про висоту: Open-Meteo (CC BY 4.0)",
-  "losLegendRadioHorizon": "Радіогоризонт",
-  "losLegendLosBeam": "Лінія прямої видимості",
-  "losLegendTerrain": "Рельєф",
-  "losFrequencyLabel": "Частота",
-  "losFrequencyInfoTooltip": "Переглянути деталі розрахунку",
-  "losFrequencyDialogTitle": "Розрахунок радіогоризонту",
-  "losFrequencyDialogDescription": "Починаючи з k={baselineK} на {baselineFreq} МГц, обчислення коригує k-фактор для поточного діапазону {frequencyMHz} МГц, який визначає викривлену межу радіогоризонту.",
+  "losErrorElevationUnavailable": "Ð”Ð°Ð½Ñ– Ð¿Ñ€Ð¾ Ð²Ð¸ÑÐ¾Ñ‚Ñƒ Ð½ÐµÐ´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ– Ð´Ð»Ñ Ð¾Ð´Ð½Ð¾Ð³Ð¾ Ñ‡Ð¸ ÐºÑ–Ð»ÑŒÐºÐ¾Ñ… Ð·Ñ€Ð°Ð·ÐºÑ–Ð².",
+  "losErrorInvalidInput": "ÐÐµÐ´Ñ–Ð¹ÑÐ½Ñ– Ð´Ð°Ð½Ñ– Ð¿Ñ€Ð¾ Ñ‚Ð¾Ñ‡ÐºÐ¸/Ð²Ð¸ÑÐ¾Ñ‚Ñƒ Ð´Ð»Ñ Ñ€Ð¾Ð·Ñ€Ð°Ñ…ÑƒÐ½ÐºÑƒ LOS.",
+  "losRenameCustomPoint": "ÐŸÐµÑ€ÐµÐ¹Ð¼ÐµÐ½ÑƒÐ¹Ñ‚Ðµ ÑÐ¿ÐµÑ†Ñ–Ð°Ð»ÑŒÐ½Ñƒ Ñ‚Ð¾Ñ‡ÐºÑƒ",
+  "losPointName": "ÐÐ°Ð·Ð²Ð° Ñ‚Ð¾Ñ‡ÐºÐ¸",
+  "losShowPanelTooltip": "ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚Ð¸ Ð¿Ð°Ð½ÐµÐ»ÑŒ LOS",
+  "losHidePanelTooltip": "ÐŸÑ€Ð¸Ñ…Ð¾Ð²Ð°Ñ‚Ð¸ Ð¿Ð°Ð½ÐµÐ»ÑŒ LOS",
+  "losElevationAttribution": "Ð”Ð°Ð½Ñ– Ð¿Ñ€Ð¾ Ð²Ð¸ÑÐ¾Ñ‚Ñƒ: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Ð Ð°Ð´Ñ–Ð¾Ð³Ð¾Ñ€Ð¸Ð·Ð¾Ð½Ñ‚",
+  "losLegendLosBeam": "Ð›Ñ–Ð½Ñ–Ñ Ð¿Ñ€ÑÐ¼Ð¾Ñ— Ð²Ð¸Ð´Ð¸Ð¼Ð¾ÑÑ‚Ñ–",
+  "losLegendTerrain": "Ð ÐµÐ»ÑŒÑ”Ñ„",
+  "losFrequencyLabel": "Ð§Ð°ÑÑ‚Ð¾Ñ‚Ð°",
+  "losFrequencyInfoTooltip": "ÐŸÐµÑ€ÐµÐ³Ð»ÑÐ½ÑƒÑ‚Ð¸ Ð´ÐµÑ‚Ð°Ð»Ñ– Ñ€Ð¾Ð·Ñ€Ð°Ñ…ÑƒÐ½ÐºÑƒ",
+  "losFrequencyDialogTitle": "Ð Ð¾Ð·Ñ€Ð°Ñ…ÑƒÐ½Ð¾Ðº Ñ€Ð°Ð´Ñ–Ð¾Ð³Ð¾Ñ€Ð¸Ð·Ð¾Ð½Ñ‚Ñƒ",
+  "losFrequencyDialogDescription": "ÐŸÐ¾Ñ‡Ð¸Ð½Ð°ÑŽÑ‡Ð¸ Ð· k={baselineK} Ð½Ð° {baselineFreq} ÐœÐ“Ñ†, Ð¾Ð±Ñ‡Ð¸ÑÐ»ÐµÐ½Ð½Ñ ÐºÐ¾Ñ€Ð¸Ð³ÑƒÑ” k-Ñ„Ð°ÐºÑ‚Ð¾Ñ€ Ð´Ð»Ñ Ð¿Ð¾Ñ‚Ð¾Ñ‡Ð½Ð¾Ð³Ð¾ Ð´Ñ–Ð°Ð¿Ð°Ð·Ð¾Ð½Ñƒ {frequencyMHz} ÐœÐ“Ñ†, ÑÐºÐ¸Ð¹ Ð²Ð¸Ð·Ð½Ð°Ñ‡Ð°Ñ” Ð²Ð¸ÐºÑ€Ð¸Ð²Ð»ÐµÐ½Ñƒ Ð¼ÐµÐ¶Ñƒ Ñ€Ð°Ð´Ñ–Ð¾Ð³Ð¾Ñ€Ð¸Ð·Ð¾Ð½Ñ‚Ñƒ.",
   "@losFrequencyDialogDescription": {
     "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
     "placeholders": {
@@ -1753,9 +1753,9 @@
       }
     }
   },
-  "listFilter_removeFromFavorites": "Видалити зі списку улюблених",
-  "listFilter_addToFavorites": "Додати до улюблених",
-  "listFilter_favorites": "Улюблені",
+  "listFilter_removeFromFavorites": "Ð’Ð¸Ð´Ð°Ð»Ð¸Ñ‚Ð¸ Ð·Ñ– ÑÐ¿Ð¸ÑÐºÑƒ ÑƒÐ»ÑŽÐ±Ð»ÐµÐ½Ð¸Ñ…",
+  "listFilter_addToFavorites": "Ð”Ð¾Ð´Ð°Ñ‚Ð¸ Ð´Ð¾ ÑƒÐ»ÑŽÐ±Ð»ÐµÐ½Ð¸Ñ…",
+  "listFilter_favorites": "Ð£Ð»ÑŽÐ±Ð»ÐµÐ½Ñ–",
   "@contacts_searchFavorites": {
     "placeholders": {
       "number": {
@@ -1796,19 +1796,17 @@
       }
     }
   },
-  "contacts_searchRoomServers": "Пошук {number}{str} серверів кімнат...",
-  "contacts_searchUsers": "Пошук {number}{str} користувачів...",
-  "contacts_searchFavorites": "Пошук {number}{str} улюблених...",
-  "contacts_searchContactsNoNumber": "Пошук контактів...",
-  "contacts_searchRepeaters": "Пошук {number}{str} ретрансляторів...",
-  "contacts_unread": "Непрочитане",
-  "connectionChoiceSubtitle": "Виберіть, яким способом ви бажаєте отримати доступ до вашого пристрою MeshCore.",
+  "contacts_searchRoomServers": "ÐŸÐ¾ÑˆÑƒÐº {number}{str} ÑÐµÑ€Ð²ÐµÑ€Ñ–Ð² ÐºÑ–Ð¼Ð½Ð°Ñ‚...",
+  "contacts_searchUsers": "ÐŸÐ¾ÑˆÑƒÐº {number}{str} ÐºÐ¾Ñ€Ð¸ÑÑ‚ÑƒÐ²Ð°Ñ‡Ñ–Ð²...",
+  "contacts_searchFavorites": "ÐŸÐ¾ÑˆÑƒÐº {number}{str} ÑƒÐ»ÑŽÐ±Ð»ÐµÐ½Ð¸Ñ…...",
+  "contacts_searchContactsNoNumber": "ÐŸÐ¾ÑˆÑƒÐº ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñ–Ð²...",
+  "contacts_searchRepeaters": "ÐŸÐ¾ÑˆÑƒÐº {number}{str} Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»ÑÑ‚Ð¾Ñ€Ñ–Ð²...",
+  "contacts_unread": "ÐÐµÐ¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ðµ",
   "connectionChoiceUsbLabel": "USB",
-  "connectionChoiceTitle": "Виберіть спосіб зв'язку",
   "connectionChoiceBluetoothLabel": "Bluetooth",
-  "usbScreenSubtitle": "Виберіть виявлене серійне пристрій і підключіть його безпосередньо до вашого вузла MeshCore.",
-  "usbScreenTitle": "Підключити через USB",
-  "usbScreenStatus": "Виберіть пристрій USB",
-  "usbScreenNote": "USB-серіальний інтерфейс активний на підтримуваних пристроях на базі Android та на десктопних платформах.",
-  "usbScreenEmptyState": "Не знайдено жодних пристроїв USB. Підключіть один і перезавантажте."
+  "usbScreenSubtitle": "Ð’Ð¸Ð±ÐµÑ€Ñ–Ñ‚ÑŒ Ð²Ð¸ÑÐ²Ð»ÐµÐ½Ðµ ÑÐµÑ€Ñ–Ð¹Ð½Ðµ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ñ–Ð¹ Ñ– Ð¿Ñ–Ð´ÐºÐ»ÑŽÑ‡Ñ–Ñ‚ÑŒ Ð¹Ð¾Ð³Ð¾ Ð±ÐµÐ·Ð¿Ð¾ÑÐµÑ€ÐµÐ´Ð½ÑŒÐ¾ Ð´Ð¾ Ð²Ð°ÑˆÐ¾Ð³Ð¾ Ð²ÑƒÐ·Ð»Ð° MeshCore.",
+  "usbScreenTitle": "ÐŸÑ–Ð´ÐºÐ»ÑŽÑ‡Ð¸Ñ‚Ð¸ Ñ‡ÐµÑ€ÐµÐ· USB",
+  "usbScreenStatus": "Ð’Ð¸Ð±ÐµÑ€Ñ–Ñ‚ÑŒ Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ñ–Ð¹ USB",
+  "usbScreenNote": "USB-ÑÐµÑ€Ñ–Ð°Ð»ÑŒÐ½Ð¸Ð¹ Ñ–Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹Ñ Ð°ÐºÑ‚Ð¸Ð²Ð½Ð¸Ð¹ Ð½Ð° Ð¿Ñ–Ð´Ñ‚Ñ€Ð¸Ð¼ÑƒÐ²Ð°Ð½Ð¸Ñ… Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾ÑÑ… Ð½Ð° Ð±Ð°Ð·Ñ– Android Ñ‚Ð° Ð½Ð° Ð´ÐµÑÐºÑ‚Ð¾Ð¿Ð½Ð¸Ñ… Ð¿Ð»Ð°Ñ‚Ñ„Ð¾Ñ€Ð¼Ð°Ñ….",
+  "usbScreenEmptyState": "ÐÐµ Ð·Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾ Ð¶Ð¾Ð´Ð½Ð¸Ñ… Ð¿Ñ€Ð¸ÑÑ‚Ñ€Ð¾Ñ—Ð² USB. ÐŸÑ–Ð´ÐºÐ»ÑŽÑ‡Ñ–Ñ‚ÑŒ Ð¾Ð´Ð¸Ð½ Ñ– Ð¿ÐµÑ€ÐµÐ·Ð°Ð²Ð°Ð½Ñ‚Ð°Ð¶Ñ‚Ðµ."
 }

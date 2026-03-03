@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../connector/meshcore_connector.dart';
+import '../connector/meshcore_connector_usb.dart';
 import '../l10n/l10n.dart';
 import '../utils/platform_info.dart';
 import '../utils/usb_port_labels.dart';
 import 'contacts_screen.dart';
+import 'scanner_screen.dart';
 
 class UsbScreen extends StatefulWidget {
   const UsbScreen({super.key});
@@ -28,6 +30,7 @@ class _UsbScreenState extends State<UsbScreen> {
   String? _errorText;
   Timer? _hotPlugTimer;
   late final MeshCoreConnector _connector;
+  late final MeshCoreConnectorUsb _usbConnector;
   late final VoidCallback _connectionListener;
 
   /// Whether the current platform supports dynamic hot-plug polling.
@@ -40,12 +43,13 @@ class _UsbScreenState extends State<UsbScreen> {
   void initState() {
     super.initState();
     _connector = context.read<MeshCoreConnector>();
+    _usbConnector = MeshCoreConnectorUsb(_connector);
     _connectionListener = () {
       if (!mounted) return;
-      final activeUsbPortDisplayLabel = _connector.activeUsbPortDisplayLabel;
+      final activeUsbPortDisplayLabel = _usbConnector.activeUsbPortDisplayLabel;
       final shouldUpdateDisplayLabel =
           activeUsbPortDisplayLabel != _connectedPortDisplayLabel;
-      if (_connector.state == MeshCoreConnectionState.disconnected) {
+      if (_usbConnector.state == MeshCoreConnectionState.disconnected) {
         _navigatedToContacts = false;
         setState(() {
           _isConnecting = false;
@@ -56,8 +60,8 @@ class _UsbScreenState extends State<UsbScreen> {
           _connectedPortDisplayLabel = activeUsbPortDisplayLabel;
         });
       }
-      if (_connector.state == MeshCoreConnectionState.connected &&
-          _connector.isUsbTransportConnected &&
+      if (_usbConnector.state == MeshCoreConnectionState.connected &&
+          _usbConnector.isUsbTransportConnected &&
           !_navigatedToContacts) {
         _navigatedToContacts = true;
         Navigator.of(context).pushReplacement(
@@ -65,14 +69,14 @@ class _UsbScreenState extends State<UsbScreen> {
         );
       }
     };
-    _connector.addListener(_connectionListener);
+    _usbConnector.addListener(_connectionListener);
     _startHotPlugTimer();
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _connector.setUsbRequestPortLabel(context.l10n.usbScreenStatus);
+    _usbConnector.setRequestPortLabel(context.l10n.usbScreenStatus);
     if (!_didScheduleInitialLoad) {
       _didScheduleInitialLoad = true;
       unawaited(_loadPorts());
@@ -83,12 +87,12 @@ class _UsbScreenState extends State<UsbScreen> {
   void dispose() {
     _hotPlugTimer?.cancel();
     _hotPlugTimer = null;
-    _connector.removeListener(_connectionListener);
+    _usbConnector.removeListener(_connectionListener);
     if (!_navigatedToContacts &&
-        _connector.activeTransport == MeshCoreTransportType.usb &&
-        _connector.state != MeshCoreConnectionState.disconnected) {
+        _usbConnector.activeTransport == MeshCoreTransportType.usb &&
+        _usbConnector.state != MeshCoreConnectionState.disconnected) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        unawaited(_connector.disconnect(manual: true));
+        unawaited(_usbConnector.disconnect(manual: true));
       });
     }
     super.dispose();
@@ -113,6 +117,23 @@ class _UsbScreenState extends State<UsbScreen> {
           style: theme.textTheme.titleLarge,
         ),
         centerTitle: true,
+        actions: [
+          if (PlatformInfo.isWeb ||
+              PlatformInfo.isAndroid ||
+              PlatformInfo.isIOS)
+            TextButton.icon(
+              onPressed: () {
+                debugPrint(
+                  'UsbScreen: Bluetooth selected, opening ScannerScreen',
+                );
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (_) => const ScannerScreen()),
+                );
+              },
+              icon: const Icon(Icons.bluetooth),
+              label: Text(l10n.connectionChoiceBluetoothLabel),
+            ),
+        ],
       ),
       body: SafeArea(
         child: LayoutBuilder(
@@ -376,7 +397,8 @@ class _UsbScreenState extends State<UsbScreen> {
         final isSelected = port == _selectedPort;
         final displayName = _friendlyPortName(port);
         final rawName = normalizeUsbPortName(port);
-        final showRawName = rawName != displayName;
+        final showRawName =
+            rawName != displayName && !rawName.startsWith('web:');
         return Material(
           color: isSelected
               ? theme.colorScheme.primaryContainer
@@ -433,7 +455,7 @@ class _UsbScreenState extends State<UsbScreen> {
 
   Future<void> _loadPorts() async {
     if (!mounted) return;
-    _connector.setUsbRequestPortLabel(context.l10n.usbScreenStatus);
+    _usbConnector.setRequestPortLabel(context.l10n.usbScreenStatus);
 
     setState(() {
       _isLoadingPorts = true;
@@ -441,7 +463,7 @@ class _UsbScreenState extends State<UsbScreen> {
     });
 
     try {
-      final ports = await _connector.listUsbPorts();
+      final ports = await _usbConnector.listPorts();
       if (!mounted) return;
       setState(() {
         _ports
@@ -470,8 +492,8 @@ class _UsbScreenState extends State<UsbScreen> {
     if (selectedPort == null || selectedPort.isEmpty) {
       return;
     }
-    _connector.setUsbRequestPortLabel(context.l10n.usbScreenStatus);
-    if (_connector.state != MeshCoreConnectionState.disconnected) {
+    _usbConnector.setRequestPortLabel(context.l10n.usbScreenStatus);
+    if (_usbConnector.state != MeshCoreConnectionState.disconnected) {
       setState(() {
         _isConnecting = false;
         _errorText = null;
@@ -486,7 +508,7 @@ class _UsbScreenState extends State<UsbScreen> {
     });
 
     try {
-      await _connector.connectUsb(portName: rawPortName);
+      await _usbConnector.connect(portName: rawPortName);
     } catch (error, stackTrace) {
       debugPrint(
         'UsbScreen: connect failed for $rawPortName: $error\n$stackTrace',

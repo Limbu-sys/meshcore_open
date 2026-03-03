@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:meshcore_open/connector/meshcore_connector.dart';
 import 'package:meshcore_open/l10n/app_localizations.dart';
-import 'package:meshcore_open/screens/connection_choice_screen.dart';
+import 'package:meshcore_open/screens/scanner_screen.dart';
 import 'package:meshcore_open/screens/usb_screen.dart';
 import 'package:meshcore_open/utils/platform_info.dart';
 
@@ -131,7 +131,7 @@ void main() {
     },
   );
 
-  testWidgets('ConnectionChoiceScreen USB button reflects platform support', (
+  testWidgets('ScannerScreen USB action reflects platform support', (
     tester,
   ) async {
     final connector = _FakeMeshCoreConnector();
@@ -139,19 +139,15 @@ void main() {
     await tester.pumpWidget(
       _buildTestApp(
         connector: connector,
-        child: const ConnectionChoiceScreen(),
+        child: const ScannerScreen(),
       ),
     );
     await tester.pumpAndSettle();
 
-    final usbButton = tester.widget<ElevatedButton>(
-      find.widgetWithText(ElevatedButton, 'USB'),
-    );
-
     if (PlatformInfo.supportsUsbSerial) {
-      expect(usbButton.onPressed, isNotNull);
+      expect(find.widgetWithText(FloatingActionButton, 'USB'), findsOneWidget);
     } else {
-      expect(usbButton.onPressed, isNull);
+      expect(find.widgetWithText(FloatingActionButton, 'USB'), findsNothing);
     }
   });
 }

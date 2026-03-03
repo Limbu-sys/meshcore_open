@@ -1,5 +1,5 @@
-{
-  "channels_channelDeleteFailed": "Kanala {name} ni bilo mogoče izbrisati",
+﻿{
+  "channels_channelDeleteFailed": "Kanala {name} ni bilo mogoÄe izbrisati",
   "@channels_channelDeleteFailed": {
     "placeholders": {
       "name": {
@@ -12,8 +12,8 @@
   "nav_contacts": "Stiki",
   "nav_channels": "Kanali",
   "nav_map": "Karta",
-  "common_cancel": "Prekliči",
-  "common_connect": "Poveži se",
+  "common_cancel": "PrekliÄi",
+  "common_connect": "PoveÅ¾i se",
   "common_unknownDevice": "Nepoznano naprave",
   "common_save": "Shrani",
   "common_delete": "Izbrisati",
@@ -31,11 +31,11 @@
   "common_retry": "Ponoviti",
   "common_hide": "Skrita",
   "common_remove": "Izbrisati",
-  "common_enable": "Omogoči",
+  "common_enable": "OmogoÄi",
   "common_disable": "Izklopiti",
   "common_reboot": "Ponoviti",
-  "common_loading": "Naložanje...",
-  "common_notAvailable": "—",
+  "common_loading": "NaloÅ¾anje...",
+  "common_notAvailable": "â€”",
   "common_voltageValue": "{volts} V",
   "@common_voltageValue": {
     "placeholders": {
@@ -66,8 +66,8 @@
     }
   },
   "scanner_searchingDevices": "Iskanje naprav MeshCore...",
-  "scanner_tapToScan": "Nagneš na skeniranje za najdene naprave MeshCore.",
-  "scanner_connectionFailed": "Pošlo je z povezavo: {error}",
+  "scanner_tapToScan": "NagneÅ¡ na skeniranje za najdene naprave MeshCore.",
+  "scanner_connectionFailed": "PoÅ¡lo je z povezavo: {error}",
   "@scanner_connectionFailed": {
     "placeholders": {
       "error": {
@@ -75,51 +75,51 @@
       }
     }
   },
-  "scanner_stop": "Prekliči",
+  "scanner_stop": "PrekliÄi",
   "scanner_scan": "Skeniraj",
   "device_quickSwitch": "Hitro preklop",
   "device_meshcore": "MeshCore",
   "settings_title": "Nastavitve",
   "settings_deviceInfo": "Informacije o napravei",
   "settings_appSettings": "Nastavitve aplikacije",
-  "settings_appSettingsSubtitle": "Obveščanja, sporoščanje in zemljevidi.",
-  "settings_nodeSettings": "Nastavitev časa",
+  "settings_appSettingsSubtitle": "ObveÅ¡Äanja, sporoÅ¡Äanje in zemljevidi.",
+  "settings_nodeSettings": "Nastavitev Äasa",
   "settings_nodeName": "Ime node-a",
   "settings_nodeNameNotSet": "Ni nastavljeno",
   "settings_nodeNameHint": "Vnesite ime node-a",
   "settings_nodeNameUpdated": "Ime posodobljeno",
   "settings_radioSettings": "Nastavitve radija",
-  "settings_radioSettingsSubtitle": "Frekvenca, moč, razširitveni faktor",
+  "settings_radioSettingsSubtitle": "Frekvenca, moÄ, razÅ¡iritveni faktor",
   "settings_radioSettingsUpdated": "Radio nastavitve posodobljene",
   "settings_location": "Lokacija",
   "settings_locationSubtitle": "GPS koordinate",
   "settings_locationUpdated": "Lokacija posodobljena",
-  "settings_locationBothRequired": "Vnesite širino in dolžino.",
-  "settings_locationInvalid": "Neveljavna zemeljska širina ali dolžina.",
-  "settings_latitude": "Širina",
-  "settings_longitude": "Dolžina",
+  "settings_locationBothRequired": "Vnesite Å¡irino in dolÅ¾ino.",
+  "settings_locationInvalid": "Neveljavna zemeljska Å¡irina ali dolÅ¾ina.",
+  "settings_latitude": "Å irina",
+  "settings_longitude": "DolÅ¾ina",
   "settings_privacyMode": "Zasebnost",
   "settings_privacyModeSubtitle": "Skrita imena/lokacije v oglasih",
-  "settings_privacyModeToggle": "Omogoči način zasebnosti, da skrijemo tvoje ime in lokacijo v oglasih.",
-  "settings_privacyModeEnabled": "Privatni način je omogočen.",
-  "settings_privacyModeDisabled": "Privatni način je onemogočen.",
+  "settings_privacyModeToggle": "OmogoÄi naÄin zasebnosti, da skrijemo tvoje ime in lokacijo v oglasih.",
+  "settings_privacyModeEnabled": "Privatni naÄin je omogoÄen.",
+  "settings_privacyModeDisabled": "Privatni naÄin je onemogoÄen.",
   "settings_actions": "Akcije",
-  "settings_sendAdvertisement": "Pošlji Oglas",
+  "settings_sendAdvertisement": "PoÅ¡lji Oglas",
   "settings_sendAdvertisementSubtitle": "Trenutna prisotnost v oddajah",
   "settings_advertisementSent": "Oglas poslan",
   "settings_syncTime": "Nastavi uro",
-  "settings_syncTimeSubtitle": "Nastavi uro naprave na čas telefona",
+  "settings_syncTimeSubtitle": "Nastavi uro naprave na Äas telefona",
   "settings_timeSynchronized": "Ura sinhronizirana",
-  "settings_refreshContacts": "Ponovno obišči kontakte",
-  "settings_refreshContactsSubtitle": "Ponovno naloži seznam stikov v napravi",
+  "settings_refreshContacts": "Ponovno obiÅ¡Äi kontakte",
+  "settings_refreshContactsSubtitle": "Ponovno naloÅ¾i seznam stikov v napravi",
   "settings_rebootDevice": "Ponovni zagon naprave",
-  "settings_rebootDeviceSubtitle": "Ponovno zaženi MeshCore napravo",
-  "settings_rebootDeviceConfirm": "Ste prepričani, da želite ponovno zagnati napravo? Povezava bo prekinjena.",
+  "settings_rebootDeviceSubtitle": "Ponovno zaÅ¾eni MeshCore napravo",
+  "settings_rebootDeviceConfirm": "Ste prepriÄani, da Å¾elite ponovno zagnati napravo? Povezava bo prekinjena.",
   "settings_debug": "Debug",
-  "settings_bleDebugLog": "BLE debug log (razhroščevanje)",
+  "settings_bleDebugLog": "BLE debug log (razhroÅ¡Äevanje)",
   "settings_bleDebugLogSubtitle": "BLE ukazi, odgovori in surovi podatki",
   "settings_appDebugLog": "Logi aplikacije",
-  "settings_appDebugLogSubtitle": "Debug sporočila aplikacije",
+  "settings_appDebugLogSubtitle": "Debug sporoÄila aplikacije",
   "settings_about": "Oglejte si",
   "settings_aboutVersion": "MeshCore Open v{version}",
   "@settings_aboutVersion": {
@@ -130,24 +130,24 @@
     }
   },
   "settings_aboutLegalese": "Odprtokodni projekt MeshCore 2024",
-  "settings_aboutDescription": "Odprtokodni Flutter klient za naprave za LoRa omrežje MeshCore.",
+  "settings_aboutDescription": "Odprtokodni Flutter klient za naprave za LoRa omreÅ¾je MeshCore.",
   "settings_infoName": "Ime",
   "settings_infoId": "ID",
   "settings_infoStatus": "Status",
   "settings_infoBattery": "Baterija",
-  "settings_infoPublicKey": "Javni ključ",
-  "settings_infoContactsCount": "Število stikov",
-  "settings_infoChannelCount": "Število kanalov",
+  "settings_infoPublicKey": "Javni kljuÄ",
+  "settings_infoContactsCount": "Å tevilo stikov",
+  "settings_infoChannelCount": "Å tevilo kanalov",
   "settings_presets": "Prednastavitve",
   "settings_frequency": "Frekvenca (MHz)",
   "settings_frequencyHelper": "300,00 - 2500,00",
   "settings_frequencyInvalid": "Neveljavna frekvenca (300-2500 MHz)",
-  "settings_bandwidth": "Pasovna širina",
-  "settings_spreadingFactor": "Razširitveni faktor",
+  "settings_bandwidth": "Pasovna Å¡irina",
+  "settings_spreadingFactor": "RazÅ¡iritveni faktor",
   "settings_codingRate": "Programska hitrost",
-  "settings_txPower": "TX Moč (dBm)",
+  "settings_txPower": "TX MoÄ (dBm)",
   "settings_txPowerHelper": "0 - 22",
-  "settings_txPowerInvalid": "Neveljavna TX moč (0-22 dBm)",
+  "settings_txPowerInvalid": "Neveljavna TX moÄ (0-22 dBm)",
   "settings_error": "Napaka: {message}",
   "@settings_error": {
     "placeholders": {
@@ -157,7 +157,7 @@
     }
   },
   "appSettings_title": "Nastavitve aplikacije",
-  "appSettings_appearance": "Prikaži",
+  "appSettings_appearance": "PrikaÅ¾i",
   "appSettings_theme": "Tema",
   "appSettings_themeSystem": "Sistemska tema",
   "appSettings_themeLight": "Svetlo",
@@ -165,39 +165,39 @@
   "appSettings_language": "Jezik",
   "appSettings_languageSystem": "Sistemska privzeta vrednost",
   "appSettings_languageEn": "English",
-  "appSettings_languageFr": "Français",
-  "appSettings_languageEs": "Español",
+  "appSettings_languageFr": "FranÃ§ais",
+  "appSettings_languageEs": "EspaÃ±ol",
   "appSettings_languageDe": "Deutsch",
   "appSettings_languagePl": "Polski",
-  "appSettings_languageSl": "Slovenščina",
-  "appSettings_languagePt": "Português",
+  "appSettings_languageSl": "SlovenÅ¡Äina",
+  "appSettings_languagePt": "PortuguÃªs",
   "appSettings_languageIt": "Italiano",
-  "appSettings_languageZh": "中文",
+  "appSettings_languageZh": "ä¸­æ–‡",
   "appSettings_languageSv": "Svenska",
   "appSettings_languageNl": "Nederlands",
-  "appSettings_languageSk": "Slovenčina",
-  "appSettings_languageBg": "Български",
+  "appSettings_languageSk": "SlovenÄina",
+  "appSettings_languageBg": "Ð‘ÑŠÐ»Ð³Ð°Ñ€ÑÐºÐ¸",
   "appSettings_notifications": "Obvestila",
-  "appSettings_enableNotifications": "Omogoči obvestila",
-  "appSettings_enableNotificationsSubtitle": "Prejmite obvestila o sporočilih in oglasih",
+  "appSettings_enableNotifications": "OmogoÄi obvestila",
+  "appSettings_enableNotificationsSubtitle": "Prejmite obvestila o sporoÄilih in oglasih",
   "appSettings_notificationPermissionDenied": "Odobritev obvestila zavrnjena",
-  "appSettings_notificationsEnabled": "Obvestila omogočena",
+  "appSettings_notificationsEnabled": "Obvestila omogoÄena",
   "appSettings_notificationsDisabled": "Obvestila so izklopljena",
   "appSettings_messageNotifications": "Obvestila",
-  "appSettings_messageNotificationsSubtitle": "Pokaži obvestilo ob prejemu novih sporočil.",
-  "appSettings_channelMessageNotifications": "Obvestila o sporočilih kanala",
-  "appSettings_channelMessageNotificationsSubtitle": "Pokaži obvestilo ob prejemanju sporočil kanala",
+  "appSettings_messageNotificationsSubtitle": "PokaÅ¾i obvestilo ob prejemu novih sporoÄil.",
+  "appSettings_channelMessageNotifications": "Obvestila o sporoÄilih kanala",
+  "appSettings_channelMessageNotificationsSubtitle": "PokaÅ¾i obvestilo ob prejemanju sporoÄil kanala",
   "appSettings_advertisementNotifications": "Opozorila o oglasih",
-  "appSettings_advertisementNotificationsSubtitle": "Pokaži obvestilo, ko so najdene nove naprave.",
+  "appSettings_advertisementNotificationsSubtitle": "PokaÅ¾i obvestilo, ko so najdene nove naprave.",
   "appSettings_messaging": "Komuniciranje",
-  "appSettings_clearPathOnMaxRetry": "Ponovite pot do cilja na največjem štetju",
-  "appSettings_clearPathOnMaxRetrySubtitle": "Ponovi pot zimske obveščevalne poti po 5 neuspešnih poskusih pošiljanja",
-  "appSettings_pathsWillBeCleared": "Počisti pot po 5 neuspešnih poskusih.",
-  "appSettings_pathsWillNotBeCleared": "Poti ne bodo samodejno čiščene.",
+  "appSettings_clearPathOnMaxRetry": "Ponovite pot do cilja na najveÄjem Å¡tetju",
+  "appSettings_clearPathOnMaxRetrySubtitle": "Ponovi pot zimske obveÅ¡Äevalne poti po 5 neuspeÅ¡nih poskusih poÅ¡iljanja",
+  "appSettings_pathsWillBeCleared": "PoÄisti pot po 5 neuspeÅ¡nih poskusih.",
+  "appSettings_pathsWillNotBeCleared": "Poti ne bodo samodejno ÄiÅ¡Äene.",
   "appSettings_autoRouteRotation": "Avtomatsko rotacija prenosne poti",
-  "appSettings_autoRouteRotationSubtitle": "Menjaj med boljšo potjo in flood načinom",
-  "appSettings_autoRouteRotationEnabled": "Samodejno krmilno rotiranje omogočeno",
-  "appSettings_autoRouteRotationDisabled": "Samodejno krmilno rotiranje je onemogočeno",
+  "appSettings_autoRouteRotationSubtitle": "Menjaj med boljÅ¡o potjo in flood naÄinom",
+  "appSettings_autoRouteRotationEnabled": "Samodejno krmilno rotiranje omogoÄeno",
+  "appSettings_autoRouteRotationDisabled": "Samodejno krmilno rotiranje je onemogoÄeno",
   "appSettings_battery": "Baterija",
   "appSettings_batteryChemistry": "Kemija baterije",
   "appSettings_batteryChemistryPerDevice": "Nastavitev za napravo ({deviceName})",
@@ -208,20 +208,20 @@
       }
     }
   },
-  "appSettings_batteryChemistryConnectFirst": "Za izbiro se poveži z napravo",
+  "appSettings_batteryChemistryConnectFirst": "Za izbiro se poveÅ¾i z napravo",
   "appSettings_batteryNmc": "18650 NMC (3,0-4,2V)",
-  "appSettings_batteryLifepo4": "LiFePO4 (2,6–3,65 V)",
+  "appSettings_batteryLifepo4": "LiFePO4 (2,6â€“3,65 V)",
   "appSettings_batteryLipo": "LiPo (3,0-4,2V)",
   "appSettings_mapDisplay": "Prikaz zemljevida",
-  "appSettings_showRepeaters": "Prikaži repetitorje",
-  "appSettings_showRepeatersSubtitle": "Prikaži repetitorje na mapi",
-  "appSettings_showChatNodes": "Prikaži naprave za klepet",
-  "appSettings_showChatNodesSubtitle": "Prikaži naprave na zemljevidu",
-  "appSettings_showOtherNodes": "Pokaži druge naprave",
-  "appSettings_showOtherNodesSubtitle": "Pokaži druge vrste naprav na zemljevidu.",
-  "appSettings_timeFilter": "Filter po času",
-  "appSettings_timeFilterShowAll": "Pokaži vse naprave",
-  "appSettings_timeFilterShowLast": "Pokaži naprave v zadnjih {hours} urah",
+  "appSettings_showRepeaters": "PrikaÅ¾i repetitorje",
+  "appSettings_showRepeatersSubtitle": "PrikaÅ¾i repetitorje na mapi",
+  "appSettings_showChatNodes": "PrikaÅ¾i naprave za klepet",
+  "appSettings_showChatNodesSubtitle": "PrikaÅ¾i naprave na zemljevidu",
+  "appSettings_showOtherNodes": "PokaÅ¾i druge naprave",
+  "appSettings_showOtherNodesSubtitle": "PokaÅ¾i druge vrste naprav na zemljevidu.",
+  "appSettings_timeFilter": "Filter po Äasu",
+  "appSettings_timeFilterShowAll": "PokaÅ¾i vse naprave",
+  "appSettings_timeFilterShowLast": "PokaÅ¾i naprave v zadnjih {hours} urah",
   "@appSettings_timeFilterShowLast": {
     "placeholders": {
       "hours": {
@@ -229,16 +229,16 @@
       }
     }
   },
-  "appSettings_mapTimeFilter": "Filter časa na zemljevidu",
-  "appSettings_showNodesDiscoveredWithin": "Pokaži naprave odkrite v:",
+  "appSettings_mapTimeFilter": "Filter Äasa na zemljevidu",
+  "appSettings_showNodesDiscoveredWithin": "PokaÅ¾i naprave odkrite v:",
   "appSettings_allTime": "Brez omejitev",
   "appSettings_lastHour": "V zadnji uri",
   "appSettings_last6Hours": "Zadnjih 6 ur",
   "appSettings_last24Hours": "Zadnjih 24 ur",
-  "appSettings_lastWeek": "Prejšnji teden",
+  "appSettings_lastWeek": "PrejÅ¡nji teden",
   "appSettings_offlineMapCache": "Shramba zemljevidov brez povezave",
-  "appSettings_noAreaSelected": "Območje ni izbrano",
-  "appSettings_areaSelectedZoom": "Izbrano območje (povečava {minZoom}-{maxZoom})",
+  "appSettings_noAreaSelected": "ObmoÄje ni izbrano",
+  "appSettings_areaSelectedZoom": "Izbrano obmoÄje (poveÄava {minZoom}-{maxZoom})",
   "@appSettings_areaSelectedZoom": {
     "placeholders": {
       "minZoom": {
@@ -249,19 +249,19 @@
       }
     }
   },
-  "appSettings_debugCard": "Razhroščevanje",
+  "appSettings_debugCard": "RazhroÅ¡Äevanje",
   "appSettings_appDebugLogging": "Programski dnevnik",
-  "appSettings_appDebugLoggingSubtitle": "Dnevnik debug sporočil za odpravljanje težav",
-  "appSettings_appDebugLoggingEnabled": "Beleženje napak v aplikaciji omogočeno",
-  "appSettings_appDebugLoggingDisabled": "Beleženje napak v aplikacije onemogočeno.",
+  "appSettings_appDebugLoggingSubtitle": "Dnevnik debug sporoÄil za odpravljanje teÅ¾av",
+  "appSettings_appDebugLoggingEnabled": "BeleÅ¾enje napak v aplikaciji omogoÄeno",
+  "appSettings_appDebugLoggingDisabled": "BeleÅ¾enje napak v aplikacije onemogoÄeno.",
   "contacts_title": "Stiki",
   "contacts_noContacts": "Ni stikov.",
   "contacts_contactsWillAppear": "Stiki se bodo prikazali, ko se naprave oglasijo.",
   "contacts_searchContacts": "Iskanje stikov...",
   "contacts_noUnreadContacts": "Ne prebrani stiki.",
   "contacts_noContactsFound": "Stiki niso najdeni.",
-  "contacts_deleteContact": "Izbriši stik",
-  "contacts_removeConfirm": "Izbrišem {contactName} iz stikov?",
+  "contacts_deleteContact": "IzbriÅ¡i stik",
+  "contacts_removeConfirm": "IzbriÅ¡em {contactName} iz stikov?",
   "@contacts_removeConfirm": {
     "placeholders": {
       "contactName": {
@@ -273,8 +273,8 @@
   "contacts_roomLogin": "Prijava v sobo",
   "contacts_openChat": "Odpri klepet",
   "contacts_editGroup": "Uredi skupino",
-  "contacts_deleteGroup": "Izbriši skupino",
-  "contacts_deleteGroupConfirm": "Izbriši {groupName}?",
+  "contacts_deleteGroup": "IzbriÅ¡i skupino",
+  "contacts_deleteGroupConfirm": "IzbriÅ¡i {groupName}?",
   "@contacts_deleteGroupConfirm": {
     "placeholders": {
       "groupName": {
@@ -285,7 +285,7 @@
   "contacts_newGroup": "Nova skupina",
   "contacts_groupName": "Ime skupine",
   "contacts_groupNameRequired": "Ime skupine je obvezno.",
-  "contacts_groupAlreadyExists": "Skupina \"{name}\" že obstaja",
+  "contacts_groupAlreadyExists": "Skupina \"{name}\" Å¾e obstaja",
   "@contacts_groupAlreadyExists": {
     "placeholders": {
       "name": {
@@ -294,10 +294,10 @@
     }
   },
   "contacts_filterContacts": "Filtriraj stik\\,...",
-  "contacts_noContactsMatchFilter": "Noben stik ne ustreza vašemu kriteriju.",
-  "contacts_noMembers": "Ni članov.",
+  "contacts_noContactsMatchFilter": "Noben stik ne ustreza vaÅ¡emu kriteriju.",
+  "contacts_noMembers": "Ni Älanov.",
   "contacts_lastSeenNow": "Nazadnje viden zdaj",
-  "contacts_lastSeenMinsAgo": "Zadnjič viden pred {minutes} minutami",
+  "contacts_lastSeenMinsAgo": "ZadnjiÄ viden pred {minutes} minutami",
   "@contacts_lastSeenMinsAgo": {
     "placeholders": {
       "minutes": {
@@ -305,8 +305,8 @@
       }
     }
   },
-  "contacts_lastSeenHourAgo": "Zadnjič viden pred 1 uro.",
-  "contacts_lastSeenHoursAgo": "Zadnjič viden pred {hours} urami",
+  "contacts_lastSeenHourAgo": "ZadnjiÄ viden pred 1 uro.",
+  "contacts_lastSeenHoursAgo": "ZadnjiÄ viden pred {hours} urami",
   "@contacts_lastSeenHoursAgo": {
     "placeholders": {
       "hours": {
@@ -314,8 +314,8 @@
       }
     }
   },
-  "contacts_lastSeenDayAgo": "Zadnjič viden pred 1 dnem",
-  "contacts_lastSeenDaysAgo": "Zadnjič viden pred {days} dnem",
+  "contacts_lastSeenDayAgo": "ZadnjiÄ viden pred 1 dnem",
+  "contacts_lastSeenDaysAgo": "ZadnjiÄ viden pred {days} dnem",
   "@contacts_lastSeenDaysAgo": {
     "placeholders": {
       "days": {
@@ -324,9 +324,9 @@
     }
   },
   "channels_title": "Kanali",
-  "channels_noChannelsConfigured": "Kanali še niso konfigurirani",
+  "channels_noChannelsConfigured": "Kanali Å¡e niso konfigurirani",
   "channels_addPublicChannel": "Dodaj javni kanal",
-  "channels_searchChannels": "Poišči kanale...",
+  "channels_searchChannels": "PoiÅ¡Äi kanale...",
   "channels_noChannelsFound": "Ne najdem kanalov.",
   "channels_channelIndex": "Kanal {index}",
   "@channels_channelIndex": {
@@ -342,10 +342,10 @@
   "channels_publicChannel": "Javni kanal",
   "channels_privateChannel": "Zasebni kanal",
   "channels_editChannel": "Uredi kanal",
-  "channels_muteChannel": "Utišaj kanal",
+  "channels_muteChannel": "UtiÅ¡aj kanal",
   "channels_unmuteChannel": "Vklopi obvestila kanala",
-  "channels_deleteChannel": "Pošlji kanal",
-  "channels_deleteChannelConfirm": "Izbrišem \"{name}\"? To se ne da povrniti.",
+  "channels_deleteChannel": "PoÅ¡lji kanal",
+  "channels_deleteChannelConfirm": "IzbriÅ¡em \"{name}\"? To se ne da povrniti.",
   "@channels_deleteChannelConfirm": {
     "placeholders": {
       "name": {
@@ -366,8 +366,8 @@
   "channels_channelName": "Ime kanala",
   "channels_usePublicChannel": "Uporabi javni kanal",
   "channels_standardPublicPsk": "Standardni javni PSK",
-  "channels_pskHex": "PSK (Šestnajstbinska)",
-  "channels_generateRandomPsk": "Generiraj naključni PSK",
+  "channels_pskHex": "PSK (Å estnajstbinska)",
+  "channels_generateRandomPsk": "Generiraj nakljuÄni PSK",
   "channels_enterChannelName": "Vnesi ime kanala",
   "channels_pskMustBe32Hex": "PSK mora biti 32 heksadecimalnih znakov.",
   "channels_channelAdded": "Kanal \"{name}\" dodan",
@@ -397,13 +397,13 @@
   },
   "channels_publicChannelAdded": "javna skupnost dodana",
   "channels_sortBy": "Sortiraj po",
-  "channels_sortManual": "Ročno",
+  "channels_sortManual": "RoÄno",
   "channels_sortAZ": "A-Z",
-  "channels_sortLatestMessages": "Najnovejše sporočilo",
-  "channels_sortUnread": "Nerešeno",
-  "chat_noMessages": "Še ni sporočil.",
-  "chat_sendMessageToStart": "Pošlji sporočilo za začetek.",
-  "chat_originalMessageNotFound": "Opozorilo: Sporočilo ni bilo najdeno",
+  "channels_sortLatestMessages": "NajnovejÅ¡e sporoÄilo",
+  "channels_sortUnread": "NereÅ¡eno",
+  "chat_noMessages": "Å e ni sporoÄil.",
+  "chat_sendMessageToStart": "PoÅ¡lji sporoÄilo za zaÄetek.",
+  "chat_originalMessageNotFound": "Opozorilo: SporoÄilo ni bilo najdeno",
   "chat_replyingTo": "Odgovarjanje {name}",
   "@chat_replyingTo": {
     "placeholders": {
@@ -412,7 +412,7 @@
       }
     }
   },
-  "chat_replyTo": "Odpošlji odgovor {name}",
+  "chat_replyTo": "OdpoÅ¡lji odgovor {name}",
   "@chat_replyTo": {
     "placeholders": {
       "name": {
@@ -421,7 +421,7 @@
     }
   },
   "chat_location": "Lokacija",
-  "chat_sendMessageTo": "Pošlji sporočilo {contactName}",
+  "chat_sendMessageTo": "PoÅ¡lji sporoÄilo {contactName}",
   "@chat_sendMessageTo": {
     "placeholders": {
       "contactName": {
@@ -429,8 +429,8 @@
       }
     }
   },
-  "chat_typeMessage": "Vnesi sporočilo...",
-  "chat_messageTooLong": "Pošiljanje sporočila je onemogočeno, saj je preveliko (maksimalno {maxBytes} byte-ov).",
+  "chat_typeMessage": "Vnesi sporoÄilo...",
+  "chat_messageTooLong": "PoÅ¡iljanje sporoÄila je onemogoÄeno, saj je preveliko (maksimalno {maxBytes} byte-ov).",
   "@chat_messageTooLong": {
     "placeholders": {
       "maxBytes": {
@@ -438,8 +438,8 @@
       }
     }
   },
-  "chat_messageCopied": "Sporočilo poslano",
-  "chat_messageDeleted": "Sporočilo izbrisano",
+  "chat_messageCopied": "SporoÄilo poslano",
+  "chat_messageDeleted": "SporoÄilo izbrisano",
   "chat_retryingMessage": "Ponovni poskus.",
   "chat_retryCount": "Ponovit {current}/{max}",
   "@chat_retryCount": {
@@ -452,7 +452,7 @@
       }
     }
   },
-  "chat_sendGif": "Pošlji GIF",
+  "chat_sendGif": "PoÅ¡lji GIF",
   "chat_reply": "Odgovori",
   "chat_addReaction": "Dodaj reakcijo",
   "chat_me": "jaz",
@@ -461,22 +461,22 @@
   "emojiCategoryHearts": "Srce",
   "emojiCategoryObjects": "Predmeti",
   "gifPicker_title": "Izberi GIF",
-  "gifPicker_searchHint": "Išči GIF-e...",
+  "gifPicker_searchHint": "IÅ¡Äi GIF-e...",
   "gifPicker_poweredBy": "Napredno z GIPHY",
   "gifPicker_noGifsFound": "Ne najdem GIF-ov.",
-  "gifPicker_failedLoad": "Neuspešno nalaganje GIF-a",
-  "gifPicker_failedSearch": "Iskanje neuspešno.",
+  "gifPicker_failedLoad": "NeuspeÅ¡no nalaganje GIF-a",
+  "gifPicker_failedSearch": "Iskanje neuspeÅ¡no.",
   "gifPicker_noInternet": "Ni internetne povezave",
   "debugLog_appTitle": "Log zapiske aplikacije",
   "debugLog_bleTitle": "Log zapis BLE",
   "debugLog_copyLog": "Kopiraj dnevnik",
-  "debugLog_clearLog": "Briši log",
-  "debugLog_copied": "Beležka kopirana.",
-  "debugLog_bleCopied": "Kopirana beležka iz BLE",
+  "debugLog_clearLog": "BriÅ¡i log",
+  "debugLog_copied": "BeleÅ¾ka kopirana.",
+  "debugLog_bleCopied": "Kopirana beleÅ¾ka iz BLE",
   "debugLog_noEntries": "Ni ustvarjenih debug zapisov.",
-  "debugLog_enableInSettings": "Omogoči beleženje napak v nastavitvah aplikacije",
+  "debugLog_enableInSettings": "OmogoÄi beleÅ¾enje napak v nastavitvah aplikacije",
   "debugLog_frames": "Okvirji",
-  "debugLog_rawLogRx": "Svež Log-RX",
+  "debugLog_rawLogRx": "SveÅ¾ Log-RX",
   "debugLog_noBleActivity": "Ni BLE aktivnosti.",
   "debugFrame_length": "Izhodni rob: {count} bajtov",
   "@debugFrame_length": {
@@ -495,7 +495,7 @@
     }
   },
   "debugFrame_textMessageHeader": "Obvestilo:",
-  "debugFrame_destinationPubKey": "- Destinirano Ključno Besedilo: {pubKey}",
+  "debugFrame_destinationPubKey": "- Destinirano KljuÄno Besedilo: {pubKey}",
   "@debugFrame_destinationPubKey": {
     "placeholders": {
       "pubKey": {
@@ -503,7 +503,7 @@
       }
     }
   },
-  "debugFrame_timestamp": "- Časovnik: {timestamp}",
+  "debugFrame_timestamp": "- ÄŒasovnik: {timestamp}",
   "@debugFrame_timestamp": {
     "placeholders": {
       "timestamp": {
@@ -542,11 +542,11 @@
   },
   "debugFrame_hexDump": "Hex Dump:",
   "chat_pathManagement": "Upravljanje poti",
-  "chat_routingMode": "Navodilo za usmerjevalni način",
+  "chat_routingMode": "Navodilo za usmerjevalni naÄin",
   "chat_autoUseSavedPath": "Avto (uporabi shranjeno pot)",
-  "chat_forceFloodMode": "Nasilje obvezati v način",
+  "chat_forceFloodMode": "Nasilje obvezati v naÄin",
   "chat_recentAckPaths": "Nedavni poti ACK (tap za uporabo):",
-  "chat_pathHistoryFull": "Zapiske o poti so popolni. Izbriši vnose, da dodaš nove.",
+  "chat_pathHistoryFull": "Zapiske o poti so popolni. IzbriÅ¡i vnose, da dodaÅ¡ nove.",
   "chat_hopSingular": "skok",
   "chat_hopPlural": "skokov",
   "chat_hopsCount": "{count} {count, plural, =1{hop} other{hops}}",
@@ -557,19 +557,19 @@
       }
     }
   },
-  "chat_successes": "Uspešni",
-  "chat_removePath": "Izbriši pot",
-  "chat_noPathHistoryYet": "Ni shranjenih poti.\nPošlji sporočilo za odkrivanje poti.",
+  "chat_successes": "UspeÅ¡ni",
+  "chat_removePath": "IzbriÅ¡i pot",
+  "chat_noPathHistoryYet": "Ni shranjenih poti.\nPoÅ¡lji sporoÄilo za odkrivanje poti.",
   "chat_pathActions": "Potni ukazi:",
   "chat_setCustomPath": "Nastavi Prilozeno Pot",
-  "chat_setCustomPathSubtitle": "Ročno določite potniško pot.",
-  "chat_clearPath": "Počisti pot",
-  "chat_clearPathSubtitle": "Ob naslednji pošiljanju znova zbrati.",
-  "chat_pathCleared": "Pot je očiščena. Naslednje sporočilo bo ponovno odkril pot.",
+  "chat_setCustomPathSubtitle": "RoÄno doloÄite potniÅ¡ko pot.",
+  "chat_clearPath": "PoÄisti pot",
+  "chat_clearPathSubtitle": "Ob naslednji poÅ¡iljanju znova zbrati.",
+  "chat_pathCleared": "Pot je oÄiÅ¡Äena. Naslednje sporoÄilo bo ponovno odkril pot.",
   "chat_floodModeSubtitle": "Uporabi tipko usmerjevanja v meniju aplikacije.",
-  "chat_floodModeEnabled": "Narejena je bila omrežna modaliteta. Vklopi jo znova preko ikone v meniju aplikacije.",
+  "chat_floodModeEnabled": "Narejena je bila omreÅ¾na modaliteta. Vklopi jo znova preko ikone v meniju aplikacije.",
   "chat_fullPath": "Polna pot",
-  "chat_pathDetailsNotAvailable": "Podrobnosti poti zaenkrat niso na voljo. Poskusite poslati sporočilo za osvežitev.",
+  "chat_pathDetailsNotAvailable": "Podrobnosti poti zaenkrat niso na voljo. Poskusite poslati sporoÄilo za osveÅ¾itev.",
   "chat_pathSetHops": "Pot nastavljen: {hopCount} {hopCount, plural, =1{hop} other{hops}} - {status}",
   "@chat_pathSetHops": {
     "placeholders": {
@@ -581,15 +581,15 @@
       }
     }
   },
-  "chat_pathSavedLocally": "Shrano lokalno. Povežite se za sinhronizacijo.",
+  "chat_pathSavedLocally": "Shrano lokalno. PoveÅ¾ite se za sinhronizacijo.",
   "chat_pathDeviceConfirmed": "Naprave potrjeno.",
-  "chat_pathDeviceNotConfirmed": "Naprave še niso potrdile.",
+  "chat_pathDeviceNotConfirmed": "Naprave Å¡e niso potrdile.",
   "chat_type": "Vnesite",
   "chat_path": "Pot",
-  "chat_publicKey": "Ključ javnega tipa",
-  "chat_compressOutgoingMessages": "Stisnite izhodne sporočila",
+  "chat_publicKey": "KljuÄ javnega tipa",
+  "chat_compressOutgoingMessages": "Stisnite izhodne sporoÄila",
   "chat_floodForced": "Porolni (nasilje).",
-  "chat_directForced": "Nezglašen (nasilje)",
+  "chat_directForced": "NezglaÅ¡en (nasilje)",
   "chat_hopsForced": "{count} skoki (nasilje)",
   "@chat_hopsForced": {
     "placeholders": {
@@ -600,8 +600,8 @@
   },
   "chat_floodAuto": "Preplavljenje (avtomatizirano)",
   "chat_direct": "Neposredni",
-  "chat_poiShared": "Deljeno točke MN",
-  "chat_unread": "Nerešeno: {count}",
+  "chat_poiShared": "Deljeno toÄke MN",
+  "chat_unread": "NereÅ¡eno: {count}",
   "@chat_unread": {
     "placeholders": {
       "count": {
@@ -610,9 +610,9 @@
     }
   },
   "chat_openLink": "Odpreti povezavo?",
-  "chat_openLinkConfirmation": "Ali želite odpreti to povezavo v brskalniku?",
+  "chat_openLinkConfirmation": "Ali Å¾elite odpreti to povezavo v brskalniku?",
   "chat_open": "Odpri",
-  "chat_couldNotOpenLink": "Povezave ni bilo mogoče odpreti: {url}",
+  "chat_couldNotOpenLink": "Povezave ni bilo mogoÄe odpreti: {url}",
   "@chat_couldNotOpenLink": {
     "placeholders": {
       "url": {
@@ -621,9 +621,9 @@
     }
   },
   "chat_invalidLink": "Neveljavna oblika povezave",
-  "map_title": "Mapa omrežja",
-  "map_noNodesWithLocation": "Nihče od notranjih elementov nima podatkov o lokaciji.",
-  "map_nodesNeedGps": "Omrežje morajo deliti svoje GPS koordinate,\nda se prikazao na zemljeobrazniku.",
+  "map_title": "Mapa omreÅ¾ja",
+  "map_noNodesWithLocation": "NihÄe od notranjih elementov nima podatkov o lokaciji.",
+  "map_nodesNeedGps": "OmreÅ¾je morajo deliti svoje GPS koordinate,\nda se prikazao na zemljeobrazniku.",
   "map_nodesCount": "Omize: {count}",
   "@map_nodesCount": {
     "placeholders": {
@@ -632,7 +632,7 @@
       }
     }
   },
-  "map_pinsCount": "Žigovi: {count}",
+  "map_pinsCount": "Å½igovi: {count}",
   "@map_pinsCount": {
     "placeholders": {
       "count": {
@@ -640,25 +640,25 @@
       }
     }
   },
-  "map_chat": "Čistemar",
+  "map_chat": "ÄŒistemar",
   "map_repeater": "Ponovitelj",
   "map_room": "Soba",
   "map_sensor": "Senzor",
-  "map_pinDm": "Zavežite (DM)",
-  "map_pinPrivate": "Zasebno označit",
+  "map_pinDm": "ZaveÅ¾ite (DM)",
+  "map_pinPrivate": "Zasebno oznaÄit",
   "map_pinPublic": "Oznaka (javna)",
-  "map_lastSeen": "Zadnjič Zazet",
-  "map_disconnectConfirm": "Ste prepričani, da želite se odklopiti s tega naprave?",
+  "map_lastSeen": "ZadnjiÄ Zazet",
+  "map_disconnectConfirm": "Ste prepriÄani, da Å¾elite se odklopiti s tega naprave?",
   "map_from": "Od",
   "map_source": "Vir",
   "map_flags": "Zapestnice",
-  "map_shareMarkerHere": "Delite točke tukaj.",
+  "map_shareMarkerHere": "Delite toÄke tukaj.",
   "map_pinLabel": "Oznaka za pritrditev",
   "map_label": "Oznaka",
-  "map_pointOfInterest": "Točka zanimivosti",
-  "map_sendToContact": "Pošlji v kontakt",
-  "map_sendToChannel": "Pošlji v kanal",
-  "map_noChannelsAvailable": "Nihče kanalov na voljo.",
+  "map_pointOfInterest": "ToÄka zanimivosti",
+  "map_sendToContact": "PoÅ¡lji v kontakt",
+  "map_sendToChannel": "PoÅ¡lji v kanal",
+  "map_noChannelsAvailable": "NihÄe kanalov na voljo.",
   "map_publicLocationShare": "Deljenje javne lokacije",
   "map_publicLocationShareConfirm": "Kljubite boste delili lokacijo v {channelLabel}. Ta kanal je javno dostopen in vsak, ki ima PSK, ga lahko vidi.",
   "@map_publicLocationShareConfirm": {
@@ -668,26 +668,26 @@
       }
     }
   },
-  "map_connectToShareMarkers": "Povežite se z napravo za deljenje oznak.",
-  "map_filterNodes": "Filtirirajte člene",
+  "map_connectToShareMarkers": "PoveÅ¾ite se z napravo za deljenje oznak.",
+  "map_filterNodes": "Filtirirajte Älene",
   "map_nodeTypes": "Vrste knope",
-  "map_chatNodes": "Čuti zvezde",
+  "map_chatNodes": "ÄŒuti zvezde",
   "map_repeaters": "Ponovljalniki",
-  "map_otherNodes": "Druge vozlišča",
-  "map_keyPrefix": "Predpona ključa",
-  "map_filterByKeyPrefix": "Filtri po predpomniku ključa",
-  "map_publicKeyPrefix": "Predifika javnega ključa",
-  "map_markers": "Označitelji",
-  "map_showSharedMarkers": "Pokaži skupno označenja",
+  "map_otherNodes": "Druge vozliÅ¡Äa",
+  "map_keyPrefix": "Predpona kljuÄa",
+  "map_filterByKeyPrefix": "Filtri po predpomniku kljuÄa",
+  "map_publicKeyPrefix": "Predifika javnega kljuÄa",
+  "map_markers": "OznaÄitelji",
+  "map_showSharedMarkers": "PokaÅ¾i skupno oznaÄenja",
   "map_lastSeenTime": "Datum zadnjega vpogleda",
   "map_sharedPin": "Deljeno naslovno geslo",
-  "map_joinRoom": "Pridružiti sobo",
+  "map_joinRoom": "PridruÅ¾iti sobo",
   "map_manageRepeater": "Upravljajte Ponovitve",
-  "mapCache_title": "Omrezni predpomnilnik zemljeških zemljejevskih slik",
-  "mapCache_selectAreaFirst": "Izberite območje za prvo predpomnilnik.",
-  "mapCache_noTilesToDownload": "Nihče slik ne bo naložil za to območje.",
-  "mapCache_downloadTilesTitle": "Naloži ploščice",
-  "mapCache_downloadTilesPrompt": "Naložiť {count} plošč za uporabo v režimu brez povezave?",
+  "mapCache_title": "Omrezni predpomnilnik zemljeÅ¡kih zemljejevskih slik",
+  "mapCache_selectAreaFirst": "Izberite obmoÄje za prvo predpomnilnik.",
+  "mapCache_noTilesToDownload": "NihÄe slik ne bo naloÅ¾il za to obmoÄje.",
+  "mapCache_downloadTilesTitle": "NaloÅ¾i ploÅ¡Äice",
+  "mapCache_downloadTilesPrompt": "NaloÅ¾iÅ¥ {count} ploÅ¡Ä za uporabo v reÅ¾imu brez povezave?",
   "@mapCache_downloadTilesPrompt": {
     "placeholders": {
       "count": {
@@ -695,8 +695,8 @@
       }
     }
   },
-  "mapCache_downloadAction": "Naloži",
-  "mapCache_cachedTiles": "Pospešeno shranjeni {count} plošč",
+  "mapCache_downloadAction": "NaloÅ¾i",
+  "mapCache_cachedTiles": "PospeÅ¡eno shranjeni {count} ploÅ¡Ä",
   "@mapCache_cachedTiles": {
     "placeholders": {
       "count": {
@@ -704,7 +704,7 @@
       }
     }
   },
-  "mapCache_cachedTilesWithFailed": "Shranjeni {downloaded} ploščad ({failed} neuspešno)",
+  "mapCache_cachedTilesWithFailed": "Shranjeni {downloaded} ploÅ¡Äad ({failed} neuspeÅ¡no)",
   "@mapCache_cachedTilesWithFailed": {
     "placeholders": {
       "downloaded": {
@@ -715,14 +715,14 @@
       }
     }
   },
-  "mapCache_clearOfflineCacheTitle": "Ponovite arhiv za offline način",
-  "mapCache_clearOfflineCachePrompt": "Izbriši vse predpomnilnikovane kartografske ploščice?",
+  "mapCache_clearOfflineCacheTitle": "Ponovite arhiv za offline naÄin",
+  "mapCache_clearOfflineCachePrompt": "IzbriÅ¡i vse predpomnilnikovane kartografske ploÅ¡Äice?",
   "mapCache_offlineCacheCleared": "Omrezni predpomnik je bil izbrisal.",
-  "mapCache_noAreaSelected": "Nizona označena površina",
+  "mapCache_noAreaSelected": "Nizona oznaÄena povrÅ¡ina",
   "mapCache_cacheArea": "Omanski prostor",
   "mapCache_useCurrentView": "Uporabi trenutni prikaz",
-  "mapCache_zoomRange": "Občutek razpona",
-  "mapCache_estimatedTiles": "Predvideni ploščadi: {count}",
+  "mapCache_zoomRange": "ObÄutek razpona",
+  "mapCache_estimatedTiles": "Predvideni ploÅ¡Äadi: {count}",
   "@mapCache_estimatedTiles": {
     "placeholders": {
       "count": {
@@ -730,7 +730,7 @@
       }
     }
   },
-  "mapCache_downloadedTiles": "Naloženo {completed} / {total}",
+  "mapCache_downloadedTiles": "NaloÅ¾eno {completed} / {total}",
   "@mapCache_downloadedTiles": {
     "placeholders": {
       "completed": {
@@ -741,9 +741,9 @@
       }
     }
   },
-  "mapCache_downloadTilesButton": "Naloži ploščice",
+  "mapCache_downloadTilesButton": "NaloÅ¾i ploÅ¡Äice",
   "mapCache_clearCacheButton": "Ponoviti arhiv",
-  "mapCache_failedDownloads": "Poslovniški izniki: {count}",
+  "mapCache_failedDownloads": "PoslovniÅ¡ki izniki: {count}",
   "@mapCache_failedDownloads": {
     "placeholders": {
       "count": {
@@ -802,9 +802,9 @@
   "time_month": "mesec",
   "time_months": "mesi",
   "time_minutes": "minute",
-  "time_allTime": "Vse časovno obdobje",
+  "time_allTime": "Vse Äasovno obdobje",
   "dialog_disconnect": "Odklopiti",
-  "dialog_disconnectConfirm": "Ste prepričani, da želite se odklopiti s tega naprave?",
+  "dialog_disconnectConfirm": "Ste prepriÄani, da Å¾elite se odklopiti s tega naprave?",
   "login_repeaterLogin": "Ponovni vnos",
   "login_roomLogin": "Vnos v sobo",
   "login_password": "Geslo",
@@ -814,12 +814,12 @@
   "login_repeaterDescription": "Vnesite geslo za ponovljalnik, da dostopite do nastavitev in statusa.",
   "login_roomDescription": "Vnesite geslo v sobo za dostop do nastavitev in statusa.",
   "login_routing": "Usmerjanje",
-  "login_routingMode": "Navodilo za usmerjevalni način",
+  "login_routingMode": "Navodilo za usmerjevalni naÄin",
   "login_autoUseSavedPath": "Avto (uporabi shranjeno pot)",
-  "login_forceFloodMode": "Nasilje obvezati v način",
-  "login_managePaths": "Upravljajte Potniške Proti",
+  "login_forceFloodMode": "Nasilje obvezati v naÄin",
+  "login_managePaths": "Upravljajte PotniÅ¡ke Proti",
   "login_login": "Prijava",
-  "login_attempt": "Poskušajo {current}/{max}",
+  "login_attempt": "PoskuÅ¡ajo {current}/{max}",
   "@login_attempt": {
     "placeholders": {
       "current": {
@@ -830,7 +830,7 @@
       }
     }
   },
-  "login_failed": "Prijava je bila neuspešna: {error}",
+  "login_failed": "Prijava je bila neuspeÅ¡na: {error}",
   "@login_failed": {
     "placeholders": {
       "error": {
@@ -838,8 +838,8 @@
       }
     }
   },
-  "login_failedMessage": "Prijava je bila neuspešna. Geslo je napačno ali pa je repetitor nedosegljiv.",
-  "common_reload": "Ponovno naloži",
+  "login_failedMessage": "Prijava je bila neuspeÅ¡na. Geslo je napaÄno ali pa je repetitor nedosegljiv.",
+  "common_reload": "Ponovno naloÅ¾i",
   "common_clear": "Ponoviti",
   "path_currentPath": "Trenutna pot: {path}",
   "@path_currentPath": {
@@ -859,14 +859,14 @@
   },
   "path_enterCustomPath": "Vnesite prilagojeno pot",
   "path_currentPathLabel": "Trenutna pot",
-  "path_hexPrefixInstructions": "Vnesite 2-karakterne heksadecimalne prefixe za vsako skopo, ločeno z zvezekami.",
-  "path_hexPrefixExample": "Primer: A1,F2,3C (vsak notranji element uporablja prvi bajt svojega javnega ključa)",
-  "path_labelHexPrefixes": "Pot (heksafixne skrajšave)",
+  "path_hexPrefixInstructions": "Vnesite 2-karakterne heksadecimalne prefixe za vsako skopo, loÄeno z zvezekami.",
+  "path_hexPrefixExample": "Primer: A1,F2,3C (vsak notranji element uporablja prvi bajt svojega javnega kljuÄa)",
+  "path_labelHexPrefixes": "Pot (heksafixne skrajÅ¡ave)",
   "path_helperMaxHops": "Maksimalno 64 skokov. Vsak prefiks je 2 heksadecimalna znamenja (1 bajt).",
   "path_selectFromContacts": "Izberi iz kontaktov:",
-  "path_noRepeatersFound": "Ne najdenih ponoviteljev ali strežnikov sob.",
-  "path_customPathsRequire": "Prilojene poti zahtevajo medhodne prenose, ki lahko prenašajo sporočila.",
-  "path_invalidHexPrefixes": "Neveljačni šesteročlenski prefiksi: {prefixes}",
+  "path_noRepeatersFound": "Ne najdenih ponoviteljev ali streÅ¾nikov sob.",
+  "path_customPathsRequire": "Prilojene poti zahtevajo medhodne prenose, ki lahko prenaÅ¡ajo sporoÄila.",
+  "path_invalidHexPrefixes": "NeveljaÄni Å¡esteroÄlenski prefiksi: {prefixes}",
   "@path_invalidHexPrefixes": {
     "placeholders": {
       "prefixes": {
@@ -874,7 +874,7 @@
       }
     }
   },
-  "path_tooLong": "Pot je prevelika. Dovoljeno največ 64 skokov.",
+  "path_tooLong": "Pot je prevelika. Dovoljeno najveÄ 64 skokov.",
   "path_setPath": "Nastavi Pot",
   "repeater_management": "Upravljanje ponovitve",
   "repeater_managementTools": "Upravne orodje",
@@ -883,17 +883,17 @@
   "repeater_telemetry": "Telemetrija",
   "repeater_telemetrySubtitle": "Pogledate telemetrijo senzorjev in sistemske statistike",
   "repeater_cli": "CLI",
-  "repeater_cliSubtitle": "Pošlji ukazne povelje na ponovitveno enoto.",
+  "repeater_cliSubtitle": "PoÅ¡lji ukazne povelje na ponovitveno enoto.",
   "repeater_settings": "Nastavitve",
   "repeater_settingsSubtitle": "Konfigurirajte parametre ponovitelja",
   "repeater_statusTitle": "Status ponovitelja",
-  "repeater_routingMode": "Navodilo za usmerjevalni način",
+  "repeater_routingMode": "Navodilo za usmerjevalni naÄin",
   "repeater_autoUseSavedPath": "Avto (uporabi shranjeno pot)",
-  "repeater_forceFloodMode": "Nasilje obvezati v način",
+  "repeater_forceFloodMode": "Nasilje obvezati v naÄin",
   "repeater_pathManagement": "Upravljanje poti",
   "repeater_refresh": "Ponovno obnavljati",
   "repeater_statusRequestTimeout": "Zahtev statusa je iztekla.",
-  "repeater_errorLoadingStatus": "Napaka pri obnašanju: {error}",
+  "repeater_errorLoadingStatus": "Napaka pri obnaÅ¡anju: {error}",
   "@repeater_errorLoadingStatus": {
     "placeholders": {
       "error": {
@@ -904,17 +904,17 @@
   "repeater_systemInformation": "Informacije o sistemu",
   "repeater_battery": "Baterija",
   "repeater_clockAtLogin": "Ure (pri prijavi)",
-  "repeater_uptime": "Čas delovanja",
-  "repeater_queueLength": "Dolžina čakalne vrste",
+  "repeater_uptime": "ÄŒas delovanja",
+  "repeater_queueLength": "DolÅ¾ina Äakalne vrste",
   "repeater_debugFlags": "Nastavitve odpravilnosti",
   "repeater_radioStatistics": "Radio Statistika",
   "repeater_lastRssi": "Potredno RSSI",
-  "repeater_lastSnr": "Nazadnje zabeležena SNR",
-  "repeater_noiseFloor": "Šumovita raven",
+  "repeater_lastSnr": "Nazadnje zabeleÅ¾ena SNR",
+  "repeater_noiseFloor": "Å umovita raven",
   "repeater_txAirtime": "TX Airtime",
   "repeater_rxAirtime": "RX Airtime",
   "repeater_packetStatistics": "Statistika paketa",
-  "repeater_sent": "Pošljeno",
+  "repeater_sent": "PoÅ¡ljeno",
   "repeater_received": "Prejeto",
   "repeater_duplicates": "Duplikati",
   "repeater_daysHoursMinsSecs": "{days} dni {hours}h {minutes}m {seconds}s",
@@ -987,27 +987,27 @@
   "repeater_repeaterNameHelper": "Prikaz imena za ta ponovitelj.",
   "repeater_adminPassword": "Admin geslo",
   "repeater_adminPasswordHelper": "Polni dostopno geslo",
-  "repeater_guestPassword": "Geslo gostača",
+  "repeater_guestPassword": "Geslo gostaÄa",
   "repeater_guestPasswordHelper": "Odpovedni dostopni geslo",
   "repeater_radioSettings": "Nastavitve Radija",
   "repeater_frequencyMhz": "Frekvenca (MHz)",
   "repeater_frequencyHelper": "300-2500 MHz",
-  "repeater_txPower": "TX Moč",
+  "repeater_txPower": "TX MoÄ",
   "repeater_txPowerHelper": "1-30 dBm",
-  "repeater_bandwidth": "Pasovna širina",
-  "repeater_spreadingFactor": "Razširitveni faktor",
+  "repeater_bandwidth": "Pasovna Å¡irina",
+  "repeater_spreadingFactor": "RazÅ¡iritveni faktor",
   "repeater_codingRate": "Programska hitrost",
   "repeater_locationSettings": "Nastavitve lokacije",
-  "repeater_latitude": "Širina",
+  "repeater_latitude": "Å irina",
   "repeater_latitudeHelper": "Desetbinske protiure (npr. 37.7749)",
-  "repeater_longitude": "Dolžina",
+  "repeater_longitude": "DolÅ¾ina",
   "repeater_longitudeHelper": "Desetbinske protiure (npr. -122,4194)",
-  "repeater_features": "Značilnosti",
+  "repeater_features": "ZnaÄilnosti",
   "repeater_packetForwarding": "Usmerjanje paketa",
-  "repeater_packetForwardingSubtitle": "Omogoči ponovitelja za usmerjanje paketov.",
+  "repeater_packetForwardingSubtitle": "OmogoÄi ponovitelja za usmerjanje paketov.",
   "repeater_guestAccess": "Prijemnik",
-  "repeater_guestAccessSubtitle": "Omogoči dostop gostom v samo bralni načinu.",
-  "repeater_privacyMode": "Privatni način",
+  "repeater_guestAccessSubtitle": "OmogoÄi dostop gostom v samo bralni naÄinu.",
+  "repeater_privacyMode": "Privatni naÄin",
   "repeater_privacyModeSubtitle": "Skrita imena/lokacije v oglasih",
   "repeater_advertisementSettings": "Nastavitve oglasnika",
   "repeater_localAdvertInterval": "Lokalen Oglasovni Razpon",
@@ -1028,17 +1028,17 @@
       }
     }
   },
-  "repeater_encryptedAdvertInterval": "Šifrirana Oglasovalska Trajanje",
+  "repeater_encryptedAdvertInterval": "Å ifrirana Oglasovalska Trajanje",
   "repeater_dangerZone": "Opozorilo",
   "repeater_rebootRepeater": "Ponovni zagon Repeaterja",
   "repeater_rebootRepeaterSubtitle": "Ponovni zagon ponovitelja.",
-  "repeater_rebootRepeaterConfirm": "Ste prepričani, da želite ponovno zagon tega ponovitelja?",
-  "repeater_regenerateIdentityKey": "Ponovite Ključ Identnosti",
-  "repeater_regenerateIdentityKeySubtitle": "Ustvarite novo par javnih/zasebnih ključev",
+  "repeater_rebootRepeaterConfirm": "Ste prepriÄani, da Å¾elite ponovno zagon tega ponovitelja?",
+  "repeater_regenerateIdentityKey": "Ponovite KljuÄ Identnosti",
+  "repeater_regenerateIdentityKeySubtitle": "Ustvarite novo par javnih/zasebnih kljuÄev",
   "repeater_regenerateIdentityKeyConfirm": "To bo ustvaril novo identiteto za ponavljalnik. Prijavite se?",
-  "repeater_eraseFileSystem": "Počisti Sustav Vajah",
+  "repeater_eraseFileSystem": "PoÄisti Sustav Vajah",
   "repeater_eraseFileSystemSubtitle": "Oblikuj datoteko ponovitve sistema",
-  "repeater_eraseFileSystemConfirm": "OPOZORILO: To bo izbrisal/a vsa dejstva na ponovilu. To ni mogoče povzvrniti!",
+  "repeater_eraseFileSystemConfirm": "OPOZORILO: To bo izbrisal/a vsa dejstva na ponovilu. To ni mogoÄe povzvrniti!",
   "repeater_eraseSerialOnly": "Brisanje je na voljo samo preko serijske konzole.",
   "repeater_commandSent": "Navodilo poslano: {command}",
   "@repeater_commandSent": {
@@ -1048,7 +1048,7 @@
       }
     }
   },
-  "repeater_errorSendingCommand": "Napaka pri pošiljanju ukaznega: {error}",
+  "repeater_errorSendingCommand": "Napaka pri poÅ¡iljanju ukaznega: {error}",
   "@repeater_errorSendingCommand": {
     "placeholders": {
       "error": {
@@ -1057,7 +1057,7 @@
     }
   },
   "repeater_confirm": "Potrdit",
-  "repeater_settingsSaved": "Nastavitve so shranjene uspešno.",
+  "repeater_settingsSaved": "Nastavitve so shranjene uspeÅ¡no.",
   "repeater_errorSavingSettings": "Napaka pri shranjevanju nastavitev: {error}",
   "@repeater_errorSavingSettings": {
     "placeholders": {
@@ -1068,11 +1068,11 @@
   },
   "repeater_refreshBasicSettings": "Ponovno nastavi osnovne nastavitve",
   "repeater_refreshRadioSettings": "Ponovno Nastavitve Radija",
-  "repeater_refreshTxPower": "Ponovno nastavi TX moč",
+  "repeater_refreshTxPower": "Ponovno nastavi TX moÄ",
   "repeater_refreshLocationSettings": "Ponovno Nastavi Nastavitve Lokacije",
   "repeater_refreshPacketForwarding": "Ponovno nastavitve usmerjevanja paketa",
   "repeater_refreshGuestAccess": "Ponovno nastavitve dostopa gostov",
-  "repeater_refreshPrivacyMode": "Ponovno aktiviraj način zasebnosti",
+  "repeater_refreshPrivacyMode": "Ponovno aktiviraj naÄin zasebnosti",
   "repeater_refreshAdvertisementSettings": "Ponovno nastavi Oglede Oglasi",
   "repeater_refreshed": "{label} je bil/a posodobljen/a",
   "@repeater_refreshed": {
@@ -1082,7 +1082,7 @@
       }
     }
   },
-  "repeater_errorRefreshing": "Napaka pri osveževanju {label}",
+  "repeater_errorRefreshing": "Napaka pri osveÅ¾evanju {label}",
   "@repeater_errorRefreshing": {
     "placeholders": {
       "label": {
@@ -1091,13 +1091,13 @@
     }
   },
   "repeater_cliTitle": "Ponovitelj CLI",
-  "repeater_debugNextCommand": "Popravi naslednje ukazne možnosti",
+  "repeater_debugNextCommand": "Popravi naslednje ukazne moÅ¾nosti",
   "repeater_commandHelp": "Pomoc",
   "repeater_clearHistory": "Ponovi zgodovino",
-  "repeater_noCommandsSent": "Niti ena ukazne povratne informacije še ni poslana.",
+  "repeater_noCommandsSent": "Niti ena ukazne povratne informacije Å¡e ni poslana.",
   "repeater_typeCommandOrUseQuick": "Vnesite ukaz spodaj ali uporabite hitre ukaze",
   "repeater_enterCommandHint": "Vnesite ukaz...",
-  "repeater_previousCommand": "Prejšnji ukaz",
+  "repeater_previousCommand": "PrejÅ¡nji ukaz",
   "repeater_nextCommand": "Naslednja ukazna",
   "repeater_enterCommandFirst": "Vnesite ukaz najprej",
   "repeater_cliCommandFrameTitle": "Okno ukazne vrstice",
@@ -1113,66 +1113,66 @@
   "repeater_cliQuickGetRadio": "Dobiti Radiopravo",
   "repeater_cliQuickGetTx": "Pridobi TX",
   "repeater_cliQuickNeighbors": "Sosedi",
-  "repeater_cliQuickVersion": "Različica",
+  "repeater_cliQuickVersion": "RazliÄica",
   "repeater_cliQuickAdvertise": "Oglasite",
   "repeater_cliQuickClock": "Ura",
-  "repeater_cliHelpAdvert": "Pošlje paket oglasov",
+  "repeater_cliHelpAdvert": "PoÅ¡lje paket oglasov",
   "repeater_cliHelpReboot": "Ponastavi naprave. (Opomba, lahko pride do 'Timeouta', kar je normalno)",
-  "repeater_cliHelpClock": "Prikaže trenutno uro po uri naprave.",
+  "repeater_cliHelpClock": "PrikaÅ¾e trenutno uro po uri naprave.",
   "repeater_cliHelpPassword": "Nastavi novo administracijsko geslo za naprave.",
-  "repeater_cliHelpVersion": "Prikaže različico naprave in datum izrabe strojne opreme.",
-  "repeater_cliHelpClearStats": "Ponastavi različne statistične števke na nič.",
-  "repeater_cliHelpSetAf": "Nastavi časovni koeficient.",
-  "repeater_cliHelpSetTx": "Nastavi moč LoRa oddajanja v dBm. (za ponovni zagon za uporabo)",
-  "repeater_cliHelpSetRepeat": "Omogoči ali onemogoči vlogo ponovitelja za tono.",
-  "repeater_cliHelpSetAllowReadOnly": "(Osebni strežnik) Če je 'vklopljeno', potem bo dovoljeno prijavo z praznim geslom, vendar ne bo mogoče objaviti v sobo. (samo branje).",
-  "repeater_cliHelpSetFloodMax": "Nastavi največjo število skokov za vstopne poplave (če je >= maks, paket ni usmerjen)",
-  "repeater_cliHelpSetIntThresh": "Nastavi Prag Interferencij (v dB). Privzeto je 14. Nastavi na 0 za onemogočitev zaznavanja interferenc kanalov.",
-  "repeater_cliHelpSetAgcResetInterval": "Nastavi časovno razdaljo za ponovni zagon nadzornika Avtomatske uteži. Nastavi na 0 za onemogočanje.",
-  "repeater_cliHelpSetMultiAcks": "Omogoči ali onemogoči funkcijo \"dvojakih potrdil\".",
-  "repeater_cliHelpSetAdvertInterval": "Nastavi časovno obmesto v minutah za pošiljanje lokalnega (brezposrednega) napovednega paketa. Nastavi na 0 za onemogočiti.",
-  "repeater_cliHelpSetFloodAdvertInterval": "Nastavi časovno obmesto v urah za pošiljanje plovilnega oglasnega paketa. Nastavi na 0 za onemogočanje.",
-  "repeater_cliHelpSetGuestPassword": "Nastavi/posodobi geslo gosta. (za ponovitve lahko gostov prijavi pošiljajo zahtevo \"Get Stats\")",
+  "repeater_cliHelpVersion": "PrikaÅ¾e razliÄico naprave in datum izrabe strojne opreme.",
+  "repeater_cliHelpClearStats": "Ponastavi razliÄne statistiÄne Å¡tevke na niÄ.",
+  "repeater_cliHelpSetAf": "Nastavi Äasovni koeficient.",
+  "repeater_cliHelpSetTx": "Nastavi moÄ LoRa oddajanja v dBm. (za ponovni zagon za uporabo)",
+  "repeater_cliHelpSetRepeat": "OmogoÄi ali onemogoÄi vlogo ponovitelja za tono.",
+  "repeater_cliHelpSetAllowReadOnly": "(Osebni streÅ¾nik) ÄŒe je 'vklopljeno', potem bo dovoljeno prijavo z praznim geslom, vendar ne bo mogoÄe objaviti v sobo. (samo branje).",
+  "repeater_cliHelpSetFloodMax": "Nastavi najveÄjo Å¡tevilo skokov za vstopne poplave (Äe je >= maks, paket ni usmerjen)",
+  "repeater_cliHelpSetIntThresh": "Nastavi Prag Interferencij (v dB). Privzeto je 14. Nastavi na 0 za onemogoÄitev zaznavanja interferenc kanalov.",
+  "repeater_cliHelpSetAgcResetInterval": "Nastavi Äasovno razdaljo za ponovni zagon nadzornika Avtomatske uteÅ¾i. Nastavi na 0 za onemogoÄanje.",
+  "repeater_cliHelpSetMultiAcks": "OmogoÄi ali onemogoÄi funkcijo \"dvojakih potrdil\".",
+  "repeater_cliHelpSetAdvertInterval": "Nastavi Äasovno obmesto v minutah za poÅ¡iljanje lokalnega (brezposrednega) napovednega paketa. Nastavi na 0 za onemogoÄiti.",
+  "repeater_cliHelpSetFloodAdvertInterval": "Nastavi Äasovno obmesto v urah za poÅ¡iljanje plovilnega oglasnega paketa. Nastavi na 0 za onemogoÄanje.",
+  "repeater_cliHelpSetGuestPassword": "Nastavi/posodobi geslo gosta. (za ponovitve lahko gostov prijavi poÅ¡iljajo zahtevo \"Get Stats\")",
   "repeater_cliHelpSetName": "Nastavi ime oglasnika.",
-  "repeater_cliHelpSetLat": "Nastavi zemljepisno širino oglaševalskega zemljevida (desetdeljne).",
-  "repeater_cliHelpSetLon": "Nastavi zemljevidno širino oglasnika. (desetdelne stopnje)",
+  "repeater_cliHelpSetLat": "Nastavi zemljepisno Å¡irino oglaÅ¡evalskega zemljevida (desetdeljne).",
+  "repeater_cliHelpSetLon": "Nastavi zemljevidno Å¡irino oglasnika. (desetdelne stopnje)",
   "repeater_cliHelpSetRadio": "Nastavi popolnoma nove radijske parametre in jih shranjuje v nastavitve. Za uporabo je potrebna \"restart\" ukaz.",
-  "repeater_cliHelpSetRxDelay": "Nastavitve (eksperimentalne) osnova (mora biti > 1 za učinkovanje) za uporabo rahle zakasnitve prejetih paketov, glede na moč signala/rezultat. Nastavite na 0 za onemogočanje.",
-  "repeater_cliHelpSetTxDelay": "Nastavi faktor, ki se množi s časom delovanja za paket v načinu poplavnega režima in z randomiziranim sistemom slotov, da odvrne njegovo posredovanje. (da se zmanjša verjetnost kolizij)",
-  "repeater_cliHelpSetDirectTxDelay": "Ima podobno vrednost kot txdelay, vendar jo lahko uporabite za dodajanje naknadnega zamika pri posredovanju paketov v režimu neposredne prevodi.",
-  "repeater_cliHelpSetBridgeEnabled": "Omogoči/Preklopi most.",
+  "repeater_cliHelpSetRxDelay": "Nastavitve (eksperimentalne) osnova (mora biti > 1 za uÄinkovanje) za uporabo rahle zakasnitve prejetih paketov, glede na moÄ signala/rezultat. Nastavite na 0 za onemogoÄanje.",
+  "repeater_cliHelpSetTxDelay": "Nastavi faktor, ki se mnoÅ¾i s Äasom delovanja za paket v naÄinu poplavnega reÅ¾ima in z randomiziranim sistemom slotov, da odvrne njegovo posredovanje. (da se zmanjÅ¡a verjetnost kolizij)",
+  "repeater_cliHelpSetDirectTxDelay": "Ima podobno vrednost kot txdelay, vendar jo lahko uporabite za dodajanje naknadnega zamika pri posredovanju paketov v reÅ¾imu neposredne prevodi.",
+  "repeater_cliHelpSetBridgeEnabled": "OmogoÄi/Preklopi most.",
   "repeater_cliHelpSetBridgeDelay": "Nastavi zamik pred ponovnim poslanjem paketov.",
   "repeater_cliHelpSetBridgeSource": "Izberite, ali bodo most ponavljali prejeto ali poslan paket.",
   "repeater_cliHelpSetBridgeBaud": "Nastavi hitrost serijske povezave za mostove rs232.",
   "repeater_cliHelpSetBridgeSecret": "Nastavi skrivni dostop za mostove ESPNOW.",
-  "repeater_cliHelpSetAdcMultiplier": "Nastavi prilagoditev faktorja za prilagoditev poravnalnega napetosti baterije (podprt le na izbranih ploščah).",
-  "repeater_cliHelpTempRadio": "Nastavi začasne radio parametre za določeno časovno obdobje, kar po preteku časa vrne originalne radio parametre. (ne shranjuje v preferencije).",
-  "repeater_cliHelpSetPerm": "Modificira ACL. Odstrani ustrezen vnos (po predponi pubkeyja), če je \"permissions\" enako nič. Dodaja nov vnos, če je pubkey-hex v celoti in trenutno ni v ACL. Posodobi vnos po ustreznem predponi pubkeyja. Bitje dovoljenj se razlikuje glede na firmware vlogo, vendar so prvi dve bitki: 0 (Gost), 1 (Lezenje samo), 2 (Lezenje in pisanje), 3 (Administrator).",
-  "repeater_cliHelpGetBridgeType": "Dobrodošli pri izbiri vrste mostu: brez, rs232, espnow",
-  "repeater_cliHelpLogStart": "Začnete beleženje paketov v datotekovni sistem.",
-  "repeater_cliHelpLogStop": "Ustavite beleženje paketov v datotečno sistem.",
-  "repeater_cliHelpLogErase": "Izbriše pakete zapisov iz datotek sistema.",
-  "repeater_cliHelpNeighbors": "Prikaže seznam drugih ponovnih knopov, do katerih je prišlo preko brezposrednih oglasov. Vsaka vrstica je id-prefix-hex:timestamp:snr-times-4",
-  "repeater_cliHelpNeighborRemove": "Izbriše prvo ustreznu postavko (po predpomnilku pubkey (heks),) iz seznama sosedov.",
+  "repeater_cliHelpSetAdcMultiplier": "Nastavi prilagoditev faktorja za prilagoditev poravnalnega napetosti baterije (podprt le na izbranih ploÅ¡Äah).",
+  "repeater_cliHelpTempRadio": "Nastavi zaÄasne radio parametre za doloÄeno Äasovno obdobje, kar po preteku Äasa vrne originalne radio parametre. (ne shranjuje v preferencije).",
+  "repeater_cliHelpSetPerm": "Modificira ACL. Odstrani ustrezen vnos (po predponi pubkeyja), Äe je \"permissions\" enako niÄ. Dodaja nov vnos, Äe je pubkey-hex v celoti in trenutno ni v ACL. Posodobi vnos po ustreznem predponi pubkeyja. Bitje dovoljenj se razlikuje glede na firmware vlogo, vendar so prvi dve bitki: 0 (Gost), 1 (Lezenje samo), 2 (Lezenje in pisanje), 3 (Administrator).",
+  "repeater_cliHelpGetBridgeType": "DobrodoÅ¡li pri izbiri vrste mostu: brez, rs232, espnow",
+  "repeater_cliHelpLogStart": "ZaÄnete beleÅ¾enje paketov v datotekovni sistem.",
+  "repeater_cliHelpLogStop": "Ustavite beleÅ¾enje paketov v datoteÄno sistem.",
+  "repeater_cliHelpLogErase": "IzbriÅ¡e pakete zapisov iz datotek sistema.",
+  "repeater_cliHelpNeighbors": "PrikaÅ¾e seznam drugih ponovnih knopov, do katerih je priÅ¡lo preko brezposrednih oglasov. Vsaka vrstica je id-prefix-hex:timestamp:snr-times-4",
+  "repeater_cliHelpNeighborRemove": "IzbriÅ¡e prvo ustreznu postavko (po predpomnilku pubkey (heks),) iz seznama sosedov.",
   "repeater_cliHelpRegion": "(Serija samo) Navaja vse definirane regije in trenutne poplave dovolilnosti.",
-  "repeater_cliHelpRegionLoad": "Opomba: to je posebna več ukazna pozivna operacija. Vsak naslednji ukaz je ime regije (z lezijami za prikaz hierarhije, z enim ustvarjenim razmislom). Zaključena s pošiljanjem praznega reda/ukaza.",
-  "repeater_cliHelpRegionGet": "Išče regijo s podanimi imenimi prefiksom (ali \"\\\" za globalni obseg). Odgovori se s \"-> regija-ime (rodič-ime) 'F'\"",
+  "repeater_cliHelpRegionLoad": "Opomba: to je posebna veÄ ukazna pozivna operacija. Vsak naslednji ukaz je ime regije (z lezijami za prikaz hierarhije, z enim ustvarjenim razmislom). ZakljuÄena s poÅ¡iljanjem praznega reda/ukaza.",
+  "repeater_cliHelpRegionGet": "IÅ¡Äe regijo s podanimi imenimi prefiksom (ali \"\\\" za globalni obseg). Odgovori se s \"-> regija-ime (rodiÄ-ime) 'F'\"",
   "repeater_cliHelpRegionPut": "Dodaja ali posodobi regijsko definicijo s podanim imenom.",
-  "repeater_cliHelpRegionRemove": "Izbriše definicijo regije s podanim imenom. (mora se popolnoma ujemati in ne sme imeti podregij)",
+  "repeater_cliHelpRegionRemove": "IzbriÅ¡e definicijo regije s podanim imenom. (mora se popolnoma ujemati in ne sme imeti podregij)",
   "repeater_cliHelpRegionAllowf": "Nastavi dovoljenje 'Nere' za podano regijo. ('' za globalni/dedni obseg)",
-  "repeater_cliHelpRegionDenyf": "Odstrani dovoljenje 'F'lood' za podano regijo. (OPOZORILO: na tem koraku ni priporočljivo ga uporabljati na globalnem/dednem obsegu!!)",
-  "repeater_cliHelpRegionHome": "Odgovori z trenutnim 'domovim' območjem. (Opomba je bila še nujno uporabljena, rezervirano za prihodnost)",
+  "repeater_cliHelpRegionDenyf": "Odstrani dovoljenje 'F'lood' za podano regijo. (OPOZORILO: na tem koraku ni priporoÄljivo ga uporabljati na globalnem/dednem obsegu!!)",
+  "repeater_cliHelpRegionHome": "Odgovori z trenutnim 'domovim' obmoÄjem. (Opomba je bila Å¡e nujno uporabljena, rezervirano za prihodnost)",
   "repeater_cliHelpRegionHomeSet": "Nastavi regijo 'domov'.",
   "repeater_cliHelpRegionSave": "Shrani seznam/ zemljevzemi regij v shranjevanje.",
-  "repeater_cliHelpGps": "Pokaže status GPS-ja. Če je GPS izklopljen, odgovarja samo \"off\", če je vklopljen, odgovarja z \"on\", statusom, \"fix\" in štetjem satelitiv.",
-  "repeater_cliHelpGpsOnOff": "Omogoči/onameni GPS način delovanja.",
-  "repeater_cliHelpGpsSync": "Sinhronizira čas časa ničala z gps uro.",
-  "repeater_cliHelpGpsSetLoc": "Nastavi položaj časa na GPS koordinate in shranjevanje preferencij.",
-  "repeater_cliHelpGpsAdvert": "Omogoča konfiguracijo oglasi za notranjost člana:\n- none: ne vključevati lokacije v oglasih\n- share: deliti gps lokacijo (iz SensorManager)\n- prefs: oglaševati lokacijo shranjeno v preferencah",
-  "repeater_cliHelpGpsAdvertSet": "Nastavi konfiguracijo oglasa na določenem mestu.",
+  "repeater_cliHelpGps": "PokaÅ¾e status GPS-ja. ÄŒe je GPS izklopljen, odgovarja samo \"off\", Äe je vklopljen, odgovarja z \"on\", statusom, \"fix\" in Å¡tetjem satelitiv.",
+  "repeater_cliHelpGpsOnOff": "OmogoÄi/onameni GPS naÄin delovanja.",
+  "repeater_cliHelpGpsSync": "Sinhronizira Äas Äasa niÄala z gps uro.",
+  "repeater_cliHelpGpsSetLoc": "Nastavi poloÅ¾aj Äasa na GPS koordinate in shranjevanje preferencij.",
+  "repeater_cliHelpGpsAdvert": "OmogoÄa konfiguracijo oglasi za notranjost Älana:\n- none: ne vkljuÄevati lokacije v oglasih\n- share: deliti gps lokacijo (iz SensorManager)\n- prefs: oglaÅ¡evati lokacijo shranjeno v preferencah",
+  "repeater_cliHelpGpsAdvertSet": "Nastavi konfiguracijo oglasa na doloÄenem mestu.",
   "repeater_commandsListTitle": "Seznam ukazov",
-  "repeater_commandsListNote": "Opomba: za različne ukaze \"nastavi ...\" obstaja tudi ukaz \"dobi ...\".",
-  "repeater_general": "Općenito",
+  "repeater_commandsListNote": "Opomba: za razliÄne ukaze \"nastavi ...\" obstaja tudi ukaz \"dobi ...\".",
+  "repeater_general": "OpÄ‡enito",
   "repeater_settingsCategory": "Nastavitve",
   "repeater_bridge": "Most",
   "repeater_logging": "Logiranje",
@@ -1180,10 +1180,10 @@
   "repeater_regionManagementRepeaterOnly": "Upravljanje regij (zgolj za repetitorje)",
   "repeater_regionNote": "Regionske ukazi so bili uvedeni za upravljanje z regijskimi definicijami in dovolili.",
   "repeater_gpsManagement": "Upravljanje GPS",
-  "repeater_gpsNote": "GPS ukaz je bil uveden za upravljanje z vprašanji, povezanimi z lokacijo.",
-  "telemetry_receivedData": "Prejeto Telemetrično podatke",
+  "repeater_gpsNote": "GPS ukaz je bil uveden za upravljanje z vpraÅ¡anji, povezanimi z lokacijo.",
+  "telemetry_receivedData": "Prejeto TelemetriÄno podatke",
   "telemetry_requestTimeout": "Zahtev telemetrije je iztekla.",
-  "telemetry_errorLoading": "Napaka pri obnašanju telemetrije: {error}",
+  "telemetry_errorLoading": "Napaka pri obnaÅ¡anju telemetrije: {error}",
   "@telemetry_errorLoading": {
     "placeholders": {
       "error": {
@@ -1232,7 +1232,7 @@
       }
     }
   },
-  "telemetry_temperatureValue": "{celsius}°C / {fahrenheit}°F",
+  "telemetry_temperatureValue": "{celsius}Â°C / {fahrenheit}Â°F",
   "@telemetry_temperatureValue": {
     "placeholders": {
       "celsius": {
@@ -1244,17 +1244,17 @@
     }
   },
   "channelPath_title": "Pot do paketa",
-  "channelPath_viewMap": "Prikaži zemljeznico",
+  "channelPath_viewMap": "PrikaÅ¾i zemljeznico",
   "channelPath_otherObservedPaths": "Drugi opazovani poti",
   "channelPath_repeaterHops": "Skoki ponovitelja",
   "channelPath_noHopDetails": "Podrobnosti o paketu za dostavo niso navedene.",
-  "channelPath_messageDetails": "Podrobnosti sporočila",
-  "channelPath_senderLabel": "Pošiljatelj",
+  "channelPath_messageDetails": "Podrobnosti sporoÄila",
+  "channelPath_senderLabel": "PoÅ¡iljatelj",
   "channelPath_timeLabel": "Ura",
   "channelPath_repeatsLabel": "Ponovitve",
   "channelPath_pathLabel": "Pot {index}",
   "channelPath_observedLabel": "Opazovani",
-  "channelPath_observedPathTitle": "Opazovana pot {index} • {hops}",
+  "channelPath_observedPathTitle": "Opazovana pot {index} â€¢ {hops}",
   "@channelPath_observedPathTitle": {
     "placeholders": {
       "index": {
@@ -1265,7 +1265,7 @@
       }
     }
   },
-  "channelPath_noLocationData": "Nihče ni določil lokacije.",
+  "channelPath_noLocationData": "NihÄe ni doloÄil lokacije.",
   "channelPath_timeWithDate": "{day}/{month} {time}",
   "@channelPath_timeWithDate": {
     "placeholders": {
@@ -1329,7 +1329,7 @@
   },
   "channelPath_pathLabelTitle": "Pot",
   "channelPath_observedPathHeader": "Opazovana pot",
-  "channelPath_selectedPathLabel": "{label} • {prefixes}",
+  "channelPath_selectedPathLabel": "{label} â€¢ {prefixes}",
   "@channelPath_selectedPathLabel": {
     "placeholders": {
       "label": {
@@ -1342,10 +1342,10 @@
   },
   "channelPath_noHopDetailsAvailable": "Niso na voljo podrobnosti o letu.",
   "channelPath_unknownRepeater": "Nepoznati ponovitelj",
-  "listFilter_tooltip": "Filtri in vrstiči",
+  "listFilter_tooltip": "Filtri in vrstiÄi",
   "listFilter_sortBy": "Sortiraj po",
-  "listFilter_latestMessages": "Najnovejše sporočilo",
-  "listFilter_heardRecently": "Nedavno slišan",
+  "listFilter_latestMessages": "NajnovejÅ¡e sporoÄilo",
+  "listFilter_heardRecently": "Nedavno sliÅ¡an",
   "listFilter_az": "A-Z",
   "listFilter_filters": "Filtri",
   "listFilter_all": "Vse",
@@ -1361,23 +1361,23 @@
       }
     }
   },
-  "repeater_neighborsSubtitle": "Pogledati nič sosednjih hopjev.",
+  "repeater_neighborsSubtitle": "Pogledati niÄ sosednjih hopjev.",
   "repeater_neighbors": "Sosedi",
   "neighbors_receivedData": "Prejeto podatke o sosedih",
   "neighbors_requestTimedOut": "Sosedi zahtevajo izklop po dogovoru.",
-  "neighbors_errorLoading": "Napaka pri obnašanju sosedov: {error}",
+  "neighbors_errorLoading": "Napaka pri obnaÅ¡anju sosedov: {error}",
   "neighbors_repeatersNeighbors": "Ponovitve Sosedi",
   "neighbors_noData": "Niso na voljo podatki o sosedih.",
-  "channels_joinPrivateChannel": "Pridružite se zasebni skupini",
-  "channels_createPrivateChannelDesc": "Varno zaklenjeno s skrivnim ključem.",
-  "channels_joinPrivateChannelDesc": "Ročno vnesite zaporni ključ.",
+  "channels_joinPrivateChannel": "PridruÅ¾ite se zasebni skupini",
+  "channels_createPrivateChannelDesc": "Varno zaklenjeno s skrivnim kljuÄem.",
+  "channels_joinPrivateChannelDesc": "RoÄno vnesite zaporni kljuÄ.",
   "channels_createPrivateChannel": "Ustvari zasebno kanal.",
-  "channels_joinPublicChannel": "Pridružite se javnemu kanalu",
-  "channels_joinPublicChannelDesc": "Kdor karkoli je, lahko se pridruži tej skupini.",
-  "channels_joinHashtagChannel": "Pridružite se Kanalu z Hashtagom",
-  "channels_joinHashtagChannelDesc": "Kdor karkoli, lahko se pridruži hashtag kanalom.",
+  "channels_joinPublicChannel": "PridruÅ¾ite se javnemu kanalu",
+  "channels_joinPublicChannelDesc": "Kdor karkoli je, lahko se pridruÅ¾i tej skupini.",
+  "channels_joinHashtagChannel": "PridruÅ¾ite se Kanalu z Hashtagom",
+  "channels_joinHashtagChannelDesc": "Kdor karkoli, lahko se pridruÅ¾i hashtag kanalom.",
   "channels_scanQrCode": "Skeniraj QR kodo",
-  "channels_scanQrCodeComingSoon": "Prihajajoča",
+  "channels_scanQrCodeComingSoon": "PrihajajoÄa",
   "channels_enterHashtag": "Vnesite hashtag",
   "channels_hashtagHint": "npr. #ekipa",
   "@neighbors_unknownContact": {
@@ -1395,13 +1395,13 @@
     }
   },
   "neighbors_unknownContact": "Nepoznano {pubkey}",
-  "neighbors_heardAgo": "Udeleženec je prejel sporočilo {time} nazaj.",
-  "settings_locationGPSEnable": "Omogoči GPS",
-  "settings_locationGPSEnableSubtitle": "Omogoči samodejno posodabljanje lokacije z GPS-jem.",
+  "neighbors_heardAgo": "UdeleÅ¾enec je prejel sporoÄilo {time} nazaj.",
+  "settings_locationGPSEnable": "OmogoÄi GPS",
+  "settings_locationGPSEnableSubtitle": "OmogoÄi samodejno posodabljanje lokacije z GPS-jem.",
   "settings_locationIntervalSec": "Interval za GPS (Sekunde)",
   "settings_locationIntervalInvalid": "Intervallo mora biti vsaj 60 sekund in manj kot 86400 sekund.",
-  "contacts_manageRoom": "Upravljajte strežnik sobe",
-  "room_management": "Upravljanje stremlišča",
+  "contacts_manageRoom": "Upravljajte streÅ¾nik sobe",
+  "room_management": "Upravljanje stremliÅ¡Äa",
   "@community_joinConfirmation": {
     "placeholders": {
       "name": {
@@ -1462,32 +1462,32 @@
   "community_title": "Skupnost",
   "common_ok": "V redu",
   "community_create": "Ustvari skupnost",
-  "community_joinTitle": "Pridružite se skupnosti",
-  "community_joinConfirmation": "Želiš se pridružiti skupnosti \"{name}\"?",
+  "community_joinTitle": "PridruÅ¾ite se skupnosti",
+  "community_joinConfirmation": "Å½eliÅ¡ se pridruÅ¾iti skupnosti \"{name}\"?",
   "community_scanQr": "Skeniraj QR kode skupnosti",
   "community_scanInstructions": "Nasmerite kamero s skupnostnim QR kodom.",
-  "community_showQr": "Pokaži QR kodo",
+  "community_showQr": "PokaÅ¾i QR kodo",
   "community_publicChannel": "Skupnostna javna",
   "community_hashtagChannel": "Skupnostni hashtag",
   "community_name": "Komunitarne ime",
   "community_enterName": "Vnesite ime skupnosti",
-  "community_join": "Pridružiti se",
+  "community_join": "PridruÅ¾iti se",
   "community_created": "Skupnost \"{name}\" je bila ustvarila.",
   "community_joined": "Prilojen k skupnosti \"{name}\"",
   "community_qrTitle": "Delite skupnost",
-  "community_qrInstructions": "Skenirajte to QR kodo za vključitev {name}.",
-  "community_hashtagPrivacyHint": "Hashtag kanali skupnosti so dostopni samo članom skupnosti",
+  "community_qrInstructions": "Skenirajte to QR kodo za vkljuÄitev {name}.",
+  "community_hashtagPrivacyHint": "Hashtag kanali skupnosti so dostopni samo Älanom skupnosti",
   "community_invalidQrCode": "Neveljaven QR koden skupnosti",
-  "community_alreadyMember": "Že član",
-  "community_alreadyMemberMessage": "Kljub temu ste že član/ka {name}.",
+  "community_alreadyMember": "Å½e Älan",
+  "community_alreadyMemberMessage": "Kljub temu ste Å¾e Älan/ka {name}.",
   "community_addPublicChannel": "Dodaj Objavni Kanal Komunitarja",
   "community_addPublicChannelHint": "Samodejno dodaj javni kanal za to skupnost.",
-  "community_noCommunities": "Še nobena skupnost se ni pridružila.",
-  "community_scanOrCreate": "Skeniraj QR kodo ali ustvari skupnost za začetek.",
+  "community_noCommunities": "Å e nobena skupnost se ni pridruÅ¾ila.",
+  "community_scanOrCreate": "Skeniraj QR kodo ali ustvari skupnost za zaÄetek.",
   "community_manageCommunities": "Upravljanje skupnosti",
   "community_delete": "Opusti skupnost",
   "community_deleteConfirm": "Zapusti \"{name}\"?",
-  "community_deleteChannelsWarning": "To bo izbrisalo tudi {count} kanal/kanalov in njihova sporočila.",
+  "community_deleteChannelsWarning": "To bo izbrisalo tudi {count} kanal/kanalov in njihova sporoÄila.",
   "@community_deleteChannelsWarning": {
     "placeholders": {
       "count": {
@@ -1502,7 +1502,7 @@
   "community_regularHashtag": "Oznaka s hashtagom",
   "community_regularHashtagDesc": "javna oznaka (kdorkoli lahko sodeluje)",
   "community_communityHashtag": "Skupnostni hashtag",
-  "community_communityHashtagDesc": "Izključeno za uporabnike skupnosti",
+  "community_communityHashtagDesc": "IzkljuÄeno za uporabnike skupnosti",
   "community_forCommunity": "Za {name}",
   "@community_regenerateSecretConfirm": {
     "placeholders": {
@@ -1534,10 +1534,10 @@
   },
   "community_secretRegenerated": "Geslo za \"{name}\" ponovno ustvarjeno",
   "community_regenerateSecret": "Ponovno ustvari geslo",
-  "community_regenerateSecretConfirm": "Preberite novo tajno geslo za \"{name}\"? Vsi članici morajo prebrati novo QR kodo, da lahko nadaljujejo s komunikacijo.",
+  "community_regenerateSecretConfirm": "Preberite novo tajno geslo za \"{name}\"? Vsi Älanici morajo prebrati novo QR kodo, da lahko nadaljujejo s komunikacijo.",
   "community_regenerate": "Preberi znova",
-  "community_scanToUpdateSecret": "Skeniraj novo QR kodo za posodabljanje ključa za {name}",
-  "community_updateSecret": "Ažuriraj ključ",
+  "community_scanToUpdateSecret": "Skeniraj novo QR kodo za posodabljanje kljuÄa za {name}",
+  "community_updateSecret": "AÅ¾uriraj kljuÄ",
   "community_secretUpdated": "Skrivnostno spremembo za \"{name}\"",
   "@contacts_pathTraceTo": {
     "placeholders": {
@@ -1549,78 +1549,78 @@
   "pathTrace_you": "Ti",
   "pathTrace_failed": "Sledenje poti ni uspelo.",
   "pathTrace_notAvailable": "Potni sled ni na voljo.",
-  "pathTrace_refreshTooltip": "Osveži Path Trace.",
+  "pathTrace_refreshTooltip": "OsveÅ¾i Path Trace.",
   "contacts_pathTrace": "Sledenje poti",
   "contacts_ping": "Pingati",
   "contacts_repeaterPathTrace": "Sledi poti do ponavljalnika",
   "contacts_repeaterPing": "Pinguj ponavljalnik",
-  "contacts_roomPathTrace": "Sledenje poti do strežnika sobe",
-  "contacts_roomPing": "Ping strežnik sobe",
-  "contacts_chatTraceRoute": "Slediti poti žarkov",
+  "contacts_roomPathTrace": "Sledenje poti do streÅ¾nika sobe",
+  "contacts_roomPing": "Ping streÅ¾nik sobe",
+  "contacts_chatTraceRoute": "Slediti poti Å¾arkov",
   "contacts_pathTraceTo": "Trace route to {name}",
-  "appSettings_languageRu": "Ruščina",
+  "appSettings_languageRu": "RuÅ¡Äina",
   "appSettings_languageUk": "Ukrajinsko",
-  "appSettings_enableMessageTracing": "Omogoči sledenje sporočilom",
-  "appSettings_enableMessageTracingSubtitle": "Prikaži podrobne metapodatke o usmerjanju in časovnem usklajevanju sporočil",
-  "contacts_contactImported": "Kontakt je bil uvožen.",
-  "contacts_contactImportFailed": "Kontakt ni bil uspešno uvožen.",
+  "appSettings_enableMessageTracing": "OmogoÄi sledenje sporoÄilom",
+  "appSettings_enableMessageTracingSubtitle": "PrikaÅ¾i podrobne metapodatke o usmerjanju in Äasovnem usklajevanju sporoÄil",
+  "contacts_contactImported": "Kontakt je bil uvoÅ¾en.",
+  "contacts_contactImportFailed": "Kontakt ni bil uspeÅ¡no uvoÅ¾en.",
   "contacts_zeroHopAdvert": "Reklama brez posrednikov",
-  "contacts_floodAdvert": "Poplavna oglás",
+  "contacts_floodAdvert": "Poplavna oglÃ¡s",
   "contacts_invalidAdvertFormat": "Neveljavni kontaktne podatke",
-  "contacts_clipboardEmpty": "Odložišče je prazno.",
-  "contacts_copyAdvertToClipboard": "Kopiraj oglas v odložišče",
-  "contacts_addContactFromClipboard": "Dodaj stik iz odložišča",
+  "contacts_clipboardEmpty": "OdloÅ¾iÅ¡Äe je prazno.",
+  "contacts_copyAdvertToClipboard": "Kopiraj oglas v odloÅ¾iÅ¡Äe",
+  "contacts_addContactFromClipboard": "Dodaj stik iz odloÅ¾iÅ¡Äa",
   "contacts_zeroHopContactAdvertSent": "Poslano po oglasu.",
-  "contacts_zeroHopContactAdvertFailed": "Pošiljanje kontakta ni uspelo.",
-  "contacts_contactAdvertCopied": "Oglas je bil kopiran v odložišče.",
-  "contacts_contactAdvertCopyFailed": "Kopiranje oglasa v odložišče je spodletelo.",
+  "contacts_zeroHopContactAdvertFailed": "PoÅ¡iljanje kontakta ni uspelo.",
+  "contacts_contactAdvertCopied": "Oglas je bil kopiran v odloÅ¾iÅ¡Äe.",
+  "contacts_contactAdvertCopyFailed": "Kopiranje oglasa v odloÅ¾iÅ¡Äe je spodletelo.",
   "contacts_ShareContactZeroHop": "Deliti kontakt prek oglasa",
-  "contacts_ShareContact": "Kopiraj stik v Odložišče",
+  "contacts_ShareContact": "Kopiraj stik v OdloÅ¾iÅ¡Äe",
   "notification_activityTitle": "Aktivnost MeshCore",
-  "notification_messagesCount": "{count} {count, plural, =1{sporočilo} =2{sporočili} few{sporočila} other{sporočil}}",
-  "notification_channelMessagesCount": "{count} {count, plural, =1{sporočilo kanala} =2{sporočili kanala} few{sporočila kanala} other{sporočil kanala}}",
-  "notification_newNodesCount": "{count} {count, plural, =1{novo vozlišče} =2{novi vozlišči} few{nova vozlišča} other{novih vozlišč}}",
+  "notification_messagesCount": "{count} {count, plural, =1{sporoÄilo} =2{sporoÄili} few{sporoÄila} other{sporoÄil}}",
+  "notification_channelMessagesCount": "{count} {count, plural, =1{sporoÄilo kanala} =2{sporoÄili kanala} few{sporoÄila kanala} other{sporoÄil kanala}}",
+  "notification_newNodesCount": "{count} {count, plural, =1{novo vozliÅ¡Äe} =2{novi vozliÅ¡Äi} few{nova vozliÅ¡Äa} other{novih vozliÅ¡Ä}}",
   "notification_newTypeDiscovered": "Odkrito novo {contactType}",
-  "notification_receivedNewMessage": "Prejeto novo sporočilo",
+  "notification_receivedNewMessage": "Prejeto novo sporoÄilo",
   "settings_gpxExportAll": "Izvozi vse kontakte v GPX",
   "settings_gpxExportContacts": "Izvoz spremljevalcev v GPX",
-  "settings_gpxExportRepeatersSubtitle": "Izvozi ponovljene oddajnike / strežnik sobe z lokacijo v datoteko GPX.",
-  "settings_gpxExportRepeaters": "Izvoz ponoviteljev / strežnika sobe v GPX",
-  "settings_gpxExportError": "Pri izvozu je prišlo do napake.",
-  "settings_gpxExportRepeatersRoom": "Lokacije ponovljivca in strežnika sobe",
+  "settings_gpxExportRepeatersSubtitle": "Izvozi ponovljene oddajnike / streÅ¾nik sobe z lokacijo v datoteko GPX.",
+  "settings_gpxExportRepeaters": "Izvoz ponoviteljev / streÅ¾nika sobe v GPX",
+  "settings_gpxExportError": "Pri izvozu je priÅ¡lo do napake.",
+  "settings_gpxExportRepeatersRoom": "Lokacije ponovljivca in streÅ¾nika sobe",
   "settings_gpxExportChat": "Lokacije spremljevalcev",
   "settings_gpxExportAllContacts": "Lokacije vseh stikov",
   "settings_gpxExportContactsSubtitle": "Izvozi spremljevalce z lokacijo v datoteko GPX.",
   "settings_gpxExportAllSubtitle": "Izvozi vse kontakte z lokacijo v datoteko GPX.",
-  "settings_gpxExportSuccess": "Uspešno izvoz GPX datoteke.",
-  "settings_gpxExportShareText": "Podatki kart izvoženi iz meshcore-open",
+  "settings_gpxExportSuccess": "UspeÅ¡no izvoz GPX datoteke.",
+  "settings_gpxExportShareText": "Podatki kart izvoÅ¾eni iz meshcore-open",
   "settings_gpxExportNoContacts": "Ni stikov za izvoz.",
-  "settings_gpxExportNotAvailable": "Ni podprto na vašem napravi/operacijskem sistemu",
+  "settings_gpxExportNotAvailable": "Ni podprto na vaÅ¡em napravi/operacijskem sistemu",
   "settings_gpxExportShareSubject": "meshcore-open izvoz podatkov GPX karte",
-  "pathTrace_someHopsNoLocation": "Ena ali več hmelju manjka lokacija!",
-  "map_tapToAdd": "Pritisnite na vozlišča, da jih dodate poti.",
+  "pathTrace_someHopsNoLocation": "Ena ali veÄ hmelju manjka lokacija!",
+  "map_tapToAdd": "Pritisnite na vozliÅ¡Äa, da jih dodate poti.",
   "map_removeLast": "Odstrani Zadnji",
-  "map_runTrace": "Zaženi sledenje poti",
-  "pathTrace_clearTooltip": "Počisti pot",
+  "map_runTrace": "ZaÅ¾eni sledenje poti",
+  "pathTrace_clearTooltip": "PoÄisti pot",
   "map_pathTraceCancelled": "Spremljanje poti je prekinjeno.",
-  "scanner_enableBluetooth": "Omogočite Bluetooth",
-  "scanner_bluetoothOffMessage": "Prosimo, vklopite Bluetooth, da lahko poiščete naprave.",
+  "scanner_enableBluetooth": "OmogoÄite Bluetooth",
+  "scanner_bluetoothOffMessage": "Prosimo, vklopite Bluetooth, da lahko poiÅ¡Äete naprave.",
   "scanner_chromeRequired": "Zahtevan brskalnik Chrome",
   "scanner_chromeRequiredMessage": "Ta spletna aplikacija za podporo Bluetooth zahteva Google Chrome ali brskalnik na osnovi Chromiuma.",
   "scanner_bluetoothOff": "Bluetooth je izklopljen",
-  "snrIndicator_lastSeen": "Zadnjič videno",
-  "snrIndicator_nearByRepeaters": "Bližnji ponovitelji",
-  "chat_ShowAllPaths": "Prikaži vse poti",
-  "settings_clientRepeatFreqWarning": "Za ponovni prenos na brezžični način so potrebne frekvence 433, 869 ali 918 MHz.",
-  "settings_clientRepeatSubtitle": "Omogočite temu naprave, da ponavlja paketne sporočila za druge.",
+  "snrIndicator_lastSeen": "ZadnjiÄ videno",
+  "snrIndicator_nearByRepeaters": "BliÅ¾nji ponovitelji",
+  "chat_ShowAllPaths": "PrikaÅ¾i vse poti",
+  "settings_clientRepeatFreqWarning": "Za ponovni prenos na brezÅ¾iÄni naÄin so potrebne frekvence 433, 869 ali 918 MHz.",
+  "settings_clientRepeatSubtitle": "OmogoÄite temu naprave, da ponavlja paketne sporoÄila za druge.",
   "settings_clientRepeat": "Neovadno ponavljanje",
-  "settings_aboutOpenMeteoAttribution": "Podatki o višini LOS: Open-Meteo (CC BY 4.0)",
+  "settings_aboutOpenMeteoAttribution": "Podatki o viÅ¡ini LOS: Open-Meteo (CC BY 4.0)",
   "appSettings_unitsTitle": "Enote",
-  "appSettings_unitsMetric": "Metrična (m/km)",
+  "appSettings_unitsMetric": "MetriÄna (m/km)",
   "appSettings_unitsImperial": "Imperialno (ft / mi)",
   "map_lineOfSight": "Linija vida",
   "map_losScreenTitle": "Linija vida",
-  "losSelectStartEnd": "Izberite začetno in končno vozlišče za LOS.",
+  "losSelectStartEnd": "Izberite zaÄetno in konÄno vozliÅ¡Äe za LOS.",
   "losRunFailed": "Preverjanje vidnega polja ni uspelo: {error}",
   "@losRunFailed": {
     "placeholders": {
@@ -1629,12 +1629,12 @@
       }
     }
   },
-  "losClearAllPoints": "Počisti vse točke",
-  "losRunToViewElevationProfile": "Zaženite LOS za ogled višinskega profila",
+  "losClearAllPoints": "PoÄisti vse toÄke",
+  "losRunToViewElevationProfile": "ZaÅ¾enite LOS za ogled viÅ¡inskega profila",
   "losMenuTitle": "LOS meni",
-  "losMenuSubtitle": "Tapnite vozlišča ali dolgo pritisnite na zemljevid za točke po meri",
-  "losShowDisplayNodes": "Pokaži prikazna vozlišča",
-  "losCustomPoints": "Točke po meri",
+  "losMenuSubtitle": "Tapnite vozliÅ¡Äa ali dolgo pritisnite na zemljevid za toÄke po meri",
+  "losShowDisplayNodes": "PokaÅ¾i prikazna vozliÅ¡Äa",
+  "losCustomPoints": "ToÄke po meri",
   "losCustomPointLabel": "Po meri {index}",
   "@losCustomPointLabel": {
     "placeholders": {
@@ -1643,8 +1643,8 @@
       }
     }
   },
-  "losPointA": "Točka A",
-  "losPointB": "Točka B",
+  "losPointA": "ToÄka A",
+  "losPointB": "ToÄka B",
   "losAntennaA": "Antena A: {value} {unit}",
   "@losAntennaA": {
     "placeholders": {
@@ -1667,9 +1667,9 @@
       }
     }
   },
-  "losRun": "Zaženi LOS",
-  "losNoElevationData": "Ni podatkov o višini",
-  "losProfileClear": "{distance} {distanceUnit}, čisti LOS, najmanjša razdalja {clearance} {heightUnit}",
+  "losRun": "ZaÅ¾eni LOS",
+  "losNoElevationData": "Ni podatkov o viÅ¡ini",
+  "losProfileClear": "{distance} {distanceUnit}, Äisti LOS, najmanjÅ¡a razdalja {clearance} {heightUnit}",
   "@losProfileClear": {
     "placeholders": {
       "distance": {
@@ -1722,20 +1722,20 @@
       }
     }
   },
-  "losErrorElevationUnavailable": "Podatki o nadmorski višini niso na voljo za enega ali več vzorcev.",
-  "losErrorInvalidInput": "Neveljavni podatki o točkah/višini za izračun LOS.",
-  "losRenameCustomPoint": "Preimenujte točko po meri",
-  "losPointName": "Ime točke",
-  "losShowPanelTooltip": "Pokaži ploščo LOS",
-  "losHidePanelTooltip": "Skrij ploščo LOS",
-  "losElevationAttribution": "Podatki o višini: Open-Meteo (CC BY 4.0)",
+  "losErrorElevationUnavailable": "Podatki o nadmorski viÅ¡ini niso na voljo za enega ali veÄ vzorcev.",
+  "losErrorInvalidInput": "Neveljavni podatki o toÄkah/viÅ¡ini za izraÄun LOS.",
+  "losRenameCustomPoint": "Preimenujte toÄko po meri",
+  "losPointName": "Ime toÄke",
+  "losShowPanelTooltip": "PokaÅ¾i ploÅ¡Äo LOS",
+  "losHidePanelTooltip": "Skrij ploÅ¡Äo LOS",
+  "losElevationAttribution": "Podatki o viÅ¡ini: Open-Meteo (CC BY 4.0)",
   "losLegendRadioHorizon": "Radijski horizont",
   "losLegendLosBeam": "Linija vidnosti",
   "losLegendTerrain": "Teren",
   "losFrequencyLabel": "Frekvenca",
-  "losFrequencyInfoTooltip": "Prikaži podrobnosti izračuna",
-  "losFrequencyDialogTitle": "Izračun radijskega horizonta",
-  "losFrequencyDialogDescription": "Začenši od k={baselineK} pri {baselineFreq} MHz, izračun prilagodi k-faktor za trenutni pas {frequencyMHz} MHz, ki določa ukrivljeno zgornjo mejo radijskega horizonta.",
+  "losFrequencyInfoTooltip": "PrikaÅ¾i podrobnosti izraÄuna",
+  "losFrequencyDialogTitle": "IzraÄun radijskega horizonta",
+  "losFrequencyDialogDescription": "ZaÄenÅ¡i od k={baselineK} pri {baselineFreq} MHz, izraÄun prilagodi k-faktor za trenutni pas {frequencyMHz} MHz, ki doloÄa ukrivljeno zgornjo mejo radijskega horizonta.",
   "@losFrequencyDialogDescription": {
     "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
     "placeholders": {
@@ -1798,17 +1798,15 @@
   },
   "contacts_unread": "Neprebrano",
   "contacts_searchFavorites": "Iskanje {number}{str} priljubljenih...",
-  "contacts_searchRoomServers": "Išči {number}{str} strežnikov sob...",
+  "contacts_searchRoomServers": "IÅ¡Äi {number}{str} streÅ¾nikov sob...",
   "contacts_searchContactsNoNumber": "Iskanje stikov...",
-  "contacts_searchRepeaters": "Išči {number}{str} ponavljalnike...",
-  "contacts_searchUsers": "Išči {number}{str} uporabnikov...",
+  "contacts_searchRepeaters": "IÅ¡Äi {number}{str} ponavljalnike...",
+  "contacts_searchUsers": "IÅ¡Äi {number}{str} uporabnikov...",
   "connectionChoiceBluetoothLabel": "Bluetooth",
   "connectionChoiceUsbLabel": "USB",
-  "connectionChoiceTitle": "Izberite svoj način povezave.",
-  "connectionChoiceSubtitle": "Izberite, kako želite dostopati do svojega naprave MeshCore.",
-  "usbScreenSubtitle": "Izberite zaznano serijsko napravo in se neposredno povežite z vašim MeshCore-om.",
-  "usbScreenTitle": "Povežite preko USB",
+  "usbScreenSubtitle": "Izberite zaznano serijsko napravo in se neposredno poveÅ¾ite z vaÅ¡im MeshCore-om.",
+  "usbScreenTitle": "PoveÅ¾ite preko USB",
   "usbScreenStatus": "Izberite USB naprave.",
   "usbScreenNote": "USB serijska povezava je aktivna na podprtih napravah Android in na desktop platformah.",
-  "usbScreenEmptyState": "Niti en USB naprave niso najdeni. Povežite eno in posodobite."
+  "usbScreenEmptyState": "Niti en USB naprave niso najdeni. PoveÅ¾ite eno in posodobite."
 }

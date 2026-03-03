@@ -1,5 +1,5 @@
-{
-  "channels_channelDeleteFailed": "Неуспешно изтриване на канала \"{name}\"",
+﻿{
+  "channels_channelDeleteFailed": "ÐÐµÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¸Ð·Ñ‚Ñ€Ð¸Ð²Ð°Ð½Ðµ Ð½Ð° ÐºÐ°Ð½Ð°Ð»Ð° \"{name}\"",
   "@channels_channelDeleteFailed": {
     "placeholders": {
       "name": {
@@ -9,33 +9,33 @@
   },
   "@@locale": "bg",
   "appTitle": "MeshCore Open",
-  "nav_contacts": "Контакти",
-  "nav_channels": "Канали",
-  "nav_map": "Карта",
-  "common_cancel": "Отказ",
-  "common_connect": "Свържи се",
-  "common_unknownDevice": "Неизвестно устройство",
-  "common_save": "Запази",
-  "common_delete": "Изтрий",
-  "common_close": "Затвори",
-  "common_edit": "Редактирай",
-  "common_add": "Добави",
-  "common_settings": "Настройки",
-  "common_disconnect": "Прекъсни",
-  "common_connected": "Свързано",
-  "common_disconnected": "Откъснато",
-  "common_create": "Създай",
-  "common_continue": "Продължи",
-  "common_share": "Сподели",
-  "common_copy": "Копирай",
-  "common_retry": "Опитай отново",
-  "common_hide": "Скриване",
-  "common_remove": "Изтрий",
-  "common_enable": "Активирай",
-  "common_disable": "Деактивирай",
-  "common_reboot": "Рестартирай",
-  "common_loading": "Зареждане...",
-  "common_notAvailable": "—",
+  "nav_contacts": "ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸",
+  "nav_channels": "ÐšÐ°Ð½Ð°Ð»Ð¸",
+  "nav_map": "ÐšÐ°Ñ€Ñ‚Ð°",
+  "common_cancel": "ÐžÑ‚ÐºÐ°Ð·",
+  "common_connect": "Ð¡Ð²ÑŠÑ€Ð¶Ð¸ ÑÐµ",
+  "common_unknownDevice": "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð¾ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾",
+  "common_save": "Ð—Ð°Ð¿Ð°Ð·Ð¸",
+  "common_delete": "Ð˜Ð·Ñ‚Ñ€Ð¸Ð¹",
+  "common_close": "Ð—Ð°Ñ‚Ð²Ð¾Ñ€Ð¸",
+  "common_edit": "Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð°Ð¹",
+  "common_add": "Ð”Ð¾Ð±Ð°Ð²Ð¸",
+  "common_settings": "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸",
+  "common_disconnect": "ÐŸÑ€ÐµÐºÑŠÑÐ½Ð¸",
+  "common_connected": "Ð¡Ð²ÑŠÑ€Ð·Ð°Ð½Ð¾",
+  "common_disconnected": "ÐžÑ‚ÐºÑŠÑÐ½Ð°Ñ‚Ð¾",
+  "common_create": "Ð¡ÑŠÐ·Ð´Ð°Ð¹",
+  "common_continue": "ÐŸÑ€Ð¾Ð´ÑŠÐ»Ð¶Ð¸",
+  "common_share": "Ð¡Ð¿Ð¾Ð´ÐµÐ»Ð¸",
+  "common_copy": "ÐšÐ¾Ð¿Ð¸Ñ€Ð°Ð¹",
+  "common_retry": "ÐžÐ¿Ð¸Ñ‚Ð°Ð¹ Ð¾Ñ‚Ð½Ð¾Ð²Ð¾",
+  "common_hide": "Ð¡ÐºÑ€Ð¸Ð²Ð°Ð½Ðµ",
+  "common_remove": "Ð˜Ð·Ñ‚Ñ€Ð¸Ð¹",
+  "common_enable": "ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð¹",
+  "common_disable": "Ð”ÐµÐ°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð¹",
+  "common_reboot": "Ð ÐµÑÑ‚Ð°Ñ€Ñ‚Ð¸Ñ€Ð°Ð¹",
+  "common_loading": "Ð—Ð°Ñ€ÐµÐ¶Ð´Ð°Ð½Ðµ...",
+  "common_notAvailable": "â€”",
   "common_voltageValue": "{volts} V",
   "@common_voltageValue": {
     "placeholders": {
@@ -53,11 +53,11 @@
     }
   },
   "scanner_title": "MeshCore Open",
-  "scanner_scanning": "Сканиране за устройства...",
-  "scanner_connecting": "Свързвам се...",
-  "scanner_disconnecting": "Изключване...",
-  "scanner_notConnected": "Не е свързан",
-  "scanner_connectedTo": "Свързано с {deviceName}",
+  "scanner_scanning": "Ð¡ÐºÐ°Ð½Ð¸Ñ€Ð°Ð½Ðµ Ð·Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð°...",
+  "scanner_connecting": "Ð¡Ð²ÑŠÑ€Ð·Ð²Ð°Ð¼ ÑÐµ...",
+  "scanner_disconnecting": "Ð˜Ð·ÐºÐ»ÑŽÑ‡Ð²Ð°Ð½Ðµ...",
+  "scanner_notConnected": "ÐÐµ Ðµ ÑÐ²ÑŠÑ€Ð·Ð°Ð½",
+  "scanner_connectedTo": "Ð¡Ð²ÑŠÑ€Ð·Ð°Ð½Ð¾ Ñ {deviceName}",
   "@scanner_connectedTo": {
     "placeholders": {
       "deviceName": {
@@ -65,9 +65,9 @@
       }
     }
   },
-  "scanner_searchingDevices": "Търсене на устройства MeshCore...",
-  "scanner_tapToScan": "Натиснете Сканиране, за да намерите устройства MeshCore.",
-  "scanner_connectionFailed": "Връзката не успя: {error}",
+  "scanner_searchingDevices": "Ð¢ÑŠÑ€ÑÐµÐ½Ðµ Ð½Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð° MeshCore...",
+  "scanner_tapToScan": "ÐÐ°Ñ‚Ð¸ÑÐ½ÐµÑ‚Ðµ Ð¡ÐºÐ°Ð½Ð¸Ñ€Ð°Ð½Ðµ, Ð·Ð° Ð´Ð° Ð½Ð°Ð¼ÐµÑ€Ð¸Ñ‚Ðµ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð° MeshCore.",
+  "scanner_connectionFailed": "Ð’Ñ€ÑŠÐ·ÐºÐ°Ñ‚Ð° Ð½Ðµ ÑƒÑÐ¿Ñ: {error}",
   "@scanner_connectionFailed": {
     "placeholders": {
       "error": {
@@ -75,52 +75,52 @@
       }
     }
   },
-  "scanner_stop": "Спрете",
-  "scanner_scan": "Сканирай",
-  "device_quickSwitch": "Бързо превключване",
+  "scanner_stop": "Ð¡Ð¿Ñ€ÐµÑ‚Ðµ",
+  "scanner_scan": "Ð¡ÐºÐ°Ð½Ð¸Ñ€Ð°Ð¹",
+  "device_quickSwitch": "Ð‘ÑŠÑ€Ð·Ð¾ Ð¿Ñ€ÐµÐ²ÐºÐ»ÑŽÑ‡Ð²Ð°Ð½Ðµ",
   "device_meshcore": "MeshCore",
-  "settings_title": "Настройки",
-  "settings_deviceInfo": "Информация за устройството",
-  "settings_appSettings": "Настройки на приложението",
-  "settings_appSettingsSubtitle": "Уведомления, съобщения и предпочитания за карта",
-  "settings_nodeSettings": "Настройки на възела",
-  "settings_nodeName": "Име на възела",
-  "settings_nodeNameNotSet": "Не е зададено",
-  "settings_nodeNameHint": "Въведете име на възел",
-  "settings_nodeNameUpdated": "Името е актуализирано",
-  "settings_radioSettings": "Настройки на радиопредавателя",
-  "settings_radioSettingsSubtitle": "Честота, мощност, разпространяващ фактор",
-  "settings_radioSettingsUpdated": "Радио настройките са актуализирани",
-  "settings_location": "Местоположение",
-  "settings_locationSubtitle": "Координати на GPS",
-  "settings_locationUpdated": "Местоположението е актуализирано",
-  "settings_locationBothRequired": "Въведете както географска ширина, така и географска дължина.",
-  "settings_locationInvalid": "Невалидна ширина или дължина.",
-  "settings_latitude": "Широчина",
-  "settings_longitude": "Дължина",
-  "settings_privacyMode": "Режим на поверителност",
-  "settings_privacyModeSubtitle": "Скриване на име/местоположение в рекламите",
-  "settings_privacyModeToggle": "Активирайте режим на поверителност, за да скриете името и местоположението си в рекламите.",
-  "settings_privacyModeEnabled": "Режим на поверителност е активиран",
-  "settings_privacyModeDisabled": "Режим на поверителност е деактивиран",
-  "settings_actions": "Действия",
-  "settings_sendAdvertisement": "Изпрати Реклама",
-  "settings_sendAdvertisementSubtitle": "Сега присъствие в ефир",
-  "settings_advertisementSent": "Реклама изпратена",
-  "settings_syncTime": "Време за синхронизация",
-  "settings_syncTimeSubtitle": "Задайте часовника на устройството да отговаря на времето на телефона.",
-  "settings_timeSynchronized": "Синхронизирано във времето",
-  "settings_refreshContacts": "Презареди контакти",
-  "settings_refreshContactsSubtitle": "Презареди списъка с контакти от устройството",
-  "settings_rebootDevice": "Рестартирайте устройството",
-  "settings_rebootDeviceSubtitle": "Рестартирайте устройството MeshCore",
-  "settings_rebootDeviceConfirm": "Сигурни ли сте, че искате да рестартирате устройството? Ще бъдете откъснати.",
-  "settings_debug": "Отстрани",
-  "settings_bleDebugLog": "Лог за отстраняване на грешки на BLE",
-  "settings_bleDebugLogSubtitle": "Команди, отговори и сурови данни BLE",
-  "settings_appDebugLog": "Лог на отстраняване на грешки на приложението",
-  "settings_appDebugLogSubtitle": "Съобщения за отстраняване на грешки на приложението",
-  "settings_about": "За нас",
+  "settings_title": "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸",
+  "settings_deviceInfo": "Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð·Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾Ñ‚Ð¾",
+  "settings_appSettings": "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð½Ð° Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾",
+  "settings_appSettingsSubtitle": "Ð£Ð²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ, ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð¸ Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð¸Ñ Ð·Ð° ÐºÐ°Ñ€Ñ‚Ð°",
+  "settings_nodeSettings": "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð½Ð° Ð²ÑŠÐ·ÐµÐ»Ð°",
+  "settings_nodeName": "Ð˜Ð¼Ðµ Ð½Ð° Ð²ÑŠÐ·ÐµÐ»Ð°",
+  "settings_nodeNameNotSet": "ÐÐµ Ðµ Ð·Ð°Ð´Ð°Ð´ÐµÐ½Ð¾",
+  "settings_nodeNameHint": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ Ð¸Ð¼Ðµ Ð½Ð° Ð²ÑŠÐ·ÐµÐ»",
+  "settings_nodeNameUpdated": "Ð˜Ð¼ÐµÑ‚Ð¾ Ðµ Ð°ÐºÑ‚ÑƒÐ°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð½Ð¾",
+  "settings_radioSettings": "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð½Ð° Ñ€Ð°Ð´Ð¸Ð¾Ð¿Ñ€ÐµÐ´Ð°Ð²Ð°Ñ‚ÐµÐ»Ñ",
+  "settings_radioSettingsSubtitle": "Ð§ÐµÑÑ‚Ð¾Ñ‚Ð°, Ð¼Ð¾Ñ‰Ð½Ð¾ÑÑ‚, Ñ€Ð°Ð·Ð¿Ñ€Ð¾ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ñ‰ Ñ„Ð°ÐºÑ‚Ð¾Ñ€",
+  "settings_radioSettingsUpdated": "Ð Ð°Ð´Ð¸Ð¾ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸Ñ‚Ðµ ÑÐ° Ð°ÐºÑ‚ÑƒÐ°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð½Ð¸",
+  "settings_location": "ÐœÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ",
+  "settings_locationSubtitle": "ÐšÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð¸ Ð½Ð° GPS",
+  "settings_locationUpdated": "ÐœÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾ Ðµ Ð°ÐºÑ‚ÑƒÐ°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð½Ð¾",
+  "settings_locationBothRequired": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ ÐºÐ°ÐºÑ‚Ð¾ Ð³ÐµÐ¾Ð³Ñ€Ð°Ñ„ÑÐºÐ° ÑˆÐ¸Ñ€Ð¸Ð½Ð°, Ñ‚Ð°ÐºÐ° Ð¸ Ð³ÐµÐ¾Ð³Ñ€Ð°Ñ„ÑÐºÐ° Ð´ÑŠÐ»Ð¶Ð¸Ð½Ð°.",
+  "settings_locationInvalid": "ÐÐµÐ²Ð°Ð»Ð¸Ð´Ð½Ð° ÑˆÐ¸Ñ€Ð¸Ð½Ð° Ð¸Ð»Ð¸ Ð´ÑŠÐ»Ð¶Ð¸Ð½Ð°.",
+  "settings_latitude": "Ð¨Ð¸Ñ€Ð¾Ñ‡Ð¸Ð½Ð°",
+  "settings_longitude": "Ð”ÑŠÐ»Ð¶Ð¸Ð½Ð°",
+  "settings_privacyMode": "Ð ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð¿Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÐµÐ»Ð½Ð¾ÑÑ‚",
+  "settings_privacyModeSubtitle": "Ð¡ÐºÑ€Ð¸Ð²Ð°Ð½Ðµ Ð½Ð° Ð¸Ð¼Ðµ/Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð² Ñ€ÐµÐºÐ»Ð°Ð¼Ð¸Ñ‚Ðµ",
+  "settings_privacyModeToggle": "ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Ñ€ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð¿Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÐµÐ»Ð½Ð¾ÑÑ‚, Ð·Ð° Ð´Ð° ÑÐºÑ€Ð¸ÐµÑ‚Ðµ Ð¸Ð¼ÐµÑ‚Ð¾ Ð¸ Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾ ÑÐ¸ Ð² Ñ€ÐµÐºÐ»Ð°Ð¼Ð¸Ñ‚Ðµ.",
+  "settings_privacyModeEnabled": "Ð ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð¿Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÐµÐ»Ð½Ð¾ÑÑ‚ Ðµ Ð°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð½",
+  "settings_privacyModeDisabled": "Ð ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð¿Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÐµÐ»Ð½Ð¾ÑÑ‚ Ðµ Ð´ÐµÐ°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð½",
+  "settings_actions": "Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ",
+  "settings_sendAdvertisement": "Ð˜Ð·Ð¿Ñ€Ð°Ñ‚Ð¸ Ð ÐµÐºÐ»Ð°Ð¼Ð°",
+  "settings_sendAdvertisementSubtitle": "Ð¡ÐµÐ³Ð° Ð¿Ñ€Ð¸ÑÑŠÑÑ‚Ð²Ð¸Ðµ Ð² ÐµÑ„Ð¸Ñ€",
+  "settings_advertisementSent": "Ð ÐµÐºÐ»Ð°Ð¼Ð° Ð¸Ð·Ð¿Ñ€Ð°Ñ‚ÐµÐ½Ð°",
+  "settings_syncTime": "Ð’Ñ€ÐµÐ¼Ðµ Ð·Ð° ÑÐ¸Ð½Ñ…Ñ€Ð¾Ð½Ð¸Ð·Ð°Ñ†Ð¸Ñ",
+  "settings_syncTimeSubtitle": "Ð—Ð°Ð´Ð°Ð¹Ñ‚Ðµ Ñ‡Ð°ÑÐ¾Ð²Ð½Ð¸ÐºÐ° Ð½Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾Ñ‚Ð¾ Ð´Ð° Ð¾Ñ‚Ð³Ð¾Ð²Ð°Ñ€Ñ Ð½Ð° Ð²Ñ€ÐµÐ¼ÐµÑ‚Ð¾ Ð½Ð° Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½Ð°.",
+  "settings_timeSynchronized": "Ð¡Ð¸Ð½Ñ…Ñ€Ð¾Ð½Ð¸Ð·Ð¸Ñ€Ð°Ð½Ð¾ Ð²ÑŠÐ² Ð²Ñ€ÐµÐ¼ÐµÑ‚Ð¾",
+  "settings_refreshContacts": "ÐŸÑ€ÐµÐ·Ð°Ñ€ÐµÐ´Ð¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸",
+  "settings_refreshContactsSubtitle": "ÐŸÑ€ÐµÐ·Ð°Ñ€ÐµÐ´Ð¸ ÑÐ¿Ð¸ÑÑŠÐºÐ° Ñ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸ Ð¾Ñ‚ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾Ñ‚Ð¾",
+  "settings_rebootDevice": "Ð ÐµÑÑ‚Ð°Ñ€Ñ‚Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾Ñ‚Ð¾",
+  "settings_rebootDeviceSubtitle": "Ð ÐµÑÑ‚Ð°Ñ€Ñ‚Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾Ñ‚Ð¾ MeshCore",
+  "settings_rebootDeviceConfirm": "Ð¡Ð¸Ð³ÑƒÑ€Ð½Ð¸ Ð»Ð¸ ÑÑ‚Ðµ, Ñ‡Ðµ Ð¸ÑÐºÐ°Ñ‚Ðµ Ð´Ð° Ñ€ÐµÑÑ‚Ð°Ñ€Ñ‚Ð¸Ñ€Ð°Ñ‚Ðµ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾Ñ‚Ð¾? Ð©Ðµ Ð±ÑŠÐ´ÐµÑ‚Ðµ Ð¾Ñ‚ÐºÑŠÑÐ½Ð°Ñ‚Ð¸.",
+  "settings_debug": "ÐžÑ‚ÑÑ‚Ñ€Ð°Ð½Ð¸",
+  "settings_bleDebugLog": "Ð›Ð¾Ð³ Ð·Ð° Ð¾Ñ‚ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð³Ñ€ÐµÑˆÐºÐ¸ Ð½Ð° BLE",
+  "settings_bleDebugLogSubtitle": "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð¸, Ð¾Ñ‚Ð³Ð¾Ð²Ð¾Ñ€Ð¸ Ð¸ ÑÑƒÑ€Ð¾Ð²Ð¸ Ð´Ð°Ð½Ð½Ð¸ BLE",
+  "settings_appDebugLog": "Ð›Ð¾Ð³ Ð½Ð° Ð¾Ñ‚ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð³Ñ€ÐµÑˆÐºÐ¸ Ð½Ð° Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾",
+  "settings_appDebugLogSubtitle": "Ð¡ÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð·Ð° Ð¾Ñ‚ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð³Ñ€ÐµÑˆÐºÐ¸ Ð½Ð° Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾",
+  "settings_about": "Ð—Ð° Ð½Ð°Ñ",
   "settings_aboutVersion": "MeshCore Open v{version}",
   "@settings_aboutVersion": {
     "placeholders": {
@@ -129,26 +129,26 @@
       }
     }
   },
-  "settings_aboutLegalese": "Проект MeshCore с отворен код 2024 г.",
-  "settings_aboutDescription": "Отворен софтуер за Flutter клиент за MeshCore LoRa мрежови устройства.",
-  "settings_infoName": "Име",
-  "settings_infoId": "ИД",
-  "settings_infoStatus": "Статус",
-  "settings_infoBattery": "Батерия",
-  "settings_infoPublicKey": "Общ публичен ключ",
-  "settings_infoContactsCount": "Брой контакти",
-  "settings_infoChannelCount": "Брой канали",
-  "settings_presets": "Предварителни настройки",
-  "settings_frequency": "Честота (MHz)",
+  "settings_aboutLegalese": "ÐŸÑ€Ð¾ÐµÐºÑ‚ MeshCore Ñ Ð¾Ñ‚Ð²Ð¾Ñ€ÐµÐ½ ÐºÐ¾Ð´ 2024 Ð³.",
+  "settings_aboutDescription": "ÐžÑ‚Ð²Ð¾Ñ€ÐµÐ½ ÑÐ¾Ñ„Ñ‚ÑƒÐµÑ€ Ð·Ð° Flutter ÐºÐ»Ð¸ÐµÐ½Ñ‚ Ð·Ð° MeshCore LoRa Ð¼Ñ€ÐµÐ¶Ð¾Ð²Ð¸ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð°.",
+  "settings_infoName": "Ð˜Ð¼Ðµ",
+  "settings_infoId": "Ð˜Ð”",
+  "settings_infoStatus": "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ",
+  "settings_infoBattery": "Ð‘Ð°Ñ‚ÐµÑ€Ð¸Ñ",
+  "settings_infoPublicKey": "ÐžÐ±Ñ‰ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡ÐµÐ½ ÐºÐ»ÑŽÑ‡",
+  "settings_infoContactsCount": "Ð‘Ñ€Ð¾Ð¹ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸",
+  "settings_infoChannelCount": "Ð‘Ñ€Ð¾Ð¹ ÐºÐ°Ð½Ð°Ð»Ð¸",
+  "settings_presets": "ÐŸÑ€ÐµÐ´Ð²Ð°Ñ€Ð¸Ñ‚ÐµÐ»Ð½Ð¸ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸",
+  "settings_frequency": "Ð§ÐµÑÑ‚Ð¾Ñ‚Ð° (MHz)",
   "settings_frequencyHelper": "300.0 - 2500.0",
-  "settings_frequencyInvalid": "Невалидна честота (300-2500 MHz)",
-  "settings_bandwidth": "Ширина на честотния спектър",
-  "settings_spreadingFactor": "Фактор на разпространение",
-  "settings_codingRate": "Такса за кодиране",
-  "settings_txPower": "TX Мощност (dBm)",
+  "settings_frequencyInvalid": "ÐÐµÐ²Ð°Ð»Ð¸Ð´Ð½Ð° Ñ‡ÐµÑÑ‚Ð¾Ñ‚Ð° (300-2500 MHz)",
+  "settings_bandwidth": "Ð¨Ð¸Ñ€Ð¸Ð½Ð° Ð½Ð° Ñ‡ÐµÑÑ‚Ð¾Ñ‚Ð½Ð¸Ñ ÑÐ¿ÐµÐºÑ‚ÑŠÑ€",
+  "settings_spreadingFactor": "Ð¤Ð°ÐºÑ‚Ð¾Ñ€ Ð½Ð° Ñ€Ð°Ð·Ð¿Ñ€Ð¾ÑÑ‚Ñ€Ð°Ð½ÐµÐ½Ð¸Ðµ",
+  "settings_codingRate": "Ð¢Ð°ÐºÑÐ° Ð·Ð° ÐºÐ¾Ð´Ð¸Ñ€Ð°Ð½Ðµ",
+  "settings_txPower": "TX ÐœÐ¾Ñ‰Ð½Ð¾ÑÑ‚ (dBm)",
   "settings_txPowerHelper": "0 - 22",
-  "settings_txPowerInvalid": "Невалидна мощност на TX (0-22 dBm)",
-  "settings_error": "Грешка: {message}",
+  "settings_txPowerInvalid": "ÐÐµÐ²Ð°Ð»Ð¸Ð´Ð½Ð° Ð¼Ð¾Ñ‰Ð½Ð¾ÑÑ‚ Ð½Ð° TX (0-22 dBm)",
+  "settings_error": "Ð“Ñ€ÐµÑˆÐºÐ°: {message}",
   "@settings_error": {
     "placeholders": {
       "message": {
@@ -156,51 +156,51 @@
       }
     }
   },
-  "appSettings_title": "Настройки на приложението",
-  "appSettings_appearance": "Външен вид",
-  "appSettings_theme": "Тема",
-  "appSettings_themeSystem": "Система по подразбиране",
-  "appSettings_themeLight": "Ярка",
-  "appSettings_themeDark": "Тъмно",
-  "appSettings_language": "Език",
-  "appSettings_languageSystem": "Система по подразбиране",
+  "appSettings_title": "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð½Ð° Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾",
+  "appSettings_appearance": "Ð’ÑŠÐ½ÑˆÐµÐ½ Ð²Ð¸Ð´",
+  "appSettings_theme": "Ð¢ÐµÐ¼Ð°",
+  "appSettings_themeSystem": "Ð¡Ð¸ÑÑ‚ÐµÐ¼Ð° Ð¿Ð¾ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð±Ð¸Ñ€Ð°Ð½Ðµ",
+  "appSettings_themeLight": "Ð¯Ñ€ÐºÐ°",
+  "appSettings_themeDark": "Ð¢ÑŠÐ¼Ð½Ð¾",
+  "appSettings_language": "Ð•Ð·Ð¸Ðº",
+  "appSettings_languageSystem": "Ð¡Ð¸ÑÑ‚ÐµÐ¼Ð° Ð¿Ð¾ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð±Ð¸Ñ€Ð°Ð½Ðµ",
   "appSettings_languageEn": "English",
-  "appSettings_languageFr": "Français",
-  "appSettings_languageEs": "Español",
+  "appSettings_languageFr": "FranÃ§ais",
+  "appSettings_languageEs": "EspaÃ±ol",
   "appSettings_languageDe": "Deutsch",
   "appSettings_languagePl": "Polski",
-  "appSettings_languageSl": "Slovenščina",
-  "appSettings_languagePt": "Português",
+  "appSettings_languageSl": "SlovenÅ¡Äina",
+  "appSettings_languagePt": "PortuguÃªs",
   "appSettings_languageIt": "Italiano",
-  "appSettings_languageZh": "中文",
+  "appSettings_languageZh": "ä¸­æ–‡",
   "appSettings_languageSv": "Svenska",
   "appSettings_languageNl": "Nederlands",
-  "appSettings_languageSk": "Slovenčina",
-  "appSettings_languageBg": "Български",
-  "appSettings_notifications": "Уведомления",
-  "appSettings_enableNotifications": "Активирай Известия",
-  "appSettings_enableNotificationsSubtitle": "Получете известия за съобщения и реклами",
-  "appSettings_notificationPermissionDenied": "Отказвано е разрешение за известия",
-  "appSettings_notificationsEnabled": "Уведомителни са активирани",
-  "appSettings_notificationsDisabled": "Известия са изключени",
-  "appSettings_messageNotifications": "Уведомления",
-  "appSettings_messageNotificationsSubtitle": "Покажи известие при получаване на нови съобщения",
-  "appSettings_channelMessageNotifications": "Уведомления за съобщения от канал",
-  "appSettings_channelMessageNotificationsSubtitle": "Покажи известие при получаване на съобщения от канали",
-  "appSettings_advertisementNotifications": "Уведомления за реклами",
-  "appSettings_advertisementNotificationsSubtitle": "Покажи известие, когато бъдат открити нови възли.",
-  "appSettings_messaging": "Съобщения",
-  "appSettings_clearPathOnMaxRetry": "Изчисти Път на Макс Опит",
-  "appSettings_clearPathOnMaxRetrySubtitle": "Възстанови контактния път след 5 неуспешни опита за изпращане",
-  "appSettings_pathsWillBeCleared": "Пътищата ще бъдат почистени след 5 неуспешни опита.",
-  "appSettings_pathsWillNotBeCleared": "Пътищата няма да бъдат автоматично изчистени.",
-  "appSettings_autoRouteRotation": "Автоматично маршрутизиране на завъртания",
-  "appSettings_autoRouteRotationSubtitle": "Превключете между най-добрите пътища и режим на наводняване",
-  "appSettings_autoRouteRotationEnabled": "Автоматично маршрутизиране вкл.",
-  "appSettings_autoRouteRotationDisabled": "Автоматично маршрутизирането е деактивирано",
-  "appSettings_battery": "Батерия",
-  "appSettings_batteryChemistry": "Химия на батерията",
-  "appSettings_batteryChemistryPerDevice": "Зададено за устройство ({deviceName})",
+  "appSettings_languageSk": "SlovenÄina",
+  "appSettings_languageBg": "Ð‘ÑŠÐ»Ð³Ð°Ñ€ÑÐºÐ¸",
+  "appSettings_notifications": "Ð£Ð²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+  "appSettings_enableNotifications": "ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð¹ Ð˜Ð·Ð²ÐµÑÑ‚Ð¸Ñ",
+  "appSettings_enableNotificationsSubtitle": "ÐŸÐ¾Ð»ÑƒÑ‡ÐµÑ‚Ðµ Ð¸Ð·Ð²ÐµÑÑ‚Ð¸Ñ Ð·Ð° ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð¸ Ñ€ÐµÐºÐ»Ð°Ð¼Ð¸",
+  "appSettings_notificationPermissionDenied": "ÐžÑ‚ÐºÐ°Ð·Ð²Ð°Ð½Ð¾ Ðµ Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ð¸Ðµ Ð·Ð° Ð¸Ð·Ð²ÐµÑÑ‚Ð¸Ñ",
+  "appSettings_notificationsEnabled": "Ð£Ð²ÐµÐ´Ð¾Ð¼Ð¸Ñ‚ÐµÐ»Ð½Ð¸ ÑÐ° Ð°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð½Ð¸",
+  "appSettings_notificationsDisabled": "Ð˜Ð·Ð²ÐµÑÑ‚Ð¸Ñ ÑÐ° Ð¸Ð·ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸",
+  "appSettings_messageNotifications": "Ð£Ð²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ",
+  "appSettings_messageNotificationsSubtitle": "ÐŸÐ¾ÐºÐ°Ð¶Ð¸ Ð¸Ð·Ð²ÐµÑÑ‚Ð¸Ðµ Ð¿Ñ€Ð¸ Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ð²Ð°Ð½Ðµ Ð½Ð° Ð½Ð¾Ð²Ð¸ ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ",
+  "appSettings_channelMessageNotifications": "Ð£Ð²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ Ð·Ð° ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð¾Ñ‚ ÐºÐ°Ð½Ð°Ð»",
+  "appSettings_channelMessageNotificationsSubtitle": "ÐŸÐ¾ÐºÐ°Ð¶Ð¸ Ð¸Ð·Ð²ÐµÑÑ‚Ð¸Ðµ Ð¿Ñ€Ð¸ Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ð²Ð°Ð½Ðµ Ð½Ð° ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð¾Ñ‚ ÐºÐ°Ð½Ð°Ð»Ð¸",
+  "appSettings_advertisementNotifications": "Ð£Ð²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ Ð·Ð° Ñ€ÐµÐºÐ»Ð°Ð¼Ð¸",
+  "appSettings_advertisementNotificationsSubtitle": "ÐŸÐ¾ÐºÐ°Ð¶Ð¸ Ð¸Ð·Ð²ÐµÑÑ‚Ð¸Ðµ, ÐºÐ¾Ð³Ð°Ñ‚Ð¾ Ð±ÑŠÐ´Ð°Ñ‚ Ð¾Ñ‚ÐºÑ€Ð¸Ñ‚Ð¸ Ð½Ð¾Ð²Ð¸ Ð²ÑŠÐ·Ð»Ð¸.",
+  "appSettings_messaging": "Ð¡ÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ",
+  "appSettings_clearPathOnMaxRetry": "Ð˜Ð·Ñ‡Ð¸ÑÑ‚Ð¸ ÐŸÑŠÑ‚ Ð½Ð° ÐœÐ°ÐºÑ ÐžÐ¿Ð¸Ñ‚",
+  "appSettings_clearPathOnMaxRetrySubtitle": "Ð’ÑŠÐ·ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð½Ð¸Ñ Ð¿ÑŠÑ‚ ÑÐ»ÐµÐ´ 5 Ð½ÐµÑƒÑÐ¿ÐµÑˆÐ½Ð¸ Ð¾Ð¿Ð¸Ñ‚Ð° Ð·Ð° Ð¸Ð·Ð¿Ñ€Ð°Ñ‰Ð°Ð½Ðµ",
+  "appSettings_pathsWillBeCleared": "ÐŸÑŠÑ‚Ð¸Ñ‰Ð°Ñ‚Ð° Ñ‰Ðµ Ð±ÑŠÐ´Ð°Ñ‚ Ð¿Ð¾Ñ‡Ð¸ÑÑ‚ÐµÐ½Ð¸ ÑÐ»ÐµÐ´ 5 Ð½ÐµÑƒÑÐ¿ÐµÑˆÐ½Ð¸ Ð¾Ð¿Ð¸Ñ‚Ð°.",
+  "appSettings_pathsWillNotBeCleared": "ÐŸÑŠÑ‚Ð¸Ñ‰Ð°Ñ‚Ð° Ð½ÑÐ¼Ð° Ð´Ð° Ð±ÑŠÐ´Ð°Ñ‚ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾ Ð¸Ð·Ñ‡Ð¸ÑÑ‚ÐµÐ½Ð¸.",
+  "appSettings_autoRouteRotation": "ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð¸Ñ€Ð°Ð½Ðµ Ð½Ð° Ð·Ð°Ð²ÑŠÑ€Ñ‚Ð°Ð½Ð¸Ñ",
+  "appSettings_autoRouteRotationSubtitle": "ÐŸÑ€ÐµÐ²ÐºÐ»ÑŽÑ‡ÐµÑ‚Ðµ Ð¼ÐµÐ¶Ð´Ñƒ Ð½Ð°Ð¹-Ð´Ð¾Ð±Ñ€Ð¸Ñ‚Ðµ Ð¿ÑŠÑ‚Ð¸Ñ‰Ð° Ð¸ Ñ€ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð½Ð°Ð²Ð¾Ð´Ð½ÑÐ²Ð°Ð½Ðµ",
+  "appSettings_autoRouteRotationEnabled": "ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð¸Ñ€Ð°Ð½Ðµ Ð²ÐºÐ».",
+  "appSettings_autoRouteRotationDisabled": "ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð¸Ñ€Ð°Ð½ÐµÑ‚Ð¾ Ðµ Ð´ÐµÐ°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð½Ð¾",
+  "appSettings_battery": "Ð‘Ð°Ñ‚ÐµÑ€Ð¸Ñ",
+  "appSettings_batteryChemistry": "Ð¥Ð¸Ð¼Ð¸Ñ Ð½Ð° Ð±Ð°Ñ‚ÐµÑ€Ð¸ÑÑ‚Ð°",
+  "appSettings_batteryChemistryPerDevice": "Ð—Ð°Ð´Ð°Ð´ÐµÐ½Ð¾ Ð·Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾ ({deviceName})",
   "@appSettings_batteryChemistryPerDevice": {
     "placeholders": {
       "deviceName": {
@@ -208,20 +208,20 @@
       }
     }
   },
-  "appSettings_batteryChemistryConnectFirst": "Свържете се с устройство, за да изберете.",
+  "appSettings_batteryChemistryConnectFirst": "Ð¡Ð²ÑŠÑ€Ð¶ÐµÑ‚Ðµ ÑÐµ Ñ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾, Ð·Ð° Ð´Ð° Ð¸Ð·Ð±ÐµÑ€ÐµÑ‚Ðµ.",
   "appSettings_batteryNmc": "18650 NMC (3.0-4.2V)",
-  "appSettings_batteryLifepo4": "Литиево желязо фосфат (2.6-3.65V)",
-  "appSettings_batteryLipo": "Литиев полимер (3.0-4.2V)",
-  "appSettings_mapDisplay": "Карта за показване",
-  "appSettings_showRepeaters": "Показване на повторители",
-  "appSettings_showRepeatersSubtitle": "Показване на възпроизвеждащи се възли на картата",
-  "appSettings_showChatNodes": "Покажи Възли на Чат",
-  "appSettings_showChatNodesSubtitle": "Показване на чат възли на картата",
-  "appSettings_showOtherNodes": "Покажи други възли",
-  "appSettings_showOtherNodesSubtitle": "Покажи други типове възли на картата",
-  "appSettings_timeFilter": "Филтриране по време",
-  "appSettings_timeFilterShowAll": "Покажи всички възли",
-  "appSettings_timeFilterShowLast": "Покажи възли от последните {hours} часа",
+  "appSettings_batteryLifepo4": "Ð›Ð¸Ñ‚Ð¸ÐµÐ²Ð¾ Ð¶ÐµÐ»ÑÐ·Ð¾ Ñ„Ð¾ÑÑ„Ð°Ñ‚ (2.6-3.65V)",
+  "appSettings_batteryLipo": "Ð›Ð¸Ñ‚Ð¸ÐµÐ² Ð¿Ð¾Ð»Ð¸Ð¼ÐµÑ€ (3.0-4.2V)",
+  "appSettings_mapDisplay": "ÐšÐ°Ñ€Ñ‚Ð° Ð·Ð° Ð¿Ð¾ÐºÐ°Ð·Ð²Ð°Ð½Ðµ",
+  "appSettings_showRepeaters": "ÐŸÐ¾ÐºÐ°Ð·Ð²Ð°Ð½Ðµ Ð½Ð° Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ»Ð¸",
+  "appSettings_showRepeatersSubtitle": "ÐŸÐ¾ÐºÐ°Ð·Ð²Ð°Ð½Ðµ Ð½Ð° Ð²ÑŠÐ·Ð¿Ñ€Ð¾Ð¸Ð·Ð²ÐµÐ¶Ð´Ð°Ñ‰Ð¸ ÑÐµ Ð²ÑŠÐ·Ð»Ð¸ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ð°Ñ‚Ð°",
+  "appSettings_showChatNodes": "ÐŸÐ¾ÐºÐ°Ð¶Ð¸ Ð’ÑŠÐ·Ð»Ð¸ Ð½Ð° Ð§Ð°Ñ‚",
+  "appSettings_showChatNodesSubtitle": "ÐŸÐ¾ÐºÐ°Ð·Ð²Ð°Ð½Ðµ Ð½Ð° Ñ‡Ð°Ñ‚ Ð²ÑŠÐ·Ð»Ð¸ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ð°Ñ‚Ð°",
+  "appSettings_showOtherNodes": "ÐŸÐ¾ÐºÐ°Ð¶Ð¸ Ð´Ñ€ÑƒÐ³Ð¸ Ð²ÑŠÐ·Ð»Ð¸",
+  "appSettings_showOtherNodesSubtitle": "ÐŸÐ¾ÐºÐ°Ð¶Ð¸ Ð´Ñ€ÑƒÐ³Ð¸ Ñ‚Ð¸Ð¿Ð¾Ð²Ðµ Ð²ÑŠÐ·Ð»Ð¸ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ð°Ñ‚Ð°",
+  "appSettings_timeFilter": "Ð¤Ð¸Ð»Ñ‚Ñ€Ð¸Ñ€Ð°Ð½Ðµ Ð¿Ð¾ Ð²Ñ€ÐµÐ¼Ðµ",
+  "appSettings_timeFilterShowAll": "ÐŸÐ¾ÐºÐ°Ð¶Ð¸ Ð²ÑÐ¸Ñ‡ÐºÐ¸ Ð²ÑŠÐ·Ð»Ð¸",
+  "appSettings_timeFilterShowLast": "ÐŸÐ¾ÐºÐ°Ð¶Ð¸ Ð²ÑŠÐ·Ð»Ð¸ Ð¾Ñ‚ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ñ‚Ðµ {hours} Ñ‡Ð°ÑÐ°",
   "@appSettings_timeFilterShowLast": {
     "placeholders": {
       "hours": {
@@ -229,16 +229,16 @@
       }
     }
   },
-  "appSettings_mapTimeFilter": "Филтри за време на картата",
-  "appSettings_showNodesDiscoveredWithin": "Покажи възлите, открити в:",
-  "appSettings_allTime": "Всичко време",
-  "appSettings_lastHour": "Последната минута",
-  "appSettings_last6Hours": "Последни 6 часа",
-  "appSettings_last24Hours": "Последно 24 часа",
-  "appSettings_lastWeek": "Миналата седмица",
-  "appSettings_offlineMapCache": "Кеш на офлайн карти",
-  "appSettings_noAreaSelected": "Няма избрана област",
-  "appSettings_areaSelectedZoom": "Избрана е област (мащаб {minZoom}-{maxZoom})",
+  "appSettings_mapTimeFilter": "Ð¤Ð¸Ð»Ñ‚Ñ€Ð¸ Ð·Ð° Ð²Ñ€ÐµÐ¼Ðµ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ð°Ñ‚Ð°",
+  "appSettings_showNodesDiscoveredWithin": "ÐŸÐ¾ÐºÐ°Ð¶Ð¸ Ð²ÑŠÐ·Ð»Ð¸Ñ‚Ðµ, Ð¾Ñ‚ÐºÑ€Ð¸Ñ‚Ð¸ Ð²:",
+  "appSettings_allTime": "Ð’ÑÐ¸Ñ‡ÐºÐ¾ Ð²Ñ€ÐµÐ¼Ðµ",
+  "appSettings_lastHour": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð°Ñ‚Ð° Ð¼Ð¸Ð½ÑƒÑ‚Ð°",
+  "appSettings_last6Hours": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸ 6 Ñ‡Ð°ÑÐ°",
+  "appSettings_last24Hours": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¾ 24 Ñ‡Ð°ÑÐ°",
+  "appSettings_lastWeek": "ÐœÐ¸Ð½Ð°Ð»Ð°Ñ‚Ð° ÑÐµÐ´Ð¼Ð¸Ñ†Ð°",
+  "appSettings_offlineMapCache": "ÐšÐµÑˆ Ð½Ð° Ð¾Ñ„Ð»Ð°Ð¹Ð½ ÐºÐ°Ñ€Ñ‚Ð¸",
+  "appSettings_noAreaSelected": "ÐÑÐ¼Ð° Ð¸Ð·Ð±Ñ€Ð°Ð½Ð° Ð¾Ð±Ð»Ð°ÑÑ‚",
+  "appSettings_areaSelectedZoom": "Ð˜Ð·Ð±Ñ€Ð°Ð½Ð° Ðµ Ð¾Ð±Ð»Ð°ÑÑ‚ (Ð¼Ð°Ñ‰Ð°Ð± {minZoom}-{maxZoom})",
   "@appSettings_areaSelectedZoom": {
     "placeholders": {
       "minZoom": {
@@ -249,19 +249,19 @@
       }
     }
   },
-  "appSettings_debugCard": "Отстрани",
-  "appSettings_appDebugLogging": "Логване за отстраняване на грешки на приложението",
-  "appSettings_appDebugLoggingSubtitle": "Записване на съобщения за отстраняване на грешки от приложението за отстраняване на грешки.",
-  "appSettings_appDebugLoggingEnabled": "Режимът за отстраняване на грешки в приложението е активиран.",
-  "appSettings_appDebugLoggingDisabled": "Логването за отстраняване на грешки в приложението е изключено.",
-  "contacts_title": "Контакти",
-  "contacts_noContacts": "Няма контакти към момента.",
-  "contacts_contactsWillAppear": "Контактите ще се появят, когато устройствата рекламират.",
-  "contacts_searchContacts": "Търсене на контакти...",
-  "contacts_noUnreadContacts": "Няма непрочетени контакти",
-  "contacts_noContactsFound": "Няма намерени контакти или групи.",
-  "contacts_deleteContact": "Изтрий Контакт",
-  "contacts_removeConfirm": "Изтрий {contactName} от контактите?",
+  "appSettings_debugCard": "ÐžÑ‚ÑÑ‚Ñ€Ð°Ð½Ð¸",
+  "appSettings_appDebugLogging": "Ð›Ð¾Ð³Ð²Ð°Ð½Ðµ Ð·Ð° Ð¾Ñ‚ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð³Ñ€ÐµÑˆÐºÐ¸ Ð½Ð° Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾",
+  "appSettings_appDebugLoggingSubtitle": "Ð—Ð°Ð¿Ð¸ÑÐ²Ð°Ð½Ðµ Ð½Ð° ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð·Ð° Ð¾Ñ‚ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð³Ñ€ÐµÑˆÐºÐ¸ Ð¾Ñ‚ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾ Ð·Ð° Ð¾Ñ‚ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð³Ñ€ÐµÑˆÐºÐ¸.",
+  "appSettings_appDebugLoggingEnabled": "Ð ÐµÐ¶Ð¸Ð¼ÑŠÑ‚ Ð·Ð° Ð¾Ñ‚ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð³Ñ€ÐµÑˆÐºÐ¸ Ð² Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾ Ðµ Ð°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð½.",
+  "appSettings_appDebugLoggingDisabled": "Ð›Ð¾Ð³Ð²Ð°Ð½ÐµÑ‚Ð¾ Ð·Ð° Ð¾Ñ‚ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð³Ñ€ÐµÑˆÐºÐ¸ Ð² Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾ Ðµ Ð¸Ð·ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¾.",
+  "contacts_title": "ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸",
+  "contacts_noContacts": "ÐÑÐ¼Ð° ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸ ÐºÑŠÐ¼ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚Ð°.",
+  "contacts_contactsWillAppear": "ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸Ñ‚Ðµ Ñ‰Ðµ ÑÐµ Ð¿Ð¾ÑÐ²ÑÑ‚, ÐºÐ¾Ð³Ð°Ñ‚Ð¾ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð°Ñ‚Ð° Ñ€ÐµÐºÐ»Ð°Ð¼Ð¸Ñ€Ð°Ñ‚.",
+  "contacts_searchContacts": "Ð¢ÑŠÑ€ÑÐµÐ½Ðµ Ð½Ð° ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸...",
+  "contacts_noUnreadContacts": "ÐÑÐ¼Ð° Ð½ÐµÐ¿Ñ€Ð¾Ñ‡ÐµÑ‚ÐµÐ½Ð¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸",
+  "contacts_noContactsFound": "ÐÑÐ¼Ð° Ð½Ð°Ð¼ÐµÑ€ÐµÐ½Ð¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸ Ð¸Ð»Ð¸ Ð³Ñ€ÑƒÐ¿Ð¸.",
+  "contacts_deleteContact": "Ð˜Ð·Ñ‚Ñ€Ð¸Ð¹ ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚",
+  "contacts_removeConfirm": "Ð˜Ð·Ñ‚Ñ€Ð¸Ð¹ {contactName} Ð¾Ñ‚ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸Ñ‚Ðµ?",
   "@contacts_removeConfirm": {
     "placeholders": {
       "contactName": {
@@ -269,12 +269,12 @@
       }
     }
   },
-  "contacts_manageRepeater": "Управление на Повтарящ се Елемент",
-  "contacts_roomLogin": "Вход в стаята",
-  "contacts_openChat": "Отвори чат",
-  "contacts_editGroup": "Редактирай Група",
-  "contacts_deleteGroup": "Изтрий група",
-  "contacts_deleteGroupConfirm": "Премахнете \"{groupName}\"?",
+  "contacts_manageRepeater": "Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð° ÐŸÐ¾Ð²Ñ‚Ð°Ñ€ÑÑ‰ ÑÐµ Ð•Ð»ÐµÐ¼ÐµÐ½Ñ‚",
+  "contacts_roomLogin": "Ð’Ñ…Ð¾Ð´ Ð² ÑÑ‚Ð°ÑÑ‚Ð°",
+  "contacts_openChat": "ÐžÑ‚Ð²Ð¾Ñ€Ð¸ Ñ‡Ð°Ñ‚",
+  "contacts_editGroup": "Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð°Ð¹ Ð“Ñ€ÑƒÐ¿Ð°",
+  "contacts_deleteGroup": "Ð˜Ð·Ñ‚Ñ€Ð¸Ð¹ Ð³Ñ€ÑƒÐ¿Ð°",
+  "contacts_deleteGroupConfirm": "ÐŸÑ€ÐµÐ¼Ð°Ñ…Ð½ÐµÑ‚Ðµ \"{groupName}\"?",
   "@contacts_deleteGroupConfirm": {
     "placeholders": {
       "groupName": {
@@ -282,10 +282,10 @@
       }
     }
   },
-  "contacts_newGroup": "Нова група",
-  "contacts_groupName": "Група",
-  "contacts_groupNameRequired": "Името на групата е задължително.",
-  "contacts_groupAlreadyExists": "Групата \"{name}\" вече съществува.",
+  "contacts_newGroup": "ÐÐ¾Ð²Ð° Ð³Ñ€ÑƒÐ¿Ð°",
+  "contacts_groupName": "Ð“Ñ€ÑƒÐ¿Ð°",
+  "contacts_groupNameRequired": "Ð˜Ð¼ÐµÑ‚Ð¾ Ð½Ð° Ð³Ñ€ÑƒÐ¿Ð°Ñ‚Ð° Ðµ Ð·Ð°Ð´ÑŠÐ»Ð¶Ð¸Ñ‚ÐµÐ»Ð½Ð¾.",
+  "contacts_groupAlreadyExists": "Ð“Ñ€ÑƒÐ¿Ð°Ñ‚Ð° \"{name}\" Ð²ÐµÑ‡Ðµ ÑÑŠÑ‰ÐµÑÑ‚Ð²ÑƒÐ²Ð°.",
   "@contacts_groupAlreadyExists": {
     "placeholders": {
       "name": {
@@ -293,11 +293,11 @@
       }
     }
   },
-  "contacts_filterContacts": "Филтрирайте контактите...",
-  "contacts_noContactsMatchFilter": "Няма съвпадения с вашия филтър.",
-  "contacts_noMembers": "Няма членове",
-  "contacts_lastSeenNow": "Последно видяно сега",
-  "contacts_lastSeenMinsAgo": "Последна активност {minutes} минути преди",
+  "contacts_filterContacts": "Ð¤Ð¸Ð»Ñ‚Ñ€Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸Ñ‚Ðµ...",
+  "contacts_noContactsMatchFilter": "ÐÑÐ¼Ð° ÑÑŠÐ²Ð¿Ð°Ð´ÐµÐ½Ð¸Ñ Ñ Ð²Ð°ÑˆÐ¸Ñ Ñ„Ð¸Ð»Ñ‚ÑŠÑ€.",
+  "contacts_noMembers": "ÐÑÐ¼Ð° Ñ‡Ð»ÐµÐ½Ð¾Ð²Ðµ",
+  "contacts_lastSeenNow": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¾ Ð²Ð¸Ð´ÑÐ½Ð¾ ÑÐµÐ³Ð°",
+  "contacts_lastSeenMinsAgo": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð° Ð°ÐºÑ‚Ð¸Ð²Ð½Ð¾ÑÑ‚ {minutes} Ð¼Ð¸Ð½ÑƒÑ‚Ð¸ Ð¿Ñ€ÐµÐ´Ð¸",
   "@contacts_lastSeenMinsAgo": {
     "placeholders": {
       "minutes": {
@@ -305,8 +305,8 @@
       }
     }
   },
-  "contacts_lastSeenHourAgo": "Последно видяно преди час",
-  "contacts_lastSeenHoursAgo": "Последно видян {hours} часа преди.",
+  "contacts_lastSeenHourAgo": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¾ Ð²Ð¸Ð´ÑÐ½Ð¾ Ð¿Ñ€ÐµÐ´Ð¸ Ñ‡Ð°Ñ",
+  "contacts_lastSeenHoursAgo": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¾ Ð²Ð¸Ð´ÑÐ½ {hours} Ñ‡Ð°ÑÐ° Ð¿Ñ€ÐµÐ´Ð¸.",
   "@contacts_lastSeenHoursAgo": {
     "placeholders": {
       "hours": {
@@ -314,8 +314,8 @@
       }
     }
   },
-  "contacts_lastSeenDayAgo": "Последно видяно преди 1 ден",
-  "contacts_lastSeenDaysAgo": "Последно видян {days} дни преди.",
+  "contacts_lastSeenDayAgo": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¾ Ð²Ð¸Ð´ÑÐ½Ð¾ Ð¿Ñ€ÐµÐ´Ð¸ 1 Ð´ÐµÐ½",
+  "contacts_lastSeenDaysAgo": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¾ Ð²Ð¸Ð´ÑÐ½ {days} Ð´Ð½Ð¸ Ð¿Ñ€ÐµÐ´Ð¸.",
   "@contacts_lastSeenDaysAgo": {
     "placeholders": {
       "days": {
@@ -323,12 +323,12 @@
       }
     }
   },
-  "channels_title": "Канали",
-  "channels_noChannelsConfigured": "Няма конфигурирани канали",
-  "channels_addPublicChannel": "Добави публичен канал",
-  "channels_searchChannels": "Търсене на канали...",
-  "channels_noChannelsFound": "Няма намерени канали",
-  "channels_channelIndex": "Канал {index}",
+  "channels_title": "ÐšÐ°Ð½Ð°Ð»Ð¸",
+  "channels_noChannelsConfigured": "ÐÑÐ¼Ð° ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð¸Ñ€Ð°Ð½Ð¸ ÐºÐ°Ð½Ð°Ð»Ð¸",
+  "channels_addPublicChannel": "Ð”Ð¾Ð±Ð°Ð²Ð¸ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡ÐµÐ½ ÐºÐ°Ð½Ð°Ð»",
+  "channels_searchChannels": "Ð¢ÑŠÑ€ÑÐµÐ½Ðµ Ð½Ð° ÐºÐ°Ð½Ð°Ð»Ð¸...",
+  "channels_noChannelsFound": "ÐÑÐ¼Ð° Ð½Ð°Ð¼ÐµÑ€ÐµÐ½Ð¸ ÐºÐ°Ð½Ð°Ð»Ð¸",
+  "channels_channelIndex": "ÐšÐ°Ð½Ð°Ð» {index}",
   "@channels_channelIndex": {
     "placeholders": {
       "index": {
@@ -336,16 +336,16 @@
       }
     }
   },
-  "channels_hashtagChannel": "Канал с хаштаг",
-  "channels_public": "Публично",
-  "channels_private": "Личен",
-  "channels_publicChannel": "Публичен канал",
-  "channels_privateChannel": "Частен канал",
-  "channels_editChannel": "Редактирай канал",
-  "channels_muteChannel": "Заглуши канала",
-  "channels_unmuteChannel": "Включи известията на канала",
-  "channels_deleteChannel": "Изтрий канала",
-  "channels_deleteChannelConfirm": "Изтрий \"{name}\"? Това не може да бъде отменено.",
+  "channels_hashtagChannel": "ÐšÐ°Ð½Ð°Ð» Ñ Ñ…Ð°ÑˆÑ‚Ð°Ð³",
+  "channels_public": "ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾",
+  "channels_private": "Ð›Ð¸Ñ‡ÐµÐ½",
+  "channels_publicChannel": "ÐŸÑƒÐ±Ð»Ð¸Ñ‡ÐµÐ½ ÐºÐ°Ð½Ð°Ð»",
+  "channels_privateChannel": "Ð§Ð°ÑÑ‚ÐµÐ½ ÐºÐ°Ð½Ð°Ð»",
+  "channels_editChannel": "Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð°Ð¹ ÐºÐ°Ð½Ð°Ð»",
+  "channels_muteChannel": "Ð—Ð°Ð³Ð»ÑƒÑˆÐ¸ ÐºÐ°Ð½Ð°Ð»Ð°",
+  "channels_unmuteChannel": "Ð’ÐºÐ»ÑŽÑ‡Ð¸ Ð¸Ð·Ð²ÐµÑÑ‚Ð¸ÑÑ‚Ð° Ð½Ð° ÐºÐ°Ð½Ð°Ð»Ð°",
+  "channels_deleteChannel": "Ð˜Ð·Ñ‚Ñ€Ð¸Ð¹ ÐºÐ°Ð½Ð°Ð»Ð°",
+  "channels_deleteChannelConfirm": "Ð˜Ð·Ñ‚Ñ€Ð¸Ð¹ \"{name}\"? Ð¢Ð¾Ð²Ð° Ð½Ðµ Ð¼Ð¾Ð¶Ðµ Ð´Ð° Ð±ÑŠÐ´Ðµ Ð¾Ñ‚Ð¼ÐµÐ½ÐµÐ½Ð¾.",
   "@channels_deleteChannelConfirm": {
     "placeholders": {
       "name": {
@@ -353,7 +353,7 @@
       }
     }
   },
-  "channels_channelDeleted": "Каналът \"{name}\" е изтрит",
+  "channels_channelDeleted": "ÐšÐ°Ð½Ð°Ð»ÑŠÑ‚ \"{name}\" Ðµ Ð¸Ð·Ñ‚Ñ€Ð¸Ñ‚",
   "@channels_channelDeleted": {
     "placeholders": {
       "name": {
@@ -361,16 +361,16 @@
       }
     }
   },
-  "channels_addChannel": "Добави Канал",
-  "channels_channelIndexLabel": "Индекс на канал",
-  "channels_channelName": "Име на канала",
-  "channels_usePublicChannel": "Използвайте публичен канал",
-  "channels_standardPublicPsk": "Стандартен публичен PSK",
+  "channels_addChannel": "Ð”Ð¾Ð±Ð°Ð²Ð¸ ÐšÐ°Ð½Ð°Ð»",
+  "channels_channelIndexLabel": "Ð˜Ð½Ð´ÐµÐºÑ Ð½Ð° ÐºÐ°Ð½Ð°Ð»",
+  "channels_channelName": "Ð˜Ð¼Ðµ Ð½Ð° ÐºÐ°Ð½Ð°Ð»Ð°",
+  "channels_usePublicChannel": "Ð˜Ð·Ð¿Ð¾Ð»Ð·Ð²Ð°Ð¹Ñ‚Ðµ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡ÐµÐ½ ÐºÐ°Ð½Ð°Ð»",
+  "channels_standardPublicPsk": "Ð¡Ñ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚ÐµÐ½ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡ÐµÐ½ PSK",
   "channels_pskHex": "PSK (Hex)",
-  "channels_generateRandomPsk": "Генерирай случайна PSK",
-  "channels_enterChannelName": "Моля, въведете име на канал.",
-  "channels_pskMustBe32Hex": "PSK трябва да бъде 32 шестнаредни знака.",
-  "channels_channelAdded": "Каналът \"{name}\" е добавен",
+  "channels_generateRandomPsk": "Ð“ÐµÐ½ÐµÑ€Ð¸Ñ€Ð°Ð¹ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ð° PSK",
+  "channels_enterChannelName": "ÐœÐ¾Ð»Ñ, Ð²ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ Ð¸Ð¼Ðµ Ð½Ð° ÐºÐ°Ð½Ð°Ð».",
+  "channels_pskMustBe32Hex": "PSK Ñ‚Ñ€ÑÐ±Ð²Ð° Ð´Ð° Ð±ÑŠÐ´Ðµ 32 ÑˆÐµÑÑ‚Ð½Ð°Ñ€ÐµÐ´Ð½Ð¸ Ð·Ð½Ð°ÐºÐ°.",
+  "channels_channelAdded": "ÐšÐ°Ð½Ð°Ð»ÑŠÑ‚ \"{name}\" Ðµ Ð´Ð¾Ð±Ð°Ð²ÐµÐ½",
   "@channels_channelAdded": {
     "placeholders": {
       "name": {
@@ -378,7 +378,7 @@
       }
     }
   },
-  "channels_editChannelTitle": "Редактирай Канал {index}",
+  "channels_editChannelTitle": "Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð°Ð¹ ÐšÐ°Ð½Ð°Ð» {index}",
   "@channels_editChannelTitle": {
     "placeholders": {
       "index": {
@@ -386,8 +386,8 @@
       }
     }
   },
-  "channels_smazCompression": "Компресия SMAZ",
-  "channels_channelUpdated": "Каналът \"{name}\" е актуализиран",
+  "channels_smazCompression": "ÐšÐ¾Ð¼Ð¿Ñ€ÐµÑÐ¸Ñ SMAZ",
+  "channels_channelUpdated": "ÐšÐ°Ð½Ð°Ð»ÑŠÑ‚ \"{name}\" Ðµ Ð°ÐºÑ‚ÑƒÐ°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð½",
   "@channels_channelUpdated": {
     "placeholders": {
       "name": {
@@ -395,16 +395,16 @@
       }
     }
   },
-  "channels_publicChannelAdded": "Публичен канал добавен",
-  "channels_sortBy": "Сортирай по",
-  "channels_sortManual": "Ръчно",
+  "channels_publicChannelAdded": "ÐŸÑƒÐ±Ð»Ð¸Ñ‡ÐµÐ½ ÐºÐ°Ð½Ð°Ð» Ð´Ð¾Ð±Ð°Ð²ÐµÐ½",
+  "channels_sortBy": "Ð¡Ð¾Ñ€Ñ‚Ð¸Ñ€Ð°Ð¹ Ð¿Ð¾",
+  "channels_sortManual": "Ð ÑŠÑ‡Ð½Ð¾",
   "channels_sortAZ": "A-Z",
-  "channels_sortLatestMessages": "Последни съобщения",
-  "channels_sortUnread": "Непрочетено",
-  "chat_noMessages": "Няма съобщения.",
-  "chat_sendMessageToStart": "Изпрати съобщение, за да започнеш.",
-  "chat_originalMessageNotFound": "Съобщението не е намерено",
-  "chat_replyingTo": "Отговарям на {name}",
+  "channels_sortLatestMessages": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸ ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ",
+  "channels_sortUnread": "ÐÐµÐ¿Ñ€Ð¾Ñ‡ÐµÑ‚ÐµÐ½Ð¾",
+  "chat_noMessages": "ÐÑÐ¼Ð° ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ.",
+  "chat_sendMessageToStart": "Ð˜Ð·Ð¿Ñ€Ð°Ñ‚Ð¸ ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ, Ð·Ð° Ð´Ð° Ð·Ð°Ð¿Ð¾Ñ‡Ð½ÐµÑˆ.",
+  "chat_originalMessageNotFound": "Ð¡ÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸ÐµÑ‚Ð¾ Ð½Ðµ Ðµ Ð½Ð°Ð¼ÐµÑ€ÐµÐ½Ð¾",
+  "chat_replyingTo": "ÐžÑ‚Ð³Ð¾Ð²Ð°Ñ€ÑÐ¼ Ð½Ð° {name}",
   "@chat_replyingTo": {
     "placeholders": {
       "name": {
@@ -412,7 +412,7 @@
       }
     }
   },
-  "chat_replyTo": "Отговори на {name}",
+  "chat_replyTo": "ÐžÑ‚Ð³Ð¾Ð²Ð¾Ñ€Ð¸ Ð½Ð° {name}",
   "@chat_replyTo": {
     "placeholders": {
       "name": {
@@ -420,8 +420,8 @@
       }
     }
   },
-  "chat_location": "Местоположение",
-  "chat_sendMessageTo": "Изпрати съобщение на {contactName}",
+  "chat_location": "ÐœÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ",
+  "chat_sendMessageTo": "Ð˜Ð·Ð¿Ñ€Ð°Ñ‚Ð¸ ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð½Ð° {contactName}",
   "@chat_sendMessageTo": {
     "placeholders": {
       "contactName": {
@@ -429,8 +429,8 @@
       }
     }
   },
-  "chat_typeMessage": "Въведете съобщение...",
-  "chat_messageTooLong": "Съобщението е твърде дълго (макс {maxBytes} байта).",
+  "chat_typeMessage": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ...",
+  "chat_messageTooLong": "Ð¡ÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸ÐµÑ‚Ð¾ Ðµ Ñ‚Ð²ÑŠÑ€Ð´Ðµ Ð´ÑŠÐ»Ð³Ð¾ (Ð¼Ð°ÐºÑ {maxBytes} Ð±Ð°Ð¹Ñ‚Ð°).",
   "@chat_messageTooLong": {
     "placeholders": {
       "maxBytes": {
@@ -438,10 +438,10 @@
       }
     }
   },
-  "chat_messageCopied": "Съобщението е копирано",
-  "chat_messageDeleted": "Съобщението е изтрито",
-  "chat_retryingMessage": "Опитваме се отново.",
-  "chat_retryCount": "Опитай отново {current}/{max}",
+  "chat_messageCopied": "Ð¡ÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸ÐµÑ‚Ð¾ Ðµ ÐºÐ¾Ð¿Ð¸Ñ€Ð°Ð½Ð¾",
+  "chat_messageDeleted": "Ð¡ÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸ÐµÑ‚Ð¾ Ðµ Ð¸Ð·Ñ‚Ñ€Ð¸Ñ‚Ð¾",
+  "chat_retryingMessage": "ÐžÐ¿Ð¸Ñ‚Ð²Ð°Ð¼Ðµ ÑÐµ Ð¾Ñ‚Ð½Ð¾Ð²Ð¾.",
+  "chat_retryCount": "ÐžÐ¿Ð¸Ñ‚Ð°Ð¹ Ð¾Ñ‚Ð½Ð¾Ð²Ð¾ {current}/{max}",
   "@chat_retryCount": {
     "placeholders": {
       "current": {
@@ -452,33 +452,33 @@
       }
     }
   },
-  "chat_sendGif": "Изпрати GIF",
-  "chat_reply": "Отговори",
-  "chat_addReaction": "Добави Реакция",
-  "chat_me": "Аз",
-  "emojiCategorySmileys": "Емотикони",
-  "emojiCategoryGestures": "Жестове",
-  "emojiCategoryHearts": "Сърца",
-  "emojiCategoryObjects": "Обекти",
-  "gifPicker_title": "Изберете GIF",
-  "gifPicker_searchHint": "Търсене на GIF-ове...",
-  "gifPicker_poweredBy": "Задвижвано от GIPHY",
-  "gifPicker_noGifsFound": "Няма намерени GIF файлове.",
-  "gifPicker_failedLoad": "Не можа да се заредят GIF файловете",
-  "gifPicker_failedSearch": "Неуспешно търсене на GIF-ове",
-  "gifPicker_noInternet": "Няма интернет връзка",
-  "debugLog_appTitle": "Лог на отстраняване на грешки на приложението",
-  "debugLog_bleTitle": "Лог за отстраняване на грешки на BLE",
-  "debugLog_copyLog": "Копирай лог",
-  "debugLog_clearLog": "Изчисти логовете",
-  "debugLog_copied": "Копирано лого за отстраняване на грешки",
-  "debugLog_bleCopied": "Копиран лог от BLE",
-  "debugLog_noEntries": "Все още няма дебъг логове.",
-  "debugLog_enableInSettings": "Активирайте отстраняване на грешки в настройките на приложението",
-  "debugLog_frames": "Рамки",
+  "chat_sendGif": "Ð˜Ð·Ð¿Ñ€Ð°Ñ‚Ð¸ GIF",
+  "chat_reply": "ÐžÑ‚Ð³Ð¾Ð²Ð¾Ñ€Ð¸",
+  "chat_addReaction": "Ð”Ð¾Ð±Ð°Ð²Ð¸ Ð ÐµÐ°ÐºÑ†Ð¸Ñ",
+  "chat_me": "ÐÐ·",
+  "emojiCategorySmileys": "Ð•Ð¼Ð¾Ñ‚Ð¸ÐºÐ¾Ð½Ð¸",
+  "emojiCategoryGestures": "Ð–ÐµÑÑ‚Ð¾Ð²Ðµ",
+  "emojiCategoryHearts": "Ð¡ÑŠÑ€Ñ†Ð°",
+  "emojiCategoryObjects": "ÐžÐ±ÐµÐºÑ‚Ð¸",
+  "gifPicker_title": "Ð˜Ð·Ð±ÐµÑ€ÐµÑ‚Ðµ GIF",
+  "gifPicker_searchHint": "Ð¢ÑŠÑ€ÑÐµÐ½Ðµ Ð½Ð° GIF-Ð¾Ð²Ðµ...",
+  "gifPicker_poweredBy": "Ð—Ð°Ð´Ð²Ð¸Ð¶Ð²Ð°Ð½Ð¾ Ð¾Ñ‚ GIPHY",
+  "gifPicker_noGifsFound": "ÐÑÐ¼Ð° Ð½Ð°Ð¼ÐµÑ€ÐµÐ½Ð¸ GIF Ñ„Ð°Ð¹Ð»Ð¾Ð²Ðµ.",
+  "gifPicker_failedLoad": "ÐÐµ Ð¼Ð¾Ð¶Ð° Ð´Ð° ÑÐµ Ð·Ð°Ñ€ÐµÐ´ÑÑ‚ GIF Ñ„Ð°Ð¹Ð»Ð¾Ð²ÐµÑ‚Ðµ",
+  "gifPicker_failedSearch": "ÐÐµÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ñ‚ÑŠÑ€ÑÐµÐ½Ðµ Ð½Ð° GIF-Ð¾Ð²Ðµ",
+  "gifPicker_noInternet": "ÐÑÐ¼Ð° Ð¸Ð½Ñ‚ÐµÑ€Ð½ÐµÑ‚ Ð²Ñ€ÑŠÐ·ÐºÐ°",
+  "debugLog_appTitle": "Ð›Ð¾Ð³ Ð½Ð° Ð¾Ñ‚ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð³Ñ€ÐµÑˆÐºÐ¸ Ð½Ð° Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾",
+  "debugLog_bleTitle": "Ð›Ð¾Ð³ Ð·Ð° Ð¾Ñ‚ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð³Ñ€ÐµÑˆÐºÐ¸ Ð½Ð° BLE",
+  "debugLog_copyLog": "ÐšÐ¾Ð¿Ð¸Ñ€Ð°Ð¹ Ð»Ð¾Ð³",
+  "debugLog_clearLog": "Ð˜Ð·Ñ‡Ð¸ÑÑ‚Ð¸ Ð»Ð¾Ð³Ð¾Ð²ÐµÑ‚Ðµ",
+  "debugLog_copied": "ÐšÐ¾Ð¿Ð¸Ñ€Ð°Ð½Ð¾ Ð»Ð¾Ð³Ð¾ Ð·Ð° Ð¾Ñ‚ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð³Ñ€ÐµÑˆÐºÐ¸",
+  "debugLog_bleCopied": "ÐšÐ¾Ð¿Ð¸Ñ€Ð°Ð½ Ð»Ð¾Ð³ Ð¾Ñ‚ BLE",
+  "debugLog_noEntries": "Ð’ÑÐµ Ð¾Ñ‰Ðµ Ð½ÑÐ¼Ð° Ð´ÐµÐ±ÑŠÐ³ Ð»Ð¾Ð³Ð¾Ð²Ðµ.",
+  "debugLog_enableInSettings": "ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Ð¾Ñ‚ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð³Ñ€ÐµÑˆÐºÐ¸ Ð² Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸Ñ‚Ðµ Ð½Ð° Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾",
+  "debugLog_frames": "Ð Ð°Ð¼ÐºÐ¸",
   "debugLog_rawLogRx": "Raw Log-RX",
-  "debugLog_noBleActivity": "Няма BLE активност към момента.",
-  "debugFrame_length": "Дължина на кадъра: {count} байта",
+  "debugLog_noBleActivity": "ÐÑÐ¼Ð° BLE Ð°ÐºÑ‚Ð¸Ð²Ð½Ð¾ÑÑ‚ ÐºÑŠÐ¼ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚Ð°.",
+  "debugFrame_length": "Ð”ÑŠÐ»Ð¶Ð¸Ð½Ð° Ð½Ð° ÐºÐ°Ð´ÑŠÑ€Ð°: {count} Ð±Ð°Ð¹Ñ‚Ð°",
   "@debugFrame_length": {
     "placeholders": {
       "count": {
@@ -486,7 +486,7 @@
       }
     }
   },
-  "debugFrame_command": "Команда: 0x{value}",
+  "debugFrame_command": "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð°: 0x{value}",
   "@debugFrame_command": {
     "placeholders": {
       "value": {
@@ -494,8 +494,8 @@
       }
     }
   },
-  "debugFrame_textMessageHeader": "Съобщение:",
-  "debugFrame_destinationPubKey": "- Дестинация Публичен Ключ: {pubKey}",
+  "debugFrame_textMessageHeader": "Ð¡ÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ:",
+  "debugFrame_destinationPubKey": "- Ð”ÐµÑÑ‚Ð¸Ð½Ð°Ñ†Ð¸Ñ ÐŸÑƒÐ±Ð»Ð¸Ñ‡ÐµÐ½ ÐšÐ»ÑŽÑ‡: {pubKey}",
   "@debugFrame_destinationPubKey": {
     "placeholders": {
       "pubKey": {
@@ -503,7 +503,7 @@
       }
     }
   },
-  "debugFrame_timestamp": "- Време: {timestamp}",
+  "debugFrame_timestamp": "- Ð’Ñ€ÐµÐ¼Ðµ: {timestamp}",
   "@debugFrame_timestamp": {
     "placeholders": {
       "timestamp": {
@@ -511,7 +511,7 @@
       }
     }
   },
-  "debugFrame_flags": "- Флагове: 0x{value}",
+  "debugFrame_flags": "- Ð¤Ð»Ð°Ð³Ð¾Ð²Ðµ: 0x{value}",
   "@debugFrame_flags": {
     "placeholders": {
       "value": {
@@ -519,7 +519,7 @@
       }
     }
   },
-  "debugFrame_textType": "- Тип текст: {type} ({label})",
+  "debugFrame_textType": "- Ð¢Ð¸Ð¿ Ñ‚ÐµÐºÑÑ‚: {type} ({label})",
   "@debugFrame_textType": {
     "placeholders": {
       "type": {
@@ -531,8 +531,8 @@
     }
   },
   "debugFrame_textTypeCli": "CLI",
-  "debugFrame_textTypePlain": "Просто",
-  "debugFrame_text": "- Текст: \"{text}\"",
+  "debugFrame_textTypePlain": "ÐŸÑ€Ð¾ÑÑ‚Ð¾",
+  "debugFrame_text": "- Ð¢ÐµÐºÑÑ‚: \"{text}\"",
   "@debugFrame_text": {
     "placeholders": {
       "text": {
@@ -540,15 +540,15 @@
       }
     }
   },
-  "debugFrame_hexDump": "Хексадесетичен Dump:",
-  "chat_pathManagement": "Управление на пътища",
-  "chat_routingMode": "Режим на маршрутизиране",
-  "chat_autoUseSavedPath": "Автоматично (използвай запазения път)",
-  "chat_forceFloodMode": "Принуди режим на наводняване",
-  "chat_recentAckPaths": "Неотдавни ACK пътища (докоснете, за да използвате):",
-  "chat_pathHistoryFull": "Историята на пътя е пълна. Премахнете записи, за да добавите нови.",
-  "chat_hopSingular": "скочи",
-  "chat_hopPlural": "скоци",
+  "debugFrame_hexDump": "Ð¥ÐµÐºÑÐ°Ð´ÐµÑÐµÑ‚Ð¸Ñ‡ÐµÐ½ Dump:",
+  "chat_pathManagement": "Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð° Ð¿ÑŠÑ‚Ð¸Ñ‰Ð°",
+  "chat_routingMode": "Ð ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð¸Ñ€Ð°Ð½Ðµ",
+  "chat_autoUseSavedPath": "ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾ (Ð¸Ð·Ð¿Ð¾Ð»Ð·Ð²Ð°Ð¹ Ð·Ð°Ð¿Ð°Ð·ÐµÐ½Ð¸Ñ Ð¿ÑŠÑ‚)",
+  "chat_forceFloodMode": "ÐŸÑ€Ð¸Ð½ÑƒÐ´Ð¸ Ñ€ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð½Ð°Ð²Ð¾Ð´Ð½ÑÐ²Ð°Ð½Ðµ",
+  "chat_recentAckPaths": "ÐÐµÐ¾Ñ‚Ð´Ð°Ð²Ð½Ð¸ ACK Ð¿ÑŠÑ‚Ð¸Ñ‰Ð° (Ð´Ð¾ÐºÐ¾ÑÐ½ÐµÑ‚Ðµ, Ð·Ð° Ð´Ð° Ð¸Ð·Ð¿Ð¾Ð»Ð·Ð²Ð°Ñ‚Ðµ):",
+  "chat_pathHistoryFull": "Ð˜ÑÑ‚Ð¾Ñ€Ð¸ÑÑ‚Ð° Ð½Ð° Ð¿ÑŠÑ‚Ñ Ðµ Ð¿ÑŠÐ»Ð½Ð°. ÐŸÑ€ÐµÐ¼Ð°Ñ…Ð½ÐµÑ‚Ðµ Ð·Ð°Ð¿Ð¸ÑÐ¸, Ð·Ð° Ð´Ð° Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚Ðµ Ð½Ð¾Ð²Ð¸.",
+  "chat_hopSingular": "ÑÐºÐ¾Ñ‡Ð¸",
+  "chat_hopPlural": "ÑÐºÐ¾Ñ†Ð¸",
   "chat_hopsCount": "{count} {count, plural, =1{hop} other{hops}}",
   "@chat_hopsCount": {
     "placeholders": {
@@ -557,20 +557,20 @@
       }
     }
   },
-  "chat_successes": "Успехи",
-  "chat_removePath": "Премахни пътя",
-  "chat_noPathHistoryYet": "Няма история на пътищата още.\nИзпратете съобщение, за да откриете пътища.",
-  "chat_pathActions": "Действия по пътя:",
-  "chat_setCustomPath": "Задайте персонализиран път",
-  "chat_setCustomPathSubtitle": "Ръчно укажете маршрутен път",
-  "chat_clearPath": "Почисти Път",
-  "chat_clearPathSubtitle": "Принуди преоткриване при следващо изпращане",
-  "chat_pathCleared": "Пътят е почистен. Следващото съобщение ще открие маршрута отново.",
-  "chat_floodModeSubtitle": "Използвайте превключвателя за маршрутизиране в лентата на приложението.",
-  "chat_floodModeEnabled": "Режим на наводнение е активиран. Включете го отново чрез иконката за маршрутизиране в лентата на приложението.",
-  "chat_fullPath": "Пълен път",
-  "chat_pathDetailsNotAvailable": "Детайлите за пътя все още не са налични. Опитайте да изпратите съобщение, за да освежите.",
-  "chat_pathSetHops": "Пътят е зададен: {hopCount} {hopCount, plural, =1{hop} other{hops}} - {status}",
+  "chat_successes": "Ð£ÑÐ¿ÐµÑ…Ð¸",
+  "chat_removePath": "ÐŸÑ€ÐµÐ¼Ð°Ñ…Ð½Ð¸ Ð¿ÑŠÑ‚Ñ",
+  "chat_noPathHistoryYet": "ÐÑÐ¼Ð° Ð¸ÑÑ‚Ð¾Ñ€Ð¸Ñ Ð½Ð° Ð¿ÑŠÑ‚Ð¸Ñ‰Ð°Ñ‚Ð° Ð¾Ñ‰Ðµ.\nÐ˜Ð·Ð¿Ñ€Ð°Ñ‚ÐµÑ‚Ðµ ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ, Ð·Ð° Ð´Ð° Ð¾Ñ‚ÐºÑ€Ð¸ÐµÑ‚Ðµ Ð¿ÑŠÑ‚Ð¸Ñ‰Ð°.",
+  "chat_pathActions": "Ð”ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ Ð¿Ð¾ Ð¿ÑŠÑ‚Ñ:",
+  "chat_setCustomPath": "Ð—Ð°Ð´Ð°Ð¹Ñ‚Ðµ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð½ Ð¿ÑŠÑ‚",
+  "chat_setCustomPathSubtitle": "Ð ÑŠÑ‡Ð½Ð¾ ÑƒÐºÐ°Ð¶ÐµÑ‚Ðµ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚ÐµÐ½ Ð¿ÑŠÑ‚",
+  "chat_clearPath": "ÐŸÐ¾Ñ‡Ð¸ÑÑ‚Ð¸ ÐŸÑŠÑ‚",
+  "chat_clearPathSubtitle": "ÐŸÑ€Ð¸Ð½ÑƒÐ´Ð¸ Ð¿Ñ€ÐµÐ¾Ñ‚ÐºÑ€Ð¸Ð²Ð°Ð½Ðµ Ð¿Ñ€Ð¸ ÑÐ»ÐµÐ´Ð²Ð°Ñ‰Ð¾ Ð¸Ð·Ð¿Ñ€Ð°Ñ‰Ð°Ð½Ðµ",
+  "chat_pathCleared": "ÐŸÑŠÑ‚ÑÑ‚ Ðµ Ð¿Ð¾Ñ‡Ð¸ÑÑ‚ÐµÐ½. Ð¡Ð»ÐµÐ´Ð²Ð°Ñ‰Ð¾Ñ‚Ð¾ ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ñ‰Ðµ Ð¾Ñ‚ÐºÑ€Ð¸Ðµ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð° Ð¾Ñ‚Ð½Ð¾Ð²Ð¾.",
+  "chat_floodModeSubtitle": "Ð˜Ð·Ð¿Ð¾Ð»Ð·Ð²Ð°Ð¹Ñ‚Ðµ Ð¿Ñ€ÐµÐ²ÐºÐ»ÑŽÑ‡Ð²Ð°Ñ‚ÐµÐ»Ñ Ð·Ð° Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð¸Ñ€Ð°Ð½Ðµ Ð² Ð»ÐµÐ½Ñ‚Ð°Ñ‚Ð° Ð½Ð° Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾.",
+  "chat_floodModeEnabled": "Ð ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð½Ð°Ð²Ð¾Ð´Ð½ÐµÐ½Ð¸Ðµ Ðµ Ð°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð½. Ð’ÐºÐ»ÑŽÑ‡ÐµÑ‚Ðµ Ð³Ð¾ Ð¾Ñ‚Ð½Ð¾Ð²Ð¾ Ñ‡Ñ€ÐµÐ· Ð¸ÐºÐ¾Ð½ÐºÐ°Ñ‚Ð° Ð·Ð° Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð¸Ñ€Ð°Ð½Ðµ Ð² Ð»ÐµÐ½Ñ‚Ð°Ñ‚Ð° Ð½Ð° Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾.",
+  "chat_fullPath": "ÐŸÑŠÐ»ÐµÐ½ Ð¿ÑŠÑ‚",
+  "chat_pathDetailsNotAvailable": "Ð”ÐµÑ‚Ð°Ð¹Ð»Ð¸Ñ‚Ðµ Ð·Ð° Ð¿ÑŠÑ‚Ñ Ð²ÑÐµ Ð¾Ñ‰Ðµ Ð½Ðµ ÑÐ° Ð½Ð°Ð»Ð¸Ñ‡Ð½Ð¸. ÐžÐ¿Ð¸Ñ‚Ð°Ð¹Ñ‚Ðµ Ð´Ð° Ð¸Ð·Ð¿Ñ€Ð°Ñ‚Ð¸Ñ‚Ðµ ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ, Ð·Ð° Ð´Ð° Ð¾ÑÐ²ÐµÐ¶Ð¸Ñ‚Ðµ.",
+  "chat_pathSetHops": "ÐŸÑŠÑ‚ÑÑ‚ Ðµ Ð·Ð°Ð´Ð°Ð´ÐµÐ½: {hopCount} {hopCount, plural, =1{hop} other{hops}} - {status}",
   "@chat_pathSetHops": {
     "placeholders": {
       "hopCount": {
@@ -581,16 +581,16 @@
       }
     }
   },
-  "chat_pathSavedLocally": "Запазено локално. Свържете се за синхронизиране.",
-  "chat_pathDeviceConfirmed": "Устройство потвърдено.",
-  "chat_pathDeviceNotConfirmed": "Устройството все още не е потвърдено.",
-  "chat_type": "Въведете",
-  "chat_path": "Пътекино",
-  "chat_publicKey": "Публичен ключ",
-  "chat_compressOutgoingMessages": "Компресиране на изходящи съобщения",
-  "chat_floodForced": "Потоп (принуден)",
-  "chat_directForced": "Директно (принудително)",
-  "chat_hopsForced": "{count} скока (принудително)",
+  "chat_pathSavedLocally": "Ð—Ð°Ð¿Ð°Ð·ÐµÐ½Ð¾ Ð»Ð¾ÐºÐ°Ð»Ð½Ð¾. Ð¡Ð²ÑŠÑ€Ð¶ÐµÑ‚Ðµ ÑÐµ Ð·Ð° ÑÐ¸Ð½Ñ…Ñ€Ð¾Ð½Ð¸Ð·Ð¸Ñ€Ð°Ð½Ðµ.",
+  "chat_pathDeviceConfirmed": "Ð£ÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾ Ð¿Ð¾Ñ‚Ð²ÑŠÑ€Ð´ÐµÐ½Ð¾.",
+  "chat_pathDeviceNotConfirmed": "Ð£ÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾Ñ‚Ð¾ Ð²ÑÐµ Ð¾Ñ‰Ðµ Ð½Ðµ Ðµ Ð¿Ð¾Ñ‚Ð²ÑŠÑ€Ð´ÐµÐ½Ð¾.",
+  "chat_type": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ",
+  "chat_path": "ÐŸÑŠÑ‚ÐµÐºÐ¸Ð½Ð¾",
+  "chat_publicKey": "ÐŸÑƒÐ±Ð»Ð¸Ñ‡ÐµÐ½ ÐºÐ»ÑŽÑ‡",
+  "chat_compressOutgoingMessages": "ÐšÐ¾Ð¼Ð¿Ñ€ÐµÑÐ¸Ñ€Ð°Ð½Ðµ Ð½Ð° Ð¸Ð·Ñ…Ð¾Ð´ÑÑ‰Ð¸ ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ",
+  "chat_floodForced": "ÐŸÐ¾Ñ‚Ð¾Ð¿ (Ð¿Ñ€Ð¸Ð½ÑƒÐ´ÐµÐ½)",
+  "chat_directForced": "Ð”Ð¸Ñ€ÐµÐºÑ‚Ð½Ð¾ (Ð¿Ñ€Ð¸Ð½ÑƒÐ´Ð¸Ñ‚ÐµÐ»Ð½Ð¾)",
+  "chat_hopsForced": "{count} ÑÐºÐ¾ÐºÐ° (Ð¿Ñ€Ð¸Ð½ÑƒÐ´Ð¸Ñ‚ÐµÐ»Ð½Ð¾)",
   "@chat_hopsForced": {
     "placeholders": {
       "count": {
@@ -598,10 +598,10 @@
       }
     }
   },
-  "chat_floodAuto": "Потоп (автоматично)",
-  "chat_direct": "Директно",
-  "chat_poiShared": "Споделено място от интерес",
-  "chat_unread": "Непрочетени: {count}",
+  "chat_floodAuto": "ÐŸÐ¾Ñ‚Ð¾Ð¿ (Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾)",
+  "chat_direct": "Ð”Ð¸Ñ€ÐµÐºÑ‚Ð½Ð¾",
+  "chat_poiShared": "Ð¡Ð¿Ð¾Ð´ÐµÐ»ÐµÐ½Ð¾ Ð¼ÑÑÑ‚Ð¾ Ð¾Ñ‚ Ð¸Ð½Ñ‚ÐµÑ€ÐµÑ",
+  "chat_unread": "ÐÐµÐ¿Ñ€Ð¾Ñ‡ÐµÑ‚ÐµÐ½Ð¸: {count}",
   "@chat_unread": {
     "placeholders": {
       "count": {
@@ -609,10 +609,10 @@
       }
     }
   },
-  "chat_openLink": "Отваряне на връзката?",
-  "chat_openLinkConfirmation": "Искате ли да отворите тази връзка в браузъра си?",
-  "chat_open": "Отвори",
-  "chat_couldNotOpenLink": "Не можа да се отвори връзката: {url}",
+  "chat_openLink": "ÐžÑ‚Ð²Ð°Ñ€ÑÐ½Ðµ Ð½Ð° Ð²Ñ€ÑŠÐ·ÐºÐ°Ñ‚Ð°?",
+  "chat_openLinkConfirmation": "Ð˜ÑÐºÐ°Ñ‚Ðµ Ð»Ð¸ Ð´Ð° Ð¾Ñ‚Ð²Ð¾Ñ€Ð¸Ñ‚Ðµ Ñ‚Ð°Ð·Ð¸ Ð²Ñ€ÑŠÐ·ÐºÐ° Ð² Ð±Ñ€Ð°ÑƒÐ·ÑŠÑ€Ð° ÑÐ¸?",
+  "chat_open": "ÐžÑ‚Ð²Ð¾Ñ€Ð¸",
+  "chat_couldNotOpenLink": "ÐÐµ Ð¼Ð¾Ð¶Ð° Ð´Ð° ÑÐµ Ð¾Ñ‚Ð²Ð¾Ñ€Ð¸ Ð²Ñ€ÑŠÐ·ÐºÐ°Ñ‚Ð°: {url}",
   "@chat_couldNotOpenLink": {
     "placeholders": {
       "url": {
@@ -620,11 +620,11 @@
       }
     }
   },
-  "chat_invalidLink": "Невалиден формат на връзката",
-  "map_title": "Карта на възлите",
-  "map_noNodesWithLocation": "Няма възли с данни за местоположение.",
-  "map_nodesNeedGps": "Възлагат се възлозите да споделят техните GPS координати,\nза да се появят на картата.",
-  "map_nodesCount": "Нодове: {count}",
+  "chat_invalidLink": "ÐÐµÐ²Ð°Ð»Ð¸Ð´ÐµÐ½ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ Ð½Ð° Ð²Ñ€ÑŠÐ·ÐºÐ°Ñ‚Ð°",
+  "map_title": "ÐšÐ°Ñ€Ñ‚Ð° Ð½Ð° Ð²ÑŠÐ·Ð»Ð¸Ñ‚Ðµ",
+  "map_noNodesWithLocation": "ÐÑÐ¼Ð° Ð²ÑŠÐ·Ð»Ð¸ Ñ Ð´Ð°Ð½Ð½Ð¸ Ð·Ð° Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ.",
+  "map_nodesNeedGps": "Ð’ÑŠÐ·Ð»Ð°Ð³Ð°Ñ‚ ÑÐµ Ð²ÑŠÐ·Ð»Ð¾Ð·Ð¸Ñ‚Ðµ Ð´Ð° ÑÐ¿Ð¾Ð´ÐµÐ»ÑÑ‚ Ñ‚ÐµÑ…Ð½Ð¸Ñ‚Ðµ GPS ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð¸,\nÐ·Ð° Ð´Ð° ÑÐµ Ð¿Ð¾ÑÐ²ÑÑ‚ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ð°Ñ‚Ð°.",
+  "map_nodesCount": "ÐÐ¾Ð´Ð¾Ð²Ðµ: {count}",
   "@map_nodesCount": {
     "placeholders": {
       "count": {
@@ -632,7 +632,7 @@
       }
     }
   },
-  "map_pinsCount": "Ключове: {count}",
+  "map_pinsCount": "ÐšÐ»ÑŽÑ‡Ð¾Ð²Ðµ: {count}",
   "@map_pinsCount": {
     "placeholders": {
       "count": {
@@ -640,27 +640,27 @@
       }
     }
   },
-  "map_chat": "Чат",
-  "map_repeater": "Повтарящ се",
-  "map_room": "Стая",
-  "map_sensor": "Датчик",
-  "map_pinDm": "Задържане (DM)",
-  "map_pinPrivate": "Задържане (Приватно)",
-  "map_pinPublic": "Публичен ключ",
-  "map_lastSeen": "Последна видяна",
-  "map_disconnectConfirm": "Сигурни ли сте, че искате да се откъснете от това устройство?",
-  "map_from": "От",
-  "map_source": "Източник",
-  "map_flags": "Флаг",
-  "map_shareMarkerHere": "Споделете маркер тук",
-  "map_pinLabel": "Етикетиране на пин",
-  "map_label": "Етикет",
-  "map_pointOfInterest": "Точка на интерес",
-  "map_sendToContact": "Изпрати на контакт",
-  "map_sendToChannel": "Изпрати в канала",
-  "map_noChannelsAvailable": "Няма налични канали",
-  "map_publicLocationShare": "Споделяне на публично място",
-  "map_publicLocationShareConfirm": "Ще споделите местоположение в {channelLabel}. Този канал е публичен и всеки с PSK може да го види.",
+  "map_chat": "Ð§Ð°Ñ‚",
+  "map_repeater": "ÐŸÐ¾Ð²Ñ‚Ð°Ñ€ÑÑ‰ ÑÐµ",
+  "map_room": "Ð¡Ñ‚Ð°Ñ",
+  "map_sensor": "Ð”Ð°Ñ‚Ñ‡Ð¸Ðº",
+  "map_pinDm": "Ð—Ð°Ð´ÑŠÑ€Ð¶Ð°Ð½Ðµ (DM)",
+  "map_pinPrivate": "Ð—Ð°Ð´ÑŠÑ€Ð¶Ð°Ð½Ðµ (ÐŸÑ€Ð¸Ð²Ð°Ñ‚Ð½Ð¾)",
+  "map_pinPublic": "ÐŸÑƒÐ±Ð»Ð¸Ñ‡ÐµÐ½ ÐºÐ»ÑŽÑ‡",
+  "map_lastSeen": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð° Ð²Ð¸Ð´ÑÐ½Ð°",
+  "map_disconnectConfirm": "Ð¡Ð¸Ð³ÑƒÑ€Ð½Ð¸ Ð»Ð¸ ÑÑ‚Ðµ, Ñ‡Ðµ Ð¸ÑÐºÐ°Ñ‚Ðµ Ð´Ð° ÑÐµ Ð¾Ñ‚ÐºÑŠÑÐ½ÐµÑ‚Ðµ Ð¾Ñ‚ Ñ‚Ð¾Ð²Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾?",
+  "map_from": "ÐžÑ‚",
+  "map_source": "Ð˜Ð·Ñ‚Ð¾Ñ‡Ð½Ð¸Ðº",
+  "map_flags": "Ð¤Ð»Ð°Ð³",
+  "map_shareMarkerHere": "Ð¡Ð¿Ð¾Ð´ÐµÐ»ÐµÑ‚Ðµ Ð¼Ð°Ñ€ÐºÐµÑ€ Ñ‚ÑƒÐº",
+  "map_pinLabel": "Ð•Ñ‚Ð¸ÐºÐµÑ‚Ð¸Ñ€Ð°Ð½Ðµ Ð½Ð° Ð¿Ð¸Ð½",
+  "map_label": "Ð•Ñ‚Ð¸ÐºÐµÑ‚",
+  "map_pointOfInterest": "Ð¢Ð¾Ñ‡ÐºÐ° Ð½Ð° Ð¸Ð½Ñ‚ÐµÑ€ÐµÑ",
+  "map_sendToContact": "Ð˜Ð·Ð¿Ñ€Ð°Ñ‚Ð¸ Ð½Ð° ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚",
+  "map_sendToChannel": "Ð˜Ð·Ð¿Ñ€Ð°Ñ‚Ð¸ Ð² ÐºÐ°Ð½Ð°Ð»Ð°",
+  "map_noChannelsAvailable": "ÐÑÐ¼Ð° Ð½Ð°Ð»Ð¸Ñ‡Ð½Ð¸ ÐºÐ°Ð½Ð°Ð»Ð¸",
+  "map_publicLocationShare": "Ð¡Ð¿Ð¾Ð´ÐµÐ»ÑÐ½Ðµ Ð½Ð° Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¾ Ð¼ÑÑÑ‚Ð¾",
+  "map_publicLocationShareConfirm": "Ð©Ðµ ÑÐ¿Ð¾Ð´ÐµÐ»Ð¸Ñ‚Ðµ Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð² {channelLabel}. Ð¢Ð¾Ð·Ð¸ ÐºÐ°Ð½Ð°Ð» Ðµ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡ÐµÐ½ Ð¸ Ð²ÑÐµÐºÐ¸ Ñ PSK Ð¼Ð¾Ð¶Ðµ Ð´Ð° Ð³Ð¾ Ð²Ð¸Ð´Ð¸.",
   "@map_publicLocationShareConfirm": {
     "placeholders": {
       "channelLabel": {
@@ -668,26 +668,26 @@
       }
     }
   },
-  "map_connectToShareMarkers": "Свържете се с устройство, за да споделите маркери.",
-  "map_filterNodes": "Филтрирайте възли",
-  "map_nodeTypes": "Типове възли",
-  "map_chatNodes": "Възли на чата",
-  "map_repeaters": "Повторители",
-  "map_otherNodes": "Други възли",
-  "map_keyPrefix": "Префикс на ключа",
-  "map_filterByKeyPrefix": "Филтрирайте по префикс на ключ",
-  "map_publicKeyPrefix": "Префикс на публичен ключ",
-  "map_markers": "Маркери",
-  "map_showSharedMarkers": "Покажи споделени маркери",
-  "map_lastSeenTime": "Последна видяна дата",
-  "map_sharedPin": "Споделено копие",
-  "map_joinRoom": "Присъедини се към стаята",
-  "map_manageRepeater": "Управление на Повтарящ се Елемент",
-  "mapCache_title": "Кеш на офлайн карти",
-  "mapCache_selectAreaFirst": "Изберете област за кеширане първа",
-  "mapCache_noTilesToDownload": "Няма плочки за изтегляне за тази област.",
-  "mapCache_downloadTilesTitle": "Изтегли плочки",
-  "mapCache_downloadTilesPrompt": "Изтегли {count} плочки за офлайн употреба?",
+  "map_connectToShareMarkers": "Ð¡Ð²ÑŠÑ€Ð¶ÐµÑ‚Ðµ ÑÐµ Ñ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾, Ð·Ð° Ð´Ð° ÑÐ¿Ð¾Ð´ÐµÐ»Ð¸Ñ‚Ðµ Ð¼Ð°Ñ€ÐºÐµÑ€Ð¸.",
+  "map_filterNodes": "Ð¤Ð¸Ð»Ñ‚Ñ€Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Ð²ÑŠÐ·Ð»Ð¸",
+  "map_nodeTypes": "Ð¢Ð¸Ð¿Ð¾Ð²Ðµ Ð²ÑŠÐ·Ð»Ð¸",
+  "map_chatNodes": "Ð’ÑŠÐ·Ð»Ð¸ Ð½Ð° Ñ‡Ð°Ñ‚Ð°",
+  "map_repeaters": "ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ»Ð¸",
+  "map_otherNodes": "Ð”Ñ€ÑƒÐ³Ð¸ Ð²ÑŠÐ·Ð»Ð¸",
+  "map_keyPrefix": "ÐŸÑ€ÐµÑ„Ð¸ÐºÑ Ð½Ð° ÐºÐ»ÑŽÑ‡Ð°",
+  "map_filterByKeyPrefix": "Ð¤Ð¸Ð»Ñ‚Ñ€Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Ð¿Ð¾ Ð¿Ñ€ÐµÑ„Ð¸ÐºÑ Ð½Ð° ÐºÐ»ÑŽÑ‡",
+  "map_publicKeyPrefix": "ÐŸÑ€ÐµÑ„Ð¸ÐºÑ Ð½Ð° Ð¿ÑƒÐ±Ð»Ð¸Ñ‡ÐµÐ½ ÐºÐ»ÑŽÑ‡",
+  "map_markers": "ÐœÐ°Ñ€ÐºÐµÑ€Ð¸",
+  "map_showSharedMarkers": "ÐŸÐ¾ÐºÐ°Ð¶Ð¸ ÑÐ¿Ð¾Ð´ÐµÐ»ÐµÐ½Ð¸ Ð¼Ð°Ñ€ÐºÐµÑ€Ð¸",
+  "map_lastSeenTime": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð° Ð²Ð¸Ð´ÑÐ½Ð° Ð´Ð°Ñ‚Ð°",
+  "map_sharedPin": "Ð¡Ð¿Ð¾Ð´ÐµÐ»ÐµÐ½Ð¾ ÐºÐ¾Ð¿Ð¸Ðµ",
+  "map_joinRoom": "ÐŸÑ€Ð¸ÑÑŠÐµÐ´Ð¸Ð½Ð¸ ÑÐµ ÐºÑŠÐ¼ ÑÑ‚Ð°ÑÑ‚Ð°",
+  "map_manageRepeater": "Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð° ÐŸÐ¾Ð²Ñ‚Ð°Ñ€ÑÑ‰ ÑÐµ Ð•Ð»ÐµÐ¼ÐµÐ½Ñ‚",
+  "mapCache_title": "ÐšÐµÑˆ Ð½Ð° Ð¾Ñ„Ð»Ð°Ð¹Ð½ ÐºÐ°Ñ€Ñ‚Ð¸",
+  "mapCache_selectAreaFirst": "Ð˜Ð·Ð±ÐµÑ€ÐµÑ‚Ðµ Ð¾Ð±Ð»Ð°ÑÑ‚ Ð·Ð° ÐºÐµÑˆÐ¸Ñ€Ð°Ð½Ðµ Ð¿ÑŠÑ€Ð²Ð°",
+  "mapCache_noTilesToDownload": "ÐÑÐ¼Ð° Ð¿Ð»Ð¾Ñ‡ÐºÐ¸ Ð·Ð° Ð¸Ð·Ñ‚ÐµÐ³Ð»ÑÐ½Ðµ Ð·Ð° Ñ‚Ð°Ð·Ð¸ Ð¾Ð±Ð»Ð°ÑÑ‚.",
+  "mapCache_downloadTilesTitle": "Ð˜Ð·Ñ‚ÐµÐ³Ð»Ð¸ Ð¿Ð»Ð¾Ñ‡ÐºÐ¸",
+  "mapCache_downloadTilesPrompt": "Ð˜Ð·Ñ‚ÐµÐ³Ð»Ð¸ {count} Ð¿Ð»Ð¾Ñ‡ÐºÐ¸ Ð·Ð° Ð¾Ñ„Ð»Ð°Ð¹Ð½ ÑƒÐ¿Ð¾Ñ‚Ñ€ÐµÐ±Ð°?",
   "@mapCache_downloadTilesPrompt": {
     "placeholders": {
       "count": {
@@ -695,8 +695,8 @@
       }
     }
   },
-  "mapCache_downloadAction": "Изтегли",
-  "mapCache_cachedTiles": "Кеширани {count} плочки",
+  "mapCache_downloadAction": "Ð˜Ð·Ñ‚ÐµÐ³Ð»Ð¸",
+  "mapCache_cachedTiles": "ÐšÐµÑˆÐ¸Ñ€Ð°Ð½Ð¸ {count} Ð¿Ð»Ð¾Ñ‡ÐºÐ¸",
   "@mapCache_cachedTiles": {
     "placeholders": {
       "count": {
@@ -704,7 +704,7 @@
       }
     }
   },
-  "mapCache_cachedTilesWithFailed": "Запазени {downloaded} плочки ({failed} неуспешни)",
+  "mapCache_cachedTilesWithFailed": "Ð—Ð°Ð¿Ð°Ð·ÐµÐ½Ð¸ {downloaded} Ð¿Ð»Ð¾Ñ‡ÐºÐ¸ ({failed} Ð½ÐµÑƒÑÐ¿ÐµÑˆÐ½Ð¸)",
   "@mapCache_cachedTilesWithFailed": {
     "placeholders": {
       "downloaded": {
@@ -715,14 +715,14 @@
       }
     }
   },
-  "mapCache_clearOfflineCacheTitle": "Изчисти офлайн кеша",
-  "mapCache_clearOfflineCachePrompt": "Премахнете всички кеширани плочки на картата?",
-  "mapCache_offlineCacheCleared": "Кешът на устройството е изчистен.",
-  "mapCache_noAreaSelected": "Няма избрана област",
-  "mapCache_cacheArea": "Област с кеш",
-  "mapCache_useCurrentView": "Използвайте текущия изглед",
-  "mapCache_zoomRange": "Обхват на увеличението",
-  "mapCache_estimatedTiles": "Очаквани плочки: {count}",
+  "mapCache_clearOfflineCacheTitle": "Ð˜Ð·Ñ‡Ð¸ÑÑ‚Ð¸ Ð¾Ñ„Ð»Ð°Ð¹Ð½ ÐºÐµÑˆÐ°",
+  "mapCache_clearOfflineCachePrompt": "ÐŸÑ€ÐµÐ¼Ð°Ñ…Ð½ÐµÑ‚Ðµ Ð²ÑÐ¸Ñ‡ÐºÐ¸ ÐºÐµÑˆÐ¸Ñ€Ð°Ð½Ð¸ Ð¿Ð»Ð¾Ñ‡ÐºÐ¸ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ð°Ñ‚Ð°?",
+  "mapCache_offlineCacheCleared": "ÐšÐµÑˆÑŠÑ‚ Ð½Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾Ñ‚Ð¾ Ðµ Ð¸Ð·Ñ‡Ð¸ÑÑ‚ÐµÐ½.",
+  "mapCache_noAreaSelected": "ÐÑÐ¼Ð° Ð¸Ð·Ð±Ñ€Ð°Ð½Ð° Ð¾Ð±Ð»Ð°ÑÑ‚",
+  "mapCache_cacheArea": "ÐžÐ±Ð»Ð°ÑÑ‚ Ñ ÐºÐµÑˆ",
+  "mapCache_useCurrentView": "Ð˜Ð·Ð¿Ð¾Ð»Ð·Ð²Ð°Ð¹Ñ‚Ðµ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ñ Ð¸Ð·Ð³Ð»ÐµÐ´",
+  "mapCache_zoomRange": "ÐžÐ±Ñ…Ð²Ð°Ñ‚ Ð½Ð° ÑƒÐ²ÐµÐ»Ð¸Ñ‡ÐµÐ½Ð¸ÐµÑ‚Ð¾",
+  "mapCache_estimatedTiles": "ÐžÑ‡Ð°ÐºÐ²Ð°Ð½Ð¸ Ð¿Ð»Ð¾Ñ‡ÐºÐ¸: {count}",
   "@mapCache_estimatedTiles": {
     "placeholders": {
       "count": {
@@ -730,7 +730,7 @@
       }
     }
   },
-  "mapCache_downloadedTiles": "Изтеглено {completed} / {total}",
+  "mapCache_downloadedTiles": "Ð˜Ð·Ñ‚ÐµÐ³Ð»ÐµÐ½Ð¾ {completed} / {total}",
   "@mapCache_downloadedTiles": {
     "placeholders": {
       "completed": {
@@ -741,9 +741,9 @@
       }
     }
   },
-  "mapCache_downloadTilesButton": "Изтегли Плочки",
-  "mapCache_clearCacheButton": "Изчисти кеша",
-  "mapCache_failedDownloads": "Неуспешни изтегляния: {count}",
+  "mapCache_downloadTilesButton": "Ð˜Ð·Ñ‚ÐµÐ³Ð»Ð¸ ÐŸÐ»Ð¾Ñ‡ÐºÐ¸",
+  "mapCache_clearCacheButton": "Ð˜Ð·Ñ‡Ð¸ÑÑ‚Ð¸ ÐºÐµÑˆÐ°",
+  "mapCache_failedDownloads": "ÐÐµÑƒÑÐ¿ÐµÑˆÐ½Ð¸ Ð¸Ð·Ñ‚ÐµÐ³Ð»ÑÐ½Ð¸Ñ: {count}",
   "@mapCache_failedDownloads": {
     "placeholders": {
       "count": {
@@ -751,7 +751,7 @@
       }
     }
   },
-  "mapCache_boundsLabel": "Север {north}, Юг {south}, Изток {east}, Запад {west}",
+  "mapCache_boundsLabel": "Ð¡ÐµÐ²ÐµÑ€ {north}, Ð®Ð³ {south}, Ð˜Ð·Ñ‚Ð¾Ðº {east}, Ð—Ð°Ð¿Ð°Ð´ {west}",
   "@mapCache_boundsLabel": {
     "placeholders": {
       "north": {
@@ -768,8 +768,8 @@
       }
     }
   },
-  "time_justNow": "Сега",
-  "time_minutesAgo": "{minutes} минути преди",
+  "time_justNow": "Ð¡ÐµÐ³Ð°",
+  "time_minutesAgo": "{minutes} Ð¼Ð¸Ð½ÑƒÑ‚Ð¸ Ð¿Ñ€ÐµÐ´Ð¸",
   "@time_minutesAgo": {
     "placeholders": {
       "minutes": {
@@ -777,7 +777,7 @@
       }
     }
   },
-  "time_hoursAgo": "{hours} часа преди",
+  "time_hoursAgo": "{hours} Ñ‡Ð°ÑÐ° Ð¿Ñ€ÐµÐ´Ð¸",
   "@time_hoursAgo": {
     "placeholders": {
       "hours": {
@@ -785,7 +785,7 @@
       }
     }
   },
-  "time_daysAgo": "{days} дни преди",
+  "time_daysAgo": "{days} Ð´Ð½Ð¸ Ð¿Ñ€ÐµÐ´Ð¸",
   "@time_daysAgo": {
     "placeholders": {
       "days": {
@@ -793,33 +793,33 @@
       }
     }
   },
-  "time_hour": "час",
-  "time_hours": "часове",
-  "time_day": "ден",
-  "time_days": "дни",
-  "time_week": "седмица",
-  "time_weeks": "секти",
-  "time_month": "месец",
-  "time_months": "месеци",
-  "time_minutes": "минути",
-  "time_allTime": "Всичко време",
-  "dialog_disconnect": "Прекъсни",
-  "dialog_disconnectConfirm": "Сигурни ли сте, че искате да се откъснете от това устройство?",
-  "login_repeaterLogin": "Повторител Вход",
-  "login_roomLogin": "Вход в стаята",
-  "login_password": "Парола",
-  "login_enterPassword": "Въведете парола",
-  "login_savePassword": "Запази парола",
-  "login_savePasswordSubtitle": "Паролата ще бъде съхранена сигурно на това устройство.",
-  "login_repeaterDescription": "Въведете паролата на репитера, за да получите достъп до настройките и статуса.",
-  "login_roomDescription": "Въведете паролата на стаята, за да получите достъп до настройките и статуса.",
-  "login_routing": "Маршрутизиране",
-  "login_routingMode": "Режим на маршрутизиране",
-  "login_autoUseSavedPath": "Автоматично (използвай запазения път)",
-  "login_forceFloodMode": "Принуди режим на наводняване",
-  "login_managePaths": "Управление на пътища",
-  "login_login": "Вход",
-  "login_attempt": "Опитвате {current}/{max}",
+  "time_hour": "Ñ‡Ð°Ñ",
+  "time_hours": "Ñ‡Ð°ÑÐ¾Ð²Ðµ",
+  "time_day": "Ð´ÐµÐ½",
+  "time_days": "Ð´Ð½Ð¸",
+  "time_week": "ÑÐµÐ´Ð¼Ð¸Ñ†Ð°",
+  "time_weeks": "ÑÐµÐºÑ‚Ð¸",
+  "time_month": "Ð¼ÐµÑÐµÑ†",
+  "time_months": "Ð¼ÐµÑÐµÑ†Ð¸",
+  "time_minutes": "Ð¼Ð¸Ð½ÑƒÑ‚Ð¸",
+  "time_allTime": "Ð’ÑÐ¸Ñ‡ÐºÐ¾ Ð²Ñ€ÐµÐ¼Ðµ",
+  "dialog_disconnect": "ÐŸÑ€ÐµÐºÑŠÑÐ½Ð¸",
+  "dialog_disconnectConfirm": "Ð¡Ð¸Ð³ÑƒÑ€Ð½Ð¸ Ð»Ð¸ ÑÑ‚Ðµ, Ñ‡Ðµ Ð¸ÑÐºÐ°Ñ‚Ðµ Ð´Ð° ÑÐµ Ð¾Ñ‚ÐºÑŠÑÐ½ÐµÑ‚Ðµ Ð¾Ñ‚ Ñ‚Ð¾Ð²Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾?",
+  "login_repeaterLogin": "ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ» Ð’Ñ…Ð¾Ð´",
+  "login_roomLogin": "Ð’Ñ…Ð¾Ð´ Ð² ÑÑ‚Ð°ÑÑ‚Ð°",
+  "login_password": "ÐŸÐ°Ñ€Ð¾Ð»Ð°",
+  "login_enterPassword": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ Ð¿Ð°Ñ€Ð¾Ð»Ð°",
+  "login_savePassword": "Ð—Ð°Ð¿Ð°Ð·Ð¸ Ð¿Ð°Ñ€Ð¾Ð»Ð°",
+  "login_savePasswordSubtitle": "ÐŸÐ°Ñ€Ð¾Ð»Ð°Ñ‚Ð° Ñ‰Ðµ Ð±ÑŠÐ´Ðµ ÑÑŠÑ…Ñ€Ð°Ð½ÐµÐ½Ð° ÑÐ¸Ð³ÑƒÑ€Ð½Ð¾ Ð½Ð° Ñ‚Ð¾Ð²Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾.",
+  "login_repeaterDescription": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ Ð¿Ð°Ñ€Ð¾Ð»Ð°Ñ‚Ð° Ð½Ð° Ñ€ÐµÐ¿Ð¸Ñ‚ÐµÑ€Ð°, Ð·Ð° Ð´Ð° Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚Ðµ Ð´Ð¾ÑÑ‚ÑŠÐ¿ Ð´Ð¾ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸Ñ‚Ðµ Ð¸ ÑÑ‚Ð°Ñ‚ÑƒÑÐ°.",
+  "login_roomDescription": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ Ð¿Ð°Ñ€Ð¾Ð»Ð°Ñ‚Ð° Ð½Ð° ÑÑ‚Ð°ÑÑ‚Ð°, Ð·Ð° Ð´Ð° Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚Ðµ Ð´Ð¾ÑÑ‚ÑŠÐ¿ Ð´Ð¾ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸Ñ‚Ðµ Ð¸ ÑÑ‚Ð°Ñ‚ÑƒÑÐ°.",
+  "login_routing": "ÐœÐ°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð¸Ñ€Ð°Ð½Ðµ",
+  "login_routingMode": "Ð ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð¸Ñ€Ð°Ð½Ðµ",
+  "login_autoUseSavedPath": "ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾ (Ð¸Ð·Ð¿Ð¾Ð»Ð·Ð²Ð°Ð¹ Ð·Ð°Ð¿Ð°Ð·ÐµÐ½Ð¸Ñ Ð¿ÑŠÑ‚)",
+  "login_forceFloodMode": "ÐŸÑ€Ð¸Ð½ÑƒÐ´Ð¸ Ñ€ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð½Ð°Ð²Ð¾Ð´Ð½ÑÐ²Ð°Ð½Ðµ",
+  "login_managePaths": "Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð° Ð¿ÑŠÑ‚Ð¸Ñ‰Ð°",
+  "login_login": "Ð’Ñ…Ð¾Ð´",
+  "login_attempt": "ÐžÐ¿Ð¸Ñ‚Ð²Ð°Ñ‚Ðµ {current}/{max}",
   "@login_attempt": {
     "placeholders": {
       "current": {
@@ -830,7 +830,7 @@
       }
     }
   },
-  "login_failed": "Входът не беше успешен: {error}",
+  "login_failed": "Ð’Ñ…Ð¾Ð´ÑŠÑ‚ Ð½Ðµ Ð±ÐµÑˆÐµ ÑƒÑÐ¿ÐµÑˆÐµÐ½: {error}",
   "@login_failed": {
     "placeholders": {
       "error": {
@@ -838,10 +838,10 @@
       }
     }
   },
-  "login_failedMessage": "Входът не беше успешен. Или паролата е грешна, или повторителят е недостъпен.",
-  "common_reload": "Презареди",
-  "common_clear": "Изчисти",
-  "path_currentPath": "Текущ път: {path}",
+  "login_failedMessage": "Ð’Ñ…Ð¾Ð´ÑŠÑ‚ Ð½Ðµ Ð±ÐµÑˆÐµ ÑƒÑÐ¿ÐµÑˆÐµÐ½. Ð˜Ð»Ð¸ Ð¿Ð°Ñ€Ð¾Ð»Ð°Ñ‚Ð° Ðµ Ð³Ñ€ÐµÑˆÐ½Ð°, Ð¸Ð»Ð¸ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ»ÑÑ‚ Ðµ Ð½ÐµÐ´Ð¾ÑÑ‚ÑŠÐ¿ÐµÐ½.",
+  "common_reload": "ÐŸÑ€ÐµÐ·Ð°Ñ€ÐµÐ´Ð¸",
+  "common_clear": "Ð˜Ð·Ñ‡Ð¸ÑÑ‚Ð¸",
+  "path_currentPath": "Ð¢ÐµÐºÑƒÑ‰ Ð¿ÑŠÑ‚: {path}",
   "@path_currentPath": {
     "placeholders": {
       "path": {
@@ -849,7 +849,7 @@
       }
     }
   },
-  "path_usingHopsPath": "Използване на {count} {count, plural, =1{hop} other{hops}} път",
+  "path_usingHopsPath": "Ð˜Ð·Ð¿Ð¾Ð»Ð·Ð²Ð°Ð½Ðµ Ð½Ð° {count} {count, plural, =1{hop} other{hops}} Ð¿ÑŠÑ‚",
   "@path_usingHopsPath": {
     "placeholders": {
       "count": {
@@ -857,16 +857,16 @@
       }
     }
   },
-  "path_enterCustomPath": "Въведете персонализиран път",
-  "path_currentPathLabel": "Текущ път",
-  "path_hexPrefixInstructions": "Въведете 2-символни шестнадесетични префикси за всеки хоп, разделени с кама.",
-  "path_hexPrefixExample": "A1,F2,3C (всяка нода използва първия байт от публичния си ключ)",
-  "path_labelHexPrefixes": "Пътеки (шестнадесетични префикси)",
-  "path_helperMaxHops": "Максимум 64 скока. Всеки префикс е 2 шестнадесетични знака (1 байт).",
-  "path_selectFromContacts": "Изберете от контакти:",
-  "path_noRepeatersFound": "Няма намерени репетитори или сървъри на стаи.",
-  "path_customPathsRequire": "Персонализираните пътища изискват междинни скокове, които могат да препращат съобщения.",
-  "path_invalidHexPrefixes": "Невалидни шестнадесетични префикси: {prefixes}",
+  "path_enterCustomPath": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð½ Ð¿ÑŠÑ‚",
+  "path_currentPathLabel": "Ð¢ÐµÐºÑƒÑ‰ Ð¿ÑŠÑ‚",
+  "path_hexPrefixInstructions": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ 2-ÑÐ¸Ð¼Ð²Ð¾Ð»Ð½Ð¸ ÑˆÐµÑÑ‚Ð½Ð°Ð´ÐµÑÐµÑ‚Ð¸Ñ‡Ð½Ð¸ Ð¿Ñ€ÐµÑ„Ð¸ÐºÑÐ¸ Ð·Ð° Ð²ÑÐµÐºÐ¸ Ñ…Ð¾Ð¿, Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð¸ Ñ ÐºÐ°Ð¼Ð°.",
+  "path_hexPrefixExample": "A1,F2,3C (Ð²ÑÑÐºÐ° Ð½Ð¾Ð´Ð° Ð¸Ð·Ð¿Ð¾Ð»Ð·Ð²Ð° Ð¿ÑŠÑ€Ð²Ð¸Ñ Ð±Ð°Ð¹Ñ‚ Ð¾Ñ‚ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¸Ñ ÑÐ¸ ÐºÐ»ÑŽÑ‡)",
+  "path_labelHexPrefixes": "ÐŸÑŠÑ‚ÐµÐºÐ¸ (ÑˆÐµÑÑ‚Ð½Ð°Ð´ÐµÑÐµÑ‚Ð¸Ñ‡Ð½Ð¸ Ð¿Ñ€ÐµÑ„Ð¸ÐºÑÐ¸)",
+  "path_helperMaxHops": "ÐœÐ°ÐºÑÐ¸Ð¼ÑƒÐ¼ 64 ÑÐºÐ¾ÐºÐ°. Ð’ÑÐµÐºÐ¸ Ð¿Ñ€ÐµÑ„Ð¸ÐºÑ Ðµ 2 ÑˆÐµÑÑ‚Ð½Ð°Ð´ÐµÑÐµÑ‚Ð¸Ñ‡Ð½Ð¸ Ð·Ð½Ð°ÐºÐ° (1 Ð±Ð°Ð¹Ñ‚).",
+  "path_selectFromContacts": "Ð˜Ð·Ð±ÐµÑ€ÐµÑ‚Ðµ Ð¾Ñ‚ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸:",
+  "path_noRepeatersFound": "ÐÑÐ¼Ð° Ð½Ð°Ð¼ÐµÑ€ÐµÐ½Ð¸ Ñ€ÐµÐ¿ÐµÑ‚Ð¸Ñ‚Ð¾Ñ€Ð¸ Ð¸Ð»Ð¸ ÑÑŠÑ€Ð²ÑŠÑ€Ð¸ Ð½Ð° ÑÑ‚Ð°Ð¸.",
+  "path_customPathsRequire": "ÐŸÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð½Ð¸Ñ‚Ðµ Ð¿ÑŠÑ‚Ð¸Ñ‰Ð° Ð¸Ð·Ð¸ÑÐºÐ²Ð°Ñ‚ Ð¼ÐµÐ¶Ð´Ð¸Ð½Ð½Ð¸ ÑÐºÐ¾ÐºÐ¾Ð²Ðµ, ÐºÐ¾Ð¸Ñ‚Ð¾ Ð¼Ð¾Ð³Ð°Ñ‚ Ð´Ð° Ð¿Ñ€ÐµÐ¿Ñ€Ð°Ñ‰Ð°Ñ‚ ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ.",
+  "path_invalidHexPrefixes": "ÐÐµÐ²Ð°Ð»Ð¸Ð´Ð½Ð¸ ÑˆÐµÑÑ‚Ð½Ð°Ð´ÐµÑÐµÑ‚Ð¸Ñ‡Ð½Ð¸ Ð¿Ñ€ÐµÑ„Ð¸ÐºÑÐ¸: {prefixes}",
   "@path_invalidHexPrefixes": {
     "placeholders": {
       "prefixes": {
@@ -874,26 +874,26 @@
       }
     }
   },
-  "path_tooLong": "Пътят е твърде дълъг. Максимум 64 скока са разрешени.",
-  "path_setPath": "Задайте път",
-  "repeater_management": "Управление на повторители",
-  "repeater_managementTools": "Инструменти за управление",
-  "repeater_status": "Статус",
-  "repeater_statusSubtitle": "Прегледайте статуса, статистиката и съседните устройства.",
-  "repeater_telemetry": "Телеметрия",
-  "repeater_telemetrySubtitle": "Прегледайте телеметрията на сензорите и системните статистики",
+  "path_tooLong": "ÐŸÑŠÑ‚ÑÑ‚ Ðµ Ñ‚Ð²ÑŠÑ€Ð´Ðµ Ð´ÑŠÐ»ÑŠÐ³. ÐœÐ°ÐºÑÐ¸Ð¼ÑƒÐ¼ 64 ÑÐºÐ¾ÐºÐ° ÑÐ° Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ð¸.",
+  "path_setPath": "Ð—Ð°Ð´Ð°Ð¹Ñ‚Ðµ Ð¿ÑŠÑ‚",
+  "repeater_management": "Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð° Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ»Ð¸",
+  "repeater_managementTools": "Ð˜Ð½ÑÑ‚Ñ€ÑƒÐ¼ÐµÐ½Ñ‚Ð¸ Ð·Ð° ÑƒÐ¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ",
+  "repeater_status": "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ",
+  "repeater_statusSubtitle": "ÐŸÑ€ÐµÐ³Ð»ÐµÐ´Ð°Ð¹Ñ‚Ðµ ÑÑ‚Ð°Ñ‚ÑƒÑÐ°, ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ°Ñ‚Ð° Ð¸ ÑÑŠÑÐµÐ´Ð½Ð¸Ñ‚Ðµ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð°.",
+  "repeater_telemetry": "Ð¢ÐµÐ»ÐµÐ¼ÐµÑ‚Ñ€Ð¸Ñ",
+  "repeater_telemetrySubtitle": "ÐŸÑ€ÐµÐ³Ð»ÐµÐ´Ð°Ð¹Ñ‚Ðµ Ñ‚ÐµÐ»ÐµÐ¼ÐµÑ‚Ñ€Ð¸ÑÑ‚Ð° Ð½Ð° ÑÐµÐ½Ð·Ð¾Ñ€Ð¸Ñ‚Ðµ Ð¸ ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ð¸Ñ‚Ðµ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ¸",
   "repeater_cli": "CLI",
-  "repeater_cliSubtitle": "Изпрати команди към ретранслатора",
-  "repeater_settings": "Настройки",
-  "repeater_settingsSubtitle": "Конфигурирайте параметрите на репитера",
-  "repeater_statusTitle": "Статус на повтарянето",
-  "repeater_routingMode": "Режим на маршрутизиране",
-  "repeater_autoUseSavedPath": "Автоматично (използвай запазения път)",
-  "repeater_forceFloodMode": "Принуди режим на наводняване",
-  "repeater_pathManagement": "Управление на пътища",
-  "repeater_refresh": "Презареди",
-  "repeater_statusRequestTimeout": "Заявката за статус премина прекалено дълго.",
-  "repeater_errorLoadingStatus": "Грешка при зареждане на статуса: {error}",
+  "repeater_cliSubtitle": "Ð˜Ð·Ð¿Ñ€Ð°Ñ‚Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸ ÐºÑŠÐ¼ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»Ð°Ñ‚Ð¾Ñ€Ð°",
+  "repeater_settings": "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸",
+  "repeater_settingsSubtitle": "ÐšÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¸Ñ‚Ðµ Ð½Ð° Ñ€ÐµÐ¿Ð¸Ñ‚ÐµÑ€Ð°",
+  "repeater_statusTitle": "Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð½Ð° Ð¿Ð¾Ð²Ñ‚Ð°Ñ€ÑÐ½ÐµÑ‚Ð¾",
+  "repeater_routingMode": "Ð ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð¸Ñ€Ð°Ð½Ðµ",
+  "repeater_autoUseSavedPath": "ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾ (Ð¸Ð·Ð¿Ð¾Ð»Ð·Ð²Ð°Ð¹ Ð·Ð°Ð¿Ð°Ð·ÐµÐ½Ð¸Ñ Ð¿ÑŠÑ‚)",
+  "repeater_forceFloodMode": "ÐŸÑ€Ð¸Ð½ÑƒÐ´Ð¸ Ñ€ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð½Ð°Ð²Ð¾Ð´Ð½ÑÐ²Ð°Ð½Ðµ",
+  "repeater_pathManagement": "Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð° Ð¿ÑŠÑ‚Ð¸Ñ‰Ð°",
+  "repeater_refresh": "ÐŸÑ€ÐµÐ·Ð°Ñ€ÐµÐ´Ð¸",
+  "repeater_statusRequestTimeout": "Ð—Ð°ÑÐ²ÐºÐ°Ñ‚Ð° Ð·Ð° ÑÑ‚Ð°Ñ‚ÑƒÑ Ð¿Ñ€ÐµÐ¼Ð¸Ð½Ð° Ð¿Ñ€ÐµÐºÐ°Ð»ÐµÐ½Ð¾ Ð´ÑŠÐ»Ð³Ð¾.",
+  "repeater_errorLoadingStatus": "Ð“Ñ€ÐµÑˆÐºÐ° Ð¿Ñ€Ð¸ Ð·Ð°Ñ€ÐµÐ¶Ð´Ð°Ð½Ðµ Ð½Ð° ÑÑ‚Ð°Ñ‚ÑƒÑÐ°: {error}",
   "@repeater_errorLoadingStatus": {
     "placeholders": {
       "error": {
@@ -901,23 +901,23 @@
       }
     }
   },
-  "repeater_systemInformation": "Информация за системата",
-  "repeater_battery": "Батерия",
-  "repeater_clockAtLogin": "Часовник (при влизане)",
-  "repeater_uptime": "Наличност",
-  "repeater_queueLength": "Дължина на опашката",
-  "repeater_debugFlags": "Контролни точки за отстраняване на грешки",
-  "repeater_radioStatistics": "Статистика на радиостанциите",
-  "repeater_lastRssi": "Последна RSSI",
-  "repeater_lastSnr": "Последна SNR",
-  "repeater_noiseFloor": "Ниво на шум",
+  "repeater_systemInformation": "Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð·Ð° ÑÐ¸ÑÑ‚ÐµÐ¼Ð°Ñ‚Ð°",
+  "repeater_battery": "Ð‘Ð°Ñ‚ÐµÑ€Ð¸Ñ",
+  "repeater_clockAtLogin": "Ð§Ð°ÑÐ¾Ð²Ð½Ð¸Ðº (Ð¿Ñ€Ð¸ Ð²Ð»Ð¸Ð·Ð°Ð½Ðµ)",
+  "repeater_uptime": "ÐÐ°Ð»Ð¸Ñ‡Ð½Ð¾ÑÑ‚",
+  "repeater_queueLength": "Ð”ÑŠÐ»Ð¶Ð¸Ð½Ð° Ð½Ð° Ð¾Ð¿Ð°ÑˆÐºÐ°Ñ‚Ð°",
+  "repeater_debugFlags": "ÐšÐ¾Ð½Ñ‚Ñ€Ð¾Ð»Ð½Ð¸ Ñ‚Ð¾Ñ‡ÐºÐ¸ Ð·Ð° Ð¾Ñ‚ÑÑ‚Ñ€Ð°Ð½ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð³Ñ€ÐµÑˆÐºÐ¸",
+  "repeater_radioStatistics": "Ð¡Ñ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ° Ð½Ð° Ñ€Ð°Ð´Ð¸Ð¾ÑÑ‚Ð°Ð½Ñ†Ð¸Ð¸Ñ‚Ðµ",
+  "repeater_lastRssi": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð° RSSI",
+  "repeater_lastSnr": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð° SNR",
+  "repeater_noiseFloor": "ÐÐ¸Ð²Ð¾ Ð½Ð° ÑˆÑƒÐ¼",
   "repeater_txAirtime": "TX Airtime",
   "repeater_rxAirtime": "RX Airtime",
-  "repeater_packetStatistics": "Статистика на пакетите",
-  "repeater_sent": "Изпратено",
-  "repeater_received": "Получено",
-  "repeater_duplicates": "Дубликати",
-  "repeater_daysHoursMinsSecs": "{days} дни {hours}ч {minutes}м {seconds}с",
+  "repeater_packetStatistics": "Ð¡Ñ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ° Ð½Ð° Ð¿Ð°ÐºÐµÑ‚Ð¸Ñ‚Ðµ",
+  "repeater_sent": "Ð˜Ð·Ð¿Ñ€Ð°Ñ‚ÐµÐ½Ð¾",
+  "repeater_received": "ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¾",
+  "repeater_duplicates": "Ð”ÑƒÐ±Ð»Ð¸ÐºÐ°Ñ‚Ð¸",
+  "repeater_daysHoursMinsSecs": "{days} Ð´Ð½Ð¸ {hours}Ñ‡ {minutes}Ð¼ {seconds}Ñ",
   "@repeater_daysHoursMinsSecs": {
     "placeholders": {
       "days": {
@@ -934,7 +934,7 @@
       }
     }
   },
-  "repeater_packetTxTotal": "Общо: {total}, Наводнение: {flood}, Директно: {direct}",
+  "repeater_packetTxTotal": "ÐžÐ±Ñ‰Ð¾: {total}, ÐÐ°Ð²Ð¾Ð´Ð½ÐµÐ½Ð¸Ðµ: {flood}, Ð”Ð¸Ñ€ÐµÐºÑ‚Ð½Ð¾: {direct}",
   "@repeater_packetTxTotal": {
     "placeholders": {
       "total": {
@@ -948,7 +948,7 @@
       }
     }
   },
-  "repeater_packetRxTotal": "Общо: {total}, Наводнение: {flood}, Директно: {direct}",
+  "repeater_packetRxTotal": "ÐžÐ±Ñ‰Ð¾: {total}, ÐÐ°Ð²Ð¾Ð´Ð½ÐµÐ½Ð¸Ðµ: {flood}, Ð”Ð¸Ñ€ÐµÐºÑ‚Ð½Ð¾: {direct}",
   "@repeater_packetRxTotal": {
     "placeholders": {
       "total": {
@@ -962,7 +962,7 @@
       }
     }
   },
-  "repeater_duplicatesFloodDirect": "Поливане: {flood}, Директен: {direct}",
+  "repeater_duplicatesFloodDirect": "ÐŸÐ¾Ð»Ð¸Ð²Ð°Ð½Ðµ: {flood}, Ð”Ð¸Ñ€ÐµÐºÑ‚ÐµÐ½: {direct}",
   "@repeater_duplicatesFloodDirect": {
     "placeholders": {
       "flood": {
@@ -973,7 +973,7 @@
       }
     }
   },
-  "repeater_duplicatesTotal": "Общо: {total}",
+  "repeater_duplicatesTotal": "ÐžÐ±Ñ‰Ð¾: {total}",
   "@repeater_duplicatesTotal": {
     "placeholders": {
       "total": {
@@ -981,37 +981,37 @@
       }
     }
   },
-  "repeater_settingsTitle": "Настройки на повтарящия се елемент",
-  "repeater_basicSettings": "Основни настройки",
-  "repeater_repeaterName": "Име на повтарящ се елемент",
-  "repeater_repeaterNameHelper": "Показване на името на този репитер",
-  "repeater_adminPassword": "Парола на администратора",
-  "repeater_adminPasswordHelper": "Пълен достъпен парола",
-  "repeater_guestPassword": "Парола на гост",
-  "repeater_guestPasswordHelper": "Достъп с ограничен достъп",
-  "repeater_radioSettings": "Настройки на радиостанцията",
-  "repeater_frequencyMhz": "Честота (MHz)",
+  "repeater_settingsTitle": "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð½Ð° Ð¿Ð¾Ð²Ñ‚Ð°Ñ€ÑÑ‰Ð¸Ñ ÑÐµ ÐµÐ»ÐµÐ¼ÐµÐ½Ñ‚",
+  "repeater_basicSettings": "ÐžÑÐ½Ð¾Ð²Ð½Ð¸ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸",
+  "repeater_repeaterName": "Ð˜Ð¼Ðµ Ð½Ð° Ð¿Ð¾Ð²Ñ‚Ð°Ñ€ÑÑ‰ ÑÐµ ÐµÐ»ÐµÐ¼ÐµÐ½Ñ‚",
+  "repeater_repeaterNameHelper": "ÐŸÐ¾ÐºÐ°Ð·Ð²Ð°Ð½Ðµ Ð½Ð° Ð¸Ð¼ÐµÑ‚Ð¾ Ð½Ð° Ñ‚Ð¾Ð·Ð¸ Ñ€ÐµÐ¿Ð¸Ñ‚ÐµÑ€",
+  "repeater_adminPassword": "ÐŸÐ°Ñ€Ð¾Ð»Ð° Ð½Ð° Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð°",
+  "repeater_adminPasswordHelper": "ÐŸÑŠÐ»ÐµÐ½ Ð´Ð¾ÑÑ‚ÑŠÐ¿ÐµÐ½ Ð¿Ð°Ñ€Ð¾Ð»Ð°",
+  "repeater_guestPassword": "ÐŸÐ°Ñ€Ð¾Ð»Ð° Ð½Ð° Ð³Ð¾ÑÑ‚",
+  "repeater_guestPasswordHelper": "Ð”Ð¾ÑÑ‚ÑŠÐ¿ Ñ Ð¾Ð³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½ Ð´Ð¾ÑÑ‚ÑŠÐ¿",
+  "repeater_radioSettings": "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð½Ð° Ñ€Ð°Ð´Ð¸Ð¾ÑÑ‚Ð°Ð½Ñ†Ð¸ÑÑ‚Ð°",
+  "repeater_frequencyMhz": "Ð§ÐµÑÑ‚Ð¾Ñ‚Ð° (MHz)",
   "repeater_frequencyHelper": "300-2500 MHz",
   "repeater_txPower": "TX Power",
   "repeater_txPowerHelper": "1-30 dBm",
-  "repeater_bandwidth": "Ширина на честотния спектър",
-  "repeater_spreadingFactor": "Фактор на разпространение",
-  "repeater_codingRate": "Такса за кодиране",
-  "repeater_locationSettings": "Настройки на местоположението",
-  "repeater_latitude": "Широчина",
-  "repeater_latitudeHelper": "Десетични градуси (напр. 37.7749)",
-  "repeater_longitude": "Дължина",
-  "repeater_longitudeHelper": "Градуси с десетични знаци (напр. -122.4194)",
-  "repeater_features": "Характеристики",
-  "repeater_packetForwarding": "Пренасочване на пакети",
-  "repeater_packetForwardingSubtitle": "Активирайте репитера, за да препращате пакети.",
-  "repeater_guestAccess": "Достъп за Гост",
-  "repeater_guestAccessSubtitle": "Разрешете самочетене за гости",
-  "repeater_privacyMode": "Режим на поверителност",
-  "repeater_privacyModeSubtitle": "Скриване на име/местоположение в рекламите",
-  "repeater_advertisementSettings": "Настройки на рекламите",
-  "repeater_localAdvertInterval": "Местен Рекламен Интервал",
-  "repeater_localAdvertIntervalMinutes": "{minutes} минути",
+  "repeater_bandwidth": "Ð¨Ð¸Ñ€Ð¸Ð½Ð° Ð½Ð° Ñ‡ÐµÑÑ‚Ð¾Ñ‚Ð½Ð¸Ñ ÑÐ¿ÐµÐºÑ‚ÑŠÑ€",
+  "repeater_spreadingFactor": "Ð¤Ð°ÐºÑ‚Ð¾Ñ€ Ð½Ð° Ñ€Ð°Ð·Ð¿Ñ€Ð¾ÑÑ‚Ñ€Ð°Ð½ÐµÐ½Ð¸Ðµ",
+  "repeater_codingRate": "Ð¢Ð°ÐºÑÐ° Ð·Ð° ÐºÐ¾Ð´Ð¸Ñ€Ð°Ð½Ðµ",
+  "repeater_locationSettings": "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð½Ð° Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾",
+  "repeater_latitude": "Ð¨Ð¸Ñ€Ð¾Ñ‡Ð¸Ð½Ð°",
+  "repeater_latitudeHelper": "Ð”ÐµÑÐµÑ‚Ð¸Ñ‡Ð½Ð¸ Ð³Ñ€Ð°Ð´ÑƒÑÐ¸ (Ð½Ð°Ð¿Ñ€. 37.7749)",
+  "repeater_longitude": "Ð”ÑŠÐ»Ð¶Ð¸Ð½Ð°",
+  "repeater_longitudeHelper": "Ð“Ñ€Ð°Ð´ÑƒÑÐ¸ Ñ Ð´ÐµÑÐµÑ‚Ð¸Ñ‡Ð½Ð¸ Ð·Ð½Ð°Ñ†Ð¸ (Ð½Ð°Ð¿Ñ€. -122.4194)",
+  "repeater_features": "Ð¥Ð°Ñ€Ð°ÐºÑ‚ÐµÑ€Ð¸ÑÑ‚Ð¸ÐºÐ¸",
+  "repeater_packetForwarding": "ÐŸÑ€ÐµÐ½Ð°ÑÐ¾Ñ‡Ð²Ð°Ð½Ðµ Ð½Ð° Ð¿Ð°ÐºÐµÑ‚Ð¸",
+  "repeater_packetForwardingSubtitle": "ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Ñ€ÐµÐ¿Ð¸Ñ‚ÐµÑ€Ð°, Ð·Ð° Ð´Ð° Ð¿Ñ€ÐµÐ¿Ñ€Ð°Ñ‰Ð°Ñ‚Ðµ Ð¿Ð°ÐºÐµÑ‚Ð¸.",
+  "repeater_guestAccess": "Ð”Ð¾ÑÑ‚ÑŠÐ¿ Ð·Ð° Ð“Ð¾ÑÑ‚",
+  "repeater_guestAccessSubtitle": "Ð Ð°Ð·Ñ€ÐµÑˆÐµÑ‚Ðµ ÑÐ°Ð¼Ð¾Ñ‡ÐµÑ‚ÐµÐ½Ðµ Ð·Ð° Ð³Ð¾ÑÑ‚Ð¸",
+  "repeater_privacyMode": "Ð ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð¿Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÐµÐ»Ð½Ð¾ÑÑ‚",
+  "repeater_privacyModeSubtitle": "Ð¡ÐºÑ€Ð¸Ð²Ð°Ð½Ðµ Ð½Ð° Ð¸Ð¼Ðµ/Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð² Ñ€ÐµÐºÐ»Ð°Ð¼Ð¸Ñ‚Ðµ",
+  "repeater_advertisementSettings": "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð½Ð° Ñ€ÐµÐºÐ»Ð°Ð¼Ð¸Ñ‚Ðµ",
+  "repeater_localAdvertInterval": "ÐœÐµÑÑ‚ÐµÐ½ Ð ÐµÐºÐ»Ð°Ð¼ÐµÐ½ Ð˜Ð½Ñ‚ÐµÑ€Ð²Ð°Ð»",
+  "repeater_localAdvertIntervalMinutes": "{minutes} Ð¼Ð¸Ð½ÑƒÑ‚Ð¸",
   "@repeater_localAdvertIntervalMinutes": {
     "placeholders": {
       "minutes": {
@@ -1019,8 +1019,8 @@
       }
     }
   },
-  "repeater_floodAdvertInterval": "Интервал на рекламата за наводнения",
-  "repeater_floodAdvertIntervalHours": "{hours} часа",
+  "repeater_floodAdvertInterval": "Ð˜Ð½Ñ‚ÐµÑ€Ð²Ð°Ð» Ð½Ð° Ñ€ÐµÐºÐ»Ð°Ð¼Ð°Ñ‚Ð° Ð·Ð° Ð½Ð°Ð²Ð¾Ð´Ð½ÐµÐ½Ð¸Ñ",
+  "repeater_floodAdvertIntervalHours": "{hours} Ñ‡Ð°ÑÐ°",
   "@repeater_floodAdvertIntervalHours": {
     "placeholders": {
       "hours": {
@@ -1028,19 +1028,19 @@
       }
     }
   },
-  "repeater_encryptedAdvertInterval": "Криптиран Рекламен Интервал",
-  "repeater_dangerZone": "Опасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно Безопасно",
-  "repeater_rebootRepeater": "БеРестартирай Репитер",
-  "repeater_rebootRepeaterSubtitle": "Рестартирайте ретранслатора.",
-  "repeater_rebootRepeaterConfirm": "Сигурни ли сте, че искате да рестартирате този репитер?",
-  "repeater_regenerateIdentityKey": "Генериране на Ключ за Идентичност",
-  "repeater_regenerateIdentityKeySubtitle": "Генериране на нова двойка публичен/частен ключ",
-  "repeater_regenerateIdentityKeyConfirm": "БеТова ще генерира нова идентичност за репитера. Продължете?",
-  "repeater_eraseFileSystem": "Изтрий Файлова Система",
-  "repeater_eraseFileSystemSubtitle": "Форматирайте файла на репитера",
-  "repeater_eraseFileSystemConfirm": "ВНИМАНИЕ: Това ще изтрие всички данни от репетитора. Това не може да бъде отменено!",
-  "repeater_eraseSerialOnly": "Изтриването е достъпно само през серийния терминал.",
-  "repeater_commandSent": "Командата е изпратена: {command}",
+  "repeater_encryptedAdvertInterval": "ÐšÑ€Ð¸Ð¿Ñ‚Ð¸Ñ€Ð°Ð½ Ð ÐµÐºÐ»Ð°Ð¼ÐµÐ½ Ð˜Ð½Ñ‚ÐµÑ€Ð²Ð°Ð»",
+  "repeater_dangerZone": "ÐžÐ¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾ Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾",
+  "repeater_rebootRepeater": "Ð‘ÐµÐ ÐµÑÑ‚Ð°Ñ€Ñ‚Ð¸Ñ€Ð°Ð¹ Ð ÐµÐ¿Ð¸Ñ‚ÐµÑ€",
+  "repeater_rebootRepeaterSubtitle": "Ð ÐµÑÑ‚Ð°Ñ€Ñ‚Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Ñ€ÐµÑ‚Ñ€Ð°Ð½ÑÐ»Ð°Ñ‚Ð¾Ñ€Ð°.",
+  "repeater_rebootRepeaterConfirm": "Ð¡Ð¸Ð³ÑƒÑ€Ð½Ð¸ Ð»Ð¸ ÑÑ‚Ðµ, Ñ‡Ðµ Ð¸ÑÐºÐ°Ñ‚Ðµ Ð´Ð° Ñ€ÐµÑÑ‚Ð°Ñ€Ñ‚Ð¸Ñ€Ð°Ñ‚Ðµ Ñ‚Ð¾Ð·Ð¸ Ñ€ÐµÐ¿Ð¸Ñ‚ÐµÑ€?",
+  "repeater_regenerateIdentityKey": "Ð“ÐµÐ½ÐµÑ€Ð¸Ñ€Ð°Ð½Ðµ Ð½Ð° ÐšÐ»ÑŽÑ‡ Ð·Ð° Ð˜Ð´ÐµÐ½Ñ‚Ð¸Ñ‡Ð½Ð¾ÑÑ‚",
+  "repeater_regenerateIdentityKeySubtitle": "Ð“ÐµÐ½ÐµÑ€Ð¸Ñ€Ð°Ð½Ðµ Ð½Ð° Ð½Ð¾Ð²Ð° Ð´Ð²Ð¾Ð¹ÐºÐ° Ð¿ÑƒÐ±Ð»Ð¸Ñ‡ÐµÐ½/Ñ‡Ð°ÑÑ‚ÐµÐ½ ÐºÐ»ÑŽÑ‡",
+  "repeater_regenerateIdentityKeyConfirm": "Ð‘ÐµÐ¢Ð¾Ð²Ð° Ñ‰Ðµ Ð³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð° Ð½Ð¾Ð²Ð° Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ‡Ð½Ð¾ÑÑ‚ Ð·Ð° Ñ€ÐµÐ¿Ð¸Ñ‚ÐµÑ€Ð°. ÐŸÑ€Ð¾Ð´ÑŠÐ»Ð¶ÐµÑ‚Ðµ?",
+  "repeater_eraseFileSystem": "Ð˜Ð·Ñ‚Ñ€Ð¸Ð¹ Ð¤Ð°Ð¹Ð»Ð¾Ð²Ð° Ð¡Ð¸ÑÑ‚ÐµÐ¼Ð°",
+  "repeater_eraseFileSystemSubtitle": "Ð¤Ð¾Ñ€Ð¼Ð°Ñ‚Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Ñ„Ð°Ð¹Ð»Ð° Ð½Ð° Ñ€ÐµÐ¿Ð¸Ñ‚ÐµÑ€Ð°",
+  "repeater_eraseFileSystemConfirm": "Ð’ÐÐ˜ÐœÐÐÐ˜Ð•: Ð¢Ð¾Ð²Ð° Ñ‰Ðµ Ð¸Ð·Ñ‚Ñ€Ð¸Ðµ Ð²ÑÐ¸Ñ‡ÐºÐ¸ Ð´Ð°Ð½Ð½Ð¸ Ð¾Ñ‚ Ñ€ÐµÐ¿ÐµÑ‚Ð¸Ñ‚Ð¾Ñ€Ð°. Ð¢Ð¾Ð²Ð° Ð½Ðµ Ð¼Ð¾Ð¶Ðµ Ð´Ð° Ð±ÑŠÐ´Ðµ Ð¾Ñ‚Ð¼ÐµÐ½ÐµÐ½Ð¾!",
+  "repeater_eraseSerialOnly": "Ð˜Ð·Ñ‚Ñ€Ð¸Ð²Ð°Ð½ÐµÑ‚Ð¾ Ðµ Ð´Ð¾ÑÑ‚ÑŠÐ¿Ð½Ð¾ ÑÐ°Ð¼Ð¾ Ð¿Ñ€ÐµÐ· ÑÐµÑ€Ð¸Ð¹Ð½Ð¸Ñ Ñ‚ÐµÑ€Ð¼Ð¸Ð½Ð°Ð».",
+  "repeater_commandSent": "ÐšÐ¾Ð¼Ð°Ð½Ð´Ð°Ñ‚Ð° Ðµ Ð¸Ð·Ð¿Ñ€Ð°Ñ‚ÐµÐ½Ð°: {command}",
   "@repeater_commandSent": {
     "placeholders": {
       "command": {
@@ -1048,7 +1048,7 @@
       }
     }
   },
-  "repeater_errorSendingCommand": "Грешка при изпращане на командата: {error}",
+  "repeater_errorSendingCommand": "Ð“Ñ€ÐµÑˆÐºÐ° Ð¿Ñ€Ð¸ Ð¸Ð·Ð¿Ñ€Ð°Ñ‰Ð°Ð½Ðµ Ð½Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ñ‚Ð°: {error}",
   "@repeater_errorSendingCommand": {
     "placeholders": {
       "error": {
@@ -1056,9 +1056,9 @@
       }
     }
   },
-  "repeater_confirm": "БеПотвърди",
-  "repeater_settingsSaved": "Настройките са запазени успешно.",
-  "repeater_errorSavingSettings": "Грешка при запазване на настройките: {error}",
+  "repeater_confirm": "Ð‘ÐµÐŸÐ¾Ñ‚Ð²ÑŠÑ€Ð´Ð¸",
+  "repeater_settingsSaved": "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸Ñ‚Ðµ ÑÐ° Ð·Ð°Ð¿Ð°Ð·ÐµÐ½Ð¸ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾.",
+  "repeater_errorSavingSettings": "Ð“Ñ€ÐµÑˆÐºÐ° Ð¿Ñ€Ð¸ Ð·Ð°Ð¿Ð°Ð·Ð²Ð°Ð½Ðµ Ð½Ð° Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸Ñ‚Ðµ: {error}",
   "@repeater_errorSavingSettings": {
     "placeholders": {
       "error": {
@@ -1066,15 +1066,15 @@
       }
     }
   },
-  "repeater_refreshBasicSettings": "Обнови Основни Настройки",
-  "repeater_refreshRadioSettings": "Обнови настройките на радиопредавателите",
-  "repeater_refreshTxPower": "Обнови TX захранване",
-  "repeater_refreshLocationSettings": "Обнови настройките на местоположението",
-  "repeater_refreshPacketForwarding": "Обнови пакетно пренасочване",
-  "repeater_refreshGuestAccess": "Обнови достъп за гости",
-  "repeater_refreshPrivacyMode": "Обнови Режим на поверителност",
-  "repeater_refreshAdvertisementSettings": "Обнови Настройки на Рекламата",
-  "repeater_refreshed": "{label} е обновено",
+  "repeater_refreshBasicSettings": "ÐžÐ±Ð½Ð¾Ð²Ð¸ ÐžÑÐ½Ð¾Ð²Ð½Ð¸ ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸",
+  "repeater_refreshRadioSettings": "ÐžÐ±Ð½Ð¾Ð²Ð¸ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸Ñ‚Ðµ Ð½Ð° Ñ€Ð°Ð´Ð¸Ð¾Ð¿Ñ€ÐµÐ´Ð°Ð²Ð°Ñ‚ÐµÐ»Ð¸Ñ‚Ðµ",
+  "repeater_refreshTxPower": "ÐžÐ±Ð½Ð¾Ð²Ð¸ TX Ð·Ð°Ñ…Ñ€Ð°Ð½Ð²Ð°Ð½Ðµ",
+  "repeater_refreshLocationSettings": "ÐžÐ±Ð½Ð¾Ð²Ð¸ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸Ñ‚Ðµ Ð½Ð° Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾",
+  "repeater_refreshPacketForwarding": "ÐžÐ±Ð½Ð¾Ð²Ð¸ Ð¿Ð°ÐºÐµÑ‚Ð½Ð¾ Ð¿Ñ€ÐµÐ½Ð°ÑÐ¾Ñ‡Ð²Ð°Ð½Ðµ",
+  "repeater_refreshGuestAccess": "ÐžÐ±Ð½Ð¾Ð²Ð¸ Ð´Ð¾ÑÑ‚ÑŠÐ¿ Ð·Ð° Ð³Ð¾ÑÑ‚Ð¸",
+  "repeater_refreshPrivacyMode": "ÐžÐ±Ð½Ð¾Ð²Ð¸ Ð ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð¿Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÐµÐ»Ð½Ð¾ÑÑ‚",
+  "repeater_refreshAdvertisementSettings": "ÐžÐ±Ð½Ð¾Ð²Ð¸ ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð½Ð° Ð ÐµÐºÐ»Ð°Ð¼Ð°Ñ‚Ð°",
+  "repeater_refreshed": "{label} Ðµ Ð¾Ð±Ð½Ð¾Ð²ÐµÐ½Ð¾",
   "@repeater_refreshed": {
     "placeholders": {
       "label": {
@@ -1082,7 +1082,7 @@
       }
     }
   },
-  "repeater_errorRefreshing": "Грешка при обновяване на {label}",
+  "repeater_errorRefreshing": "Ð“Ñ€ÐµÑˆÐºÐ° Ð¿Ñ€Ð¸ Ð¾Ð±Ð½Ð¾Ð²ÑÐ²Ð°Ð½Ðµ Ð½Ð° {label}",
   "@repeater_errorRefreshing": {
     "placeholders": {
       "label": {
@@ -1090,18 +1090,18 @@
       }
     }
   },
-  "repeater_cliTitle": "Повторител CLI",
-  "repeater_debugNextCommand": "Поправи Следваща Команда",
-  "repeater_commandHelp": "Помощ",
-  "repeater_clearHistory": "Изчисти История",
-  "repeater_noCommandsSent": "Няма изпратени команди засега.",
-  "repeater_typeCommandOrUseQuick": "Въведете команда по-долу или използвайте бързи команди",
-  "repeater_enterCommandHint": "Въведете команда...",
-  "repeater_previousCommand": "Предходна команда",
-  "repeater_nextCommand": "Следваща команда",
-  "repeater_enterCommandFirst": "Въведете първо команда.",
-  "repeater_cliCommandFrameTitle": "Рамка за команда CLI",
-  "repeater_cliCommandError": "Грешка: {error}",
+  "repeater_cliTitle": "ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ» CLI",
+  "repeater_debugNextCommand": "ÐŸÐ¾Ð¿Ñ€Ð°Ð²Ð¸ Ð¡Ð»ÐµÐ´Ð²Ð°Ñ‰Ð° ÐšÐ¾Ð¼Ð°Ð½Ð´Ð°",
+  "repeater_commandHelp": "ÐŸÐ¾Ð¼Ð¾Ñ‰",
+  "repeater_clearHistory": "Ð˜Ð·Ñ‡Ð¸ÑÑ‚Ð¸ Ð˜ÑÑ‚Ð¾Ñ€Ð¸Ñ",
+  "repeater_noCommandsSent": "ÐÑÐ¼Ð° Ð¸Ð·Ð¿Ñ€Ð°Ñ‚ÐµÐ½Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸ Ð·Ð°ÑÐµÐ³Ð°.",
+  "repeater_typeCommandOrUseQuick": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ð¿Ð¾-Ð´Ð¾Ð»Ñƒ Ð¸Ð»Ð¸ Ð¸Ð·Ð¿Ð¾Ð»Ð·Ð²Ð°Ð¹Ñ‚Ðµ Ð±ÑŠÑ€Ð·Ð¸ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸",
+  "repeater_enterCommandHint": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°...",
+  "repeater_previousCommand": "ÐŸÑ€ÐµÐ´Ñ…Ð¾Ð´Ð½Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°",
+  "repeater_nextCommand": "Ð¡Ð»ÐµÐ´Ð²Ð°Ñ‰Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°",
+  "repeater_enterCommandFirst": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ Ð¿ÑŠÑ€Ð²Ð¾ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°.",
+  "repeater_cliCommandFrameTitle": "Ð Ð°Ð¼ÐºÐ° Ð·Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° CLI",
+  "repeater_cliCommandError": "Ð“Ñ€ÐµÑˆÐºÐ°: {error}",
   "@repeater_cliCommandError": {
     "placeholders": {
       "error": {
@@ -1109,81 +1109,81 @@
       }
     }
   },
-  "repeater_cliQuickGetName": "Получи име",
-  "repeater_cliQuickGetRadio": "Получи радио",
-  "repeater_cliQuickGetTx": "Получи TX",
-  "repeater_cliQuickNeighbors": "Съседи",
-  "repeater_cliQuickVersion": "Версия",
-  "repeater_cliQuickAdvertise": "Рекламирай",
-  "repeater_cliQuickClock": "Часовник",
-  "repeater_cliHelpAdvert": "Изпраща рекламен пакет",
-  "repeater_cliHelpReboot": "Рестартира устройството. (Забележка, може да получите 'Timeout', което е нормално)",
-  "repeater_cliHelpClock": "Показва текущото време според часовника на всяко устройство.",
-  "repeater_cliHelpPassword": "Задава се нова администраторска парола за устройството.",
-  "repeater_cliHelpVersion": "Показва версията на устройството и датата на компилация на фърмуера.",
-  "repeater_cliHelpClearStats": "Рестартира различни статистики броячи до нула.",
-  "repeater_cliHelpSetAf": "Задава времето на фактора.",
-  "repeater_cliHelpSetTx": "Задава се мощността на предаване на LoRa в dBm (отчитане спрямо референтно ниво).",
-  "repeater_cliHelpSetRepeat": "Активира или деактивира ролята на репитера за този възел.",
-  "repeater_cliHelpSetAllowReadOnly": "(Сървър на стаята) Ако е \"включено\", тогава влизането с празен парола ще бъде разрешено, но не може да публикува в стаята (само четене).",
-  "repeater_cliHelpSetFloodMax": "Задава максималния брой хопове на входящ пакет за заливване (ако >= max, пакетът не се предава).",
-  "repeater_cliHelpSetIntThresh": "Задава праг на интерференцията (в dB). По подразбиране е 14. Задайте на 0, за да деактивирате откриването на интерференция на каналите.",
-  "repeater_cliHelpSetAgcResetInterval": "Задава интервала за рестартиране на Автоматичния контролер за усилване. Задайте на 0, за да го деактивирате.",
-  "repeater_cliHelpSetMultiAcks": "Активира или деактивира функцията 'двойни ACKs'.",
-  "repeater_cliHelpSetAdvertInterval": "Задава интервала на таймера в минути за изпращане на локален (безпроблемен) рекламен пакет. Задайте на 0, за да го деактивирате.",
-  "repeater_cliHelpSetFloodAdvertInterval": "Задава интервала на таймера в часове за изпращане на пакет с реклама за наводнение. Задайте на 0, за да го деактивирате.",
-  "repeater_cliHelpSetGuestPassword": "Задава/обновява паролата на гост. (за повторители, гостите могат да изпращат заявката \"Get Stats\")",
-  "repeater_cliHelpSetName": "Задава име на обявата.",
-  "repeater_cliHelpSetLat": "Задава географска ширина на картата с реклами (в десетими градуси).",
-  "repeater_cliHelpSetLon": "Задава обхвата на дължина на картата на рекламата. (десетими градуса)",
-  "repeater_cliHelpSetRadio": "Задава напълно нови радио параметри и ги запазва в предпочитанията. Изисква команда \"рестарт\", за да бъдат приложени.",
-  "repeater_cliHelpSetRxDelay": "Зададени (експериментални) основи (трябва да е > 1 за ефект) за прилагане на леко забавяне на получените пакети, базирано на силата на сигнала/резултата. Задайте на 0, за да го деактивирате.",
-  "repeater_cliHelpSetTxDelay": "Задава фактор, умножен по времето на въздух за пакет в режим на наводнение и с рандомизирана система за слотове, за да забави предаването му (за да намали вероятността от сблъсъци).",
-  "repeater_cliHelpSetDirectTxDelay": "Същото като txdelay, но за прилагане на случайна забавяне при препращането на пакети в директен режим.",
-  "repeater_cliHelpSetBridgeEnabled": "Активиране/Деактивиране на мост.",
-  "repeater_cliHelpSetBridgeDelay": "Задайте забавяне преди преизпращане на пакети.",
-  "repeater_cliHelpSetBridgeSource": "Изберете дали мостът ще предава препратени пакети или получени пакети.",
-  "repeater_cliHelpSetBridgeBaud": "Задайте скоростта на предаване за RS232 мостовете.",
-  "repeater_cliHelpSetBridgeSecret": "Задайте тайна за мостовете на EspNow.",
-  "repeater_cliHelpSetAdcMultiplier": "Задава персонализиран коефициент за коригиране на отчетеното напрежение на батерията (поддържа се само на избрани дъски).",
-  "repeater_cliHelpTempRadio": "Задава временни радио параметри за посочения брой минути, връщайки се към оригиналните радио параметри след това. (не се запазва в предпочитанията).",
-  "repeater_cliHelpSetPerm": "Променя ACL. Премахва съответстващия запис (по префикс на pubkey), ако \"permissions\" е нула. Добавя нов запис, ако pubkey-hex е с пълна дължина и не е в ACL. Актуализира запис, съответстващ на префикса на pubkey. Битовете за разрешения варират според ролята на firmware, но долните 2 бита са: 0 (Гост), 1 (Само четене), 2 (Четене и писане), 3 (Администратор).",
-  "repeater_cliHelpGetBridgeType": "Получава тип мост none, rs232, espnow",
-  "repeater_cliHelpLogStart": "Започва записване на пакети във файловата система.",
-  "repeater_cliHelpLogStop": "Спира записването на пакети във файловата система.",
-  "repeater_cliHelpLogErase": "Изтрива логовете от пакета от файловата система.",
-  "repeater_cliHelpNeighbors": "Показва списък с други възли на репитер, чути чрез нулев хоп реклами. Всяка линия е id-prefix-hex:timestamp:snr-times-4",
-  "repeater_cliHelpNeighborRemove": "Премахва първия съвпадащ запис (по префикси на pubkey (hex)) от списъка с съседи.",
-  "repeater_cliHelpRegion": "(сериен режим) Изброява всички дефинирани региони и текущите разрешения за наводнения.",
-  "repeater_cliHelpRegionLoad": "Забележка: това е специално многокомандно извикване. Всяка следваща команда е име на регион (отстъпен с интервали, за да се покаже йерархията, с минимум един интервал). Завършва се чрез изпращане на празен ред/команда.",
-  "repeater_cliHelpRegionGet": "Търси регион с даден префикс на име (или \"\" за глобалния обхват). Отговаря с \"-> region-name (parent-name) 'F'\"",
-  "repeater_cliHelpRegionPut": "Добавя или актуализира дефиниция на регион с дадено име.",
-  "repeater_cliHelpRegionRemove": "Премахва дефиниция на регион с дадено име. (трябва да съвпада точно и да няма подрегиони)",
-  "repeater_cliHelpRegionAllowf": "Задава 'Потоп' разрешение за посочената област. ('' за глобалния/стария обхват)",
-  "repeater_cliHelpRegionDenyf": "Премахва разрешението \"F\"лоуд за посочената област. (ЗАБЕЛЕЖКА: в момента не се препоръчва да се използва на глобалното/старото ниво!! )",
-  "repeater_cliHelpRegionHome": "Отговаря с текущия 'home' регион. (Забележка: не е приложена никъде, запазена за бъдещи нужди).",
-  "repeater_cliHelpRegionHomeSet": "Задава 'домашно' региона.",
-  "repeater_cliHelpRegionSave": "Запазва списъка/картата с региони в съхранение.",
-  "repeater_cliHelpGps": "Показва статуса на GPS. Когато GPS е изключен, отговаря само с \"off\", ако е включен отговаря с \"on\", статус, fix, брой на сателити.",
-  "repeater_cliHelpGpsOnOff": "Включва/Изключва GPS захранването.",
-  "repeater_cliHelpGpsSync": "Синхронизира времето на възела с GPS часовника.",
-  "repeater_cliHelpGpsSetLoc": "Задава координатите на нодата по GPS и запазва предпочитанията.",
-  "repeater_cliHelpGpsAdvert": "Предоставя конфигурацията на рекламата за местоположението на възела:\n- none: не включвайте местоположението в рекламите\n- share: споделяйте gps местоположението (от SensorManager)\n- prefs: рекламирайте местоположението, съхранено в предпочитанията",
-  "repeater_cliHelpGpsAdvertSet": "Задава конфигурация на обявите за местоположение.",
-  "repeater_commandsListTitle": "Списък с команди",
-  "repeater_commandsListNote": "ЗАБЕЛЕЖКА: за различните команди \"set ...\", също така съществува команда \"get ...\".",
-  "repeater_general": "Общо",
-  "repeater_settingsCategory": "Настройки",
-  "repeater_bridge": "Мост",
-  "repeater_logging": "Логване",
-  "repeater_neighborsRepeaterOnly": "Съседи (Само за повтаряне)",
-  "repeater_regionManagementRepeaterOnly": "Управление на региони (Само за повтарящ се канал)",
-  "repeater_regionNote": "Регионните команди са въведени, за да управляват дефинициите и разрешенията на регионите.",
-  "repeater_gpsManagement": "Управление на GPS",
-  "repeater_gpsNote": "GPS командата е въведена, за да управлява теми, свързани с местоположението.",
-  "telemetry_receivedData": "Получени телеметрични данни",
-  "telemetry_requestTimeout": "Заявката за телеметрия е прекъсната.",
-  "telemetry_errorLoading": "Грешка при зареждане на телеметрията: {error}",
+  "repeater_cliQuickGetName": "ÐŸÐ¾Ð»ÑƒÑ‡Ð¸ Ð¸Ð¼Ðµ",
+  "repeater_cliQuickGetRadio": "ÐŸÐ¾Ð»ÑƒÑ‡Ð¸ Ñ€Ð°Ð´Ð¸Ð¾",
+  "repeater_cliQuickGetTx": "ÐŸÐ¾Ð»ÑƒÑ‡Ð¸ TX",
+  "repeater_cliQuickNeighbors": "Ð¡ÑŠÑÐµÐ´Ð¸",
+  "repeater_cliQuickVersion": "Ð’ÐµÑ€ÑÐ¸Ñ",
+  "repeater_cliQuickAdvertise": "Ð ÐµÐºÐ»Ð°Ð¼Ð¸Ñ€Ð°Ð¹",
+  "repeater_cliQuickClock": "Ð§Ð°ÑÐ¾Ð²Ð½Ð¸Ðº",
+  "repeater_cliHelpAdvert": "Ð˜Ð·Ð¿Ñ€Ð°Ñ‰Ð° Ñ€ÐµÐºÐ»Ð°Ð¼ÐµÐ½ Ð¿Ð°ÐºÐµÑ‚",
+  "repeater_cliHelpReboot": "Ð ÐµÑÑ‚Ð°Ñ€Ñ‚Ð¸Ñ€Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾Ñ‚Ð¾. (Ð—Ð°Ð±ÐµÐ»ÐµÐ¶ÐºÐ°, Ð¼Ð¾Ð¶Ðµ Ð´Ð° Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚Ðµ 'Timeout', ÐºÐ¾ÐµÑ‚Ð¾ Ðµ Ð½Ð¾Ñ€Ð¼Ð°Ð»Ð½Ð¾)",
+  "repeater_cliHelpClock": "ÐŸÐ¾ÐºÐ°Ð·Ð²Ð° Ñ‚ÐµÐºÑƒÑ‰Ð¾Ñ‚Ð¾ Ð²Ñ€ÐµÐ¼Ðµ ÑÐ¿Ð¾Ñ€ÐµÐ´ Ñ‡Ð°ÑÐ¾Ð²Ð½Ð¸ÐºÐ° Ð½Ð° Ð²ÑÑÐºÐ¾ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾.",
+  "repeater_cliHelpPassword": "Ð—Ð°Ð´Ð°Ð²Ð° ÑÐµ Ð½Ð¾Ð²Ð° Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€ÑÐºÐ° Ð¿Ð°Ñ€Ð¾Ð»Ð° Ð·Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾Ñ‚Ð¾.",
+  "repeater_cliHelpVersion": "ÐŸÐ¾ÐºÐ°Ð·Ð²Ð° Ð²ÐµÑ€ÑÐ¸ÑÑ‚Ð° Ð½Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾Ñ‚Ð¾ Ð¸ Ð´Ð°Ñ‚Ð°Ñ‚Ð° Ð½Ð° ÐºÐ¾Ð¼Ð¿Ð¸Ð»Ð°Ñ†Ð¸Ñ Ð½Ð° Ñ„ÑŠÑ€Ð¼ÑƒÐµÑ€Ð°.",
+  "repeater_cliHelpClearStats": "Ð ÐµÑÑ‚Ð°Ñ€Ñ‚Ð¸Ñ€Ð° Ñ€Ð°Ð·Ð»Ð¸Ñ‡Ð½Ð¸ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ¸ Ð±Ñ€Ð¾ÑÑ‡Ð¸ Ð´Ð¾ Ð½ÑƒÐ»Ð°.",
+  "repeater_cliHelpSetAf": "Ð—Ð°Ð´Ð°Ð²Ð° Ð²Ñ€ÐµÐ¼ÐµÑ‚Ð¾ Ð½Ð° Ñ„Ð°ÐºÑ‚Ð¾Ñ€Ð°.",
+  "repeater_cliHelpSetTx": "Ð—Ð°Ð´Ð°Ð²Ð° ÑÐµ Ð¼Ð¾Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð° Ð½Ð° Ð¿Ñ€ÐµÐ´Ð°Ð²Ð°Ð½Ðµ Ð½Ð° LoRa Ð² dBm (Ð¾Ñ‚Ñ‡Ð¸Ñ‚Ð°Ð½Ðµ ÑÐ¿Ñ€ÑÐ¼Ð¾ Ñ€ÐµÑ„ÐµÑ€ÐµÐ½Ñ‚Ð½Ð¾ Ð½Ð¸Ð²Ð¾).",
+  "repeater_cliHelpSetRepeat": "ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð° Ð¸Ð»Ð¸ Ð´ÐµÐ°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð° Ñ€Ð¾Ð»ÑÑ‚Ð° Ð½Ð° Ñ€ÐµÐ¿Ð¸Ñ‚ÐµÑ€Ð° Ð·Ð° Ñ‚Ð¾Ð·Ð¸ Ð²ÑŠÐ·ÐµÐ».",
+  "repeater_cliHelpSetAllowReadOnly": "(Ð¡ÑŠÑ€Ð²ÑŠÑ€ Ð½Ð° ÑÑ‚Ð°ÑÑ‚Ð°) ÐÐºÐ¾ Ðµ \"Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¾\", Ñ‚Ð¾Ð³Ð°Ð²Ð° Ð²Ð»Ð¸Ð·Ð°Ð½ÐµÑ‚Ð¾ Ñ Ð¿Ñ€Ð°Ð·ÐµÐ½ Ð¿Ð°Ñ€Ð¾Ð»Ð° Ñ‰Ðµ Ð±ÑŠÐ´Ðµ Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ð¾, Ð½Ð¾ Ð½Ðµ Ð¼Ð¾Ð¶Ðµ Ð´Ð° Ð¿ÑƒÐ±Ð»Ð¸ÐºÑƒÐ²Ð° Ð² ÑÑ‚Ð°ÑÑ‚Ð° (ÑÐ°Ð¼Ð¾ Ñ‡ÐµÑ‚ÐµÐ½Ðµ).",
+  "repeater_cliHelpSetFloodMax": "Ð—Ð°Ð´Ð°Ð²Ð° Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»Ð½Ð¸Ñ Ð±Ñ€Ð¾Ð¹ Ñ…Ð¾Ð¿Ð¾Ð²Ðµ Ð½Ð° Ð²Ñ…Ð¾Ð´ÑÑ‰ Ð¿Ð°ÐºÐµÑ‚ Ð·Ð° Ð·Ð°Ð»Ð¸Ð²Ð²Ð°Ð½Ðµ (Ð°ÐºÐ¾ >= max, Ð¿Ð°ÐºÐµÑ‚ÑŠÑ‚ Ð½Ðµ ÑÐµ Ð¿Ñ€ÐµÐ´Ð°Ð²Ð°).",
+  "repeater_cliHelpSetIntThresh": "Ð—Ð°Ð´Ð°Ð²Ð° Ð¿Ñ€Ð°Ð³ Ð½Ð° Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÑ€ÐµÐ½Ñ†Ð¸ÑÑ‚Ð° (Ð² dB). ÐŸÐ¾ Ð¿Ð¾Ð´Ñ€Ð°Ð·Ð±Ð¸Ñ€Ð°Ð½Ðµ Ðµ 14. Ð—Ð°Ð´Ð°Ð¹Ñ‚Ðµ Ð½Ð° 0, Ð·Ð° Ð´Ð° Ð´ÐµÐ°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ñ‚Ðµ Ð¾Ñ‚ÐºÑ€Ð¸Ð²Ð°Ð½ÐµÑ‚Ð¾ Ð½Ð° Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÑ€ÐµÐ½Ñ†Ð¸Ñ Ð½Ð° ÐºÐ°Ð½Ð°Ð»Ð¸Ñ‚Ðµ.",
+  "repeater_cliHelpSetAgcResetInterval": "Ð—Ð°Ð´Ð°Ð²Ð° Ð¸Ð½Ñ‚ÐµÑ€Ð²Ð°Ð»Ð° Ð·Ð° Ñ€ÐµÑÑ‚Ð°Ñ€Ñ‚Ð¸Ñ€Ð°Ð½Ðµ Ð½Ð° ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¸Ñ ÐºÐ¾Ð½Ñ‚Ñ€Ð¾Ð»ÐµÑ€ Ð·Ð° ÑƒÑÐ¸Ð»Ð²Ð°Ð½Ðµ. Ð—Ð°Ð´Ð°Ð¹Ñ‚Ðµ Ð½Ð° 0, Ð·Ð° Ð´Ð° Ð³Ð¾ Ð´ÐµÐ°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ñ‚Ðµ.",
+  "repeater_cliHelpSetMultiAcks": "ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð° Ð¸Ð»Ð¸ Ð´ÐµÐ°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð° Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑÑ‚Ð° 'Ð´Ð²Ð¾Ð¹Ð½Ð¸ ACKs'.",
+  "repeater_cliHelpSetAdvertInterval": "Ð—Ð°Ð´Ð°Ð²Ð° Ð¸Ð½Ñ‚ÐµÑ€Ð²Ð°Ð»Ð° Ð½Ð° Ñ‚Ð°Ð¹Ð¼ÐµÑ€Ð° Ð² Ð¼Ð¸Ð½ÑƒÑ‚Ð¸ Ð·Ð° Ð¸Ð·Ð¿Ñ€Ð°Ñ‰Ð°Ð½Ðµ Ð½Ð° Ð»Ð¾ÐºÐ°Ð»ÐµÐ½ (Ð±ÐµÐ·Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼ÐµÐ½) Ñ€ÐµÐºÐ»Ð°Ð¼ÐµÐ½ Ð¿Ð°ÐºÐµÑ‚. Ð—Ð°Ð´Ð°Ð¹Ñ‚Ðµ Ð½Ð° 0, Ð·Ð° Ð´Ð° Ð³Ð¾ Ð´ÐµÐ°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ñ‚Ðµ.",
+  "repeater_cliHelpSetFloodAdvertInterval": "Ð—Ð°Ð´Ð°Ð²Ð° Ð¸Ð½Ñ‚ÐµÑ€Ð²Ð°Ð»Ð° Ð½Ð° Ñ‚Ð°Ð¹Ð¼ÐµÑ€Ð° Ð² Ñ‡Ð°ÑÐ¾Ð²Ðµ Ð·Ð° Ð¸Ð·Ð¿Ñ€Ð°Ñ‰Ð°Ð½Ðµ Ð½Ð° Ð¿Ð°ÐºÐµÑ‚ Ñ Ñ€ÐµÐºÐ»Ð°Ð¼Ð° Ð·Ð° Ð½Ð°Ð²Ð¾Ð´Ð½ÐµÐ½Ð¸Ðµ. Ð—Ð°Ð´Ð°Ð¹Ñ‚Ðµ Ð½Ð° 0, Ð·Ð° Ð´Ð° Ð³Ð¾ Ð´ÐµÐ°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ñ‚Ðµ.",
+  "repeater_cliHelpSetGuestPassword": "Ð—Ð°Ð´Ð°Ð²Ð°/Ð¾Ð±Ð½Ð¾Ð²ÑÐ²Ð° Ð¿Ð°Ñ€Ð¾Ð»Ð°Ñ‚Ð° Ð½Ð° Ð³Ð¾ÑÑ‚. (Ð·Ð° Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ»Ð¸, Ð³Ð¾ÑÑ‚Ð¸Ñ‚Ðµ Ð¼Ð¾Ð³Ð°Ñ‚ Ð´Ð° Ð¸Ð·Ð¿Ñ€Ð°Ñ‰Ð°Ñ‚ Ð·Ð°ÑÐ²ÐºÐ°Ñ‚Ð° \"Get Stats\")",
+  "repeater_cliHelpSetName": "Ð—Ð°Ð´Ð°Ð²Ð° Ð¸Ð¼Ðµ Ð½Ð° Ð¾Ð±ÑÐ²Ð°Ñ‚Ð°.",
+  "repeater_cliHelpSetLat": "Ð—Ð°Ð´Ð°Ð²Ð° Ð³ÐµÐ¾Ð³Ñ€Ð°Ñ„ÑÐºÐ° ÑˆÐ¸Ñ€Ð¸Ð½Ð° Ð½Ð° ÐºÐ°Ñ€Ñ‚Ð°Ñ‚Ð° Ñ Ñ€ÐµÐºÐ»Ð°Ð¼Ð¸ (Ð² Ð´ÐµÑÐµÑ‚Ð¸Ð¼Ð¸ Ð³Ñ€Ð°Ð´ÑƒÑÐ¸).",
+  "repeater_cliHelpSetLon": "Ð—Ð°Ð´Ð°Ð²Ð° Ð¾Ð±Ñ…Ð²Ð°Ñ‚Ð° Ð½Ð° Ð´ÑŠÐ»Ð¶Ð¸Ð½Ð° Ð½Ð° ÐºÐ°Ñ€Ñ‚Ð°Ñ‚Ð° Ð½Ð° Ñ€ÐµÐºÐ»Ð°Ð¼Ð°Ñ‚Ð°. (Ð´ÐµÑÐµÑ‚Ð¸Ð¼Ð¸ Ð³Ñ€Ð°Ð´ÑƒÑÐ°)",
+  "repeater_cliHelpSetRadio": "Ð—Ð°Ð´Ð°Ð²Ð° Ð½Ð°Ð¿ÑŠÐ»Ð½Ð¾ Ð½Ð¾Ð²Ð¸ Ñ€Ð°Ð´Ð¸Ð¾ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¸ Ð¸ Ð³Ð¸ Ð·Ð°Ð¿Ð°Ð·Ð²Ð° Ð² Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð¸ÑÑ‚Ð°. Ð˜Ð·Ð¸ÑÐºÐ²Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° \"Ñ€ÐµÑÑ‚Ð°Ñ€Ñ‚\", Ð·Ð° Ð´Ð° Ð±ÑŠÐ´Ð°Ñ‚ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸.",
+  "repeater_cliHelpSetRxDelay": "Ð—Ð°Ð´Ð°Ð´ÐµÐ½Ð¸ (ÐµÐºÑÐ¿ÐµÑ€Ð¸Ð¼ÐµÐ½Ñ‚Ð°Ð»Ð½Ð¸) Ð¾ÑÐ½Ð¾Ð²Ð¸ (Ñ‚Ñ€ÑÐ±Ð²Ð° Ð´Ð° Ðµ > 1 Ð·Ð° ÐµÑ„ÐµÐºÑ‚) Ð·Ð° Ð¿Ñ€Ð¸Ð»Ð°Ð³Ð°Ð½Ðµ Ð½Ð° Ð»ÐµÐºÐ¾ Ð·Ð°Ð±Ð°Ð²ÑÐ½Ðµ Ð½Ð° Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ñ‚Ðµ Ð¿Ð°ÐºÐµÑ‚Ð¸, Ð±Ð°Ð·Ð¸Ñ€Ð°Ð½Ð¾ Ð½Ð° ÑÐ¸Ð»Ð°Ñ‚Ð° Ð½Ð° ÑÐ¸Ð³Ð½Ð°Ð»Ð°/Ñ€ÐµÐ·ÑƒÐ»Ñ‚Ð°Ñ‚Ð°. Ð—Ð°Ð´Ð°Ð¹Ñ‚Ðµ Ð½Ð° 0, Ð·Ð° Ð´Ð° Ð³Ð¾ Ð´ÐµÐ°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ñ‚Ðµ.",
+  "repeater_cliHelpSetTxDelay": "Ð—Ð°Ð´Ð°Ð²Ð° Ñ„Ð°ÐºÑ‚Ð¾Ñ€, ÑƒÐ¼Ð½Ð¾Ð¶ÐµÐ½ Ð¿Ð¾ Ð²Ñ€ÐµÐ¼ÐµÑ‚Ð¾ Ð½Ð° Ð²ÑŠÐ·Ð´ÑƒÑ… Ð·Ð° Ð¿Ð°ÐºÐµÑ‚ Ð² Ñ€ÐµÐ¶Ð¸Ð¼ Ð½Ð° Ð½Ð°Ð²Ð¾Ð´Ð½ÐµÐ½Ð¸Ðµ Ð¸ Ñ Ñ€Ð°Ð½Ð´Ð¾Ð¼Ð¸Ð·Ð¸Ñ€Ð°Ð½Ð° ÑÐ¸ÑÑ‚ÐµÐ¼Ð° Ð·Ð° ÑÐ»Ð¾Ñ‚Ð¾Ð²Ðµ, Ð·Ð° Ð´Ð° Ð·Ð°Ð±Ð°Ð²Ð¸ Ð¿Ñ€ÐµÐ´Ð°Ð²Ð°Ð½ÐµÑ‚Ð¾ Ð¼Ñƒ (Ð·Ð° Ð´Ð° Ð½Ð°Ð¼Ð°Ð»Ð¸ Ð²ÐµÑ€Ð¾ÑÑ‚Ð½Ð¾ÑÑ‚Ñ‚Ð° Ð¾Ñ‚ ÑÐ±Ð»ÑŠÑÑŠÑ†Ð¸).",
+  "repeater_cliHelpSetDirectTxDelay": "Ð¡ÑŠÑ‰Ð¾Ñ‚Ð¾ ÐºÐ°Ñ‚Ð¾ txdelay, Ð½Ð¾ Ð·Ð° Ð¿Ñ€Ð¸Ð»Ð°Ð³Ð°Ð½Ðµ Ð½Ð° ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ð° Ð·Ð°Ð±Ð°Ð²ÑÐ½Ðµ Ð¿Ñ€Ð¸ Ð¿Ñ€ÐµÐ¿Ñ€Ð°Ñ‰Ð°Ð½ÐµÑ‚Ð¾ Ð½Ð° Ð¿Ð°ÐºÐµÑ‚Ð¸ Ð² Ð´Ð¸Ñ€ÐµÐºÑ‚ÐµÐ½ Ñ€ÐµÐ¶Ð¸Ð¼.",
+  "repeater_cliHelpSetBridgeEnabled": "ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð½Ðµ/Ð”ÐµÐ°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð½Ðµ Ð½Ð° Ð¼Ð¾ÑÑ‚.",
+  "repeater_cliHelpSetBridgeDelay": "Ð—Ð°Ð´Ð°Ð¹Ñ‚Ðµ Ð·Ð°Ð±Ð°Ð²ÑÐ½Ðµ Ð¿Ñ€ÐµÐ´Ð¸ Ð¿Ñ€ÐµÐ¸Ð·Ð¿Ñ€Ð°Ñ‰Ð°Ð½Ðµ Ð½Ð° Ð¿Ð°ÐºÐµÑ‚Ð¸.",
+  "repeater_cliHelpSetBridgeSource": "Ð˜Ð·Ð±ÐµÑ€ÐµÑ‚Ðµ Ð´Ð°Ð»Ð¸ Ð¼Ð¾ÑÑ‚ÑŠÑ‚ Ñ‰Ðµ Ð¿Ñ€ÐµÐ´Ð°Ð²Ð° Ð¿Ñ€ÐµÐ¿Ñ€Ð°Ñ‚ÐµÐ½Ð¸ Ð¿Ð°ÐºÐµÑ‚Ð¸ Ð¸Ð»Ð¸ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸ Ð¿Ð°ÐºÐµÑ‚Ð¸.",
+  "repeater_cliHelpSetBridgeBaud": "Ð—Ð°Ð´Ð°Ð¹Ñ‚Ðµ ÑÐºÐ¾Ñ€Ð¾ÑÑ‚Ñ‚Ð° Ð½Ð° Ð¿Ñ€ÐµÐ´Ð°Ð²Ð°Ð½Ðµ Ð·Ð° RS232 Ð¼Ð¾ÑÑ‚Ð¾Ð²ÐµÑ‚Ðµ.",
+  "repeater_cliHelpSetBridgeSecret": "Ð—Ð°Ð´Ð°Ð¹Ñ‚Ðµ Ñ‚Ð°Ð¹Ð½Ð° Ð·Ð° Ð¼Ð¾ÑÑ‚Ð¾Ð²ÐµÑ‚Ðµ Ð½Ð° EspNow.",
+  "repeater_cliHelpSetAdcMultiplier": "Ð—Ð°Ð´Ð°Ð²Ð° Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð½ ÐºÐ¾ÐµÑ„Ð¸Ñ†Ð¸ÐµÐ½Ñ‚ Ð·Ð° ÐºÐ¾Ñ€Ð¸Ð³Ð¸Ñ€Ð°Ð½Ðµ Ð½Ð° Ð¾Ñ‚Ñ‡ÐµÑ‚ÐµÐ½Ð¾Ñ‚Ð¾ Ð½Ð°Ð¿Ñ€ÐµÐ¶ÐµÐ½Ð¸Ðµ Ð½Ð° Ð±Ð°Ñ‚ÐµÑ€Ð¸ÑÑ‚Ð° (Ð¿Ð¾Ð´Ð´ÑŠÑ€Ð¶Ð° ÑÐµ ÑÐ°Ð¼Ð¾ Ð½Ð° Ð¸Ð·Ð±Ñ€Ð°Ð½Ð¸ Ð´ÑŠÑÐºÐ¸).",
+  "repeater_cliHelpTempRadio": "Ð—Ð°Ð´Ð°Ð²Ð° Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ð¸ Ñ€Ð°Ð´Ð¸Ð¾ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¸ Ð·Ð° Ð¿Ð¾ÑÐ¾Ñ‡ÐµÐ½Ð¸Ñ Ð±Ñ€Ð¾Ð¹ Ð¼Ð¸Ð½ÑƒÑ‚Ð¸, Ð²Ñ€ÑŠÑ‰Ð°Ð¹ÐºÐ¸ ÑÐµ ÐºÑŠÐ¼ Ð¾Ñ€Ð¸Ð³Ð¸Ð½Ð°Ð»Ð½Ð¸Ñ‚Ðµ Ñ€Ð°Ð´Ð¸Ð¾ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¸ ÑÐ»ÐµÐ´ Ñ‚Ð¾Ð²Ð°. (Ð½Ðµ ÑÐµ Ð·Ð°Ð¿Ð°Ð·Ð²Ð° Ð² Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð¸ÑÑ‚Ð°).",
+  "repeater_cliHelpSetPerm": "ÐŸÑ€Ð¾Ð¼ÐµÐ½Ñ ACL. ÐŸÑ€ÐµÐ¼Ð°Ñ…Ð²Ð° ÑÑŠÐ¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²Ð°Ñ‰Ð¸Ñ Ð·Ð°Ð¿Ð¸Ñ (Ð¿Ð¾ Ð¿Ñ€ÐµÑ„Ð¸ÐºÑ Ð½Ð° pubkey), Ð°ÐºÐ¾ \"permissions\" Ðµ Ð½ÑƒÐ»Ð°. Ð”Ð¾Ð±Ð°Ð²Ñ Ð½Ð¾Ð² Ð·Ð°Ð¿Ð¸Ñ, Ð°ÐºÐ¾ pubkey-hex Ðµ Ñ Ð¿ÑŠÐ»Ð½Ð° Ð´ÑŠÐ»Ð¶Ð¸Ð½Ð° Ð¸ Ð½Ðµ Ðµ Ð² ACL. ÐÐºÑ‚ÑƒÐ°Ð»Ð¸Ð·Ð¸Ñ€Ð° Ð·Ð°Ð¿Ð¸Ñ, ÑÑŠÐ¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²Ð°Ñ‰ Ð½Ð° Ð¿Ñ€ÐµÑ„Ð¸ÐºÑÐ° Ð½Ð° pubkey. Ð‘Ð¸Ñ‚Ð¾Ð²ÐµÑ‚Ðµ Ð·Ð° Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ð¸Ñ Ð²Ð°Ñ€Ð¸Ñ€Ð°Ñ‚ ÑÐ¿Ð¾Ñ€ÐµÐ´ Ñ€Ð¾Ð»ÑÑ‚Ð° Ð½Ð° firmware, Ð½Ð¾ Ð´Ð¾Ð»Ð½Ð¸Ñ‚Ðµ 2 Ð±Ð¸Ñ‚Ð° ÑÐ°: 0 (Ð“Ð¾ÑÑ‚), 1 (Ð¡Ð°Ð¼Ð¾ Ñ‡ÐµÑ‚ÐµÐ½Ðµ), 2 (Ð§ÐµÑ‚ÐµÐ½Ðµ Ð¸ Ð¿Ð¸ÑÐ°Ð½Ðµ), 3 (ÐÐ´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€).",
+  "repeater_cliHelpGetBridgeType": "ÐŸÐ¾Ð»ÑƒÑ‡Ð°Ð²Ð° Ñ‚Ð¸Ð¿ Ð¼Ð¾ÑÑ‚ none, rs232, espnow",
+  "repeater_cliHelpLogStart": "Ð—Ð°Ð¿Ð¾Ñ‡Ð²Ð° Ð·Ð°Ð¿Ð¸ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ð¿Ð°ÐºÐµÑ‚Ð¸ Ð²ÑŠÐ² Ñ„Ð°Ð¹Ð»Ð¾Ð²Ð°Ñ‚Ð° ÑÐ¸ÑÑ‚ÐµÐ¼Ð°.",
+  "repeater_cliHelpLogStop": "Ð¡Ð¿Ð¸Ñ€Ð° Ð·Ð°Ð¿Ð¸ÑÐ²Ð°Ð½ÐµÑ‚Ð¾ Ð½Ð° Ð¿Ð°ÐºÐµÑ‚Ð¸ Ð²ÑŠÐ² Ñ„Ð°Ð¹Ð»Ð¾Ð²Ð°Ñ‚Ð° ÑÐ¸ÑÑ‚ÐµÐ¼Ð°.",
+  "repeater_cliHelpLogErase": "Ð˜Ð·Ñ‚Ñ€Ð¸Ð²Ð° Ð»Ð¾Ð³Ð¾Ð²ÐµÑ‚Ðµ Ð¾Ñ‚ Ð¿Ð°ÐºÐµÑ‚Ð° Ð¾Ñ‚ Ñ„Ð°Ð¹Ð»Ð¾Ð²Ð°Ñ‚Ð° ÑÐ¸ÑÑ‚ÐµÐ¼Ð°.",
+  "repeater_cliHelpNeighbors": "ÐŸÐ¾ÐºÐ°Ð·Ð²Ð° ÑÐ¿Ð¸ÑÑŠÐº Ñ Ð´Ñ€ÑƒÐ³Ð¸ Ð²ÑŠÐ·Ð»Ð¸ Ð½Ð° Ñ€ÐµÐ¿Ð¸Ñ‚ÐµÑ€, Ñ‡ÑƒÑ‚Ð¸ Ñ‡Ñ€ÐµÐ· Ð½ÑƒÐ»ÐµÐ² Ñ…Ð¾Ð¿ Ñ€ÐµÐºÐ»Ð°Ð¼Ð¸. Ð’ÑÑÐºÐ° Ð»Ð¸Ð½Ð¸Ñ Ðµ id-prefix-hex:timestamp:snr-times-4",
+  "repeater_cliHelpNeighborRemove": "ÐŸÑ€ÐµÐ¼Ð°Ñ…Ð²Ð° Ð¿ÑŠÑ€Ð²Ð¸Ñ ÑÑŠÐ²Ð¿Ð°Ð´Ð°Ñ‰ Ð·Ð°Ð¿Ð¸Ñ (Ð¿Ð¾ Ð¿Ñ€ÐµÑ„Ð¸ÐºÑÐ¸ Ð½Ð° pubkey (hex)) Ð¾Ñ‚ ÑÐ¿Ð¸ÑÑŠÐºÐ° Ñ ÑÑŠÑÐµÐ´Ð¸.",
+  "repeater_cliHelpRegion": "(ÑÐµÑ€Ð¸ÐµÐ½ Ñ€ÐµÐ¶Ð¸Ð¼) Ð˜Ð·Ð±Ñ€Ð¾ÑÐ²Ð° Ð²ÑÐ¸Ñ‡ÐºÐ¸ Ð´ÐµÑ„Ð¸Ð½Ð¸Ñ€Ð°Ð½Ð¸ Ñ€ÐµÐ³Ð¸Ð¾Ð½Ð¸ Ð¸ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ð¸Ñ Ð·Ð° Ð½Ð°Ð²Ð¾Ð´Ð½ÐµÐ½Ð¸Ñ.",
+  "repeater_cliHelpRegionLoad": "Ð—Ð°Ð±ÐµÐ»ÐµÐ¶ÐºÐ°: Ñ‚Ð¾Ð²Ð° Ðµ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»Ð½Ð¾ Ð¼Ð½Ð¾Ð³Ð¾ÐºÐ¾Ð¼Ð°Ð½Ð´Ð½Ð¾ Ð¸Ð·Ð²Ð¸ÐºÐ²Ð°Ð½Ðµ. Ð’ÑÑÐºÐ° ÑÐ»ÐµÐ´Ð²Ð°Ñ‰Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° Ðµ Ð¸Ð¼Ðµ Ð½Ð° Ñ€ÐµÐ³Ð¸Ð¾Ð½ (Ð¾Ñ‚ÑÑ‚ÑŠÐ¿ÐµÐ½ Ñ Ð¸Ð½Ñ‚ÐµÑ€Ð²Ð°Ð»Ð¸, Ð·Ð° Ð´Ð° ÑÐµ Ð¿Ð¾ÐºÐ°Ð¶Ðµ Ð¹ÐµÑ€Ð°Ñ€Ñ…Ð¸ÑÑ‚Ð°, Ñ Ð¼Ð¸Ð½Ð¸Ð¼ÑƒÐ¼ ÐµÐ´Ð¸Ð½ Ð¸Ð½Ñ‚ÐµÑ€Ð²Ð°Ð»). Ð—Ð°Ð²ÑŠÑ€ÑˆÐ²Ð° ÑÐµ Ñ‡Ñ€ÐµÐ· Ð¸Ð·Ð¿Ñ€Ð°Ñ‰Ð°Ð½Ðµ Ð½Ð° Ð¿Ñ€Ð°Ð·ÐµÐ½ Ñ€ÐµÐ´/ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°.",
+  "repeater_cliHelpRegionGet": "Ð¢ÑŠÑ€ÑÐ¸ Ñ€ÐµÐ³Ð¸Ð¾Ð½ Ñ Ð´Ð°Ð´ÐµÐ½ Ð¿Ñ€ÐµÑ„Ð¸ÐºÑ Ð½Ð° Ð¸Ð¼Ðµ (Ð¸Ð»Ð¸ \"\" Ð·Ð° Ð³Ð»Ð¾Ð±Ð°Ð»Ð½Ð¸Ñ Ð¾Ð±Ñ…Ð²Ð°Ñ‚). ÐžÑ‚Ð³Ð¾Ð²Ð°Ñ€Ñ Ñ \"-> region-name (parent-name) 'F'\"",
+  "repeater_cliHelpRegionPut": "Ð”Ð¾Ð±Ð°Ð²Ñ Ð¸Ð»Ð¸ Ð°ÐºÑ‚ÑƒÐ°Ð»Ð¸Ð·Ð¸Ñ€Ð° Ð´ÐµÑ„Ð¸Ð½Ð¸Ñ†Ð¸Ñ Ð½Ð° Ñ€ÐµÐ³Ð¸Ð¾Ð½ Ñ Ð´Ð°Ð´ÐµÐ½Ð¾ Ð¸Ð¼Ðµ.",
+  "repeater_cliHelpRegionRemove": "ÐŸÑ€ÐµÐ¼Ð°Ñ…Ð²Ð° Ð´ÐµÑ„Ð¸Ð½Ð¸Ñ†Ð¸Ñ Ð½Ð° Ñ€ÐµÐ³Ð¸Ð¾Ð½ Ñ Ð´Ð°Ð´ÐµÐ½Ð¾ Ð¸Ð¼Ðµ. (Ñ‚Ñ€ÑÐ±Ð²Ð° Ð´Ð° ÑÑŠÐ²Ð¿Ð°Ð´Ð° Ñ‚Ð¾Ñ‡Ð½Ð¾ Ð¸ Ð´Ð° Ð½ÑÐ¼Ð° Ð¿Ð¾Ð´Ñ€ÐµÐ³Ð¸Ð¾Ð½Ð¸)",
+  "repeater_cliHelpRegionAllowf": "Ð—Ð°Ð´Ð°Ð²Ð° 'ÐŸÐ¾Ñ‚Ð¾Ð¿' Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ð¸Ðµ Ð·Ð° Ð¿Ð¾ÑÐ¾Ñ‡ÐµÐ½Ð°Ñ‚Ð° Ð¾Ð±Ð»Ð°ÑÑ‚. ('' Ð·Ð° Ð³Ð»Ð¾Ð±Ð°Ð»Ð½Ð¸Ñ/ÑÑ‚Ð°Ñ€Ð¸Ñ Ð¾Ð±Ñ…Ð²Ð°Ñ‚)",
+  "repeater_cliHelpRegionDenyf": "ÐŸÑ€ÐµÐ¼Ð°Ñ…Ð²Ð° Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ð¸ÐµÑ‚Ð¾ \"F\"Ð»Ð¾ÑƒÐ´ Ð·Ð° Ð¿Ð¾ÑÐ¾Ñ‡ÐµÐ½Ð°Ñ‚Ð° Ð¾Ð±Ð»Ð°ÑÑ‚. (Ð—ÐÐ‘Ð•Ð›Ð•Ð–ÐšÐ: Ð² Ð¼Ð¾Ð¼ÐµÐ½Ñ‚Ð° Ð½Ðµ ÑÐµ Ð¿Ñ€ÐµÐ¿Ð¾Ñ€ÑŠÑ‡Ð²Ð° Ð´Ð° ÑÐµ Ð¸Ð·Ð¿Ð¾Ð»Ð·Ð²Ð° Ð½Ð° Ð³Ð»Ð¾Ð±Ð°Ð»Ð½Ð¾Ñ‚Ð¾/ÑÑ‚Ð°Ñ€Ð¾Ñ‚Ð¾ Ð½Ð¸Ð²Ð¾!! )",
+  "repeater_cliHelpRegionHome": "ÐžÑ‚Ð³Ð¾Ð²Ð°Ñ€Ñ Ñ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ñ 'home' Ñ€ÐµÐ³Ð¸Ð¾Ð½. (Ð—Ð°Ð±ÐµÐ»ÐµÐ¶ÐºÐ°: Ð½Ðµ Ðµ Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð° Ð½Ð¸ÐºÑŠÐ´Ðµ, Ð·Ð°Ð¿Ð°Ð·ÐµÐ½Ð° Ð·Ð° Ð±ÑŠÐ´ÐµÑ‰Ð¸ Ð½ÑƒÐ¶Ð´Ð¸).",
+  "repeater_cliHelpRegionHomeSet": "Ð—Ð°Ð´Ð°Ð²Ð° 'Ð´Ð¾Ð¼Ð°ÑˆÐ½Ð¾' Ñ€ÐµÐ³Ð¸Ð¾Ð½Ð°.",
+  "repeater_cliHelpRegionSave": "Ð—Ð°Ð¿Ð°Ð·Ð²Ð° ÑÐ¿Ð¸ÑÑŠÐºÐ°/ÐºÐ°Ñ€Ñ‚Ð°Ñ‚Ð° Ñ Ñ€ÐµÐ³Ð¸Ð¾Ð½Ð¸ Ð² ÑÑŠÑ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ðµ.",
+  "repeater_cliHelpGps": "ÐŸÐ¾ÐºÐ°Ð·Ð²Ð° ÑÑ‚Ð°Ñ‚ÑƒÑÐ° Ð½Ð° GPS. ÐšÐ¾Ð³Ð°Ñ‚Ð¾ GPS Ðµ Ð¸Ð·ÐºÐ»ÑŽÑ‡ÐµÐ½, Ð¾Ñ‚Ð³Ð¾Ð²Ð°Ñ€Ñ ÑÐ°Ð¼Ð¾ Ñ \"off\", Ð°ÐºÐ¾ Ðµ Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½ Ð¾Ñ‚Ð³Ð¾Ð²Ð°Ñ€Ñ Ñ \"on\", ÑÑ‚Ð°Ñ‚ÑƒÑ, fix, Ð±Ñ€Ð¾Ð¹ Ð½Ð° ÑÐ°Ñ‚ÐµÐ»Ð¸Ñ‚Ð¸.",
+  "repeater_cliHelpGpsOnOff": "Ð’ÐºÐ»ÑŽÑ‡Ð²Ð°/Ð˜Ð·ÐºÐ»ÑŽÑ‡Ð²Ð° GPS Ð·Ð°Ñ…Ñ€Ð°Ð½Ð²Ð°Ð½ÐµÑ‚Ð¾.",
+  "repeater_cliHelpGpsSync": "Ð¡Ð¸Ð½Ñ…Ñ€Ð¾Ð½Ð¸Ð·Ð¸Ñ€Ð° Ð²Ñ€ÐµÐ¼ÐµÑ‚Ð¾ Ð½Ð° Ð²ÑŠÐ·ÐµÐ»Ð° Ñ GPS Ñ‡Ð°ÑÐ¾Ð²Ð½Ð¸ÐºÐ°.",
+  "repeater_cliHelpGpsSetLoc": "Ð—Ð°Ð´Ð°Ð²Ð° ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð¸Ñ‚Ðµ Ð½Ð° Ð½Ð¾Ð´Ð°Ñ‚Ð° Ð¿Ð¾ GPS Ð¸ Ð·Ð°Ð¿Ð°Ð·Ð²Ð° Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð¸ÑÑ‚Ð°.",
+  "repeater_cliHelpGpsAdvert": "ÐŸÑ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²Ñ ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸ÑÑ‚Ð° Ð½Ð° Ñ€ÐµÐºÐ»Ð°Ð¼Ð°Ñ‚Ð° Ð·Ð° Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾ Ð½Ð° Ð²ÑŠÐ·ÐµÐ»Ð°:\n- none: Ð½Ðµ Ð²ÐºÐ»ÑŽÑ‡Ð²Ð°Ð¹Ñ‚Ðµ Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾ Ð² Ñ€ÐµÐºÐ»Ð°Ð¼Ð¸Ñ‚Ðµ\n- share: ÑÐ¿Ð¾Ð´ÐµÐ»ÑÐ¹Ñ‚Ðµ gps Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾ (Ð¾Ñ‚ SensorManager)\n- prefs: Ñ€ÐµÐºÐ»Ð°Ð¼Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾, ÑÑŠÑ…Ñ€Ð°Ð½ÐµÐ½Ð¾ Ð² Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð¸ÑÑ‚Ð°",
+  "repeater_cliHelpGpsAdvertSet": "Ð—Ð°Ð´Ð°Ð²Ð° ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ Ð½Ð° Ð¾Ð±ÑÐ²Ð¸Ñ‚Ðµ Ð·Ð° Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ.",
+  "repeater_commandsListTitle": "Ð¡Ð¿Ð¸ÑÑŠÐº Ñ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸",
+  "repeater_commandsListNote": "Ð—ÐÐ‘Ð•Ð›Ð•Ð–ÐšÐ: Ð·Ð° Ñ€Ð°Ð·Ð»Ð¸Ñ‡Ð½Ð¸Ñ‚Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸ \"set ...\", ÑÑŠÑ‰Ð¾ Ñ‚Ð°ÐºÐ° ÑÑŠÑ‰ÐµÑÑ‚Ð²ÑƒÐ²Ð° ÐºÐ¾Ð¼Ð°Ð½Ð´Ð° \"get ...\".",
+  "repeater_general": "ÐžÐ±Ñ‰Ð¾",
+  "repeater_settingsCategory": "ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸",
+  "repeater_bridge": "ÐœÐ¾ÑÑ‚",
+  "repeater_logging": "Ð›Ð¾Ð³Ð²Ð°Ð½Ðµ",
+  "repeater_neighborsRepeaterOnly": "Ð¡ÑŠÑÐµÐ´Ð¸ (Ð¡Ð°Ð¼Ð¾ Ð·Ð° Ð¿Ð¾Ð²Ñ‚Ð°Ñ€ÑÐ½Ðµ)",
+  "repeater_regionManagementRepeaterOnly": "Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð° Ñ€ÐµÐ³Ð¸Ð¾Ð½Ð¸ (Ð¡Ð°Ð¼Ð¾ Ð·Ð° Ð¿Ð¾Ð²Ñ‚Ð°Ñ€ÑÑ‰ ÑÐµ ÐºÐ°Ð½Ð°Ð»)",
+  "repeater_regionNote": "Ð ÐµÐ³Ð¸Ð¾Ð½Ð½Ð¸Ñ‚Ðµ ÐºÐ¾Ð¼Ð°Ð½Ð´Ð¸ ÑÐ° Ð²ÑŠÐ²ÐµÐ´ÐµÐ½Ð¸, Ð·Ð° Ð´Ð° ÑƒÐ¿Ñ€Ð°Ð²Ð»ÑÐ²Ð°Ñ‚ Ð´ÐµÑ„Ð¸Ð½Ð¸Ñ†Ð¸Ð¸Ñ‚Ðµ Ð¸ Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ð¸ÑÑ‚Ð° Ð½Ð° Ñ€ÐµÐ³Ð¸Ð¾Ð½Ð¸Ñ‚Ðµ.",
+  "repeater_gpsManagement": "Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð° GPS",
+  "repeater_gpsNote": "GPS ÐºÐ¾Ð¼Ð°Ð½Ð´Ð°Ñ‚Ð° Ðµ Ð²ÑŠÐ²ÐµÐ´ÐµÐ½Ð°, Ð·Ð° Ð´Ð° ÑƒÐ¿Ñ€Ð°Ð²Ð»ÑÐ²Ð° Ñ‚ÐµÐ¼Ð¸, ÑÐ²ÑŠÑ€Ð·Ð°Ð½Ð¸ Ñ Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾.",
+  "telemetry_receivedData": "ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸ Ñ‚ÐµÐ»ÐµÐ¼ÐµÑ‚Ñ€Ð¸Ñ‡Ð½Ð¸ Ð´Ð°Ð½Ð½Ð¸",
+  "telemetry_requestTimeout": "Ð—Ð°ÑÐ²ÐºÐ°Ñ‚Ð° Ð·Ð° Ñ‚ÐµÐ»ÐµÐ¼ÐµÑ‚Ñ€Ð¸Ñ Ðµ Ð¿Ñ€ÐµÐºÑŠÑÐ½Ð°Ñ‚Ð°.",
+  "telemetry_errorLoading": "Ð“Ñ€ÐµÑˆÐºÐ° Ð¿Ñ€Ð¸ Ð·Ð°Ñ€ÐµÐ¶Ð´Ð°Ð½Ðµ Ð½Ð° Ñ‚ÐµÐ»ÐµÐ¼ÐµÑ‚Ñ€Ð¸ÑÑ‚Ð°: {error}",
   "@telemetry_errorLoading": {
     "placeholders": {
       "error": {
@@ -1191,8 +1191,8 @@
       }
     }
   },
-  "telemetry_noData": "Няма налични данни за телеметрията.",
-  "telemetry_channelTitle": "Канал {channel}",
+  "telemetry_noData": "ÐÑÐ¼Ð° Ð½Ð°Ð»Ð¸Ñ‡Ð½Ð¸ Ð´Ð°Ð½Ð½Ð¸ Ð·Ð° Ñ‚ÐµÐ»ÐµÐ¼ÐµÑ‚Ñ€Ð¸ÑÑ‚Ð°.",
+  "telemetry_channelTitle": "ÐšÐ°Ð½Ð°Ð» {channel}",
   "@telemetry_channelTitle": {
     "placeholders": {
       "channel": {
@@ -1200,11 +1200,11 @@
       }
     }
   },
-  "telemetry_batteryLabel": "Батерия",
-  "telemetry_voltageLabel": "Напрежение",
-  "telemetry_mcuTemperatureLabel": "Температура на MCU",
-  "telemetry_temperatureLabel": "Температура",
-  "telemetry_currentLabel": "Текущо",
+  "telemetry_batteryLabel": "Ð‘Ð°Ñ‚ÐµÑ€Ð¸Ñ",
+  "telemetry_voltageLabel": "ÐÐ°Ð¿Ñ€ÐµÐ¶ÐµÐ½Ð¸Ðµ",
+  "telemetry_mcuTemperatureLabel": "Ð¢ÐµÐ¼Ð¿ÐµÑ€Ð°Ñ‚ÑƒÑ€Ð° Ð½Ð° MCU",
+  "telemetry_temperatureLabel": "Ð¢ÐµÐ¼Ð¿ÐµÑ€Ð°Ñ‚ÑƒÑ€Ð°",
+  "telemetry_currentLabel": "Ð¢ÐµÐºÑƒÑ‰Ð¾",
   "telemetry_batteryValue": "{percent}% / {volts}V",
   "@telemetry_batteryValue": {
     "placeholders": {
@@ -1232,7 +1232,7 @@
       }
     }
   },
-  "telemetry_temperatureValue": "{celsius}°C / {fahrenheit}°F",
+  "telemetry_temperatureValue": "{celsius}Â°C / {fahrenheit}Â°F",
   "@telemetry_temperatureValue": {
     "placeholders": {
       "celsius": {
@@ -1243,18 +1243,18 @@
       }
     }
   },
-  "channelPath_title": "Пътеки пъзел",
-  "channelPath_viewMap": "Преглед на картата",
-  "channelPath_otherObservedPaths": "Други Наблюдавани Пътища",
-  "channelPath_repeaterHops": "Повтарящи се скокове",
-  "channelPath_noHopDetails": "Детайлите за пакета не са предоставени.",
-  "channelPath_messageDetails": "Подробности на съобщението",
-  "channelPath_senderLabel": "Изпращач",
-  "channelPath_timeLabel": "Време",
-  "channelPath_repeatsLabel": "Повтаря",
-  "channelPath_pathLabel": "Път {index}",
-  "channelPath_observedLabel": "Наблюдавано",
-  "channelPath_observedPathTitle": "Наблюдаван път {index} • {hops}",
+  "channelPath_title": "ÐŸÑŠÑ‚ÐµÐºÐ¸ Ð¿ÑŠÐ·ÐµÐ»",
+  "channelPath_viewMap": "ÐŸÑ€ÐµÐ³Ð»ÐµÐ´ Ð½Ð° ÐºÐ°Ñ€Ñ‚Ð°Ñ‚Ð°",
+  "channelPath_otherObservedPaths": "Ð”Ñ€ÑƒÐ³Ð¸ ÐÐ°Ð±Ð»ÑŽÐ´Ð°Ð²Ð°Ð½Ð¸ ÐŸÑŠÑ‚Ð¸Ñ‰Ð°",
+  "channelPath_repeaterHops": "ÐŸÐ¾Ð²Ñ‚Ð°Ñ€ÑÑ‰Ð¸ ÑÐµ ÑÐºÐ¾ÐºÐ¾Ð²Ðµ",
+  "channelPath_noHopDetails": "Ð”ÐµÑ‚Ð°Ð¹Ð»Ð¸Ñ‚Ðµ Ð·Ð° Ð¿Ð°ÐºÐµÑ‚Ð° Ð½Ðµ ÑÐ° Ð¿Ñ€ÐµÐ´Ð¾ÑÑ‚Ð°Ð²ÐµÐ½Ð¸.",
+  "channelPath_messageDetails": "ÐŸÐ¾Ð´Ñ€Ð¾Ð±Ð½Ð¾ÑÑ‚Ð¸ Ð½Ð° ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸ÐµÑ‚Ð¾",
+  "channelPath_senderLabel": "Ð˜Ð·Ð¿Ñ€Ð°Ñ‰Ð°Ñ‡",
+  "channelPath_timeLabel": "Ð’Ñ€ÐµÐ¼Ðµ",
+  "channelPath_repeatsLabel": "ÐŸÐ¾Ð²Ñ‚Ð°Ñ€Ñ",
+  "channelPath_pathLabel": "ÐŸÑŠÑ‚ {index}",
+  "channelPath_observedLabel": "ÐÐ°Ð±Ð»ÑŽÐ´Ð°Ð²Ð°Ð½Ð¾",
+  "channelPath_observedPathTitle": "ÐÐ°Ð±Ð»ÑŽÐ´Ð°Ð²Ð°Ð½ Ð¿ÑŠÑ‚ {index} â€¢ {hops}",
   "@channelPath_observedPathTitle": {
     "placeholders": {
       "index": {
@@ -1265,7 +1265,7 @@
       }
     }
   },
-  "channelPath_noLocationData": "Няма данни за местоположение.",
+  "channelPath_noLocationData": "ÐÑÐ¼Ð° Ð´Ð°Ð½Ð½Ð¸ Ð·Ð° Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ.",
   "channelPath_timeWithDate": "{day}/{month} {time}",
   "@channelPath_timeWithDate": {
     "placeholders": {
@@ -1288,10 +1288,10 @@
       }
     }
   },
-  "channelPath_unknownPath": "Неизвестно",
-  "channelPath_floodPath": "Поливане",
-  "channelPath_directPath": "Директно",
-  "channelPath_observedZeroOf": "0 от {total} скокове",
+  "channelPath_unknownPath": "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð¾",
+  "channelPath_floodPath": "ÐŸÐ¾Ð»Ð¸Ð²Ð°Ð½Ðµ",
+  "channelPath_directPath": "Ð”Ð¸Ñ€ÐµÐºÑ‚Ð½Ð¾",
+  "channelPath_observedZeroOf": "0 Ð¾Ñ‚ {total} ÑÐºÐ¾ÐºÐ¾Ð²Ðµ",
   "@channelPath_observedZeroOf": {
     "placeholders": {
       "total": {
@@ -1299,7 +1299,7 @@
       }
     }
   },
-  "channelPath_observedSomeOf": "{observed} от {total} скокове",
+  "channelPath_observedSomeOf": "{observed} Ð¾Ñ‚ {total} ÑÐºÐ¾ÐºÐ¾Ð²Ðµ",
   "@channelPath_observedSomeOf": {
     "placeholders": {
       "observed": {
@@ -1310,9 +1310,9 @@
       }
     }
   },
-  "channelPath_mapTitle": "Карта на пътя",
-  "channelPath_noRepeaterLocations": "Няма налични местоположения на повторителите за този път.",
-  "channelPath_primaryPath": "Път {index} (Основен)",
+  "channelPath_mapTitle": "ÐšÐ°Ñ€Ñ‚Ð° Ð½Ð° Ð¿ÑŠÑ‚Ñ",
+  "channelPath_noRepeaterLocations": "ÐÑÐ¼Ð° Ð½Ð°Ð»Ð¸Ñ‡Ð½Ð¸ Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð½Ð° Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ»Ð¸Ñ‚Ðµ Ð·Ð° Ñ‚Ð¾Ð·Ð¸ Ð¿ÑŠÑ‚.",
+  "channelPath_primaryPath": "ÐŸÑŠÑ‚ {index} (ÐžÑÐ½Ð¾Ð²ÐµÐ½)",
   "@channelPath_primaryPath": {
     "placeholders": {
       "index": {
@@ -1327,9 +1327,9 @@
       }
     }
   },
-  "channelPath_pathLabelTitle": "Пътекино",
-  "channelPath_observedPathHeader": "Наблюдаван път",
-  "channelPath_selectedPathLabel": "{label} • {prefixes}",
+  "channelPath_pathLabelTitle": "ÐŸÑŠÑ‚ÐµÐºÐ¸Ð½Ð¾",
+  "channelPath_observedPathHeader": "ÐÐ°Ð±Ð»ÑŽÐ´Ð°Ð²Ð°Ð½ Ð¿ÑŠÑ‚",
+  "channelPath_selectedPathLabel": "{label} â€¢ {prefixes}",
   "@channelPath_selectedPathLabel": {
     "placeholders": {
       "label": {
@@ -1340,20 +1340,20 @@
       }
     }
   },
-  "channelPath_noHopDetailsAvailable": "Няма налични детайли за този пакет.",
-  "channelPath_unknownRepeater": "Неизвестен повторител",
-  "listFilter_tooltip": "Филтрирайте и сортирайте",
-  "listFilter_sortBy": "Сортирай по",
-  "listFilter_latestMessages": "Последни съобщения",
-  "listFilter_heardRecently": "Слушано е наскоро",
+  "channelPath_noHopDetailsAvailable": "ÐÑÐ¼Ð° Ð½Ð°Ð»Ð¸Ñ‡Ð½Ð¸ Ð´ÐµÑ‚Ð°Ð¹Ð»Ð¸ Ð·Ð° Ñ‚Ð¾Ð·Ð¸ Ð¿Ð°ÐºÐµÑ‚.",
+  "channelPath_unknownRepeater": "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚ÐµÐ½ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ»",
+  "listFilter_tooltip": "Ð¤Ð¸Ð»Ñ‚Ñ€Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Ð¸ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ",
+  "listFilter_sortBy": "Ð¡Ð¾Ñ€Ñ‚Ð¸Ñ€Ð°Ð¹ Ð¿Ð¾",
+  "listFilter_latestMessages": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸ ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ",
+  "listFilter_heardRecently": "Ð¡Ð»ÑƒÑˆÐ°Ð½Ð¾ Ðµ Ð½Ð°ÑÐºÐ¾Ñ€Ð¾",
   "listFilter_az": "A-Z",
-  "listFilter_filters": "Филтри",
-  "listFilter_all": "Всички",
-  "listFilter_users": "Потребители",
-  "listFilter_repeaters": "Повторители",
-  "listFilter_roomServers": "Сървъри на стая",
-  "listFilter_unreadOnly": "Само непрочетените",
-  "listFilter_newGroup": "Нова група",
+  "listFilter_filters": "Ð¤Ð¸Ð»Ñ‚Ñ€Ð¸",
+  "listFilter_all": "Ð’ÑÐ¸Ñ‡ÐºÐ¸",
+  "listFilter_users": "ÐŸÐ¾Ñ‚Ñ€ÐµÐ±Ð¸Ñ‚ÐµÐ»Ð¸",
+  "listFilter_repeaters": "ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ»Ð¸",
+  "listFilter_roomServers": "Ð¡ÑŠÑ€Ð²ÑŠÑ€Ð¸ Ð½Ð° ÑÑ‚Ð°Ñ",
+  "listFilter_unreadOnly": "Ð¡Ð°Ð¼Ð¾ Ð½ÐµÐ¿Ñ€Ð¾Ñ‡ÐµÑ‚ÐµÐ½Ð¸Ñ‚Ðµ",
+  "listFilter_newGroup": "ÐÐ¾Ð²Ð° Ð³Ñ€ÑƒÐ¿Ð°",
   "@neighbors_errorLoading": {
     "placeholders": {
       "error": {
@@ -1361,25 +1361,25 @@
       }
     }
   },
-  "repeater_neighborsSubtitle": "Преглед на съседни възли с нулев скок.",
-  "repeater_neighbors": "Съседи",
-  "neighbors_receivedData": "Получени данни за съседи",
-  "neighbors_requestTimedOut": "Съседите поискат изтичане на време.",
-  "neighbors_errorLoading": "Грешка при зареждане на съседи: {error}",
-  "neighbors_repeatersNeighbors": "Повторители Съседи",
-  "neighbors_noData": "Няма налични данни за съседи.",
-  "channels_createPrivateChannel": "Създай Частен Канал",
-  "channels_joinPrivateChannel": "Присъедини се към Частен Канал",
-  "channels_createPrivateChannelDesc": "Защитено с таен ключ.",
-  "channels_joinPrivateChannelDesc": "Ръчно въведете таен ключ.",
-  "channels_joinPublicChannel": "Присъединете се към Публичния канал",
-  "channels_joinPublicChannelDesc": "Всеки може да се присъедини към този канал.",
-  "channels_joinHashtagChannel": "Присъедини се към Хаштаг Канал",
-  "channels_joinHashtagChannelDesc": "Всеки може да се присъедини към хаштаговите канали.",
-  "channels_scanQrCode": "Сканирайте QR код",
-  "channels_scanQrCodeComingSoon": "Ще излезе скоро",
-  "channels_enterHashtag": "Въведете хаштаг",
-  "channels_hashtagHint": "напр. #отбор",
+  "repeater_neighborsSubtitle": "ÐŸÑ€ÐµÐ³Ð»ÐµÐ´ Ð½Ð° ÑÑŠÑÐµÐ´Ð½Ð¸ Ð²ÑŠÐ·Ð»Ð¸ Ñ Ð½ÑƒÐ»ÐµÐ² ÑÐºÐ¾Ðº.",
+  "repeater_neighbors": "Ð¡ÑŠÑÐµÐ´Ð¸",
+  "neighbors_receivedData": "ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸ Ð´Ð°Ð½Ð½Ð¸ Ð·Ð° ÑÑŠÑÐµÐ´Ð¸",
+  "neighbors_requestTimedOut": "Ð¡ÑŠÑÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð¾Ð¸ÑÐºÐ°Ñ‚ Ð¸Ð·Ñ‚Ð¸Ñ‡Ð°Ð½Ðµ Ð½Ð° Ð²Ñ€ÐµÐ¼Ðµ.",
+  "neighbors_errorLoading": "Ð“Ñ€ÐµÑˆÐºÐ° Ð¿Ñ€Ð¸ Ð·Ð°Ñ€ÐµÐ¶Ð´Ð°Ð½Ðµ Ð½Ð° ÑÑŠÑÐµÐ´Ð¸: {error}",
+  "neighbors_repeatersNeighbors": "ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ»Ð¸ Ð¡ÑŠÑÐµÐ´Ð¸",
+  "neighbors_noData": "ÐÑÐ¼Ð° Ð½Ð°Ð»Ð¸Ñ‡Ð½Ð¸ Ð´Ð°Ð½Ð½Ð¸ Ð·Ð° ÑÑŠÑÐµÐ´Ð¸.",
+  "channels_createPrivateChannel": "Ð¡ÑŠÐ·Ð´Ð°Ð¹ Ð§Ð°ÑÑ‚ÐµÐ½ ÐšÐ°Ð½Ð°Ð»",
+  "channels_joinPrivateChannel": "ÐŸÑ€Ð¸ÑÑŠÐµÐ´Ð¸Ð½Ð¸ ÑÐµ ÐºÑŠÐ¼ Ð§Ð°ÑÑ‚ÐµÐ½ ÐšÐ°Ð½Ð°Ð»",
+  "channels_createPrivateChannelDesc": "Ð—Ð°Ñ‰Ð¸Ñ‚ÐµÐ½Ð¾ Ñ Ñ‚Ð°ÐµÐ½ ÐºÐ»ÑŽÑ‡.",
+  "channels_joinPrivateChannelDesc": "Ð ÑŠÑ‡Ð½Ð¾ Ð²ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ Ñ‚Ð°ÐµÐ½ ÐºÐ»ÑŽÑ‡.",
+  "channels_joinPublicChannel": "ÐŸÑ€Ð¸ÑÑŠÐµÐ´Ð¸Ð½ÐµÑ‚Ðµ ÑÐµ ÐºÑŠÐ¼ ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¸Ñ ÐºÐ°Ð½Ð°Ð»",
+  "channels_joinPublicChannelDesc": "Ð’ÑÐµÐºÐ¸ Ð¼Ð¾Ð¶Ðµ Ð´Ð° ÑÐµ Ð¿Ñ€Ð¸ÑÑŠÐµÐ´Ð¸Ð½Ð¸ ÐºÑŠÐ¼ Ñ‚Ð¾Ð·Ð¸ ÐºÐ°Ð½Ð°Ð».",
+  "channels_joinHashtagChannel": "ÐŸÑ€Ð¸ÑÑŠÐµÐ´Ð¸Ð½Ð¸ ÑÐµ ÐºÑŠÐ¼ Ð¥Ð°ÑˆÑ‚Ð°Ð³ ÐšÐ°Ð½Ð°Ð»",
+  "channels_joinHashtagChannelDesc": "Ð’ÑÐµÐºÐ¸ Ð¼Ð¾Ð¶Ðµ Ð´Ð° ÑÐµ Ð¿Ñ€Ð¸ÑÑŠÐµÐ´Ð¸Ð½Ð¸ ÐºÑŠÐ¼ Ñ…Ð°ÑˆÑ‚Ð°Ð³Ð¾Ð²Ð¸Ñ‚Ðµ ÐºÐ°Ð½Ð°Ð»Ð¸.",
+  "channels_scanQrCode": "Ð¡ÐºÐ°Ð½Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ QR ÐºÐ¾Ð´",
+  "channels_scanQrCodeComingSoon": "Ð©Ðµ Ð¸Ð·Ð»ÐµÐ·Ðµ ÑÐºÐ¾Ñ€Ð¾",
+  "channels_enterHashtag": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ Ñ…Ð°ÑˆÑ‚Ð°Ð³",
+  "channels_hashtagHint": "Ð½Ð°Ð¿Ñ€. #Ð¾Ñ‚Ð±Ð¾Ñ€",
   "@neighbors_unknownContact": {
     "placeholders": {
       "pubkey": {
@@ -1394,14 +1394,14 @@
       }
     }
   },
-  "neighbors_heardAgo": "Слушано преди {time}.",
-  "neighbors_unknownContact": "Неизвестна {pubkey}",
-  "settings_locationIntervalSec": "Интервал за GPS (Секунди)",
-  "settings_locationGPSEnable": "Активиране на GPS",
-  "settings_locationGPSEnableSubtitle": "Активирайте автоматичното актуализиране на местоположението чрез GPS.",
-  "settings_locationIntervalInvalid": "Интервалът трябва да бъде поне 60 секунди и по-малко от 86400 секунди.",
-  "room_management": "Управление на сървъра за стая",
-  "contacts_manageRoom": "Управление на сървър за стая",
+  "neighbors_heardAgo": "Ð¡Ð»ÑƒÑˆÐ°Ð½Ð¾ Ð¿Ñ€ÐµÐ´Ð¸ {time}.",
+  "neighbors_unknownContact": "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð° {pubkey}",
+  "settings_locationIntervalSec": "Ð˜Ð½Ñ‚ÐµÑ€Ð²Ð°Ð» Ð·Ð° GPS (Ð¡ÐµÐºÑƒÐ½Ð´Ð¸)",
+  "settings_locationGPSEnable": "ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð½Ðµ Ð½Ð° GPS",
+  "settings_locationGPSEnableSubtitle": "ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾Ñ‚Ð¾ Ð°ÐºÑ‚ÑƒÐ°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð½Ðµ Ð½Ð° Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÑ‚Ð¾ Ñ‡Ñ€ÐµÐ· GPS.",
+  "settings_locationIntervalInvalid": "Ð˜Ð½Ñ‚ÐµÑ€Ð²Ð°Ð»ÑŠÑ‚ Ñ‚Ñ€ÑÐ±Ð²Ð° Ð´Ð° Ð±ÑŠÐ´Ðµ Ð¿Ð¾Ð½Ðµ 60 ÑÐµÐºÑƒÐ½Ð´Ð¸ Ð¸ Ð¿Ð¾-Ð¼Ð°Ð»ÐºÐ¾ Ð¾Ñ‚ 86400 ÑÐµÐºÑƒÐ½Ð´Ð¸.",
+  "room_management": "Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð° ÑÑŠÑ€Ð²ÑŠÑ€Ð° Ð·Ð° ÑÑ‚Ð°Ñ",
+  "contacts_manageRoom": "Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð° ÑÑŠÑ€Ð²ÑŠÑ€ Ð·Ð° ÑÑ‚Ð°Ñ",
   "@community_joinConfirmation": {
     "placeholders": {
       "name": {
@@ -1458,36 +1458,36 @@
       }
     }
   },
-  "community_title": "Общност",
-  "common_ok": "Добре",
-  "community_createDesc": "Създайте нова общност и я споделете чрез QR код.",
-  "community_create": "Създай общност",
-  "community_joinTitle": "Присъедини се към общността",
-  "community_joinConfirmation": "Искате ли да се присъедините към общността \"{name}\"?",
-  "community_scanQr": "Сканирайте QR кода на общността",
-  "community_scanInstructions": "Насочете камерата към QR код на общността",
-  "community_showQr": "Покажи QR код",
-  "community_publicChannel": "Обществено общност",
-  "community_hashtagChannel": "Хаштаг на общността",
-  "community_name": "Име на общността",
-  "community_enterName": "Въведете име на общността",
-  "community_created": "Общността \"{name}\" е създадена",
-  "community_joined": "Присъединено общност \"{name}\"",
-  "community_qrTitle": "Споделяне в общността",
-  "community_join": "Присъедини се",
-  "community_qrInstructions": "Сканирайте този QR код, за да се присъедините към {name}.",
-  "community_hashtagPrivacyHint": "Хаштаг каналите на общността са достъпни само за членове на общността",
-  "community_invalidQrCode": "Невалиден QR код на общността",
-  "community_alreadyMember": "Вече съм член",
-  "community_alreadyMemberMessage": "Вие вече сте член на \"{name}\".",
-  "community_addPublicChannel": "Добави публичен общностен канал",
-  "community_addPublicChannelHint": "Автоматично добавете публичния канал за тази общност.",
-  "community_noCommunities": "Няма присъединени общности още.",
-  "community_scanOrCreate": "Сканирайте QR код или създайте общност, за да започнете.",
-  "community_manageCommunities": "Управление на общности",
-  "community_delete": "Напусни общността",
-  "community_deleteConfirm": "Напускате \"{name}\"?",
-  "community_deleteChannelsWarning": "Това ще изтрие също {count} канал(а) и техните съобщения.",
+  "community_title": "ÐžÐ±Ñ‰Ð½Ð¾ÑÑ‚",
+  "common_ok": "Ð”Ð¾Ð±Ñ€Ðµ",
+  "community_createDesc": "Ð¡ÑŠÐ·Ð´Ð°Ð¹Ñ‚Ðµ Ð½Ð¾Ð²Ð° Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚ Ð¸ Ñ ÑÐ¿Ð¾Ð´ÐµÐ»ÐµÑ‚Ðµ Ñ‡Ñ€ÐµÐ· QR ÐºÐ¾Ð´.",
+  "community_create": "Ð¡ÑŠÐ·Ð´Ð°Ð¹ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚",
+  "community_joinTitle": "ÐŸÑ€Ð¸ÑÑŠÐµÐ´Ð¸Ð½Ð¸ ÑÐµ ÐºÑŠÐ¼ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð°",
+  "community_joinConfirmation": "Ð˜ÑÐºÐ°Ñ‚Ðµ Ð»Ð¸ Ð´Ð° ÑÐµ Ð¿Ñ€Ð¸ÑÑŠÐµÐ´Ð¸Ð½Ð¸Ñ‚Ðµ ÐºÑŠÐ¼ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð° \"{name}\"?",
+  "community_scanQr": "Ð¡ÐºÐ°Ð½Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ QR ÐºÐ¾Ð´Ð° Ð½Ð° Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð°",
+  "community_scanInstructions": "ÐÐ°ÑÐ¾Ñ‡ÐµÑ‚Ðµ ÐºÐ°Ð¼ÐµÑ€Ð°Ñ‚Ð° ÐºÑŠÐ¼ QR ÐºÐ¾Ð´ Ð½Ð° Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð°",
+  "community_showQr": "ÐŸÐ¾ÐºÐ°Ð¶Ð¸ QR ÐºÐ¾Ð´",
+  "community_publicChannel": "ÐžÐ±Ñ‰ÐµÑÑ‚Ð²ÐµÐ½Ð¾ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚",
+  "community_hashtagChannel": "Ð¥Ð°ÑˆÑ‚Ð°Ð³ Ð½Ð° Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð°",
+  "community_name": "Ð˜Ð¼Ðµ Ð½Ð° Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð°",
+  "community_enterName": "Ð’ÑŠÐ²ÐµÐ´ÐµÑ‚Ðµ Ð¸Ð¼Ðµ Ð½Ð° Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð°",
+  "community_created": "ÐžÐ±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð° \"{name}\" Ðµ ÑÑŠÐ·Ð´Ð°Ð´ÐµÐ½Ð°",
+  "community_joined": "ÐŸÑ€Ð¸ÑÑŠÐµÐ´Ð¸Ð½ÐµÐ½Ð¾ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚ \"{name}\"",
+  "community_qrTitle": "Ð¡Ð¿Ð¾Ð´ÐµÐ»ÑÐ½Ðµ Ð² Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð°",
+  "community_join": "ÐŸÑ€Ð¸ÑÑŠÐµÐ´Ð¸Ð½Ð¸ ÑÐµ",
+  "community_qrInstructions": "Ð¡ÐºÐ°Ð½Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Ñ‚Ð¾Ð·Ð¸ QR ÐºÐ¾Ð´, Ð·Ð° Ð´Ð° ÑÐµ Ð¿Ñ€Ð¸ÑÑŠÐµÐ´Ð¸Ð½Ð¸Ñ‚Ðµ ÐºÑŠÐ¼ {name}.",
+  "community_hashtagPrivacyHint": "Ð¥Ð°ÑˆÑ‚Ð°Ð³ ÐºÐ°Ð½Ð°Ð»Ð¸Ñ‚Ðµ Ð½Ð° Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð° ÑÐ° Ð´Ð¾ÑÑ‚ÑŠÐ¿Ð½Ð¸ ÑÐ°Ð¼Ð¾ Ð·Ð° Ñ‡Ð»ÐµÐ½Ð¾Ð²Ðµ Ð½Ð° Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð°",
+  "community_invalidQrCode": "ÐÐµÐ²Ð°Ð»Ð¸Ð´ÐµÐ½ QR ÐºÐ¾Ð´ Ð½Ð° Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð°",
+  "community_alreadyMember": "Ð’ÐµÑ‡Ðµ ÑÑŠÐ¼ Ñ‡Ð»ÐµÐ½",
+  "community_alreadyMemberMessage": "Ð’Ð¸Ðµ Ð²ÐµÑ‡Ðµ ÑÑ‚Ðµ Ñ‡Ð»ÐµÐ½ Ð½Ð° \"{name}\".",
+  "community_addPublicChannel": "Ð”Ð¾Ð±Ð°Ð²Ð¸ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡ÐµÐ½ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚ÐµÐ½ ÐºÐ°Ð½Ð°Ð»",
+  "community_addPublicChannelHint": "ÐÐ²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡Ð½Ð¾ Ð´Ð¾Ð±Ð°Ð²ÐµÑ‚Ðµ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ð¸Ñ ÐºÐ°Ð½Ð°Ð» Ð·Ð° Ñ‚Ð°Ð·Ð¸ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚.",
+  "community_noCommunities": "ÐÑÐ¼Ð° Ð¿Ñ€Ð¸ÑÑŠÐµÐ´Ð¸Ð½ÐµÐ½Ð¸ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ð¸ Ð¾Ñ‰Ðµ.",
+  "community_scanOrCreate": "Ð¡ÐºÐ°Ð½Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ QR ÐºÐ¾Ð´ Ð¸Ð»Ð¸ ÑÑŠÐ·Ð´Ð°Ð¹Ñ‚Ðµ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚, Ð·Ð° Ð´Ð° Ð·Ð°Ð¿Ð¾Ñ‡Ð½ÐµÑ‚Ðµ.",
+  "community_manageCommunities": "Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð° Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ð¸",
+  "community_delete": "ÐÐ°Ð¿ÑƒÑÐ½Ð¸ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð°",
+  "community_deleteConfirm": "ÐÐ°Ð¿ÑƒÑÐºÐ°Ñ‚Ðµ \"{name}\"?",
+  "community_deleteChannelsWarning": "Ð¢Ð¾Ð²Ð° Ñ‰Ðµ Ð¸Ð·Ñ‚Ñ€Ð¸Ðµ ÑÑŠÑ‰Ð¾ {count} ÐºÐ°Ð½Ð°Ð»(Ð°) Ð¸ Ñ‚ÐµÑ…Ð½Ð¸Ñ‚Ðµ ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ.",
   "@community_deleteChannelsWarning": {
     "placeholders": {
       "count": {
@@ -1495,15 +1495,15 @@
       }
     }
   },
-  "community_deleted": "Остави общността \"{name}\"",
-  "community_addHashtagChannel": "Добави общностен хаштаг",
-  "community_addHashtagChannelDesc": "Добавете хаштаг канал за тази общност",
-  "community_selectCommunity": "Изберете общност",
-  "community_regularHashtag": "Обикновен хаштаг",
-  "community_regularHashtagDesc": "Общ хаштаг (всеки може да се присъедини)",
-  "community_communityHashtag": "Общностен хаштаг",
-  "community_communityHashtagDesc": "Само за членове на общността",
-  "community_forCommunity": "За {name}",
+  "community_deleted": "ÐžÑÑ‚Ð°Ð²Ð¸ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð° \"{name}\"",
+  "community_addHashtagChannel": "Ð”Ð¾Ð±Ð°Ð²Ð¸ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚ÐµÐ½ Ñ…Ð°ÑˆÑ‚Ð°Ð³",
+  "community_addHashtagChannelDesc": "Ð”Ð¾Ð±Ð°Ð²ÐµÑ‚Ðµ Ñ…Ð°ÑˆÑ‚Ð°Ð³ ÐºÐ°Ð½Ð°Ð» Ð·Ð° Ñ‚Ð°Ð·Ð¸ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚",
+  "community_selectCommunity": "Ð˜Ð·Ð±ÐµÑ€ÐµÑ‚Ðµ Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚",
+  "community_regularHashtag": "ÐžÐ±Ð¸ÐºÐ½Ð¾Ð²ÐµÐ½ Ñ…Ð°ÑˆÑ‚Ð°Ð³",
+  "community_regularHashtagDesc": "ÐžÐ±Ñ‰ Ñ…Ð°ÑˆÑ‚Ð°Ð³ (Ð²ÑÐµÐºÐ¸ Ð¼Ð¾Ð¶Ðµ Ð´Ð° ÑÐµ Ð¿Ñ€Ð¸ÑÑŠÐµÐ´Ð¸Ð½Ð¸)",
+  "community_communityHashtag": "ÐžÐ±Ñ‰Ð½Ð¾ÑÑ‚ÐµÐ½ Ñ…Ð°ÑˆÑ‚Ð°Ð³",
+  "community_communityHashtagDesc": "Ð¡Ð°Ð¼Ð¾ Ð·Ð° Ñ‡Ð»ÐµÐ½Ð¾Ð²Ðµ Ð½Ð° Ð¾Ð±Ñ‰Ð½Ð¾ÑÑ‚Ñ‚Ð°",
+  "community_forCommunity": "Ð—Ð° {name}",
   "@community_regenerateSecretConfirm": {
     "placeholders": {
       "name": {
@@ -1532,13 +1532,13 @@
       }
     }
   },
-  "community_regenerateSecretConfirm": "Регенерация на секретния ключ за \"{name}\"? Всички членове ще трябва да сканират новия QR код, за да продължат комуникацията.",
-  "community_secretRegenerated": "Секретно презареждане за \"{name}\"",
-  "community_regenerateSecret": "Регенерейрай секрет",
-  "community_regenerate": "Регенерация",
-  "community_updateSecret": "Актуализирай тайна",
-  "community_scanToUpdateSecret": "Сканьорвайте новия QR код, за да актуализирате секрета за \"{name}\"",
-  "community_secretUpdated": "Секретно обновено за \"{name}\"",
+  "community_regenerateSecretConfirm": "Ð ÐµÐ³ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ñ Ð½Ð° ÑÐµÐºÑ€ÐµÑ‚Ð½Ð¸Ñ ÐºÐ»ÑŽÑ‡ Ð·Ð° \"{name}\"? Ð’ÑÐ¸Ñ‡ÐºÐ¸ Ñ‡Ð»ÐµÐ½Ð¾Ð²Ðµ Ñ‰Ðµ Ñ‚Ñ€ÑÐ±Ð²Ð° Ð´Ð° ÑÐºÐ°Ð½Ð¸Ñ€Ð°Ñ‚ Ð½Ð¾Ð²Ð¸Ñ QR ÐºÐ¾Ð´, Ð·Ð° Ð´Ð° Ð¿Ñ€Ð¾Ð´ÑŠÐ»Ð¶Ð°Ñ‚ ÐºÐ¾Ð¼ÑƒÐ½Ð¸ÐºÐ°Ñ†Ð¸ÑÑ‚Ð°.",
+  "community_secretRegenerated": "Ð¡ÐµÐºÑ€ÐµÑ‚Ð½Ð¾ Ð¿Ñ€ÐµÐ·Ð°Ñ€ÐµÐ¶Ð´Ð°Ð½Ðµ Ð·Ð° \"{name}\"",
+  "community_regenerateSecret": "Ð ÐµÐ³ÐµÐ½ÐµÑ€ÐµÐ¹Ñ€Ð°Ð¹ ÑÐµÐºÑ€ÐµÑ‚",
+  "community_regenerate": "Ð ÐµÐ³ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ñ",
+  "community_updateSecret": "ÐÐºÑ‚ÑƒÐ°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð¹ Ñ‚Ð°Ð¹Ð½Ð°",
+  "community_scanToUpdateSecret": "Ð¡ÐºÐ°Ð½ÑŒÐ¾Ñ€Ð²Ð°Ð¹Ñ‚Ðµ Ð½Ð¾Ð²Ð¸Ñ QR ÐºÐ¾Ð´, Ð·Ð° Ð´Ð° Ð°ÐºÑ‚ÑƒÐ°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ñ‚Ðµ ÑÐµÐºÑ€ÐµÑ‚Ð° Ð·Ð° \"{name}\"",
+  "community_secretUpdated": "Ð¡ÐµÐºÑ€ÐµÑ‚Ð½Ð¾ Ð¾Ð±Ð½Ð¾Ð²ÐµÐ½Ð¾ Ð·Ð° \"{name}\"",
   "@contacts_pathTraceTo": {
     "placeholders": {
       "name": {
@@ -1546,82 +1546,82 @@
       }
     }
   },
-  "pathTrace_you": "Вие",
-  "pathTrace_notAvailable": "Пътека за проследяване не е достъпна.",
-  "contacts_pathTrace": "Пътен проследяване",
-  "pathTrace_refreshTooltip": "Обнови Path Trace.",
-  "pathTrace_failed": "Пътят за проследяване не успя.",
-  "contacts_repeaterPing": "Пингване на повторителя",
-  "contacts_repeaterPathTrace": "Трасировка до повторител",
-  "contacts_ping": "Пинг",
-  "contacts_chatTraceRoute": "Трасиране на път",
-  "contacts_roomPathTrace": "Трасиране на път до съ",
-  "contacts_roomPing": "Ping на сървъра на стаята",
-  "contacts_pathTraceTo": "Проследи маршрут към {name}",
-  "appSettings_languageUk": "Украински",
-  "contacts_clipboardEmpty": "Клипборда е празна.",
-  "contacts_invalidAdvertFormat": "Невалидни данни за контакт",
-  "appSettings_languageRu": "Руски",
-  "appSettings_enableMessageTracing": "Разрешаване на проследяване на съобщения",
-  "appSettings_enableMessageTracingSubtitle": "Показване на подробни метаданни за маршрутизация и синхронизация за съобщения",
-  "contacts_contactImported": "Контактът е импортиран.",
-  "contacts_zeroHopAdvert": "Реклама без скок",
-  "contacts_contactImportFailed": "Контактът не е успешно импортиран.",
-  "contacts_floodAdvert": "Потопна реклама",
-  "contacts_addContactFromClipboard": "Добави контакт от клипборда",
-  "contacts_copyAdvertToClipboard": "Копирай обявата в клипборда",
-  "contacts_ShareContact": "Копирай контакт в клипборда",
-  "contacts_ShareContactZeroHop": "Сподели контакт чрез обява",
-  "contacts_contactAdvertCopied": "Рекламата е копирана в клипборда.",
-  "contacts_zeroHopContactAdvertFailed": "Неуспешно изпращане на контакт.",
-  "contacts_zeroHopContactAdvertSent": "Изпратен контакт по обява.",
-  "contacts_contactAdvertCopyFailed": "Копирането на обявата в клипборда не успя.",
-  "notification_activityTitle": "Активност на MeshCore",
-  "notification_messagesCount": "{count} {count, plural, =1{съобщение} other{съобщения}}",
-  "notification_channelMessagesCount": "{count} {count, plural, =1{съобщение в канал} other{съобщения в канали}}",
-  "notification_newNodesCount": "{count} {count, plural, =1{нов възел} other{нови възли}}",
-  "notification_newTypeDiscovered": "Открит нов {contactType}",
-  "notification_receivedNewMessage": "Получено ново съобщение",
-  "settings_gpxExportContactsSubtitle": "Експортира спътници с местоположение в GPX файл.",
-  "settings_gpxExportRepeatersSubtitle": "Изпраща повторители / roomserver с местоположение в GPX файл.",
-  "settings_gpxExportAll": "Експортирай всички контакти в GPX",
-  "settings_gpxExportAllSubtitle": "Експортира всички контакти с местоположение в файл GPX.",
-  "settings_gpxExportRepeaters": "Експортиране на повтарящи се устройства / сървър на стаята до GPX",
-  "settings_gpxExportContacts": "Експортирай спътници към GPX",
-  "settings_gpxExportSuccess": "Успешно изlexport на файл GPX.",
-  "settings_gpxExportNoContacts": "Няма контакти за изlexport.",
-  "settings_gpxExportChat": "Местоположения на спътници",
-  "settings_gpxExportError": "Възникна грешка при изнасяне.",
-  "settings_gpxExportRepeatersRoom": "Местоположения на повторител и сървър на стаята",
-  "settings_gpxExportNotAvailable": "Не е поддържан на вашето устройство/ОС",
-  "settings_gpxExportAllContacts": "Местоположения на всички контакти",
-  "settings_gpxExportShareText": "Картинни данни изнесени от meshcore-open",
-  "settings_gpxExportShareSubject": "meshcore-open износ на данни за карта в формат GPX",
-  "pathTrace_someHopsNoLocation": "Един или повече от хмелите липсва местоположение!",
-  "map_pathTraceCancelled": "Отменен е следването на пътя.",
-  "pathTrace_clearTooltip": "Изчисти пътя",
-  "map_removeLast": "Премахни Последно",
-  "map_runTrace": "Изпълни Път на Следване",
-  "map_tapToAdd": "Натиснете върху възлите, за да ги добавите към пътя.",
-  "scanner_bluetoothOff": "Bluetooth е изключен.",
-  "scanner_enableBluetooth": "Активирайте Bluetooth",
-  "scanner_bluetoothOffMessage": "Моля, активирайте Bluetooth, за да сканирате за устройства.",
-  "scanner_chromeRequired": "Изисква се браузър Chrome",
-  "scanner_chromeRequiredMessage": "Това уеб приложение изисква Google Chrome или браузър, базиран на Chromium, за поддръжка на Bluetooth.",
-  "snrIndicator_lastSeen": "Последно видян",
-  "snrIndicator_nearByRepeaters": "Близки повтарящи се устройства",
-  "chat_ShowAllPaths": "Покажи всички пътища",
-  "settings_clientRepeatSubtitle": "Позволете на това устройство да предава пакети към мрежата за други устройства.",
-  "settings_clientRepeatFreqWarning": "За повторение извън мрежата са необходими честоти от 433, 869 или 918 MHz.",
-  "settings_clientRepeat": "Без електричество – повторение",
-  "settings_aboutOpenMeteoAttribution": "Данни за надморска височина на LOS: Open-Meteo (CC BY 4.0)",
-  "appSettings_unitsTitle": "единици",
-  "appSettings_unitsMetric": "Метрика (m / km)",
-  "appSettings_unitsImperial": "Имперска (ft / mi)",
-  "map_lineOfSight": "Линия на видимост",
-  "map_losScreenTitle": "Линия на видимост",
-  "losSelectStartEnd": "Изберете начални и крайни възли за LOS.",
-  "losRunFailed": "Проверката на пряката видимост е неуспешна: {error}",
+  "pathTrace_you": "Ð’Ð¸Ðµ",
+  "pathTrace_notAvailable": "ÐŸÑŠÑ‚ÐµÐºÐ° Ð·Ð° Ð¿Ñ€Ð¾ÑÐ»ÐµÐ´ÑÐ²Ð°Ð½Ðµ Ð½Ðµ Ðµ Ð´Ð¾ÑÑ‚ÑŠÐ¿Ð½Ð°.",
+  "contacts_pathTrace": "ÐŸÑŠÑ‚ÐµÐ½ Ð¿Ñ€Ð¾ÑÐ»ÐµÐ´ÑÐ²Ð°Ð½Ðµ",
+  "pathTrace_refreshTooltip": "ÐžÐ±Ð½Ð¾Ð²Ð¸ Path Trace.",
+  "pathTrace_failed": "ÐŸÑŠÑ‚ÑÑ‚ Ð·Ð° Ð¿Ñ€Ð¾ÑÐ»ÐµÐ´ÑÐ²Ð°Ð½Ðµ Ð½Ðµ ÑƒÑÐ¿Ñ.",
+  "contacts_repeaterPing": "ÐŸÐ¸Ð½Ð³Ð²Ð°Ð½Ðµ Ð½Ð° Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ»Ñ",
+  "contacts_repeaterPathTrace": "Ð¢Ñ€Ð°ÑÐ¸Ñ€Ð¾Ð²ÐºÐ° Ð´Ð¾ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ»",
+  "contacts_ping": "ÐŸÐ¸Ð½Ð³",
+  "contacts_chatTraceRoute": "Ð¢Ñ€Ð°ÑÐ¸Ñ€Ð°Ð½Ðµ Ð½Ð° Ð¿ÑŠÑ‚",
+  "contacts_roomPathTrace": "Ð¢Ñ€Ð°ÑÐ¸Ñ€Ð°Ð½Ðµ Ð½Ð° Ð¿ÑŠÑ‚ Ð´Ð¾ ÑÑŠ",
+  "contacts_roomPing": "Ping Ð½Ð° ÑÑŠÑ€Ð²ÑŠÑ€Ð° Ð½Ð° ÑÑ‚Ð°ÑÑ‚Ð°",
+  "contacts_pathTraceTo": "ÐŸÑ€Ð¾ÑÐ»ÐµÐ´Ð¸ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚ ÐºÑŠÐ¼ {name}",
+  "appSettings_languageUk": "Ð£ÐºÑ€Ð°Ð¸Ð½ÑÐºÐ¸",
+  "contacts_clipboardEmpty": "ÐšÐ»Ð¸Ð¿Ð±Ð¾Ñ€Ð´Ð° Ðµ Ð¿Ñ€Ð°Ð·Ð½Ð°.",
+  "contacts_invalidAdvertFormat": "ÐÐµÐ²Ð°Ð»Ð¸Ð´Ð½Ð¸ Ð´Ð°Ð½Ð½Ð¸ Ð·Ð° ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚",
+  "appSettings_languageRu": "Ð ÑƒÑÐºÐ¸",
+  "appSettings_enableMessageTracing": "Ð Ð°Ð·Ñ€ÐµÑˆÐ°Ð²Ð°Ð½Ðµ Ð½Ð° Ð¿Ñ€Ð¾ÑÐ»ÐµÐ´ÑÐ²Ð°Ð½Ðµ Ð½Ð° ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ",
+  "appSettings_enableMessageTracingSubtitle": "ÐŸÐ¾ÐºÐ°Ð·Ð²Ð°Ð½Ðµ Ð½Ð° Ð¿Ð¾Ð´Ñ€Ð¾Ð±Ð½Ð¸ Ð¼ÐµÑ‚Ð°Ð´Ð°Ð½Ð½Ð¸ Ð·Ð° Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð¸Ð·Ð°Ñ†Ð¸Ñ Ð¸ ÑÐ¸Ð½Ñ…Ñ€Ð¾Ð½Ð¸Ð·Ð°Ñ†Ð¸Ñ Ð·Ð° ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ",
+  "contacts_contactImported": "ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚ÑŠÑ‚ Ðµ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð°Ð½.",
+  "contacts_zeroHopAdvert": "Ð ÐµÐºÐ»Ð°Ð¼Ð° Ð±ÐµÐ· ÑÐºÐ¾Ðº",
+  "contacts_contactImportFailed": "ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚ÑŠÑ‚ Ð½Ðµ Ðµ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð°Ð½.",
+  "contacts_floodAdvert": "ÐŸÐ¾Ñ‚Ð¾Ð¿Ð½Ð° Ñ€ÐµÐºÐ»Ð°Ð¼Ð°",
+  "contacts_addContactFromClipboard": "Ð”Ð¾Ð±Ð°Ð²Ð¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚ Ð¾Ñ‚ ÐºÐ»Ð¸Ð¿Ð±Ð¾Ñ€Ð´Ð°",
+  "contacts_copyAdvertToClipboard": "ÐšÐ¾Ð¿Ð¸Ñ€Ð°Ð¹ Ð¾Ð±ÑÐ²Ð°Ñ‚Ð° Ð² ÐºÐ»Ð¸Ð¿Ð±Ð¾Ñ€Ð´Ð°",
+  "contacts_ShareContact": "ÐšÐ¾Ð¿Ð¸Ñ€Ð°Ð¹ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚ Ð² ÐºÐ»Ð¸Ð¿Ð±Ð¾Ñ€Ð´Ð°",
+  "contacts_ShareContactZeroHop": "Ð¡Ð¿Ð¾Ð´ÐµÐ»Ð¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚ Ñ‡Ñ€ÐµÐ· Ð¾Ð±ÑÐ²Ð°",
+  "contacts_contactAdvertCopied": "Ð ÐµÐºÐ»Ð°Ð¼Ð°Ñ‚Ð° Ðµ ÐºÐ¾Ð¿Ð¸Ñ€Ð°Ð½Ð° Ð² ÐºÐ»Ð¸Ð¿Ð±Ð¾Ñ€Ð´Ð°.",
+  "contacts_zeroHopContactAdvertFailed": "ÐÐµÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¸Ð·Ð¿Ñ€Ð°Ñ‰Ð°Ð½Ðµ Ð½Ð° ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚.",
+  "contacts_zeroHopContactAdvertSent": "Ð˜Ð·Ð¿Ñ€Ð°Ñ‚ÐµÐ½ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚ Ð¿Ð¾ Ð¾Ð±ÑÐ²Ð°.",
+  "contacts_contactAdvertCopyFailed": "ÐšÐ¾Ð¿Ð¸Ñ€Ð°Ð½ÐµÑ‚Ð¾ Ð½Ð° Ð¾Ð±ÑÐ²Ð°Ñ‚Ð° Ð² ÐºÐ»Ð¸Ð¿Ð±Ð¾Ñ€Ð´Ð° Ð½Ðµ ÑƒÑÐ¿Ñ.",
+  "notification_activityTitle": "ÐÐºÑ‚Ð¸Ð²Ð½Ð¾ÑÑ‚ Ð½Ð° MeshCore",
+  "notification_messagesCount": "{count} {count, plural, =1{ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ} other{ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ}}",
+  "notification_channelMessagesCount": "{count} {count, plural, =1{ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð² ÐºÐ°Ð½Ð°Ð»} other{ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð² ÐºÐ°Ð½Ð°Ð»Ð¸}}",
+  "notification_newNodesCount": "{count} {count, plural, =1{Ð½Ð¾Ð² Ð²ÑŠÐ·ÐµÐ»} other{Ð½Ð¾Ð²Ð¸ Ð²ÑŠÐ·Ð»Ð¸}}",
+  "notification_newTypeDiscovered": "ÐžÑ‚ÐºÑ€Ð¸Ñ‚ Ð½Ð¾Ð² {contactType}",
+  "notification_receivedNewMessage": "ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¾ Ð½Ð¾Ð²Ð¾ ÑÑŠÐ¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ",
+  "settings_gpxExportContactsSubtitle": "Ð•ÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð° ÑÐ¿ÑŠÑ‚Ð½Ð¸Ñ†Ð¸ Ñ Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð² GPX Ñ„Ð°Ð¹Ð».",
+  "settings_gpxExportRepeatersSubtitle": "Ð˜Ð·Ð¿Ñ€Ð°Ñ‰Ð° Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ»Ð¸ / roomserver Ñ Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð² GPX Ñ„Ð°Ð¹Ð».",
+  "settings_gpxExportAll": "Ð•ÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð°Ð¹ Ð²ÑÐ¸Ñ‡ÐºÐ¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸ Ð² GPX",
+  "settings_gpxExportAllSubtitle": "Ð•ÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð° Ð²ÑÐ¸Ñ‡ÐºÐ¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸ Ñ Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð² Ñ„Ð°Ð¹Ð» GPX.",
+  "settings_gpxExportRepeaters": "Ð•ÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð°Ð½Ðµ Ð½Ð° Ð¿Ð¾Ð²Ñ‚Ð°Ñ€ÑÑ‰Ð¸ ÑÐµ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð° / ÑÑŠÑ€Ð²ÑŠÑ€ Ð½Ð° ÑÑ‚Ð°ÑÑ‚Ð° Ð´Ð¾ GPX",
+  "settings_gpxExportContacts": "Ð•ÐºÑÐ¿Ð¾Ñ€Ñ‚Ð¸Ñ€Ð°Ð¹ ÑÐ¿ÑŠÑ‚Ð½Ð¸Ñ†Ð¸ ÐºÑŠÐ¼ GPX",
+  "settings_gpxExportSuccess": "Ð£ÑÐ¿ÐµÑˆÐ½Ð¾ Ð¸Ð·lexport Ð½Ð° Ñ„Ð°Ð¹Ð» GPX.",
+  "settings_gpxExportNoContacts": "ÐÑÐ¼Ð° ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸ Ð·Ð° Ð¸Ð·lexport.",
+  "settings_gpxExportChat": "ÐœÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð½Ð° ÑÐ¿ÑŠÑ‚Ð½Ð¸Ñ†Ð¸",
+  "settings_gpxExportError": "Ð’ÑŠÐ·Ð½Ð¸ÐºÐ½Ð° Ð³Ñ€ÐµÑˆÐºÐ° Ð¿Ñ€Ð¸ Ð¸Ð·Ð½Ð°ÑÑÐ½Ðµ.",
+  "settings_gpxExportRepeatersRoom": "ÐœÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð½Ð° Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÐµÐ» Ð¸ ÑÑŠÑ€Ð²ÑŠÑ€ Ð½Ð° ÑÑ‚Ð°ÑÑ‚Ð°",
+  "settings_gpxExportNotAvailable": "ÐÐµ Ðµ Ð¿Ð¾Ð´Ð´ÑŠÑ€Ð¶Ð°Ð½ Ð½Ð° Ð²Ð°ÑˆÐµÑ‚Ð¾ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾/ÐžÐ¡",
+  "settings_gpxExportAllContacts": "ÐœÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð½Ð° Ð²ÑÐ¸Ñ‡ÐºÐ¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸",
+  "settings_gpxExportShareText": "ÐšÐ°Ñ€Ñ‚Ð¸Ð½Ð½Ð¸ Ð´Ð°Ð½Ð½Ð¸ Ð¸Ð·Ð½ÐµÑÐµÐ½Ð¸ Ð¾Ñ‚ meshcore-open",
+  "settings_gpxExportShareSubject": "meshcore-open Ð¸Ð·Ð½Ð¾Ñ Ð½Ð° Ð´Ð°Ð½Ð½Ð¸ Ð·Ð° ÐºÐ°Ñ€Ñ‚Ð° Ð² Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ GPX",
+  "pathTrace_someHopsNoLocation": "Ð•Ð´Ð¸Ð½ Ð¸Ð»Ð¸ Ð¿Ð¾Ð²ÐµÑ‡Ðµ Ð¾Ñ‚ Ñ…Ð¼ÐµÐ»Ð¸Ñ‚Ðµ Ð»Ð¸Ð¿ÑÐ²Ð° Ð¼ÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ!",
+  "map_pathTraceCancelled": "ÐžÑ‚Ð¼ÐµÐ½ÐµÐ½ Ðµ ÑÐ»ÐµÐ´Ð²Ð°Ð½ÐµÑ‚Ð¾ Ð½Ð° Ð¿ÑŠÑ‚Ñ.",
+  "pathTrace_clearTooltip": "Ð˜Ð·Ñ‡Ð¸ÑÑ‚Ð¸ Ð¿ÑŠÑ‚Ñ",
+  "map_removeLast": "ÐŸÑ€ÐµÐ¼Ð°Ñ…Ð½Ð¸ ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¾",
+  "map_runTrace": "Ð˜Ð·Ð¿ÑŠÐ»Ð½Ð¸ ÐŸÑŠÑ‚ Ð½Ð° Ð¡Ð»ÐµÐ´Ð²Ð°Ð½Ðµ",
+  "map_tapToAdd": "ÐÐ°Ñ‚Ð¸ÑÐ½ÐµÑ‚Ðµ Ð²ÑŠÑ€Ñ…Ñƒ Ð²ÑŠÐ·Ð»Ð¸Ñ‚Ðµ, Ð·Ð° Ð´Ð° Ð³Ð¸ Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚Ðµ ÐºÑŠÐ¼ Ð¿ÑŠÑ‚Ñ.",
+  "scanner_bluetoothOff": "Bluetooth Ðµ Ð¸Ð·ÐºÐ»ÑŽÑ‡ÐµÐ½.",
+  "scanner_enableBluetooth": "ÐÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Bluetooth",
+  "scanner_bluetoothOffMessage": "ÐœÐ¾Ð»Ñ, Ð°ÐºÑ‚Ð¸Ð²Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ Bluetooth, Ð·Ð° Ð´Ð° ÑÐºÐ°Ð½Ð¸Ñ€Ð°Ñ‚Ðµ Ð·Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð°.",
+  "scanner_chromeRequired": "Ð˜Ð·Ð¸ÑÐºÐ²Ð° ÑÐµ Ð±Ñ€Ð°ÑƒÐ·ÑŠÑ€ Chrome",
+  "scanner_chromeRequiredMessage": "Ð¢Ð¾Ð²Ð° ÑƒÐµÐ± Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ Ð¸Ð·Ð¸ÑÐºÐ²Ð° Google Chrome Ð¸Ð»Ð¸ Ð±Ñ€Ð°ÑƒÐ·ÑŠÑ€, Ð±Ð°Ð·Ð¸Ñ€Ð°Ð½ Ð½Ð° Chromium, Ð·Ð° Ð¿Ð¾Ð´Ð´Ñ€ÑŠÐ¶ÐºÐ° Ð½Ð° Bluetooth.",
+  "snrIndicator_lastSeen": "ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¾ Ð²Ð¸Ð´ÑÐ½",
+  "snrIndicator_nearByRepeaters": "Ð‘Ð»Ð¸Ð·ÐºÐ¸ Ð¿Ð¾Ð²Ñ‚Ð°Ñ€ÑÑ‰Ð¸ ÑÐµ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð°",
+  "chat_ShowAllPaths": "ÐŸÐ¾ÐºÐ°Ð¶Ð¸ Ð²ÑÐ¸Ñ‡ÐºÐ¸ Ð¿ÑŠÑ‚Ð¸Ñ‰Ð°",
+  "settings_clientRepeatSubtitle": "ÐŸÐ¾Ð·Ð²Ð¾Ð»ÐµÑ‚Ðµ Ð½Ð° Ñ‚Ð¾Ð²Ð° ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾ Ð´Ð° Ð¿Ñ€ÐµÐ´Ð°Ð²Ð° Ð¿Ð°ÐºÐµÑ‚Ð¸ ÐºÑŠÐ¼ Ð¼Ñ€ÐµÐ¶Ð°Ñ‚Ð° Ð·Ð° Ð´Ñ€ÑƒÐ³Ð¸ ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð°.",
+  "settings_clientRepeatFreqWarning": "Ð—Ð° Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÐµÐ½Ð¸Ðµ Ð¸Ð·Ð²ÑŠÐ½ Ð¼Ñ€ÐµÐ¶Ð°Ñ‚Ð° ÑÐ° Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¸ Ñ‡ÐµÑÑ‚Ð¾Ñ‚Ð¸ Ð¾Ñ‚ 433, 869 Ð¸Ð»Ð¸ 918 MHz.",
+  "settings_clientRepeat": "Ð‘ÐµÐ· ÐµÐ»ÐµÐºÑ‚Ñ€Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ â€“ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€ÐµÐ½Ð¸Ðµ",
+  "settings_aboutOpenMeteoAttribution": "Ð”Ð°Ð½Ð½Ð¸ Ð·Ð° Ð½Ð°Ð´Ð¼Ð¾Ñ€ÑÐºÐ° Ð²Ð¸ÑÐ¾Ñ‡Ð¸Ð½Ð° Ð½Ð° LOS: Open-Meteo (CC BY 4.0)",
+  "appSettings_unitsTitle": "ÐµÐ´Ð¸Ð½Ð¸Ñ†Ð¸",
+  "appSettings_unitsMetric": "ÐœÐµÑ‚Ñ€Ð¸ÐºÐ° (m / km)",
+  "appSettings_unitsImperial": "Ð˜Ð¼Ð¿ÐµÑ€ÑÐºÐ° (ft / mi)",
+  "map_lineOfSight": "Ð›Ð¸Ð½Ð¸Ñ Ð½Ð° Ð²Ð¸Ð´Ð¸Ð¼Ð¾ÑÑ‚",
+  "map_losScreenTitle": "Ð›Ð¸Ð½Ð¸Ñ Ð½Ð° Ð²Ð¸Ð´Ð¸Ð¼Ð¾ÑÑ‚",
+  "losSelectStartEnd": "Ð˜Ð·Ð±ÐµÑ€ÐµÑ‚Ðµ Ð½Ð°Ñ‡Ð°Ð»Ð½Ð¸ Ð¸ ÐºÑ€Ð°Ð¹Ð½Ð¸ Ð²ÑŠÐ·Ð»Ð¸ Ð·Ð° LOS.",
+  "losRunFailed": "ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ°Ñ‚Ð° Ð½Ð° Ð¿Ñ€ÑÐºÐ°Ñ‚Ð° Ð²Ð¸Ð´Ð¸Ð¼Ð¾ÑÑ‚ Ðµ Ð½ÐµÑƒÑÐ¿ÐµÑˆÐ½Ð°: {error}",
   "@losRunFailed": {
     "placeholders": {
       "error": {
@@ -1629,13 +1629,13 @@
       }
     }
   },
-  "losClearAllPoints": "Изчистете всички точки",
-  "losRunToViewElevationProfile": "Стартирайте LOS, за да видите профила на надморската височина",
-  "losMenuTitle": "LOS меню",
-  "losMenuSubtitle": "Докоснете възли или натиснете продължително карта за персонализирани точки",
-  "losShowDisplayNodes": "Показване на възли на дисплея",
-  "losCustomPoints": "Персонализирани точки",
-  "losCustomPointLabel": "Персонализирано {index}",
+  "losClearAllPoints": "Ð˜Ð·Ñ‡Ð¸ÑÑ‚ÐµÑ‚Ðµ Ð²ÑÐ¸Ñ‡ÐºÐ¸ Ñ‚Ð¾Ñ‡ÐºÐ¸",
+  "losRunToViewElevationProfile": "Ð¡Ñ‚Ð°Ñ€Ñ‚Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ LOS, Ð·Ð° Ð´Ð° Ð²Ð¸Ð´Ð¸Ñ‚Ðµ Ð¿Ñ€Ð¾Ñ„Ð¸Ð»Ð° Ð½Ð° Ð½Ð°Ð´Ð¼Ð¾Ñ€ÑÐºÐ°Ñ‚Ð° Ð²Ð¸ÑÐ¾Ñ‡Ð¸Ð½Ð°",
+  "losMenuTitle": "LOS Ð¼ÐµÐ½ÑŽ",
+  "losMenuSubtitle": "Ð”Ð¾ÐºÐ¾ÑÐ½ÐµÑ‚Ðµ Ð²ÑŠÐ·Ð»Ð¸ Ð¸Ð»Ð¸ Ð½Ð°Ñ‚Ð¸ÑÐ½ÐµÑ‚Ðµ Ð¿Ñ€Ð¾Ð´ÑŠÐ»Ð¶Ð¸Ñ‚ÐµÐ»Ð½Ð¾ ÐºÐ°Ñ€Ñ‚Ð° Ð·Ð° Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð½Ð¸ Ñ‚Ð¾Ñ‡ÐºÐ¸",
+  "losShowDisplayNodes": "ÐŸÐ¾ÐºÐ°Ð·Ð²Ð°Ð½Ðµ Ð½Ð° Ð²ÑŠÐ·Ð»Ð¸ Ð½Ð° Ð´Ð¸ÑÐ¿Ð»ÐµÑ",
+  "losCustomPoints": "ÐŸÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð½Ð¸ Ñ‚Ð¾Ñ‡ÐºÐ¸",
+  "losCustomPointLabel": "ÐŸÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð½Ð¾ {index}",
   "@losCustomPointLabel": {
     "placeholders": {
       "index": {
@@ -1643,9 +1643,9 @@
       }
     }
   },
-  "losPointA": "Точка А",
-  "losPointB": "Точка Б",
-  "losAntennaA": "Антена A: {value} {unit}",
+  "losPointA": "Ð¢Ð¾Ñ‡ÐºÐ° Ð",
+  "losPointB": "Ð¢Ð¾Ñ‡ÐºÐ° Ð‘",
+  "losAntennaA": "ÐÐ½Ñ‚ÐµÐ½Ð° A: {value} {unit}",
   "@losAntennaA": {
     "placeholders": {
       "value": {
@@ -1656,7 +1656,7 @@
       }
     }
   },
-  "losAntennaB": "Антена B: {value} {unit}",
+  "losAntennaB": "ÐÐ½Ñ‚ÐµÐ½Ð° B: {value} {unit}",
   "@losAntennaB": {
     "placeholders": {
       "value": {
@@ -1667,9 +1667,9 @@
       }
     }
   },
-  "losRun": "Стартирайте LOS",
-  "losNoElevationData": "Няма данни за надморска височина",
-  "losProfileClear": "{distance} {distanceUnit}, чист LOS, минимално разстояние {clearance} {heightUnit}",
+  "losRun": "Ð¡Ñ‚Ð°Ñ€Ñ‚Ð¸Ñ€Ð°Ð¹Ñ‚Ðµ LOS",
+  "losNoElevationData": "ÐÑÐ¼Ð° Ð´Ð°Ð½Ð½Ð¸ Ð·Ð° Ð½Ð°Ð´Ð¼Ð¾Ñ€ÑÐºÐ° Ð²Ð¸ÑÐ¾Ñ‡Ð¸Ð½Ð°",
+  "losProfileClear": "{distance} {distanceUnit}, Ñ‡Ð¸ÑÑ‚ LOS, Ð¼Ð¸Ð½Ð¸Ð¼Ð°Ð»Ð½Ð¾ Ñ€Ð°Ð·ÑÑ‚Ð¾ÑÐ½Ð¸Ðµ {clearance} {heightUnit}",
   "@losProfileClear": {
     "placeholders": {
       "distance": {
@@ -1686,7 +1686,7 @@
       }
     }
   },
-  "losProfileBlocked": "{distance} {distanceUnit}, блокиран от {obstruction} {heightUnit}",
+  "losProfileBlocked": "{distance} {distanceUnit}, Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð°Ð½ Ð¾Ñ‚ {obstruction} {heightUnit}",
   "@losProfileBlocked": {
     "placeholders": {
       "distance": {
@@ -1703,9 +1703,9 @@
       }
     }
   },
-  "losStatusChecking": "LOS: проверка...",
-  "losStatusNoData": "LOS: няма данни",
-  "losStatusSummary": "LOS: {clear}/{total} ясно, {blocked} блокирано, {unknown} неизвестно",
+  "losStatusChecking": "LOS: Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ°...",
+  "losStatusNoData": "LOS: Ð½ÑÐ¼Ð° Ð´Ð°Ð½Ð½Ð¸",
+  "losStatusSummary": "LOS: {clear}/{total} ÑÑÐ½Ð¾, {blocked} Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð°Ð½Ð¾, {unknown} Ð½ÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð¾",
   "@losStatusSummary": {
     "placeholders": {
       "clear": {
@@ -1722,20 +1722,20 @@
       }
     }
   },
-  "losErrorElevationUnavailable": "Няма налични данни за надморска височина за една или повече проби.",
-  "losErrorInvalidInput": "Невалидни данни за точки/надморска височина за изчисляване на LOS.",
-  "losRenameCustomPoint": "Преименувайте персонализирана точка",
-  "losPointName": "Име на точката",
-  "losShowPanelTooltip": "Показване на LOS панел",
-  "losHidePanelTooltip": "Скриване на LOS панела",
-  "losElevationAttribution": "Данни за надморска височина: Open-Meteo (CC BY 4.0)",
-  "losLegendRadioHorizon": "Радиохоризонт",
-  "losLegendLosBeam": "Линия на видимост",
-  "losLegendTerrain": "Терен",
-  "losFrequencyLabel": "Честота",
-  "losFrequencyInfoTooltip": "Преглед на детайли за изчислението",
-  "losFrequencyDialogTitle": "Изчисляване на радиохоризонта",
-  "losFrequencyDialogDescription": "Започвайки от k={baselineK} при {baselineFreq} MHz, изчислението коригира k-фактора за текущата {frequencyMHz} MHz лента, която определя границата на извития радиохоризонт.",
+  "losErrorElevationUnavailable": "ÐÑÐ¼Ð° Ð½Ð°Ð»Ð¸Ñ‡Ð½Ð¸ Ð´Ð°Ð½Ð½Ð¸ Ð·Ð° Ð½Ð°Ð´Ð¼Ð¾Ñ€ÑÐºÐ° Ð²Ð¸ÑÐ¾Ñ‡Ð¸Ð½Ð° Ð·Ð° ÐµÐ´Ð½Ð° Ð¸Ð»Ð¸ Ð¿Ð¾Ð²ÐµÑ‡Ðµ Ð¿Ñ€Ð¾Ð±Ð¸.",
+  "losErrorInvalidInput": "ÐÐµÐ²Ð°Ð»Ð¸Ð´Ð½Ð¸ Ð´Ð°Ð½Ð½Ð¸ Ð·Ð° Ñ‚Ð¾Ñ‡ÐºÐ¸/Ð½Ð°Ð´Ð¼Ð¾Ñ€ÑÐºÐ° Ð²Ð¸ÑÐ¾Ñ‡Ð¸Ð½Ð° Ð·Ð° Ð¸Ð·Ñ‡Ð¸ÑÐ»ÑÐ²Ð°Ð½Ðµ Ð½Ð° LOS.",
+  "losRenameCustomPoint": "ÐŸÑ€ÐµÐ¸Ð¼ÐµÐ½ÑƒÐ²Ð°Ð¹Ñ‚Ðµ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð°Ð½Ð° Ñ‚Ð¾Ñ‡ÐºÐ°",
+  "losPointName": "Ð˜Ð¼Ðµ Ð½Ð° Ñ‚Ð¾Ñ‡ÐºÐ°Ñ‚Ð°",
+  "losShowPanelTooltip": "ÐŸÐ¾ÐºÐ°Ð·Ð²Ð°Ð½Ðµ Ð½Ð° LOS Ð¿Ð°Ð½ÐµÐ»",
+  "losHidePanelTooltip": "Ð¡ÐºÑ€Ð¸Ð²Ð°Ð½Ðµ Ð½Ð° LOS Ð¿Ð°Ð½ÐµÐ»Ð°",
+  "losElevationAttribution": "Ð”Ð°Ð½Ð½Ð¸ Ð·Ð° Ð½Ð°Ð´Ð¼Ð¾Ñ€ÑÐºÐ° Ð²Ð¸ÑÐ¾Ñ‡Ð¸Ð½Ð°: Open-Meteo (CC BY 4.0)",
+  "losLegendRadioHorizon": "Ð Ð°Ð´Ð¸Ð¾Ñ…Ð¾Ñ€Ð¸Ð·Ð¾Ð½Ñ‚",
+  "losLegendLosBeam": "Ð›Ð¸Ð½Ð¸Ñ Ð½Ð° Ð²Ð¸Ð´Ð¸Ð¼Ð¾ÑÑ‚",
+  "losLegendTerrain": "Ð¢ÐµÑ€ÐµÐ½",
+  "losFrequencyLabel": "Ð§ÐµÑÑ‚Ð¾Ñ‚Ð°",
+  "losFrequencyInfoTooltip": "ÐŸÑ€ÐµÐ³Ð»ÐµÐ´ Ð½Ð° Ð´ÐµÑ‚Ð°Ð¹Ð»Ð¸ Ð·Ð° Ð¸Ð·Ñ‡Ð¸ÑÐ»ÐµÐ½Ð¸ÐµÑ‚Ð¾",
+  "losFrequencyDialogTitle": "Ð˜Ð·Ñ‡Ð¸ÑÐ»ÑÐ²Ð°Ð½Ðµ Ð½Ð° Ñ€Ð°Ð´Ð¸Ð¾Ñ…Ð¾Ñ€Ð¸Ð·Ð¾Ð½Ñ‚Ð°",
+  "losFrequencyDialogDescription": "Ð—Ð°Ð¿Ð¾Ñ‡Ð²Ð°Ð¹ÐºÐ¸ Ð¾Ñ‚ k={baselineK} Ð¿Ñ€Ð¸ {baselineFreq} MHz, Ð¸Ð·Ñ‡Ð¸ÑÐ»ÐµÐ½Ð¸ÐµÑ‚Ð¾ ÐºÐ¾Ñ€Ð¸Ð³Ð¸Ñ€Ð° k-Ñ„Ð°ÐºÑ‚Ð¾Ñ€Ð° Ð·Ð° Ñ‚ÐµÐºÑƒÑ‰Ð°Ñ‚Ð° {frequencyMHz} MHz Ð»ÐµÐ½Ñ‚Ð°, ÐºÐ¾ÑÑ‚Ð¾ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»Ñ Ð³Ñ€Ð°Ð½Ð¸Ñ†Ð°Ñ‚Ð° Ð½Ð° Ð¸Ð·Ð²Ð¸Ñ‚Ð¸Ñ Ñ€Ð°Ð´Ð¸Ð¾Ñ…Ð¾Ñ€Ð¸Ð·Ð¾Ð½Ñ‚.",
   "@losFrequencyDialogDescription": {
     "description": "Explain how the calculation uses the baseline frequency and derived k-factor.",
     "placeholders": {
@@ -1753,9 +1753,9 @@
       }
     }
   },
-  "listFilter_removeFromFavorites": "Премахване от списъка с любими",
-  "listFilter_addToFavorites": "Добави към любими",
-  "listFilter_favorites": "Любими",
+  "listFilter_removeFromFavorites": "ÐŸÑ€ÐµÐ¼Ð°Ñ…Ð²Ð°Ð½Ðµ Ð¾Ñ‚ ÑÐ¿Ð¸ÑÑŠÐºÐ° Ñ Ð»ÑŽÐ±Ð¸Ð¼Ð¸",
+  "listFilter_addToFavorites": "Ð”Ð¾Ð±Ð°Ð²Ð¸ ÐºÑŠÐ¼ Ð»ÑŽÐ±Ð¸Ð¼Ð¸",
+  "listFilter_favorites": "Ð›ÑŽÐ±Ð¸Ð¼Ð¸",
   "@contacts_searchFavorites": {
     "placeholders": {
       "number": {
@@ -1796,19 +1796,17 @@
       }
     }
   },
-  "contacts_searchFavorites": "Търсене на {number}{str} любими...",
-  "contacts_searchRoomServers": "Търсене на {number}{str} сървъри в стаята...",
-  "contacts_unread": "Непрочетено",
-  "contacts_searchRepeaters": "Търсене на {number}{str} повтарящи се...",
-  "contacts_searchContactsNoNumber": "Търси контакти...",
-  "contacts_searchUsers": "Търсене на {number}{str} потребители...",
+  "contacts_searchFavorites": "Ð¢ÑŠÑ€ÑÐµÐ½Ðµ Ð½Ð° {number}{str} Ð»ÑŽÐ±Ð¸Ð¼Ð¸...",
+  "contacts_searchRoomServers": "Ð¢ÑŠÑ€ÑÐµÐ½Ðµ Ð½Ð° {number}{str} ÑÑŠÑ€Ð²ÑŠÑ€Ð¸ Ð² ÑÑ‚Ð°ÑÑ‚Ð°...",
+  "contacts_unread": "ÐÐµÐ¿Ñ€Ð¾Ñ‡ÐµÑ‚ÐµÐ½Ð¾",
+  "contacts_searchRepeaters": "Ð¢ÑŠÑ€ÑÐµÐ½Ðµ Ð½Ð° {number}{str} Ð¿Ð¾Ð²Ñ‚Ð°Ñ€ÑÑ‰Ð¸ ÑÐµ...",
+  "contacts_searchContactsNoNumber": "Ð¢ÑŠÑ€ÑÐ¸ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð¸...",
+  "contacts_searchUsers": "Ð¢ÑŠÑ€ÑÐµÐ½Ðµ Ð½Ð° {number}{str} Ð¿Ð¾Ñ‚Ñ€ÐµÐ±Ð¸Ñ‚ÐµÐ»Ð¸...",
   "connectionChoiceUsbLabel": "USB",
   "connectionChoiceBluetoothLabel": "Bluetooth",
-  "connectionChoiceTitle": "Изберете метода на връзка.",
-  "connectionChoiceSubtitle": "Изберете как искате да получите вашия устройство MeshCore.",
-  "usbScreenNote": "USB серийната връзка е активна на поддържаните Android устройства и настолни платформи.",
-  "usbScreenStatus": "Изберете USB устройство",
-  "usbScreenTitle": "Свързване чрез USB",
-  "usbScreenSubtitle": "Изберете открития сериен уред и свържете директно към вашия MeshCore възел.",
-  "usbScreenEmptyState": "Няма открити USB устройства. Включете едно и опитайте отново."
+  "usbScreenNote": "USB ÑÐµÑ€Ð¸Ð¹Ð½Ð°Ñ‚Ð° Ð²Ñ€ÑŠÐ·ÐºÐ° Ðµ Ð°ÐºÑ‚Ð¸Ð²Ð½Ð° Ð½Ð° Ð¿Ð¾Ð´Ð´ÑŠÑ€Ð¶Ð°Ð½Ð¸Ñ‚Ðµ Android ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð° Ð¸ Ð½Ð°ÑÑ‚Ð¾Ð»Ð½Ð¸ Ð¿Ð»Ð°Ñ‚Ñ„Ð¾Ñ€Ð¼Ð¸.",
+  "usbScreenStatus": "Ð˜Ð·Ð±ÐµÑ€ÐµÑ‚Ðµ USB ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð¾",
+  "usbScreenTitle": "Ð¡Ð²ÑŠÑ€Ð·Ð²Ð°Ð½Ðµ Ñ‡Ñ€ÐµÐ· USB",
+  "usbScreenSubtitle": "Ð˜Ð·Ð±ÐµÑ€ÐµÑ‚Ðµ Ð¾Ñ‚ÐºÑ€Ð¸Ñ‚Ð¸Ñ ÑÐµÑ€Ð¸ÐµÐ½ ÑƒÑ€ÐµÐ´ Ð¸ ÑÐ²ÑŠÑ€Ð¶ÐµÑ‚Ðµ Ð´Ð¸Ñ€ÐµÐºÑ‚Ð½Ð¾ ÐºÑŠÐ¼ Ð²Ð°ÑˆÐ¸Ñ MeshCore Ð²ÑŠÐ·ÐµÐ».",
+  "usbScreenEmptyState": "ÐÑÐ¼Ð° Ð¾Ñ‚ÐºÑ€Ð¸Ñ‚Ð¸ USB ÑƒÑÑ‚Ñ€Ð¾Ð¹ÑÑ‚Ð²Ð°. Ð’ÐºÐ»ÑŽÑ‡ÐµÑ‚Ðµ ÐµÐ´Ð½Ð¾ Ð¸ Ð¾Ð¿Ð¸Ñ‚Ð°Ð¹Ñ‚Ðµ Ð¾Ñ‚Ð½Ð¾Ð²Ð¾."
 }

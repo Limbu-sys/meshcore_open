@@ -69,7 +69,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get common_share => 'Delen';
 
   @override
-  String get common_copy => 'Kopiëren';
+  String get common_copy => 'KopiÃ«ren';
 
   @override
   String get common_retry => 'Nogmaals proberen';
@@ -93,7 +93,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get common_loading => 'Laden...';
 
   @override
-  String get common_notAvailable => '—';
+  String get common_notAvailable => 'â€”';
 
   @override
   String common_voltageValue(String volts) {
@@ -109,13 +109,6 @@ class AppLocalizationsNl extends AppLocalizations {
   String get scanner_title => 'MeshCore Open';
 
   @override
-  String get connectionChoiceTitle => 'Kies uw verbindingsmethode';
-
-  @override
-  String get connectionChoiceSubtitle =>
-      'Kies hoe u uw MeshCore-apparaat wilt bereiken.';
-
-  @override
   String get connectionChoiceUsbLabel => 'USB';
 
   @override
@@ -126,7 +119,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get usbScreenSubtitle =>
-      'Kies een gedetecteerd seriële apparaat en verbind deze direct met uw MeshCore-node.';
+      'Kies een gedetecteerd seriÃ«le apparaat en verbind deze direct met uw MeshCore-node.';
 
   @override
   String get usbScreenStatus => 'Selecteer een USB-apparaat';
@@ -238,7 +231,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get settings_location => 'Locatie';
 
   @override
-  String get settings_locationSubtitle => 'GPS coördinaten';
+  String get settings_locationSubtitle => 'GPS coÃ¶rdinaten';
 
   @override
   String get settings_locationUpdated => 'Locatie bijgewerkt';
@@ -457,10 +450,10 @@ class AppLocalizationsNl extends AppLocalizations {
   String get appSettings_languageEn => 'English';
 
   @override
-  String get appSettings_languageFr => 'Français';
+  String get appSettings_languageFr => 'FranÃ§ais';
 
   @override
-  String get appSettings_languageEs => 'Español';
+  String get appSettings_languageEs => 'EspaÃ±ol';
 
   @override
   String get appSettings_languageDe => 'Deutsch';
@@ -469,16 +462,16 @@ class AppLocalizationsNl extends AppLocalizations {
   String get appSettings_languagePl => 'Polski';
 
   @override
-  String get appSettings_languageSl => 'Slovenščina';
+  String get appSettings_languageSl => 'SlovenÅ¡Äina';
 
   @override
-  String get appSettings_languagePt => 'Português';
+  String get appSettings_languagePt => 'PortuguÃªs';
 
   @override
   String get appSettings_languageIt => 'Italiano';
 
   @override
-  String get appSettings_languageZh => '中文';
+  String get appSettings_languageZh => 'ä¸­æ–‡';
 
   @override
   String get appSettings_languageSv => 'Svenska';
@@ -487,16 +480,16 @@ class AppLocalizationsNl extends AppLocalizations {
   String get appSettings_languageNl => 'Nederlands';
 
   @override
-  String get appSettings_languageSk => 'Slovenčina';
+  String get appSettings_languageSk => 'SlovenÄina';
 
   @override
-  String get appSettings_languageBg => 'Български';
+  String get appSettings_languageBg => 'Ð‘ÑŠÐ»Ð³Ð°Ñ€ÑÐºÐ¸';
 
   @override
   String get appSettings_languageRu => 'Russisch';
 
   @override
-  String get appSettings_languageUk => 'Oekraïens';
+  String get appSettings_languageUk => 'OekraÃ¯ens';
 
   @override
   String get appSettings_enableMessageTracing => 'Berichttracking inschakelen';
@@ -854,7 +847,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get channels_public => 'Openbaar';
 
   @override
-  String get channels_private => 'Privé';
+  String get channels_private => 'PrivÃ©';
 
   @override
   String get channels_publicChannel => 'Open kanaal';
@@ -954,14 +947,14 @@ class AppLocalizationsNl extends AppLocalizations {
   String get channels_sortUnread => 'Ongelezen';
 
   @override
-  String get channels_createPrivateChannel => 'Maak een Privé Kanaal';
+  String get channels_createPrivateChannel => 'Maak een PrivÃ© Kanaal';
 
   @override
   String get channels_createPrivateChannelDesc =>
       'Beveiligd met een geheime sleutel.';
 
   @override
-  String get channels_joinPrivateChannel => 'Sluit een Privé Kanaal aan';
+  String get channels_joinPrivateChannel => 'Sluit een PrivÃ© Kanaal aan';
 
   @override
   String get channels_joinPrivateChannelDesc =>
@@ -1343,7 +1336,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get map_nodesNeedGps =>
-      'Nodes moeten hun GPS-coördinaten delen\nom op de kaart te verschijnen';
+      'Nodes moeten hun GPS-coÃ¶rdinaten delen\nom op de kaart te verschijnen';
 
   @override
   String map_nodesCount(int count) {
@@ -1371,7 +1364,7 @@ class AppLocalizationsNl extends AppLocalizations {
   String get map_pinDm => 'Verzenden als bericht (DM)';
 
   @override
-  String get map_pinPrivate => 'Beveiligd (Privé)';
+  String get map_pinPrivate => 'Beveiligd (PrivÃ©)';
 
   @override
   String get map_pinPublic => 'Openbaar spikken';
@@ -2038,7 +2031,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get repeater_eraseSerialOnly =>
-      'Verwijderen is alleen beschikbaar via de seriële console.';
+      'Verwijderen is alleen beschikbaar via de seriÃ«le console.';
 
   @override
   String repeater_commandSent(String command) {
@@ -2266,7 +2259,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get repeater_cliHelpSetBridgeBaud =>
-      'Stel de seriële link baudrate in voor rs232 bruggen.';
+      'Stel de seriÃ«le link baudrate in voor rs232 bruggen.';
 
   @override
   String get repeater_cliHelpSetBridgeSecret =>
@@ -2282,7 +2275,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get repeater_cliHelpSetPerm =>
-      'Wijzigt de ACL. Verwijder de overeenkomstige entry (door pubkey prefix) als \"permissions\" 0 is. Voeg een nieuwe entry toe als pubkey-hex volledig is en niet momenteel in de ACL staat. Update de entry door matching pubkey prefix. Toestemming bits variëren per firmware rol, maar de onderste 2 bits zijn: 0 (Gast), 1 (Alleen lezen), 2 (Lezen/schrijven), 3 (Admin)';
+      'Wijzigt de ACL. Verwijder de overeenkomstige entry (door pubkey prefix) als \"permissions\" 0 is. Voeg een nieuwe entry toe als pubkey-hex volledig is en niet momenteel in de ACL staat. Update de entry door matching pubkey prefix. Toestemming bits variÃ«ren per firmware rol, maar de onderste 2 bits zijn: 0 (Gast), 1 (Alleen lezen), 2 (Lezen/schrijven), 3 (Admin)';
 
   @override
   String get repeater_cliHelpGetBridgeType =>
@@ -2314,7 +2307,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get repeater_cliHelpRegionLoad =>
-      'LET OP: dit is een speciale multi-command aanroep. Elke volgende opdracht is een regiortaak (uitgelijnd met spaties om de ouderhiërarchie aan te duiden, met minimaal één spatie). Beëindigd door een lege regel/opdracht te sturen.';
+      'LET OP: dit is een speciale multi-command aanroep. Elke volgende opdracht is een regiortaak (uitgelijnd met spaties om de ouderhiÃ«rarchie aan te duiden, met minimaal Ã©Ã©n spatie). BeÃ«indigd door een lege regel/opdracht te sturen.';
 
   @override
   String get repeater_cliHelpRegionGet =>
@@ -2359,7 +2352,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get repeater_cliHelpGpsSetLoc =>
-      'Stel de positie van de node vast als GPS-coördinaten en sla de voorkeuren op.';
+      'Stel de positie van de node vast als GPS-coÃ¶rdinaten en sla de voorkeuren op.';
 
   @override
   String get repeater_cliHelpGpsAdvert =>
@@ -2397,14 +2390,14 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get repeater_regionNote =>
-      'Regio-commando\'s zijn geïntroduceerd om regio-definities en permissies te beheren.';
+      'Regio-commando\'s zijn geÃ¯ntroduceerd om regio-definities en permissies te beheren.';
 
   @override
   String get repeater_gpsManagement => 'Beheer GPS';
 
   @override
   String get repeater_gpsNote =>
-      'De GPS-commando is geïntroduceerd om locatiegerelateerde onderwerpen te beheren.';
+      'De GPS-commando is geÃ¯ntroduceerd om locatiegerelateerde onderwerpen te beheren.';
 
   @override
   String get telemetry_receivedData => 'Ontvangen Telemetriedata';
@@ -2457,7 +2450,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String telemetry_temperatureValue(String celsius, String fahrenheit) {
-    return '$celsius°C / $fahrenheit°F';
+    return '$celsiusÂ°C / $fahrenheitÂ°F';
   }
 
   @override
@@ -2526,7 +2519,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String channelPath_observedPathTitle(int index, String hops) {
-    return 'Waargenomen pad $index • $hops';
+    return 'Waargenomen pad $index â€¢ $hops';
   }
 
   @override
@@ -2581,7 +2574,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String channelPath_selectedPathLabel(String label, String prefixes) {
-    return '$label • $prefixes';
+    return '$label â€¢ $prefixes';
   }
 
   @override
@@ -2998,11 +2991,11 @@ class AppLocalizationsNl extends AppLocalizations {
   String get contacts_invalidAdvertFormat => 'Ongeldige contactgegevens';
 
   @override
-  String get contacts_contactImported => 'Contact is geïmporteerd.';
+  String get contacts_contactImported => 'Contact is geÃ¯mporteerd.';
 
   @override
   String get contacts_contactImportFailed =>
-      'Contact kon niet geïmporteerd worden.';
+      'Contact kon niet geÃ¯mporteerd worden.';
 
   @override
   String get contacts_zeroHopAdvert => 'Zero Hop Reclame';
@@ -3011,14 +3004,14 @@ class AppLocalizationsNl extends AppLocalizations {
   String get contacts_floodAdvert => 'Overstromingsadvertentie';
 
   @override
-  String get contacts_copyAdvertToClipboard => 'Advert naar klembord kopiëren';
+  String get contacts_copyAdvertToClipboard => 'Advert naar klembord kopiÃ«ren';
 
   @override
   String get contacts_addContactFromClipboard =>
       'Contact uit klembord toevoegen';
 
   @override
-  String get contacts_ShareContact => 'Kontakt naar Klembord kopiëren';
+  String get contacts_ShareContact => 'Kontakt naar Klembord kopiÃ«ren';
 
   @override
   String get contacts_ShareContactZeroHop => 'Contact delen via advertentie';
@@ -3037,7 +3030,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get contacts_contactAdvertCopyFailed =>
-      'Kopiëren van advertentie naar Clipboard is mislukt.';
+      'KopiÃ«ren van advertentie naar Clipboard is mislukt.';
 
   @override
   String get notification_activityTitle => 'MeshCore Activiteit';
@@ -3106,7 +3099,8 @@ class AppLocalizationsNl extends AppLocalizations {
       'Exporteert alle contacten met een locatie naar een GPX-bestand.';
 
   @override
-  String get settings_gpxExportSuccess => 'Succesvol GPX-bestand geëxporteerd.';
+  String get settings_gpxExportSuccess =>
+      'Succesvol GPX-bestand geÃ«xporteerd.';
 
   @override
   String get settings_gpxExportNoContacts => 'Geen contacten om te exporteren.';
@@ -3130,7 +3124,7 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get settings_gpxExportShareText =>
-      'Kaartgegevens geëxporteerd uit meshcore-open';
+      'Kaartgegevens geÃ«xporteerd uit meshcore-open';
 
   @override
   String get settings_gpxExportShareSubject =>

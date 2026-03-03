@@ -93,7 +93,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get common_loading => 'Loading...';
 
   @override
-  String get common_notAvailable => '—';
+  String get common_notAvailable => 'â€”';
 
   @override
   String common_voltageValue(String volts) {
@@ -107,13 +107,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get scanner_title => 'MeshCore Open';
-
-  @override
-  String get connectionChoiceTitle => 'Choose your connection method';
-
-  @override
-  String get connectionChoiceSubtitle =>
-      'Select how you would like to reach your MeshCore device.';
 
   @override
   String get connectionChoiceUsbLabel => 'USB';
@@ -455,10 +448,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appSettings_languageEn => 'English';
 
   @override
-  String get appSettings_languageFr => 'Français';
+  String get appSettings_languageFr => 'FranÃ§ais';
 
   @override
-  String get appSettings_languageEs => 'Español';
+  String get appSettings_languageEs => 'EspaÃ±ol';
 
   @override
   String get appSettings_languageDe => 'Deutsch';
@@ -467,16 +460,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appSettings_languagePl => 'Polski';
 
   @override
-  String get appSettings_languageSl => 'Slovenščina';
+  String get appSettings_languageSl => 'SlovenÅ¡Äina';
 
   @override
-  String get appSettings_languagePt => 'Português';
+  String get appSettings_languagePt => 'PortuguÃªs';
 
   @override
   String get appSettings_languageIt => 'Italiano';
 
   @override
-  String get appSettings_languageZh => '中文';
+  String get appSettings_languageZh => 'ä¸­æ–‡';
 
   @override
   String get appSettings_languageSv => 'Svenska';
@@ -485,16 +478,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appSettings_languageNl => 'Nederlands';
 
   @override
-  String get appSettings_languageSk => 'Slovenčina';
+  String get appSettings_languageSk => 'SlovenÄina';
 
   @override
-  String get appSettings_languageBg => 'Български';
+  String get appSettings_languageBg => 'Ð‘ÑŠÐ»Ð³Ð°Ñ€ÑÐºÐ¸';
 
   @override
-  String get appSettings_languageRu => 'Русский';
+  String get appSettings_languageRu => 'Ð ÑƒÑÑÐºÐ¸Ð¹';
 
   @override
-  String get appSettings_languageUk => 'Українська';
+  String get appSettings_languageUk => 'Ð£ÐºÑ€Ð°Ñ—Ð½ÑÑŒÐºÐ°';
 
   @override
   String get appSettings_enableMessageTracing => 'Enable Message Tracing';
@@ -2431,7 +2424,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String telemetry_temperatureValue(String celsius, String fahrenheit) {
-    return '$celsius°C / $fahrenheit°F';
+    return '$celsiusÂ°C / $fahrenheitÂ°F';
   }
 
   @override
@@ -2499,7 +2492,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String channelPath_observedPathTitle(int index, String hops) {
-    return 'Observed path $index • $hops';
+    return 'Observed path $index â€¢ $hops';
   }
 
   @override
@@ -2554,7 +2547,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String channelPath_selectedPathLabel(String label, String prefixes) {
-    return '$label • $prefixes';
+    return '$label â€¢ $prefixes';
   }
 
   @override
