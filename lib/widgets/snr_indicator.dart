@@ -69,15 +69,16 @@ class SNRIndicator extends StatefulWidget {
 class _SNRIndicatorState extends State<SNRIndicator> {
   Contact? _selectBestRepeaterContactForPrefix(int pubkeyFirstByte) {
     final candidates = widget.connector.contacts
-        .where( (c) =>
-              c.publicKey.isNotEmpty && c.publicKey.first == pubkeyFirstByte,
-        ).toList();
+        .where(
+          (c) => c.publicKey.isNotEmpty && c.publicKey.first == pubkeyFirstByte,
+        )
+        .toList();
 
     if (candidates.isEmpty) return null;
     candidates.sort((a, b) => b.lastSeen.compareTo(a.lastSeen));
 
     final selfLat = widget.connector.selfLatitude;
-    final selfLon = widget.connector.selfLongitude;    
+    final selfLon = widget.connector.selfLongitude;
     if (selfLat == null || selfLon == null) {
       return candidates.first;
     }
@@ -86,12 +87,8 @@ class _SNRIndicatorState extends State<SNRIndicator> {
     final distance = Distance();
     double bestDistance = double.infinity;
     for (final c in candidates) {
-      if (c.hasLocation)
-      {
-        final d = distance(
-          selfPoint,
-          LatLng(c.latitude!, c.longitude!),
-        );
+      if (c.hasLocation) {
+        final d = distance(selfPoint, LatLng(c.latitude!, c.longitude!));
         if (d < bestDistance) {
           bestDistance = d;
           best = c;
@@ -197,8 +194,9 @@ class _SNRIndicatorState extends State<SNRIndicator> {
                   widget.connector.currentSf,
                 );
 
-                final contact =
-                    _selectBestRepeaterContactForPrefix(repeater.pubkeyFirstByte);
+                final contact = _selectBestRepeaterContactForPrefix(
+                  repeater.pubkeyFirstByte,
+                );
                 final name = contact?.name;
 
                 return Column(
