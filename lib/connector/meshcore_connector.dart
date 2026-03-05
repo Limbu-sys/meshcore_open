@@ -2459,70 +2459,93 @@ class MeshCoreConnector extends ChangeNotifier {
   }
 
   Message? _parseContactMessage(Uint8List frame) {
-    if (frame.isEmpty) return null;
-    final code = frame[0];
-    if (code != respCodeContactMsgRecv && code != respCodeContactMsgRecvV3) {
+    if (frame.isEmpty) {
+      appLogger.warn('Received empty frame, ignoring');
       return null;
     }
+    final reader = BufferReader(frame);
 
-    // Companion radio layout:
-    // [code][snr?][res?][res?][prefix x6][path_len][txt_type][timestamp x4][extra?][text...]
-    final prefixOffset = code == respCodeContactMsgRecvV3 ? 4 : 1;
-    const prefixLen = 6;
-    final pathLenOffset = prefixOffset + prefixLen;
-    final txtTypeOffset = pathLenOffset + 1;
-    final timestampOffset = txtTypeOffset + 1;
-    final baseTextOffset = timestampOffset + 4;
+    try {
+      final code = reader.readByte();
+      if (code != respCodeContactMsgRecv && code != respCodeContactMsgRecvV3) {
+        appLogger.warn(
+          'Unexpected message code: $code, expected contact message receive codes',
+        );
+        return null;
+      }
 
-    if (frame.length <= baseTextOffset) return null;
-    final fourBytePubMSG = frame.sublist(baseTextOffset, baseTextOffset + 4);
-    final senderPrefix = frame.sublist(prefixOffset, prefixOffset + prefixLen);
-    final flags = frame[txtTypeOffset];
-    final shiftedType = flags >> 2;
-    final rawType = flags;
-    final isPlain = shiftedType == txtTypePlain || rawType == txtTypePlain;
-    final isCli = shiftedType == txtTypeCliData || rawType == txtTypeCliData;
-    if (!isPlain && !isCli) {
-      return null;
-    }
+      // Companion radio layout:
+      // [code][snr?][res?][res?][prefix x6][path_len][txt_type][timestamp x4][extra?][text...]
+      // double snr = 0;
+      if (code == respCodeContactMsgRecvV3) {
+        // Older firmware layout with SNR as a signed byte after the code
+        // snr = reader.readInt8().toDouble() * 4; // SNR in dB, scaled by 4
+        reader.skipBytes(1); // Skip SNR byte
+        reader.skipBytes(2); // Skip reserved bytes
+      }
 
-    // Try base text offset; if empty and there is room for the optional 4-byte extra
-    // (used by signed/plain variants), try again skipping those bytes.
-    var text = readCString(
-      frame,
-      baseTextOffset,
-      frame.length - baseTextOffset,
-    );
-    if (text.isEmpty && frame.length > baseTextOffset + 4) {
-      text = readCString(
-        frame,
-        baseTextOffset + 4,
-        frame.length - (baseTextOffset + 4),
+      final senderPrefix = reader.readBytes(6);
+      final pathLength = reader.readByte();
+      final txtType = reader.readByte();
+      final timestampRaw = reader.readInt32LE();
+      final timestamp = DateTime.fromMillisecondsSinceEpoch(
+        timestampRaw * 1000,
       );
+
+      if (txtType == 2) {
+        reader.skipBytes(4); // Skip extra 4 bytes for signed/plain variants
+      }
+
+      final msgText = reader.readString();
+
+      final flags = txtType;
+      final shiftedType = flags >> 2;
+      final rawType = flags;
+      final isPlain = shiftedType == txtTypePlain || rawType == txtTypePlain;
+      final isCli = shiftedType == txtTypeCliData || rawType == txtTypeCliData;
+      if (!isPlain && !isCli) {
+        appLogger.warn(
+          'Unknown message type received: txtType=$txtType, shifted=$shiftedType, raw=$rawType',
+        );
+        return null;
+      }
+
+      if (msgText.isEmpty) {
+        appLogger.warn('Received message with empty text, ignoring');
+        return null;
+      }
+      final decodedText = isCli
+          ? msgText
+          : (Smaz.tryDecodePrefixed(msgText) ?? msgText);
+
+      final contact = _contacts.cast<Contact?>().firstWhere(
+        (c) => c != null && _matchesPrefix(c.publicKey, senderPrefix),
+        orElse: () => null,
+      );
+      if (contact == null) {
+        appLogger.warn(
+          'Received message from unknown contact with prefix: ${senderPrefix.map((b) => b.toRadixString(16).padLeft(2, '0').toUpperCase()).join('')}',
+        );
+        return null;
+      }
+
+      return Message(
+        senderKey: contact.publicKey,
+        text: decodedText,
+        timestamp: timestamp,
+        isOutgoing: false,
+        isCli: isCli,
+        status: MessageStatus.delivered,
+        pathLength: pathLength == 0xFF ? 0 : pathLength,
+        pathBytes: Uint8List(0),
+        fourByteRoomContactKey: msgText.length >= 4
+            ? Uint8List.fromList(msgText.substring(0, 4).codeUnits)
+            : null,
+      );
+    } catch (e) {
+      appLogger.warn('Error parsing contact direct message: $e');
+      return null;
     }
-    if (text.isEmpty) return null;
-    final decodedText = isCli ? text : (Smaz.tryDecodePrefixed(text) ?? text);
-
-    final timestampRaw = readUint32LE(frame, timestampOffset);
-    final pathLenByte = frame[pathLenOffset];
-
-    final contact = _contacts.cast<Contact?>().firstWhere(
-      (c) => c != null && _matchesPrefix(c.publicKey, senderPrefix),
-      orElse: () => null,
-    );
-    if (contact == null) return null;
-
-    return Message(
-      senderKey: contact.publicKey,
-      text: decodedText,
-      timestamp: DateTime.fromMillisecondsSinceEpoch(timestampRaw * 1000),
-      isOutgoing: false,
-      isCli: isCli,
-      status: MessageStatus.delivered,
-      pathLength: pathLenByte == 0xFF ? 0 : pathLenByte,
-      pathBytes: Uint8List(0),
-      fourByteRoomContactKey: fourBytePubMSG,
-    );
   }
 
   bool _matchesPrefix(Uint8List fullKey, Uint8List prefix) {
