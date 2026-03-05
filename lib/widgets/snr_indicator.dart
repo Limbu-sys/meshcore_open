@@ -76,6 +76,7 @@ class _SNRIndicatorState extends State<SNRIndicator> {
 
     if (candidates.isEmpty) return null;
     candidates.sort((a, b) => b.lastSeen.compareTo(a.lastSeen));
+    candidates.sort((a, b) => b.isFavorite.compareTo(a.isFavorite));
 
     final selfLat = widget.connector.selfLatitude;
     final selfLon = widget.connector.selfLongitude;
@@ -83,10 +84,12 @@ class _SNRIndicatorState extends State<SNRIndicator> {
       return candidates.first;
     }
     final selfPoint = LatLng(selfLat, selfLon);
-    Contact best = candidates.first;
+    final favoriteCandidates = candidates.where((c) => c.isFavorite).toList();
+    List searchList = favoriteCandidates.isNotEmpty ? favoriteCandidates : candidates;
+    Contact best = searchList.first;
     final distance = Distance();
     double bestDistance = double.infinity;
-    for (final c in candidates) {
+    for (final c in searchList) {
       if (c.hasLocation) {
         final d = distance(selfPoint, LatLng(c.latitude!, c.longitude!));
         if (d < bestDistance) {
