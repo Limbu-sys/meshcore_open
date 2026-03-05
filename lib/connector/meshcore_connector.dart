@@ -2487,7 +2487,7 @@ class MeshCoreConnector extends ChangeNotifier {
       final senderPrefix = reader.readBytes(6);
       final pathLength = reader.readByte();
       final txtType = reader.readByte();
-      final timestampRaw = reader.readInt32LE();
+      final timestampRaw = reader.readUInt32LE();
       final timestamp = DateTime.fromMillisecondsSinceEpoch(
         timestampRaw * 1000,
       );
