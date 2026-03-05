@@ -89,7 +89,9 @@ class _SNRIndicatorState extends State<SNRIndicator> {
     }
     final selfPoint = LatLng(selfLat, selfLon);
     final favoriteCandidates = candidates.where((c) => c.isFavorite).toList();
-    List searchList = favoriteCandidates.isNotEmpty ? favoriteCandidates : candidates;
+    List searchList = favoriteCandidates.isNotEmpty
+        ? favoriteCandidates
+        : candidates;
     Contact best = searchList.first;
     final distance = Distance();
     double bestDistance = double.infinity;
