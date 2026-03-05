@@ -34,8 +34,14 @@ class BufferReader {
 
   Uint8List readRemainingBytes() => readBytes(remaining);
 
-  String readString() =>
-      utf8.decode(readRemainingBytes(), allowMalformed: true);
+  String readString() {
+    final value = readRemainingBytes();
+    try {
+      return utf8.decode(Uint8List.fromList(value), allowMalformed: true);
+    } catch (e) {
+      return String.fromCharCodes(value); // Latin-1 fallback
+    }
+  }
 
   String readCString(int maxLength) {
     final value = <int>[];
