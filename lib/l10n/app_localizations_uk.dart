@@ -51,6 +51,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get common_add => 'Додати';
 
   @override
+  String get common_done => 'Готово';
+
+  @override
   String get common_settings => 'Налаштування';
 
   @override
@@ -1313,6 +1316,31 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get chat_invalidLink => 'Невірний формат посилання';
+
+  @override
+  String get chat_dropImageToUpload =>
+      'Перетягніть зображення для завантаження';
+
+  @override
+  String get chat_sendImage => 'Надіслати зображення';
+
+  @override
+  String get chat_image => 'Зображення';
+
+  @override
+  String chat_via(String path) {
+    return 'через $path';
+  }
+
+  @override
+  String get chat_failedToLoadImage => 'Не вдалося завантажити зображення';
+
+  @override
+  String get chat_cantLoadGifTapToRetry =>
+      'Не вдалося завантажити GIF\nНатисніть, щоб повторить';
+
+  @override
+  String get chat_tapToLoadGif => 'Натисніть, щоб завантажити GIF';
 
   @override
   String get map_title => 'Карта вузлів';

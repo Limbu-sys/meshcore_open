@@ -3,7 +3,7 @@ import '../connector/meshcore_protocol.dart';
 import '../helpers/reaction_helper.dart';
 import '../helpers/smaz.dart';
 
-enum ChannelMessageStatus { pending, sent, failed }
+enum ChannelMessageStatus { uploading, pending, sent, failed }
 
 class Repeat {
   final Uint8List? repeaterKey;
@@ -40,6 +40,7 @@ class ChannelMessage {
   final String? replyToSenderName;
   final String? replyToText;
   final Map<String, int> reactions;
+  final Uint8List? attachmentBytes;
 
   ChannelMessage({
     this.senderKey,
@@ -59,6 +60,7 @@ class ChannelMessage {
     this.replyToSenderName,
     this.replyToText,
     Map<String, int>? reactions,
+    this.attachmentBytes,
   }) : messageId =
            messageId ??
            '${timestamp.millisecondsSinceEpoch}_${senderName.hashCode}_${text.hashCode}',
@@ -73,6 +75,8 @@ class ChannelMessage {
       senderKey != null ? pubKeyToHex(senderKey!) : null;
 
   ChannelMessage copyWith({
+    String? text,
+    String? senderName,
     ChannelMessageStatus? status,
     List<Repeat>? repeats,
     int? repeatCount,
@@ -83,11 +87,12 @@ class ChannelMessage {
     String? replyToSenderName,
     String? replyToText,
     Map<String, int>? reactions,
+    Uint8List? attachmentBytes,
   }) {
     return ChannelMessage(
       senderKey: senderKey,
-      senderName: senderName,
-      text: text,
+      senderName: senderName ?? this.senderName,
+      text: text ?? this.text,
       timestamp: timestamp,
       isOutgoing: isOutgoing,
       status: status ?? this.status,
@@ -102,6 +107,7 @@ class ChannelMessage {
       replyToSenderName: replyToSenderName ?? this.replyToSenderName,
       replyToText: replyToText ?? this.replyToText,
       reactions: reactions ?? this.reactions,
+      attachmentBytes: attachmentBytes ?? this.attachmentBytes,
     );
   }
 
@@ -193,8 +199,12 @@ class ChannelMessage {
   static ChannelMessage outgoing(
     String text,
     String senderName,
-    int channelIndex,
-  ) {
+    int channelIndex, {
+    Uint8List? attachmentBytes,
+    String? replyToMessageId,
+    String? replyToSenderName,
+    String? replyToText,
+  }) {
     return ChannelMessage(
       senderKey: null,
       senderName: senderName,
@@ -206,6 +216,10 @@ class ChannelMessage {
       pathBytes: Uint8List(0),
       pathVariants: const [],
       channelIndex: channelIndex,
+      attachmentBytes: attachmentBytes,
+      replyToMessageId: replyToMessageId,
+      replyToSenderName: replyToSenderName,
+      replyToText: replyToText,
     );
   }
 

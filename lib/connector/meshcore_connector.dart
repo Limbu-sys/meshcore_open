@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math';
+import 'package:uuid/uuid.dart';
 
 import 'package:crypto/crypto.dart' as crypto;
 import 'package:meshcore_open/models/discovery_contact.dart';
@@ -21,6 +23,7 @@ import '../services/path_history_service.dart';
 import '../services/app_settings_service.dart';
 import '../services/background_service.dart';
 import '../services/notification_service.dart';
+import '../services/image_upload_service.dart';
 import '../storage/channel_message_store.dart';
 import '../storage/channel_order_store.dart';
 import '../storage/channel_settings_store.dart';
@@ -142,6 +145,7 @@ class MeshCoreConnector extends ChangeNotifier {
       StreamController<Uint8List>.broadcast();
 
   Uint8List? _selfPublicKey;
+  Uint8List? _selfPrivateKey;
   String? _selfName;
   int? _currentTxPower;
   int? _maxTxPower;
@@ -271,6 +275,9 @@ class MeshCoreConnector extends ChangeNotifier {
   bool get isLoadingChannels => _isLoadingChannels;
   Stream<Uint8List> get receivedFrames => _receivedFramesController.stream;
   Uint8List? get selfPublicKey => _selfPublicKey;
+  Uint8List? get selfPrivateKey => _selfPrivateKey;
+  Uint8List? get publicKey => _selfPublicKey;
+  Uint8List? get privateKey => _selfPrivateKey;
   String? get selfName => _selfName;
   double? get selfLatitude => _selfLatitude;
   double? get selfLongitude => _selfLongitude;
@@ -391,6 +398,38 @@ class MeshCoreConnector extends ChangeNotifier {
 
   List<ChannelMessage> getChannelMessages(Channel channel) {
     return _channelMessages[channel.index] ?? [];
+  }
+
+  /// Updates a channel message's attachment bytes in memory for caching.
+  /// Does NOT persist to disk to avoid bloating storage with binary data.
+  void setChannelMessageAttachment(
+    int channelIndex,
+    String messageId,
+    Uint8List bytes,
+  ) {
+    final messages = _channelMessages[channelIndex];
+    if (messages == null) return;
+    final index = messages.indexWhere((m) => m.messageId == messageId);
+    if (index != -1) {
+      messages[index] = messages[index].copyWith(attachmentBytes: bytes);
+      notifyListeners();
+    }
+  }
+
+  /// Updates a private message's attachment bytes in memory for caching.
+  /// Does NOT persist to disk to avoid bloating storage with binary data.
+  void setMessageAttachment(
+    String contactKeyHex,
+    String messageId,
+    Uint8List bytes,
+  ) {
+    final messages = _conversations[contactKeyHex];
+    if (messages == null) return;
+    final index = messages.indexWhere((m) => m.messageId == messageId);
+    if (index != -1) {
+      messages[index] = messages[index].copyWith(attachmentBytes: bytes);
+      notifyListeners();
+    }
   }
 
   Future<void> deleteChannelMessage(ChannelMessage message) async {
@@ -679,6 +718,20 @@ class MeshCoreConnector extends ChangeNotifier {
     }
   }
 
+  void _updateChannelMessage(int channelIndex, ChannelMessage message) {
+    final messages = _channelMessages[channelIndex];
+    if (messages != null) {
+      final index = messages.indexWhere(
+        (m) => m.messageId == message.messageId,
+      );
+      if (index != -1) {
+        messages[index] = message;
+        _channelMessageStore.saveChannelMessages(channelIndex, messages);
+        notifyListeners();
+      }
+    }
+  }
+
   void _recordPathResult(
     String contactPubKeyHex,
     PathSelection selection,
@@ -721,6 +774,11 @@ class MeshCoreConnector extends ChangeNotifier {
     Duration timeout = const Duration(seconds: 10),
   }) async {
     if (_state == MeshCoreConnectionState.scanning) return;
+
+    if (kIsWeb) {
+      await _startScanWeb(timeout: timeout);
+      return;
+    }
 
     _scanResults.clear();
     _setState(MeshCoreConnectionState.scanning);
@@ -766,6 +824,69 @@ class MeshCoreConnector extends ChangeNotifier {
 
     await Future.delayed(timeout);
     await stopScan();
+  }
+
+  Future<void> _startScanWeb({
+    Duration timeout = const Duration(seconds: 10),
+  }) async {
+    _scanResults.clear();
+    _setState(MeshCoreConnectionState.scanning);
+
+    // Ensure any previous scan is fully stopped
+    await FlutterBluePlus.stopScan();
+    await _scanSubscription?.cancel();
+
+    final completer = Completer<void>();
+    bool handled = false;
+
+    _scanSubscription = FlutterBluePlus.scanResults.listen((results) async {
+      _scanResults
+        ..clear()
+        ..addAll(results);
+      notifyListeners();
+
+      if (results.isEmpty || handled || completer.isCompleted) {
+        return;
+      }
+      handled = true;
+
+      final result = results.first;
+      final name = result.device.platformName.isNotEmpty
+          ? result.device.platformName
+          : result.advertisementData.advName;
+
+      try {
+        await connect(result.device, displayName: name);
+        if (!completer.isCompleted) {
+          completer.complete();
+        }
+      } catch (e) {
+        debugPrint('Web scan auto-connect failed: $e');
+        if (_state == MeshCoreConnectionState.scanning) {
+          await stopScan();
+        }
+        if (!completer.isCompleted) {
+          completer.completeError(e);
+        }
+      }
+    });
+
+    try {
+      await FlutterBluePlus.startScan(
+        withServices: [Guid(MeshCoreUuids.service)],
+        withKeywords: ["MeshCore-", "Whisper-"],
+        webOptionalServices: [Guid(MeshCoreUuids.service)],
+        timeout: timeout,
+        androidScanMode: AndroidScanMode.lowLatency,
+      );
+    } catch (e) {
+      if (!completer.isCompleted) {
+        completer.complete();
+      }
+      rethrow;
+    }
+
+    await completer.future;
   }
 
   Future<void> stopScan() async {
@@ -889,7 +1010,13 @@ class MeshCoreConnector extends ChangeNotifier {
       unawaited(loadDiscoveredContactCache());
     } catch (e) {
       debugPrint("Connection error: $e");
-      await disconnect(manual: false);
+      // On Web, avoid auto-reconnect loops on connection failure so the
+      // caller can surface a one-shot error and let the user retry.
+      if (kIsWeb) {
+        await disconnect(manual: true);
+      } else {
+        await disconnect(manual: false);
+      }
       rethrow;
     }
   }
@@ -1017,7 +1144,7 @@ class MeshCoreConnector extends ChangeNotifier {
     _clientRepeat = null;
     _firmwareVerCode = null;
     _batteryMillivolts = null;
-    _repeaterBatterySnapshots.clear();
+    // _repeaterBatterySnapshots.clear();
     _batteryRequested = false;
     _awaitingSelfInfo = false;
     _maxContacts = _defaultMaxContacts;
@@ -1139,7 +1266,6 @@ class MeshCoreConnector extends ChangeNotifier {
     _preserveContactsOnRefresh = preserveExisting;
     if (!preserveExisting) {
       _contacts.clear();
-      notifyListeners();
     }
 
     await sendFrame(buildGetContactsFrame(since: since));
@@ -1158,7 +1284,11 @@ class MeshCoreConnector extends ChangeNotifier {
     await sendFrame(buildGetContactByKeyFrame(pubKey));
   }
 
-  Future<void> sendMessage(Contact contact, String text) async {
+  Future<void> sendMessage(
+    Contact contact,
+    String text, {
+    Uint8List? attachmentBytes,
+  }) async {
     if (!isConnected || text.isEmpty) return;
 
     // Handle auto-rotation if enabled
@@ -1192,6 +1322,7 @@ class MeshCoreConnector extends ChangeNotifier {
         pathSelection: autoSelection,
         pathBytes: pathBytes,
         pathLength: pathLength,
+        attachmentBytes: attachmentBytes,
       );
     } else {
       // Fallback to old behavior if retry service not initialized
@@ -1202,6 +1333,7 @@ class MeshCoreConnector extends ChangeNotifier {
         text,
         pathLength: pathLength,
         pathBytes: pathBytes,
+        attachmentBytes: attachmentBytes,
       );
       _addMessage(contact.publicKeyHex, message);
       notifyListeners();
@@ -1332,7 +1464,7 @@ class MeshCoreConnector extends ChangeNotifier {
     );
 
     appLogger.info(
-      'Updated contact. New override: ${_contacts[index].pathOverride}, bytesLen: ${_contacts[index].pathOverrideBytes?.length}',
+      'After merge: pathOverride=${_contacts[index].pathOverride}, bytesLen: ${_contacts[index].pathOverrideBytes?.length}',
       tag: 'Connector',
     );
 
@@ -1458,7 +1590,12 @@ class MeshCoreConnector extends ChangeNotifier {
     }
   }
 
-  Future<void> sendChannelMessage(Channel channel, String text) async {
+  Future<void> sendChannelMessage(
+    Channel channel,
+    String text, {
+    Uint8List? attachmentBytes,
+    ChannelMessage? replyToMessage,
+  }) async {
     if (!isConnected || text.isEmpty) return;
 
     // Check if this is a reaction - if so, process it immediately instead of adding as a message
@@ -1504,23 +1641,151 @@ class MeshCoreConnector extends ChangeNotifier {
       text,
       _selfName ?? 'Me',
       channel.index,
+      attachmentBytes: attachmentBytes,
+      replyToMessageId: replyToMessage?.messageId,
+      replyToSenderName: replyToMessage?.senderName,
+      replyToText: replyToMessage?.text,
     );
     _addChannelMessage(channel.index, message);
     _pendingChannelSentQueue.add(message.messageId);
     notifyListeners();
 
-    final trimmed = text.trim();
-    final isStructuredPayload =
-        trimmed.startsWith('g:') || trimmed.startsWith('m:');
-    final outboundText =
-        (isChannelSmazEnabled(channel.index) && !isStructuredPayload)
-        ? Smaz.encodeIfSmaller(text)
-        : text;
+    final outboundText = _prepareChannelOutboundText(channel.index, text);
     await sendFrame(
       buildSendChannelTextMsgFrame(channel.index, outboundText),
       channelSendQueueId: message.messageId,
       expectsGenericAck: true,
     );
+  }
+
+  String _prepareChannelOutboundText(int channelIndex, String text) {
+    final trimmed = text.trim();
+    final isStructuredPayload =
+        trimmed.startsWith('g:') ||
+        trimmed.startsWith('m:') ||
+        trimmed.startsWith('i:');
+    return (isChannelSmazEnabled(channelIndex) && !isStructuredPayload)
+        ? Smaz.encodeIfSmaller(text)
+        : text;
+  }
+
+  Future<void> sendImageMessage(
+    Contact contact,
+    Uint8List bytes, {
+    String? mimeType,
+    Uint8List? stagedImageSecretKey,
+  }) async {
+    if (!isConnected) return;
+
+    final messageId = const Uuid().v4();
+    final message = Message(
+      senderKey: contact.publicKey,
+      text: 'i:uploading',
+      timestamp: DateTime.now(),
+      isOutgoing: true,
+      status: MessageStatus.uploading,
+      messageId: messageId,
+      attachmentBytes: bytes,
+    );
+
+    _addMessage(contact.publicKeyHex, message);
+
+    // Generate a random secret key for this asset if not provided
+    final secretKey = stagedImageSecretKey ?? Uint8List(32);
+    if (stagedImageSecretKey == null) {
+      final random = Random.secure();
+      for (var i = 0; i < 32; i++) {
+        secretKey[i] = random.nextInt(256);
+      }
+    }
+
+    final hash = await ImageUploadService().uploadImage(
+      bytes,
+      mimeType: mimeType,
+      contact: contact,
+      secretKey: secretKey,
+      selfPublicKey: selfPublicKey,
+    );
+
+    if (hash != null) {
+      final updatedMessage = message.copyWith(
+        text: 'i:$hash',
+        status: MessageStatus.pending,
+      );
+      _updateMessage(updatedMessage);
+
+      if (_retryService != null) {
+        await _retryService!.retransmitMessage(
+          contact: contact,
+          message: updatedMessage,
+        );
+      } else {
+        final outboundText = prepareContactOutboundText(contact, 'i:$hash');
+        await sendFrame(buildSendTextMsgFrame(contact.publicKey, outboundText));
+      }
+    } else {
+      _updateMessage(message.copyWith(status: MessageStatus.failed));
+    }
+  }
+
+  Future<void> sendChannelImageMessage(
+    Channel channel,
+    Uint8List bytes, {
+    String? mimeType,
+    ChannelMessage? replyToMessage,
+  }) async {
+    if (!isConnected) return;
+
+    final messageId = const Uuid().v4();
+    final message = ChannelMessage(
+      senderName: selfName ?? 'Me',
+      text: 'i:uploading',
+      timestamp: DateTime.now(),
+      isOutgoing: true,
+      status: ChannelMessageStatus.uploading,
+      messageId: messageId,
+      channelIndex: channel.index,
+      replyToMessageId: replyToMessage?.messageId,
+      replyToSenderName: replyToMessage?.senderName,
+      replyToText: replyToMessage?.text,
+      attachmentBytes: bytes,
+    );
+
+    _addChannelMessage(channel.index, message);
+    notifyListeners();
+
+    final hash = await ImageUploadService().uploadImage(
+      bytes,
+      mimeType: mimeType,
+      channel: channel,
+      secretKey: channel.psk,
+      selfPublicKey: selfPublicKey,
+    );
+
+    if (hash != null) {
+      String text = 'i:$hash';
+      if (replyToMessage != null) {
+        text = '@[${replyToMessage.senderName}] i:$hash';
+      }
+
+      final updatedMessage = message.copyWith(
+        text: text,
+        status: ChannelMessageStatus.pending,
+      );
+      _updateChannelMessage(channel.index, updatedMessage);
+
+      final outboundText = _prepareChannelOutboundText(channel.index, text);
+      await sendFrame(
+        buildSendChannelTextMsgFrame(channel.index, outboundText),
+        channelSendQueueId: messageId,
+        expectsGenericAck: true,
+      );
+    } else {
+      _updateChannelMessage(
+        channel.index,
+        message.copyWith(status: ChannelMessageStatus.failed),
+      );
+    }
   }
 
   Future<void> removeContact(Contact contact) async {
@@ -2977,7 +3242,11 @@ class MeshCoreConnector extends ChangeNotifier {
     entry.timeout?.cancel();
     final effectiveTimeoutMs = timeoutMs > 0
         ? timeoutMs
-        : calculateTimeout(
+        : calculateMessageTimeout(
+            freqHz: _currentFreqHz ?? 0,
+            bwHz: _currentBwHz ?? 0,
+            sf: _currentSf ?? 0,
+            cr: _currentCr ?? 0,
             pathLength: entry.pathLength,
             messageBytes: entry.messageBytes,
           );

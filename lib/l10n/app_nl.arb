@@ -1753,6 +1753,14 @@
       }
     }
   },
+  "chat_dropImageToUpload": "Sleep afbeelding hierheen om te uploaden",
+  "chat_sendImage": "Afbeelding verzenden",
+  "chat_image": "Afbeelding",
+  "chat_via": "via {path}",
+  "chat_failedToLoadImage": "Afbeelding laden mislukt",
+  "chat_cantLoadGifTapToRetry": "Kan GIF niet laden\nTik om opnieuw te proberen",
+  "chat_tapToLoadGif": "Tik om GIF te laden",
+  "common_done": "Klaar",
   "listFilter_removeFromFavorites": "Verwijderen uit favorieten",
   "listFilter_favorites": "Favorieten",
   "listFilter_addToFavorites": "Toevoegen aan favorieten",

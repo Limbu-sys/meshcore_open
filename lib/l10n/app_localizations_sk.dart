@@ -51,6 +51,9 @@ class AppLocalizationsSk extends AppLocalizations {
   String get common_add => 'Pridať';
 
   @override
+  String get common_done => 'Hotovo';
+
+  @override
   String get common_settings => 'Nastavenia';
 
   @override
@@ -1308,6 +1311,30 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get chat_invalidLink => 'Neplatný formát odkazu';
+
+  @override
+  String get chat_dropImageToUpload => 'Presuňte obrázok na nahranie';
+
+  @override
+  String get chat_sendImage => 'Odoslať obrázok';
+
+  @override
+  String get chat_image => 'Obrázok';
+
+  @override
+  String chat_via(String path) {
+    return 'cez $path';
+  }
+
+  @override
+  String get chat_failedToLoadImage => 'Nepodarilo sa начитать obrázok';
+
+  @override
+  String get chat_cantLoadGifTapToRetry =>
+      'Nemožno начитать GIF\nKlepnite pre opakovanie';
+
+  @override
+  String get chat_tapToLoadGif => 'Klepnite pre начитанние GIF';
 
   @override
   String get map_title => 'Mapa uzlov';

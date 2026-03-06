@@ -51,6 +51,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get common_add => 'Toevoegen';
 
   @override
+  String get common_done => 'Klaar';
+
+  @override
   String get common_settings => 'Instellingen';
 
   @override
@@ -1307,6 +1310,31 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get chat_invalidLink => 'Ongeldig linkformaat';
+
+  @override
+  String get chat_dropImageToUpload =>
+      'Sleep afbeelding hierheen om te uploaden';
+
+  @override
+  String get chat_sendImage => 'Afbeelding verzenden';
+
+  @override
+  String get chat_image => 'Afbeelding';
+
+  @override
+  String chat_via(String path) {
+    return 'via $path';
+  }
+
+  @override
+  String get chat_failedToLoadImage => 'Afbeelding laden mislukt';
+
+  @override
+  String get chat_cantLoadGifTapToRetry =>
+      'Kan GIF niet laden\nTik om opnieuw te proberen';
+
+  @override
+  String get chat_tapToLoadGif => 'Tik om GIF te laden';
 
   @override
   String get map_title => 'Node Map';

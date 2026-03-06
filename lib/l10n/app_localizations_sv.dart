@@ -51,6 +51,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get common_add => 'Lägg till';
 
   @override
+  String get common_done => 'Klar';
+
+  @override
   String get common_settings => 'Inställningar';
 
   @override
@@ -1300,6 +1303,30 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get chat_invalidLink => 'Ogiltigt länkformat';
+
+  @override
+  String get chat_dropImageToUpload => 'Släpp bild för att ladda upp';
+
+  @override
+  String get chat_sendImage => 'Skicka bild';
+
+  @override
+  String get chat_image => 'Bild';
+
+  @override
+  String chat_via(String path) {
+    return 'via $path';
+  }
+
+  @override
+  String get chat_failedToLoadImage => 'Misslyckades med att ladda bilden';
+
+  @override
+  String get chat_cantLoadGifTapToRetry =>
+      'Kan inte ladda GIF\nTryck för att försöka igen';
+
+  @override
+  String get chat_tapToLoadGif => 'Tryck för att ladda GIF';
 
   @override
   String get map_title => 'Nodkarta';

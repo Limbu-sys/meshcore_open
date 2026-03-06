@@ -1,14 +1,17 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:meshcore_open/screens/path_trace_map.dart';
 import 'package:provider/provider.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:desktop_drop/desktop_drop.dart';
 
 import '../connector/meshcore_connector.dart';
 import '../connector/meshcore_protocol.dart';
@@ -21,15 +24,19 @@ import '../models/channel_message.dart';
 import '../models/contact.dart';
 import '../models/message.dart';
 import '../models/path_history.dart';
+import '../models/protos/mas.pb.dart';
 import '../services/app_settings_service.dart';
 import '../services/chat_text_scale_service.dart';
+import '../services/image_upload_service.dart';
 import '../services/path_history_service.dart';
+import '../utils/asset_encoder.dart';
 import '../widgets/chat_zoom_wrapper.dart';
 import '../widgets/elements_ui.dart';
 import 'channel_message_path_screen.dart';
 import 'map_screen.dart';
 import '../utils/emoji_utils.dart';
 import '../widgets/emoji_picker.dart';
+import '../widgets/image_message.dart';
 import '../widgets/gif_message.dart';
 import '../widgets/jump_to_bottom_button.dart';
 import '../widgets/gif_picker.dart';
@@ -51,6 +58,16 @@ class _ChatScreenState extends State<ChatScreen> {
   final _scrollController = ChatScrollController();
   final _textFieldFocusNode = FocusNode();
   bool _isLoadingOlder = false;
+  bool _isDragging = false;
+  Uint8List? _stagedImageBytes;
+  String? _stagedImagePreviewUrl; // On web: blob URL for instant preview
+  String? _stagedImageMimeType;
+  String? _stagedImageStage; // 'processing' | 'encrypting' | 'uploading'
+  bool _isPreparingStagedImage = false;
+  String? _stagedImageHash;
+  String? _stagedImageError;
+  bool _isStagedImageUploaded = false;
+  bool _stagedImageCancelRequested = false;
   MeshCoreConnector? _connector;
 
   @override
@@ -218,20 +235,94 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Consumer<MeshCoreConnector>(
         builder: (context, connector, child) {
           final messages = connector.getMessages(widget.contact);
-          return Column(
-            children: [
-              Expanded(
-                child: Stack(
+          return DropTarget(
+            onDragEntered: (details) {
+              setState(() {
+                _isDragging = true;
+              });
+            },
+            onDragExited: (details) {
+              setState(() {
+                _isDragging = false;
+              });
+            },
+            onDragDone: (details) async {
+              if (details.files.isNotEmpty) {
+                final file = details.files.first;
+                // Check if it's an image
+                final mimeType = file.mimeType ?? '';
+                if (mimeType.startsWith('image/') ||
+                    file.name.toLowerCase().endsWith('.png') ||
+                    file.name.toLowerCase().endsWith('.jpg') ||
+                    file.name.toLowerCase().endsWith('.jpeg') ||
+                    file.name.toLowerCase().endsWith('.gif') ||
+                    file.name.toLowerCase().endsWith('.webp')) {
+                  final bytes = await file.readAsBytes();
+                  _prepareStagedImage(bytes);
+                }
+              }
+            },
+            child: Stack(
+              children: [
+                Column(
                   children: [
-                    messages.isEmpty
-                        ? _buildEmptyState()
-                        : _buildMessageList(messages, connector),
-                    JumpToBottomButton(scrollController: _scrollController),
+                    Expanded(
+                      child: Stack(
+                        children: [
+                          messages.isEmpty
+                              ? _buildEmptyState()
+                              : _buildMessageList(messages, connector),
+                          JumpToBottomButton(
+                            scrollController: _scrollController,
+                          ),
+                        ],
+                      ),
+                    ),
+                    _buildInputBar(connector),
                   ],
                 ),
-              ),
-              _buildInputBar(connector),
-            ],
+                if (_isDragging)
+                  Container(
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.surface.withValues(alpha: 0.8),
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(24),
+                            decoration: BoxDecoration(
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.primaryContainer,
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Theme.of(context).colorScheme.primary,
+                                width: 2,
+                              ),
+                            ),
+                            child: Icon(
+                              Icons.image,
+                              size: 48,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            context.l10n.chat_dropImageToUpload,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+              ],
+            ),
           );
         },
       ),
@@ -323,6 +414,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 textScale: textScale,
                 onTap: () => _openMessagePath(message, contact),
                 onLongPress: () => _showMessageActions(message, contact),
+                contactKeyHex: widget.contact.publicKeyHex,
               );
             },
           );
@@ -343,6 +435,20 @@ class _ChatScreenState extends State<ChatScreen> {
       child: SafeArea(
         child: Row(
           children: [
+            _isPreparingStagedImage
+                ? const Padding(
+                    padding: EdgeInsets.all(12.0),
+                    child: SizedBox(
+                      width: 24,
+                      height: 24,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
+                  )
+                : IconButton(
+                    icon: const Icon(Icons.image),
+                    onPressed: () => _pickAndUploadImage(connector),
+                    tooltip: context.l10n.chat_sendImage,
+                  ),
             IconButton(
               icon: const Icon(Icons.gif_box),
               onPressed: () => _showGifPicker(context),
@@ -352,7 +458,107 @@ class _ChatScreenState extends State<ChatScreen> {
               child: ValueListenableBuilder<TextEditingValue>(
                 valueListenable: _textController,
                 builder: (context, value, child) {
+                  final imageId = _parseImageHash(value.text);
                   final gifId = _parseGifId(value.text);
+                  if (imageId != null ||
+                      _stagedImageBytes != null ||
+                      _stagedImagePreviewUrl != null) {
+                    return Focus(
+                      autofocus: true,
+                      onKeyEvent: (node, event) {
+                        if (event is KeyDownEvent &&
+                            (event.logicalKey == LogicalKeyboardKey.enter ||
+                                event.logicalKey ==
+                                    LogicalKeyboardKey.numpadEnter)) {
+                          _sendMessage(connector);
+                          return KeyEventResult.handled;
+                        }
+                        return KeyEventResult.ignored;
+                      },
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              children: [
+                                if (_stagedImagePreviewUrl != null)
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: Image.network(
+                                      _stagedImagePreviewUrl!,
+                                      height: 160,
+                                      fit: BoxFit.contain,
+                                    ),
+                                  )
+                                else if (_stagedImageBytes != null)
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: Image.memory(
+                                      _stagedImageBytes!,
+                                      height: 160,
+                                      fit: BoxFit.contain,
+                                    ),
+                                  )
+                                else
+                                  ImageMessage(
+                                    hash: imageId!,
+                                    backgroundColor:
+                                        colorScheme.surfaceContainerHighest,
+                                    fallbackTextColor: colorScheme.onSurface
+                                        .withValues(alpha: 0.6),
+                                    maxSize: 160,
+                                  ),
+                                if (_stagedImageStage != null ||
+                                    _isStagedImageUploaded) ...[
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      top: 8.0,
+                                      left: 4,
+                                      right: 4,
+                                    ),
+                                    child: _stagedImageStatusRow(),
+                                  ),
+                                ],
+                                if (_stagedImageError != null)
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Text(
+                                      _stagedImageError!,
+                                      style: const TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          IconButton(
+                            icon: const Icon(Icons.close),
+                            onPressed: () {
+                              if (_stagedImageBytes != null ||
+                                  _stagedImagePreviewUrl != null) {
+                                setState(() {
+                                  _stagedImageCancelRequested = true;
+                                  _stagedImageBytes = null;
+                                  _stagedImagePreviewUrl = null;
+                                  _stagedImageMimeType = null;
+                                  _stagedImageStage = null;
+                                  _isPreparingStagedImage = false;
+                                  _stagedImageHash = null;
+                                  _stagedImageError = null;
+                                  _isStagedImageUploaded = false;
+                                });
+                              } else {
+                                _textController.clear();
+                              }
+                              _textFieldFocusNode.requestFocus();
+                            },
+                          ),
+                        ],
+                      ),
+                    );
+                  }
                   if (gifId != null) {
                     return Focus(
                       autofocus: true,
@@ -419,7 +625,11 @@ class _ChatScreenState extends State<ChatScreen> {
             const SizedBox(width: 8),
             IconButton.filled(
               icon: const Icon(Icons.send),
-              onPressed: () => _sendMessage(connector),
+              onPressed:
+                  (_isPreparingStagedImage && _stagedImageHash == null) ||
+                      _stagedImageError != null
+                  ? null
+                  : () => _sendMessage(connector),
             ),
           ],
         ),
@@ -427,10 +637,166 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
+  String? _parseImageHash(String text) {
+    final trimmed = text.trim();
+    final match = RegExp(r'^i:([A-Za-z0-9]+)$').firstMatch(trimmed);
+    return match?.group(1);
+  }
+
   String? _parseGifId(String text) {
     final trimmed = text.trim();
     final match = RegExp(r'^g:([A-Za-z0-9_-]+)$').firstMatch(trimmed);
     return match?.group(1);
+  }
+
+  Future<void> _pickAndUploadImage(MeshCoreConnector connector) async {
+    final picker = ImagePicker();
+    final image = await picker.pickImage(
+      source: ImageSource.gallery,
+      maxWidth: 4096,
+      maxHeight: 4096,
+      imageQuality: 85,
+    );
+
+    if (image == null) return;
+
+    if (kIsWeb && image.path.isNotEmpty) {
+      setState(() {
+        _stagedImagePreviewUrl = image.path;
+        _stagedImageBytes = null;
+        _stagedImageMimeType = image.mimeType ?? 'image/jpeg';
+        _stagedImageStage = 'processing';
+        _isPreparingStagedImage = true;
+        _stagedImageHash = null;
+        _stagedImageError = null;
+        _isStagedImageUploaded = false;
+        _stagedImageCancelRequested = false;
+      });
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        if (!mounted || _stagedImageCancelRequested) return;
+        final bytes = await image.readAsBytes();
+        if (!mounted || _stagedImageCancelRequested) return;
+        _runStagedImagePipeline(bytes, image.mimeType ?? 'image/jpeg');
+      });
+    } else {
+      final bytes = await image.readAsBytes();
+      _prepareStagedImage(bytes, mimeType: image.mimeType);
+    }
+  }
+
+  void _prepareStagedImage(Uint8List bytes, {String? mimeType}) {
+    setState(() {
+      _stagedImageBytes = bytes;
+      _stagedImagePreviewUrl = null;
+      _stagedImageMimeType = mimeType ?? 'image/jpeg';
+      _stagedImageStage = 'processing';
+      _isPreparingStagedImage = true;
+      _stagedImageHash = null;
+      _stagedImageError = null;
+      _isStagedImageUploaded = false;
+      _stagedImageCancelRequested = false;
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || _stagedImageCancelRequested) return;
+      _runStagedImagePipeline(bytes, mimeType ?? 'image/jpeg');
+    });
+  }
+
+  Future<void> _runStagedImagePipeline(Uint8List bytes, String mimeType) async {
+    final connector = context.read<MeshCoreConnector>();
+    final contact = widget.contact;
+    final secretKey = Uint8List(32);
+    final random = Random.secure();
+    for (var i = 0; i < 32; i++) {
+      secretKey[i] = random.nextInt(256);
+    }
+
+    Uint8List? processedBytes;
+    if (_stagedImageCancelRequested) return;
+    processedBytes = await ImageUploadService.processImageForUpload(bytes);
+    if (!mounted || _stagedImageCancelRequested) return;
+    setState(() => _stagedImageStage = 'encrypting');
+    await Future.delayed(Duration.zero);
+
+    Uint8List? blobBytes;
+    if (_stagedImageCancelRequested) return;
+    blobBytes = await AssetEncoder.encode(
+      type: AssetType.DM,
+      contentType: mimeType,
+      filename: 'upload_${DateTime.now().millisecondsSinceEpoch}.jpg',
+      rawData: processedBytes,
+      secretKey: secretKey,
+      recipientPublicKeys: [
+        contact.publicKey,
+        if (connector.selfPublicKey != null) connector.selfPublicKey!,
+      ],
+    );
+    if (!mounted || _stagedImageCancelRequested) return;
+    setState(() => _stagedImageStage = 'uploading');
+    await Future.delayed(Duration.zero);
+
+    String? hash;
+    if (_stagedImageCancelRequested) return;
+    hash = await ImageUploadService.uploadBlob(blobBytes);
+    if (!mounted || _stagedImageCancelRequested) return;
+
+    setState(() {
+      _stagedImageBytes = processedBytes;
+      _stagedImagePreviewUrl = null;
+      _stagedImageStage = null;
+      _isPreparingStagedImage = false;
+      _stagedImageHash = hash;
+      _stagedImageError = hash == null ? 'Upload failed' : null;
+      _isStagedImageUploaded = hash != null;
+    });
+  }
+
+  Widget _stagedImageStatusRow() {
+    final theme = Theme.of(context);
+    if (_isStagedImageUploaded) {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.check_circle, color: Colors.green, size: 16),
+          const SizedBox(width: 8),
+          const Text(
+            'Uploaded',
+            style: TextStyle(
+              color: Colors.green,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      );
+    }
+    final stage = _stagedImageStage;
+    final label = stage == 'processing'
+        ? 'Processing'
+        : stage == 'encrypting'
+        ? 'Encrypting'
+        : stage == 'uploading'
+        ? 'Uploading'
+        : '';
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          width: 16,
+          height: 16,
+          child: CircularProgressIndicator(strokeWidth: 2),
+        ),
+        const SizedBox(width: 8),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 12,
+            color: theme.colorScheme.primary,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
+    );
   }
 
   void _showGifPicker(BuildContext context) {
@@ -445,19 +811,50 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  void _sendMessage(MeshCoreConnector connector) {
-    final text = _textController.text.trim();
-    if (text.isEmpty) return;
+  void _sendMessage(MeshCoreConnector connector) async {
+    final stagedBytes = _stagedImageBytes;
+    final stagedMimeType = _stagedImageMimeType;
+    String text = _textController.text.trim();
 
-    final maxBytes = maxContactMessageBytes();
-    if (utf8.encode(text).length > maxBytes) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(context.l10n.chat_messageTooLong(maxBytes))),
-      );
-      return;
+    if (stagedBytes == null && text.isEmpty) return;
+
+    if (stagedBytes != null) {
+      final stagedHash = _stagedImageHash;
+      // Clear staging state
+      setState(() {
+        _stagedImageBytes = null;
+        _stagedImageMimeType = null;
+        _isPreparingStagedImage = false;
+        _stagedImageHash = null;
+        _stagedImageError = null;
+        _isStagedImageUploaded = false;
+      });
+
+      if (stagedHash != null) {
+        await connector.sendMessage(
+          widget.contact,
+          'i:$stagedHash',
+          attachmentBytes: stagedBytes,
+        );
+      } else {
+        await connector.sendImageMessage(
+          widget.contact,
+          stagedBytes,
+          mimeType: stagedMimeType,
+        );
+      }
+    } else {
+      final maxBytes = maxContactMessageBytes();
+      if (utf8.encode(text).length > maxBytes) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(context.l10n.chat_messageTooLong(maxBytes))),
+        );
+        return;
+      }
+
+      connector.sendMessage(widget.contact, text);
     }
 
-    connector.sendMessage(widget.contact, text);
     _textController.clear();
     _textFieldFocusNode.requestFocus();
   }
@@ -1190,6 +1587,7 @@ class _MessageBubble extends StatelessWidget {
   final Message message;
   final String senderName;
   final bool isRoomServer;
+  final String contactKeyHex;
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
   final double textScale;
@@ -1198,6 +1596,7 @@ class _MessageBubble extends StatelessWidget {
     required this.message,
     required this.senderName,
     required this.isRoomServer,
+    required this.contactKeyHex,
     required this.textScale,
     this.onTap,
     this.onLongPress,
@@ -1209,6 +1608,7 @@ class _MessageBubble extends StatelessWidget {
     final enableTracing = settingsService.settings.enableMessageTracing;
     final isOutgoing = message.isOutgoing;
     final colorScheme = Theme.of(context).colorScheme;
+    final imageId = _parseImageHash(message.text);
     final gifId = _parseGifId(message.text);
     final poi = _parsePoiMessage(message.text);
     final isFailed = message.status == MessageStatus.failed;
@@ -1302,9 +1702,54 @@ class _MessageBubble extends StatelessWidget {
                                       isFailed:
                                           message.status ==
                                           MessageStatus.failed,
+                                      isUploading:
+                                          message.status ==
+                                          MessageStatus.uploading,
                                     ),
                                   )
                                 : null,
+                          )
+                        else if (imageId != null)
+                          Stack(
+                            children: [
+                              ImageMessage(
+                                hash: imageId,
+                                backgroundColor: Colors.transparent,
+                                fallbackTextColor: textColor.withValues(
+                                  alpha: 0.7,
+                                ),
+                                localBytes: message.attachmentBytes,
+                                messageId: message.messageId,
+                                contactKeyHex: contactKeyHex,
+                              ),
+                              if (!enableTracing && isOutgoing)
+                                Positioned(
+                                  top: 0,
+                                  right: 0,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(3),
+                                    decoration: BoxDecoration(
+                                      color: bubbleColor,
+                                      borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(10),
+                                        topRight: Radius.circular(8),
+                                      ),
+                                    ),
+                                    child: MessageStatusIcon(
+                                      isAcked:
+                                          message.status ==
+                                              MessageStatus.delivered &&
+                                          message.pathBytes.isNotEmpty,
+                                      isFailed:
+                                          message.status ==
+                                          MessageStatus.failed,
+                                      isUploading:
+                                          message.status ==
+                                          MessageStatus.uploading,
+                                    ),
+                                  ),
+                                ),
+                            ],
                           )
                         else if (gifId != null)
                           Stack(
@@ -1341,6 +1786,9 @@ class _MessageBubble extends StatelessWidget {
                                       isFailed:
                                           message.status ==
                                           MessageStatus.failed,
+                                      isUploading:
+                                          message.status ==
+                                          MessageStatus.uploading,
                                     ),
                                   ),
                                 ),
@@ -1385,6 +1833,9 @@ class _MessageBubble extends StatelessWidget {
                                         message.pathBytes.isNotEmpty,
                                     isFailed:
                                         message.status == MessageStatus.failed,
+                                    isUploading:
+                                        message.status ==
+                                        MessageStatus.uploading,
                                   ),
                                 ),
                               ],
@@ -1643,6 +2094,16 @@ class _MessageBubble extends StatelessWidget {
   }
 
   Widget _buildStatusIcon(Color color) {
+    if (message.status == MessageStatus.uploading) {
+      return SizedBox(
+        width: 12,
+        height: 12,
+        child: CircularProgressIndicator(
+          strokeWidth: 1.5,
+          valueColor: AlwaysStoppedAnimation<Color>(color),
+        ),
+      );
+    }
     IconData icon;
     switch (message.status) {
       case MessageStatus.pending:
@@ -1657,9 +2118,19 @@ class _MessageBubble extends StatelessWidget {
       case MessageStatus.failed:
         icon = Icons.error_outline;
         break;
+      case MessageStatus.uploading:
+        // Already handled above
+        icon = Icons.cloud_upload;
+        break;
     }
 
     return Icon(icon, size: 12, color: color);
+  }
+
+  String? _parseImageHash(String text) {
+    final trimmed = text.trim();
+    final match = RegExp(r'^i:([A-Za-z0-9]+)$').firstMatch(trimmed);
+    return match?.group(1);
   }
 
   String _formatTime(DateTime time) {

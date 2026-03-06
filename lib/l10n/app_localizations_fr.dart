@@ -51,6 +51,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get common_add => 'Ajouter';
 
   @override
+  String get common_done => 'Terminé';
+
+  @override
   String get common_settings => 'Paramètres';
 
   @override
@@ -1319,6 +1322,30 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get chat_invalidLink => 'Format de lien invalide';
+
+  @override
+  String get chat_dropImageToUpload => 'Déposer l\'image pour la télécharger';
+
+  @override
+  String get chat_sendImage => 'Envoyer l\'image';
+
+  @override
+  String get chat_image => 'Image';
+
+  @override
+  String chat_via(String path) {
+    return 'via $path';
+  }
+
+  @override
+  String get chat_failedToLoadImage => 'Échec du chargement de l\'image';
+
+  @override
+  String get chat_cantLoadGifTapToRetry =>
+      'Impossible de charger le GIF\nAppuyez pour réessayer';
+
+  @override
+  String get chat_tapToLoadGif => 'Appuyez pour charger le GIF';
 
   @override
   String get map_title => 'Carte des nœuds';

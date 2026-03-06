@@ -14,6 +14,7 @@
   "common_close": "Close",
   "common_edit": "Edit",
   "common_add": "Add",
+  "common_done": "Done",
   "common_settings": "Settings",
   "common_disconnect": "Disconnect",
   "common_connected": "Connected",
@@ -715,6 +716,20 @@
     }
   },
   "chat_invalidLink": "Invalid link format",
+  "chat_dropImageToUpload": "Drop Image to Upload",
+  "chat_sendImage": "Send Image",
+  "chat_image": "Image",
+  "chat_via": "via {path}",
+  "@chat_via": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_failedToLoadImage": "Failed to load image",
+  "chat_cantLoadGifTapToRetry": "Can't load GIF\nTap to retry",
+  "chat_tapToLoadGif": "Tap to load GIF",
   "map_title": "Node Map",
   "map_lineOfSight": "Line of Sight",
   "map_losScreenTitle": "Line of Sight",

@@ -4,11 +4,10 @@ import 'package:flutter/foundation.dart';
 import 'l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-import 'screens/chrome_required_screen.dart';
-import 'utils/platform_info.dart';
-
 import 'connector/meshcore_connector.dart';
+import 'screens/chrome_required_screen.dart';
 import 'screens/scanner_screen.dart';
+import 'screens/web_scanner_screen.dart';
 import 'services/storage_service.dart';
 import 'services/message_retry_service.dart';
 import 'services/path_history_service.dart';
@@ -21,6 +20,7 @@ import 'services/map_tile_cache_service.dart';
 import 'services/chat_text_scale_service.dart';
 import 'storage/prefs_manager.dart';
 import 'utils/app_logger.dart';
+import 'utils/platform_info.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -190,8 +190,10 @@ class MeshCoreApp extends StatelessWidget {
               NotificationService().setLocale(locale);
               return child ?? const SizedBox.shrink();
             },
-            home: (PlatformInfo.isWeb && !PlatformInfo.isChrome)
-                ? const ChromeRequiredScreen()
+            home: PlatformInfo.isWeb
+                ? (PlatformInfo.isChrome
+                      ? const WebScannerScreen()
+                      : const ChromeRequiredScreen())
                 : const ScannerScreen(),
           );
         },

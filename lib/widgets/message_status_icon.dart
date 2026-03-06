@@ -4,17 +4,31 @@ import 'package:flutter_svg/flutter_svg.dart';
 class MessageStatusIcon extends StatelessWidget {
   final bool isAcked;
   final bool isFailed;
+  final bool isUploading;
   final double size;
 
   const MessageStatusIcon({
     super.key,
     required this.isAcked,
     this.isFailed = false,
+    this.isUploading = false,
     this.size = 14,
   });
 
   @override
   Widget build(BuildContext context) {
+    if (isUploading) {
+      return SizedBox(
+        width: size,
+        height: size,
+        child: CircularProgressIndicator(
+          strokeWidth: 1.5,
+          valueColor: AlwaysStoppedAnimation<Color>(
+            Theme.of(context).colorScheme.primary.withValues(alpha: 0.7),
+          ),
+        ),
+      );
+    }
     if (isFailed) {
       return Icon(Icons.cancel, size: size, color: Colors.red);
     }

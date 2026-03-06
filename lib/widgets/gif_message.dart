@@ -1,6 +1,7 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import '../l10n/l10n.dart';
 
 class GifMessage extends StatefulWidget {
   final String url;
@@ -147,7 +148,7 @@ class _GifMessageState extends State<GifMessage> {
     if (_error != null) {
       content = Center(
         child: Text(
-          "Can't load GIF\nTap to retry",
+          context.l10n.chat_cantLoadGifTapToRetry,
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 12, color: widget.fallbackTextColor),
         ),
@@ -163,7 +164,7 @@ class _GifMessageState extends State<GifMessage> {
     } else if (_image == null) {
       content = Center(
         child: Text(
-          'Tap to load GIF',
+          context.l10n.chat_tapToLoadGif,
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 12, color: widget.fallbackTextColor),
         ),

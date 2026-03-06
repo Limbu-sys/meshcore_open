@@ -51,6 +51,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get common_add => 'Добавить';
 
   @override
+  String get common_done => 'Готово';
+
+  @override
   String get common_settings => 'Настройки';
 
   @override
@@ -1315,6 +1318,30 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get chat_invalidLink => 'Неправильный формат ссылки';
+
+  @override
+  String get chat_dropImageToUpload => 'Перетащите изображение для загрузки';
+
+  @override
+  String get chat_sendImage => 'Отправить изображение';
+
+  @override
+  String get chat_image => 'Изображение';
+
+  @override
+  String chat_via(String path) {
+    return 'через $path';
+  }
+
+  @override
+  String get chat_failedToLoadImage => 'Не удалось загрузить изображение';
+
+  @override
+  String get chat_cantLoadGifTapToRetry =>
+      'Не удалось загрузить GIF\nНажмите, чтобы повторить';
+
+  @override
+  String get chat_tapToLoadGif => 'Нажмите, чтобы загрузить GIF';
 
   @override
   String get map_title => 'Карта нод';

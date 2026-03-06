@@ -1753,6 +1753,14 @@
       }
     }
   },
+  "chat_dropImageToUpload": "Пуснете изображението за качване",
+  "chat_sendImage": "Изпрати изображение",
+  "chat_image": "Изображение",
+  "chat_via": "чрез {path}",
+  "chat_failedToLoadImage": "Неуспешно зареждане на изображението",
+  "chat_cantLoadGifTapToRetry": "GIF не може да се зареди\nДокоснете за повторен опит",
+  "chat_tapToLoadGif": "Докоснете за зареждане на GIF",
+  "common_done": "Готово",
   "listFilter_removeFromFavorites": "Премахване от списъка с любими",
   "listFilter_addToFavorites": "Добави към любими",
   "listFilter_favorites": "Любими",

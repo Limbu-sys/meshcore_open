@@ -126,6 +126,7 @@ class MessageRetryService extends ChangeNotifier {
     PathSelection? pathSelection,
     Uint8List? pathBytes,
     int? pathLength,
+    Uint8List? attachmentBytes,
   }) async {
     final messageId = const Uuid().v4();
     final useFlood = pathSelection?.useFlood ?? false;
@@ -144,6 +145,7 @@ class MessageRetryService extends ChangeNotifier {
       retryCount: 0,
       pathLength: messagePathLength,
       pathBytes: messagePathBytes,
+      attachmentBytes: attachmentBytes,
     );
 
     _pendingMessages[messageId] = message;
@@ -155,6 +157,31 @@ class MessageRetryService extends ChangeNotifier {
     if (_addMessageCallback != null) {
       _addMessageCallback!(contact.publicKeyHex, message);
     }
+
+    await _attemptSend(messageId);
+  }
+
+  Future<void> retransmitMessage({
+    required Contact contact,
+    required Message message,
+  }) async {
+    final messageId = message.messageId!;
+    final useFlood = contact.pathLength < 0;
+    final messagePathBytes = _resolveMessagePathBytes(contact, useFlood, null);
+    final messagePathLength = _resolveMessagePathLength(
+      contact,
+      useFlood,
+      null,
+    );
+
+    final updatedMessage = message.copyWith(
+      status: MessageStatus.pending,
+      pathLength: messagePathLength,
+      pathBytes: messagePathBytes,
+    );
+
+    _pendingMessages[messageId] = updatedMessage;
+    _pendingContacts[messageId] = contact;
 
     await _attemptSend(messageId);
   }

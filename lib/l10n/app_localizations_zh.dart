@@ -51,6 +51,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get common_add => '添加';
 
   @override
+  String get common_done => '完成';
+
+  @override
   String get common_settings => '设置';
 
   @override
@@ -1239,6 +1242,29 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get chat_invalidLink => '无效的链接格式';
+
+  @override
+  String get chat_dropImageToUpload => '拖放图片以上传';
+
+  @override
+  String get chat_sendImage => '发送图片';
+
+  @override
+  String get chat_image => '图片';
+
+  @override
+  String chat_via(String path) {
+    return '通过 $path';
+  }
+
+  @override
+  String get chat_failedToLoadImage => '图片加载失败';
+
+  @override
+  String get chat_cantLoadGifTapToRetry => '无法加载 GIF\n点击重试';
+
+  @override
+  String get chat_tapToLoadGif => '点击加载 GIF';
 
   @override
   String get map_title => '节点地图';

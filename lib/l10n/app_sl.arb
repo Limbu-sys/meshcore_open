@@ -1753,6 +1753,14 @@
       }
     }
   },
+  "chat_dropImageToUpload": "Spustite sliko za prenos",
+  "chat_sendImage": "Pošlji sliko",
+  "chat_image": "Slika",
+  "chat_via": "prek {path}",
+  "chat_failedToLoadImage": "Nalaganje slike ni uspelo",
+  "chat_cantLoadGifTapToRetry": "GIF-a ni mogoče naložiti\nTapnite za ponovni poskus",
+  "chat_tapToLoadGif": "Tapnite za nalaganje GIF-a",
+  "common_done": "Končano",
   "listFilter_favorites": "Priljubljene",
   "listFilter_removeFromFavorites": "Odstrani iz priljubljenih",
   "listFilter_addToFavorites": "Dodaj v priljubljene",

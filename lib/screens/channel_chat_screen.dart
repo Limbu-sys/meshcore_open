@@ -1,12 +1,15 @@
 import 'dart:convert';
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
+import 'package:desktop_drop/desktop_drop.dart';
 
 import '../connector/meshcore_connector.dart';
 import '../helpers/chat_scroll_controller.dart';
@@ -17,11 +20,15 @@ import '../helpers/utf8_length_limiter.dart';
 import '../l10n/l10n.dart';
 import '../models/channel.dart';
 import '../models/channel_message.dart';
+import '../models/protos/mas.pb.dart';
 import '../services/app_settings_service.dart';
 import '../services/chat_text_scale_service.dart';
+import '../services/image_upload_service.dart';
+import '../utils/asset_encoder.dart';
 import '../utils/emoji_utils.dart';
 import '../widgets/chat_zoom_wrapper.dart';
 import '../widgets/emoji_picker.dart';
+import '../widgets/image_message.dart';
 import '../widgets/gif_message.dart';
 import '../widgets/jump_to_bottom_button.dart';
 import '../widgets/gif_picker.dart';
@@ -45,6 +52,21 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
   ChannelMessage? _replyingToMessage;
   final Map<String, GlobalKey> _messageKeys = {};
   bool _isLoadingOlder = false;
+  final bool _isImageUploading = false;
+  bool _isDragging = false;
+  Uint8List? _stagedImageBytes;
+
+  /// On web: blob URL from picker for instant preview before bytes are read.
+  String? _stagedImagePreviewUrl;
+  String? _stagedImageMimeType;
+
+  /// 'processing' | 'encrypting' | 'uploading' while pipeline runs; null when idle or done.
+  String? _stagedImageStage;
+  bool _isPreparingStagedImage = false;
+  String? _stagedImageHash;
+  String? _stagedImageError;
+  bool _isStagedImageUploaded = false;
+  bool _stagedImageCancelRequested = false;
 
   MeshCoreConnector? _connector;
 
@@ -169,111 +191,195 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
       ),
       body: SafeArea(
         top: false,
-        child: Column(
-          children: [
-            Expanded(
-              child: Consumer<MeshCoreConnector>(
-                builder: (context, connector, child) {
-                  final messages = connector.getChannelMessages(widget.channel);
+        child: DropTarget(
+          onDragEntered: (details) {
+            setState(() {
+              _isDragging = true;
+            });
+          },
+          onDragExited: (details) {
+            setState(() {
+              _isDragging = false;
+            });
+          },
+          onDragDone: (details) async {
+            if (details.files.isNotEmpty) {
+              final file = details.files.first;
+              // Check if it's an image
+              final mimeType = file.mimeType ?? '';
+              if (mimeType.startsWith('image/') ||
+                  file.name.toLowerCase().endsWith('.png') ||
+                  file.name.toLowerCase().endsWith('.jpg') ||
+                  file.name.toLowerCase().endsWith('.jpeg') ||
+                  file.name.toLowerCase().endsWith('.gif') ||
+                  file.name.toLowerCase().endsWith('.webp')) {
+                final bytes = await file.readAsBytes();
+                _prepareStagedImage(bytes);
+              }
+            }
+          },
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  Expanded(
+                    child: Consumer<MeshCoreConnector>(
+                      builder: (context, connector, child) {
+                        final messages = connector.getChannelMessages(
+                          widget.channel,
+                        );
 
-                  if (messages.isEmpty) {
-                    return Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            widget.channel.isPublicChannel
-                                ? Icons.public
-                                : Icons.tag,
-                            size: 64,
-                            color: Colors.grey[400],
-                          ),
-                          const SizedBox(height: 16),
-                          Text(
-                            context.l10n.chat_noMessages,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey[600],
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            context.l10n.chat_sendMessageToStart,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey[500],
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-
-                  // Reverse messages so newest appear at bottom with reverse: true
-                  final reversedMessages = messages.reversed.toList();
-                  final itemCount =
-                      reversedMessages.length + (_isLoadingOlder ? 1 : 0);
-
-                  // Auto-scroll to bottom if user is already at bottom
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    _scrollController.scrollToBottomIfAtBottom();
-                  });
-
-                  return Stack(
-                    children: [
-                      ChatZoomWrapper(
-                        child: ListView.builder(
-                          reverse: true, // List grows from bottom up
-                          controller: _scrollController,
-                          padding: const EdgeInsets.all(8),
-                          itemCount: itemCount,
-                          itemBuilder: (context, index) {
-                            // Loading indicator now appears at end (bottom) of reversed list
-                            if (_isLoadingOlder && index == itemCount - 1) {
-                              return const Padding(
-                                padding: EdgeInsets.symmetric(vertical: 16),
-                                child: Center(
-                                  child: SizedBox(
-                                    width: 20,
-                                    height: 20,
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 2,
-                                    ),
+                        if (messages.isEmpty) {
+                          return Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  widget.channel.isPublicChannel
+                                      ? Icons.public
+                                      : Icons.tag,
+                                  size: 64,
+                                  color: Colors.grey[400],
+                                ),
+                                const SizedBox(height: 16),
+                                Text(
+                                  context.l10n.chat_noMessages,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey[600],
                                   ),
                                 ),
-                              );
-                            }
-                            final messageIndex = index;
-                            final message = reversedMessages[messageIndex];
-                            if (!_messageKeys.containsKey(message.messageId)) {
-                              _messageKeys[message.messageId] = GlobalKey();
-                            }
-                            return Container(
-                              key: _messageKeys[message.messageId]!,
-                              child: Builder(
-                                builder: (context) {
-                                  final textScale = context
-                                      .select<ChatTextScaleService, double>(
-                                        (service) => service.scale,
-                                      );
-                                  return _buildMessageBubble(
-                                    message,
-                                    textScale,
+                                const SizedBox(height: 8),
+                                Text(
+                                  context.l10n.chat_sendMessageToStart,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.grey[500],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        }
+
+                        // Reverse messages so newest appear at bottom with reverse: true
+                        final reversedMessages = messages.reversed.toList();
+                        final itemCount =
+                            reversedMessages.length + (_isLoadingOlder ? 1 : 0);
+
+                        // Auto-scroll to bottom if user is already at bottom
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          _scrollController.scrollToBottomIfAtBottom();
+                        });
+
+                        return Stack(
+                          children: [
+                            ChatZoomWrapper(
+                              child: ListView.builder(
+                                reverse: true, // List grows from bottom up
+                                controller: _scrollController,
+                                padding: const EdgeInsets.all(8),
+                                itemCount: itemCount,
+                                itemBuilder: (context, index) {
+                                  // Loading indicator now appears at end (bottom) of reversed list
+                                  if (_isLoadingOlder &&
+                                      index == itemCount - 1) {
+                                    return const Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 16,
+                                      ),
+                                      child: Center(
+                                        child: SizedBox(
+                                          width: 20,
+                                          height: 20,
+                                          child: CircularProgressIndicator(
+                                            strokeWidth: 2,
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  final messageIndex = index;
+                                  final message =
+                                      reversedMessages[messageIndex];
+                                  if (!_messageKeys.containsKey(
+                                    message.messageId,
+                                  )) {
+                                    _messageKeys[message.messageId] =
+                                        GlobalKey();
+                                  }
+                                  return Container(
+                                    key: _messageKeys[message.messageId]!,
+                                    child: Builder(
+                                      builder: (context) {
+                                        final textScale = context
+                                            .select<
+                                              ChatTextScaleService,
+                                              double
+                                            >((service) => service.scale);
+                                        return _buildMessageBubble(
+                                          message,
+                                          textScale,
+                                        );
+                                      },
+                                    ),
                                   );
                                 },
                               ),
-                            );
-                          },
-                        ),
-                      ),
-                      JumpToBottomButton(scrollController: _scrollController),
-                    ],
-                  );
-                },
+                            ),
+                            JumpToBottomButton(
+                              scrollController: _scrollController,
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                  _buildMessageComposer(),
+                ],
               ),
-            ),
-            _buildMessageComposer(),
-          ],
+              if (_isDragging)
+                Container(
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.surface.withValues(alpha: 0.8),
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(24),
+                          decoration: BoxDecoration(
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primaryContainer,
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Theme.of(context).colorScheme.primary,
+                              width: 2,
+                            ),
+                          ),
+                          child: Icon(
+                            Icons.image,
+                            size: 48,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          context.l10n.chat_dropImageToUpload,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );
@@ -283,6 +389,7 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
     final settingsService = context.watch<AppSettingsService>();
     final enableTracing = settingsService.settings.enableMessageTracing;
     final isOutgoing = message.isOutgoing;
+    final imageId = _parseImageHash(message.text);
     final gifId = _parseGifId(message.text);
     final poi = _parsePoiMessage(message.text);
     final displayPath = message.pathBytes.isNotEmpty
@@ -370,9 +477,65 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                                     isFailed:
                                         message.status ==
                                         ChannelMessageStatus.failed,
+                                    isUploading:
+                                        message.status ==
+                                        ChannelMessageStatus.uploading,
                                   ),
                                 )
                               : null,
+                        )
+                      else if (imageId != null)
+                        Stack(
+                          children: [
+                            ImageMessage(
+                              hash: imageId,
+                              backgroundColor: Colors.transparent,
+                              fallbackTextColor: isOutgoing
+                                  ? Theme.of(context)
+                                        .colorScheme
+                                        .onPrimaryContainer
+                                        .withValues(alpha: 0.7)
+                                  : Theme.of(context).colorScheme.onSurface
+                                        .withValues(alpha: 0.6),
+                              localBytes: message.attachmentBytes,
+                              channelPsk: widget.channel.psk,
+                              messageId: message.messageId,
+                              channelIndex: widget.channel.index,
+                            ),
+                            if (!enableTracing && isOutgoing)
+                              Positioned(
+                                top: 0,
+                                right: 0,
+                                child: Container(
+                                  padding: const EdgeInsets.all(3),
+                                  decoration: BoxDecoration(
+                                    color: isOutgoing
+                                        ? Theme.of(
+                                            context,
+                                          ).colorScheme.primaryContainer
+                                        : Theme.of(
+                                            context,
+                                          ).colorScheme.surfaceContainerHighest,
+                                    borderRadius: const BorderRadius.only(
+                                      bottomLeft: Radius.circular(10),
+                                      topRight: Radius.circular(8),
+                                    ),
+                                  ),
+                                  child: MessageStatusIcon(
+                                    isAcked:
+                                        message.status ==
+                                            ChannelMessageStatus.sent &&
+                                        displayPath.isNotEmpty,
+                                    isFailed:
+                                        message.status ==
+                                        ChannelMessageStatus.failed,
+                                    isUploading:
+                                        message.status ==
+                                        ChannelMessageStatus.uploading,
+                                  ),
+                                ),
+                              ),
+                          ],
                         )
                       else if (gifId != null)
                         Stack(
@@ -419,6 +582,9 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                                     isFailed:
                                         message.status ==
                                         ChannelMessageStatus.failed,
+                                    isUploading:
+                                        message.status ==
+                                        ChannelMessageStatus.uploading,
                                   ),
                                 ),
                               ),
@@ -463,6 +629,9 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                                   isFailed:
                                       message.status ==
                                       ChannelMessageStatus.failed,
+                                  isUploading:
+                                      message.status ==
+                                      ChannelMessageStatus.uploading,
                                 ),
                               ),
                             ],
@@ -472,11 +641,13 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                         if (displayPath.isNotEmpty) ...[
                           const SizedBox(height: 4),
                           Padding(
-                            padding: gifId != null
+                            padding: gifId != null || imageId != null
                                 ? const EdgeInsets.symmetric(horizontal: 8)
                                 : EdgeInsets.zero,
                             child: Text(
-                              'via ${_formatPathPrefixes(displayPath)}',
+                              context.l10n.chat_via(
+                                _formatPathPrefixes(displayPath),
+                              ),
                               style: TextStyle(
                                 fontSize: 11,
                                 color: Colors.grey[600],
@@ -486,7 +657,7 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                         ],
                         const SizedBox(height: 4),
                         Padding(
-                          padding: gifId != null
+                          padding: gifId != null || imageId != null
                               ? const EdgeInsets.only(
                                   left: 8,
                                   right: 8,
@@ -521,20 +692,33 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                               ],
                               if (isOutgoing) ...[
                                 const SizedBox(width: 4),
-                                Icon(
-                                  message.status == ChannelMessageStatus.sent
-                                      ? Icons.check
-                                      : message.status ==
-                                            ChannelMessageStatus.pending
-                                      ? Icons.schedule
-                                      : Icons.error_outline,
-                                  size: 14,
-                                  color:
-                                      message.status ==
-                                          ChannelMessageStatus.failed
-                                      ? Colors.red
-                                      : Colors.grey[600],
-                                ),
+                                message.status == ChannelMessageStatus.uploading
+                                    ? SizedBox(
+                                        width: 12,
+                                        height: 12,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 1.5,
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                                Colors.grey[600]!,
+                                              ),
+                                        ),
+                                      )
+                                    : Icon(
+                                        message.status ==
+                                                ChannelMessageStatus.sent
+                                            ? Icons.check
+                                            : message.status ==
+                                                  ChannelMessageStatus.pending
+                                            ? Icons.schedule
+                                            : Icons.error_outline,
+                                        size: 14,
+                                        color:
+                                            message.status ==
+                                                ChannelMessageStatus.failed
+                                            ? Colors.red
+                                            : Colors.grey[600],
+                                      ),
                               ],
                             ],
                           ),
@@ -621,11 +805,23 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
     final colorScheme = Theme.of(context).colorScheme;
     final previewTextColor = colorScheme.onSurface.withValues(alpha: 0.7);
 
+    final imageId = _parseImageHash(replyText);
     final gifId = _parseGifId(replyText);
     final poi = _parsePoiMessage(replyText);
 
     Widget contentPreview;
-    if (gifId != null) {
+    if (imageId != null) {
+      contentPreview = Row(
+        children: [
+          Icon(Icons.image_outlined, size: 14, color: previewTextColor),
+          const SizedBox(width: 4),
+          Text(
+            context.l10n.chat_image,
+            style: TextStyle(fontSize: 12, color: previewTextColor),
+          ),
+        ],
+      );
+    } else if (gifId != null) {
       contentPreview = ClipRRect(
         borderRadius: BorderRadius.circular(4),
         child: GifMessage(
@@ -733,6 +929,12 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
     );
   }
 
+  String? _parseImageHash(String text) {
+    final trimmed = text.trim();
+    final match = RegExp(r'^i:([A-Za-z0-9]+)$').firstMatch(trimmed);
+    return match?.group(1);
+  }
+
   String? _parseGifId(String text) {
     final trimmed = text.trim();
     final match = RegExp(r'^g:([A-Za-z0-9_-]+)$').firstMatch(trimmed);
@@ -809,6 +1011,148 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
           ),
         ),
         if (trailing != null) ...[const SizedBox(width: 4), trailing],
+      ],
+    );
+  }
+
+  Future<void> _pickAndUploadImage() async {
+    final picker = ImagePicker();
+    final image = await picker.pickImage(
+      source: ImageSource.gallery,
+      maxWidth: 4096,
+      maxHeight: 4096,
+      imageQuality: 85,
+    );
+
+    if (image == null) return;
+
+    if (kIsWeb && image.path.isNotEmpty) {
+      setState(() {
+        _stagedImagePreviewUrl = image.path;
+        _stagedImageBytes = null;
+        _stagedImageMimeType = image.mimeType ?? 'image/jpeg';
+        _stagedImageStage = 'processing';
+        _isPreparingStagedImage = true;
+        _stagedImageHash = null;
+        _stagedImageError = null;
+        _isStagedImageUploaded = false;
+        _stagedImageCancelRequested = false;
+      });
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        if (!mounted || _stagedImageCancelRequested) return;
+        final bytes = await image.readAsBytes();
+        if (!mounted || _stagedImageCancelRequested) return;
+        _runStagedImagePipeline(bytes, image.mimeType ?? 'image/jpeg');
+      });
+    } else {
+      final bytes = await image.readAsBytes();
+      _prepareStagedImage(bytes, mimeType: image.mimeType);
+    }
+  }
+
+  void _prepareStagedImage(Uint8List bytes, {String? mimeType}) {
+    setState(() {
+      _stagedImageBytes = bytes;
+      _stagedImagePreviewUrl = null;
+      _stagedImageMimeType = mimeType ?? 'image/jpeg';
+      _stagedImageStage = 'processing';
+      _isPreparingStagedImage = true;
+      _stagedImageHash = null;
+      _stagedImageError = null;
+      _isStagedImageUploaded = false;
+      _stagedImageCancelRequested = false;
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || _stagedImageCancelRequested) return;
+      _runStagedImagePipeline(bytes, mimeType ?? 'image/jpeg');
+    });
+  }
+
+  Future<void> _runStagedImagePipeline(Uint8List bytes, String mimeType) async {
+    final channel = widget.channel;
+    final secretKey = channel.psk;
+
+    Uint8List? processedBytes;
+    if (_stagedImageCancelRequested) return;
+    processedBytes = await ImageUploadService.processImageForUpload(bytes);
+    if (!mounted || _stagedImageCancelRequested) return;
+    setState(() => _stagedImageStage = 'encrypting');
+    await Future.delayed(Duration.zero);
+
+    Uint8List? blobBytes;
+    if (_stagedImageCancelRequested) return;
+    blobBytes = await AssetEncoder.encode(
+      type: AssetType.CHANNEL,
+      contentType: mimeType,
+      filename: 'upload_${DateTime.now().millisecondsSinceEpoch}.jpg',
+      rawData: processedBytes,
+      secretKey: secretKey,
+      recipientPublicKeys: [],
+    );
+    if (!mounted || _stagedImageCancelRequested) return;
+    setState(() => _stagedImageStage = 'uploading');
+    await Future.delayed(Duration.zero);
+
+    String? hash;
+    if (_stagedImageCancelRequested) return;
+    hash = await ImageUploadService.uploadBlob(blobBytes);
+    if (!mounted || _stagedImageCancelRequested) return;
+
+    setState(() {
+      _stagedImageBytes = processedBytes;
+      _stagedImagePreviewUrl = null;
+      _stagedImageStage = null;
+      _isPreparingStagedImage = false;
+      _stagedImageHash = hash;
+      _stagedImageError = hash == null ? 'Upload failed' : null;
+      _isStagedImageUploaded = hash != null;
+    });
+  }
+
+  Widget _stagedImageStatusRow() {
+    final theme = Theme.of(context);
+    if (_isStagedImageUploaded) {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.check_circle, color: Colors.green, size: 16),
+          const SizedBox(width: 8),
+          Text(
+            'Uploaded',
+            style: TextStyle(
+              color: Colors.green,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      );
+    }
+    final stage = _stagedImageStage;
+    final label = stage == 'processing'
+        ? 'Processing'
+        : stage == 'encrypting'
+        ? 'Encrypting'
+        : stage == 'uploading'
+        ? 'Uploading'
+        : '';
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          width: 16,
+          height: 16,
+          child: CircularProgressIndicator(strokeWidth: 2),
+        ),
+        const SizedBox(width: 8),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 12,
+            color: theme.colorScheme.primary,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ],
     );
   }
@@ -959,6 +1303,20 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
           ),
           child: Row(
             children: [
+              _isImageUploading
+                  ? const Padding(
+                      padding: EdgeInsets.all(12.0),
+                      child: SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                    )
+                  : IconButton(
+                      icon: const Icon(Icons.image),
+                      onPressed: _pickAndUploadImage,
+                      tooltip: 'Send Image',
+                    ),
               IconButton(
                 icon: const Icon(Icons.gif_box),
                 onPressed: () => _showGifPicker(context),
@@ -968,7 +1326,111 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                 child: ValueListenableBuilder<TextEditingValue>(
                   valueListenable: _textController,
                   builder: (context, value, child) {
+                    final imageId = _parseImageHash(value.text);
                     final gifId = _parseGifId(value.text);
+                    if (imageId != null ||
+                        _stagedImageBytes != null ||
+                        _stagedImagePreviewUrl != null) {
+                      return Focus(
+                        autofocus: true,
+                        onKeyEvent: (node, event) {
+                          if (event is KeyDownEvent &&
+                              (event.logicalKey == LogicalKeyboardKey.enter ||
+                                  event.logicalKey ==
+                                      LogicalKeyboardKey.numpadEnter)) {
+                            _sendMessage();
+                            return KeyEventResult.handled;
+                          }
+                          return KeyEventResult.ignored;
+                        },
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  if (_stagedImagePreviewUrl != null)
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: Image.network(
+                                        _stagedImagePreviewUrl!,
+                                        height: 160,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    )
+                                  else if (_stagedImageBytes != null)
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(8),
+                                      child: Image.memory(
+                                        _stagedImageBytes!,
+                                        height: 160,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    )
+                                  else
+                                    ImageMessage(
+                                      hash: imageId!,
+                                      backgroundColor: Theme.of(
+                                        context,
+                                      ).colorScheme.surfaceContainerHighest,
+                                      fallbackTextColor: Theme.of(context)
+                                          .colorScheme
+                                          .onSurface
+                                          .withValues(alpha: 0.6),
+                                      maxSize: 160,
+                                      channelPsk: widget.channel.psk,
+                                    ),
+                                  if (_stagedImageStage != null ||
+                                      _isStagedImageUploaded) ...[
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 8.0,
+                                        left: 4,
+                                        right: 4,
+                                      ),
+                                      child: _stagedImageStatusRow(),
+                                    ),
+                                  ],
+                                  if (_stagedImageError != null)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: Text(
+                                        _stagedImageError!,
+                                        style: const TextStyle(
+                                          color: Colors.red,
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            IconButton(
+                              icon: const Icon(Icons.close),
+                              onPressed: () {
+                                if (_stagedImageBytes != null ||
+                                    _stagedImagePreviewUrl != null) {
+                                  setState(() {
+                                    _stagedImageCancelRequested = true;
+                                    _stagedImageBytes = null;
+                                    _stagedImagePreviewUrl = null;
+                                    _stagedImageMimeType = null;
+                                    _stagedImageStage = null;
+                                    _isPreparingStagedImage = false;
+                                    _stagedImageHash = null;
+                                    _stagedImageError = null;
+                                    _isStagedImageUploaded = false;
+                                  });
+                                } else {
+                                  _textController.clear();
+                                }
+                                _textFieldFocusNode.requestFocus();
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    }
                     if (gifId != null) {
                       return Focus(
                         autofocus: true,
@@ -1041,7 +1503,11 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
               const SizedBox(width: 8),
               IconButton(
                 icon: const Icon(Icons.send),
-                onPressed: _sendMessage,
+                onPressed:
+                    (_isPreparingStagedImage && _stagedImageHash == null) ||
+                        _stagedImageError != null
+                    ? null
+                    : _sendMessage,
                 color: Theme.of(context).colorScheme.primary,
               ),
             ],
@@ -1051,26 +1517,59 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
     );
   }
 
-  void _sendMessage() {
-    final text = _textController.text.trim();
-    if (text.isEmpty) return;
+  void _sendMessage() async {
+    final stagedBytes = _stagedImageBytes;
+    final stagedMimeType = _stagedImageMimeType;
+    String text = _textController.text.trim();
+
+    if (stagedBytes == null && text.isEmpty) return;
 
     final connector = context.read<MeshCoreConnector>();
 
-    String messageText = text;
-    if (_replyingToMessage != null) {
-      messageText = '@[${_replyingToMessage!.senderName}] $text';
+    if (stagedBytes != null) {
+      final stagedHash = _stagedImageHash;
+      // Clear staging state
+      setState(() {
+        _stagedImageBytes = null;
+        _stagedImageMimeType = null;
+        _isPreparingStagedImage = false;
+        _stagedImageHash = null;
+        _stagedImageError = null;
+        _isStagedImageUploaded = false;
+      });
+
+      if (stagedHash != null) {
+        await connector.sendChannelMessage(
+          widget.channel,
+          'i:$stagedHash',
+          attachmentBytes: stagedBytes,
+          replyToMessage: _replyingToMessage,
+        );
+      } else {
+        await connector.sendChannelImageMessage(
+          widget.channel,
+          stagedBytes,
+          mimeType: stagedMimeType,
+          replyToMessage: _replyingToMessage,
+        );
+      }
+    } else {
+      String messageText = text;
+      if (_replyingToMessage != null) {
+        messageText = '@[${_replyingToMessage!.senderName}] $text';
+      }
+
+      final maxBytes = maxChannelMessageBytes(connector.selfName);
+      if (utf8.encode(messageText).length > maxBytes) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(context.l10n.chat_messageTooLong(maxBytes))),
+        );
+        return;
+      }
+
+      connector.sendChannelMessage(widget.channel, messageText);
     }
 
-    final maxBytes = maxChannelMessageBytes(connector.selfName);
-    if (utf8.encode(messageText).length > maxBytes) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(context.l10n.chat_messageTooLong(maxBytes))),
-      );
-      return;
-    }
-
-    connector.sendChannelMessage(widget.channel, messageText);
     _textController.clear();
     _cancelReply();
     _textFieldFocusNode.requestFocus();

@@ -1753,6 +1753,14 @@
       }
     }
   },
+  "chat_dropImageToUpload": "Déposer l'image pour la télécharger",
+  "chat_sendImage": "Envoyer l'image",
+  "chat_image": "Image",
+  "chat_via": "via {path}",
+  "chat_failedToLoadImage": "Échec du chargement de l'image",
+  "chat_cantLoadGifTapToRetry": "Impossible de charger le GIF\nAppuyez pour réessayer",
+  "chat_tapToLoadGif": "Appuyez pour charger le GIF",
+  "common_done": "Terminé",
   "listFilter_addToFavorites": "Ajouter à mes favoris",
   "listFilter_removeFromFavorites": "Supprimer des favoris",
   "listFilter_favorites": "Préférences",

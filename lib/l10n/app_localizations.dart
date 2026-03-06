@@ -208,6 +208,12 @@ abstract class AppLocalizations {
   /// **'Add'**
   String get common_add;
 
+  /// No description provided for @common_done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get common_done;
+
   /// No description provided for @common_settings.
   ///
   /// In en, this message translates to:
@@ -2403,6 +2409,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid link format'**
   String get chat_invalidLink;
+
+  /// No description provided for @chat_dropImageToUpload.
+  ///
+  /// In en, this message translates to:
+  /// **'Drop Image to Upload'**
+  String get chat_dropImageToUpload;
+
+  /// No description provided for @chat_sendImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Image'**
+  String get chat_sendImage;
+
+  /// No description provided for @chat_image.
+  ///
+  /// In en, this message translates to:
+  /// **'Image'**
+  String get chat_image;
+
+  /// No description provided for @chat_via.
+  ///
+  /// In en, this message translates to:
+  /// **'via {path}'**
+  String chat_via(String path);
+
+  /// No description provided for @chat_failedToLoadImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load image'**
+  String get chat_failedToLoadImage;
+
+  /// No description provided for @chat_cantLoadGifTapToRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Can\'t load GIF\nTap to retry'**
+  String get chat_cantLoadGifTapToRetry;
+
+  /// No description provided for @chat_tapToLoadGif.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to load GIF'**
+  String get chat_tapToLoadGif;
 
   /// No description provided for @map_title.
   ///

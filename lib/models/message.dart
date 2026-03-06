@@ -2,7 +2,7 @@ import 'dart:typed_data';
 import '../connector/meshcore_protocol.dart';
 import '../helpers/reaction_helper.dart';
 
-enum MessageStatus { pending, sent, delivered, failed }
+enum MessageStatus { uploading, pending, sent, delivered, failed }
 
 class Message {
   final Uint8List senderKey;
@@ -24,6 +24,7 @@ class Message {
   final Uint8List pathBytes;
   final Map<String, int> reactions;
   final Uint8List fourByteRoomContactKey;
+  final Uint8List? attachmentBytes;
 
   Message({
     required this.senderKey,
@@ -43,6 +44,7 @@ class Message {
     Uint8List? pathBytes,
     Uint8List? fourByteRoomContactKey,
     Map<String, int>? reactions,
+    this.attachmentBytes,
   }) : pathBytes = pathBytes ?? Uint8List(0),
        fourByteRoomContactKey = fourByteRoomContactKey ?? Uint8List(0),
        reactions = reactions ?? {};
@@ -50,6 +52,7 @@ class Message {
   String get senderKeyHex => pubKeyToHex(senderKey);
 
   Message copyWith({
+    String? text,
     MessageStatus? status,
     int? retryCount,
     int? estimatedTimeoutMs,
@@ -62,10 +65,11 @@ class Message {
     bool? isCli,
     Map<String, int>? reactions,
     Uint8List? fourByteRoomContactKey,
+    Uint8List? attachmentBytes,
   }) {
     return Message(
       senderKey: senderKey,
-      text: text,
+      text: text ?? this.text,
       timestamp: timestamp,
       isOutgoing: isOutgoing,
       isCli: isCli ?? this.isCli,
@@ -82,6 +86,7 @@ class Message {
       reactions: reactions ?? this.reactions,
       fourByteRoomContactKey:
           fourByteRoomContactKey ?? this.fourByteRoomContactKey,
+      attachmentBytes: attachmentBytes ?? this.attachmentBytes,
     );
   }
 
@@ -119,6 +124,7 @@ class Message {
     String text, {
     int? pathLength,
     Uint8List? pathBytes,
+    Uint8List? attachmentBytes,
   }) {
     return Message(
       senderKey: recipientKey,
@@ -129,6 +135,7 @@ class Message {
       status: MessageStatus.pending,
       pathLength: pathLength,
       pathBytes: pathBytes,
+      attachmentBytes: attachmentBytes,
     );
   }
 

@@ -1781,6 +1781,14 @@
       }
     }
   },
+  "chat_dropImageToUpload": "Soltar imagen para subir",
+  "chat_sendImage": "Enviar imagen",
+  "chat_image": "Imagen",
+  "chat_via": "vía {path}",
+  "chat_failedToLoadImage": "Error al cargar la imagen",
+  "chat_cantLoadGifTapToRetry": "No se puede cargar el GIF\nToca para reintentar",
+  "chat_tapToLoadGif": "Toca para cargar el GIF",
+  "common_done": "Listo",
   "listFilter_favorites": "Favoritos",
   "listFilter_removeFromFavorites": "Eliminar de las favoritas",
   "listFilter_addToFavorites": "Añadir a favoritos",

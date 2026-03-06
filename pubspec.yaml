@@ -63,7 +63,19 @@ dependencies:
   build_pipe: ^0.3.1
   material_symbols_icons: ^4.2906.0
   web: ^1.1.1
+  webcrypto: ^0.6.0
   flutter_svg: ^2.0.10+1
+  image_picker: ^1.1.2
+  desktop_drop: ^0.7.0
+  image: ^4.5.2
+  protobuf: ^6.0.0
+  path: ^1.9.1
+
+dependency_overrides:
+  # Web: return false from setNotifyValue so Dart does not wait for CCCD write
+  # (Chrome never sends that event), avoiding 15s timeout on connect.
+  flutter_blue_plus_web:
+    path: patches/flutter_blue_plus_web
 
 dev_dependencies:
   flutter_test:

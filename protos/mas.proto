@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package mas;
+
+enum AssetType {
+  CHANNEL = 0;
+  DM = 1;
+}
+
+message Recipient {
+  bytes public_key = 1;
+  bytes encrypted_secret_key = 2; // secret key encrypted for this recipient
+}
+
+message AssetBlob {
+  AssetType type = 1;
+  string content_type = 2;
+  string filename = 3;
+  repeated Recipient recipients = 4;
+  bytes encrypted_data = 5;
+}

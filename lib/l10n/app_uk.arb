@@ -1753,6 +1753,14 @@
       }
     }
   },
+  "chat_dropImageToUpload": "Перетягніть зображення для завантаження",
+  "chat_sendImage": "Надіслати зображення",
+  "chat_image": "Зображення",
+  "chat_via": "через {path}",
+  "chat_failedToLoadImage": "Не вдалося завантажити зображення",
+  "chat_cantLoadGifTapToRetry": "Не вдалося завантажити GIF\nНатисніть, щоб повторить",
+  "chat_tapToLoadGif": "Натисніть, щоб завантажити GIF",
+  "common_done": "Готово",
   "listFilter_removeFromFavorites": "Видалити зі списку улюблених",
   "listFilter_addToFavorites": "Додати до улюблених",
   "listFilter_favorites": "Улюблені",

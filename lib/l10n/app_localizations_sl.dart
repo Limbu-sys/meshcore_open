@@ -51,6 +51,9 @@ class AppLocalizationsSl extends AppLocalizations {
   String get common_add => 'Dodaj';
 
   @override
+  String get common_done => 'Končano';
+
+  @override
   String get common_settings => 'Nastavitve';
 
   @override
@@ -1303,6 +1306,30 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get chat_invalidLink => 'Neveljavna oblika povezave';
+
+  @override
+  String get chat_dropImageToUpload => 'Spustite sliko za prenos';
+
+  @override
+  String get chat_sendImage => 'Pošlji sliko';
+
+  @override
+  String get chat_image => 'Slika';
+
+  @override
+  String chat_via(String path) {
+    return 'prek $path';
+  }
+
+  @override
+  String get chat_failedToLoadImage => 'Nalaganje slike ni uspelo';
+
+  @override
+  String get chat_cantLoadGifTapToRetry =>
+      'GIF-a ni mogoče naložiti\nTapnite za ponovni poskus';
+
+  @override
+  String get chat_tapToLoadGif => 'Tapnite za nalaganje GIF-a';
 
   @override
   String get map_title => 'Mapa omrežja';

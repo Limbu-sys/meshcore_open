@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import '../l10n/l10n.dart';
 
 /// A reusable QR code display widget for sharing data.
 ///
@@ -197,7 +198,7 @@ class QrCodeShareDialog extends StatelessWidget {
               width: double.infinity,
               child: FilledButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('Done'),
+                child: Text(context.l10n.common_done),
               ),
             ),
           ],
