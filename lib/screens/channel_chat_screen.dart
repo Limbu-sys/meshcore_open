@@ -21,7 +21,6 @@ import '../l10n/l10n.dart';
 import '../models/channel.dart';
 import '../models/channel_message.dart';
 import '../services/app_settings_service.dart';
-import '../services/image_upload_service.dart';
 import '../services/chat_text_scale_service.dart';
 import '../utils/emoji_utils.dart';
 import '../widgets/chat_zoom_wrapper.dart';
@@ -1017,79 +1016,19 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
 
     if (image != null) {
       final bytes = await image.readAsBytes();
-      _prepareStagedImage(bytes);
+      _prepareStagedImage(bytes, mimeType: image.mimeType);
     }
   }
 
-  Uint8List? _stagedImageSecretKey;
-  Future<void> _prepareStagedImage(Uint8List bytes) async {
-    final connector = context.read<MeshCoreConnector>();
-    final secretKey = widget.channel.psk;
-
-    // Show preview immediately using original bytes
+  void _prepareStagedImage(Uint8List bytes, {String? mimeType}) {
     setState(() {
       _stagedImageBytes = bytes;
-      _stagedImageMimeType = 'image/webp';
-      _isPreparingStagedImage = true;
+      _stagedImageMimeType = mimeType ?? 'image/jpeg';
+      _isPreparingStagedImage = false;
       _stagedImageHash = null;
       _stagedImageError = null;
       _isStagedImageUploaded = false;
-      _stagedImageSecretKey = secretKey;
     });
-
-    try {
-      // Process in background (if we use the improved ImageUploadService with logging/compute)
-      final sw = Stopwatch()..start();
-      debugPrint('ChannelChatScreen: Starting processImage (via compute)...');
-      final processedBytes = await compute(
-        ImageUploadService.processImage,
-        bytes,
-      );
-      debugPrint(
-        'ChannelChatScreen: processImage took ${sw.elapsedMilliseconds}ms',
-      );
-
-      if (mounted) {
-        setState(() {
-          _stagedImageBytes = processedBytes;
-        });
-      }
-
-      final uploadSw = Stopwatch()..start();
-      final hash = await ImageUploadService().uploadImage(
-        processedBytes,
-        channel: widget.channel,
-        secretKey: _stagedImageSecretKey!,
-        selfPublicKey: connector.selfPublicKey,
-        skipProcessing: true,
-      );
-      debugPrint(
-        'ChannelChatScreen: uploadImage took ${uploadSw.elapsedMilliseconds}ms',
-      );
-
-      if (mounted) {
-        setState(() {
-          if (hash != null) {
-            _stagedImageHash = hash;
-            _isStagedImageUploaded = true;
-            _stagedImageError = null;
-          } else {
-            _stagedImageError = 'Upload failed';
-            _isStagedImageUploaded = false;
-          }
-          _isPreparingStagedImage = false;
-        });
-      }
-    } catch (e) {
-      debugPrint('Error preparing/uploading image: $e');
-      if (mounted) {
-        setState(() {
-          _isPreparingStagedImage = false;
-          _stagedImageError = 'Upload failed: $e';
-          _isStagedImageUploaded = false;
-        });
-      }
-    }
   }
 
   void _showGifPicker(BuildContext context) {

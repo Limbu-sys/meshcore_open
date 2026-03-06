@@ -27,7 +27,6 @@ import '../models/path_history.dart';
 import '../services/app_settings_service.dart';
 import '../services/chat_text_scale_service.dart';
 import '../services/path_history_service.dart';
-import '../services/image_upload_service.dart';
 import '../widgets/chat_zoom_wrapper.dart';
 import '../widgets/elements_ui.dart';
 import 'channel_message_path_screen.dart';
@@ -659,83 +658,19 @@ class _ChatScreenState extends State<ChatScreen> {
 
     if (image != null) {
       final bytes = await image.readAsBytes();
-      _prepareStagedImage(bytes);
+      _prepareStagedImage(bytes, mimeType: image.mimeType);
     }
   }
 
-  Uint8List? _stagedImageSecretKey;
-
-  Future<void> _prepareStagedImage(Uint8List bytes) async {
-    final connector = context.read<MeshCoreConnector>();
-
-    // Generate a random secret key for this asset
-    final secretKey = Uint8List(32);
-    final random = Random.secure();
-    for (var i = 0; i < 32; i++) {
-      secretKey[i] = random.nextInt(256);
-    }
-
-    // Show preview immediately using original bytes
+  void _prepareStagedImage(Uint8List bytes, {String? mimeType}) {
     setState(() {
       _stagedImageBytes = bytes;
-      _stagedImageMimeType = 'image/webp';
-      _isPreparingStagedImage = true;
+      _stagedImageMimeType = mimeType ?? 'image/jpeg';
+      _isPreparingStagedImage = false;
       _stagedImageHash = null;
       _stagedImageError = null;
       _isStagedImageUploaded = false;
-      _stagedImageSecretKey = secretKey;
     });
-
-    try {
-      debugPrint('ChatScreen: Starting processImage (via compute)...');
-      final sw = Stopwatch()..start();
-      final processedBytes = await compute(
-        ImageUploadService.processImage,
-        bytes,
-      );
-      debugPrint('ChatScreen: processImage took ${sw.elapsedMilliseconds}ms');
-
-      if (mounted) {
-        setState(() {
-          _stagedImageBytes = processedBytes;
-        });
-      }
-
-      final uploadSw = Stopwatch()..start();
-      final hash = await ImageUploadService().uploadImage(
-        processedBytes,
-        contact: widget.contact,
-        secretKey: _stagedImageSecretKey!,
-        selfPublicKey: connector.selfPublicKey,
-        skipProcessing: true,
-      );
-      debugPrint(
-        'ChatScreen: uploadImage took ${uploadSw.elapsedMilliseconds}ms',
-      );
-
-      if (mounted) {
-        setState(() {
-          if (hash != null) {
-            _stagedImageHash = hash;
-            _isStagedImageUploaded = true;
-            _stagedImageError = null;
-          } else {
-            _stagedImageError = 'Upload failed';
-            _isStagedImageUploaded = false;
-          }
-          _isPreparingStagedImage = false;
-        });
-      }
-    } catch (e) {
-      debugPrint('Error preparing/uploading image: $e');
-      if (mounted) {
-        setState(() {
-          _isPreparingStagedImage = false;
-          _stagedImageError = 'Upload failed: $e';
-          _isStagedImageUploaded = false;
-        });
-      }
-    }
   }
 
   void _showGifPicker(BuildContext context) {

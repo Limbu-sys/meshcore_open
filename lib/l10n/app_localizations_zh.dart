@@ -1235,9 +1235,6 @@ class AppLocalizationsZh extends AppLocalizations {
   String get chat_invalidLink => '无效的链接格式';
 
   @override
-  String get map_title => '节点地图';
-
-  @override
   String get chat_dropImageToUpload => '拖放图片以上传';
 
   @override
@@ -1259,6 +1256,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get chat_tapToLoadGif => '点击加载 GIF';
+
+  @override
+  String get map_title => '节点地图';
 
   @override
   String get map_lineOfSight => '视线';
