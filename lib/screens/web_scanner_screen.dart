@@ -87,18 +87,20 @@ class _WebScannerScreenState extends State<WebScannerScreen> {
                       onPressed: isBusy
                           ? null
                           : () {
+                              final l10n = context.l10n;
+                              final scaffoldMessenger = ScaffoldMessenger.of(
+                                context,
+                              );
                               unawaited(
                                 connector.startScan().catchError((e) {
                                   if (!mounted) return;
                                   final msg = e.toString().contains('Timed out')
                                       ? 'Connection timed out. Please try again.'
                                       : e.toString();
-                                  ScaffoldMessenger.of(context).showSnackBar(
+                                  scaffoldMessenger.showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        context.l10n.scanner_connectionFailed(
-                                          msg,
-                                        ),
+                                        l10n.scanner_connectionFailed(msg),
                                       ),
                                       backgroundColor: Colors.red,
                                     ),
