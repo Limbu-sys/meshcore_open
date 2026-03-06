@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import '../l10n/l10n.dart';
+import 'signal_ui.dart';
 
 /// A reusable tile widget for displaying a MeshCore device in a list
 class DeviceTile extends StatelessWidget {
@@ -33,28 +34,25 @@ class DeviceTile extends StatelessWidget {
   }
 
   Widget _buildSignalIcon(int rssi) {
-    IconData icon;
-    Color color;
-
-    if (rssi >= -60) {
-      icon = Icons.signal_cellular_4_bar;
-      color = Colors.green;
-    } else if (rssi >= -70) {
-      icon = Icons.signal_cellular_alt;
-      color = Colors.lightGreen;
-    } else if (rssi >= -80) {
-      icon = Icons.signal_cellular_alt_2_bar;
-      color = Colors.orange;
-    } else {
-      icon = Icons.signal_cellular_alt_1_bar;
-      color = Colors.red;
-    }
+    final tier = rssi >= -60
+        ? 0
+        : rssi >= -70
+        ? 1
+        : rssi >= -80
+        ? 2
+        : rssi >= -90
+        ? 3
+        : 4;
+    final signalUi = signalUiForStrengthTier(tier);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(icon, color: color),
-        Text('$rssi dBm', style: TextStyle(fontSize: 10, color: color)),
+        Icon(signalUi.icon, color: signalUi.color),
+        Text(
+          '$rssi dBm',
+          style: TextStyle(fontSize: 10, color: signalUi.color),
+        ),
       ],
     );
   }

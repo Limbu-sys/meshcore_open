@@ -16,6 +16,9 @@ bool matchesContactQuery(Contact contact, String query) {
 
 String? _extractHexPrefix(String query) {
   var cleaned = query;
+  if (cleaned.startsWith('<')) {
+    cleaned = cleaned.substring(1).replaceAll(">", "");
+  }
   if (cleaned.startsWith('0x')) {
     cleaned = cleaned.substring(2);
   }

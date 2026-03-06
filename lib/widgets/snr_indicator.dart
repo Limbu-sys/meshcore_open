@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../connector/meshcore_connector.dart';
 import '../l10n/l10n.dart';
+import 'signal_ui.dart';
 
 class SNRUi {
   final IconData icon;
@@ -38,28 +39,19 @@ SNRUi snrUiFromSNR(double? snr, int? spreadingFactor) {
 
   final snrLevels = getSNRfromSF(spreadingFactor);
 
-  IconData icon;
-  Color color;
   String text = '${snr.toStringAsFixed(1)} dB';
+  final tier = snr >= snrLevels[0]
+      ? 0
+      : snr >= snrLevels[1]
+      ? 1
+      : snr >= snrLevels[2]
+      ? 2
+      : snr >= snrLevels[3]
+      ? 3
+      : 4;
+  final signalUi = signalUiForStrengthTier(tier);
 
-  if (snr >= snrLevels[0]) {
-    icon = Icons.signal_cellular_alt;
-    color = Colors.green;
-  } else if (snr >= snrLevels[1]) {
-    icon = Icons.signal_cellular_alt;
-    color = Colors.lightGreen;
-  } else if (snr >= snrLevels[2]) {
-    icon = Icons.signal_cellular_alt;
-    color = Colors.yellow;
-  } else if (snr >= snrLevels[3]) {
-    icon = Icons.signal_cellular_alt_2_bar;
-    color = Colors.orange;
-  } else {
-    icon = Icons.signal_cellular_alt_1_bar;
-    color = Colors.red;
-  }
-
-  return SNRUi(icon, color, text);
+  return SNRUi(signalUi.icon, signalUi.color, text);
 }
 
 class SNRIndicator extends StatefulWidget {
