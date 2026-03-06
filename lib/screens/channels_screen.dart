@@ -171,11 +171,13 @@ class _ChannelsScreenState extends State<ChannelsScreen>
             await context.read<MeshCoreConnector>().getChannels(force: true);
           },
           child: () {
-            if (connector.isLoadingChannels) {
+            final channels = connector.channels;
+            final isLoadingChannels = connector.isLoadingChannels;
+            final channelSyncProgress = connector.channelSyncProgress;
+
+            if (isLoadingChannels && channels.isEmpty) {
               return const Center(child: CircularProgressIndicator());
             }
-
-            final channels = connector.channels;
 
             if (channels.isEmpty) {
               return ListView(
@@ -203,6 +205,37 @@ class _ChannelsScreenState extends State<ChannelsScreen>
 
             return Column(
               children: [
+                if (isLoadingChannels)
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 16,
+                              height: 16,
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Text(
+                                channelSyncProgress > 0
+                                    ? '${context.l10n.common_loading} $channelSyncProgress%'
+                                    : context.l10n.common_loading,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        LinearProgressIndicator(
+                          value: channelSyncProgress > 0
+                              ? channelSyncProgress / 100
+                              : null,
+                        ),
+                      ],
+                    ),
+                  ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
