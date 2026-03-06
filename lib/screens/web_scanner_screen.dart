@@ -63,15 +63,15 @@ class _WebScannerScreenState extends State<WebScannerScreen> {
             builder: (context, connector, child) {
               final isBusy =
                   connector.state == MeshCoreConnectionState.scanning ||
-                      connector.state == MeshCoreConnectionState.connecting ||
-                      connector.state == MeshCoreConnectionState.connected ||
-                      connector.state ==
-                          MeshCoreConnectionState.disconnecting;
+                  connector.state == MeshCoreConnectionState.connecting ||
+                  connector.state == MeshCoreConnectionState.connected ||
+                  connector.state == MeshCoreConnectionState.disconnecting;
 
               String? statusLabel;
               if (connector.state == MeshCoreConnectionState.scanning) {
                 statusLabel = context.l10n.scanner_scanning;
-              } else if (connector.state == MeshCoreConnectionState.connecting ||
+              } else if (connector.state ==
+                      MeshCoreConnectionState.connecting ||
                   connector.state == MeshCoreConnectionState.disconnecting) {
                 statusLabel = context.l10n.scanner_connecting;
               }
@@ -79,11 +79,7 @@ class _WebScannerScreenState extends State<WebScannerScreen> {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.bluetooth,
-                    size: 80,
-                    color: Colors.grey[400],
-                  ),
+                  Icon(Icons.bluetooth, size: 80, color: Colors.grey[400]),
                   const SizedBox(height: 24),
                   SizedBox(
                     width: 260,
@@ -100,7 +96,9 @@ class _WebScannerScreenState extends State<WebScannerScreen> {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
-                                        context.l10n.scanner_connectionFailed(msg),
+                                        context.l10n.scanner_connectionFailed(
+                                          msg,
+                                        ),
                                       ),
                                       backgroundColor: Colors.red,
                                     ),
@@ -108,7 +106,10 @@ class _WebScannerScreenState extends State<WebScannerScreen> {
                                 }),
                               );
                             },
-                      icon: isBusy && connector.state == MeshCoreConnectionState.connecting
+                      icon:
+                          isBusy &&
+                              connector.state ==
+                                  MeshCoreConnectionState.connecting
                           ? const SizedBox(
                               width: 20,
                               height: 20,
@@ -131,10 +132,7 @@ class _WebScannerScreenState extends State<WebScannerScreen> {
                     const SizedBox(height: 16),
                     Text(
                       statusLabel,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey[600],
-                      ),
+                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
                     ),
                   ],
                 ],
@@ -146,4 +144,3 @@ class _WebScannerScreenState extends State<WebScannerScreen> {
     );
   }
 }
-

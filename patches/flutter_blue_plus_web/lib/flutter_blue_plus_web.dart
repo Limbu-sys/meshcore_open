@@ -10,21 +10,31 @@ import 'src/html.dart';
 import 'src/web_bluetooth.dart';
 
 final class FlutterBluePlusWeb extends FlutterBluePlusPlatform {
-  late final _characteristicValueChangedEventListener = _handleCharacteristicValueChanged.toJS;
+  late final _characteristicValueChangedEventListener =
+      _handleCharacteristicValueChanged.toJS;
 
   final _devices = <DeviceIdentifier, BluetoothDevice>{};
 
   // for instanceIds
-  final _charCache = <DeviceIdentifier, Map<Guid, Map<Guid, List<BluetoothRemoteGATTCharacteristic>>>>{};
+  final _charCache = <DeviceIdentifier,
+      Map<Guid, Map<Guid, List<BluetoothRemoteGATTCharacteristic>>>>{};
 
-  final _onCharacteristicReceivedController = StreamController<BmCharacteristicData>.broadcast();
-  final _onCharacteristicWrittenController = StreamController<BmCharacteristicData>.broadcast();
-  final _onConnectionStateChangedController = StreamController<BmConnectionStateResponse>.broadcast();
-  final _onDescriptorReadController = StreamController<BmDescriptorData>.broadcast();
-  final _onDescriptorWrittenController = StreamController<BmDescriptorData>.broadcast();
-  final _onDevicesChangedController = StreamController<List<BluetoothDevice>>.broadcast();
-  final _onDiscoveredServicesController = StreamController<BmDiscoverServicesResult>.broadcast();
-  final _onScanResponseController = StreamController<BmScanResponse>.broadcast();
+  final _onCharacteristicReceivedController =
+      StreamController<BmCharacteristicData>.broadcast();
+  final _onCharacteristicWrittenController =
+      StreamController<BmCharacteristicData>.broadcast();
+  final _onConnectionStateChangedController =
+      StreamController<BmConnectionStateResponse>.broadcast();
+  final _onDescriptorReadController =
+      StreamController<BmDescriptorData>.broadcast();
+  final _onDescriptorWrittenController =
+      StreamController<BmDescriptorData>.broadcast();
+  final _onDevicesChangedController =
+      StreamController<List<BluetoothDevice>>.broadcast();
+  final _onDiscoveredServicesController =
+      StreamController<BmDiscoverServicesResult>.broadcast();
+  final _onScanResponseController =
+      StreamController<BmScanResponse>.broadcast();
 
   BluetoothRemoteGATTCharacteristic _findCharacteristicOrThrow({
     required DeviceIdentifier devId,
@@ -41,7 +51,8 @@ final class FlutterBluePlusWeb extends FlutterBluePlusPlatform {
     return list[instanceId];
   }
 
-  int _instanceId(DeviceIdentifier devId, Guid serviceUuid, BluetoothRemoteGATTCharacteristic target) {
+  int _instanceId(DeviceIdentifier devId, Guid serviceUuid,
+      BluetoothRemoteGATTCharacteristic target) {
     final list = _charCache[devId]?[serviceUuid]?[Guid(target.uuid)];
     if (list == null) return 0;
     final idx = list.indexWhere((c) => identical(c, target));
@@ -206,7 +217,8 @@ final class FlutterBluePlusWeb extends FlutterBluePlusPlatform {
           ..clear()
           ..addAll(<Guid, List<BluetoothRemoteGATTCharacteristic>>{});
         for (final c in chars) {
-          (charsByUuid[Guid(c.uuid)] ??= <BluetoothRemoteGATTCharacteristic>[]).add(c);
+          (charsByUuid[Guid(c.uuid)] ??= <BluetoothRemoteGATTCharacteristic>[])
+              .add(c);
         }
 
         for (final c in chars) {
@@ -245,7 +257,8 @@ final class FlutterBluePlusWeb extends FlutterBluePlusPlatform {
                 write: c.properties.write,
                 notify: c.properties.notify,
                 indicate: c.properties.indicate,
-                authenticatedSignedWrites: c.properties.authenticatedSignedWrites,
+                authenticatedSignedWrites:
+                    c.properties.authenticatedSignedWrites,
                 extendedProperties: false,
                 notifyEncryptionRequired: false,
                 indicateEncryptionRequired: false,
@@ -307,7 +320,8 @@ final class FlutterBluePlusWeb extends FlutterBluePlusPlatform {
   ) {
     return isSupported(BmIsSupportedRequest()).then(
       (supported) => BmBluetoothAdapterState(
-        adapterState: supported ? BmAdapterStateEnum.on : BmAdapterStateEnum.unknown,
+        adapterState:
+            supported ? BmAdapterStateEnum.on : BmAdapterStateEnum.unknown,
       ),
     );
   }
@@ -413,7 +427,9 @@ final class FlutterBluePlusWeb extends FlutterBluePlusPlatform {
       );
 
       // Then resolve descriptor by UUID on that characteristic
-      final descriptor = await characteristic.getDescriptor(request.descriptorUuid.str128.toJS).toDart;
+      final descriptor = await characteristic
+          .getDescriptor(request.descriptorUuid.str128.toJS)
+          .toDart;
 
       final value = (await descriptor.readValue().toDart).toDart;
 
@@ -559,17 +575,24 @@ final class FlutterBluePlusWeb extends FlutterBluePlusPlatform {
       if (filters.isNotEmpty) {
         options = RequestDeviceOptions(
           filters: filters.toJS,
-          optionalServices: request.webOptionalServices.map((e) => e.str128.toJS).toList().toJS,
+          optionalServices: request.webOptionalServices
+              .map((e) => e.str128.toJS)
+              .toList()
+              .toJS,
         );
       } else {
         // https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestDevice#acceptalldevices
         options = RequestDeviceOptions(
           acceptAllDevices: true,
-          optionalServices: request.webOptionalServices.map((e) => e.str128.toJS).toList().toJS,
+          optionalServices: request.webOptionalServices
+              .map((e) => e.str128.toJS)
+              .toList()
+              .toJS,
         );
       }
 
-      final device = await window.navigator.bluetooth.requestDevice(options).toDart;
+      final device =
+          await window.navigator.bluetooth.requestDevice(options).toDart;
 
       _devices[device.remoteId] = device;
       _onDevicesChangedController.add([..._devices.values]);
@@ -644,9 +667,13 @@ final class FlutterBluePlusWeb extends FlutterBluePlusPlatform {
       );
 
       if (request.writeType == BmWriteType.withResponse) {
-        await characteristic.writeValueWithResponse(Uint8List.fromList(request.value).toJS).toDart;
+        await characteristic
+            .writeValueWithResponse(Uint8List.fromList(request.value).toJS)
+            .toDart;
       } else {
-        await characteristic.writeValueWithoutResponse(Uint8List.fromList(request.value).toJS).toDart;
+        await characteristic
+            .writeValueWithoutResponse(Uint8List.fromList(request.value).toJS)
+            .toDart;
       }
 
       _onCharacteristicWrittenController.add(
@@ -715,9 +742,13 @@ final class FlutterBluePlusWeb extends FlutterBluePlusPlatform {
         instanceId: request.instanceId,
       );
 
-      final descriptor = await characteristic.getDescriptor(request.descriptorUuid.str128.toJS).toDart;
+      final descriptor = await characteristic
+          .getDescriptor(request.descriptorUuid.str128.toJS)
+          .toDart;
 
-      await descriptor.writeValue(Uint8List.fromList(request.value).toJS).toDart;
+      await descriptor
+          .writeValue(Uint8List.fromList(request.value).toJS)
+          .toDart;
 
       _onDescriptorWrittenController.add(
         BmDescriptorData(

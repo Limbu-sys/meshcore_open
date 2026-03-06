@@ -192,8 +192,8 @@ class MeshCoreApp extends StatelessWidget {
             },
             home: PlatformInfo.isWeb
                 ? (PlatformInfo.isChrome
-                    ? const WebScannerScreen()
-                    : const ChromeRequiredScreen())
+                      ? const WebScannerScreen()
+                      : const ChromeRequiredScreen())
                 : const ScannerScreen(),
           );
         },

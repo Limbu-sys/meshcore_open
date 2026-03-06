@@ -507,36 +507,15 @@ class _ChatScreenState extends State<ChatScreen> {
                                         .withValues(alpha: 0.6),
                                     maxSize: 160,
                                   ),
-                                if (_stagedImageStage != null) ...[
+                                if (_stagedImageStage != null ||
+                                    _isStagedImageUploaded) ...[
                                   Padding(
                                     padding: const EdgeInsets.only(
                                       top: 8.0,
                                       left: 4,
                                       right: 4,
                                     ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        _stageRow(
-                                          'Processing',
-                                          _stagedImageStage == 'processing',
-                                          _isStageAfter('processing'),
-                                        ),
-                                        const SizedBox(height: 4),
-                                        _stageRow(
-                                          'Encrypting',
-                                          _stagedImageStage == 'encrypting',
-                                          _isStageAfter('encrypting'),
-                                        ),
-                                        const SizedBox(height: 4),
-                                        _stageRow(
-                                          'Uploading',
-                                          _stagedImageStage == 'uploading',
-                                          _isStageAfter('uploading'),
-                                        ),
-                                      ],
-                                    ),
+                                    child: _stagedImageStatusRow(),
                                   ),
                                 ],
                                 if (_stagedImageError != null)
@@ -548,30 +527,6 @@ class _ChatScreenState extends State<ChatScreen> {
                                         color: Colors.red,
                                         fontSize: 12,
                                       ),
-                                    ),
-                                  ),
-                                if (_isStagedImageUploaded)
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        const Icon(
-                                          Icons.check_circle,
-                                          color: Colors.green,
-                                          size: 16,
-                                        ),
-                                        const SizedBox(width: 4),
-                                        const Text(
-                                          'Uploaded',
-                                          style: TextStyle(
-                                            color: Colors.green,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
                                     ),
                                   ),
                               ],
@@ -758,7 +713,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
     Uint8List? processedBytes;
     if (_stagedImageCancelRequested) return;
-    processedBytes = await compute(ImageUploadService.processImage, bytes);
+    processedBytes = await ImageUploadService.processImageForUpload(bytes);
     if (!mounted || _stagedImageCancelRequested) return;
     setState(() => _stagedImageStage = 'encrypting');
     await Future.delayed(Duration.zero);
@@ -796,40 +751,48 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
-  bool _isStageAfter(String stage) {
-    const order = ['processing', 'encrypting', 'uploading'];
-    final current = _stagedImageStage;
-    if (current == null) return false;
-    final currentIdx = order.indexOf(current);
-    final stageIdx = order.indexOf(stage);
-    return currentIdx > stageIdx;
-  }
-
-  Widget _stageRow(String label, bool isActive, bool isDone) {
+  Widget _stagedImageStatusRow() {
     final theme = Theme.of(context);
+    if (_isStagedImageUploaded) {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.check_circle, color: Colors.green, size: 16),
+          const SizedBox(width: 8),
+          const Text(
+            'Uploaded',
+            style: TextStyle(
+              color: Colors.green,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      );
+    }
+    final stage = _stagedImageStage;
+    final label = stage == 'processing'
+        ? 'Processing'
+        : stage == 'encrypting'
+        ? 'Encrypting'
+        : stage == 'uploading'
+        ? 'Uploading'
+        : '';
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
           width: 16,
           height: 16,
-          child: isActive
-              ? CircularProgressIndicator(strokeWidth: 2)
-              : isDone
-                  ? Icon(Icons.check, size: 14, color: theme.colorScheme.primary)
-                  : const SizedBox.shrink(),
+          child: CircularProgressIndicator(strokeWidth: 2),
         ),
         const SizedBox(width: 8),
         Text(
           label,
           style: TextStyle(
             fontSize: 12,
-            color: isActive
-                ? theme.colorScheme.primary
-                : isDone
-                    ? theme.colorScheme.primary.withValues(alpha: 0.8)
-                    : theme.colorScheme.onSurface.withValues(alpha: 0.5),
-            fontWeight: isActive ? FontWeight.w600 : FontWeight.normal,
+            color: theme.colorScheme.primary,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ],

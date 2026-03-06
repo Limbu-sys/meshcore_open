@@ -109,7 +109,8 @@ class _ScannerScreenState extends State<ScannerScreen> {
           final isBluetoothOff = _bluetoothState == BluetoothAdapterState.off;
 
           if (PlatformInfo.isWeb) {
-            final isBusy = connector.state != MeshCoreConnectionState.disconnected;
+            final isBusy =
+                connector.state != MeshCoreConnectionState.disconnected;
 
             return FloatingActionButton.extended(
               onPressed: isBusy

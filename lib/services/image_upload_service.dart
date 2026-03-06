@@ -4,6 +4,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image/image.dart' as img;
 import '../models/channel.dart';
+import '../utils/image_processing_stub.dart'
+    if (dart.library.html) '../utils/image_processing_web.dart' as image_processing;
 import '../models/contact.dart';
 import '../models/protos/mas.pb.dart';
 import '../utils/asset_encoder.dart';
@@ -82,9 +84,9 @@ class ImageUploadService {
         debugPrint('ImageUploadService: Skipping processImage as requested');
       } else {
         final processSw = Stopwatch()..start();
-        processedBytes = await compute(processImage, bytes);
+        processedBytes = await processImageForUpload(bytes);
         debugPrint(
-          'ImageUploadService: processImage (via compute) took ${processSw.elapsedMilliseconds}ms',
+          'ImageUploadService: processImageForUpload took ${processSw.elapsedMilliseconds}ms',
         );
       }
 
@@ -144,7 +146,19 @@ class ImageUploadService {
     }
   }
 
-  /// Resizes an image to max 2048px and converts to WebP.
+  /// On web tries browser decode/canvas resize/JPEG encode first (fast); falls back to
+  /// pure-Dart processImage. On non-web uses processImage only.
+  static Future<Uint8List> processImageForUpload(Uint8List bytes) async {
+    if (kIsWeb) {
+      final result = await image_processing.processImageWithBrowser(bytes);
+      if (result != null) return result;
+    }
+    return await compute(processImage, bytes);
+  }
+
+  /// Resizes an image to max 2048px and re-encodes to JPEG.
+  /// On web this is slow: decode/encode use the pure-Dart `image` package (runs as JS,
+  /// no native decoder). Native/macOS is fast because Dart compiles to native code.
   static Future<Uint8List> processImage(Uint8List bytes) async {
     final sw = Stopwatch()..start();
     debugPrint(
