@@ -719,6 +719,11 @@ class MeshCoreConnector extends ChangeNotifier {
   }) async {
     if (_state == MeshCoreConnectionState.scanning) return;
 
+    if (kIsWeb) {
+      await _startScanWeb(timeout: timeout);
+      return;
+    }
+
     _scanResults.clear();
     _setState(MeshCoreConnectionState.scanning);
 
@@ -763,6 +768,69 @@ class MeshCoreConnector extends ChangeNotifier {
 
     await Future.delayed(timeout);
     await stopScan();
+  }
+
+  Future<void> _startScanWeb({
+    Duration timeout = const Duration(seconds: 10),
+  }) async {
+    _scanResults.clear();
+    _setState(MeshCoreConnectionState.scanning);
+
+    // Ensure any previous scan is fully stopped
+    await FlutterBluePlus.stopScan();
+    await _scanSubscription?.cancel();
+
+    final completer = Completer<void>();
+    bool handled = false;
+
+    _scanSubscription = FlutterBluePlus.scanResults.listen((results) async {
+      _scanResults
+        ..clear()
+        ..addAll(results);
+      notifyListeners();
+
+      if (results.isEmpty || handled || completer.isCompleted) {
+        return;
+      }
+      handled = true;
+
+      final result = results.first;
+      final name = result.device.platformName.isNotEmpty
+          ? result.device.platformName
+          : result.advertisementData.advName;
+
+      try {
+        await connect(result.device, displayName: name);
+        if (!completer.isCompleted) {
+          completer.complete();
+        }
+      } catch (e) {
+        debugPrint('Web scan auto-connect failed: $e');
+        if (_state == MeshCoreConnectionState.scanning) {
+          await stopScan();
+        }
+        if (!completer.isCompleted) {
+          completer.completeError(e);
+        }
+      }
+    });
+
+    try {
+      await FlutterBluePlus.startScan(
+        withServices: [Guid(MeshCoreUuids.service)],
+        withKeywords: ["MeshCore-", "Whisper-"],
+        webOptionalServices: [Guid(MeshCoreUuids.service)],
+        timeout: timeout,
+        androidScanMode: AndroidScanMode.lowLatency,
+      );
+    } catch (e) {
+      if (!completer.isCompleted) {
+        completer.complete();
+      }
+      rethrow;
+    }
+
+    await completer.future;
   }
 
   Future<void> stopScan() async {
@@ -886,7 +954,13 @@ class MeshCoreConnector extends ChangeNotifier {
       unawaited(loadDiscoveredContactCache());
     } catch (e) {
       debugPrint("Connection error: $e");
-      await disconnect(manual: false);
+      // On Web, avoid auto-reconnect loops on connection failure so the
+      // caller can surface a one-shot error and let the user retry.
+      if (kIsWeb) {
+        await disconnect(manual: true);
+      } else {
+        await disconnect(manual: false);
+      }
       rethrow;
     }
   }
