@@ -26,6 +26,7 @@ import '../widgets/gif_message.dart';
 import '../widgets/jump_to_bottom_button.dart';
 import '../widgets/gif_picker.dart';
 import '../widgets/message_status_icon.dart';
+import '../widgets/unread_marker_divider.dart';
 import 'channel_message_path_screen.dart';
 import 'map_screen.dart';
 
@@ -209,6 +210,14 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                     );
                   }
 
+                  final firstUnreadIndex = connector.firstUnreadChannelIndex(
+                    widget.channel.index,
+                    messages,
+                  );
+                  final unreadMarkerReversedIndex = firstUnreadIndex == null
+                      ? null
+                      : (messages.length - 1 - firstUnreadIndex);
+
                   // Reverse messages so newest appear at bottom with reverse: true
                   final reversedMessages = messages.reversed.toList();
                   final itemCount =
@@ -245,10 +254,13 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                             }
                             final messageIndex = index;
                             final message = reversedMessages[messageIndex];
+                            final showUnreadMarker =
+                                unreadMarkerReversedIndex != null &&
+                                messageIndex == unreadMarkerReversedIndex;
                             if (!_messageKeys.containsKey(message.messageId)) {
                               _messageKeys[message.messageId] = GlobalKey();
                             }
-                            return Container(
+                            final messageWidget = Container(
                               key: _messageKeys[message.messageId]!,
                               child: Builder(
                                 builder: (context) {
@@ -262,6 +274,20 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                                   );
                                 },
                               ),
+                            );
+
+                            if (!showUnreadMarker) {
+                              return messageWidget;
+                            }
+
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                UnreadMarkerDivider(
+                                  timestamp: message.timestamp,
+                                ),
+                                messageWidget,
+                              ],
                             );
                           },
                         ),
