@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:meshcore_open/screens/path_trace_map.dart';
@@ -590,6 +591,13 @@ class _ContactsScreenState extends State<ContactsScreen>
     List<Contact> contacts,
     MeshCoreConnector connector,
   ) {
+    final shouldKeepStableOrderDuringLoad =
+        kIsWeb &&
+        connector.isLoadingContacts &&
+        _searchQuery.isEmpty &&
+        !_showUnreadOnly &&
+        _typeFilter == ContactTypeFilter.all;
+
     var filtered = contacts.where((contact) {
       if (_searchQuery.isEmpty) return true;
       return matchesContactQuery(contact, _searchQuery);
@@ -611,6 +619,12 @@ class _ContactsScreenState extends State<ContactsScreen>
       filtered = filtered.where((contact) {
         return connector.getUnreadCountForContact(contact) > 0;
       }).toList();
+    }
+
+    // Keep the list stable while Chrome is streaming the initial contact load.
+    // Re-sorting on every incremental update makes active scrolling feel janky.
+    if (shouldKeepStableOrderDuringLoad) {
+      return filtered;
     }
 
     switch (_sortOption) {

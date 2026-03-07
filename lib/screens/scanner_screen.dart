@@ -86,14 +86,19 @@ class _ScannerScreenState extends State<ScannerScreen> {
             return Column(
               children: [
                 // Bluetooth off warning
-                if (_bluetoothState == BluetoothAdapterState.off)
+                if (_bluetoothState == BluetoothAdapterState.off &&
+                    !PlatformInfo.isWeb)
                   _bluetoothOffWarning(context),
 
                 // Status bar
                 _buildStatusBar(context, connector),
 
                 // Device list
-                Expanded(child: _buildDeviceList(context, connector)),
+                Expanded(
+                  child: PlatformInfo.isWeb
+                      ? _buildChromeConnectPlaceholder(context)
+                      : _buildDeviceList(context, connector),
+                ),
               ],
             );
           },
@@ -101,9 +106,29 @@ class _ScannerScreenState extends State<ScannerScreen> {
       ),
       floatingActionButton: Consumer<MeshCoreConnector>(
         builder: (context, connector, child) {
+          final isBluetoothOff = _bluetoothState == BluetoothAdapterState.off;
+
+          if (PlatformInfo.isWeb) {
+            final isBusy =
+                connector.state != MeshCoreConnectionState.disconnected;
+
+            return FloatingActionButton.extended(
+              onPressed: isBusy
+                  ? null
+                  : () {
+                      unawaited(
+                        connector.startScan().catchError((e) {
+                          debugPrint("Scanner screen web startScan error: $e");
+                        }),
+                      );
+                    },
+              icon: const Icon(Icons.bluetooth),
+              label: Text(context.l10n.common_connect),
+            );
+          }
+
           final isScanning =
               connector.state == MeshCoreConnectionState.scanning;
-          final isBluetoothOff = _bluetoothState == BluetoothAdapterState.off;
 
           return FloatingActionButton.extended(
             onPressed: isBluetoothOff
@@ -179,6 +204,23 @@ class _ScannerScreenState extends State<ScannerScreen> {
           Text(
             statusText,
             style: TextStyle(color: statusColor, fontWeight: FontWeight.w500),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildChromeConnectPlaceholder(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.bluetooth, size: 64, color: Colors.grey[400]),
+          const SizedBox(height: 16),
+          Text(
+            context.l10n.scanner_tapToScan,
+            style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+            textAlign: TextAlign.center,
           ),
         ],
       ),

@@ -158,6 +158,9 @@ class MeshCoreConnector extends ChangeNotifier {
   bool _isLoadingContacts = false;
   bool _isLoadingChannels = false;
   bool _hasLoadedChannels = false;
+  Timer? _contactLoadNotifyTimer;
+  bool _hasPendingContactLoadNotify = false;
+  final Set<String> _pendingContactMessageLoads = {};
   bool _batteryRequested = false;
   bool _awaitingSelfInfo = false;
   bool _preserveContactsOnRefresh = false;
@@ -348,8 +351,11 @@ class MeshCoreConnector extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> _loadMessagesForContact(String contactKeyHex) async {
-    if (_loadedConversationKeys.contains(contactKeyHex)) return;
+  Future<bool> _loadMessagesForContact(
+    String contactKeyHex, {
+    bool notify = true,
+  }) async {
+    if (_loadedConversationKeys.contains(contactKeyHex)) return false;
     _loadedConversationKeys.add(contactKeyHex);
 
     final allMessages = await _messageStore.loadMessages(contactKeyHex);
@@ -360,6 +366,59 @@ class MeshCoreConnector extends ChangeNotifier {
           : allMessages;
 
       _conversations[contactKeyHex] = windowedMessages;
+      if (notify) {
+        notifyListeners();
+      }
+      return true;
+    }
+    return false;
+  }
+
+  void _notifyContactListChanged() {
+    if (!(kIsWeb && _isLoadingContacts)) {
+      notifyListeners();
+      return;
+    }
+    _hasPendingContactLoadNotify = true;
+    if (_contactLoadNotifyTimer?.isActive == true) return;
+    _contactLoadNotifyTimer = Timer(const Duration(milliseconds: 48), () {
+      _contactLoadNotifyTimer = null;
+      if (!_hasPendingContactLoadNotify) return;
+      _hasPendingContactLoadNotify = false;
+      notifyListeners();
+    });
+  }
+
+  void _flushPendingContactLoadNotify({bool force = false}) {
+    _contactLoadNotifyTimer?.cancel();
+    _contactLoadNotifyTimer = null;
+    if (_hasPendingContactLoadNotify || force) {
+      _hasPendingContactLoadNotify = false;
+      notifyListeners();
+    }
+  }
+
+  void _hydrateMessagesForContact(String contactKeyHex) {
+    if (kIsWeb && _isLoadingContacts) {
+      _pendingContactMessageLoads.add(contactKeyHex);
+      return;
+    }
+    unawaited(_loadMessagesForContact(contactKeyHex));
+  }
+
+  Future<void> _flushDeferredContactMessageLoads() async {
+    if (_pendingContactMessageLoads.isEmpty) return;
+    final contactKeys = _pendingContactMessageLoads.toList(growable: false);
+    _pendingContactMessageLoads.clear();
+    var didLoadMessages = false;
+    for (final contactKeyHex in contactKeys) {
+      final loaded = await _loadMessagesForContact(
+        contactKeyHex,
+        notify: false,
+      );
+      didLoadMessages = didLoadMessages || loaded;
+    }
+    if (didLoadMessages) {
       notifyListeners();
     }
   }
@@ -722,6 +781,11 @@ class MeshCoreConnector extends ChangeNotifier {
   }) async {
     if (_state == MeshCoreConnectionState.scanning) return;
 
+    if (kIsWeb) {
+      await _startScanWeb(timeout: timeout);
+      return;
+    }
+
     _scanResults.clear();
     _setState(MeshCoreConnectionState.scanning);
 
@@ -766,6 +830,69 @@ class MeshCoreConnector extends ChangeNotifier {
 
     await Future.delayed(timeout);
     await stopScan();
+  }
+
+  Future<void> _startScanWeb({
+    Duration timeout = const Duration(seconds: 10),
+  }) async {
+    _scanResults.clear();
+    _setState(MeshCoreConnectionState.scanning);
+
+    // Ensure any previous scan is fully stopped
+    await FlutterBluePlus.stopScan();
+    await _scanSubscription?.cancel();
+
+    final completer = Completer<void>();
+    bool handled = false;
+
+    _scanSubscription = FlutterBluePlus.scanResults.listen((results) async {
+      _scanResults
+        ..clear()
+        ..addAll(results);
+      notifyListeners();
+
+      if (results.isEmpty || handled || completer.isCompleted) {
+        return;
+      }
+      handled = true;
+
+      final result = results.first;
+      final name = result.device.platformName.isNotEmpty
+          ? result.device.platformName
+          : result.advertisementData.advName;
+
+      try {
+        await connect(result.device, displayName: name);
+        if (!completer.isCompleted) {
+          completer.complete();
+        }
+      } catch (e) {
+        debugPrint('Web scan auto-connect failed: $e');
+        if (_state == MeshCoreConnectionState.scanning) {
+          await stopScan();
+        }
+        if (!completer.isCompleted) {
+          completer.completeError(e);
+        }
+      }
+    });
+
+    try {
+      await FlutterBluePlus.startScan(
+        withServices: [Guid(MeshCoreUuids.service)],
+        withKeywords: ["MeshCore-", "Whisper-"],
+        webOptionalServices: [Guid(MeshCoreUuids.service)],
+        timeout: timeout,
+        androidScanMode: AndroidScanMode.lowLatency,
+      );
+    } catch (e) {
+      if (!completer.isCompleted) {
+        completer.complete();
+      }
+      rethrow;
+    }
+
+    await completer.future;
   }
 
   Future<void> stopScan() async {
@@ -889,7 +1016,13 @@ class MeshCoreConnector extends ChangeNotifier {
       unawaited(loadDiscoveredContactCache());
     } catch (e) {
       debugPrint("Connection error: $e");
-      await disconnect(manual: false);
+      // On Web, avoid auto-reconnect loops on connection failure so the
+      // caller can surface a one-shot error and let the user retry.
+      if (kIsWeb) {
+        await disconnect(manual: true);
+      } else {
+        await disconnect(manual: false);
+      }
       rethrow;
     }
   }
@@ -1028,6 +1161,10 @@ class MeshCoreConnector extends ChangeNotifier {
     _pendingQueueSync = false;
     _isSyncingChannels = false;
     _channelSyncInFlight = false;
+    _contactLoadNotifyTimer?.cancel();
+    _contactLoadNotifyTimer = null;
+    _hasPendingContactLoadNotify = false;
+    _pendingContactMessageLoads.clear();
     _hasLoadedChannels = false;
     _pendingChannelSentQueue.clear();
     _pendingGenericAckQueue.clear();
@@ -1920,6 +2057,10 @@ class MeshCoreConnector extends ChangeNotifier {
         if (!_preserveContactsOnRefresh) {
           _contacts.clear();
         }
+        _contactLoadNotifyTimer?.cancel();
+        _contactLoadNotifyTimer = null;
+        _hasPendingContactLoadNotify = false;
+        _pendingContactMessageLoads.clear();
         _isLoadingContacts = true;
         notifyListeners();
         break;
@@ -1936,8 +2077,9 @@ class MeshCoreConnector extends ChangeNotifier {
         debugPrint('Got END_OF_CONTACTS');
         _isLoadingContacts = false;
         _preserveContactsOnRefresh = false;
-        notifyListeners();
+        _flushPendingContactLoadNotify(force: true);
         unawaited(_persistContacts());
+        unawaited(_flushDeferredContactMessageLoads());
         if (!_didInitialQueueSync || _pendingQueueSync) {
           _didInitialQueueSync = true;
           _pendingQueueSync = false;
@@ -2275,14 +2417,14 @@ class MeshCoreConnector extends ChangeNotifier {
         }
       }
       _knownContactKeys.add(contact.publicKeyHex);
-      _loadMessagesForContact(contact.publicKeyHex);
+      _hydrateMessagesForContact(contact.publicKeyHex);
 
       // Add path to history if we have a valid path
       if (_pathHistoryService != null && contact.pathLength >= 0) {
         _pathHistoryService!.handlePathUpdated(contact);
       }
 
-      notifyListeners();
+      _notifyContactListChanged();
 
       // Show notification for new contact (advertisement)
       if (isNewContact && _appSettingsService != null) {
@@ -2350,14 +2492,14 @@ class MeshCoreConnector extends ChangeNotifier {
       );
     }
     _knownContactKeys.add(contact.publicKeyHex);
-    _loadMessagesForContact(contact.publicKeyHex);
+    _hydrateMessagesForContact(contact.publicKeyHex);
 
     // Add path to history if we have a valid path
     if (_pathHistoryService != null && contact.pathLength >= 0) {
       _pathHistoryService!.handlePathUpdated(contact);
     }
 
-    notifyListeners();
+    _notifyContactListChanged();
 
     // Show notification for new contact (advertisement)
     if (isNewContact && _appSettingsService != null) {
@@ -3043,6 +3185,7 @@ class MeshCoreConnector extends ChangeNotifier {
 
         // Move to next channel
         _nextChannelIndexToRequest++;
+        notifyListeners();
         unawaited(_requestNextChannel());
         return;
       } else {
@@ -3055,6 +3198,7 @@ class MeshCoreConnector extends ChangeNotifier {
         if (!channel.isEmpty &&
             !_channels.any((c) => c.index == channel.index)) {
           _channels.add(channel);
+          notifyListeners();
         }
         return;
       }
@@ -3710,6 +3854,10 @@ class MeshCoreConnector extends ChangeNotifier {
     _queuedMessageSyncInFlight = false;
     _isSyncingChannels = false;
     _channelSyncInFlight = false;
+    _contactLoadNotifyTimer?.cancel();
+    _contactLoadNotifyTimer = null;
+    _hasPendingContactLoadNotify = false;
+    _pendingContactMessageLoads.clear();
     _pendingChannelSentQueue.clear();
     _pendingGenericAckQueue.clear();
     _reactionSendQueueSequence = 0;
