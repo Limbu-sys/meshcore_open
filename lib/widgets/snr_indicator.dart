@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:latlong2/latlong.dart';
 
 import '../connector/meshcore_connector.dart';
 import '../l10n/l10n.dart';
-import '../models/contact.dart';
+import '../utils/location_utils.dart';
 import 'signal_ui.dart';
 
 class SNRUi {
@@ -67,46 +66,6 @@ class SNRIndicator extends StatefulWidget {
 }
 
 class _SNRIndicatorState extends State<SNRIndicator> {
-  Contact? _selectBestRepeaterContactForPrefix(int pubkeyFirstByte) {
-    final candidates = widget.connector.contacts
-        .where(
-          (c) => c.publicKey.isNotEmpty && c.publicKey.first == pubkeyFirstByte,
-        )
-        .toList();
-
-    if (candidates.isEmpty) return null;
-    candidates.sort((a, b) => b.lastSeen.compareTo(a.lastSeen));
-    candidates.sort((a, b) {
-      final favA = a.isFavorite ? 1 : 0;
-      final favB = b.isFavorite ? 1 : 0;
-      return favB.compareTo(favA);
-    });
-
-    final selfLat = widget.connector.selfLatitude;
-    final selfLon = widget.connector.selfLongitude;
-    if (selfLat == null || selfLon == null) {
-      return candidates.first;
-    }
-    final selfPoint = LatLng(selfLat, selfLon);
-    final favoriteCandidates = candidates.where((c) => c.isFavorite).toList();
-    List searchList = favoriteCandidates.isNotEmpty
-        ? favoriteCandidates
-        : candidates;
-    Contact best = searchList.first;
-    final distance = Distance();
-    double bestDistance = double.infinity;
-    for (final c in searchList) {
-      if (c.hasLocation) {
-        final d = distance(selfPoint, LatLng(c.latitude!, c.longitude!));
-        if (d < bestDistance) {
-          bestDistance = d;
-          best = c;
-        }
-      }
-    }
-    return best;
-  }
-
   @override
   Widget build(BuildContext context) {
     final directRepeaters = widget.connector.directRepeaters;
@@ -203,7 +162,8 @@ class _SNRIndicatorState extends State<SNRIndicator> {
                   widget.connector.currentSf,
                 );
 
-                final contact = _selectBestRepeaterContactForPrefix(
+                final contact = selectBestRepeaterContactForPrefix(
+                  widget.connector.contacts,
                   repeater.pubkeyFirstByte,
                 );
                 final name = contact?.name;
