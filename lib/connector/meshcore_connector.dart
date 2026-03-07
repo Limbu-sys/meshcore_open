@@ -1926,7 +1926,7 @@ class MeshCoreConnector extends ChangeNotifier {
       case pushCodeNewAdvert:
         debugPrint('Got New CONTACT');
         // It's the same format as respCodeContact, so we can reuse the handler
-        _handleContact(frame);
+        _handleContact(frame, isContact: false);
         break;
       case respCodeContact:
         debugPrint('Got CONTACT');
@@ -2217,7 +2217,7 @@ class MeshCoreConnector extends ChangeNotifier {
     }
   }
 
-  void _handleContact(Uint8List frame) {
+  void _handleContact(Uint8List frame, {bool isContact = true}) {
     final contact = Contact.fromFrame(frame);
     if (contact != null) {
       if (contact.type == advTypeRepeater) {
@@ -2256,11 +2256,23 @@ class MeshCoreConnector extends ChangeNotifier {
           tag: 'Connector',
         );
       } else {
-        _contacts.add(contact);
-        appLogger.info(
-          'Added new contact ${contact.name}: pathLen=${contact.pathLength}',
-          tag: 'Connector',
-        );
+        if ((_autoAddUsers && contact.type == advTypeChat) ||
+            (_autoAddRepeaters && contact.type == advTypeRepeater) ||
+            (_autoAddRoomServers && contact.type == advTypeRoom) ||
+            (_autoAddSensors && contact.type == advTypeSensor) ||
+            isContact) {
+          _contacts.add(contact);
+          appLogger.info(
+            'Added new contact ${contact.name}: pathLen=${contact.pathLength}',
+            tag: 'Connector',
+          );
+        } else {
+          appLogger.info(
+            "Discovered contact ${contact.name} (type ${contact.typeLabel}) not added due to auto-add settings",
+            tag: 'Connector',
+          );
+          return;
+        }
       }
       _knownContactKeys.add(contact.publicKeyHex);
       _loadMessagesForContact(contact.publicKeyHex);
