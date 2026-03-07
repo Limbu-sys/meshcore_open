@@ -63,7 +63,7 @@ class BufferReader {
   }
 
   String readCString(int maxLength) {
-    _lastPointer = _pointer;
+    final backupPointer = _pointer;
     final value = <int>[];
     int counter = 0;
     while (counter < maxLength) {
@@ -72,6 +72,7 @@ class BufferReader {
       value.add(byte);
       counter++;
     }
+    _lastPointer = backupPointer;
     try {
       return utf8.decode(Uint8List.fromList(value), allowMalformed: true);
     } catch (e) {
