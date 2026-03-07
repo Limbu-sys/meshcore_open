@@ -3989,7 +3989,7 @@ class MeshCoreConnector extends ChangeNotifier {
         publicKey: publicKey,
         name: name,
         type: type,
-        pathLength: path.isEmpty ? -1 : path.length,
+        pathLength: path.length,
         path: Uint8List.fromList(
           path.reversed.toList(),
         ), // Store path in reverse for easier use in outgoing messages
