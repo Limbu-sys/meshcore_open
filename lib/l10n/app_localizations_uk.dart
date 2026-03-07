@@ -39,6 +39,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get common_delete => 'Видалити';
 
   @override
+  String get common_deleteAll => 'Видалити все';
+
+  @override
   String get common_close => 'Закрити';
 
   @override
@@ -238,6 +241,13 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get settings_longitude => 'Довгота';
+
+  @override
+  String get settings_contactSettings => 'Налаштування контактів';
+
+  @override
+  String get settings_contactSettingsSubtitle =>
+      'Налаштування для додавання контактів';
 
   @override
   String get settings_privacyMode => 'Режим приватності';
@@ -1430,6 +1440,13 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get map_showSharedMarkers => 'Показувати спільні маркери';
+
+  @override
+  String get map_showGuessedLocations =>
+      'Показати місцезнаходження передбачених вузлів';
+
+  @override
+  String get map_guessedLocation => 'Визначено місцезнаходження';
 
   @override
   String get map_lastSeenTime => 'Час останньої активності';
@@ -3137,4 +3154,84 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get snrIndicator_lastSeen => 'Останній раз бачили';
+
+  @override
+  String get contactsSettings_title => 'Налаштування контактів';
+
+  @override
+  String get contactsSettings_autoAddTitle => 'Автоматичне виявлення';
+
+  @override
+  String get contactsSettings_otherTitle =>
+      'Інші налаштування, пов\'язані з контактами';
+
+  @override
+  String get contactsSettings_autoAddUsersTitle =>
+      'Автоматично додавати користувачів';
+
+  @override
+  String get contactsSettings_autoAddUsersSubtitle =>
+      'Дозволити супутникові автоматично додавати виявлених користувачів';
+
+  @override
+  String get contactsSettings_autoAddRepeatersTitle =>
+      'Автоматично додавати повторювачі';
+
+  @override
+  String get contactsSettings_autoAddRepeatersSubtitle =>
+      'Дозволити супутнику автоматично додавати виявлені ретранслятори';
+
+  @override
+  String get contactsSettings_autoAddRoomServersTitle =>
+      'Автоматично додавати сервери кімнат';
+
+  @override
+  String get contactsSettings_autoAddRoomServersSubtitle =>
+      'Дозволити супровіднику автоматично додавати виявлені сервери кімнат.';
+
+  @override
+  String get contactsSettings_autoAddSensorsTitle =>
+      'Автоматично додавати датчики';
+
+  @override
+  String get contactsSettings_autoAddSensorsSubtitle =>
+      'Дозволити супровіднику автоматично додавати виявлені сенсори';
+
+  @override
+  String get contactsSettings_overwriteOldestTitle => 'Перезаписати найстаріше';
+
+  @override
+  String get contactsSettings_overwriteOldestSubtitle =>
+      'Коли список контактів заповнений, найстарший контакт без позначки улюбленого буде замінений.';
+
+  @override
+  String get discoveredContacts_Title => 'Виявлені контакти';
+
+  @override
+  String get discoveredContacts_noMatching =>
+      'Відповідних контактів не знайдено';
+
+  @override
+  String get discoveredContacts_searchHint => 'Знайти виявлені контакти';
+
+  @override
+  String get discoveredContacts_contactAdded => 'Контакт додано';
+
+  @override
+  String get discoveredContacts_addContact => 'Додати контакт';
+
+  @override
+  String get discoveredContacts_copyContact =>
+      'Копіювати контакт у буфер обміну';
+
+  @override
+  String get discoveredContacts_deleteContact => 'Видалити контакт';
+
+  @override
+  String get discoveredContacts_deleteContactAll =>
+      'Видалити всі виявлені контакти';
+
+  @override
+  String get discoveredContacts_deleteContactAllContent =>
+      'Ви впевнені, що хочете видалити всі виявлені контакти?';
 }

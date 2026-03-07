@@ -297,7 +297,7 @@
   "contacts_noContactsMatchFilter": "No hay contactos que coincidan con tu filtro",
   "contacts_noMembers": "No miembros",
   "contacts_lastSeenNow": "Última vez que se vio ahora",
-  "contacts_lastSeenMinsAgo": "Última vez visto hace {minutes} minutos.",
+  "contacts_lastSeenMinsAgo": "~ {minutes} min.",
   "@contacts_lastSeenMinsAgo": {
     "placeholders": {
       "minutes": {
@@ -305,8 +305,8 @@
       }
     }
   },
-  "contacts_lastSeenHourAgo": "Última vez que se vio hace 1 hora",
-  "contacts_lastSeenHoursAgo": "Última vez visto hace {hours} horas.",
+  "contacts_lastSeenHourAgo": "~ 1 hora",
+  "contacts_lastSeenHoursAgo": "~ {hours} horas",
   "@contacts_lastSeenHoursAgo": {
     "placeholders": {
       "hours": {
@@ -314,8 +314,8 @@
       }
     }
   },
-  "contacts_lastSeenDayAgo": "Última vez que se vio hace 1 día",
-  "contacts_lastSeenDaysAgo": "Última vez visto hace {days} días.",
+  "contacts_lastSeenDayAgo": "~ 1 día",
+  "contacts_lastSeenDaysAgo": "~ {days} días",
   "@contacts_lastSeenDaysAgo": {
     "placeholders": {
       "days": {
@@ -1829,5 +1829,32 @@
   "contacts_searchFavorites": "Buscar {number}{str} Favoritos...",
   "contacts_searchUsers": "Buscar {number}{str} Usuarios...",
   "contacts_searchRepeaters": "Buscar {number}{str} Repetidores...",
-  "contacts_searchRoomServers": "Buscar {number}{str} servidores de sala..."
+  "contacts_searchRoomServers": "Buscar {number}{str} servidores de sala...",
+  "contactsSettings_autoAddTitle": "Detección automática",
+  "settings_contactSettings": "Configuración de contacto",
+  "contactsSettings_autoAddUsersTitle": "Agregar usuarios automáticamente",
+  "contactsSettings_otherTitle": "Otras configuraciones relacionadas con el contacto",
+  "contactsSettings_autoAddUsersSubtitle": "Permitir que el compañero agregue automáticamente a los usuarios descubiertos.",
+  "contactsSettings_autoAddRepeatersSubtitle": "Permitir que el compañero agregue automáticamente los repetidores descubiertos.",
+  "contactsSettings_autoAddRoomServersSubtitle": "Permitir que el compañero agregue automáticamente los servidores de salas descubiertos.",
+  "contactsSettings_autoAddSensorsTitle": "Agregar sensores automáticamente",
+  "contactsSettings_title": "Configuración de contactos",
+  "settings_contactSettingsSubtitle": "Configuración de cómo se agregan los contactos.",
+  "contactsSettings_autoAddSensorsSubtitle": "Permitir que el compañero agregue automáticamente los sensores descubiertos.",
+  "contactsSettings_autoAddRepeatersTitle": "Agregar repetidores automáticamente",
+  "contactsSettings_overwriteOldestTitle": "Sobreescribir el más antiguo",
+  "contactsSettings_autoAddRoomServersTitle": "Agregar automáticamente servidores de sala",
+  "discoveredContacts_noMatching": "No se encontraron contactos coincidentes",
+  "discoveredContacts_contactAdded": "Contacto agregado",
+  "discoveredContacts_copyContact": "Copiar contacto al portapapeles",
+  "discoveredContacts_deleteContact": "Eliminar contacto",
+  "discoveredContacts_Title": "Contactos descubiertos",
+  "discoveredContacts_searchHint": "Buscar contactos descubiertos",
+  "discoveredContacts_addContact": "Agregar contacto",
+  "contactsSettings_overwriteOldestSubtitle": "Cuando la lista de contactos esté llena, se reemplazará el contacto no favorito más antiguo.",
+  "common_deleteAll": "Eliminar todo",
+  "discoveredContacts_deleteContactAll": "Eliminar Todos los Contactos Descubiertos",
+  "discoveredContacts_deleteContactAllContent": "¿Está seguro de que desea eliminar todos los contactos descubiertos!",
+  "map_guessedLocation": "Ubicación estimada",
+  "map_showGuessedLocations": "Mostrar las ubicaciones estimadas de los nodos."
 }

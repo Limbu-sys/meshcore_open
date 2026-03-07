@@ -231,6 +231,11 @@ If you find MeshCore Open useful and would like to support development, you can 
 
 **Solana Address:** `F15YanjZj96YTBtKJYgNa8RLQLCZkx5CEwogPWkqXeoQ`
 
+
+**Monero Address:** `453TxnpUqjkJtXxzdjMsrgERNkBRXEGamPbpC45ENrvKAk9tH7kZbxWF82Hz66etgDZyXFPEBU2JUEqhLeJyWt9kBvTVy5m`
+
+**Bitcoin Address:** `bc1qh45x28v8dslcg4v4upmqd9g0mvc3lnyffmyzr5`
+
 Your support helps maintain and improve this open-source project!
 
 ## Acknowledgments

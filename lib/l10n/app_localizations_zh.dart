@@ -39,6 +39,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get common_delete => '删除';
 
   @override
+  String get common_deleteAll => '删除全部';
+
+  @override
   String get common_close => '关闭';
 
   @override
@@ -232,6 +235,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get settings_longitude => '经度';
+
+  @override
+  String get settings_contactSettings => '联系人设置';
+
+  @override
+  String get settings_contactSettingsSubtitle => '添加联系人的设置';
 
   @override
   String get settings_privacyMode => '隐私模式';
@@ -1353,6 +1362,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get map_showSharedMarkers => '显示共享标记';
+
+  @override
+  String get map_showGuessedLocations => '显示猜测的节点位置';
+
+  @override
+  String get map_guessedLocation => '猜测的位置';
 
   @override
   String get map_lastSeenTime => '最后在线时间';
@@ -2897,4 +2912,71 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get snrIndicator_lastSeen => '最近访问';
+
+  @override
+  String get contactsSettings_title => '联系人设置';
+
+  @override
+  String get contactsSettings_autoAddTitle => '自动发现';
+
+  @override
+  String get contactsSettings_otherTitle => '其他联系人相关设置';
+
+  @override
+  String get contactsSettings_autoAddUsersTitle => '自动添加用户';
+
+  @override
+  String get contactsSettings_autoAddUsersSubtitle => '允许伴侣自动添加发现的用户';
+
+  @override
+  String get contactsSettings_autoAddRepeatersTitle => '自动添加重复器';
+
+  @override
+  String get contactsSettings_autoAddRepeatersSubtitle => '允许伴侣自动添加发现的重复器';
+
+  @override
+  String get contactsSettings_autoAddRoomServersTitle => '自动添加房间服务器';
+
+  @override
+  String get contactsSettings_autoAddRoomServersSubtitle => '允许伴侣自动添加发现的房间服务器';
+
+  @override
+  String get contactsSettings_autoAddSensorsTitle => '自动添加传感器';
+
+  @override
+  String get contactsSettings_autoAddSensorsSubtitle => '允许伴侣自动添加发现的传感器';
+
+  @override
+  String get contactsSettings_overwriteOldestTitle => '覆盖最旧的';
+
+  @override
+  String get contactsSettings_overwriteOldestSubtitle =>
+      '当联系人列表已满时，将替换最老的非收藏联系人。';
+
+  @override
+  String get discoveredContacts_Title => '已发现的联系人';
+
+  @override
+  String get discoveredContacts_noMatching => '没有匹配的联系人';
+
+  @override
+  String get discoveredContacts_searchHint => '搜索已发现的联系人';
+
+  @override
+  String get discoveredContacts_contactAdded => '联系人已添加';
+
+  @override
+  String get discoveredContacts_addContact => '添加联系人';
+
+  @override
+  String get discoveredContacts_copyContact => '复制联系人到剪贴板';
+
+  @override
+  String get discoveredContacts_deleteContact => '删除联系人';
+
+  @override
+  String get discoveredContacts_deleteContactAll => '删除所有发现的联系人';
+
+  @override
+  String get discoveredContacts_deleteContactAllContent => '您确定要删除所有发现的联系人吗？';
 }

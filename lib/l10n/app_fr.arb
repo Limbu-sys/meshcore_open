@@ -297,7 +297,7 @@
   "contacts_noContactsMatchFilter": "Aucun contact ne correspond à votre filtre.",
   "contacts_noMembers": "Aucun membre",
   "contacts_lastSeenNow": "Vu maintenant",
-  "contacts_lastSeenMinsAgo": "Vu il y a {minutes} minutes",
+  "contacts_lastSeenMinsAgo": "~ {minutes} min.",
   "@contacts_lastSeenMinsAgo": {
     "placeholders": {
       "minutes": {
@@ -305,8 +305,8 @@
       }
     }
   },
-  "contacts_lastSeenHourAgo": "Vu il y a 1 heure",
-  "contacts_lastSeenHoursAgo": "Vu il y a {hours} heures",
+  "contacts_lastSeenHourAgo": "~ 1 heure",
+  "contacts_lastSeenHoursAgo": "~ {hours} heures",
   "@contacts_lastSeenHoursAgo": {
     "placeholders": {
       "hours": {
@@ -314,8 +314,8 @@
       }
     }
   },
-  "contacts_lastSeenDayAgo": "Vu il y a 1 jour",
-  "contacts_lastSeenDaysAgo": "Vu il y a {days} jours",
+  "contacts_lastSeenDayAgo": "~ 1 jour",
+  "contacts_lastSeenDaysAgo": "~ {days} jours",
   "@contacts_lastSeenDaysAgo": {
     "placeholders": {
       "days": {
@@ -1801,5 +1801,32 @@
   "contacts_searchUsers": "Rechercher {number}{str} utilisateurs...",
   "contacts_searchRoomServers": "Rechercher {number}{str} serveurs de salle...",
   "contacts_searchRepeaters": "Rechercher {number}{str} Répéteurs...",
-  "contacts_searchContactsNoNumber": "Rechercher des contacts..."
+  "contacts_searchContactsNoNumber": "Rechercher des contacts...",
+  "settings_contactSettings": "Paramètres de contact",
+  "settings_contactSettingsSubtitle": "Paramètres pour l'ajout de contacts",
+  "contactsSettings_autoAddRepeatersTitle": "Ajouter automatiquement les répéteurs",
+  "contactsSettings_autoAddRepeatersSubtitle": "Autoriser le compagnon à ajouter automatiquement les répéteurs découverts",
+  "contactsSettings_autoAddRoomServersTitle": "Ajouter automatiquement les serveurs de salle",
+  "contactsSettings_autoAddRoomServersSubtitle": "Autoriser le compagnon à ajouter automatiquement les serveurs de salles découverts",
+  "contactsSettings_otherTitle": "Autres paramètres liés aux contacts",
+  "contactsSettings_title": "Paramètres des contacts",
+  "contactsSettings_autoAddUsersTitle": "Ajouter automatiquement les utilisateurs",
+  "contactsSettings_autoAddTitle": "Découverte automatique",
+  "contactsSettings_autoAddSensorsTitle": "Ajouter automatiquement les capteurs",
+  "contactsSettings_autoAddUsersSubtitle": "Autoriser le compagnon à ajouter automatiquement les utilisateurs découverts",
+  "discoveredContacts_noMatching": "Aucun contact correspondant",
+  "discoveredContacts_contactAdded": "Contact ajouté",
+  "discoveredContacts_addContact": "Ajouter un contact",
+  "discoveredContacts_copyContact": "Copier le contact dans le presse-papiers",
+  "discoveredContacts_deleteContact": "Supprimer le contact",
+  "contactsSettings_overwriteOldestTitle": "Écraser le plus ancien",
+  "contactsSettings_autoAddSensorsSubtitle": "Autoriser le compagnon à ajouter automatiquement les capteurs découverts.",
+  "discoveredContacts_Title": "Contacts découverts",
+  "discoveredContacts_searchHint": "Rechercher des contacts découverts",
+  "contactsSettings_overwriteOldestSubtitle": "Lorsque la liste de contacts est pleine, le contact le plus ancien non favori sera remplacé.",
+  "common_deleteAll": "Supprimer tout",
+  "discoveredContacts_deleteContactAll": "Supprimer tous les contacts découverts",
+  "discoveredContacts_deleteContactAllContent": "Êtes-vous sûr de vouloir supprimer tous les contacts découverts ?",
+  "map_showGuessedLocations": "Afficher les emplacements des nœuds estimés",
+  "map_guessedLocation": "Lieu deviné"
 }

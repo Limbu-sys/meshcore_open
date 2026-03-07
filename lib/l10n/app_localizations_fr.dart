@@ -39,6 +39,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get common_delete => 'Supprimer';
 
   @override
+  String get common_deleteAll => 'Supprimer tout';
+
+  @override
   String get common_close => 'Fermer';
 
   @override
@@ -240,6 +243,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get settings_longitude => 'Longitude';
+
+  @override
+  String get settings_contactSettings => 'Paramètres de contact';
+
+  @override
+  String get settings_contactSettingsSubtitle =>
+      'Paramètres pour l\'ajout de contacts';
 
   @override
   String get settings_privacyMode => 'Mode de confidentialité';
@@ -784,23 +794,23 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String contacts_lastSeenMinsAgo(int minutes) {
-    return 'Vu il y a $minutes minutes';
+    return '~ $minutes min.';
   }
 
   @override
-  String get contacts_lastSeenHourAgo => 'Vu il y a 1 heure';
+  String get contacts_lastSeenHourAgo => '~ 1 heure';
 
   @override
   String contacts_lastSeenHoursAgo(int hours) {
-    return 'Vu il y a $hours heures';
+    return '~ $hours heures';
   }
 
   @override
-  String get contacts_lastSeenDayAgo => 'Vu il y a 1 jour';
+  String get contacts_lastSeenDayAgo => '~ 1 jour';
 
   @override
   String contacts_lastSeenDaysAgo(int days) {
-    return 'Vu il y a $days jours';
+    return '~ $days jours';
   }
 
   @override
@@ -1436,6 +1446,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get map_showSharedMarkers => 'Afficher les marqueurs partagés';
+
+  @override
+  String get map_showGuessedLocations =>
+      'Afficher les emplacements des nœuds estimés';
+
+  @override
+  String get map_guessedLocation => 'Lieu deviné';
 
   @override
   String get map_lastSeenTime => 'Dernière fois vu';
@@ -3142,4 +3159,84 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get snrIndicator_lastSeen => 'Dernière fois vu';
+
+  @override
+  String get contactsSettings_title => 'Paramètres des contacts';
+
+  @override
+  String get contactsSettings_autoAddTitle => 'Découverte automatique';
+
+  @override
+  String get contactsSettings_otherTitle =>
+      'Autres paramètres liés aux contacts';
+
+  @override
+  String get contactsSettings_autoAddUsersTitle =>
+      'Ajouter automatiquement les utilisateurs';
+
+  @override
+  String get contactsSettings_autoAddUsersSubtitle =>
+      'Autoriser le compagnon à ajouter automatiquement les utilisateurs découverts';
+
+  @override
+  String get contactsSettings_autoAddRepeatersTitle =>
+      'Ajouter automatiquement les répéteurs';
+
+  @override
+  String get contactsSettings_autoAddRepeatersSubtitle =>
+      'Autoriser le compagnon à ajouter automatiquement les répéteurs découverts';
+
+  @override
+  String get contactsSettings_autoAddRoomServersTitle =>
+      'Ajouter automatiquement les serveurs de salle';
+
+  @override
+  String get contactsSettings_autoAddRoomServersSubtitle =>
+      'Autoriser le compagnon à ajouter automatiquement les serveurs de salles découverts';
+
+  @override
+  String get contactsSettings_autoAddSensorsTitle =>
+      'Ajouter automatiquement les capteurs';
+
+  @override
+  String get contactsSettings_autoAddSensorsSubtitle =>
+      'Autoriser le compagnon à ajouter automatiquement les capteurs découverts.';
+
+  @override
+  String get contactsSettings_overwriteOldestTitle => 'Écraser le plus ancien';
+
+  @override
+  String get contactsSettings_overwriteOldestSubtitle =>
+      'Lorsque la liste de contacts est pleine, le contact le plus ancien non favori sera remplacé.';
+
+  @override
+  String get discoveredContacts_Title => 'Contacts découverts';
+
+  @override
+  String get discoveredContacts_noMatching => 'Aucun contact correspondant';
+
+  @override
+  String get discoveredContacts_searchHint =>
+      'Rechercher des contacts découverts';
+
+  @override
+  String get discoveredContacts_contactAdded => 'Contact ajouté';
+
+  @override
+  String get discoveredContacts_addContact => 'Ajouter un contact';
+
+  @override
+  String get discoveredContacts_copyContact =>
+      'Copier le contact dans le presse-papiers';
+
+  @override
+  String get discoveredContacts_deleteContact => 'Supprimer le contact';
+
+  @override
+  String get discoveredContacts_deleteContactAll =>
+      'Supprimer tous les contacts découverts';
+
+  @override
+  String get discoveredContacts_deleteContactAllContent =>
+      'Êtes-vous sûr de vouloir supprimer tous les contacts découverts ?';
 }

@@ -39,6 +39,9 @@ class AppLocalizationsSl extends AppLocalizations {
   String get common_delete => 'Izbrisati';
 
   @override
+  String get common_deleteAll => 'Izbriši vse';
+
+  @override
   String get common_close => 'Zapri';
 
   @override
@@ -239,6 +242,13 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get settings_longitude => 'Dolžina';
+
+  @override
+  String get settings_contactSettings => 'Nastavitve stika';
+
+  @override
+  String get settings_contactSettingsSubtitle =>
+      'Nastavitve za dodajanje stikov.';
 
   @override
   String get settings_privacyMode => 'Zasebnost';
@@ -1420,6 +1430,12 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get map_showSharedMarkers => 'Pokaži skupno označenja';
+
+  @override
+  String get map_showGuessedLocations => 'Pokaži lokacije domnevnih not.';
+
+  @override
+  String get map_guessedLocation => 'Predpostavljena lokacija';
 
   @override
   String get map_lastSeenTime => 'Datum zadnjega vpogleda';
@@ -3110,4 +3126,81 @@ class AppLocalizationsSl extends AppLocalizations {
 
   @override
   String get snrIndicator_lastSeen => 'Zadnjič videno';
+
+  @override
+  String get contactsSettings_title => 'Nastavitve stikov';
+
+  @override
+  String get contactsSettings_autoAddTitle => 'Avtomatsko odkrivanje';
+
+  @override
+  String get contactsSettings_otherTitle => 'Druge nastavitve v zvezi s stiki';
+
+  @override
+  String get contactsSettings_autoAddUsersTitle =>
+      'Avtomatsko dodaj uporabnike';
+
+  @override
+  String get contactsSettings_autoAddUsersSubtitle =>
+      'Dovoli spremljevalcu, da samodejno doda odkrite uporabnike.';
+
+  @override
+  String get contactsSettings_autoAddRepeatersTitle =>
+      'Avtomatsko dodaj ponovitelje';
+
+  @override
+  String get contactsSettings_autoAddRepeatersSubtitle =>
+      'Dovoli spremljevalcu, da samodejno doda odkrite ponovitelje.';
+
+  @override
+  String get contactsSettings_autoAddRoomServersTitle =>
+      'Avtomatsko dodaj strežnike sob';
+
+  @override
+  String get contactsSettings_autoAddRoomServersSubtitle =>
+      'Dovoli spremljevalcu, da samodejno doda odkrite strežnike sob.';
+
+  @override
+  String get contactsSettings_autoAddSensorsTitle =>
+      'Avtomatsko dodaj senzorje';
+
+  @override
+  String get contactsSettings_autoAddSensorsSubtitle =>
+      'Dovoli spremljevalcu, da samodejno doda odkrite senzorje.';
+
+  @override
+  String get contactsSettings_overwriteOldestTitle => 'Prepiši najstarejše';
+
+  @override
+  String get contactsSettings_overwriteOldestSubtitle =>
+      'Ko je seznam stikov poln, bo najstarejši nestarševski stik zamenjan.';
+
+  @override
+  String get discoveredContacts_Title => 'Odkriti stiki';
+
+  @override
+  String get discoveredContacts_noMatching => 'Ni ujemajočih stikov';
+
+  @override
+  String get discoveredContacts_searchHint => 'Najdeni stiki po iskanju';
+
+  @override
+  String get discoveredContacts_contactAdded => 'Kontakt dodan';
+
+  @override
+  String get discoveredContacts_addContact => 'Dodaj stik';
+
+  @override
+  String get discoveredContacts_copyContact => 'Kopiraj stik v odložišče';
+
+  @override
+  String get discoveredContacts_deleteContact => 'Izbriši stik';
+
+  @override
+  String get discoveredContacts_deleteContactAll =>
+      'Izbriši vse odkrite kontakte';
+
+  @override
+  String get discoveredContacts_deleteContactAllContent =>
+      'Ste prepričani, da želite izbrisati vse odkrite kontakte?';
 }

@@ -39,6 +39,9 @@ class AppLocalizationsSk extends AppLocalizations {
   String get common_delete => 'Odstrániť';
 
   @override
+  String get common_deleteAll => 'Zmazať všetko';
+
+  @override
   String get common_close => 'Zavrieť';
 
   @override
@@ -239,6 +242,13 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get settings_longitude => 'Dĺžka';
+
+  @override
+  String get settings_contactSettings => 'Nastavenia kontaktov';
+
+  @override
+  String get settings_contactSettingsSubtitle =>
+      'Nastavenia pre pridávanie kontaktov.';
 
   @override
   String get settings_privacyMode => 'Režim ochrany súkromia';
@@ -1424,6 +1434,13 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get map_showSharedMarkers => 'Zobraziť zdieľané značky';
+
+  @override
+  String get map_showGuessedLocations =>
+      'Zobraziť umiestnenia odhadnutých uzlov';
+
+  @override
+  String get map_guessedLocation => 'Odhadnutá lokalita';
 
   @override
   String get map_lastSeenTime => 'Posledný čas sledovania';
@@ -3105,4 +3122,82 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get snrIndicator_lastSeen => 'Naposledy videný';
+
+  @override
+  String get contactsSettings_title => 'Nastavenia kontaktov';
+
+  @override
+  String get contactsSettings_autoAddTitle => 'Automatické zisťovanie';
+
+  @override
+  String get contactsSettings_otherTitle =>
+      'Ďalšie nastavenia súvisiace s kontaktami';
+
+  @override
+  String get contactsSettings_autoAddUsersTitle =>
+      'Automaticky pridávať užívateľov';
+
+  @override
+  String get contactsSettings_autoAddUsersSubtitle =>
+      'Povoliť spoločníkovi automaticky pridávať objavených užívateľov.';
+
+  @override
+  String get contactsSettings_autoAddRepeatersTitle =>
+      'Automaticky pridávať opakovače';
+
+  @override
+  String get contactsSettings_autoAddRepeatersSubtitle =>
+      'Povoliť spoločníkovi automaticky pridávať objavené repeater.';
+
+  @override
+  String get contactsSettings_autoAddRoomServersTitle =>
+      'Automaticky pridávať server miestnosti';
+
+  @override
+  String get contactsSettings_autoAddRoomServersSubtitle =>
+      'Povoliť spoločníkovi automaticky pridať objavené serverové miestnosti.';
+
+  @override
+  String get contactsSettings_autoAddSensorsTitle =>
+      'Automaticky pridávať senzory';
+
+  @override
+  String get contactsSettings_autoAddSensorsSubtitle =>
+      'Povoliť spoločníkovi automaticky pridávať objavené senzory.';
+
+  @override
+  String get contactsSettings_overwriteOldestTitle => 'Prepísať najstaršie';
+
+  @override
+  String get contactsSettings_overwriteOldestSubtitle =>
+      'Keď je zoznam kontaktov plný, bude nahradený najstarší neoznačený kontakt.';
+
+  @override
+  String get discoveredContacts_Title => 'Objavené kontakty';
+
+  @override
+  String get discoveredContacts_noMatching => 'Žiadne zhodné kontakty';
+
+  @override
+  String get discoveredContacts_searchHint => 'Vyhľadať objavené kontakty';
+
+  @override
+  String get discoveredContacts_contactAdded => 'Kontakt bol pridaný';
+
+  @override
+  String get discoveredContacts_addContact => 'Pridať kontakt';
+
+  @override
+  String get discoveredContacts_copyContact => 'Kopírovať kontakt do schránky';
+
+  @override
+  String get discoveredContacts_deleteContact => 'Zmazať kontakt';
+
+  @override
+  String get discoveredContacts_deleteContactAll =>
+      'Zmazať všetky objavené kontakty';
+
+  @override
+  String get discoveredContacts_deleteContactAllContent =>
+      'Ste si istí, že chcete zmazať všetky objavené kontakty?';
 }

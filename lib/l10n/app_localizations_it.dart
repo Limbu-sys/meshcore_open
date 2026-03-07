@@ -39,6 +39,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get common_delete => 'Elimina';
 
   @override
+  String get common_deleteAll => 'Elimina tutto';
+
+  @override
   String get common_close => 'Chiudi';
 
   @override
@@ -239,6 +242,13 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get settings_longitude => 'Longitudine';
+
+  @override
+  String get settings_contactSettings => 'Impostazioni di contatto';
+
+  @override
+  String get settings_contactSettingsSubtitle =>
+      'Impostazioni per l\'aggiunta dei contatti';
 
   @override
   String get settings_privacyMode => 'Modalità Privacy';
@@ -1428,6 +1438,12 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get map_showSharedMarkers => 'Mostra i segnaposto condivisi';
+
+  @override
+  String get map_showGuessedLocations => 'Mostra le posizioni stimate dei nodi';
+
+  @override
+  String get map_guessedLocation => 'Località indovinata';
 
   @override
   String get map_lastSeenTime => 'Ultimo Tempo di Visualizzazione';
@@ -3123,4 +3139,83 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get snrIndicator_lastSeen => 'Ultimo accesso';
+
+  @override
+  String get contactsSettings_title => 'Impostazioni dei contatti';
+
+  @override
+  String get contactsSettings_autoAddTitle => 'Scoperta automatica';
+
+  @override
+  String get contactsSettings_otherTitle =>
+      'Altre impostazioni relative ai contatti';
+
+  @override
+  String get contactsSettings_autoAddUsersTitle =>
+      'Aggiungere utenti automaticamente';
+
+  @override
+  String get contactsSettings_autoAddUsersSubtitle =>
+      'Consenti al compagno di aggiungere automaticamente gli utenti scoperti.';
+
+  @override
+  String get contactsSettings_autoAddRepeatersTitle =>
+      'Aggiungere ripetitori automaticamente';
+
+  @override
+  String get contactsSettings_autoAddRepeatersSubtitle =>
+      'Consenti al compagno di aggiungere automaticamente i ripetitori scoperti.';
+
+  @override
+  String get contactsSettings_autoAddRoomServersTitle =>
+      'Aggiungere automaticamente i server delle stanze';
+
+  @override
+  String get contactsSettings_autoAddRoomServersSubtitle =>
+      'Consenti al compagno di aggiungere automaticamente i server delle stanze scoperte.';
+
+  @override
+  String get contactsSettings_autoAddSensorsTitle =>
+      'Aggiungere automaticamente i sensori';
+
+  @override
+  String get contactsSettings_autoAddSensorsSubtitle =>
+      'Consenti al compagno di aggiungere automaticamente i sensori scoperti';
+
+  @override
+  String get contactsSettings_overwriteOldestTitle =>
+      'Sostituisci il più vecchio';
+
+  @override
+  String get contactsSettings_overwriteOldestSubtitle =>
+      'Quando l\'elenco dei contatti è pieno, il contatto più vecchio non tra i preferiti verrà sostituito.';
+
+  @override
+  String get discoveredContacts_Title => 'Contatti scoperti';
+
+  @override
+  String get discoveredContacts_noMatching => 'Nessun contatto corrispondente';
+
+  @override
+  String get discoveredContacts_searchHint => 'Cerca contatti scoperti';
+
+  @override
+  String get discoveredContacts_contactAdded => 'Contatto aggiunto';
+
+  @override
+  String get discoveredContacts_addContact => 'Aggiungi contatto';
+
+  @override
+  String get discoveredContacts_copyContact => 'Copia contatto negli appunti';
+
+  @override
+  String get discoveredContacts_deleteContact => 'Elimina Contatto';
+
+  @override
+  String get discoveredContacts_deleteContactAll =>
+      'Eliminare tutti i contatti scoperti';
+
+  @override
+  String get discoveredContacts_deleteContactAllContent =>
+      'Sei sicuro di voler eliminare tutti i contatti scoperti?';
 }

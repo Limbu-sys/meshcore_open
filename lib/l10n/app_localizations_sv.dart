@@ -39,6 +39,9 @@ class AppLocalizationsSv extends AppLocalizations {
   String get common_delete => 'Radera';
 
   @override
+  String get common_deleteAll => 'Ta bort alla';
+
+  @override
   String get common_close => 'Stänga';
 
   @override
@@ -238,6 +241,13 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get settings_longitude => 'Längdgrad';
+
+  @override
+  String get settings_contactSettings => 'Kontaktinställningar';
+
+  @override
+  String get settings_contactSettingsSubtitle =>
+      'Inställningar för hur kontakter läggs till.';
 
   @override
   String get settings_privacyMode => 'Privatläge';
@@ -1416,6 +1426,13 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get map_showSharedMarkers => 'Visa delade markörer';
+
+  @override
+  String get map_showGuessedLocations =>
+      'Visa upp de antagna nodernas placeringar';
+
+  @override
+  String get map_guessedLocation => 'Gissad plats';
 
   @override
   String get map_lastSeenTime => 'Senaste Visats Tid';
@@ -3088,4 +3105,82 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get snrIndicator_lastSeen => 'Senast sedd';
+
+  @override
+  String get contactsSettings_title => 'Kontaktinställningar';
+
+  @override
+  String get contactsSettings_autoAddTitle => 'Automatisk upptäckt';
+
+  @override
+  String get contactsSettings_otherTitle =>
+      'Andra inställningar relaterade till kontakt';
+
+  @override
+  String get contactsSettings_autoAddUsersTitle =>
+      'Lägg till användare automatiskt';
+
+  @override
+  String get contactsSettings_autoAddUsersSubtitle =>
+      'Tillåt kompanjonen att automatiskt lägga till upptäckta användare';
+
+  @override
+  String get contactsSettings_autoAddRepeatersTitle =>
+      'Lägg till upprepande enheter automatiskt';
+
+  @override
+  String get contactsSettings_autoAddRepeatersSubtitle =>
+      'Tillåt kompanjonen att automatiskt lägga till upptäckta repeater.';
+
+  @override
+  String get contactsSettings_autoAddRoomServersTitle =>
+      'Lägg automatiskt till rumsservrar';
+
+  @override
+  String get contactsSettings_autoAddRoomServersSubtitle =>
+      'Tillåt kompanjonen att automatiskt lägga till upptäckta rumsservrar.';
+
+  @override
+  String get contactsSettings_autoAddSensorsTitle =>
+      'Lägg till sensorer automatiskt';
+
+  @override
+  String get contactsSettings_autoAddSensorsSubtitle =>
+      'Tillåt kompanjonen att automatiskt lägga till upptäckta sensorer.';
+
+  @override
+  String get contactsSettings_overwriteOldestTitle => 'Skriv över äldst';
+
+  @override
+  String get contactsSettings_overwriteOldestSubtitle =>
+      'När kontaktlistan är full ersätts den äldsta icke-favoriterade kontakten.';
+
+  @override
+  String get discoveredContacts_Title => 'Upptäckta kontakter';
+
+  @override
+  String get discoveredContacts_noMatching => 'Inga matchande kontakter';
+
+  @override
+  String get discoveredContacts_searchHint => 'Sök uppfunna kontakter';
+
+  @override
+  String get discoveredContacts_contactAdded => 'Kontakt tillagd';
+
+  @override
+  String get discoveredContacts_addContact => 'Lägg till kontakt';
+
+  @override
+  String get discoveredContacts_copyContact => 'Kopiera kontakt till urklipp';
+
+  @override
+  String get discoveredContacts_deleteContact => 'Ta bort kontakt';
+
+  @override
+  String get discoveredContacts_deleteContactAll =>
+      'Ta bort alla upptäckta kontakter';
+
+  @override
+  String get discoveredContacts_deleteContactAllContent =>
+      'Är du säker på att du vill ta bort alla upptäckta kontakter?';
 }

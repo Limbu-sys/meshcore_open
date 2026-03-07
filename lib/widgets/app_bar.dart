@@ -9,7 +9,16 @@ class AppBarTitle extends StatelessWidget {
   final String title;
   final Widget? leading;
   final Widget? trailing;
-  const AppBarTitle(this.title, {this.leading, this.trailing, super.key});
+  final bool indicators;
+  final bool subtitle;
+  const AppBarTitle(
+    this.title, {
+    this.leading,
+    this.trailing,
+    this.indicators = true,
+    this.subtitle = true,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +30,12 @@ class AppBarTitle extends StatelessWidget {
         final availableWidth = constraints.hasBoundedWidth
             ? constraints.maxWidth
             : MediaQuery.sizeOf(context).width;
-        final compact = availableWidth < 240;
+        final compact = availableWidth < 170;
         final showSubtitle =
-            !compact && connector.isConnected && selfName != null;
+            !compact && connector.isConnected && selfName != null && subtitle;
         final showBattery = availableWidth >= 60;
         final showSnr = availableWidth >= 110;
-        final showIndicators = showBattery || showSnr;
+        final showIndicators = (showBattery || showSnr) && indicators;
 
         return Row(
           mainAxisAlignment: MainAxisAlignment.start,

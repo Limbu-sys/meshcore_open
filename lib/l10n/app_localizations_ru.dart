@@ -39,6 +39,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get common_delete => 'Удалить';
 
   @override
+  String get common_deleteAll => 'Удалить все';
+
+  @override
   String get common_close => 'Закрыть';
 
   @override
@@ -238,6 +241,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get settings_longitude => 'Долгота';
+
+  @override
+  String get settings_contactSettings => 'Настройки контактов';
+
+  @override
+  String get settings_contactSettingsSubtitle =>
+      'Настройки добавления контактов';
 
   @override
   String get settings_privacyMode => 'Режим конфиденциальности';
@@ -1431,6 +1441,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get map_showSharedMarkers => 'Показывать общие метки';
+
+  @override
+  String get map_showGuessedLocations =>
+      'Отобразить предполагаемые места расположения узлов';
+
+  @override
+  String get map_guessedLocation => 'Угаданное место';
 
   @override
   String get map_lastSeenTime => 'Время последнего появления';
@@ -3130,4 +3147,84 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get snrIndicator_lastSeen => 'Последний раз видели';
+
+  @override
+  String get contactsSettings_title => 'Настройки контактов';
+
+  @override
+  String get contactsSettings_autoAddTitle => 'Автоматическое обнаружение';
+
+  @override
+  String get contactsSettings_otherTitle =>
+      'Другие настройки, связанные с контактами';
+
+  @override
+  String get contactsSettings_autoAddUsersTitle =>
+      'Автоматически добавлять пользователей';
+
+  @override
+  String get contactsSettings_autoAddUsersSubtitle =>
+      'Разрешить компаньону автоматически добавлять обнаруженных пользователей';
+
+  @override
+  String get contactsSettings_autoAddRepeatersTitle =>
+      'Автоматически добавлять ретрансляторы';
+
+  @override
+  String get contactsSettings_autoAddRepeatersSubtitle =>
+      'Разрешить спутнику автоматически добавлять обнаруженные ретрансляторы';
+
+  @override
+  String get contactsSettings_autoAddRoomServersTitle =>
+      'Автоматически добавлять серверы комнат';
+
+  @override
+  String get contactsSettings_autoAddRoomServersSubtitle =>
+      'Разрешить компаньону автоматически добавлять обнаруженные сервера комнат.';
+
+  @override
+  String get contactsSettings_autoAddSensorsTitle =>
+      'Автоматически добавлять датчики';
+
+  @override
+  String get contactsSettings_autoAddSensorsSubtitle =>
+      'Разрешить компаньону автоматически добавлять обнаруженные датчики';
+
+  @override
+  String get contactsSettings_overwriteOldestTitle =>
+      'Перезаписать самое старое';
+
+  @override
+  String get contactsSettings_overwriteOldestSubtitle =>
+      'Когда список контактов заполнен, будет заменен самый старый контакт, который не находится в избранном.';
+
+  @override
+  String get discoveredContacts_Title => 'Обнаруженные контакты';
+
+  @override
+  String get discoveredContacts_noMatching => 'Нет совпадающих контактов';
+
+  @override
+  String get discoveredContacts_searchHint => 'Найденные контакты поиска';
+
+  @override
+  String get discoveredContacts_contactAdded => 'Контакт добавлен';
+
+  @override
+  String get discoveredContacts_addContact => 'Добавить контакт';
+
+  @override
+  String get discoveredContacts_copyContact =>
+      'Копировать контакт в буфер обмена';
+
+  @override
+  String get discoveredContacts_deleteContact => 'Удалить контакт';
+
+  @override
+  String get discoveredContacts_deleteContactAll =>
+      'Удалить Все Обнаруженные Контакты';
+
+  @override
+  String get discoveredContacts_deleteContactAllContent =>
+      'Вы уверены, что хотите удалить все обнаруженные контакты?';
 }

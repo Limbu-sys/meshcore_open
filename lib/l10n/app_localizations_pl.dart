@@ -39,6 +39,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get common_delete => 'Usuń';
 
   @override
+  String get common_deleteAll => 'Usuń wszystko';
+
+  @override
   String get common_close => 'Zamknąć';
 
   @override
@@ -241,6 +244,13 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get settings_longitude => 'Długość';
+
+  @override
+  String get settings_contactSettings => 'Ustawienia kontaktowe';
+
+  @override
+  String get settings_contactSettingsSubtitle =>
+      'Ustawienia dotyczące sposobu dodawania kontaktów';
 
   @override
   String get settings_privacyMode => 'Tryb Prywatny';
@@ -1429,6 +1439,13 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get map_showSharedMarkers => 'Pokaż współdzielone znaki.';
+
+  @override
+  String get map_showGuessedLocations =>
+      'Wyświetl lokalizacje zgadanych węzłów';
+
+  @override
+  String get map_guessedLocation => 'Wydana lokalizacja';
 
   @override
   String get map_lastSeenTime => 'Ostatni raz widiany';
@@ -3123,4 +3140,82 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get snrIndicator_lastSeen => 'Ostatnio widziany';
+
+  @override
+  String get contactsSettings_title => 'Ustawienia kontaktów';
+
+  @override
+  String get contactsSettings_autoAddTitle => 'Automatyczne odnajdywanie';
+
+  @override
+  String get contactsSettings_otherTitle =>
+      'Inne ustawienia związane z kontaktami';
+
+  @override
+  String get contactsSettings_autoAddUsersTitle =>
+      'Automatycznie dodaj użytkowników';
+
+  @override
+  String get contactsSettings_autoAddUsersSubtitle =>
+      'Pozwól towarzyszowi automatycznie dodawać znalezione użytkowników.';
+
+  @override
+  String get contactsSettings_autoAddRepeatersTitle =>
+      'Automatyczne dodawanie powtarzalników';
+
+  @override
+  String get contactsSettings_autoAddRepeatersSubtitle =>
+      'Zezwól na automatyczne dodawanie odkrytych repeaterów przez towarzysza.';
+
+  @override
+  String get contactsSettings_autoAddRoomServersTitle =>
+      'Automatycznie dodaj serwery pokojowe';
+
+  @override
+  String get contactsSettings_autoAddRoomServersSubtitle =>
+      'Zezwól towarzyszowi na automatyczne dodawanie znalezionych serwerów pokojowych.';
+
+  @override
+  String get contactsSettings_autoAddSensorsTitle =>
+      'Automatycznie dodaj czujniki';
+
+  @override
+  String get contactsSettings_autoAddSensorsSubtitle =>
+      'Zezwól towarzyszowi na automatyczne dodawanie wykrytych czujników.';
+
+  @override
+  String get contactsSettings_overwriteOldestTitle => 'Nadpisz najstarszy';
+
+  @override
+  String get contactsSettings_overwriteOldestSubtitle =>
+      'Gdy lista kontaktów jest pełna, najstarszy nieulubiony kontakt zostanie zastąpiony.';
+
+  @override
+  String get discoveredContacts_Title => 'Odkryte Kontakty';
+
+  @override
+  String get discoveredContacts_noMatching => 'Brak pasujących kontaktów';
+
+  @override
+  String get discoveredContacts_searchHint => 'Wyszukaj odkryte kontakty';
+
+  @override
+  String get discoveredContacts_contactAdded => 'Kontakt dodany';
+
+  @override
+  String get discoveredContacts_addContact => 'Dodaj kontakt';
+
+  @override
+  String get discoveredContacts_copyContact => 'Kopiuj kontakt do schowka';
+
+  @override
+  String get discoveredContacts_deleteContact => 'Usuń kontakt';
+
+  @override
+  String get discoveredContacts_deleteContactAll =>
+      'Usuń wszystkie odkryte kontakty';
+
+  @override
+  String get discoveredContacts_deleteContactAllContent =>
+      'Czy na pewno chcesz usunąć wszystkie znalezione kontakty?';
 }

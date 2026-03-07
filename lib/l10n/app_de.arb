@@ -296,8 +296,8 @@
   "contacts_filterContacts": "Filtert Kontakte...",
   "contacts_noContactsMatchFilter": "Keine Kontakte passen zu Ihrem Filter",
   "contacts_noMembers": "Keine Mitglieder",
-  "contacts_lastSeenNow": "gerade gesehen",
-  "contacts_lastSeenMinsAgo": "Letzte Sichtung vor {minutes} Minuten.",
+  "contacts_lastSeenNow": "kürzlich",
+  "contacts_lastSeenMinsAgo": "~ {minutes} Min.",
   "@contacts_lastSeenMinsAgo": {
     "placeholders": {
       "minutes": {
@@ -305,8 +305,8 @@
       }
     }
   },
-  "contacts_lastSeenHourAgo": "Letzte Sichtung vor 1 Stunde.",
-  "contacts_lastSeenHoursAgo": "Letzte Sichtung vor {hours} Stunden.",
+  "contacts_lastSeenHourAgo": "~ 1 Std.",
+  "contacts_lastSeenHoursAgo": "~ {hours} Std.",
   "@contacts_lastSeenHoursAgo": {
     "placeholders": {
       "hours": {
@@ -314,8 +314,8 @@
       }
     }
   },
-  "contacts_lastSeenDayAgo": "Letzte Sichtung vor 1 Tag",
-  "contacts_lastSeenDaysAgo": "Letzte Sichtung {days} Tage zuvor",
+  "contacts_lastSeenDayAgo": "~ 1 Tag",
+  "contacts_lastSeenDaysAgo": "~ {days} Tage",
   "@contacts_lastSeenDaysAgo": {
     "placeholders": {
       "days": {
@@ -1829,5 +1829,32 @@
   "contacts_searchRepeaters": "Suche {number}{str} Repeater...",
   "contacts_searchFavorites": "Suche {number}{str} Favoriten...",
   "contacts_searchUsers": "Suche {number}{str} Benutzer...",
-  "contacts_searchRoomServers": "Suche {number}{str} Raumserver..."
+  "contacts_searchRoomServers": "Suche {number}{str} Raumserver...",
+  "settings_contactSettings": "Kontakteinstellungen",
+  "contactsSettings_otherTitle": "Weitere Einstellungen zu Kontakten",
+  "contactsSettings_title": "Kontakteinstellungen",
+  "contactsSettings_autoAddTitle": "Automatische Erkennung",
+  "contactsSettings_autoAddUsersTitle": "Automatische Hinzufügung von Benutzern",
+  "settings_contactSettingsSubtitle": "Einstellungen für das Hinzufügen von Kontakten",
+  "contactsSettings_autoAddSensorsTitle": "Automatisch Sensoren hinzufügen",
+  "contactsSettings_autoAddUsersSubtitle": "Ermöglichen Sie dem Begleiter, automatisch entdeckte Benutzer hinzuzufügen",
+  "contactsSettings_autoAddRoomServersTitle": "Automatisch Raumservers hinzufügen",
+  "contactsSettings_autoAddRoomServersSubtitle": "Ermöglichen Sie dem Begleiter, entdeckte Raumserver automatisch hinzuzufügen",
+  "contactsSettings_autoAddRepeatersTitle": "Automatisch Repeater hinzufügen",
+  "contactsSettings_autoAddRepeatersSubtitle": "Ermöglichen Sie dem Begleiter, automatisch entdeckte Repeater hinzuzufügen.",
+  "discoveredContacts_noMatching": "Keine passenden Kontakte",
+  "discoveredContacts_searchHint": "Entdeckte Kontakte suchen",
+  "discoveredContacts_addContact": "Kontakt hinzufügen",
+  "discoveredContacts_contactAdded": "Kontakt hinzugefügt",
+  "discoveredContacts_deleteContact": "Kontakt löschen",
+  "discoveredContacts_Title": "Entdeckte Kontakte",
+  "discoveredContacts_copyContact": "Kontakt in die Zwischenablage kopieren",
+  "contactsSettings_overwriteOldestTitle": "Überschreiben des Ältesten",
+  "contactsSettings_autoAddSensorsSubtitle": "Ermöglichen Sie dem Begleiter, automatisch entdeckte Sensoren hinzuzufügen",
+  "contactsSettings_overwriteOldestSubtitle": "Wenn die Kontaktliste voll ist, wird der älteste nicht favorisierte Kontakt ersetzt.",
+  "common_deleteAll": "Alles löschen",
+  "discoveredContacts_deleteContactAllContent": "Sind Sie sicher, dass Sie alle gefundenen Kontakte löschen möchten?",
+  "discoveredContacts_deleteContactAll": "Alle entdeckten Kontakte löschen",
+  "map_showGuessedLocations": "Zeige die vermuteten Knotenpositionen",
+  "map_guessedLocation": "Geschätzter Ort"
 }

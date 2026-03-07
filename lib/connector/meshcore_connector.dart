@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:crypto/crypto.dart' as crypto;
+import 'package:meshcore_open/models/discovery_contact.dart';
 import 'package:pointycastle/export.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
@@ -24,6 +25,7 @@ import '../storage/channel_message_store.dart';
 import '../storage/channel_order_store.dart';
 import '../storage/channel_settings_store.dart';
 import '../storage/channel_store.dart';
+import '../storage/contact_discovery_store.dart';
 import '../storage/contact_settings_store.dart';
 import '../storage/contact_store.dart';
 import '../storage/message_store.dart';
@@ -111,6 +113,7 @@ class MeshCoreConnector extends ChangeNotifier {
 
   final List<ScanResult> _scanResults = [];
   final List<Contact> _contacts = [];
+  final List<DiscoveryContact> _discoveredContacts = [];
   final List<Channel> _channels = [];
   final Map<String, List<Message>> _conversations = {};
   final Map<int, List<ChannelMessage>> _channelMessages = {};
@@ -127,10 +130,13 @@ class MeshCoreConnector extends ChangeNotifier {
   StreamSubscription<List<ScanResult>>? _scanSubscription;
   StreamSubscription<BluetoothConnectionState>? _connectionSubscription;
   StreamSubscription<List<int>>? _notifySubscription;
+  Timer? _notifyListenersTimer;
   Timer? _selfInfoRetryTimer;
   Timer? _reconnectTimer;
   Timer? _batteryPollTimer;
   int _reconnectAttempts = 0;
+  bool _notifyListenersDirty = false;
+  static const Duration _notifyListenersDebounce = Duration(milliseconds: 50);
 
   final StreamController<Uint8List> _receivedFramesController =
       StreamController<Uint8List>.broadcast();
@@ -155,6 +161,18 @@ class MeshCoreConnector extends ChangeNotifier {
   bool _batteryRequested = false;
   bool _awaitingSelfInfo = false;
   bool _preserveContactsOnRefresh = false;
+  bool _autoAddUsers = false;
+  bool _autoAddRepeaters = false;
+  bool _autoAddRoomServers = false;
+  bool _autoAddSensors = false;
+  bool _overwriteOldest = false;
+  bool _manualAddContacts = false;
+  int _telemetryModeBase = 0;
+  int _telemetryModeLoc = 0;
+  int _telemetryModeEnv = 0;
+  int _advertLocPolicy = 0;
+  int _multiAcks = 0;
+
   static const int _defaultMaxContacts = 32;
   static const int _defaultMaxChannels = 8;
   int _maxContacts = _defaultMaxContacts;
@@ -195,6 +213,7 @@ class MeshCoreConnector extends ChangeNotifier {
   final ChannelSettingsStore _channelSettingsStore = ChannelSettingsStore();
   final ContactSettingsStore _contactSettingsStore = ContactSettingsStore();
   final ContactStore _contactStore = ContactStore();
+  final ContactDiscoveryStore _discoveryContactStore = ContactDiscoveryStore();
   final ChannelStore _channelStore = ChannelStore();
   final UnreadStore _unreadStore = UnreadStore();
   List<Channel> _cachedChannels = [];
@@ -242,6 +261,10 @@ class MeshCoreConnector extends ChangeNotifier {
     );
   }
 
+  List<DiscoveryContact> get discoveredContacts {
+    return List.unmodifiable(_discoveredContacts);
+  }
+
   List<Channel> get channels => List.unmodifiable(_channels);
   bool get isConnected => _state == MeshCoreConnectionState.connected;
   bool get isLoadingContacts => _isLoadingContacts;
@@ -258,12 +281,18 @@ class MeshCoreConnector extends ChangeNotifier {
   int? get currentBwHz => _currentBwHz;
   int? get currentSf => _currentSf;
   int? get currentCr => _currentCr;
+  bool? get autoAddUsers => _autoAddUsers;
+  bool? get autoAddRepeaters => _autoAddRepeaters;
+  bool? get autoAddRoomServers => _autoAddRoomServers;
+  bool? get autoAddSensors => _autoAddSensors;
+  bool? get autoAddOverwriteOldest => _overwriteOldest;
   bool? get clientRepeat => _clientRepeat;
   int? get firmwareVerCode => _firmwareVerCode;
   Map<String, String>? get currentCustomVars => _currentCustomVars;
   int? get batteryMillivolts => _batteryMillivolts;
   int get maxContacts => _maxContacts;
   int get maxChannels => _maxChannels;
+  Set<String> get knownContactKeys => Set.unmodifiable(_knownContactKeys);
   bool get isSyncingQueuedMessages => _isSyncingQueuedMessages;
   bool get isSyncingChannels => _isSyncingChannels;
   int get channelSyncProgress =>
@@ -602,6 +631,13 @@ class MeshCoreConnector extends ChangeNotifier {
     }
   }
 
+  Future<void> loadDiscoveredContactCache() async {
+    final cached = await _discoveryContactStore.loadContacts();
+    _discoveredContacts
+      ..clear()
+      ..addAll(cached);
+  }
+
   Future<void> loadChannelSettings({int? maxChannels}) async {
     _channelSmazEnabled.clear();
     final channelCount = maxChannels ?? _maxChannels;
@@ -848,6 +884,9 @@ class MeshCoreConnector extends ChangeNotifier {
 
       // Fetch channels so we can track unread counts for incoming messages
       unawaited(getChannels());
+
+      // Load discovered contacts from storage
+      unawaited(loadDiscoveredContactCache());
     } catch (e) {
       debugPrint("Connection error: $e");
       await disconnect(manual: false);
@@ -968,6 +1007,7 @@ class MeshCoreConnector extends ChangeNotifier {
     _deviceDisplayName = null;
     _deviceId = null;
     _contacts.clear();
+    _discoveredContacts.clear();
     _conversations.clear();
     _loadedConversationKeys.clear();
     _selfPublicKey = null;
@@ -1058,8 +1098,9 @@ class MeshCoreConnector extends ChangeNotifier {
     await sendFrame(buildDeviceQueryFrame());
     await sendFrame(buildAppStartFrame());
     await requestBatteryStatus(force: true);
-    await sendFrame(buildGetRadioSettingsFrame());
     await sendFrame(buildGetCustomVarsFrame());
+    await sendFrame(buildGetAutoAddFlagsFrame());
+
     _scheduleSelfInfoRetry();
   }
 
@@ -1070,7 +1111,7 @@ class MeshCoreConnector extends ChangeNotifier {
     await sendFrame(buildAppStartFrame());
     await sendFrame(buildGetCustomVarsFrame());
     await requestBatteryStatus();
-
+    await sendFrame(buildGetAutoAddFlagsFrame());
     _scheduleSelfInfoRetry();
   }
 
@@ -1485,6 +1526,8 @@ class MeshCoreConnector extends ChangeNotifier {
   Future<void> removeContact(Contact contact) async {
     if (!isConnected) return;
 
+    _handleDiscovery(contact, Uint8List(0), noNotify: true);
+
     await sendFrame(buildRemoveContactFrame(contact.publicKey));
     _contacts.removeWhere((c) => c.publicKeyHex == contact.publicKeyHex);
     _knownContactKeys.remove(contact.publicKeyHex);
@@ -1496,6 +1539,42 @@ class MeshCoreConnector extends ChangeNotifier {
       Map<String, int>.from(_contactUnreadCount),
     );
     _messageStore.clearMessages(contact.publicKeyHex);
+    notifyListeners();
+  }
+
+  Future<void> removeDiscoveredContact(DiscoveryContact contact) async {
+    if (!isConnected) return;
+    _discoveredContacts.removeWhere(
+      (c) => c.publicKeyHex == contact.publicKeyHex,
+    );
+    unawaited(_persistDiscoveredContacts());
+    notifyListeners();
+  }
+
+  Future<void> importDiscoveredContact(DiscoveryContact contact) async {
+    if (!isConnected) return;
+
+    await sendFrame(
+      buildUpdateContactPathFrame(
+        contact.publicKey,
+        contact.path,
+        contact.pathLength,
+        type: contact.type,
+        flags: 0,
+        name: contact.name,
+      ),
+    );
+
+    _handleContactAdvert(
+      Contact(
+        publicKey: contact.publicKey,
+        name: contact.name,
+        type: contact.type,
+        pathLength: contact.pathLength,
+        path: contact.path,
+        lastSeen: DateTime.now(),
+      ),
+    );
     notifyListeners();
   }
 
@@ -1899,8 +1978,9 @@ class MeshCoreConnector extends ChangeNotifier {
       case respCodeChannelInfo:
         _handleChannelInfo(frame);
         break;
-      case respCodeRadioSettings:
-        _handleRadioSettings(frame);
+      case respCodeAutoAddConfig:
+        _handleAutoAddConfig(frame);
+        _checkManualAddContacts();
         break;
       case respCodeBattAndStorage:
         _handleBatteryAndStorage(frame);
@@ -1973,25 +2053,35 @@ class MeshCoreConnector extends ChangeNotifier {
     // [56] = sf
     // [57] = cr
     // [58+] = node_name
-    if (frame.length < 4 + pubKeySize) return;
+    final reader = BufferReader(frame);
+    try {
+      reader.skipBytes(2);
+      _currentTxPower = reader.readByte();
+      _maxTxPower = reader.readByte();
+      _selfPublicKey = reader.readBytes(pubKeySize);
+      _selfLatitude = reader.readInt32LE() / 1000000.0;
+      _selfLongitude = reader.readInt32LE() / 1000000.0;
+      _multiAcks = reader.readByte();
+      _advertLocPolicy = reader.readByte();
 
-    _currentTxPower = frame[2];
-    _maxTxPower = frame[3];
-    _selfPublicKey = Uint8List.fromList(frame.sublist(4, 4 + pubKeySize));
-    _selfLatitude = readInt32LE(frame, 36) / 1000000.0;
-    _selfLongitude = readInt32LE(frame, 40) / 1000000.0;
+      final telemetryFlag = reader.readByte();
+      _telemetryModeBase = telemetryFlag & 0x03;
+      _telemetryModeEnv = telemetryFlag >> 2 & 0x03;
+      _telemetryModeLoc = telemetryFlag >> 4 & 0x03;
 
-    // Radio settings (if frame is long enough)
-    if (frame.length >= 58) {
-      _currentFreqHz = readUint32LE(frame, 48);
-      _currentBwHz = readUint32LE(frame, 52);
-      _currentSf = frame[56];
-      _currentCr = frame[57];
-    }
+      _manualAddContacts = reader.readByte() & 0x01 == 0x00;
 
-    // Node name starts at offset 58 if frame is long enough
-    if (frame.length > 58) {
-      _selfName = readCString(frame, 58, frame.length - 58);
+      _currentFreqHz = reader.readUInt32LE();
+      _currentBwHz = reader.readUInt32LE();
+      _currentSf = reader.readByte();
+      _currentCr = reader.readByte();
+
+      _selfName = reader.readString();
+    } catch (e) {
+      _appDebugLogService?.error(
+        'Error parsing SELF_INFO frame: $e',
+        tag: 'Connector',
+      );
     }
     _awaitingSelfInfo = false;
     _selfInfoRetryTimer?.cancel();
@@ -2052,25 +2142,6 @@ class MeshCoreConnector extends ChangeNotifier {
     unawaited(_requestNextQueuedMessage());
   }
 
-  void _handleRadioSettings(Uint8List frame) {
-    // Frame format from C++:
-    // [0] = RESP_CODE_RADIO_SETTINGS
-    // [1-4] = freq (uint32 LE, in Hz)
-    // [5-8] = bw (uint32 LE, in Hz)
-    // [9] = sf
-    // [10] = cr
-    if (frame.length >= 11) {
-      _currentFreqHz = readUint32LE(frame, 1);
-      _currentBwHz = readUint32LE(frame, 5);
-      _currentSf = frame[9];
-      _currentCr = frame[10];
-      debugPrint(
-        'Radio settings: freq=$_currentFreqHz bw=$_currentBwHz sf=$_currentSf cr=$_currentCr',
-      );
-      notifyListeners();
-    }
-  }
-
   void _handleBatteryAndStorage(Uint8List frame) {
     // Frame format from C++:
     // [0] = RESP_CODE_BATT_AND_STORAGE
@@ -2085,6 +2156,32 @@ class MeshCoreConnector extends ChangeNotifier {
         tag: 'Battery',
       );
       notifyListeners();
+    }
+  }
+
+  void _checkManualAddContacts() async {
+    // If manual add contacts is enabled, set auto add config and other params.
+    // and disable it after
+    if (_manualAddContacts) {
+      await sendFrame(
+        buildSetAutoAddConfigFrame(
+          autoAddChat: true,
+          autoAddRepeater: true,
+          autoAddRoomServer: true,
+          autoAddSensor: true,
+          overwriteOldest: _overwriteOldest,
+        ),
+      );
+      await sendFrame(
+        buildSetOtherParamsFrame(
+          (_telemetryModeEnv << 4) |
+              (_telemetryModeLoc << 2) |
+              (_telemetryModeBase),
+          _advertLocPolicy,
+          _multiAcks,
+        ),
+      );
+      _manualAddContacts = false;
     }
   }
 
@@ -2269,6 +2366,10 @@ class MeshCoreConnector extends ChangeNotifier {
 
   Future<void> _persistContacts() async {
     await _contactStore.saveContacts(_contacts);
+  }
+
+  Future<void> _persistDiscoveredContacts() async {
+    await _discoveryContactStore.saveContacts(_discoveredContacts);
   }
 
   int _latestContactLastmod() {
@@ -2459,70 +2560,93 @@ class MeshCoreConnector extends ChangeNotifier {
   }
 
   Message? _parseContactMessage(Uint8List frame) {
-    if (frame.isEmpty) return null;
-    final code = frame[0];
-    if (code != respCodeContactMsgRecv && code != respCodeContactMsgRecvV3) {
+    if (frame.isEmpty) {
+      appLogger.warn('Received empty frame, ignoring');
       return null;
     }
+    final reader = BufferReader(frame);
 
-    // Companion radio layout:
-    // [code][snr?][res?][res?][prefix x6][path_len][txt_type][timestamp x4][extra?][text...]
-    final prefixOffset = code == respCodeContactMsgRecvV3 ? 4 : 1;
-    const prefixLen = 6;
-    final pathLenOffset = prefixOffset + prefixLen;
-    final txtTypeOffset = pathLenOffset + 1;
-    final timestampOffset = txtTypeOffset + 1;
-    final baseTextOffset = timestampOffset + 4;
+    try {
+      final code = reader.readByte();
+      if (code != respCodeContactMsgRecv && code != respCodeContactMsgRecvV3) {
+        appLogger.warn(
+          'Unexpected message code: $code, expected contact message receive codes',
+        );
+        return null;
+      }
 
-    if (frame.length <= baseTextOffset) return null;
-    final fourBytePubMSG = frame.sublist(baseTextOffset, baseTextOffset + 4);
-    final senderPrefix = frame.sublist(prefixOffset, prefixOffset + prefixLen);
-    final flags = frame[txtTypeOffset];
-    final shiftedType = flags >> 2;
-    final rawType = flags;
-    final isPlain = shiftedType == txtTypePlain || rawType == txtTypePlain;
-    final isCli = shiftedType == txtTypeCliData || rawType == txtTypeCliData;
-    if (!isPlain && !isCli) {
-      return null;
-    }
+      // Companion radio layout:
+      // [code][snr?][res?][res?][prefix x6][path_len][txt_type][timestamp x4][extra?][text...]
+      // double snr = 0;
+      if (code == respCodeContactMsgRecvV3) {
+        // Older firmware layout with SNR as a signed byte after the code
+        // snr = reader.readInt8().toDouble() * 4; // SNR in dB, scaled by 4
+        reader.skipBytes(1); // Skip SNR byte
+        reader.skipBytes(2); // Skip reserved bytes
+      }
 
-    // Try base text offset; if empty and there is room for the optional 4-byte extra
-    // (used by signed/plain variants), try again skipping those bytes.
-    var text = readCString(
-      frame,
-      baseTextOffset,
-      frame.length - baseTextOffset,
-    );
-    if (text.isEmpty && frame.length > baseTextOffset + 4) {
-      text = readCString(
-        frame,
-        baseTextOffset + 4,
-        frame.length - (baseTextOffset + 4),
+      final senderPrefix = reader.readBytes(6);
+      final pathLength = reader.readByte();
+      final txtType = reader.readByte();
+      final timestampRaw = reader.readUInt32LE();
+      final timestamp = DateTime.fromMillisecondsSinceEpoch(
+        timestampRaw * 1000,
       );
+
+      if (txtType == 2) {
+        reader.skipBytes(4); // Skip extra 4 bytes for signed/plain variants
+      }
+
+      final msgText = reader.readString();
+
+      final flags = txtType;
+      final shiftedType = flags >> 2;
+      final rawType = flags;
+      final isPlain = shiftedType == txtTypePlain || rawType == txtTypePlain;
+      final isCli = shiftedType == txtTypeCliData || rawType == txtTypeCliData;
+      if (!isPlain && !isCli) {
+        appLogger.warn(
+          'Unknown message type received: txtType=$txtType, shifted=$shiftedType, raw=$rawType',
+        );
+        return null;
+      }
+
+      if (msgText.isEmpty) {
+        appLogger.warn('Received message with empty text, ignoring');
+        return null;
+      }
+      final decodedText = isCli
+          ? msgText
+          : (Smaz.tryDecodePrefixed(msgText) ?? msgText);
+
+      final contact = _contacts.cast<Contact?>().firstWhere(
+        (c) => c != null && _matchesPrefix(c.publicKey, senderPrefix),
+        orElse: () => null,
+      );
+      if (contact == null) {
+        appLogger.warn(
+          'Received message from unknown contact with prefix: ${senderPrefix.map((b) => b.toRadixString(16).padLeft(2, '0').toUpperCase()).join('')}',
+        );
+        return null;
+      }
+
+      return Message(
+        senderKey: contact.publicKey,
+        text: decodedText,
+        timestamp: timestamp,
+        isOutgoing: false,
+        isCli: isCli,
+        status: MessageStatus.delivered,
+        pathLength: pathLength == 0xFF ? 0 : pathLength,
+        pathBytes: Uint8List(0),
+        fourByteRoomContactKey: msgText.length >= 4
+            ? Uint8List.fromList(msgText.substring(0, 4).codeUnits)
+            : null,
+      );
+    } catch (e) {
+      appLogger.warn('Error parsing contact direct message: $e');
+      return null;
     }
-    if (text.isEmpty) return null;
-    final decodedText = isCli ? text : (Smaz.tryDecodePrefixed(text) ?? text);
-
-    final timestampRaw = readUint32LE(frame, timestampOffset);
-    final pathLenByte = frame[pathLenOffset];
-
-    final contact = _contacts.cast<Contact?>().firstWhere(
-      (c) => c != null && _matchesPrefix(c.publicKey, senderPrefix),
-      orElse: () => null,
-    );
-    if (contact == null) return null;
-
-    return Message(
-      senderKey: contact.publicKey,
-      text: decodedText,
-      timestamp: DateTime.fromMillisecondsSinceEpoch(timestampRaw * 1000),
-      isOutgoing: false,
-      isCli: isCli,
-      status: MessageStatus.delivered,
-      pathLength: pathLenByte == 0xFF ? 0 : pathLenByte,
-      pathBytes: Uint8List(0),
-      fourByteRoomContactKey: fourBytePubMSG,
-    );
   }
 
   bool _matchesPrefix(Uint8List fullKey, Uint8List prefix) {
@@ -3644,11 +3768,46 @@ class MeshCoreConnector extends ChangeNotifier {
     }
   }
 
+  void markNotifyDirty() {
+    if (_notifyListenersDirty && _notifyListenersTimer != null) {
+      return;
+    }
+
+    _notifyListenersDirty = true;
+    _notifyListenersTimer ??= Timer(
+      _notifyListenersDebounce,
+      _flushBatchedNotify,
+    );
+  }
+
+  void _flushBatchedNotify() {
+    _notifyListenersTimer = null;
+    if (!_notifyListenersDirty) {
+      return;
+    }
+
+    _notifyListenersDirty = false;
+    super.notifyListeners();
+
+    if (_notifyListenersDirty && _notifyListenersTimer == null) {
+      _notifyListenersTimer = Timer(
+        _notifyListenersDebounce,
+        _flushBatchedNotify,
+      );
+    }
+  }
+
+  @override
+  void notifyListeners() {
+    markNotifyDirty();
+  }
+
   @override
   void dispose() {
     _scanSubscription?.cancel();
     _connectionSubscription?.cancel();
     _notifySubscription?.cancel();
+    _notifyListenersTimer?.cancel();
     _reconnectTimer?.cancel();
     _batteryPollTimer?.cancel();
     _receivedFramesController.close();
@@ -3661,43 +3820,125 @@ class MeshCoreConnector extends ChangeNotifier {
 
   void _handleRxData(Uint8List frame) {
     final packet = BufferReader(frame);
-    double snr = 0.0;
-    int routeType = 0;
-    int payloadType = 0;
-    Uint8List pathBytes = Uint8List(0);
-    Uint8List payload = Uint8List(0);
     try {
       packet.skipBytes(1); // Skip frame type byte
-      snr = packet.readInt8() / 4.0;
+      final snr = packet.readInt8() / 4.0;
       packet.skipBytes(1); // Skip RSSI byte
       //final rssi = packet.readByte();
       final header = packet.readByte();
-      routeType = header & 0x03;
-      payloadType = (header >> 2) & 0x0F;
+      final routeType = header & 0x03;
+      final payloadType = (header >> 2) & 0x0F;
+      if (routeType == _routeTransportFlood ||
+          routeType == _routeTransportDirect) {
+        packet.skipBytes(4); // Skip transport-specific bytes
+      }
       //final payloadVer = (header >> 6) & 0x03;
       final pathLen = packet.readByte();
-      pathBytes = packet.readBytes(pathLen);
-      payload = packet.readBytes(packet.remaining);
+      final pathBytes = packet.readBytes(pathLen);
+      final payload = packet.readBytes(packet.remaining);
+
+      final rawPacket = frame.sublist(3);
+      switch (payloadType) {
+        case payloadTypeADVERT:
+          _handlePayloadAdvertReceived(
+            rawPacket,
+            payload,
+            pathBytes,
+            routeType,
+            snr,
+          );
+          break;
+        default:
+      }
     } catch (e) {
       appLogger.warn('Malformed RX frame: $e', tag: 'Connector');
       return;
     }
+  }
 
-    switch (payloadType) {
-      case payloadTypeADVERT:
-        _handlePayloadAdvertReceived(payload, pathBytes, routeType, snr);
-        break;
-      default:
+  void importContact(Uint8List frame) {
+    final packet = BufferReader(frame);
+    int payloadType = 0;
+    Uint8List pathBytes = Uint8List(0);
+    try {
+      packet.skipBytes(1); // Skip frame type byte
+      packet.skipBytes(1); // Skip SNR byte
+      packet.skipBytes(1); // Skip RSSI byte
+      final header = packet.readByte();
+      final routeType = header & 0x03;
+      payloadType = (header >> 2) & 0x0F;
+      if (routeType == _routeTransportFlood ||
+          routeType == _routeTransportDirect) {
+        packet.skipBytes(4); // Skip transport-specific bytes
+      }
+      //final payloadVer = (header >> 6) & 0x03;
+      final pathLen = packet.readByte();
+      pathBytes = packet.readBytes(pathLen);
+    } catch (e) {
+      appLogger.warn('Malformed RX frame: $e', tag: 'Connector');
+      return;
     }
+    double latitude = 0.0;
+    double longitude = 0.0;
+    String name = '';
+    Uint8List publicKey = Uint8List(0);
+    int type = 0;
+    int timestamp = 0;
+    bool hasLocation = false;
+    bool hasName = false;
+    if (payloadType != payloadTypeADVERT) {
+      appLogger.warn('Unexpected payload type: $payloadType', tag: 'Connector');
+      return;
+    }
+    try {
+      publicKey = packet.readBytes(32);
+      timestamp = packet.readInt32LE();
+      //TODO add signature verification
+      packet.skipBytes(64); // Skip signature for now
+      final flags = packet.readByte();
+      type = flags & 0x0F;
+      hasLocation = (flags & 0x10) != 0;
+      // For future use:
+      //final hasFeature1 = (flags & 0x20) != 0;
+      //final hasFeature2 = (flags & 0x40) != 0;
+      hasName = (flags & 0x80) != 0;
+      if (hasLocation && packet.remaining >= 8) {
+        latitude = packet.readInt32LE() / 1e6;
+        longitude = packet.readInt32LE() / 1e6;
+      }
+      if (hasName && packet.remaining > 0) {
+        name = packet.readString();
+      }
+    } catch (e) {
+      appLogger.warn('Malformed advert frame: $e', tag: 'Connector');
+      return;
+    }
+
+    importDiscoveredContact(
+      DiscoveryContact(
+        rawPacket: frame,
+        publicKey: publicKey,
+        name: name,
+        type: type,
+        pathLength: pathBytes.isEmpty ? -1 : pathBytes.length,
+        path: Uint8List.fromList(
+          pathBytes.reversed.toList(),
+        ), // Store path in reverse for easier use in outgoing messages
+        latitude: latitude,
+        longitude: longitude,
+        lastSeen: DateTime.fromMillisecondsSinceEpoch(timestamp * 1000),
+      ),
+    );
   }
 
   void _handlePayloadAdvertReceived(
-    Uint8List frame,
+    Uint8List rawPacket,
+    Uint8List payload,
     Uint8List path,
     int routeType,
     double snr,
   ) {
-    final advert = BufferReader(frame);
+    final advert = BufferReader(payload);
     double latitude = 0.0;
     double longitude = 0.0;
     String name = '';
@@ -3735,6 +3976,7 @@ class MeshCoreConnector extends ChangeNotifier {
       return;
     }
 
+    //We ignore our own adverts
     if (listEquals(publicKey, _selfPublicKey)) {
       return;
     }
@@ -3755,7 +3997,14 @@ class MeshCoreConnector extends ChangeNotifier {
         longitude: longitude,
         lastSeen: DateTime.fromMillisecondsSinceEpoch(timestamp * 1000),
       );
-      _handleContactAdvert(newContact);
+      if ((_autoAddUsers && type == advTypeChat) ||
+          (_autoAddRepeaters && type == advTypeRepeater) ||
+          (_autoAddRoomServers && type == advTypeRoom) ||
+          (_autoAddSensors && type == advTypeSensor)) {
+        _handleContactAdvert(newContact);
+      } else {
+        _handleDiscovery(newContact, rawPacket);
+      }
       _updateDirectRepeater(newContact, snr, path);
       return;
     }
@@ -3841,6 +4090,84 @@ class MeshCoreConnector extends ChangeNotifier {
         DirectRepeater(pubkeyFirstByte: pubkeyFirstByte, snr: snr),
       );
     }
+    notifyListeners();
+  }
+
+  void _handleAutoAddConfig(Uint8List frame) {
+    final reader = BufferReader(frame);
+    try {
+      reader.skipBytes(1); // Skip the response code byte
+      final flags = reader.readByte();
+      _autoAddUsers = flags & autoAddChatFlag != 0;
+      _autoAddRepeaters = flags & autoAddRepeaterFlag != 0;
+      _autoAddRoomServers = flags & autoAddRoomServerFlag != 0;
+      _autoAddSensors = flags & autoAddSensorFlag != 0;
+      _overwriteOldest = flags & autoAddOverwriteOldestFlag != 0;
+    } catch (e) {
+      appLogger.error('Failed to parse auto-add config: $e', tag: 'Connector');
+    }
+  }
+
+  void _handleDiscovery(
+    Contact contact,
+    Uint8List rawPacket, {
+    bool noNotify = false,
+  }) {
+    appLogger.info('Discovered new contact: ${contact.name}', tag: 'Connector');
+
+    final existingIndex = _discoveredContacts.indexWhere(
+      (c) => c.publicKeyHex == contact.publicKeyHex,
+    );
+
+    // Update existing contact
+    if (existingIndex >= 0) {
+      _discoveredContacts[existingIndex] = _discoveredContacts[existingIndex]
+          .copyWith(
+            rawPacket: rawPacket,
+            name: contact.name,
+            type: contact.type,
+            pathLength: contact.pathLength,
+            path: contact.path,
+            latitude: contact.latitude,
+            longitude: contact.longitude,
+            lastSeen: contact.lastSeen,
+          );
+      notifyListeners();
+      unawaited(_persistDiscoveredContacts());
+      return;
+    }
+
+    final disContact = DiscoveryContact(
+      rawPacket: rawPacket,
+      publicKey: contact.publicKey,
+      name: contact.name,
+      type: contact.type,
+      pathLength: contact.pathLength,
+      path: contact.path,
+      latitude: contact.latitude,
+      longitude: contact.longitude,
+      lastSeen: contact.lastSeen,
+    );
+    _discoveredContacts.add(disContact);
+
+    unawaited(_persistDiscoveredContacts());
+
+    // Show notification for new contact (advertisement)
+    if (_appSettingsService != null && !noNotify) {
+      final settings = _appSettingsService!.settings;
+      if (settings.notificationsEnabled && settings.notifyOnNewAdvert) {
+        _notificationService.showAdvertNotification(
+          contactName: contact.name,
+          contactType: contact.typeLabel,
+          contactId: contact.publicKeyHex,
+        );
+      }
+    }
+  }
+
+  void removeAllDiscoveredContacts() {
+    _discoveredContacts.clear();
+    unawaited(_persistDiscoveredContacts());
     notifyListeners();
   }
 }

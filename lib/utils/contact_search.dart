@@ -1,6 +1,22 @@
+import 'package:meshcore_open/models/discovery_contact.dart';
+
 import '../models/contact.dart';
 
 bool matchesContactQuery(Contact contact, String query) {
+  final normalizedQuery = query.trim().toLowerCase();
+  if (normalizedQuery.isEmpty) return true;
+
+  if (contact.name.toLowerCase().contains(normalizedQuery)) {
+    return true;
+  }
+
+  final hexPrefix = _extractHexPrefix(normalizedQuery);
+  if (hexPrefix == null) return false;
+
+  return contact.publicKeyHex.toLowerCase().startsWith(hexPrefix);
+}
+
+bool matchesDiscoveryContactQuery(DiscoveryContact contact, String query) {
   final normalizedQuery = query.trim().toLowerCase();
   if (normalizedQuery.isEmpty) return true;
 
