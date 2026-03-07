@@ -2761,6 +2761,9 @@ class AppLocalizationsSl extends AppLocalizations {
   String get listFilter_az => 'A-Z';
 
   @override
+  String get listFilter_usersFirst => 'Najprej uporabniki';
+
+  @override
   String get listFilter_filters => 'Filtri';
 
   @override

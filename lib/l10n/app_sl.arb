@@ -1352,6 +1352,7 @@
   "listFilter_users": "Uporabniki",
   "listFilter_repeaters": "Ponovitve",
   "listFilter_roomServers": "Smeti za prostore",
+  "listFilter_usersFirst": "Najprej uporabniki",
   "listFilter_unreadOnly": "Nezbrani samo",
   "listFilter_newGroup": "Nova skupina",
   "@neighbors_errorLoading": {

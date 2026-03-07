@@ -2,15 +2,20 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import '../l10n/l10n.dart';
+import 'unread_badge.dart';
 
 class QuickSwitchBar extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int> onDestinationSelected;
+  final int contactsUnreadCount;
+  final int channelsUnreadCount;
 
   const QuickSwitchBar({
     super.key,
     required this.selectedIndex,
     required this.onDestinationSelected,
+    this.contactsUnreadCount = 0,
+    this.channelsUnreadCount = 0,
   });
 
   @override
@@ -62,15 +67,30 @@ class QuickSwitchBar extends StatelessWidget {
                 onDestinationSelected: onDestinationSelected,
                 destinations: [
                   NavigationDestination(
-                    icon: const Icon(Icons.people_outline),
+                    icon: _buildIconWithBadge(
+                      const Icon(Icons.people_outline),
+                      contactsUnreadCount,
+                    ),
+                    selectedIcon: _buildIconWithBadge(
+                      const Icon(Icons.people),
+                      contactsUnreadCount,
+                    ),
                     label: context.l10n.nav_contacts,
                   ),
                   NavigationDestination(
-                    icon: const Icon(Icons.tag),
+                    icon: _buildIconWithBadge(
+                      const Icon(Icons.tag),
+                      channelsUnreadCount,
+                    ),
+                    selectedIcon: _buildIconWithBadge(
+                      const Icon(Icons.tag),
+                      channelsUnreadCount,
+                    ),
                     label: context.l10n.nav_channels,
                   ),
                   NavigationDestination(
                     icon: const Icon(Icons.map_outlined),
+                    selectedIcon: const Icon(Icons.map),
                     label: context.l10n.nav_map,
                   ),
                 ],
@@ -79,6 +99,22 @@ class QuickSwitchBar extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildIconWithBadge(Icon icon, int count) {
+    if (count <= 0) return icon;
+
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        icon,
+        Positioned(
+          right: -6,
+          top: -4,
+          child: UnreadBadge(count: count),
+        ),
+      ],
     );
   }
 }

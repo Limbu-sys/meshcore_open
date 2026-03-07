@@ -347,6 +347,8 @@ class _ChannelsScreenState extends State<ChannelsScreen>
             selectedIndex: 1,
             onDestinationSelected: (index) =>
                 _handleQuickSwitch(index, context),
+            contactsUnreadCount: connector.getTotalContactsUnreadCount(),
+            channelsUnreadCount: connector.getTotalChannelsUnreadCount(),
           ),
         ),
       ),

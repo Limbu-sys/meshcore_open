@@ -1616,6 +1616,7 @@
   "listFilter_latestMessages": "Latest messages",
   "listFilter_heardRecently": "Heard recently",
   "listFilter_az": "A-Z",
+  "listFilter_usersFirst": "Users first",
   "listFilter_filters": "Filters",
   "listFilter_all": "All",
   "listFilter_favorites": "Favorites",

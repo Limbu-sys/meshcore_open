@@ -225,6 +225,8 @@ class MeshCoreConnector extends ChangeNotifier {
   final Map<String, int> _contactUnreadCount = {};
   final Map<String, RepeaterBatterySnapshot> _repeaterBatterySnapshots = {};
   bool _unreadStateLoaded = false;
+  int _cachedContactsUnreadTotal = 0;
+  int _cachedChannelsUnreadTotal = 0;
   final Map<String, _RepeaterAckContext> _pendingRepeaterAcks = {};
   String? _activeContactKey;
   int? _activeChannelIndex;
@@ -426,16 +428,39 @@ class MeshCoreConnector extends ChangeNotifier {
 
   int getTotalUnreadCount() {
     if (!_unreadStateLoaded) return 0;
-    var total = 0;
-    // Count unread contact messages
-    for (final contact in _contacts) {
-      total += getUnreadCountForContact(contact);
-    }
-    // Count unread channel messages
-    for (final channelIndex in _channelMessages.keys) {
-      total += getUnreadCountForChannelIndex(channelIndex);
-    }
-    return total;
+    return getTotalContactsUnreadCount() + getTotalChannelsUnreadCount();
+  }
+
+  int getTotalContactsUnreadCount() {
+    if (!_unreadStateLoaded) return 0;
+    return _cachedContactsUnreadTotal;
+  }
+
+  int getTotalChannelsUnreadCount() {
+    if (!_unreadStateLoaded) return 0;
+    return _cachedChannelsUnreadTotal;
+  }
+
+  /// Recalculates both cached unread totals from scratch.
+  /// Called when unread state is first loaded.
+  void _recalculateCachedUnreadTotals() {
+    _recalculateCachedContactsUnreadTotal();
+    _recalculateCachedChannelsUnreadTotal();
+  }
+
+  void _recalculateCachedContactsUnreadTotal() {
+    int total = 0;
+    _contactUnreadCount.forEach((contactKeyHex, count) {
+      if (_shouldTrackUnreadForContactKey(contactKeyHex)) {
+        total += count;
+      }
+    });
+    _cachedContactsUnreadTotal = total;
+  }
+
+  void _recalculateCachedChannelsUnreadTotal() {
+    final allChannels = _channels.isNotEmpty ? _channels : _cachedChannels;
+    _cachedChannelsUnreadTotal = allChannels.fold(0, (total, ch) => total + ch.unreadCount);
   }
 
   bool isChannelSmazEnabled(int channelIndex) {
@@ -455,11 +480,13 @@ class MeshCoreConnector extends ChangeNotifier {
       ..clear()
       ..addAll(await _unreadStore.loadContactUnreadCount());
     _unreadStateLoaded = true;
+    _recalculateCachedUnreadTotals();
     notifyListeners();
   }
 
   Future<void> loadCachedChannels() async {
     _cachedChannels = await _channelStore.loadChannels();
+    _recalculateCachedChannelsUnreadTotal();
   }
 
   void setActiveContact(String? contactKeyHex) {
@@ -486,6 +513,7 @@ class MeshCoreConnector extends ChangeNotifier {
     final previousCount = _contactUnreadCount[contactKeyHex] ?? 0;
     if (previousCount > 0) {
       _contactUnreadCount[contactKeyHex] = 0;
+      _cachedContactsUnreadTotal = (_cachedContactsUnreadTotal - previousCount).clamp(0, _cachedContactsUnreadTotal);
       _appDebugLogService?.info(
         'Contact $contactKeyHex marked as read (was $previousCount unread)',
         tag: 'Unread',
@@ -502,6 +530,7 @@ class MeshCoreConnector extends ChangeNotifier {
     if (channel != null && channel.unreadCount > 0) {
       final previousCount = channel.unreadCount;
       channel.unreadCount = 0;
+      _cachedChannelsUnreadTotal = (_cachedChannelsUnreadTotal - previousCount).clamp(0, _cachedChannelsUnreadTotal);
       _appDebugLogService?.info(
         'Channel ${channel.name.isNotEmpty ? channel.name : channelIndex} marked as read (was $previousCount unread)',
         tag: 'Unread',
@@ -1869,6 +1898,7 @@ class MeshCoreConnector extends ChangeNotifier {
     if (completed) {
       _hasLoadedChannels = true;
       _previousChannelsCache.clear();
+      _recalculateCachedChannelsUnreadTotal();
     }
     // Keep cache on failure/disconnection for future attempts
   }
@@ -3161,6 +3191,7 @@ class MeshCoreConnector extends ChangeNotifier {
     final channel = _findChannelByIndex(channelIndex);
     if (channel != null) {
       channel.unreadCount++;
+      _cachedChannelsUnreadTotal++;
       _appDebugLogService?.info(
         'Channel ${channel.name.isNotEmpty ? channel.name : channelIndex} unread count incremented to ${channel.unreadCount}',
         tag: 'Unread',
@@ -3205,6 +3236,7 @@ class MeshCoreConnector extends ChangeNotifier {
 
     final currentCount = _contactUnreadCount[contactKey] ?? 0;
     _contactUnreadCount[contactKey] = currentCount + 1;
+    _cachedContactsUnreadTotal++;
     _appDebugLogService?.info(
       'Contact $contactKey unread count incremented to ${currentCount + 1}',
       tag: 'Unread',

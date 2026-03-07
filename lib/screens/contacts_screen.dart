@@ -50,6 +50,7 @@ class _ContactsScreenState extends State<ContactsScreen>
   String _searchQuery = '';
   ContactSortOption _sortOption = ContactSortOption.lastSeen;
   bool _showUnreadOnly = false;
+  bool _prioritizeUsers = true;
   ContactTypeFilter _typeFilter = ContactTypeFilter.all;
   final ContactGroupStore _groupStore = ContactGroupStore();
   List<ContactGroup> _groups = [];
@@ -362,6 +363,8 @@ class _ContactsScreenState extends State<ContactsScreen>
             selectedIndex: 0,
             onDestinationSelected: (index) =>
                 _handleQuickSwitch(index, context),
+            contactsUnreadCount: connector.getTotalContactsUnreadCount(),
+            channelsUnreadCount: connector.getTotalChannelsUnreadCount(),
           ),
         ),
       ),
@@ -380,6 +383,7 @@ class _ContactsScreenState extends State<ContactsScreen>
       sortOption: _sortOption,
       typeFilter: _typeFilter,
       showUnreadOnly: _showUnreadOnly,
+      prioritizeUsers: _prioritizeUsers,
       onSortChanged: (value) {
         setState(() {
           _sortOption = value;
@@ -393,6 +397,11 @@ class _ContactsScreenState extends State<ContactsScreen>
       onUnreadOnlyChanged: (value) {
         setState(() {
           _showUnreadOnly = value;
+        });
+      },
+      onPrioritizeUsersChanged: (value) {
+        setState(() {
+          _prioritizeUsers = value;
         });
       },
       onNewGroup: () => _showGroupEditor(context, connector.contacts),
@@ -613,14 +622,35 @@ class _ContactsScreenState extends State<ContactsScreen>
       }).toList();
     }
 
+    // Apply "users first" partitioning: separate users from other node types,
+    // sort each partition, then combine with users on top
+    if (_prioritizeUsers) {
+      // Separate users (advTypeChat) from others
+      final users = filtered.where((c) => c.type == advTypeChat).toList();
+      final others = filtered.where((c) => c.type != advTypeChat).toList();
+
+      // Sort each group separately
+      _applySorting(users, connector);
+      _applySorting(others, connector);
+
+      // Combine: users first, then others
+      filtered = [...users, ...others];
+    } else {
+      _applySorting(filtered, connector);
+    }
+
+    return filtered;
+  }
+
+  void _applySorting(List<Contact> contacts, MeshCoreConnector connector) {
     switch (_sortOption) {
       case ContactSortOption.lastSeen:
-        filtered.sort(
+        contacts.sort(
           (a, b) => _resolveLastSeen(b).compareTo(_resolveLastSeen(a)),
         );
         break;
       case ContactSortOption.recentMessages:
-        filtered.sort((a, b) {
+        contacts.sort((a, b) {
           final aMessages = connector.getMessages(a);
           final bMessages = connector.getMessages(b);
           final aLastMsg = aMessages.isEmpty
@@ -633,13 +663,11 @@ class _ContactsScreenState extends State<ContactsScreen>
         });
         break;
       case ContactSortOption.name:
-        filtered.sort(
+        contacts.sort(
           (a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()),
         );
         break;
     }
-
-    return filtered;
   }
 
   bool _matchesTypeFilter(Contact contact) {

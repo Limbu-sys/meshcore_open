@@ -1352,6 +1352,7 @@
   "listFilter_users": "Utenti",
   "listFilter_repeaters": "Ripetitori",
   "listFilter_roomServers": "Server della stanza",
+  "listFilter_usersFirst": "Utenti per primi",
   "listFilter_unreadOnly": "Solo non letto",
   "listFilter_newGroup": "Nuovo gruppo",
   "@neighbors_errorLoading": {

@@ -71,7 +71,7 @@ class _DeviceScreenState extends State<DeviceScreen>
                   const SizedBox(height: 16),
                   _buildSectionLabel(theme, context.l10n.device_quickSwitch),
                   const SizedBox(height: 12),
-                  _buildQuickSwitchBar(context),
+                  _buildQuickSwitchBar(context, connector),
                 ],
               ),
             ),
@@ -196,12 +196,14 @@ class _DeviceScreenState extends State<DeviceScreen>
     );
   }
 
-  Widget _buildQuickSwitchBar(BuildContext context) {
+  Widget _buildQuickSwitchBar(BuildContext context, MeshCoreConnector connector) {
     return QuickSwitchBar(
       selectedIndex: _quickIndex,
       onDestinationSelected: (index) {
         _openQuickDestination(index, context);
       },
+      contactsUnreadCount: connector.getTotalContactsUnreadCount(),
+      channelsUnreadCount: connector.getTotalChannelsUnreadCount(),
     );
   }
 

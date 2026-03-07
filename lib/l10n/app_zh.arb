@@ -1546,6 +1546,7 @@
   "listFilter_users": "用户",
   "listFilter_repeaters": "转发节点",
   "listFilter_roomServers": "房间服务器",
+  "listFilter_usersFirst": "用户优先",
   "listFilter_unreadOnly": "仅显示未读",
   "listFilter_newGroup": "新建群聊",
   "pathTrace_you": "我自己",

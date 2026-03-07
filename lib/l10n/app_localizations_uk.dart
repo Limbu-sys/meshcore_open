@@ -2784,6 +2784,9 @@ class AppLocalizationsUk extends AppLocalizations {
   String get listFilter_az => 'А-Я';
 
   @override
+  String get listFilter_usersFirst => 'Спочатку користувачі';
+
+  @override
   String get listFilter_filters => 'Фільтри';
 
   @override
@@ -2823,7 +2826,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get pathTrace_notAvailable => 'Трасування шляху недоступне.';
 
   @override
-  String get pathTrace_refreshTooltip => 'Оновити Path Trace';
+  String get pathTrace_refreshTooltip => 'Оновити трасування шляху';
 
   @override
   String get pathTrace_someHopsNoLocation =>
@@ -3010,10 +3013,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get contacts_contactImportFailed => 'Контакт не вдалося імпортувати';
 
   @override
-  String get contacts_zeroHopAdvert => 'Реклама без перехоплення';
+  String get contacts_zeroHopAdvert => 'Оголошення без ретрансляції';
 
   @override
-  String get contacts_floodAdvert => 'Залив реклами';
+  String get contacts_floodAdvert => 'Оголошення з ретрансляцією';
 
   @override
   String get contacts_copyAdvertToClipboard =>
@@ -3040,7 +3043,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get contacts_contactAdvertCopied =>
-      'Рекламу скопійовано до буфера обміну.';
+      'Оголошення скопійовано до буфера обміну.';
 
   @override
   String get contacts_contactAdvertCopyFailed =>
