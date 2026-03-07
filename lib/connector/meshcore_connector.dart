@@ -906,10 +906,7 @@ class MeshCoreConnector extends ChangeNotifier {
     try {
       await _usbFrameSubscription?.cancel();
       _usbFrameSubscription = null;
-      _appDebugLogService?.info(
-        'connectUsb: opening serial port…',
-        tag: 'USB',
-      );
+      _appDebugLogService?.info('connectUsb: opening serial port…', tag: 'USB');
       await _usbManager.connect(portName: portName, baudRate: baudRate);
       _appDebugLogService?.info(
         'connectUsb: serial port opened, label=${_usbManager.activePortDisplayLabel}',

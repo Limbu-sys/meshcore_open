@@ -101,8 +101,7 @@ class NotificationService {
     final addr = Platform.environment['DBUS_SESSION_BUS_ADDRESS'];
     if (addr != null && addr.isNotEmpty) return true;
     // Fallback: check the default socket for the current user.
-    final uid = Platform.environment['UID'] ??
-        Platform.environment['EUID'];
+    final uid = Platform.environment['UID'] ?? Platform.environment['EUID'];
     final path = '/run/user/${uid ?? '1000'}/bus';
     return File(path).existsSync();
   }

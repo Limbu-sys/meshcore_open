@@ -24,8 +24,7 @@ class MeshCoreUsbManager {
   // --- Configuration ---
   Future<List<String>> listPorts() => _service.listPorts();
 
-  void setRequestPortLabel(String label) =>
-      _service.setRequestPortLabel(label);
+  void setRequestPortLabel(String label) => _service.setRequestPortLabel(label);
 
   void setFallbackDeviceName(String label) =>
       _service.setFallbackDeviceName(label);
@@ -36,7 +35,10 @@ class MeshCoreUsbManager {
   }
 
   // --- Connection lifecycle ---
-  Future<void> connect({required String portName, int baudRate = 115200}) async {
+  Future<void> connect({
+    required String portName,
+    int baudRate = 115200,
+  }) async {
     _debugLog?.info(
       'UsbManager.connect: portName=$portName baud=$baudRate',
       tag: 'USB',

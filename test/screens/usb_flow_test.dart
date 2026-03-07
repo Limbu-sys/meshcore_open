@@ -116,10 +116,12 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      await tester.tap(find.ancestor(
-            of: find.text('Connect'),
-            matching: find.bySubtype<ElevatedButton>(),
-          ));
+      await tester.tap(
+        find.ancestor(
+          of: find.text('Connect'),
+          matching: find.bySubtype<ElevatedButton>(),
+        ),
+      );
       await tester.pump();
 
       expect(connector.connectUsbCalls, 0);
@@ -131,28 +133,29 @@ void main() {
     },
   );
 
-  testWidgets(
-    'UsbScreen sends raw port name when tapping Connect',
-    (tester) async {
-      final connector = _FakeMeshCoreConnector(
-        ports: <String>['COM6 - USB Serial Device (COM6)'],
-      );
+  testWidgets('UsbScreen sends raw port name when tapping Connect', (
+    tester,
+  ) async {
+    final connector = _FakeMeshCoreConnector(
+      ports: <String>['COM6 - USB Serial Device (COM6)'],
+    );
 
-      await tester.pumpWidget(
-        _buildTestApp(connector: connector, child: const UsbScreen()),
-      );
-      await tester.pumpAndSettle();
+    await tester.pumpWidget(
+      _buildTestApp(connector: connector, child: const UsbScreen()),
+    );
+    await tester.pumpAndSettle();
 
-      await tester.tap(find.ancestor(
-            of: find.text('Connect'),
-            matching: find.bySubtype<ElevatedButton>(),
-          ));
-      await tester.pump();
+    await tester.tap(
+      find.ancestor(
+        of: find.text('Connect'),
+        matching: find.bySubtype<ElevatedButton>(),
+      ),
+    );
+    await tester.pump();
 
-      expect(connector.connectUsbCalls, 1);
-      expect(connector.lastConnectPortName, 'COM6');
-    },
-  );
+    expect(connector.connectUsbCalls, 1);
+    expect(connector.lastConnectPortName, 'COM6');
+  });
 
   testWidgets('ScannerScreen USB action reflects platform support', (
     tester,
@@ -177,8 +180,9 @@ void main() {
   });
 
   group('Error Handling', () {
-    testWidgets('shows error SnackBar when listing ports fails',
-        (tester) async {
+    testWidgets('shows error SnackBar when listing ports fails', (
+      tester,
+    ) async {
       final connector = _FakeMeshCoreConnector();
       connector.listUsbPortsImpl = () async {
         throw PlatformException(
@@ -195,9 +199,7 @@ void main() {
       expect(find.text('USB permission was denied.'), findsOneWidget);
     });
 
-    testWidgets('connection failure shows SnackBar error', (
-      tester,
-    ) async {
+    testWidgets('connection failure shows SnackBar error', (tester) async {
       final connector = _FakeMeshCoreConnector(ports: <String>['COM1']);
       var connectAttempted = false;
       connector.connectUsbImpl = ({required String portName}) async {
@@ -210,10 +212,12 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      await tester.tap(find.ancestor(
-            of: find.text('Connect'),
-            matching: find.bySubtype<ElevatedButton>(),
-          ));
+      await tester.tap(
+        find.ancestor(
+          of: find.text('Connect'),
+          matching: find.bySubtype<ElevatedButton>(),
+        ),
+      );
       await tester.pumpAndSettle();
 
       expect(connectAttempted, isTrue);

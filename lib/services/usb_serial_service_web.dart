@@ -118,10 +118,7 @@ class UsbSerialService {
         tag: 'USB Serial',
       );
     } catch (error) {
-      _debugLogService?.error(
-        'Web connect failed: $error',
-        tag: 'USB Serial',
-      );
+      _debugLogService?.error('Web connect failed: $error', tag: 'USB Serial');
       await _cleanupFailedConnect();
       _status = UsbSerialStatus.disconnected;
       _connectedPortName = null;
@@ -374,10 +371,7 @@ class UsbSerialService {
         }
       }
     } catch (error, stackTrace) {
-      _debugLogService?.error(
-        '_pumpReads error: $error',
-        tag: 'USB Serial',
-      );
+      _debugLogService?.error('_pumpReads error: $error', tag: 'USB Serial');
       if (_status == UsbSerialStatus.connected) {
         _addFrameError(error, stackTrace);
       }

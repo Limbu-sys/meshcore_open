@@ -107,7 +107,8 @@ class _UsbScreenState extends State<UsbScreen> {
       bottomNavigationBar: Consumer<MeshCoreConnector>(
         builder: (context, connector, child) {
           final isLoading = _isLoadingPorts;
-          final showBle = PlatformInfo.isWeb ||
+          final showBle =
+              PlatformInfo.isWeb ||
               PlatformInfo.isAndroid ||
               PlatformInfo.isIOS;
 
@@ -238,7 +239,7 @@ class _UsbScreenState extends State<UsbScreen> {
 
     final isConnecting =
         connector.state == MeshCoreConnectionState.connecting &&
-            connector.activeTransport == MeshCoreTransportType.usb;
+        connector.activeTransport == MeshCoreTransportType.usb;
 
     return ListView.separated(
       padding: const EdgeInsets.all(8),
@@ -259,8 +260,7 @@ class _UsbScreenState extends State<UsbScreen> {
           ),
           subtitle: showRawName ? Text(rawName) : null,
           trailing: ElevatedButton(
-            onPressed:
-                isConnecting ? null : () => _connectPort(port),
+            onPressed: isConnecting ? null : () => _connectPort(port),
             child: Text(l10n.common_connect),
           ),
           onTap: isConnecting ? null : () => _connectPort(port),
@@ -329,8 +329,10 @@ class _UsbScreenState extends State<UsbScreen> {
     if (_connector.state != MeshCoreConnectionState.disconnected) return;
 
     final rawPortName = normalizeUsbPortName(port);
-    appLogger.info('Connect tapped for $port (raw: $rawPortName)',
-        tag: 'UsbScreen');
+    appLogger.info(
+      'Connect tapped for $port (raw: $rawPortName)',
+      tag: 'UsbScreen',
+    );
 
     try {
       await _connector.connectUsb(portName: rawPortName);
