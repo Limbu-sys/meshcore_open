@@ -3820,39 +3820,39 @@ class MeshCoreConnector extends ChangeNotifier {
 
   void _handleRxData(Uint8List frame) {
     final packet = BufferReader(frame);
-    double snr = 0.0;
-    int routeType = 0;
-    int payloadType = 0;
-    Uint8List pathBytes = Uint8List(0);
-    Uint8List payload = Uint8List(0);
     try {
       packet.skipBytes(1); // Skip frame type byte
-      snr = packet.readInt8() / 4.0;
+      final snr = packet.readInt8() / 4.0;
       packet.skipBytes(1); // Skip RSSI byte
       //final rssi = packet.readByte();
       final header = packet.readByte();
-      routeType = header & 0x03;
-      payloadType = (header >> 2) & 0x0F;
+      final routeType = header & 0x03;
+      final payloadType = (header >> 2) & 0x0F;
+      if (routeType == _routeTransportFlood ||
+          routeType == _routeTransportDirect) {
+        packet.skipBytes(4); // Skip transport-specific bytes
+      }
       //final payloadVer = (header >> 6) & 0x03;
       final pathLen = packet.readByte();
-      pathBytes = packet.readBytes(pathLen);
-      payload = packet.readBytes(packet.remaining);
+      final pathBytes = packet.readBytes(pathLen);
+      final payload = packet.readBytes(packet.remaining);
+
+      final rawPacket = frame.sublist(3);
+      switch (payloadType) {
+        case payloadTypeADVERT:
+          _handlePayloadAdvertReceived(
+            rawPacket,
+            payload,
+            pathBytes,
+            routeType,
+            snr,
+          );
+          break;
+        default:
+      }
     } catch (e) {
       appLogger.warn('Malformed RX frame: $e', tag: 'Connector');
       return;
-    }
-    final rawPacket = frame.sublist(3);
-    switch (payloadType) {
-      case payloadTypeADVERT:
-        _handlePayloadAdvertReceived(
-          rawPacket,
-          payload,
-          pathBytes,
-          routeType,
-          snr,
-        );
-        break;
-      default:
     }
   }
 
@@ -3865,7 +3865,12 @@ class MeshCoreConnector extends ChangeNotifier {
       packet.skipBytes(1); // Skip SNR byte
       packet.skipBytes(1); // Skip RSSI byte
       final header = packet.readByte();
+      final routeType = header & 0x03;
       payloadType = (header >> 2) & 0x0F;
+      if (routeType == _routeTransportFlood ||
+          routeType == _routeTransportDirect) {
+        packet.skipBytes(4); // Skip transport-specific bytes
+      }
       //final payloadVer = (header >> 6) & 0x03;
       final pathLen = packet.readByte();
       pathBytes = packet.readBytes(pathLen);
@@ -3915,7 +3920,7 @@ class MeshCoreConnector extends ChangeNotifier {
         publicKey: publicKey,
         name: name,
         type: type,
-        pathLength: pathBytes.length,
+        pathLength: pathBytes.isEmpty ? -1 : pathBytes.length,
         path: Uint8List.fromList(
           pathBytes.reversed.toList(),
         ), // Store path in reverse for easier use in outgoing messages
@@ -3984,7 +3989,7 @@ class MeshCoreConnector extends ChangeNotifier {
         publicKey: publicKey,
         name: name,
         type: type,
-        pathLength: path.length,
+        pathLength: path.isEmpty ? -1 : path.length,
         path: Uint8List.fromList(
           path.reversed.toList(),
         ), // Store path in reverse for easier use in outgoing messages
