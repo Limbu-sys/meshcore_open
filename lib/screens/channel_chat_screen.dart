@@ -1018,6 +1018,16 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                 },
                 itemBuilder: (context) => [
                   PopupMenuItem(
+                    value: _ChannelChatInputAction.shareLocation,
+                    child: Row(
+                      children: [
+                        const Icon(Icons.location_on, size: 20),
+                        const SizedBox(width: 8),
+                        Text(context.l10n.chat_shareLocation),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
                     value: _ChannelChatInputAction.sendGif,
                     child: Row(
                       children: [
@@ -1034,16 +1044,6 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
                         const Icon(Icons.emoji_emotions, size: 20),
                         const SizedBox(width: 8),
                         Text(context.l10n.chat_insertEmoji),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: _ChannelChatInputAction.shareLocation,
-                    child: Row(
-                      children: [
-                        const Icon(Icons.location_on, size: 20),
-                        const SizedBox(width: 8),
-                        Text(context.l10n.chat_shareLocation),
                       ],
                     ),
                   ),

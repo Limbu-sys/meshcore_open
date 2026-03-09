@@ -360,6 +360,16 @@ class _ChatScreenState extends State<ChatScreen> {
               },
               itemBuilder: (context) => [
                 PopupMenuItem(
+                  value: _ChatInputAction.shareLocation,
+                  child: Row(
+                    children: [
+                      const Icon(Icons.my_location, size: 20),
+                      const SizedBox(width: 8),
+                      Text(context.l10n.chat_shareLocation),
+                    ],
+                  ),
+                ),
+                PopupMenuItem(
                   value: _ChatInputAction.sendGif,
                   child: Row(
                     children: [
@@ -376,16 +386,6 @@ class _ChatScreenState extends State<ChatScreen> {
                       const Icon(Icons.emoji_emotions, size: 20),
                       const SizedBox(width: 8),
                       Text(context.l10n.chat_insertEmoji),
-                    ],
-                  ),
-                ),
-                PopupMenuItem(
-                  value: _ChatInputAction.shareLocation,
-                  child: Row(
-                    children: [
-                      const Icon(Icons.my_location, size: 20),
-                      const SizedBox(width: 8),
-                      Text(context.l10n.chat_shareLocation),
                     ],
                   ),
                 ),
