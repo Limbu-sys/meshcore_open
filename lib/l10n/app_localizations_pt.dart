@@ -226,6 +226,20 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get scanner_linuxPairingPinTitle => 'PIN de pareamento Bluetooth';
+
+  @override
+  String scanner_linuxPairingPinPrompt(String deviceName) {
+    return 'Insira o código PIN para $deviceName (deixe em branco se não houver).';
+  }
+
+  @override
+  String get scanner_linuxPairingShowPin => 'Mostrar código PIN';
+
+  @override
+  String get scanner_linuxPairingHidePin => 'Esconder o PIN';
+
+  @override
   String get scanner_stop => 'Pare';
 
   @override

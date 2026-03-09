@@ -214,6 +214,20 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
+  String get scanner_linuxPairingPinTitle => '蓝牙配对 PIN';
+
+  @override
+  String scanner_linuxPairingPinPrompt(String deviceName) {
+    return '输入 $deviceName 的 PIN 码（如果为空，则留空）。';
+  }
+
+  @override
+  String get scanner_linuxPairingShowPin => '显示PIN码';
+
+  @override
+  String get scanner_linuxPairingHidePin => '隐藏 PIN';
+
+  @override
   String get scanner_stop => '停止';
 
   @override

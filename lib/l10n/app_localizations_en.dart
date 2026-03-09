@@ -222,6 +222,20 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get scanner_linuxPairingPinTitle => 'Bluetooth Pairing PIN';
+
+  @override
+  String scanner_linuxPairingPinPrompt(String deviceName) {
+    return 'Enter PIN for $deviceName (leave blank if none).';
+  }
+
+  @override
+  String get scanner_linuxPairingShowPin => 'Show PIN';
+
+  @override
+  String get scanner_linuxPairingHidePin => 'Hide PIN';
+
+  @override
   String get scanner_stop => 'Stop';
 
   @override

@@ -1859,5 +1859,16 @@
   "usbStatus_notConnected": "Виберіть пристрій USB",
   "usbConnectionFailed": "Не вдалося встановити з'єднання через USB: {error}",
   "usbStatus_connecting": "Підключення до USB-пристрою...",
-  "usbErrorConnectTimedOut": "З'єднання не вдалося встановити. Переконайтеся, що пристрій має встановлене програмне забезпечення USB Companion."
+  "usbErrorConnectTimedOut": "З'єднання не вдалося встановити. Переконайтеся, що пристрій має встановлене програмне забезпечення USB Companion.",
+  "@scanner_linuxPairingPinPrompt": {
+    "placeholders": {
+      "deviceName": {
+        "type": "String"
+      }
+    }
+  },
+  "scanner_linuxPairingPinTitle": "PIN для з'єднання через Bluetooth",
+  "scanner_linuxPairingPinPrompt": "Введіть PIN-код для {deviceName} (залиште поле порожнім, якщо немає).",
+  "scanner_linuxPairingShowPin": "Показати PIN-код",
+  "scanner_linuxPairingHidePin": "Приховати PIN-код"
 }

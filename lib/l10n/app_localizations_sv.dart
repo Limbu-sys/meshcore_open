@@ -223,6 +223,20 @@ class AppLocalizationsSv extends AppLocalizations {
   }
 
   @override
+  String get scanner_linuxPairingPinTitle => 'PIN för Bluetooth-parning';
+
+  @override
+  String scanner_linuxPairingPinPrompt(String deviceName) {
+    return 'Ange PIN-kod för $deviceName (lämna tomt om ingen finns).';
+  }
+
+  @override
+  String get scanner_linuxPairingShowPin => 'Visa PIN-kod';
+
+  @override
+  String get scanner_linuxPairingHidePin => 'Dölj PIN-kod';
+
+  @override
   String get scanner_stop => 'Stoppa';
 
   @override

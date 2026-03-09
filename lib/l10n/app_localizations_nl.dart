@@ -223,6 +223,20 @@ class AppLocalizationsNl extends AppLocalizations {
   }
 
   @override
+  String get scanner_linuxPairingPinTitle => 'PIN voor Bluetooth-koppeling';
+
+  @override
+  String scanner_linuxPairingPinPrompt(String deviceName) {
+    return 'Voer de pincode voor $deviceName in (laat dit leeg als er geen is).';
+  }
+
+  @override
+  String get scanner_linuxPairingShowPin => 'PIN weergeven';
+
+  @override
+  String get scanner_linuxPairingHidePin => 'Verberg PIN';
+
+  @override
   String get scanner_stop => 'Stoppen';
 
   @override

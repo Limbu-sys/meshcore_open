@@ -1859,5 +1859,16 @@
   "usbConnectionFailed": "Neúspešné pripojenie cez USB: {error}",
   "usbStatus_notConnected": "Vyberte USB zariadenie",
   "usbStatus_connecting": "Pripojenie k USB zariadeniu...",
-  "usbErrorConnectTimedOut": "Pripojenie nebolo úspešné. Uistite sa, že zariadenie má nainštalovaný firmware USB Companion."
+  "usbErrorConnectTimedOut": "Pripojenie nebolo úspešné. Uistite sa, že zariadenie má nainštalovaný firmware USB Companion.",
+  "@scanner_linuxPairingPinPrompt": {
+    "placeholders": {
+      "deviceName": {
+        "type": "String"
+      }
+    }
+  },
+  "scanner_linuxPairingHidePin": "Skryť PIN",
+  "scanner_linuxPairingShowPin": "Zobraziť PIN",
+  "scanner_linuxPairingPinPrompt": "Zadajte PIN pre {deviceName} (nechajte prázdne, ak neexistuje).",
+  "scanner_linuxPairingPinTitle": "PIN pre párovanie cez Bluetooth"
 }

@@ -1859,5 +1859,16 @@
   "usbStatus_connecting": "Połączenie z urządzeniem USB...",
   "usbStatus_notConnected": "Wybierz urządzenie USB",
   "usbConnectionFailed": "Błąd połączenia USB: {error}",
-  "usbErrorConnectTimedOut": "Połączenie nie zostało nawiązane. Upewnij się, że urządzenie posiada oprogramowanie \"USB Companion\"."
+  "usbErrorConnectTimedOut": "Połączenie nie zostało nawiązane. Upewnij się, że urządzenie posiada oprogramowanie \"USB Companion\".",
+  "@scanner_linuxPairingPinPrompt": {
+    "placeholders": {
+      "deviceName": {
+        "type": "String"
+      }
+    }
+  },
+  "scanner_linuxPairingShowPin": "Wyświetl kod PIN",
+  "scanner_linuxPairingPinTitle": "PIN do sparowania przez Bluetooth",
+  "scanner_linuxPairingPinPrompt": "Wprowadź kod PIN dla {deviceName} (pozostaw puste, jeśli nie jest wymagany).",
+  "scanner_linuxPairingHidePin": "Ukryj kod PIN"
 }

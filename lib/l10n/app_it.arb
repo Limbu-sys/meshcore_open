@@ -1859,5 +1859,16 @@
   "usbConnectionFailed": "Errore nella connessione USB: {error}",
   "usbStatus_notConnected": "Seleziona un dispositivo USB",
   "usbStatus_connecting": "Connessione al dispositivo USB...",
-  "usbErrorConnectTimedOut": "La connessione è scaduta. Assicurarsi che il dispositivo abbia il firmware USB Companion."
+  "usbErrorConnectTimedOut": "La connessione è scaduta. Assicurarsi che il dispositivo abbia il firmware USB Companion.",
+  "@scanner_linuxPairingPinPrompt": {
+    "placeholders": {
+      "deviceName": {
+        "type": "String"
+      }
+    }
+  },
+  "scanner_linuxPairingPinPrompt": "Inserire il codice PIN per {deviceName} (lasciare vuoto se non presente).",
+  "scanner_linuxPairingShowPin": "Mostra PIN",
+  "scanner_linuxPairingPinTitle": "PIN per l'accoppiamento Bluetooth",
+  "scanner_linuxPairingHidePin": "Nascondi il PIN"
 }
