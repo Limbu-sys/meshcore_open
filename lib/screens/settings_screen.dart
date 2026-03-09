@@ -993,7 +993,6 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
   LoRaCodingRate _codingRate = LoRaCodingRate.cr4_5;
   final _txPowerController = TextEditingController(text: '20');
   bool _clientRepeat = false;
-  int? _selectedPresetIndex;
 
   @override
   void initState() {
@@ -1045,7 +1044,6 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
     }
 
     _clientRepeat = widget.connector.clientRepeat ?? false;
-    _selectedPresetIndex = _findMatchingPresetIndex();
   }
 
   @override
@@ -1062,55 +1060,6 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
       _spreadingFactor = preset.spreadingFactor;
       _codingRate = preset.codingRate;
       _txPowerController.text = preset.txPowerDbm.toString();
-    });
-  }
-
-  int? _findMatchingPresetIndex() {
-    final freqMHz = double.tryParse(_frequencyController.text);
-    final txPower = int.tryParse(_txPowerController.text);
-    if (freqMHz == null || txPower == null) return null;
-
-    const epsilon = 0.001;
-    for (var i = 0; i < RadioSettings.presets.length; i++) {
-      final preset = RadioSettings.presets[i].$2;
-      if ((preset.frequencyMHz - freqMHz).abs() < epsilon &&
-          preset.bandwidth == _bandwidth &&
-          preset.spreadingFactor == _spreadingFactor &&
-          preset.codingRate == _codingRate &&
-          preset.txPowerDbm == txPower) {
-        return i;
-      }
-    }
-    return null;
-  }
-
-  double _offGridFrequencyForBaseFrequency(double baseFrequencyMHz) {
-    if (baseFrequencyMHz < 500) return 433.0;
-    if (baseFrequencyMHz < 900) return 869.0;
-    return 918.0;
-  }
-
-  double _normalFrequencyForBand(double frequencyMHz) {
-    if (frequencyMHz < 500) return 433.650;
-    if (frequencyMHz < 900) return 869.432;
-    return 915.8;
-  }
-
-  void _handleClientRepeatChanged(bool enabled) {
-    setState(() {
-      _clientRepeat = enabled;
-
-      final baseFrequencyMHz = _selectedPresetIndex != null
-          ? RadioSettings.presets[_selectedPresetIndex!].$2.frequencyMHz
-          : (double.tryParse(_frequencyController.text) ?? 915.0);
-
-      final nextFrequencyMHz = enabled
-          ? _offGridFrequencyForBaseFrequency(baseFrequencyMHz)
-          : (_selectedPresetIndex != null
-                ? RadioSettings.presets[_selectedPresetIndex!].$2.frequencyMHz
-                : _normalFrequencyForBand(baseFrequencyMHz));
-
-      _frequencyController.text = nextFrequencyMHz.toStringAsFixed(3);
     });
   }
 
@@ -1206,7 +1155,6 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DropdownButtonFormField<int>(
-              initialValue: _selectedPresetIndex,
               decoration: InputDecoration(
                 labelText: l10n.settings_presets,
                 border: const OutlineInputBorder(),
@@ -1220,7 +1168,6 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
               ],
               onChanged: (index) {
                 if (index != null) {
-                  _selectedPresetIndex = index;
                   _applyPreset(RadioSettings.presets[index].$2);
                 }
               },
@@ -1303,7 +1250,7 @@ class _RadioSettingsDialogState extends State<_RadioSettingsDialog> {
                 title: Text(l10n.settings_clientRepeat),
                 subtitle: Text(l10n.settings_clientRepeatSubtitle),
                 value: _clientRepeat,
-                onChanged: _handleClientRepeatChanged,
+                onChanged: (value) => setState(() => _clientRepeat = value),
                 contentPadding: EdgeInsets.zero,
               ),
             ],
