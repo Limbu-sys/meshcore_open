@@ -1,1 +1,60 @@
-{}
+{
+  "bg": [
+    "map_sharedAt"
+  ],
+
+  "de": [
+    "map_sharedAt"
+  ],
+
+  "es": [
+    "map_sharedAt"
+  ],
+
+  "fr": [
+    "map_sharedAt"
+  ],
+
+  "it": [
+    "map_sharedAt"
+  ],
+
+  "nl": [
+    "map_sharedAt"
+  ],
+
+  "pl": [
+    "map_sharedAt"
+  ],
+
+  "pt": [
+    "map_sharedAt"
+  ],
+
+  "ru": [
+    "map_sharedAt"
+  ],
+
+  "sk": [
+    "map_sharedAt"
+  ],
+
+  "sl": [
+    "map_sharedAt"
+  ],
+
+  "sv": [
+    "map_sharedAt"
+  ],
+
+  "uk": [
+    "map_sharedAt"
+  ],
+
+  "zh": [
+    "chat_insertEmoji",
+    "chat_shareLocation",
+    "chat_locationUnavailable",
+    "map_sharedAt"
+  ]
+}

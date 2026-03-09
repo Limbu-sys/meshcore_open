@@ -1109,6 +1109,15 @@ class AppLocalizationsSk extends AppLocalizations {
   String get chat_sendGif => 'Odoslať GIF';
 
   @override
+  String get chat_insertEmoji => 'Vložiť emoji';
+
+  @override
+  String get chat_shareLocation => 'Zdieľať polohu';
+
+  @override
+  String get chat_locationUnavailable => 'Poloha nie je k dispozícii';
+
+  @override
   String get chat_reply => 'Odpovedať';
 
   @override
@@ -1532,6 +1541,9 @@ class AppLocalizationsSk extends AppLocalizations {
 
   @override
   String get map_sharedPin => 'Zdieľaný PIN';
+
+  @override
+  String get map_sharedAt => 'Shared';
 
   @override
   String get map_joinRoom => 'Pripojiť miestnosť';

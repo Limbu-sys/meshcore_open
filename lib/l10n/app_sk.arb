@@ -453,6 +453,9 @@
     }
   },
   "chat_sendGif": "Odoslať GIF",
+  "chat_insertEmoji": "Vložiť emoji",
+  "chat_shareLocation": "Zdieľať polohu",
+  "chat_locationUnavailable": "Poloha nie je k dispozícii",
   "chat_reply": "Odpovedať",
   "chat_addReaction": "Pridať Reakciu",
   "chat_me": "Mne",

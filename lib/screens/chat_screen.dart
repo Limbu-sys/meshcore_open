@@ -37,6 +37,8 @@ import '../widgets/path_selection_dialog.dart';
 import '../utils/app_logger.dart';
 import '../l10n/l10n.dart';
 
+enum _ChatInputAction { sendGif, insertEmoji, shareLocation }
+
 class ChatScreen extends StatefulWidget {
   final Contact contact;
 
@@ -343,10 +345,51 @@ class _ChatScreenState extends State<ChatScreen> {
       child: SafeArea(
         child: Row(
           children: [
-            IconButton(
-              icon: const Icon(Icons.gif_box),
-              onPressed: () => _showGifPicker(context),
+            PopupMenuButton<_ChatInputAction>(
+              icon: const Icon(Icons.add),
               tooltip: context.l10n.chat_sendGif,
+              offset: const Offset(0, -8),
+              onSelected: (action) {
+                if (action == _ChatInputAction.sendGif) {
+                  _showGifPicker(context);
+                } else if (action == _ChatInputAction.insertEmoji) {
+                  _showEmojiPicker(context);
+                } else if (action == _ChatInputAction.shareLocation) {
+                  _shareLocation(context.read<MeshCoreConnector>());
+                }
+              },
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: _ChatInputAction.shareLocation,
+                  child: Row(
+                    children: [
+                      const Icon(Icons.my_location, size: 20),
+                      const SizedBox(width: 8),
+                      Text(context.l10n.chat_shareLocation),
+                    ],
+                  ),
+                ),
+                PopupMenuItem(
+                  value: _ChatInputAction.sendGif,
+                  child: Row(
+                    children: [
+                      const Icon(Icons.gif_box, size: 20),
+                      const SizedBox(width: 8),
+                      Text(context.l10n.chat_sendGif),
+                    ],
+                  ),
+                ),
+                PopupMenuItem(
+                  value: _ChatInputAction.insertEmoji,
+                  child: Row(
+                    children: [
+                      const Icon(Icons.emoji_emotions, size: 20),
+                      const SizedBox(width: 8),
+                      Text(context.l10n.chat_insertEmoji),
+                    ],
+                  ),
+                ),
+              ],
             ),
             Expanded(
               child: ValueListenableBuilder<TextEditingValue>(
@@ -431,6 +474,54 @@ class _ChatScreenState extends State<ChatScreen> {
     final trimmed = text.trim();
     final match = RegExp(r'^g:([A-Za-z0-9_-]+)$').firstMatch(trimmed);
     return match?.group(1);
+  }
+
+  void _insertTextAtCursor(String text) {
+    final currentValue = _textController.value;
+    final selection = currentValue.selection;
+    final newText = selection.isValid
+        ? currentValue.text.replaceRange(selection.start, selection.end, text)
+        : currentValue.text + text;
+    final caret =
+        (selection.isValid ? selection.start : currentValue.text.length) +
+        text.length;
+
+    _textController.value = currentValue.copyWith(
+      text: newText,
+      selection: TextSelection.collapsed(offset: caret),
+    );
+  }
+
+  void _showEmojiPicker(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => EmojiPicker(
+        onEmojiSelected: (emoji) {
+          _insertTextAtCursor(emoji);
+          _textFieldFocusNode.requestFocus();
+        },
+      ),
+    );
+  }
+
+  void _shareLocation(MeshCoreConnector connector) async {
+    final lat = connector.selfLatitude;
+    final lon = connector.selfLongitude;
+    if (lat == null || lon == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(context.l10n.chat_locationUnavailable)),
+      );
+      return;
+    }
+
+    // Use the contact name + ISO timestamp as the marker label so the recipient
+    // can see when the location was shared.
+    final label =
+        '${widget.contact.name}: ${DateTime.now().toUtc().toIso8601String()}';
+    final markerText =
+        'm:${lat.toStringAsFixed(6)},${lon.toStringAsFixed(6)}|$label|loc';
+    connector.sendMessage(widget.contact, markerText);
   }
 
   void _showGifPicker(BuildContext context) {
@@ -1082,7 +1173,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 title: Text(context.l10n.chat_addReaction),
                 onTap: () {
                   Navigator.pop(sheetContext);
-                  _showEmojiPicker(message, contact);
+                  _showReactionEmojiPicker(message, contact);
                 },
               ),
             ListTile(
@@ -1154,7 +1245,7 @@ class _ChatScreenState extends State<ChatScreen> {
     ).showSnackBar(SnackBar(content: Text(context.l10n.chat_retryingMessage)));
   }
 
-  void _showEmojiPicker(Message message, Contact senderContact) {
+  void _showReactionEmojiPicker(Message message, Contact senderContact) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,

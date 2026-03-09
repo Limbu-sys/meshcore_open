@@ -1054,6 +1054,15 @@ class AppLocalizationsZh extends AppLocalizations {
   String get chat_sendGif => '发送 GIF';
 
   @override
+  String get chat_insertEmoji => 'Insert emoji';
+
+  @override
+  String get chat_shareLocation => 'Share location';
+
+  @override
+  String get chat_locationUnavailable => 'Location not available';
+
+  @override
   String get chat_reply => '回复';
 
   @override
@@ -1448,6 +1457,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get map_sharedPin => '共享标记';
+
+  @override
+  String get map_sharedAt => 'Shared';
 
   @override
   String get map_joinRoom => '加入房间';

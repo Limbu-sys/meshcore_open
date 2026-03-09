@@ -38,6 +38,8 @@ class ChannelChatScreen extends StatefulWidget {
   State<ChannelChatScreen> createState() => _ChannelChatScreenState();
 }
 
+enum _ChannelChatInputAction { sendGif, insertEmoji, shareLocation }
+
 class _ChannelChatScreenState extends State<ChannelChatScreen> {
   final TextEditingController _textController = TextEditingController();
   final ChatScrollController _scrollController = ChatScrollController();
@@ -825,6 +827,52 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
     );
   }
 
+  void _showEmojiPickerForComposer(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) => EmojiPicker(
+        onEmojiSelected: (emoji) {
+          final currentValue = _textController.value;
+          final selection = currentValue.selection;
+          final newText = selection.isValid
+              ? currentValue.text.replaceRange(
+                  selection.start,
+                  selection.end,
+                  emoji,
+                )
+              : currentValue.text + emoji;
+          final caret =
+              (selection.isValid ? selection.start : currentValue.text.length) +
+              emoji.length;
+          _textController.value = currentValue.copyWith(
+            text: newText,
+            selection: TextSelection.collapsed(offset: caret),
+          );
+          _textFieldFocusNode.requestFocus();
+        },
+      ),
+    );
+  }
+
+  void _shareLocation() {
+    final connector = context.read<MeshCoreConnector>();
+    final lat = connector.selfLatitude;
+    final lon = connector.selfLongitude;
+    if (lat == null || lon == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(context.l10n.chat_locationUnavailable)),
+      );
+      return;
+    }
+
+    final label =
+        '${connector.deviceDisplayName} ${DateTime.now().toUtc().toIso8601String()}';
+    final markerText =
+        'm:${lat.toStringAsFixed(6)},${lon.toStringAsFixed(6)}|$label|loc';
+    connector.sendChannelMessage(widget.channel, markerText);
+  }
+
   Widget _buildAvatar(String senderName) {
     final initial = _getFirstCharacterOrEmoji(senderName);
     final color = _getColorForName(senderName);
@@ -959,10 +1007,51 @@ class _ChannelChatScreenState extends State<ChannelChatScreen> {
           ),
           child: Row(
             children: [
-              IconButton(
-                icon: const Icon(Icons.gif_box),
-                onPressed: () => _showGifPicker(context),
+              PopupMenuButton<_ChannelChatInputAction>(
+                icon: const Icon(Icons.add),
                 tooltip: context.l10n.chat_sendGif,
+                offset: const Offset(0, -8),
+                onSelected: (action) {
+                  if (action == _ChannelChatInputAction.sendGif) {
+                    _showGifPicker(context);
+                  } else if (action == _ChannelChatInputAction.insertEmoji) {
+                    _showEmojiPickerForComposer(context);
+                  } else if (action == _ChannelChatInputAction.shareLocation) {
+                    _shareLocation();
+                  }
+                },
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    value: _ChannelChatInputAction.shareLocation,
+                    child: Row(
+                      children: [
+                        const Icon(Icons.location_on, size: 20),
+                        const SizedBox(width: 8),
+                        Text(context.l10n.chat_shareLocation),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: _ChannelChatInputAction.sendGif,
+                    child: Row(
+                      children: [
+                        const Icon(Icons.gif_box, size: 20),
+                        const SizedBox(width: 8),
+                        Text(context.l10n.chat_sendGif),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    value: _ChannelChatInputAction.insertEmoji,
+                    child: Row(
+                      children: [
+                        const Icon(Icons.emoji_emotions, size: 20),
+                        const SizedBox(width: 8),
+                        Text(context.l10n.chat_insertEmoji),
+                      ],
+                    ),
+                  ),
+                ],
               ),
               Expanded(
                 child: ValueListenableBuilder<TextEditingValue>(

@@ -454,6 +454,9 @@
     }
   },
   "chat_sendGif": "Надіслати GIF",
+  "chat_insertEmoji": "Вставити емодзі",
+  "chat_shareLocation": "Поділитися місцезнаходженням",
+  "chat_locationUnavailable": "Місцезнаходження недоступне",
   "chat_reply": "Відповісти",
   "chat_addReaction": "Додати реакцію",
   "chat_me": "Я",

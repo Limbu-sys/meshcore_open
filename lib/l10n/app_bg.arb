@@ -453,6 +453,9 @@
     }
   },
   "chat_sendGif": "Изпрати GIF",
+  "chat_insertEmoji": "Вмъкнете емоджи",
+  "chat_shareLocation": "Споделете местоположение",
+  "chat_locationUnavailable": "Местоположението не е налично",
   "chat_reply": "Отговори",
   "chat_addReaction": "Добави Реакция",
   "chat_me": "Аз",

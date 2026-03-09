@@ -1061,6 +1061,7 @@ class _MapScreenState extends State<MapScreen> {
             flags: payload.flags,
             fromName: fromName,
             sourceLabel: contact.name,
+            timestamp: message.timestamp,
             isChannel: false,
             isPublicChannel: false,
           ),
@@ -1089,6 +1090,7 @@ class _MapScreenState extends State<MapScreen> {
             sourceLabel: channel.name.isEmpty
                 ? 'Channel ${channel.index}'
                 : channel.name,
+            timestamp: message.timestamp,
             isChannel: true,
             isPublicChannel: isPublic,
           ),
@@ -1335,6 +1337,10 @@ class _MapScreenState extends State<MapScreen> {
           children: [
             _buildInfoRow(context.l10n.map_from, marker.fromName),
             _buildInfoRow(context.l10n.map_source, marker.sourceLabel),
+            _buildInfoRow(
+              context.l10n.map_sharedAt,
+              _formatLastSeen(marker.timestamp),
+            ),
             _buildInfoRow(
               'Location',
               '${marker.position.latitude.toStringAsFixed(6)}, ${marker.position.longitude.toStringAsFixed(6)}',
@@ -2039,6 +2045,7 @@ class _SharedMarker {
   final String flags;
   final String fromName;
   final String sourceLabel;
+  final DateTime timestamp;
   final bool isChannel;
   final bool isPublicChannel;
 
@@ -2049,6 +2056,7 @@ class _SharedMarker {
     required this.flags,
     required this.fromName,
     required this.sourceLabel,
+    required this.timestamp,
     required this.isChannel,
     required this.isPublicChannel,
   });

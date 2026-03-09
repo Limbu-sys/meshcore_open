@@ -2074,6 +2074,24 @@ abstract class AppLocalizations {
   /// **'Send GIF'**
   String get chat_sendGif;
 
+  /// No description provided for @chat_insertEmoji.
+  ///
+  /// In en, this message translates to:
+  /// **'Insert emoji'**
+  String get chat_insertEmoji;
+
+  /// No description provided for @chat_shareLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Share location'**
+  String get chat_shareLocation;
+
+  /// No description provided for @chat_locationUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Location not available'**
+  String get chat_locationUnavailable;
+
   /// No description provided for @chat_reply.
   ///
   /// In en, this message translates to:
@@ -2805,6 +2823,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Shared pin'**
   String get map_sharedPin;
+
+  /// No description provided for @map_sharedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Shared'**
+  String get map_sharedAt;
 
   /// No description provided for @map_joinRoom.
   ///

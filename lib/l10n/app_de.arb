@@ -453,6 +453,9 @@
     }
   },
   "chat_sendGif": "GIF senden",
+  "chat_insertEmoji": "Emoji einfügen",
+  "chat_shareLocation": "Standort teilen",
+  "chat_locationUnavailable": "Standort nicht verfügbar",
   "chat_reply": "Beantworten",
   "chat_addReaction": "Reaktion hinzufügen",
   "chat_me": "Ich",

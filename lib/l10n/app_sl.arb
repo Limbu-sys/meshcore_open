@@ -453,6 +453,9 @@
     }
   },
   "chat_sendGif": "Pošlji GIF",
+  "chat_insertEmoji": "Vstavi emoji",
+  "chat_shareLocation": "Deli lokacijo",
+  "chat_locationUnavailable": "Lokacija ni na voljo",
   "chat_reply": "Odgovori",
   "chat_addReaction": "Dodaj reakcijo",
   "chat_me": "jaz",

@@ -453,6 +453,9 @@
     }
   },
   "chat_sendGif": "GIF verzenden",
+  "chat_insertEmoji": "Emoji invoegen",
+  "chat_shareLocation": "Locatie delen",
+  "chat_locationUnavailable": "Locatie niet beschikbaar",
   "chat_reply": "Reageren",
   "chat_addReaction": "Reactie toevoegen",
   "chat_me": "Mijn",

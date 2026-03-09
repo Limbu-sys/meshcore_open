@@ -1115,6 +1115,15 @@ class AppLocalizationsBg extends AppLocalizations {
   String get chat_sendGif => 'Изпрати GIF';
 
   @override
+  String get chat_insertEmoji => 'Вмъкнете емоджи';
+
+  @override
+  String get chat_shareLocation => 'Споделете местоположение';
+
+  @override
+  String get chat_locationUnavailable => 'Местоположението не е налично';
+
+  @override
   String get chat_reply => 'Отговори';
 
   @override
@@ -1539,6 +1548,9 @@ class AppLocalizationsBg extends AppLocalizations {
 
   @override
   String get map_sharedPin => 'Споделено копие';
+
+  @override
+  String get map_sharedAt => 'Shared';
 
   @override
   String get map_joinRoom => 'Присъедини се към стаята';
