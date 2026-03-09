@@ -226,6 +226,21 @@ class AppLocalizationsRu extends AppLocalizations {
   }
 
   @override
+  String get scanner_linuxPairingPinTitle =>
+      'PIN для сопряжения устройств по Bluetooth';
+
+  @override
+  String scanner_linuxPairingPinPrompt(String deviceName) {
+    return 'Введите PIN-код для $deviceName (оставьте поле пустым, если PIN-код отсутствует).';
+  }
+
+  @override
+  String get scanner_linuxPairingShowPin => 'Показать PIN-код';
+
+  @override
+  String get scanner_linuxPairingHidePin => 'Скрыть PIN-код';
+
+  @override
   String get scanner_stop => 'Стоп';
 
   @override

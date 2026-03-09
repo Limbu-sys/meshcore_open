@@ -1859,5 +1859,16 @@
   "usbConnectionFailed": "Неуспешно свързване през USB: {error}",
   "usbStatus_notConnected": "Изберете USB устройство",
   "usbStatus_searching": "Търсене на USB устройства...",
-  "usbErrorConnectTimedOut": "Връзката прекъсна. Уверете се, че устройството има софтуер за USB връзка."
+  "usbErrorConnectTimedOut": "Връзката прекъсна. Уверете се, че устройството има софтуер за USB връзка.",
+  "@scanner_linuxPairingPinPrompt": {
+    "placeholders": {
+      "deviceName": {
+        "type": "String"
+      }
+    }
+  },
+  "scanner_linuxPairingPinPrompt": "Въведете PIN кода за {deviceName} (оставете празно, ако няма такъв).",
+  "scanner_linuxPairingHidePin": "Скриване на PIN кода",
+  "scanner_linuxPairingShowPin": "Покажи PIN",
+  "scanner_linuxPairingPinTitle": "PIN за съвпадение чрез Bluetooth"
 }

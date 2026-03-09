@@ -1887,5 +1887,16 @@
   "usbStatus_notConnected": "Wählen Sie ein USB-Gerät aus",
   "usbStatus_connecting": "Verbindung zum USB-Gerät...",
   "usbConnectionFailed": "Fehler beim USB-Verbindungsaufbau: {error}",
-  "usbErrorConnectTimedOut": "Verbindung konnte nicht hergestellt werden. Stellen Sie sicher, dass das Gerät die entsprechende USB-Firmware enthält."
+  "usbErrorConnectTimedOut": "Verbindung konnte nicht hergestellt werden. Stellen Sie sicher, dass das Gerät die entsprechende USB-Firmware enthält.",
+  "@scanner_linuxPairingPinPrompt": {
+    "placeholders": {
+      "deviceName": {
+        "type": "String"
+      }
+    }
+  },
+  "scanner_linuxPairingShowPin": "PIN anzeigen",
+  "scanner_linuxPairingHidePin": "PIN verbergen",
+  "scanner_linuxPairingPinTitle": "PIN für die Bluetooth-Kopplung",
+  "scanner_linuxPairingPinPrompt": "Geben Sie den PIN-Code für {deviceName} ein (lassen Sie das Feld leer, falls kein PIN-Code vorhanden ist)."
 }

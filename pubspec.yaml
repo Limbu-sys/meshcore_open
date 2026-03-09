@@ -69,6 +69,7 @@ dependencies:
   material_symbols_icons: ^4.2906.0
   web: ^1.1.1
   flutter_svg: ^2.0.10+1
+  flutter_blue_plus_platform_interface: ^8.2.1
 
 dev_dependencies:
   flutter_test:
