@@ -126,7 +126,25 @@ class _MapScreenState extends State<MapScreen> {
       builder: (context, connector, settingsService, pathHistory, child) {
         final tileCache = context.read<MapTileCacheService>();
         final settings = settingsService.settings;
-        final contacts = connector.contacts;
+        final contacts = <Contact>[
+          ...connector.contacts,
+          ...connector.discoveredContacts.map(
+            (d) => Contact(
+              publicKey: d.publicKey,
+              name: d.name,
+              type: d.type,
+              pathLength: d.pathLength,
+              path: d.path,
+              latitude: d.latitude,
+              longitude: d.longitude,
+              lastSeen: d.lastSeen,
+            ),
+          ),
+        ];
+        final discoveredKeys = connector.discoveredContacts
+            .map((d) => d.publicKeyHex)
+            .toSet();
+
         final highlightPosition = widget.highlightPosition;
         final sharedMarkers = settings.mapShowMarkers
             ? _collectSharedMarkers(connector)
@@ -190,6 +208,7 @@ class _MapScreenState extends State<MapScreen> {
                   allContactsWithLocation,
                   pathHistory,
                   maxRangeKm,
+                  discoveredKeys,
                 )
               : [];
         }
@@ -472,6 +491,7 @@ class _MapScreenState extends State<MapScreen> {
                         ..._buildMarkers(
                           contactsWithLocation,
                           settings,
+                          discoveredKeys: discoveredKeys,
                           showLabels: _showNodeLabels,
                         ),
                         ...sharedMarkers.map(_buildSharedMarker),
@@ -557,6 +577,7 @@ class _MapScreenState extends State<MapScreen> {
     List<Contact> withLocation,
     PathHistoryService pathHistory,
     double? maxRangeKm,
+    Set<String> discoveredKeys,
   ) {
     // Index known-location repeaters by their 1-byte hash.
     // null value = two repeaters share the same hash byte (ambiguous collision).
@@ -577,6 +598,11 @@ class _MapScreenState extends State<MapScreen> {
     for (final contact in allContacts) {
       if (contact.hasLocation) continue;
 
+      // Skip contacts with no path information at all (no device path, no
+      // history). Without any path bytes we have no basis to guess location.
+      final recentPaths = pathHistory.getRecentPaths(contact.publicKeyHex);
+      if (contact.path.isEmpty && recentPaths.isEmpty) continue;
+
       final anchorSet = <LatLng>{};
 
       // Collect the contact-side (last-hop) repeater from every known path.
@@ -585,9 +611,7 @@ class _MapScreenState extends State<MapScreen> {
       // earlier bytes would anchor against our own side of the network.
       final pathSets = <List<int>>[
         contact.path.toList(),
-        ...pathHistory
-            .getRecentPaths(contact.publicKeyHex)
-            .map((r) => r.pathBytes),
+        ...recentPaths.map((r) => r.pathBytes),
       ];
       final lastHopBytes = <int>{};
       for (final pathBytes in pathSets) {
@@ -643,6 +667,7 @@ class _MapScreenState extends State<MapScreen> {
           contact: contact,
           position: position,
           highConfidence: anchors.length >= 2,
+          isDiscovered: discoveredKeys.contains(contact.publicKeyHex),
         ),
       );
     }
@@ -721,6 +746,7 @@ class _MapScreenState extends State<MapScreen> {
           context,
           guess.contact,
           guessedPosition: guess.position,
+          isDiscovered: guess.isDiscovered,
         ),
         child: Container(
           padding: const EdgeInsets.all(4),
@@ -749,12 +775,15 @@ class _MapScreenState extends State<MapScreen> {
   List<Marker> _buildMarkers(
     List<Contact> contacts,
     settings, {
+    required Set<String> discoveredKeys,
     required bool showLabels,
   }) {
     final markers = <Marker>[];
 
     for (final contact in contacts) {
       if (!contact.hasLocation) continue;
+
+      final isDiscovered = discoveredKeys.contains(contact.publicKeyHex);
 
       // Apply node type filters
       if (contact.type == advTypeRepeater &&
@@ -776,11 +805,12 @@ class _MapScreenState extends State<MapScreen> {
         width: 35,
         height: 35,
         child: GestureDetector(
-          onLongPress: () =>
-              _isBuildingPathTrace ? _showNodeInfo(context, contact) : null,
+          onLongPress: () => _isBuildingPathTrace
+              ? _showNodeInfo(context, contact, isDiscovered: isDiscovered)
+              : null,
           onTap: () => _isBuildingPathTrace
               ? _addToPath(context, contact)
-              : _showNodeInfo(context, contact),
+              : _showNodeInfo(context, contact, isDiscovered: isDiscovered),
           child: Column(
             children: [
               Container(
@@ -1202,6 +1232,7 @@ class _MapScreenState extends State<MapScreen> {
     BuildContext context,
     Contact contact, {
     LatLng? guessedPosition,
+    bool isDiscovered = false,
   }) {
     showDialog(
       context: context,
@@ -1247,31 +1278,37 @@ class _MapScreenState extends State<MapScreen> {
           if (contact.type ==
               advTypeChat) // Only show chat button for chat nodes
             TextButton(
-              onPressed: () {
-                Navigator.pop(dialogContext);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ChatScreen(contact: contact),
-                  ),
-                );
-              },
+              onPressed: isDiscovered
+                  ? null
+                  : () {
+                      Navigator.pop(dialogContext);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChatScreen(contact: contact),
+                        ),
+                      );
+                    },
               child: Text(context.l10n.contacts_openChat),
             ),
           if (contact.type == advTypeRepeater)
             TextButton(
-              onPressed: () {
-                Navigator.pop(dialogContext);
-                _showRepeaterLogin(context, contact);
-              },
+              onPressed: isDiscovered
+                  ? null
+                  : () {
+                      Navigator.pop(dialogContext);
+                      _showRepeaterLogin(context, contact);
+                    },
               child: Text(context.l10n.map_manageRepeater),
             ),
           if (contact.type == advTypeRoom)
             TextButton(
-              onPressed: () {
-                Navigator.pop(dialogContext);
-                _showRoomLogin(context, contact);
-              },
+              onPressed: isDiscovered
+                  ? null
+                  : () {
+                      Navigator.pop(dialogContext);
+                      _showRoomLogin(context, contact);
+                    },
               child: Text(context.l10n.map_joinRoom),
             ),
         ],
@@ -2012,11 +2049,13 @@ class _GuessedLocation {
   final Contact contact;
   final LatLng position;
   final bool highConfidence;
+  final bool isDiscovered;
 
   _GuessedLocation({
     required this.contact,
     required this.position,
     required this.highConfidence,
+    required this.isDiscovered,
   });
 }
 
