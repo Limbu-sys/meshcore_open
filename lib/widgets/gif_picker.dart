@@ -21,7 +21,7 @@ class _GifPickerState extends State<GifPicker> {
 
   // Giphy API key - Using public beta key (limited usage)
   // For production, replace with your own Giphy API key from developers.giphy.com
-  static const String _giphyApiKey = 'sXpGFDGZs0Dv1mmNFvYaGUvYwKX0PWIh';
+  static const String _giphyApiKey = 'yANolTpbg4IRgoTMvLdNZJaleiJm5Brr';
 
   @override
   void initState() {
